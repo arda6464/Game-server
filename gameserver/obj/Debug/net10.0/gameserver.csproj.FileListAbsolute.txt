@@ -1,0 +1,14 @@
+C:\Users\arda64\Desktop\gameserver\obj\Debug\net10.0\gameserver.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\arda64\Desktop\gameserver\obj\Debug\net10.0\gameserver.AssemblyInfoInputs.cache
+C:\Users\arda64\Desktop\gameserver\obj\Debug\net10.0\gameserver.AssemblyInfo.cs
+C:\Users\arda64\Desktop\gameserver\obj\Debug\net10.0\gameserver.csproj.CoreCompileInputs.cache
+C:\Users\arda64\Desktop\gameserver\bin\Debug\net10.0\gameserver.exe
+C:\Users\arda64\Desktop\gameserver\bin\Debug\net10.0\gameserver.deps.json
+C:\Users\arda64\Desktop\gameserver\bin\Debug\net10.0\gameserver.runtimeconfig.json
+C:\Users\arda64\Desktop\gameserver\bin\Debug\net10.0\gameserver.dll
+C:\Users\arda64\Desktop\gameserver\bin\Debug\net10.0\gameserver.pdb
+C:\Users\arda64\Desktop\gameserver\obj\Debug\net10.0\gameserver.dll
+C:\Users\arda64\Desktop\gameserver\obj\Debug\net10.0\refint\gameserver.dll
+C:\Users\arda64\Desktop\gameserver\obj\Debug\net10.0\gameserver.pdb
+C:\Users\arda64\Desktop\gameserver\obj\Debug\net10.0\gameserver.genruntimeconfig.cache
+C:\Users\arda64\Desktop\gameserver\obj\Debug\net10.0\ref\gameserver.dll
