@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kWd4TJvuJsU=",
+  "dgSpecHash": "7hj+YI3KD4Q=",
   "success": true,
   "projectFilePath": "C:\\project\\Game-server\\gameserver\\gameserver.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\arda64\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
+  ],
   "logs": []
 }
