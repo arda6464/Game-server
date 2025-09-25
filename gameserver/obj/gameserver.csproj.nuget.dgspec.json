@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arda64\\Desktop\\gameserver\\gameserver.csproj": {}
+    "C:\\project\\Game-server\\gameserver\\gameserver.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arda64\\Desktop\\gameserver\\gameserver.csproj": {
+    "C:\\project\\Game-server\\gameserver\\gameserver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arda64\\Desktop\\gameserver\\gameserver.csproj",
+        "projectUniqueName": "C:\\project\\Game-server\\gameserver\\gameserver.csproj",
         "projectName": "gameserver",
-        "projectPath": "C:\\Users\\arda64\\Desktop\\gameserver\\gameserver.csproj",
+        "projectPath": "C:\\project\\Game-server\\gameserver\\gameserver.csproj",
         "packagesPath": "C:\\Users\\arda64\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arda64\\Desktop\\gameserver\\obj\\",
+        "outputPath": "C:\\project\\Game-server\\gameserver\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\arda64\\AppData\\Roaming\\NuGet\\NuGet.Config",
