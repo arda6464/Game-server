@@ -10,6 +10,9 @@ public static class MessageManager
             case MessageType.FirstConnection:
                 FirstConnectionHandler.Handle(session, data);
                 break;
+            case MessageType.AuthLogin:
+                AuthLoginHandler.Handle(session, data);
+                break;
         }
     }
 

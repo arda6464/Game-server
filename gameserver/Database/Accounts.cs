@@ -96,6 +96,8 @@ public static class AccountManager
 
         accounts[accountId] = newAccount;
         maxAccountId++;
+         AccountCache.Cache(newAccount);
+
         SaveAccounts();
 
         Console.WriteLine($"[AccountManager] Yeni hesap oluşturuldu: {username} (ID: {newAccount.Id}, AccountId: {newAccount.AccountId}) token:{newAccount.Token}");
