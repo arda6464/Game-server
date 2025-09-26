@@ -75,7 +75,7 @@ public static class AuthLoginHandler
 
         // friends and request
 
-        byteBuffer.WriteInt(account.Friends.Count); // friend sınıfı oluşturulmadı
+        byteBuffer.WriteInt(account.Friends.Count); 
 
         foreach (var friend in account.Friends)
         {
