@@ -28,10 +28,10 @@ public static class AccountManager
         public int Gems { get; set; }
         public int Clubid { get; set; }
 
-        //public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
-       // public List<FriendInfo> bekleyenistekler { get; set; } = new List<FriendInfo>();
-      //  public List<ClubMemberinfo> clubMemberinfos { get; set; } = new List<ClubMemberinfo>();
-      //  public List<notficationinfo> notfications { get; set; } = new List<notficationinfo>();
+        public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
+        public List<FriendInfo> Requests { get; set; } = new List<FriendInfo>();
+       public List<ClubMemberinfo> clubMemberinfos { get; set; } = new List<ClubMemberinfo>();
+     //  public List<notficationinfo> notfications { get; set; } = new List<notficationinfo>();
         // login data
         public DateTime LastLogin { get; set; }
         public string? LastIp { get; set; }
