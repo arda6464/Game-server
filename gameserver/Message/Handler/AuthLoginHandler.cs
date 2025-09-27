@@ -22,10 +22,10 @@ public static class AuthLoginHandler
         {
             Logger.errorslog($"giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor");
             AccountManager.AccountData newaccount = AccountManager.CreateAccount(Dil);
-            byteBuffer.WriteInt((int)MessageType.AuthLoginResponse); // response clientte gerçekleştirilcek unutma orda
+            byteBuffer.WriteInt((int)MessageType.NewAccountCreate); // response clientte gerçekleştirilcek unutma orda
             byteBuffer.WriteString(newaccount.Token);
             byteBuffer.WriteString(newaccount.AccountId); // clientte veriler  kaydedilcek, sonra clientin tekrar başlatılması istenecek
-            byte[] gonderilcekveri = buffer.ToArray();
+            byte[] gonderilcekveri = byteBuffer.ToArray();
             byteBuffer.Dispose();
             session.Send(gonderilcekveri);
             return;
@@ -52,6 +52,9 @@ public static class AuthLoginHandler
             Loginfailed.Send(session, "Hesabınız banlandı", 1);
             return;
         }
+        session.AccountId = account.AccountId;
+        SessionManager.AddSession(account.AccountId, session);
+        byteBuffer.WriteInt((int)MessageType.AccountData);
         // todo accountdata      
         byteBuffer.WriteString(account.Username);
 
@@ -65,13 +68,27 @@ public static class AuthLoginHandler
 
         byteBuffer.WriteInt(account.Premium);
 
-        // ilk clubcount yazılcak
-        // todo: var randomclub
+        int count = 0;
+        // Notfications
+        foreach (var notification in account.Notifications)
+        {
+            if (!notification.IsViewed) // görmediyse
+            {
+                NotificationSender.Send(session, notification); // 
+                notification.IsViewed = true;
+                count++;
+            }
+        }
 
+        // ilk clubcount yazılcak
+        var randomclub = ClubManager.RandomList(10);
+             // kişisel club data
         byteBuffer.WriteString("kulüpte değil");
         byteBuffer.WriteString("açıklama");
         byteBuffer.WriteInt(1); // club kupa
         byteBuffer.WriteInt(0); // kulüp kişi sayısı
+         
+
 
         // friends and request
 
