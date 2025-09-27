@@ -6,11 +6,13 @@ using System.Net.Sockets;
 public class Session
 {
     private TcpClient client;
-     private NetworkStream stream;
+    private NetworkStream stream;
+    public string AccountId {get; set;}
+
     public Session(TcpClient c)
     {
         client = c;
-         this.stream = client.GetStream();
+        this.stream = client.GetStream();
     }
     public void Start()
     {
@@ -27,12 +29,28 @@ public class Session
     {
         try
         {
-            
+
             stream.Write(buffer, 0, buffer.Length);
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Gönderme hatası: {ex.Message}");
         }
+    }
+    public void Close()
+    {
+          try
+        {
+            stream.Close();
+            client.Close();
+        }
+        catch {}
+
+        if (!string.IsNullOrEmpty(AccountId))
+        {
+            SessionManager.RemoveSession(AccountId);
+        }
+
+        Console.WriteLine($"[Session] {AccountId ?? "Unknown"} bağlantısı kapatıldı.");
     }
 }
