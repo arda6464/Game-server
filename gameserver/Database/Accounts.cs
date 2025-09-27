@@ -31,11 +31,11 @@ public static class AccountManager
         public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
         public List<FriendInfo> Requests { get; set; } = new List<FriendInfo>();
        public List<ClubMemberinfo> clubMemberinfos { get; set; } = new List<ClubMemberinfo>();
-     //  public List<notficationinfo> notfications { get; set; } = new List<notficationinfo>();
+      public List<Notification> Notifications { get; set; } = new List<Notification>();
         // login data
         public DateTime LastLogin { get; set; }
         public string? LastIp { get; set; }
-        public string Device { get; set; }
+        public string? Device { get; set; }
         
     }
 

@@ -2,7 +2,10 @@ public enum MessageType : int
 {
     FirstConnection,
     AuthLogin,
-    AuthLoginResponse,
+    NewAccountCreate,
+    Notification,
+    AccountData,
+    Loginfailed,
     ChangeNameColor,
     SetAvatar,
     SendFriendRequest,

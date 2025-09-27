@@ -12,6 +12,7 @@ public static class Loginfailed
         byte[] veri = buffer.ToArray();
         buffer.Dispose();
         session.Send(veri);
+        session.Close();
         Console.WriteLine("send loginfailed");
     }
 }
