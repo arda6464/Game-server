@@ -8,7 +8,7 @@ public static class NotificationManager
             Logger.errorslog($"[NotificationManager] {account.AccountId} hesabı bulunamadı!");
             return;
         }
-
+            
         account.Notifications.Add(notification);
         Logger.genellog($"{account.Username} aDLI KULLANICIYa bildirim eklendi: " + notification + "tostring hali: " + notification.ToString());
         

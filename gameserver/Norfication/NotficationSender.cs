@@ -12,13 +12,15 @@ public static class NotificationSender
 
         ByteBuffer buffer = new ByteBuffer();
 
-        /
+        
         buffer.WriteInt((int)MessageType.Notification);
 
-       
+        buffer.WriteInt(notification.Id);
         buffer.WriteString(notification.Title);
         buffer.WriteString(notification.Message);
         buffer.WriteString(notification.ButtonText);
+        buffer.WriteString(notification.Url);
+
 
         byte[] data = buffer.ToArray();
         buffer.Dispose();
