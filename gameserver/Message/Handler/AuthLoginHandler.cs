@@ -4,25 +4,37 @@ public static class AuthLoginHandler
 {
     public static void Handle(Session session, byte[] data)
     {
+        double ServerVersion = 0.6;
+
+
         ByteBuffer buffer = new ByteBuffer();
         buffer.WriteBytes(data, true);
         int _ = buffer.ReadInt();
 
 
+
         //read
+        double ClientVersion = buffer.ReadDouble();
         string token = buffer.ReadString();
         string accountID = buffer.ReadString();
         string Dil = buffer.ReadString();
-        buffer.Dispose();
 
+        buffer.Dispose();
+        Console.WriteLine($"Token: {token} accountıd: {accountID} Dil: {Dil}");
 
         ByteBuffer byteBuffer = new ByteBuffer();
         // kontrol
-        if (token == null || token == " ")
+        if (ServerVersion != ClientVersion)
+        {
+            Notification notification = new Notification(10, "Güncelleme mevcut", "Sana güzel bir haberimiz var! Oyunumuz yeni güncelleme geldi hemen indir!", "https://store.supercell.com/tr/brawlstars", "Güncelle");
+            NotificationSender.Send(session, notification);
+            return;
+        }
+        if (string.IsNullOrWhiteSpace(token))
         {
             Logger.errorslog($"giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor");
             AccountManager.AccountData newaccount = AccountManager.CreateAccount(Dil);
-            byteBuffer.WriteInt((int)MessageType.NewAccountCreate); // response clientte gerçekleştirilcek unutma orda
+            byteBuffer.WriteInt((int)MessageType.NewAccountCreateResponse); // response clientte gerçekleştirilcek unutma orda
             byteBuffer.WriteString(newaccount.Token);
             byteBuffer.WriteString(newaccount.AccountId); // clientte veriler  kaydedilcek, sonra clientin tekrar başlatılması istenecek
             byte[] gonderilcekveri = byteBuffer.ToArray();
@@ -33,7 +45,7 @@ public static class AuthLoginHandler
         AccountManager.AccountData account = AccountCache.Load(accountID);
         if (account == null)
         {
-            Loginfailed.Send(session, "verileri temizleyin", 1);
+            Loginfailed.Send(session, "verileri temizleyin, hesap bulunamadı", 1);
             return;
         }
         Console.WriteLine($"merhaba {account.Username} hesabına başarılı şekilde giriş yaptın");
@@ -54,8 +66,8 @@ public static class AuthLoginHandler
         }
         session.AccountId = account.AccountId;
         SessionManager.AddSession(account.AccountId, session);
-        byteBuffer.WriteInt((int)MessageType.AccountData);
-        // todo accountdata      
+        byteBuffer.WriteInt((int)MessageType.AuthLoginResponse);
+        // accountdata      
         byteBuffer.WriteString(account.Username);
 
         byteBuffer.WriteInt(account.Avatarid);
@@ -68,31 +80,22 @@ public static class AuthLoginHandler
 
         byteBuffer.WriteInt(account.Premium);
 
-        int count = 0;
-        // Notfications
-        foreach (var notification in account.Notifications)
-        {
-            if (!notification.IsViewed) // görmediyse
-            {
-                NotificationSender.Send(session, notification); // 
-                notification.IsViewed = true;
-                count++;
-            }
-        }
+
+
 
         // ilk clubcount yazılcak
         var randomclub = ClubManager.RandomList(10);
-             // kişisel club data
+        // kişisel club data
         byteBuffer.WriteString("kulüpte değil");
         byteBuffer.WriteString("açıklama");
         byteBuffer.WriteInt(1); // club kupa
         byteBuffer.WriteInt(0); // kulüp kişi sayısı
-         
+
 
 
         // friends and request
 
-        byteBuffer.WriteInt(account.Friends.Count); 
+        byteBuffer.WriteInt(account.Friends.Count);
 
         foreach (var friend in account.Friends)
         {
@@ -108,8 +111,21 @@ public static class AuthLoginHandler
             byteBuffer.WriteString(request.Username);
         }
         byte[] accountdata = byteBuffer.ToArray();
+       
+Console.WriteLine("Gönderilen paket boyu: " + accountdata.Length);
+
         byteBuffer.Dispose();
         session.Send(accountdata);
+          // Notfications
+        foreach (var notification in account.Notifications)
+        {
+            if (!notification.IsViewed) // görmediyse
+            {
+                NotificationSender.Send(session, notification); // 
+                notification.IsViewed = true;
+                
+            }
+        }
 
 
 
