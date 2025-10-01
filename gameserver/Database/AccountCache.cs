@@ -15,27 +15,39 @@ public static class AccountCache
     // Cache’i başlat ve 1 dakikada bir kaydet
     public static void Init()
     {
-        // Mevcut hesapları AccountManager’den yükle
+       
         AccountManager.LoadAccounts();
+      Thread  _thread = new Thread(Update);
+            _thread.Start();
         
 
-        // Periyodik save: 1 dakika
-        _saveTimer = new Timer(_ => SaveAll(), null, 60000, 60000);
+       
+       
+    }
+     static bool started = true;
+    private static void Update()
+    {
+        while (started)
+            {
+                SaveAll();
+            Logger.genellog("save alındı");
+                Thread.Sleep(1000 * 120);
+            }
     }
 
     // Cache’deki tüm hesapları kaydet
     public static void SaveAll()
     {
-        
-            try
-            {
-                AccountManager.SaveAccounts(); // mevcut save metodunu kullan
-            }
-            catch (Exception ex)
-            {
-                Logger.errorslog($"Hata kaydederken: {ex.Message}");
-            }
-        
+
+        try
+        {
+            AccountManager.SaveAccounts(); // mevcut save metodunu kullan
+        }
+        catch (Exception ex)
+        {
+            Logger.errorslog($"Hata kaydederken: {ex.Message}");
+        }
+
         Logger.genellog("[AccountCache] Cache kaydedildi.");
     }
 

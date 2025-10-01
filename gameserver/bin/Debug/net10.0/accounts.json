@@ -1,0 +1,304 @@
+{
+  "NBR2BR4U": {
+    "Id": 1,
+    "AccountId": "NBR2BR4U",
+    "Token": "593030991179",
+    "Username": "arda64best",
+    "Dil": "TR",
+    "Premium": 0,
+    "PremiumEndTime": "0001-01-01T00:00:00",
+    "Banned": false,
+    "Banreason": null,
+    "Avatarid": 1,
+    "Namecolorid": 1,
+    "Level": 0,
+    "Gems": 0,
+    "Clubid": -1,
+    "Friends": [],
+    "Requests": [],
+    "clubMemberinfos": [],
+    "Notifications": [],
+    "LastLogin": "2025-09-27T13:36:06.8105582+03:00",
+    "LastIp": null,
+    "Device": null
+  },
+  "7LRLRJZ6": {
+    "Id": 2,
+    "AccountId": "7LRLRJZ6",
+    "Token": "360389624670",
+    "Username": "arda64best",
+    "Dil": "TR",
+    "Premium": 0,
+    "PremiumEndTime": "0001-01-01T00:00:00",
+    "Banned": false,
+    "Banreason": null,
+    "Avatarid": 1,
+    "Namecolorid": 1,
+    "Level": 0,
+    "Gems": 0,
+    "Clubid": -1,
+    "Friends": [],
+    "Requests": [],
+    "clubMemberinfos": [],
+    "Notifications": [],
+    "LastLogin": "2025-09-27T15:39:34.4460971+03:00",
+    "LastIp": null,
+    "Device": null
+  },
+  "WHM7ZVYY": {
+    "Id": 3,
+    "AccountId": "WHM7ZVYY",
+    "Token": "125258771246",
+    "Username": "arda64best",
+    "Dil": "TR",
+    "Premium": 0,
+    "PremiumEndTime": "0001-01-01T00:00:00",
+    "Banned": false,
+    "Banreason": null,
+    "Avatarid": 1,
+    "Namecolorid": 1,
+    "Level": 0,
+    "Gems": 0,
+    "Clubid": -1,
+    "Friends": [],
+    "Requests": [],
+    "clubMemberinfos": [],
+    "Notifications": [
+      {
+        "Id": 10,
+        "Title": "MERHABAARDA",
+        "Message": "",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "MERHABAARDA",
+        "Message": "",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selam",
+        "Message": "",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selamarda",
+        "Message": "nasılsın",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "kkk"
+      },
+      {
+        "Id": 10,
+        "Title": "merhabarda",
+        "Message": "",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selamardaa",
+        "Message": "",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selamardaa",
+        "Message": "",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selamardaa",
+        "Message": "",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selamarda",
+        "Message": "testss",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selamarda",
+        "Message": "testss",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selam",
+        "Message": "arda",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "https://github.com/arda6464/Time-brawl/blob/main/src/Supercell.Laser.Server/Database/Cache/AccountCache.cs"
+      },
+      {
+        "Id": 10,
+        "Title": "selam",
+        "Message": "arda",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "https://github.com/arda6464/Time-brawl/blob/main/src/Supercell.Laser.Server/Database/Cache/AccountCache.cs"
+      },
+      {
+        "Id": 10,
+        "Title": "merhaba",
+        "Message": "test1",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": ""
+      },
+      {
+        "Id": 10,
+        "Title": "merhaba",
+        "Message": "test2",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "merhaba",
+        "Message": "test1",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": ""
+      },
+      {
+        "Id": 10,
+        "Title": "merhaba",
+        "Message": "test2",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "merhaba",
+        "Message": "test1",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": ""
+      },
+      {
+        "Id": 10,
+        "Title": "merhaba",
+        "Message": "test2",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "merhaba",
+        "Message": "test1",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "merhaba",
+        "Message": "test2",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selamarda",
+        "Message": "text1",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": ""
+      },
+      {
+        "Id": 10,
+        "Title": "selamarda",
+        "Message": "text2",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "selamarda",
+        "Message": "text3",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "merhaba",
+        "Message": "testt",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "ardaaa"
+      },
+      {
+        "Id": 10,
+        "Title": "",
+        "Message": "test2",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "merhaba"
+      },
+      {
+        "Id": 10,
+        "Title": "selamkk",
+        "Message": "arddaağ",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": ""
+      },
+      {
+        "Id": 10,
+        "Title": "ardaslmcnm",
+        "Message": "aaaaa",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "time brawl"
+      },
+      {
+        "Id": 10,
+        "Title": "",
+        "Message": "ardaaslm",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "kkkkkkk"
+      },
+      {
+        "Id": 10,
+        "Title": "",
+        "Message": "ardm",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "kkkkkkk"
+      }
+    ],
+    "LastLogin": "2025-09-27T15:40:52.4354163+03:00",
+    "LastIp": null,
+    "Device": null
+  }
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
 
 class Program
 {
@@ -7,17 +8,24 @@ class Program
     static void Main()
     {
         Console.Clear();
+        AccountCache.Init();
+        Thread cmdhandlerthread = new Thread(Cmdhandler.Start);
+        cmdhandlerthread.Start();
+
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         var shutdownEvent = new ManualResetEvent(false);
         GameServer gameserver= new GameServer();
           
-        Console.CancelKeyPress += (sender, e) =>
+       
+       
+       /* Console.CancelKeyPress += (sender, e) =>
         {
             Console.WriteLine("Shutdown signal received (Ctrl+C)...");
-            
+
             e.Cancel = true;
             shutdownEvent.Set();
-        };
+            
+        };*/
         try
         {
             gameserver.Start();
