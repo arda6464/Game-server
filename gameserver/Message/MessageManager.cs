@@ -7,11 +7,14 @@ public static class MessageManager
         int value = BitConverter.ToInt32(data, 0);
         switch ((MessageType)value)
         {
-            case MessageType.FirstConnection:
+            case MessageType.FirstConnectionRequest:
                 FirstConnectionHandler.Handle(session, data);
                 break;
-            case MessageType.AuthLogin:
+            case MessageType.AuthLoginRequest:
                 AuthLoginHandler.Handle(session, data);
+                break;
+            case MessageType.Disconnect:
+                session.Close();
                 break;
         }
     }
