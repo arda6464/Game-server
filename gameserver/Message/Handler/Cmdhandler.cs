@@ -68,9 +68,28 @@ public class Cmdhandler
                             DeleteAllİstek(args[1]);
                         break;
                     case "sendbildirim":
-                        // if (args.Length != 3) Console.WriteLine("kullanım: /sendbildirim (accid) (message)");
-                        //else
-                        SendNotfication(args[1], args[2]);
+                        Console.WriteLine("gelen lenght:" + args.Length);
+                        if (args.Length < 2 || args.Length > 6) Console.WriteLine("kullanım: /sendbildirim (notficaiton id) (message) posiyonel: (acıklama)(url)");
+                        else
+                        {
+                            int id = Convert.ToInt32(args[1]);
+                            int index = args.Length;
+                            switch (index)
+                            {
+                                case 3:
+                                    SendNotfication(id, args[2]);
+                                    break;
+                                case 4:
+                                    SendNotfication(id, args[2], args[3]);
+                                    break;
+                                case 5:
+                                    SendNotfication(id, args[2], args[3], args[4]);
+                                    break;
+
+                            }
+
+                           
+                        }
                         break;
                     case "createclub":
                         if (args.Length != 2) Console.WriteLine("kullanım: /createclub (club name)");
@@ -153,7 +172,7 @@ public class Cmdhandler
     {
         var acccount = AccountManager.LoadAccount(id);
         string fakeid = "3BT56SDS";
-        acccount.bekleyenistekler.Add(new FriendInfo
+        acccount.Requests.Add(new FriendInfo
         {
             Id = fakeid,
             AvatarId = 1,
@@ -170,14 +189,28 @@ public class Cmdhandler
         AccountManager.SaveAccounts();
         Console.WriteLine("tüm hesaplar silindi");
     }
-    private static void SendNotfication(string id, string message)
+    private static void SendNotfication(int id, string message, string acıklamna = "", string url= "time brawl")
     {
-        id = "ZSMMXQ1F";
-        AccountManager.AccountData acccount = AccountManager.LoadAccount(id);
+      string  accid = "WHM7ZVYY";
+        AccountManager.AccountData acccount = AccountCache.Load(accid);
         if (acccount != null)
         {
-           
-
+            Notification notification = new Notification
+           (
+             id,
+             message,
+             acıklamna,
+             url
+           );
+            NotificationManager.Add(acccount, notification);
+            if (SessionManager.IsOnline(acccount.AccountId))
+            {
+                Session session = SessionManager.GetSession(acccount.AccountId);
+                NotificationSender.Send(session, notification);
+            }
+            else
+                Console.WriteLine("oyuncu aktif değil");
+            Logger.genellog($"{acccount.Username} adlı kullanıcısına {notification} bildirimi eklendi");
         }
     }
     private static void CreateClub(int count, string name)
