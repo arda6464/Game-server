@@ -16,6 +16,15 @@ public static class MessageManager
             case MessageType.Disconnect:
                 session.Close();
                 break;
+            case MessageType.ChangeNameColorRequest:
+                SetNameColor.Handle(session, data);
+                break;
+            case MessageType.SetAvatarRequest:
+                SetAvatar.Handle(session, data);
+                break;
+            default:
+                Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);
+                break;
         }
     }
 

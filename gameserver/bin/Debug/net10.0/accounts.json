@@ -56,7 +56,7 @@
     "Banned": false,
     "Banreason": null,
     "Avatarid": 1,
-    "Namecolorid": 1,
+    "Namecolorid": 2,
     "Level": 0,
     "Gems": 0,
     "Clubid": -1,
@@ -295,6 +295,14 @@
         "ButtonText": "Tamam",
         "IsViewed": true,
         "Url": "kkkkkkk"
+      },
+      {
+        "Id": 10,
+        "Title": "arda",
+        "Message": "sistemcalısıytormu",
+        "ButtonText": "Tamam",
+        "IsViewed": true,
+        "Url": "tmm"
       }
     ],
     "LastLogin": "2025-09-27T15:40:52.4354163+03:00",
