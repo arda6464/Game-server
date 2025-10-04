@@ -88,7 +88,7 @@ public class Cmdhandler
 
                             }
 
-                           
+
                         }
                         break;
                     case "createclub":
@@ -100,7 +100,12 @@ public class Cmdhandler
                         if (args.Length < 1 || args.Length < 4) Console.WriteLine("kullanım: /ban (accountid) (sebep(opsiyonel))");
                         else
                             AccountBan(args[1], args[2]);
-                            break;
+                        break;
+                    case "showprofile":
+                        if (args.Length != 2) Console.WriteLine("kullanım: /showprofile (accountıd)");
+                        else
+                            ProfileShow(args[1]);
+                        break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("ilgili komut bulunamadı. komutlara erişmek için /help komutunu deneyin");
@@ -178,20 +183,20 @@ public class Cmdhandler
             AvatarId = 1,
             Username = "test"
         });
-      
+
         Logger.genellog($"{acccount.Username} ({acccount.AccountId}) kişisini arkadaş ekleme sistemi test etme işlemi başladı...");
     }
     private static void DeleteAllİstek(string id)
     {
         AccountManager.AccountData acccount = AccountManager.LoadAccount(id);
-      
+
 
         AccountManager.SaveAccounts();
         Console.WriteLine("tüm hesaplar silindi");
     }
-    private static void SendNotfication(int id, string message, string acıklamna = "", string url= "time brawl")
+    private static void SendNotfication(int id, string message, string acıklamna = "", string url = "time brawl")
     {
-      string  accid = "WHM7ZVYY";
+        string accid = "WHM7ZVYY";
         AccountManager.AccountData acccount = AccountCache.Load(accid);
         if (acccount != null)
         {
@@ -239,7 +244,13 @@ public class Cmdhandler
                     Loginfailed.Send(session, "Hesabınız banlandı", 99);
                     SessionManager.RemoveSession(account.AccountId);
                 }
-            }                 
+            }
         }
+    }
+    private static void ProfileShow(string acccountId)
+    {
+        Session session = SessionManager.GetSession(acccountId);
+        ShowProfileHandler.test(session);
+        Console.WriteLine("profile test runing");
     }
 }

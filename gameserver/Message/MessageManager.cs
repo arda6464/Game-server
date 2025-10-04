@@ -22,6 +22,9 @@ public static class MessageManager
             case MessageType.SetAvatarRequest:
                 SetAvatar.Handle(session, data);
                 break;
+            case MessageType.ShowProfileRequest:
+                ShowProfileHandler.Handle(session, data);
+                break;
             default:
                 Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);
                 break;

@@ -19,6 +19,8 @@ public enum MessageType : int
     ChangeNameColorResponse,
     SetAvatarRequest,
     SetAvatarResponse,
+    ShowProfileRequest,
+    ShowProfileResponse,
   
 
     // Friends
