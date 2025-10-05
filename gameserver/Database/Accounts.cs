@@ -30,13 +30,13 @@ public static class AccountManager
 
         public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
         public List<FriendInfo> Requests { get; set; } = new List<FriendInfo>();
-       public List<ClubMemberinfo> clubMemberinfos { get; set; } = new List<ClubMemberinfo>();
-      public List<Notification> Notifications { get; set; } = new List<Notification>();
+        public List<ClubMemberinfo> clubMemberinfos { get; set; } = new List<ClubMemberinfo>();
+        public List<Notification> Notifications { get; set; } = new List<Notification>();
         // login data
         public DateTime LastLogin { get; set; }
         public string? LastIp { get; set; }
         public string? Device { get; set; }
-        
+
     }
 
     // Tüm hesapları yükle
@@ -64,7 +64,7 @@ public static class AccountManager
         {
             Logger.errorslog("[AccountManager] accounts.json bulunamadı, yeni dosya oluşturulacak.");
             File.Create(savePath).Close();
-            
+
         }
     }
 
@@ -96,7 +96,7 @@ public static class AccountManager
 
         accounts[accountId] = newAccount;
         maxAccountId++;
-         AccountCache.Cache(newAccount);
+        AccountCache.Cache(newAccount);
 
         SaveAccounts();
 
@@ -111,9 +111,9 @@ public static class AccountManager
             Console.WriteLine($"isim: {account.Username}\n avatarid : {account.Avatarid} \n colorid: {account.Namecolorid}\n  son giriş: {account.LastLogin} \n Dil: {account.Dil} \n clubid: {account.Clubid}"); //
         if (account.Clubid != -1)
         {
-         //   var club = ClubManager.LoadClub(account.Clubid);
-           // Console.WriteLine($"kulup adı :  {club.ClubName} \n toplam kişi: {club.Members.Count}\n toplam kupa {club.TotalKupa} ");
-            }
+            //   var club = ClubManager.LoadClub(account.Clubid);
+            // Console.WriteLine($"kulup adı :  {club.ClubName} \n toplam kişi: {club.Members.Count}\n toplam kupa {club.TotalKupa} ");
+        }
     }
 
     // Hesap yükle (AccountId ile)
@@ -137,4 +137,13 @@ public static class AccountManager
         SaveAccounts();
         Logger.genellog($"[BAN] {account.Username}({account.AccountId}) banlandı. Sebep: {sebep}");
     }
+    public static void DeleteNotfications()
+    {
+        foreach (AccountData account in accounts.Values)
+        {
+            account.Notifications.Clear();
+
+        }
+        Console.WriteLine("Accountsların notficationları silindi");
+    }        
 }

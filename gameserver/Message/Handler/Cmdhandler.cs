@@ -106,6 +106,9 @@ public class Cmdhandler
                         else
                             ProfileShow(args[1]);
                         break;
+                    case "DeleteNotfications":
+                        AccountManager.DeleteNotfications();
+                        break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("ilgili komut bulunamadı. komutlara erişmek için /help komutunu deneyin");
@@ -253,4 +256,5 @@ public class Cmdhandler
         ShowProfileHandler.test(session);
         Console.WriteLine("profile test runing");
     }
+   
 }
