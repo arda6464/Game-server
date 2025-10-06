@@ -178,7 +178,7 @@ public class Cmdhandler
 
     private static void Sendfakefriendsrequest(string id)
     {
-        var acccount = AccountManager.LoadAccount(id);
+        var acccount = AccountManager.LoadAccount("WHM7ZVYY");
         string fakeid = "3BT56SDS";
         acccount.Requests.Add(new FriendInfo
         {

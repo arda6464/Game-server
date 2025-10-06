@@ -89,7 +89,7 @@ public sealed class ByteBuffer : IDisposable
     }
     // Read methods
     public byte ReadByte() => _reader.ReadByte();
-    public byte[] ReadBytes(int length)
+    public byte[] ReadBytes(byte[] message, int length)
     {
         return _reader.ReadBytes(length);
     }

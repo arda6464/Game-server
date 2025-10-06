@@ -25,6 +25,15 @@ public static class MessageManager
             case MessageType.ShowProfileRequest:
                 ShowProfileHandler.Handle(session, data);
                 break;
+            case MessageType.SendFriendRequest:
+                SendFriendRequestHandler.Handle(session, data);
+                break;
+            case MessageType.AcceptFriendRequest:
+                FriendRequestAccept.Handle(session, data);
+                break;
+            case MessageType.DeclineFriendRequest:
+                FriendRequestDecline.Handle(session, data);
+                break;
             default:
                 Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);
                 break;

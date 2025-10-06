@@ -55,7 +55,7 @@ public static class AccountCache
     public static void Cache(AccountManager.AccountData account)
     {
         CachedAccounts[account.AccountId] = account;
-        Console.WriteLine($"{account.Username} adlı kullanıcı cache'ye eklendi");
+      //  Console.WriteLine($"{account.Username} adlı kullanıcı cache'ye eklendi");
     }
 
        // load'ı cache'den yap

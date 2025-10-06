@@ -15,6 +15,7 @@ public static class ShowProfileHandler
 
         ByteBuffer buffer = new ByteBuffer();
         buffer.WriteInt((int)MessageType.ShowProfileResponse);
+        buffer.WriteString(account.AccountId);
         buffer.WriteString(account.Username);
         buffer.WriteInt(account.Namecolorid);
         buffer.WriteInt(account.Avatarid);

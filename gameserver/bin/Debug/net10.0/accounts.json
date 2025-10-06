@@ -61,10 +61,17 @@
     "Gems": 0,
     "Clubid": -1,
     "Friends": [],
-    "Requests": [],
+    "Requests": [
+      {
+        "Id": "3BT56SDS",
+        "Username": "test",
+        "AvatarId": 1,
+        "NameColorID": 0
+      }
+    ],
     "clubMemberinfos": [],
     "Notifications": [],
-    "LastLogin": "2025-09-27T15:40:52.4354163+03:00",
+    "LastLogin": "2025-10-06T18:53:50.3836776+03:00",
     "LastIp": null,
     "Device": null
   }

@@ -32,6 +32,8 @@ public enum MessageType : int
     DeclineFriendResponse,
     DeleteFriendRequest,
     DeleteFriendResponse,
+    NewFriendsList,
+    NewRequestList,
     // notfications
     Notification,
 }

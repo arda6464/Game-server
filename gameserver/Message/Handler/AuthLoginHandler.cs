@@ -102,6 +102,8 @@ public static class AuthLoginHandler
             byteBuffer.WriteString(friend.Id);
             byteBuffer.WriteInt(friend.AvatarId);
             byteBuffer.WriteString(friend.Username);
+            byteBuffer.WriteInt(friend.NameColorID);
+            byteBuffer.WriteBool(SessionManager.IsOnline(friend.Id));
         }
         byteBuffer.WriteInt(account.Requests.Count);
         foreach (var request in account.Requests)
