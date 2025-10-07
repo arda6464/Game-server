@@ -18,6 +18,10 @@ public static class FriendRequestDecline
             if (request != null)
                 account.Requests.Remove(request);
         }
+        else
+        {
+            Logger.errorslog("friend decline belirlenemeyen hesap buldu");
+        }
         Console.WriteLine($"{account.Username}({account.AccountId})  adlı kullanıcı {target.Username}({target.AccountId}) adlı kullanıcının isteğini reddetti");
     }
 }

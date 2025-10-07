@@ -13,7 +13,7 @@ public static class SendFriendRequestHandler
       
 
         AccountManager.AccountData account = AccountCache.Load(session.AccountId);
-        AccountManager.AccountData target = AccountCache.Load(accıd);
+        AccountManager.AccountData target = AccountCache.Load(accıd); //istek atan kişi
 
 
         if (account != null && target != null)
@@ -25,14 +25,27 @@ public static class SendFriendRequestHandler
                 Id = target.AccountId,
                 AvatarId = target.Avatarid
             };
-            account.Requests.Add(info);
-            Logger.genellog($"{target.Username}({target.AccountId}) → {account.Username}({account.AccountId})'ye istek attı");
+            target.Requests.Add(info);
+            Logger.genellog($"{account.Username}({account.AccountId}) →  {target.Username}({target.AccountId}) 'ye istek attı");
 
-            ByteBuffer buffer = new ByteBuffer();
-            if (SessionManager.IsOnline(account.AccountId))
+
+            if (SessionManager.IsOnline(target.AccountId))
             {
-                
+                Session session1 = SessionManager.GetSession(target.AccountId);
+                ByteBuffer buffer = new ByteBuffer();
+                buffer.WriteInt((int)MessageType.NewRequestList);
+                buffer.WriteInt(account.Requests.Count);
+                foreach (var request in account.Requests)
+                {
+                    buffer.WriteString(request.Id);
+                    buffer.WriteInt(request.AvatarId);
+                    buffer.WriteString(request.Username);
+                }
+                byte[] veri = buffer.ToArray();
+                buffer.Dispose();
+                session1.Send(veri);
             }
+            
             
         }
     }

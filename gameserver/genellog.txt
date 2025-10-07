@@ -1385,3 +1385,91 @@
 [6.10.2025 22:03:43] save alındı
 [6.10.2025 22:05:43] [AccountCache] Cache kaydedildi.
 [6.10.2025 22:05:43] save alındı
+[7.10.2025 00:05:12] Serer is started...
+[7.10.2025 00:05:12] [AccountCache] Cache kaydedildi.
+[7.10.2025 00:05:12] save alındı
+[7.10.2025 00:07:12] [AccountCache] Cache kaydedildi.
+[7.10.2025 00:07:12] save alındı
+[7.10.2025 00:09:12] [AccountCache] Cache kaydedildi.
+[7.10.2025 00:09:12] save alındı
+[7.10.2025 07:02:52] [AccountCache] Cache kaydedildi.
+[7.10.2025 07:02:52] save alındı
+[7.10.2025 07:03:34] Serer is started...
+[7.10.2025 07:03:34] [AccountCache] Cache kaydedildi.
+[7.10.2025 07:03:34] save alındı
+[7.10.2025 07:06:32] Serer is started...
+[7.10.2025 07:06:32] [AccountCache] Cache kaydedildi.
+[7.10.2025 07:06:32] save alındı
+[7.10.2025 07:07:12] arda64best (WHM7ZVYY) kişisini arkadaş ekleme sistemi test etme işlemi başladı...
+[7.10.2025 18:03:58] Serer is started...
+[7.10.2025 18:03:58] [AccountCache] Cache kaydedildi.
+[7.10.2025 18:03:58] save alındı
+[7.10.2025 18:10:01] Serer is started...
+[7.10.2025 18:10:02] [AccountCache] Cache kaydedildi.
+[7.10.2025 18:10:02] save alındı
+[7.10.2025 18:12:01] arda64best (WHM7ZVYY) kişisini arkadaş ekleme sistemi test etme işlemi başladı...
+[7.10.2025 18:12:02] [AccountCache] Cache kaydedildi.
+[7.10.2025 18:12:02] save alındı
+[7.10.2025 18:13:24] Serer is started...
+[7.10.2025 18:13:25] [AccountCache] Cache kaydedildi.
+[7.10.2025 18:13:25] save alındı
+[7.10.2025 18:13:45] arda64best (WHM7ZVYY) kişisini arkadaş ekleme sistemi test etme işlemi başladı...
+[7.10.2025 19:22:16] Serer is started...
+[7.10.2025 19:22:16] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:22:16] save alındı
+[7.10.2025 19:24:16] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:24:16] save alındı
+[7.10.2025 19:26:16] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:26:16] save alındı
+[7.10.2025 19:27:04] Serer is started...
+[7.10.2025 19:27:04] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:27:04] save alındı
+[7.10.2025 19:27:12] arda64best(NBR2BR4U) → arda64best(WHM7ZVYY)'ye istek attı
+[7.10.2025 19:29:04] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:29:04] save alındı
+[7.10.2025 19:31:04] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:31:04] save alındı
+[7.10.2025 19:33:04] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:33:04] save alındı
+[7.10.2025 19:35:04] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:35:04] save alındı
+[7.10.2025 19:37:04] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:37:04] save alındı
+[7.10.2025 19:38:30] Serer is started...
+[7.10.2025 19:38:30] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:38:30] save alındı
+[7.10.2025 19:38:54] arda64best(WHM7ZVYY) →  arda64best(NBR2BR4U) 'ye istek attı
+[7.10.2025 19:40:30] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:40:30] save alındı
+[7.10.2025 19:41:09] Serer is started...
+[7.10.2025 19:41:09] [AccountCache] Cache kaydedildi.
+[7.10.2025 19:41:09] save alındı
+[7.10.2025 19:41:22] arda64best(WHM7ZVYY) →  arda64best(NBR2BR4U) 'ye istek attı
+[7.10.2025 23:24:40] Serer is started...
+[7.10.2025 23:24:40] [AccountCache] Cache kaydedildi.
+[7.10.2025 23:24:40] save alındı
+[7.10.2025 23:25:26]  Toplam  oluşturulan klan: 20
+[7.10.2025 23:26:27] Serer is started...
+[7.10.2025 23:26:27] [AccountCache] Cache kaydedildi.
+[7.10.2025 23:26:27] save alındı
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest0 des: ardatestaciklama0 id: 1
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest1 des: ardatestaciklama1 id: 2
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest2 des: ardatestaciklama2 id: 3
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest3 des: ardatestaciklama3 id: 4
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest4 des: ardatestaciklama4 id: 5
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest5 des: ardatestaciklama5 id: 6
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest6 des: ardatestaciklama6 id: 7
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest7 des: ardatestaciklama7 id: 8
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest8 des: ardatestaciklama8 id: 9
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest9 des: ardatestaciklama9 id: 10
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest10 des: ardatestaciklama10 id: 11
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest11 des: ardatestaciklama11 id: 12
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest12 des: ardatestaciklama12 id: 13
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest13 des: ardatestaciklama13 id: 14
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest14 des: ardatestaciklama14 id: 15
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest15 des: ardatestaciklama15 id: 16
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest16 des: ardatestaciklama16 id: 17
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest17 des: ardatestaciklama17 id: 18
+[7.10.2025 23:26:56] Club oluşturuldu: name: ardatest18 des: ardatestaciklama18 id: 19
+[7.10.2025 23:26:57] Club oluşturuldu: name: ardatest19 des: ardatestaciklama19 id: 20
+[7.10.2025 23:26:57]  Toplam  oluşturulan klan: 20
