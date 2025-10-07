@@ -32,7 +32,7 @@ public class Cmdhandler
                             Setcolorid(args[1], args[2]);
                         break;
                     case "help":
-                        Console.WriteLine("/help - bu komut\n /addpre (accid) - hesaba premium ekler\n /removepre (accid) - hesaptan premium'u kaldırır\n /setcolorid (accid) (colorid) - hesbaın isim rengine müdahale eder\n /clearcmd - cmd temizler\n /accinfo (id) - account info verilir");
+                        Console.WriteLine("/help - bu komut\n /addpre (accid) - hesaba premium ekler\n /removepre (accid) - hesaptan premium'u kaldırır\n /setcolorid (accid) (colorid) - hesbaın isim rengine müdahale eder\n /clearcmd - cmd temizler\n /accinfo (id) - account info verilir \n /saveacss - tüm hesapları kaydeder \n /sendfriends - belirli bir hesaba belirli bir hesaptan istek atar \n /allistekdelete  - hesabın  tüm  friends isteklerini temizler \n /sendbildirim- banner ile bildirim yollar \n /createclub - 20 kulüp oluşturur \n /ban - hesap banlar \n /showprofile - belirli hesabın profiline baktırır \n /DeleteAllNotfications - hesapların tüm bildirim geçmişini siler \n ");
                         break;
                     case "addcoin":
                         break;
@@ -106,7 +106,7 @@ public class Cmdhandler
                         else
                             ProfileShow(args[1]);
                         break;
-                    case "DeleteNotfications":
+                    case "deleteAllNotfications":
                         AccountManager.DeleteNotfications();
                         break;
                     default:
@@ -178,13 +178,13 @@ public class Cmdhandler
 
     private static void Sendfakefriendsrequest(string id)
     {
-        var acccount = AccountManager.LoadAccount("WHM7ZVYY");
-        string fakeid = "3BT56SDS";
+        var acccount = AccountCache.Load("WHM7ZVYY");
+        string fakeid = "7LRLRJZ6";
         acccount.Requests.Add(new FriendInfo
         {
             Id = fakeid,
-            AvatarId = 1,
-            Username = "test"
+            AvatarId = 3,
+            Username = "test31"
         });
 
         Logger.genellog($"{acccount.Username} ({acccount.AccountId}) kişisini arkadaş ekleme sistemi test etme işlemi başladı...");
@@ -227,7 +227,7 @@ public class Cmdhandler
         for (int i = 0; i < count; i++)
         {
             string des = name + "aciklama" + index;
-            ClubManager.CreateClub(name + index, des, "ZSMMXQ1F");
+            ClubManager.CreateClub(name + index, des, "WHM7ZVYY");
             index++;
         }
         Logger.genellog(" Toplam  oluşturulan klan: " + index);
