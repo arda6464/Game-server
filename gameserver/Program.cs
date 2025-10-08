@@ -9,6 +9,7 @@ class Program
     {
         Console.Clear();
         AccountCache.Init();
+        ClubManager.Allclubload();
         Thread cmdhandlerthread = new Thread(Cmdhandler.Start);
         cmdhandlerthread.Start();
 
@@ -29,7 +30,7 @@ class Program
         try
         {
             gameserver.Start();
-            shutdownEvent.WaitOne();
+          //  shutdownEvent.WaitOne();
         }
         catch (Exception ex)
         {

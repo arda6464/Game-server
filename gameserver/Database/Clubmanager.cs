@@ -22,7 +22,7 @@ public class ClubMemberinfo
     public int ClubId { get; set; }
     public string? ClubName { get; set; }
     public string? Clubaciklama { get; set; }
-    public int TotalKupa { get; set; }
+    public int? TotalKupa { get; set; }
     
 }
 
@@ -140,17 +140,18 @@ public static class ClubManager
     }
     #endregion
     public static List<Club> RandomList(int count)
+{
+    var availableClubs = Clubs.Values.ToList();
+    Random random = new Random();
+    List<Club> randomclubs = new List<Club>();
+    
+    for (int i = 0; i < count && i < availableClubs.Count; i++)
     {
-         var availableClubs = Clubs.Values.ToList();
-        Random random = new Random();
-        List<Club> randomclubs = new List<Club>();
-        for (int i = 0; i < count && i < Clubs.Count; i++)
-        {
-            int index = random.Next(availableClubs.Count);
-            randomclubs.Add(Clubs[index]);
-        }
-        return randomclubs;
+        int index = random.Next(availableClubs.Count);
+        randomclubs.Add(availableClubs[index]); // availableClubs kullan!
     }
+    return randomclubs;
+}
     #region Üye çıkarma
     public static bool RemoveMember(int clubId, int actorId, int targetMemberId)
     {

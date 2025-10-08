@@ -84,14 +84,26 @@ public static class AuthLoginHandler
 
 
         // ilk clubcount yazılcak
-        var randomclub = ClubManager.RandomList(10);
+        
         // kişisel club data
         byteBuffer.WriteString("kulüpte değil");
         byteBuffer.WriteString("açıklama");
         byteBuffer.WriteInt(1); // club kupa
         byteBuffer.WriteInt(0); // kulüp kişi sayısı
 
+        var randomclubs = ClubManager.RandomList(10);
+        byteBuffer.WriteInt(randomclubs.Count);
 
+        foreach (var club in randomclubs)
+        {
+            byteBuffer.WriteInt(club.ClubId);
+            byteBuffer.WriteString(club.ClubName);
+            byteBuffer.WriteString(club.Clubaciklama);
+            byteBuffer.WriteInt(club.TotalKupa ?? 0);
+            byteBuffer.WriteInt(club.Members.Count);     
+            
+        }
+        
 
         // friends and request
 

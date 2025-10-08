@@ -5,7 +5,7 @@ public class GameServer()
 {
     public void Start()
     {
-        Logger.genellog("Serer is started...");
+      // Logger.genellog("Serer is started...");
       //  TcpClient client = new TcpClient();
         TcpListener? _listener;
         _listener = new TcpListener(IPAddress.Any, 5000);
