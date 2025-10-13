@@ -109,6 +109,9 @@ public class Cmdhandler
                     case "deleteAllNotfications":
                         AccountManager.DeleteNotfications();
                         break;
+                    case "inbox":
+                        Sendinboxmessage();
+                        break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("ilgili komut bulunamadı. komutlara erişmek için /help komutunu deneyin");
@@ -255,6 +258,30 @@ public class Cmdhandler
         Session session = SessionManager.GetSession(acccountId);
         ShowProfileHandler.test(session);
         Console.WriteLine("profile test runing");
+    }
+    private static void Sendinboxmessage()
+    {
+        Console.WriteLine("slm");
+        İnboxNotfication inbox = new İnboxNotfication
+        {
+            ID = 12,
+            Sender = "Sistem",
+            Message = "Teşekkür ederiz",
+            Timespam = DateTime.Now
+        };
+        string accid = "WHM7ZVYY";
+        AccountManager.AccountData acccount = AccountCache.Load(accid);
+        if (SessionManager.IsOnline(acccount.AccountId))
+            {
+                Session session = SessionManager.GetSession(acccount.AccountId);
+                NotificationSender.İnboxSend(session, inbox);
+            }
+        else
+{
+            Console.WriteLine("oyuncu aktif değil");
+            Logger.genellog($"{acccount.Username} adlı kullanıcısına  bildirim eklendi");
+        }
+
     }
    
 }

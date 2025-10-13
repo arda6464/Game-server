@@ -60,7 +60,7 @@ public sealed class ByteBuffer : IDisposable
     // Write methods
     public void WriteByte(byte value) => _writer.Write(value);
 
-    public void WriteBytes(ReadOnlySpan<byte> values, bool resetPosition = false)
+    public void WriteBytes(ReadOnlySpan<byte> values, bool resetPosition)
     {
         EnsureCapacity(Position + values.Length);
         _writer.Write(values);

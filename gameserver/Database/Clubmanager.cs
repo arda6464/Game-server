@@ -30,7 +30,8 @@ public class Club
 {
     public int ClubId { get; set; }
     public string? ClubName { get; set; }
-     public string? Clubaciklama { get; set;}
+     public string? Clubaciklama { get; set; }
+     public int ClubAvatarID { get; set;}
     public int? TotalKupa { get; set; }
     public List<ClubMember> Members { get; set; } = new List<ClubMember>();
      public List<ClubMessage> Messages { get; set; } = new List<ClubMessage>(); // Kulüp mesajları
@@ -39,6 +40,7 @@ public class ClubMessage
 {
     public string? SenderId { get; set; }
     public string? SenderName { get; set; }
+    public int SenderAvatarID { get; set; }
     public DateTime Timestamp { get; set; }
     public string? Content { get; set; }
 }
@@ -113,14 +115,11 @@ public static class ClubManager
     #endregion
 
     #region Üye ekleme
-    public static bool AddMember(int clubId, int actorId, string newMemberId)
+    public static bool AddMember(int clubId,  string newMemberId)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
-        var actor = club.Members.FirstOrDefault(m => m.Accountid == actorId.ToString());
-        if (actor == null || (actor.Role != ClubRole.Leader && actor.Role != ClubRole.CoLeader))
-            return false;
 
         var newAccount = AccountManager.LoadAccount(newMemberId);
         if (newAccount == null) return false;
@@ -153,7 +152,28 @@ public static class ClubManager
     return randomclubs;
 }
     #region Üye çıkarma
-    public static bool RemoveMember(int clubId, int actorId, int targetMemberId)
+    public static bool RemoveMember(int clubId,  string targetMemberId)
+    {
+        if (!Clubs.ContainsKey(clubId)) return false;
+
+        var club = Clubs[clubId];
+      
+        var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
+
+        if (target == null)
+        {
+            Logger.errorslog("Oyuncu clubte bulanamadı");
+            return false;
+        } 
+
+        club.Members.Remove(target);
+        Save();
+        return true;
+        Logger.genellog("Oyuncu clubten kicklendi");
+    }
+    #endregion
+    #region Üye Atma
+    public static bool KickMember(int clubId, int actorId, int targetMemberId)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 

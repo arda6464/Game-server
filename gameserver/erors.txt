@@ -7,3 +7,5 @@
 [4.10.2025 01:16:37] [MESSAGE MANAGER] gelen paket id bulunamadı: 12
 [7.10.2025 18:10:26] 3BT56SDS'li hesap bulunamadı
 [7.10.2025 19:26:51] friend decline belirlenemeyen hesap buldu
+[13.10.2025 19:03:08] [MESSAGE MANAGER] gelen paket id bulunamadı: 31
+[13.10.2025 20:27:46] Oyuncu clubte bulanamadı

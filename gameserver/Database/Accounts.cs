@@ -27,11 +27,11 @@ public static class AccountManager
         public int Level { get; set; }
         public int Gems { get; set; }
         public int Clubid { get; set; }
+        public ClubRole clubRole { get; set; }
 
         public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
         public List<FriendInfo> Requests { get; set; } = new List<FriendInfo>();
-        public List<ClubMemberinfo> clubMemberinfos { get; set; } = new List<ClubMemberinfo>();
-        public List<Notification> Notifications { get; set; } = new List<Notification>();
+               public List<Notification> Notifications { get; set; } = new List<Notification>();
         // login data
         public DateTime LastLogin { get; set; }
         public string? LastIp { get; set; }

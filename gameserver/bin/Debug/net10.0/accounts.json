@@ -14,6 +14,7 @@
     "Level": 0,
     "Gems": 0,
     "Clubid": -1,
+    "clubRole": 0,
     "Friends": [],
     "Requests": [
       {
@@ -23,7 +24,6 @@
         "NameColorID": 0
       }
     ],
-    "clubMemberinfos": [],
     "Notifications": [],
     "LastLogin": "2025-09-27T13:36:06.8105582+03:00",
     "LastIp": null,
@@ -39,16 +39,16 @@
     "PremiumEndTime": "0001-01-01T00:00:00",
     "Banned": false,
     "Banreason": null,
-    "Avatarid": 1,
-    "Namecolorid": 1,
+    "Avatarid": 2,
+    "Namecolorid": 8,
     "Level": 0,
     "Gems": 0,
-    "Clubid": -1,
+    "Clubid": 7,
+    "clubRole": 0,
     "Friends": [],
     "Requests": [],
-    "clubMemberinfos": [],
     "Notifications": [],
-    "LastLogin": "2025-09-27T15:39:34.4460971+03:00",
+    "LastLogin": "2025-10-12T23:57:12.3476264+03:00",
     "LastIp": null,
     "Device": null
   },
@@ -67,6 +67,7 @@
     "Level": 0,
     "Gems": 0,
     "Clubid": -1,
+    "clubRole": 0,
     "Friends": [],
     "Requests": [
       {
@@ -94,7 +95,6 @@
         "NameColorID": 0
       }
     ],
-    "clubMemberinfos": [],
     "Notifications": [],
     "LastLogin": "2025-10-07T23:26:57.0003004+03:00",
     "LastIp": null,

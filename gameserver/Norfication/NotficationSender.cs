@@ -12,7 +12,7 @@ public static class NotificationSender
 
         ByteBuffer buffer = new ByteBuffer();
 
-        
+
         buffer.WriteInt((int)MessageType.Notification);
 
         buffer.WriteInt(notification.Id);
@@ -22,6 +22,8 @@ public static class NotificationSender
         buffer.WriteString(notification.Url);
 
 
+
+
         byte[] data = buffer.ToArray();
         buffer.Dispose();
 
@@ -29,4 +31,17 @@ public static class NotificationSender
 
         Logger.genellog($"[NotificationSender] Bildirim gönderildi: {notification}");
     }
+    public static void  İnboxSend(Session session, İnboxNotfication notification)
+    {
+        ByteBuffer buffer = new ByteBuffer();
+        buffer.WriteInt((int)MessageType.Notification);
+
+        buffer.WriteInt(notification.ID);
+        buffer.WriteString(notification.Sender);
+        buffer.WriteString(notification.Message);
+        long unixTime = new DateTimeOffset(notification.Timespam.ToUniversalTime()).ToUnixTimeSeconds();
+        buffer.WriteLong(unixTime);
+
+     
+    } 
 }

@@ -3,7 +3,7 @@ public enum MessageType : int
     // Connection
     FirstConnectionRequest,
     FirstConnectionResponse,
-     Disconnect,
+    Disconnect,
 
     // Authentication
     AuthLoginRequest,
@@ -21,7 +21,7 @@ public enum MessageType : int
     SetAvatarResponse,
     ShowProfileRequest,
     ShowProfileResponse,
-  
+
 
     // Friends
     SendFriendRequest,
@@ -36,4 +36,15 @@ public enum MessageType : int
     NewRequestList,
     // notfications
     Notification,
+    // Club
+    GetRandomClubRequest,
+    GetRandomClubResponse,
+    SendClubMessage,
+    GetClubMessage,
+    JoinClubRequest,
+    JoinClubResponse,
+    LeaveClubRequest,
+    LeaveClubResponse
+
+
 }

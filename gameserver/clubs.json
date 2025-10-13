@@ -3,6 +3,7 @@
     "ClubId": 1,
     "ClubName": "ardatest0",
     "Clubaciklama": "ardatestaciklama0",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -17,6 +18,7 @@
     "ClubId": 2,
     "ClubName": "ardatest1",
     "Clubaciklama": "ardatestaciklama1",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -31,6 +33,7 @@
     "ClubId": 3,
     "ClubName": "ardatest2",
     "Clubaciklama": "ardatestaciklama2",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -45,6 +48,7 @@
     "ClubId": 4,
     "ClubName": "ardatest3",
     "Clubaciklama": "ardatestaciklama3",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -59,6 +63,7 @@
     "ClubId": 5,
     "ClubName": "ardatest4",
     "Clubaciklama": "ardatestaciklama4",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -73,6 +78,7 @@
     "ClubId": 6,
     "ClubName": "ardatest5",
     "Clubaciklama": "ardatestaciklama5",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -87,6 +93,7 @@
     "ClubId": 7,
     "ClubName": "ardatest6",
     "Clubaciklama": "ardatestaciklama6",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -95,12 +102,35 @@
         "Role": 2
       }
     ],
-    "Messages": []
+    "Messages": [
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T00:06:08.3618882+03:00",
+        "Content": "selam"
+      },
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T00:06:12.5265754+03:00",
+        "Content": "merhabaaa"
+      },
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T00:06:25.9832972+03:00",
+        "Content": "merhabaaa"
+      }
+    ]
   },
   "8": {
     "ClubId": 8,
     "ClubName": "ardatest7",
     "Clubaciklama": "ardatestaciklama7",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -115,6 +145,7 @@
     "ClubId": 9,
     "ClubName": "ardatest8",
     "Clubaciklama": "ardatestaciklama8",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -129,6 +160,7 @@
     "ClubId": 10,
     "ClubName": "ardatest9",
     "Clubaciklama": "ardatestaciklama9",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -143,6 +175,7 @@
     "ClubId": 11,
     "ClubName": "ardatest10",
     "Clubaciklama": "ardatestaciklama10",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -157,6 +190,7 @@
     "ClubId": 12,
     "ClubName": "ardatest11",
     "Clubaciklama": "ardatestaciklama11",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -171,6 +205,7 @@
     "ClubId": 13,
     "ClubName": "ardatest12",
     "Clubaciklama": "ardatestaciklama12",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -185,6 +220,7 @@
     "ClubId": 14,
     "ClubName": "ardatest13",
     "Clubaciklama": "ardatestaciklama13",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -199,6 +235,7 @@
     "ClubId": 15,
     "ClubName": "ardatest14",
     "Clubaciklama": "ardatestaciklama14",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -213,6 +250,7 @@
     "ClubId": 16,
     "ClubName": "ardatest15",
     "Clubaciklama": "ardatestaciklama15",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -227,6 +265,7 @@
     "ClubId": 17,
     "ClubName": "ardatest16",
     "Clubaciklama": "ardatestaciklama16",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -241,6 +280,7 @@
     "ClubId": 18,
     "ClubName": "ardatest17",
     "Clubaciklama": "ardatestaciklama17",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -255,6 +295,7 @@
     "ClubId": 19,
     "ClubName": "ardatest18",
     "Clubaciklama": "ardatestaciklama18",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {
@@ -263,12 +304,91 @@
         "Role": 2
       }
     ],
-    "Messages": []
+    "Messages": [
+      {
+        "SenderId": "WHM7ZVYY",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-12T21:29:56.3049263+03:00",
+        "Content": "selamm"
+      },
+      {
+        "SenderId": "WHM7ZVYY",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-12T21:31:26.3105038+03:00",
+        "Content": "slm"
+      },
+      {
+        "SenderId": "WHM7ZVYY",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-12T21:31:50.5187556+03:00",
+        "Content": "sa"
+      },
+      {
+        "SenderId": "WHM7ZVYY",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-12T21:31:52.5028658+03:00",
+        "Content": "sasaas"
+      },
+      {
+        "SenderId": "WHM7ZVYY",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-12T21:31:56.8359598+03:00",
+        "Content": "amkkk"
+      },
+      {
+        "SenderId": "WHM7ZVYY",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-12T22:06:24.3698017+03:00",
+        "Content": "selam"
+      },
+      {
+        "SenderId": "WHM7ZVYY",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-12T22:07:31.1972058+03:00",
+        "Content": "sistem çok iyi"
+      },
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T00:04:59.2437632+03:00",
+        "Content": "selammmmmm"
+      },
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T00:05:20.8405184+03:00",
+        "Content": "slmm"
+      },
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T00:05:21.2646189+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T00:05:24.7728717+03:00",
+        "Content": "slmm"
+      }
+    ]
   },
   "20": {
     "ClubId": 20,
     "ClubName": "ardatest19",
     "Clubaciklama": "ardatestaciklama19",
+    "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
       {

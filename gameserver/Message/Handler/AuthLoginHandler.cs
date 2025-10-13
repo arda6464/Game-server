@@ -42,7 +42,7 @@ public static class AuthLoginHandler
             session.Send(gonderilcekveri);
             return;
         }
-        AccountManager.AccountData account = AccountCache.Load(accountID);
+        AccountManager.AccountData account = AccountCache.Load("7LRLRJZ6");
         if (account == null)
         {
             Loginfailed.Send(session, "verileri temizleyin, hesap bulunamadı", 1);
@@ -50,14 +50,14 @@ public static class AuthLoginHandler
         }
         Console.WriteLine($"merhaba {account.Username} hesabına başarılı şekilde giriş yaptın");
 
-        if (account.Token != token)
+        /*if (account.Token != token)
         {
             Console.WriteLine("tokenler eşleşmiyor");
             account.Banned = true;
 
             Loginfailed.Send(session, "Sıra dışı veriler tespit edildi", 1);
             return;
-        }
+        }*/
 
         if (account.Banned)
         {
@@ -67,7 +67,8 @@ public static class AuthLoginHandler
         session.AccountId = account.AccountId;
         SessionManager.AddSession(account.AccountId, session);
         byteBuffer.WriteInt((int)MessageType.AuthLoginResponse);
-        // accountdata      
+        // accountdata  
+        byteBuffer.WriteString(account.AccountId);    
         byteBuffer.WriteString(account.Username);
 
         byteBuffer.WriteInt(account.Avatarid);
@@ -83,24 +84,49 @@ public static class AuthLoginHandler
 
 
 
-        // ilk clubcount yazılcak
+       var club = ClubManager.LoadClub(account.Clubid);
+
+        if (club == null)
+        {
+            // Club null ise default değerler yaz
+            byteBuffer.WriteInt(0); // ClubId
+            byteBuffer.WriteString("kulüpte değil");
+            byteBuffer.WriteString("açıklama");
+            byteBuffer.WriteInt(1); // TotalKupa
+            byteBuffer.WriteInt(0); // Members.Count
+            byteBuffer.WriteInt(0);
+        }
+        else
+        {
+            // Club null değilse normal değerleri yaz
+            byteBuffer.WriteInt(club.ClubId);
+            byteBuffer.WriteString(club.ClubName ?? "kulüpte değil");
+            byteBuffer.WriteString(club.Clubaciklama ?? "açıklama");
+            byteBuffer.WriteInt(club.TotalKupa ?? 1);
+            byteBuffer.WriteInt(club.Members.Count);
+            byteBuffer.WriteInt(club.Messages.Count);
+        }
+
         
-        // kişisel club data
-        byteBuffer.WriteString("kulüpte değil");
-        byteBuffer.WriteString("açıklama");
-        byteBuffer.WriteInt(1); // club kupa
-        byteBuffer.WriteInt(0); // kulüp kişi sayısı
+       foreach (var message in (club?.Messages ?? new List<ClubMessage>()))
+        {
+            byteBuffer.WriteString(message.SenderId);
+                byteBuffer.WriteString(message.SenderName);
+               byteBuffer.WriteInt(message.SenderAvatarID);
+                byteBuffer.WriteString("Üye");
+               byteBuffer.WriteString(message.Content);
+        }
 
         var randomclubs = ClubManager.RandomList(10);
         byteBuffer.WriteInt(randomclubs.Count);
 
-        foreach (var club in randomclubs)
+        foreach (var rclub in randomclubs)
         {
-            byteBuffer.WriteInt(club.ClubId);
-            byteBuffer.WriteString(club.ClubName);
-            byteBuffer.WriteString(club.Clubaciklama);
-            byteBuffer.WriteInt(club.TotalKupa ?? 0);
-            byteBuffer.WriteInt(club.Members.Count);     
+            byteBuffer.WriteInt(rclub.ClubId);
+            byteBuffer.WriteString(rclub.ClubName);
+            byteBuffer.WriteString(rclub.Clubaciklama);
+            byteBuffer.WriteInt(rclub.TotalKupa ?? 0);
+            byteBuffer.WriteInt(rclub.Members.Count);     
             
         }
         

@@ -34,6 +34,16 @@ public static class MessageManager
             case MessageType.DeclineFriendRequest:
                 FriendRequestDecline.Handle(session, data);
                 break;
+            case MessageType.SendClubMessage:
+                ClubMessageHandler.Handle(session, data);
+                break;
+            case MessageType.JoinClubRequest:
+                JoinedClubHandler.Handle(session, data);
+                break;
+            case MessageType.LeaveClubRequest:
+                LeaveClubHandler.Handle(session, data);
+                break;
+
             default:
                 Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);
                 break;

@@ -7,13 +7,23 @@ public class Notification
     public bool IsViewed { get; set; }
     public string Url { get; set; }
 
-    public Notification(int id, string title, string message, string url,string button = "Tamam")
+
+    public Notification(int id, string title, string message, string url, string button = "Tamam")
     {
         Id = id;
         Title = title;
         Message = message;
         ButtonText = button;
         IsViewed = false;
-         Url = url;
+        Url = url;
+
     }
 }
+public class İnboxNotfication
+{
+    public int ID;
+    public string Sender;
+    public string Message;
+    public DateTime Timespam; 
+}
+
