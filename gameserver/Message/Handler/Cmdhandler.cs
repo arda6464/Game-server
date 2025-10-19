@@ -112,6 +112,9 @@ public class Cmdhandler
                     case "inbox":
                         Sendinboxmessage();
                         break;
+                    case "ResetAccount":
+                        ResetAccount();
+                        break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("ilgili komut bulunamadı. komutlara erişmek için /help komutunu deneyin");
@@ -230,7 +233,7 @@ public class Cmdhandler
         for (int i = 0; i < count; i++)
         {
             string des = name + "aciklama" + index;
-            ClubManager.CreateClub(name + index, des, "WHM7ZVYY");
+            ClubManager.CreateClub(name + index, des, 1,"WHM7ZVYY");
             index++;
         }
         Logger.genellog(" Toplam  oluşturulan klan: " + index);
@@ -272,16 +275,23 @@ public class Cmdhandler
         string accid = "WHM7ZVYY";
         AccountManager.AccountData acccount = AccountCache.Load(accid);
         if (SessionManager.IsOnline(acccount.AccountId))
-            {
-                Session session = SessionManager.GetSession(acccount.AccountId);
-                NotificationSender.İnboxSend(session, inbox);
-            }
+        {
+            Session session = SessionManager.GetSession(acccount.AccountId);
+            NotificationSender.İnboxSend(session, inbox);
+        }
         else
-{
+        {
             Console.WriteLine("oyuncu aktif değil");
             Logger.genellog($"{acccount.Username} adlı kullanıcısına  bildirim eklendi");
         }
 
+    }
+    private static void ResetAccount()
+    {
+        //todo all dataa...
+        AccountManager.AccountData account = AccountCache.Load("7LRLRJZ6");
+        account.Clubid = -1;
+        Console.WriteLine("Club ıd set edildi");
     }
    
 }
