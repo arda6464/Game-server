@@ -42,7 +42,7 @@ public static class AuthLoginHandler
             session.Send(gonderilcekveri);
             return;
         }
-        AccountManager.AccountData account = AccountCache.Load("7LRLRJZ6");
+        AccountManager.AccountData account = AccountCache.Load(accountID);
         if (account == null)
         {
             Loginfailed.Send(session, "verileri temizleyin, hesap bulunamadı", 1);
@@ -89,7 +89,7 @@ public static class AuthLoginHandler
         if (club == null)
         {
             // Club null ise default değerler yaz
-            byteBuffer.WriteInt(0); // ClubId
+            byteBuffer.WriteInt(-1); // ClubId
             byteBuffer.WriteString("kulüpte değil");
             byteBuffer.WriteString("açıklama");
             byteBuffer.WriteInt(1); // TotalKupa
