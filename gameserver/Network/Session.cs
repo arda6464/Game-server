@@ -7,7 +7,9 @@ public class Session
 {
     private TcpClient client;
     private NetworkStream stream;
-    public string AccountId {get; set;}
+    public string AccountId { get; set; }
+    public DateTime LastPingSent { get; set; }
+    public int LastPing { get; set;  }
 
     public Session(TcpClient c)
     {

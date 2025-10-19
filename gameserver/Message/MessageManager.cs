@@ -43,7 +43,18 @@ public static class MessageManager
             case MessageType.LeaveClubRequest:
                 LeaveClubHandler.Handle(session, data);
                 break;
-
+            case MessageType.ClubEditRequest:
+                ClubEditHandler.Handle(session, data);
+                break;
+            case MessageType.ChangeNameRequest:
+                ChangeNameHandler.Handle(session,data);
+                break;
+            case MessageType.GetRandomClubRequest:
+                RandomClubHandler.Handle(session);
+                break;
+            case MessageType.Ping:
+                PingHandler.Handle(session,data);
+                break;
             default:
                 Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);
                 break;

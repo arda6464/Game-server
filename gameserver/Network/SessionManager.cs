@@ -23,4 +23,5 @@ public static class SessionManager
     {
         return activeSessions.ContainsKey(accountId);
     }
+    public static int Count() => activeSessions.Count();
 }

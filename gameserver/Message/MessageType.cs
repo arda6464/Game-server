@@ -1,9 +1,12 @@
+
 public enum MessageType : int
 {
     // Connection
     FirstConnectionRequest,
     FirstConnectionResponse,
     Disconnect,
+    Ping,
+    Pong,
 
     // Authentication
     AuthLoginRequest,
@@ -15,6 +18,8 @@ public enum MessageType : int
     LoginFailed,
 
     // Profile
+    ChangeNameRequest,
+    ChangeNameResponse,
     ChangeNameColorRequest,
     ChangeNameColorResponse,
     SetAvatarRequest,
@@ -44,7 +49,12 @@ public enum MessageType : int
     JoinClubRequest,
     JoinClubResponse,
     LeaveClubRequest,
-    LeaveClubResponse
+    LeaveClubResponse,
+    ClubEditRequest,
+    ClubEditResponse,
+    ClubSearchRequest,
+    ClubSearchResponse
+
 
 
 }
