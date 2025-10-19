@@ -66,12 +66,12 @@ public static class ClubManager
         {
             Logger.errorslog($"{filePath} dosyası bulunamadı. yeni olşturuluyor...");
             File.Create(filePath).Close();
-            
+
         }
     }
     public static Club LoadClub(int clubId)
     {
-      // sanırım bu kontrole gerek yok  if (clubId == -1) return null;
+        // sanırım bu kontrole gerek yok  if (clubId == -1) return null;
         if (Clubs.TryGetValue(clubId, out var club))
         {
             return club;
@@ -89,7 +89,7 @@ public static class ClubManager
     #endregion
 
     #region Kulüp oluşturma
-    public static Club CreateClub(string name,string aciklama, string leaderAccountId)
+    public static Club CreateClub(string name, string aciklama, int Avatarid, string leaderAccountId)
     {
         var leaderAccount = AccountManager.LoadAccount(leaderAccountId);
         if (leaderAccount == null) return null;
@@ -99,15 +99,18 @@ public static class ClubManager
             ClubId = lastClubId++,
             ClubName = name,
             Clubaciklama = aciklama,
+            ClubAvatarID = Avatarid,
             Members = new List<ClubMember>
             {
                 new ClubMember { AccountName = leaderAccount.Username, Accountid = leaderAccount.AccountId, Role = ClubRole.Leader }
             }
-            
+
         };
 
         Clubs[club.ClubId] = club;
         Save();
+        leaderAccount.Clubid = club.ClubId;
+        leaderAccount.clubRole = ClubRole.Leader;
         Logger.genellog($"Club oluşturuldu: name: {club.ClubName} des: {club.Clubaciklama} id: {club.ClubId}");
 
         return club;
@@ -115,7 +118,7 @@ public static class ClubManager
     #endregion
 
     #region Üye ekleme
-    public static bool AddMember(int clubId,  string newMemberId)
+    public static bool AddMember(int clubId, string newMemberId)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
@@ -138,33 +141,43 @@ public static class ClubManager
         return true;
     }
     #endregion
-    public static List<Club> RandomList(int count)
+   public static List<Club> RandomList(int count)
 {
     var availableClubs = Clubs.Values.ToList();
-    Random random = new Random();
-    List<Club> randomclubs = new List<Club>();
     
-    for (int i = 0; i < count && i < availableClubs.Count; i++)
+    // Random nesnesini static yap veya daha iyisi bir kere oluştur
+    Random random = new Random();
+    
+    // Mevcut kulüplerin kopyasını al ki orijinal liste bozulmasın
+    List<Club> tempClubs = new List<Club>(availableClubs);
+    List<Club> randomClubs = new List<Club>();
+
+    // count, mevcut kulüp sayısından fazla olamaz
+    count = Math.Min(count, tempClubs.Count);
+
+    for (int i = 0; i < count; i++)
     {
-        int index = random.Next(availableClubs.Count);
-        randomclubs.Add(availableClubs[index]); // availableClubs kullan!
+        int index = random.Next(tempClubs.Count);
+        randomClubs.Add(tempClubs[index]);
+        tempClubs.RemoveAt(index); // Seçileni listeden çıkar
     }
-    return randomclubs;
+    
+    return randomClubs;
 }
     #region Üye çıkarma
-    public static bool RemoveMember(int clubId,  string targetMemberId)
+    public static bool RemoveMember(int clubId, string targetMemberId)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
-      
+
         var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
 
         if (target == null)
         {
             Logger.errorslog("Oyuncu clubte bulanamadı");
             return false;
-        } 
+        }
 
         club.Members.Remove(target);
         Save();
@@ -242,26 +255,57 @@ public static class ClubManager
             action, // "AddMember", "RemoveMember", "SendMessage"
             data
         };
-      /*   Connection connection;
-        connection.Send(message);
+        /*   Connection connection;
+          connection.Send(message);
 
-     string json = JsonConvert.SerializeObject(message);
+       string json = JsonConvert.SerializeObject(message);
 
-         foreach (var client in ConnectedClients)
-          {
-              if (client.IsInClub(clubId))
-                  client.Send(json);
-          }*/
+           foreach (var client in ConnectedClients)
+            {
+                if (client.IsInClub(clubId))
+                    client.Send(json);
+            }*/
     }
 
 
-// Kulüp mesajlarını listeleme
-public static List<ClubMessage> GetMessages(int clubId)
-{
-    var club = LoadClub(clubId);
-    if (club == null) return new List<ClubMessage>();
+    // Kulüp mesajlarını listeleme
+    public static List<ClubMessage> GetMessages(int clubId)
+    {
+        var club = LoadClub(clubId);
+        if (club == null) return new List<ClubMessage>();
 
-    return club.Messages.OrderBy(m => m.Timestamp).ToList();
-}
+        return club.Messages.OrderBy(m => m.Timestamp).ToList();
+    }
+
+    public static bool ChangeClubSettings(int clubid, string acccountId, string name, string aciklama, int Avatarid)
+    {
+        Club club = ClubManager.LoadClub(clubid);
+        AccountManager.AccountData account = AccountCache.Load(acccountId);
+        if (account == null) return false;
+        if (club == null) return false;
+        // if (account.clubRole == ClubRole.Member) return false;
+        if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(aciklama))
+        {
+            Logger.errorslog("Kulüp adı veya açıklama boş olamaz!");
+            return false;
+        }
+        club.ClubName = name;
+        club.Clubaciklama = aciklama;
+        club.ClubAvatarID = Avatarid;
+        ClubManager.Save();
+        Logger.genellog($"Kulüp bilgileri güncellendi: {club.ClubName} ({club.ClubId})");
+        return true;
+
+    }
+     
+   /*  public static Club SearchClub(string name)
+    {
+        List<Club> founded = new List<Club>();
+        foreach(var clubs in Clubs)
+        {
+            if(string.IsNullOrWhiteSpace(clubs.name))
+        }
+        return null;
+    }*/
 
 }
