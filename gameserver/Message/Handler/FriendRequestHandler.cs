@@ -13,7 +13,7 @@ public static class SendFriendRequestHandler
       
 
         AccountManager.AccountData account = AccountCache.Load(session.AccountId);
-        AccountManager.AccountData target = AccountCache.Load(accıd); //istek atan kişi
+        AccountManager.AccountData target = AccountCache.Load(accıd); //istek atılan kişi
 
 
         if (account != null && target != null)
@@ -21,9 +21,9 @@ public static class SendFriendRequestHandler
             // todo already request and friends control 
             FriendInfo info = new FriendInfo
             {
-                Username = target.AccountId,
-                Id = target.AccountId,
-                AvatarId = target.Avatarid
+                Username = account.AccountId,
+                Id = account.AccountId,
+                AvatarId = account.Avatarid
             };
             target.Requests.Add(info);
             Logger.genellog($"{account.Username}({account.AccountId}) →  {target.Username}({target.AccountId}) 'ye istek attı");

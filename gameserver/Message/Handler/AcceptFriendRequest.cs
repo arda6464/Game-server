@@ -10,8 +10,8 @@ public static class FriendRequestAccept
         byteBuffer.Dispose();
 
 
-        AccountManager.AccountData account = AccountCache.Load(session.AccountId);
-        AccountManager.AccountData target = AccountCache.Load(targetId);
+        AccountManager.AccountData account = AccountCache.Load(session.AccountId); // isteği kabul eden kişi
+        AccountManager.AccountData target = AccountCache.Load(targetId); // isteği kabul edilen kişi
         try
         {
 
@@ -20,6 +20,8 @@ public static class FriendRequestAccept
                 var request = account.Requests.Find(r => r.Id == targetId);
                 if (request != null)
                     account.Requests.Remove(request);
+                else Logger.errorslog($"{request.Username} adlı istek bulunamadı");
+
             }
             else
             {
@@ -27,7 +29,17 @@ public static class FriendRequestAccept
                 return;
             }
 
-            FriendInfo friend1 = new FriendInfo()
+           // account'ın listesine target'ın bilgilerini ekle
+            FriendInfo friendForAccount = new FriendInfo()
+            {
+                Username = target.Username,
+                AvatarId = target.Avatarid,
+                Id = target.AccountId,
+                NameColorID = target.Namecolorid
+            };
+
+            // target'ın listesine account'ın bilgilerini ekle
+            FriendInfo friendForTarget = new FriendInfo()
             {
                 Username = account.Username,
                 AvatarId = account.Avatarid,
@@ -35,15 +47,8 @@ public static class FriendRequestAccept
                 NameColorID = account.Namecolorid
             };
 
-            FriendInfo friend2 = new FriendInfo()
-            {
-                Username = target.Username,
-                AvatarId = target.Avatarid,
-                Id = target.AccountId,
-                NameColorID = target.Namecolorid
-            };
-            account.Friends.Add(friend2);
-            target.Friends.Add(friend1);
+            account.Friends.Add(friendForAccount);
+            target.Friends.Add(friendForTarget);
             Console.WriteLine($"{account.Username}({account.AccountId})  adlı kullanıcı {target.Username}({target.AccountId}) adlı kullanıcının isteğini kabul etti");
             ByteBuffer buffer = new ByteBuffer();
             buffer.WriteInt((int)MessageType.NewFriendsList);
@@ -60,11 +65,15 @@ public static class FriendRequestAccept
             byte[] veri = buffer.ToArray();
             buffer.Dispose();
             session.Send(veri);
+
+
             if (SessionManager.IsOnline(targetId))
             {
                 ByteBuffer targetb = new ByteBuffer();
                 Session targetsesion = SessionManager.GetSession(targetId);
                 targetb.WriteInt((int)MessageType.NewFriendsList);
+
+
                 targetb.WriteInt(target.Friends.Count);
                 foreach (var targetf in target.Friends)
                 {
@@ -72,17 +81,17 @@ public static class FriendRequestAccept
                     targetb.WriteInt(targetf.AvatarId);
                     targetb.WriteString(targetf.Username);
                     targetb.WriteInt(targetf.NameColorID);
-                    buffer.WriteBool(SessionManager.IsOnline(targetf.Id));
-                    byte[] targetveri = targetb.ToArray();
+                    targetb.WriteBool(SessionManager.IsOnline(targetf.Id));
+                }
+                byte[] targetveri = targetb.ToArray();
                     targetb.Dispose();
                     targetsesion.Send(targetveri);
-                }
-
+                    
             }
         }
         catch (Exception ex)
         {
-            Logger.errorslog("acceptfriends hata: " + ex.Message);
+            Logger.errorslog("acceptfriends hata: " + ex.Message + "TAM HAHA: " + ex.ToString());
         }
 
 
