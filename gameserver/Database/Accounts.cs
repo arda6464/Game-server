@@ -71,6 +71,15 @@ public static class AccountManager
     // Hesap kaydet
     public static void SaveAccounts()
     {
+        // Cache'den de hesapları güncelle (eğer cache'deki daha güncel ise)
+        foreach (var cachedAccount in AccountCache.GetCachedAccounts())
+        {
+            if (!accounts.ContainsKey(cachedAccount.Key))
+            {
+                accounts[cachedAccount.Key] = cachedAccount.Value;
+            }
+        }
+        
         var json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
         File.WriteAllText(savePath, json);
         Console.WriteLine("[AccountManager] Hesaplar kaydedildi.");

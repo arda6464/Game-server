@@ -8,8 +8,11 @@ public static class AccountCache
 {
     private static ConcurrentDictionary<string, AccountManager.AccountData> CachedAccounts = new();
     private static Timer _saveTimer;
+    
+    // Accounts.cs için public property
+    public static ConcurrentDictionary<string, AccountManager.AccountData> GetCachedAccounts() => CachedAccounts;
 
-    // Cache’deki hesap sayısı
+    // Cache'deki hesap sayısı
     public static int Count => CachedAccounts.Count;
 
     // Cache’i başlat ve 1 dakikada bir kaydet
@@ -73,9 +76,10 @@ public static class AccountCache
 
    
 
-    // Cache’i durdur ve son kaydı yap
+    // Cache'i durdur ve son kaydı yap
     public static void Stop()
     {
+        started = false;
         _saveTimer?.Dispose();
         SaveAll();
     }
