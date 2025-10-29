@@ -60,6 +60,13 @@ public static class ClubManager
             var json = File.ReadAllText(filePath);
             Clubs = JsonConvert.DeserializeObject<Dictionary<int, Club>>(json) ?? new Dictionary<int, Club>();
             lastClubId = Clubs.Keys.Count > 0 ? Clubs.Keys.Max() + 1 : 1;
+            
+            // Cache'e ekle
+            foreach (var club in Clubs.Values)
+            {
+                ClubCache.Cache(club);
+            }
+            
             Console.WriteLine($"[ClubManager] {Clubs.Count} kulüp yüklendi.");
         }
         else
@@ -71,9 +78,17 @@ public static class ClubManager
     }
     public static Club LoadClub(int clubId)
     {
-        // sanırım bu kontrole gerek yok  if (clubId == -1) return null;
-        if (Clubs.TryGetValue(clubId, out var club))
+        // Cache'den yükle (daha hızlı)
+        var club = ClubCache.Load(clubId);
+        if (club != null)
         {
+            return club;
+        }
+        
+        // Cache'de yoksa normal dictionary'den yükle
+        if (Clubs.TryGetValue(clubId, out club))
+        {
+            ClubCache.Cache(club); // Tekrar cache'e ekle
             return club;
         }
 
@@ -83,8 +98,18 @@ public static class ClubManager
 
     public static void Save()
     {
+        // Cache'den de kulüpleri güncelle
+        foreach (var cachedClub in ClubCache.GetCachedClubs())
+        {
+            if (!Clubs.ContainsKey(cachedClub.Key))
+            {
+                Clubs[cachedClub.Key] = cachedClub.Value;
+            }
+        }
+        
         var json = JsonConvert.SerializeObject(Clubs, Formatting.Indented);
         File.WriteAllText(filePath, json);
+        Console.WriteLine("[ClubManager] Kulüpler kaydedildi.");
     }
     #endregion
 
@@ -108,6 +133,7 @@ public static class ClubManager
         };
 
         Clubs[club.ClubId] = club;
+        ClubCache.Cache(club); // Cache'e ekle
         Save();
         leaderAccount.Clubid = club.ClubId;
         leaderAccount.clubRole = ClubRole.Leader;
@@ -181,8 +207,8 @@ public static class ClubManager
 
         club.Members.Remove(target);
         Save();
-        return true;
         Logger.genellog("Oyuncu clubten kicklendi");
+        return true;
     }
     #endregion
     #region Üye Atma
