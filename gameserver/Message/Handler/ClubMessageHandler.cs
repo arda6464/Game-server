@@ -25,6 +25,7 @@ public static class ClubMessageHandler
         {
             SenderName = account.Username,
             SenderId = account.AccountId,
+           SenderAvatarID = account.Avatarid,
             Content = Message,
             Timestamp = DateTime.Now
         });

@@ -14,9 +14,19 @@ public static class JoinedClubHandler
         AccountManager.AccountData account = AccountCache.Load(session.AccountId);
         if (Club == null) return;
 
-        if (Club.Members.Count == 100)
+        if (Club.Members.Count >= 100)
         {
-            Console.WriteLine("katılamaz dolu "); // todo notfication warn
+            Logger.errorslog($"[JoinedClubHandler] Kulüp dolu: {Club.ClubName}");
+            
+            // Kullanıcıya bildirim gönder
+          /*  ByteBuffer buffer = new ByteBuffer();
+            buffer.WriteInt((int)MessageType.JoinClubResponse);
+            buffer.WriteInt(-1); // Başarısız
+            buffer.WriteString("Kulüp dolu!");
+            byte[] veri = buffer.ToArray();
+            buffer.Dispose();
+            session.Send(veri);
+            return;*/   
         }
         if (account.Clubid == -1) isJoined = ClubManager.AddMember(Club.ClubId, account.AccountId);
         else

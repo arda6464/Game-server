@@ -11,8 +11,29 @@ public static class ChangeNameHandler
 
         AccountManager.AccountData account = AccountCache.Load(session.AccountId);
         if (account == null) return;
-        if (account.Username == newname) return; // todo eror any name
-                                                 // todo: new name is banned name?
+        
+        // Aynı isim kontrolü
+        if (account.Username == newname) 
+        {
+            Logger.errorslog($"[ChangeNameHandler] Aynı isim tekrar kullanılamaz: {newname}");
+            return;
+        }
+        
+        // İsim validasyonu
+        if (string.IsNullOrWhiteSpace(newname) || newname.Length < 3 || newname.Length > 20)
+        {
+            Logger.errorslog($"[ChangeNameHandler] Geçersiz isim uzunluğu: {newname}");
+            return;
+        }
+        
+        // Yasaklı kelime kontrolü (basit)
+        string[] bannedWords = { "admin", "moderator", "admin", "null", "undefined" };
+        if (bannedWords.Any(word => newname.ToLower().Contains(word.ToLower())))
+        {
+            Logger.errorslog($"[ChangeNameHandler] Yasaklı kelime içeren isim: {newname}");
+            return;
+        }
+        
         string oldname = account.Username;
         account.Username = newname;
         ByteBuffer buffer = new ByteBuffer();

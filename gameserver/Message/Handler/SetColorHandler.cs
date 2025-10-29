@@ -12,11 +12,18 @@ public static class SetNameColor
 
         int Id = BUFFER.ReadInt();
         BUFFER.Dispose();
-        // todo number control(gönderdiği profil id truemu?)
+        
+        // Color ID validasyonu (1-15 arası)
+        if (Id < 1 || Id > 15)
+        {
+            Logger.errorslog($"[SetColor] Geçersiz color ID: {Id} from {session.AccountId}");
+            return;
+        }
+        
         AccountManager.AccountData account = AccountCache.Load(session.AccountId);
         if (account == null)
         {
-            // todo....
+            Logger.errorslog($"[SetColor] Account bulunamadı: {session.AccountId}");
             return;
         }
         account.Namecolorid = Id;

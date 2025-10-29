@@ -13,9 +13,27 @@ public static class ClubEditHandler
         AccountManager.AccountData account = AccountCache.Load(session.AccountId);
         if (account.Clubid == -1)
         {
-            // TODO NAME CONTROL?!
-            if (!string.IsNullOrWhiteSpace(ClubName) || string.IsNullOrWhiteSpace(ClubAciklama))
-                ClubManager.CreateClub(ClubName, ClubAciklama, Avatarıd, account.AccountId);
+            // İsim validasyonu
+            if (string.IsNullOrWhiteSpace(ClubName) || ClubName.Length < 3 || ClubName.Length > 30)
+            {
+                Logger.errorslog($"[ClubEditHandler] Geçersiz kulüp adı: {ClubName}");
+                return;
+            }
+            
+            if (string.IsNullOrWhiteSpace(ClubAciklama) || ClubAciklama.Length > 200)
+            {
+                Logger.errorslog($"[ClubEditHandler] Geçersiz kulüp açıklaması");
+                return;
+            }
+            
+            // Avatar ID validasyonu
+            if (Avatarıd < 1 || Avatarıd > 10)
+            {
+                Logger.errorslog($"[ClubEditHandler] Geçersiz avatar ID: {Avatarıd}");
+                return;
+            }
+            
+            ClubManager.CreateClub(ClubName, ClubAciklama, Avatarıd, account.AccountId);
         }
         else
         {

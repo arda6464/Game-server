@@ -53,7 +53,24 @@ public enum MessageType : int
     ClubEditRequest,
     ClubEditResponse,
     ClubSearchRequest,
-    ClubSearchResponse
+    ClubSearchResponse,
+
+
+
+    // Battle
+    MatchMakingRequest,
+    MatchMakingCancelRequest,
+    MatchFound,
+    MatchMakingAddPlayer,
+    StartMatch,
+    Move,
+    Dead,
+    PlayerMoved,
+    PlayerDead,
+    ShootRequest,
+    Shoot,
+    
+
 
 
 

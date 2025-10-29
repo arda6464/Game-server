@@ -55,6 +55,17 @@ public static class MessageManager
             case MessageType.Ping:
                 PingHandler.Handle(session,data);
                 break;
+            case MessageType.MatchMakingRequest:
+                MatchMaking.JoinQueue(session);
+                break;
+            case MessageType.MatchMakingCancelRequest:
+                break;
+            case MessageType.Move:
+                PlayerMoveHandler.Handle(session, data);
+                break;
+            case MessageType.ShootRequest:
+                PlayerShotRequestHandler.Handle(session, data);
+                break;
             default:
                 Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);
                 break;

@@ -31,10 +31,10 @@ public static class PingHandler
         ByteBuffer buffer = new ByteBuffer();
            
         buffer.WriteInt((int)MessageType.Pong);
-        buffer.WriteString($"Test Server\n Online oyuncu: {SessionManager.Count()}\n  {str} {session.LastPing} Ms");
+        buffer.WriteString($"Test Server\n Online oyuncu: {SessionManager.Count()}\n   {session.LastPing} Ms");
         byte[] seks = buffer.ToArray();
         buffer.Dispose();
         session.Send(seks);
-        Console.WriteLine($"Test Server\n Online oyuncu: {SessionManager.Count()}\n Ping: {session.LastPing}");
+       
     }
 }

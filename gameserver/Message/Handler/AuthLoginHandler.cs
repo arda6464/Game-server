@@ -65,6 +65,14 @@ public static class AuthLoginHandler
             return;
         }
         session.AccountId = account.AccountId;
+        
+        session.PlayerData = new Player
+        {
+            AccountId = account.AccountId,
+            Username = account.Username,
+            AvatarId = account.Avatarid,
+            session = session
+        };
         SessionManager.AddSession(account.AccountId, session);
         byteBuffer.WriteInt((int)MessageType.AuthLoginResponse);
         // accountdata  
@@ -156,6 +164,8 @@ Console.WriteLine("Gönderilen paket boyu: " + accountdata.Length);
 
         byteBuffer.Dispose();
         session.Send(accountdata);
+
+       
           // Notfications
         foreach (var notification in account.Notifications)
         {

@@ -1,6 +1,9 @@
 public static class SessionManager
 {
     private static readonly Dictionary<string, Session> activeSessions = new();
+    
+    // Cmdhandler için public property
+    public static Dictionary<string, Session> GetSessions() => activeSessions;
 
     public static void AddSession(string accountId, Session session)
     {
@@ -24,4 +27,26 @@ public static class SessionManager
         return activeSessions.ContainsKey(accountId);
     }
     public static int Count() => activeSessions.Count();
+
+    public static void PingManager()
+    {
+        bool s = true;
+        Console.WriteLine("Ping Manager is started");
+      /*  while(s)
+        {
+            foreach (var csession in activeSessions)
+            {
+                // Check ping timeout (30 saniye ping alınmazsa disconnect)
+                var session = csession.Value;
+                var timeSinceLastPing = DateTime.Now - session.LastPingSent;
+                
+                if (timeSinceLastPing.TotalSeconds > 30)
+                {
+                    Logger.errorslog($"[PingManager] Ping timeout for {session.AccountId}, closing connection.");
+                    session.Close();
+                }
+            }
+            Thread.Sleep(1000 * 20);
+        }*/
+    }
 }

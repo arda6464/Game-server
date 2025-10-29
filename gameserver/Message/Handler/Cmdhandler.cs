@@ -60,7 +60,18 @@ public class Cmdhandler
                         else
                             Sendfakefriendsrequest(args[1]);
                         break;
-                    case "restartserver": // todo....
+                    case "restartserver":
+                        Console.WriteLine("Sunucu yeniden başlatılıyor...");
+                        Logger.genellog("[CMD] Sunucu restart komutu alındı");
+                        // Tüm bağlantıları kapat ve temizle
+                        foreach (var session in SessionManager.GetSessions().ToList())
+                        {
+                            session.Value.Close();
+                        }
+                        AccountCache.Stop();
+                        ClubManager.Save();
+                        AccountManager.SaveAccounts();
+                        Environment.Exit(0); // Programı sonlandır
                         break;
                     case "allistekdelete":
                         if (args.Length != 2) Console.WriteLine("kullanım: /allistekdelete (accid)");
@@ -114,6 +125,9 @@ public class Cmdhandler
                         break;
                     case "ResetAccount":
                         ResetAccount();
+                        break;
+                    case "Porno":
+                        PornoTest();
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
@@ -288,10 +302,32 @@ public class Cmdhandler
     }
     private static void ResetAccount()
     {
-        //todo all dataa...
+        Console.WriteLine("Hesap resetleniyor...");
         AccountManager.AccountData account = AccountCache.Load("7LRLRJZ6");
+        if (account == null)
+        {
+            Logger.errorslog("[ResetAccount] Account bulunamadı!");
+            return;
+        }
+        
+        // Hesabı sıfırla
         account.Clubid = -1;
-        Console.WriteLine("Club ıd set edildi");
+        account.clubRole = ClubRole.Member;
+        account.Level = 1;
+        account.Gems = 0;
+        account.Avatarid = 1;
+        account.Namecolorid = 1;
+        account.Friends.Clear();
+        account.Requests.Clear();
+        
+        AccountManager.SaveAccounts();
+        Logger.genellog($"[ResetAccount] {account.Username} hesabı resetlendi");
+    }
+
+    private static void PornoTest()
+    {
+        
+        
     }
    
 }

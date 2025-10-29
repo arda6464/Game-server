@@ -18,12 +18,33 @@ public static class SendFriendRequestHandler
 
         if (account != null && target != null)
         {
-            // todo already request and friends control 
+            // Duplicate control: Aynı kişiye zaten istek atmış mı?
+            if (target.Requests.Any(r => r.Id == account.AccountId))
+            {
+                Logger.errorslog($"{account.Username} zaten {target.Username}'ye istek göndermiş");
+                return;
+            }
+            
+            // Zaten arkadaş mı?
+            if (account.Friends.Any(f => f.Id == accıd))
+            {
+                Logger.errorslog($"{account.Username} zaten {target.Username}'nin arkadaşı");
+                return;
+            }
+            
+            // Kendine istek atamaz
+            if (account.AccountId == accıd)
+            {
+                Logger.errorslog($"{account.Username} kendine istek atıyor");
+                return;
+            }
+            
             FriendInfo info = new FriendInfo
             {
-                Username = account.AccountId,
+                Username = account.Username,
                 Id = account.AccountId,
-                AvatarId = account.Avatarid
+                AvatarId = account.Avatarid,
+                NameColorID = account.Namecolorid
             };
             target.Requests.Add(info);
             Logger.genellog($"{account.Username}({account.AccountId}) →  {target.Username}({target.AccountId}) 'ye istek attı");
