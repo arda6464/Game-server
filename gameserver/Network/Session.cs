@@ -7,6 +7,7 @@ public class Session
 {
     private TcpClient client;
     private NetworkStream stream;
+    public Player? PlayerData { get; set; }
     public string AccountId { get; set; }
     public DateTime LastPingSent { get; set; }
     public int LastPing { get; set;  }
@@ -80,10 +81,18 @@ public class Session
         }
         catch {}
 
+        // Oyuncu match içindeyse arena'dan çıkar
+        if (PlayerData != null && PlayerData.ArenaId > 0)
+        {
+            ArenaManager.RemovePlayer(PlayerData.ArenaId, AccountId);
+        }
+
         if (!string.IsNullOrEmpty(AccountId))
         {
             SessionManager.RemoveSession(AccountId);
         }
+        if (MatchMaking.waitingQueue.Contains(this))
+            MatchMaking.RemoveQueue(this);
 
         Console.WriteLine($"[Session] {AccountId ?? "Unknown"} bağlantısı kapatıldı.");
     }
