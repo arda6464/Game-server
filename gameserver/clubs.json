@@ -16,8 +16,8 @@
   },
   "2": {
     "ClubId": 2,
-    "ClubName": "ardatest1",
-    "Clubaciklama": "ardatestaciklama1",
+    "ClubName": "tuberk",
+    "Clubaciklama": "akmamamamm",
     "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
@@ -25,6 +25,11 @@
         "AccountName": "arda64best",
         "Accountid": "WHM7ZVYY",
         "Role": 2
+      },
+      {
+        "AccountName": "arda64best",
+        "Accountid": "7LRLRJZ6",
+        "Role": 0
       }
     ],
     "Messages": []
@@ -40,14 +45,27 @@
         "AccountName": "arda64best",
         "Accountid": "WHM7ZVYY",
         "Role": 2
+      },
+      {
+        "AccountName": "İSTEK Atan kişi",
+        "Accountid": "9XNFRJFL",
+        "Role": 0
       }
     ],
-    "Messages": []
+    "Messages": [
+      {
+        "SenderId": "9XNFRJFL",
+        "SenderName": "İSTEK Atan kişi",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T18:09:50.530113+03:00",
+        "Content": "SELAM"
+      }
+    ]
   },
   "4": {
     "ClubId": 4,
-    "ClubName": "ardatest3",
-    "Clubaciklama": "ardatestaciklama3",
+    "ClubName": "purna",
+    "Clubaciklama": "seks",
     "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
@@ -57,7 +75,22 @@
         "Role": 2
       }
     ],
-    "Messages": []
+    "Messages": [
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-16T23:18:20.222805+03:00",
+        "Content": "selam"
+      },
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-16T23:18:33.6659469+03:00",
+        "Content": "merhaba arkadaşşaklar"
+      }
+    ]
   },
   "5": {
     "ClubId": 5,
@@ -154,7 +187,15 @@
         "Role": 2
       }
     ],
-    "Messages": []
+    "Messages": [
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T23:55:41.8475306+03:00",
+        "Content": "skdskdskdkjlsdsd"
+      }
+    ]
   },
   "10": {
     "ClubId": 10,
@@ -184,7 +225,22 @@
         "Role": 2
       }
     ],
-    "Messages": []
+    "Messages": [
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T23:53:57.5396051+03:00",
+        "Content": "selam"
+      },
+      {
+        "SenderId": "7LRLRJZ6",
+        "SenderName": "arda64best",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-13T23:55:26.6622155+03:00",
+        "Content": "selammm"
+      }
+    ]
   },
   "12": {
     "ClubId": 12,
@@ -233,8 +289,8 @@
   },
   "15": {
     "ClubId": 15,
-    "ClubName": "ardatest14",
-    "Clubaciklama": "ardatestaciklama14",
+    "ClubName": "arda <3 azime",
+    "Clubaciklama": "çoooooooooooookkkkkk seviyorum",
     "ClubAvatarID": 0,
     "TotalKupa": null,
     "Members": [
@@ -242,9 +298,137 @@
         "AccountName": "arda64best",
         "Accountid": "WHM7ZVYY",
         "Role": 2
+      },
+      {
+        "AccountName": "ardaaa",
+        "Accountid": "TPHVYO6Q",
+        "Role": 0
+      },
+      {
+        "AccountName": "azimeee",
+        "Accountid": "BDKN4LBC",
+        "Role": 0
+      },
+      {
+        "AccountName": "ammmmmm",
+        "Accountid": "EQF9YEHN",
+        "Role": 0
       }
     ],
-    "Messages": []
+    "Messages": [
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T13:52:26.9683621+03:00",
+        "Content": "SELAMMM"
+      },
+      {
+        "SenderId": "BDKN4LBC",
+        "SenderName": "azimeee",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T13:52:39.7805683+03:00",
+        "Content": "selammm ardaaaa"
+      },
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:31:27.1274135+03:00",
+        "Content": "am"
+      },
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:31:28.4820525+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:31:29.7170455+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:31:30.9745075+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:31:31.1818212+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:31:31.3816459+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:31:31.5422839+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:31:31.7148812+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "TPHVYO6Q",
+        "SenderName": "ardaaa",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:31:31.8648921+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "BDKN4LBC",
+        "SenderName": "azimeee",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:33:09.2074056+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "BDKN4LBC",
+        "SenderName": "azimeee",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:33:09.7163235+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "BDKN4LBC",
+        "SenderName": "azimeee",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:33:10.1424834+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "EQF9YEHN",
+        "SenderName": "ammmmmm",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:46:45.0791436+03:00",
+        "Content": ""
+      },
+      {
+        "SenderId": "EQF9YEHN",
+        "SenderName": "ammmmmm",
+        "SenderAvatarID": 0,
+        "Timestamp": "2025-10-18T15:46:47.9304374+03:00",
+        "Content": ""
+      }
+    ]
   },
   "16": {
     "ClubId": 16,
@@ -394,6 +578,30 @@
       {
         "AccountName": "arda64best",
         "Accountid": "WHM7ZVYY",
+        "Role": 2
+      }
+    ],
+    "Messages": []
+  },
+  "21": {
+    "ClubId": 21,
+    "ClubName": "Test kulübü",
+    "Clubaciklama": "porno",
+    "ClubAvatarID": 1,
+    "TotalKupa": null,
+    "Members": [],
+    "Messages": []
+  },
+  "22": {
+    "ClubId": 22,
+    "ClubName": "porno",
+    "Clubaciklama": "içerde porno çekiliyor!",
+    "ClubAvatarID": 1,
+    "TotalKupa": null,
+    "Members": [
+      {
+        "AccountName": "porno",
+        "Accountid": "8D4WJDZ4",
         "Role": 2
       }
     ],
