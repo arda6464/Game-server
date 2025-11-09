@@ -31,7 +31,9 @@ public static class AccountManager
 
         public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
         public List<FriendInfo> Requests { get; set; } = new List<FriendInfo>();
-               public List<Notification> Notifications { get; set; } = new List<Notification>();
+        public List<Notification> Notifications { get; set; } = new List<Notification>();
+        public List<İnboxNotfication> inboxesNotfications { get; set; } = new List<İnboxNotfication>();
+        public List<Role.Roles> Roles { get; set; } = new List<Role.Roles>();
         // login data
         public DateTime LastLogin { get; set; }
         public string? LastIp { get; set; }
@@ -79,7 +81,7 @@ public static class AccountManager
                 accounts[cachedAccount.Key] = cachedAccount.Value;
             }
         }
-        
+
         var json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
         File.WriteAllText(savePath, json);
         Console.WriteLine("[AccountManager] Hesaplar kaydedildi.");
@@ -138,14 +140,7 @@ public static class AccountManager
         return null;
     }
 
-    // Ban işlemi
-    public static void Ban(AccountData account, string sebep = "sebep belirtilmedi")
-    {
-        account.Banned = true;
-        account.Banreason = sebep;
-        SaveAccounts();
-        Logger.genellog($"[BAN] {account.Username}({account.AccountId}) banlandı. Sebep: {sebep}");
-    }
+    
     public static void DeleteNotfications()
     {
         foreach (AccountData account in accounts.Values)
@@ -154,5 +149,30 @@ public static class AccountManager
 
         }
         Console.WriteLine("Accountsların notficationları silindi");
-    }        
+    }
+    public static void AddRole(AccountData account, Role.Roles role)
+    {
+        if (account.Roles.Contains(role))
+        {
+            Logger.genellog($"{account.Username} ({account.AccountId}) kişisine {role}'ü eklenmeye çalıştı fakat zaten var olduğu için eklenmedi");
+            return;
+        }
+        if (account.Roles.Count == 4)
+        {
+            Logger.genellog($"{account.Username} ({account.AccountId}) kişisine {role}'ü eklenmeye çalıştı fakat zaten var olduğu için eklenmedi");
+        }
+        account.Roles.Add(role);
+        Logger.genellog($"{account.Username} ({account.AccountId}) kişisine {role}'ü eklendi!");
+    }
+    public static void RemoveRole(AccountData account, Role.Roles role)
+    {
+        if (!account.Roles.Contains(role))
+        {
+            Logger.genellog($"{account.Username} ({account.AccountId}) kişisinden {role}'ü kaldırılmaya çalıştı fakat zaten o role sahip olmadığı için kaldırılmadı");
+            return;
+        }
+        account.Roles.Add(role);
+        Logger.genellog($"{account.Username} ({account.AccountId}) kişisinden {role}'ü kaldırıldı!");
+    }
+          
 }
