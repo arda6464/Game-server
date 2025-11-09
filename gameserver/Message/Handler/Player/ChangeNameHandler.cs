@@ -44,5 +44,7 @@ public static class ChangeNameHandler
         buffer.Dispose();
         session.Send(data);
         Logger.genellog($"{oldname} adlı kullanıcının adı başarılı şekilde değişti. yeni ismi: {account.Username}");
+
+        if (account.Clubid != -1) ClubManager.MemberDataUpdate(account.AccountId, account.Clubid);
     }
 }

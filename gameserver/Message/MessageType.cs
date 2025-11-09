@@ -41,9 +41,16 @@ public enum MessageType : int
     NewRequestList,
     // notfications
     Notification,
+    AddFriendsRequest,
+    AddFriendsResponse,
+    AllNotficationViewed,
+
+
     // Club
     GetRandomClubRequest,
     GetRandomClubResponse,
+    ClubShowRequest,
+    ClubShowResponse,
     SendClubMessage,
     GetClubMessage,
     JoinClubRequest,
@@ -54,6 +61,12 @@ public enum MessageType : int
     ClubEditResponse,
     ClubSearchRequest,
     ClubSearchResponse,
+    KickMemberinClubRequest,
+    KickMemberinClubResponse,
+    MemberToUpperRequest,
+    MemberToUpperResponse,
+    MemberToLowerRequest,
+    MemberToLowerResponse,
 
 
 
@@ -69,9 +82,7 @@ public enum MessageType : int
     PlayerDead,
     ShootRequest,
     Shoot,
-    
-
-
-
+    HitRequest,
+    PlayerHealthUpdate,
 
 }

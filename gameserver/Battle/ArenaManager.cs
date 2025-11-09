@@ -53,8 +53,6 @@ public static class ArenaManager
             Logger.battlelog($"[ARENA] Uyarı: Arena {arenaId} bulunamadı!");
             return new List<Player>();
         }
-
-        Logger.battlelog($"[ARENA] GetPlayers({arenaId}) çağrıldı, {players.Count} oyuncu var.");
         return players;
     }
 }

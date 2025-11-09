@@ -13,7 +13,7 @@ public static class RandomClubHandler
             buffer.WriteInt(rclub.ClubId);
             buffer.WriteString(rclub.ClubName);
             buffer.WriteString(rclub.Clubaciklama);
-            buffer.WriteInt(rclub.TotalKupa ?? 0);
+            buffer.WriteInt(rclub.TotalKupa  ?? 0);
             buffer.WriteInt(rclub.Members.Count);
         }
         byte[] veri = buffer.ToArray();

@@ -88,13 +88,14 @@ public class Cmdhandler
                             switch (index)
                             {
                                 case 3:
-                                    SendNotfication(id, args[2]);
+                                  //  SendNotfication(id, args[2]);
                                     break;
                                 case 4:
-                                    SendNotfication(id, args[2], args[3]);
+                                   // SendNotfication(id, args[2], args[3]);
                                     break;
                                 case 5:
-                                    SendNotfication(id, args[2], args[3], args[4]);
+                                   
+                                   // SendNotfication(id, args[2], args[3], args[4]);
                                     break;
 
                             }
@@ -111,6 +112,11 @@ public class Cmdhandler
                         if (args.Length < 1 || args.Length < 4) Console.WriteLine("kullanım: /ban (accountid) (sebep(opsiyonel))");
                         else
                             AccountBan(args[1], args[2]);
+                        break;
+                    case "unban":
+                        if (args.Length < 1 || args.Length < 4) Console.WriteLine("kullanım: /ban (accountid) (sebep(opsiyonel))");
+                        else
+                           Unban(args[1]);
                         break;
                     case "showprofile":
                         if (args.Length != 2) Console.WriteLine("kullanım: /showprofile (accountıd)");
@@ -217,19 +223,18 @@ public class Cmdhandler
         AccountManager.SaveAccounts();
         Console.WriteLine("tüm hesaplar silindi");
     }
-    private static void SendNotfication(int id, string message, string acıklamna = "", string url = "time brawl")
+   /* private static void SendNotfication(int id, string message, string acıklamna = "", string url = "time brawl")
     {
         string accid = "WHM7ZVYY";
         AccountManager.AccountData acccount = AccountCache.Load(accid);
         if (acccount != null)
         {
-            Notification notification = new Notification
-           (
-             id,
-             message,
-             acıklamna,
-             url
-           );
+           Notification notification = new Notification(
+    id,
+    message,
+    acıklamna,
+    url
+);
             NotificationManager.Add(acccount, notification);
             if (SessionManager.IsOnline(acccount.AccountId))
             {
@@ -240,7 +245,7 @@ public class Cmdhandler
                 Console.WriteLine("oyuncu aktif değil");
             Logger.genellog($"{acccount.Username} adlı kullanıcısına {notification} bildirimi eklendi");
         }
-    }
+    }*/
     private static void CreateClub(int count, string name)
     {
         int index = 0;
@@ -257,14 +262,15 @@ public class Cmdhandler
         AccountManager.AccountData account = AccountCache.Load(id);
         if (account != null)
         {
-
-            AccountManager.Ban(account, sebep);
+            BanManager.BanPlayer(account.AccountId,"Sistem","PORNOMATİK HİLELER KULLANMASI", false, TimeSpan.FromMinutes(5));
+           
             if (SessionManager.IsOnline(account.AccountId))
             {
                 Session session = SessionManager.GetSession(account.AccountId);
                 if (session != null)
                 {
-                    Loginfailed.Send(session, "Hesabınız banlandı", 99);
+                    string banmesage = BanManager.GetBanMessage(account.AccountId);
+                    Loginfailed.Send(session, banmesage, 99);
                     SessionManager.RemoveSession(account.AccountId);
                 }
             }
@@ -286,12 +292,14 @@ public class Cmdhandler
             Message = "Teşekkür ederiz",
             Timespam = DateTime.Now
         };
-        string accid = "WHM7ZVYY";
-        AccountManager.AccountData acccount = AccountCache.Load(accid);
+        string accid = "0FU8YO95";
+        AccountManager.AccountData acccount = AccountManager.LoadAccount(accid);
+          acccount.inboxesNotfications.Add(inbox);
         if (SessionManager.IsOnline(acccount.AccountId))
         {
             Session session = SessionManager.GetSession(acccount.AccountId);
             NotificationSender.İnboxSend(session, inbox);
+          
         }
         else
         {
@@ -303,13 +311,16 @@ public class Cmdhandler
     private static void ResetAccount()
     {
         Console.WriteLine("Hesap resetleniyor...");
-        AccountManager.AccountData account = AccountCache.Load("7LRLRJZ6");
+        AccountManager.AccountData account = AccountCache.Load("XW2RY9UI");
         if (account == null)
         {
             Logger.errorslog("[ResetAccount] Account bulunamadı!");
             return;
         }
-        
+        if(account.Clubid != -1)
+        {
+            ClubManager.RemoveMember(account.Clubid, account.AccountId);
+        }
         // Hesabı sıfırla
         account.Clubid = -1;
         account.clubRole = ClubRole.Member;
@@ -326,8 +337,14 @@ public class Cmdhandler
 
     private static void PornoTest()
     {
-        
-        
+        string id = "0FU8YO95";
+        var acccount = AccountCache.Load(id);
+        AccountManager.AddRole(acccount, Role.Roles.Owner);
+
+    }
+    private static void Unban(string accountid)
+    {
+        BanManager.UnbanPlayer(accountid,"Sistem", "Yanlış yasaklama");
     }
    
 }

@@ -34,6 +34,9 @@ public static class MessageManager
             case MessageType.DeclineFriendRequest:
                 FriendRequestDecline.Handle(session, data);
                 break;
+            case MessageType.DeleteFriendRequest:
+                DeleteFriendHandler.Handle(session, data);
+                break;
             case MessageType.SendClubMessage:
                 ClubMessageHandler.Handle(session, data);
                 break;
@@ -45,6 +48,9 @@ public static class MessageManager
                 break;
             case MessageType.ClubEditRequest:
                 ClubEditHandler.Handle(session, data);
+                break;
+            case MessageType.ClubShowRequest:
+                ClubShowHandler.Handle(session,data);
                 break;
             case MessageType.ChangeNameRequest:
                 ChangeNameHandler.Handle(session,data);
@@ -65,6 +71,21 @@ public static class MessageManager
                 break;
             case MessageType.ShootRequest:
                 PlayerShotRequestHandler.Handle(session, data);
+                break;
+            case MessageType.HitRequest:
+                PlayerHitRequest.Handle(session, data);
+                break;
+            case MessageType.KickMemberinClubRequest:
+                KickMemberHandler.Handle(session, data);
+                break;
+            case MessageType.MemberToLowerRequest:
+                ClubMemberChangeHandler.Handle(session, data);
+                break;
+            case MessageType.MemberToUpperRequest:
+             ClubMemberChangeHandler.Handle(session, data);
+                break;
+            case MessageType.AllNotficationViewed:
+                AllNotficationViewedHandler.Handle(session);
                 break;
             default:
                 Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);

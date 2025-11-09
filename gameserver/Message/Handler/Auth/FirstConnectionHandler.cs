@@ -17,13 +17,15 @@ public static class FirstConnectionHandler
         byteBuffer.WriteBytes(data, true);
         int mesajtipi = byteBuffer.ReadInt(); //  gereksiz atlamak için
         string cihazadı = byteBuffer.ReadString();
+        string device = byteBuffer.ReadString();
+        Console.WriteLine("cihaz adı: " + device);
         string ClientKey = byteBuffer.ReadString();
         
-
+ 
 
         byteBuffer.Dispose(); // yoket   ramde kalmasın diye siliyoruz çünkü alacağımızı aldık
                               //todo device control add
-
+        session.DeviceID = device;
 
         if (Keyversion != ClientKey)
         {
@@ -45,7 +47,7 @@ public static class FirstConnectionHandler
         byte[] gonderilcekveri = buffer.ToArray();
         buffer.Dispose();
         session.Send(gonderilcekveri);
-        Console.WriteLine($"{cihazadı} adlı kullanıcı sunucuya giriş yaptı incelenmeye başlanıyor...");
+        Console.WriteLine($"{device} adlı kullanıcı sunucuya giriş yaptı incelenmeye başlanıyor...");
 
 
     }

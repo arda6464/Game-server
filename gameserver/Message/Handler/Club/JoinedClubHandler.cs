@@ -41,6 +41,16 @@ public static class JoinedClubHandler
             buffer.WriteString(Club.ClubName);
             buffer.WriteString(Club.Clubaciklama);
             buffer.WriteInt(Club.Members.Count);
+            foreach(var member in Club.Members)
+        {
+             
+            buffer.WriteString(member.Accountid);
+            buffer.WriteString(member.AccountName);
+            buffer.WriteString(member.Role.ToString());
+            buffer.WriteInt(member.NameColorID);
+            buffer.WriteInt(member.AvatarID);
+        
+        }
             buffer.WriteInt(Club.Messages.Count);
 
             foreach (var clubmessage in Club.Messages)

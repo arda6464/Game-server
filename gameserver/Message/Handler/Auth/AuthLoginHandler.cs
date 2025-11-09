@@ -4,7 +4,7 @@ public static class AuthLoginHandler
 {
     public static void Handle(Session session, byte[] data)
     {
-        double ServerVersion = 0.6;
+        string ServerVersion = "1.0"; // todo confid.json set
 
 
         ByteBuffer buffer = new ByteBuffer();
@@ -14,7 +14,7 @@ public static class AuthLoginHandler
 
 
         //read
-        double ClientVersion = buffer.ReadDouble();
+        string ClientVersion = buffer.ReadString();
         string token = buffer.ReadString();
         string accountID = buffer.ReadString();
         string Dil = buffer.ReadString();
@@ -26,8 +26,15 @@ public static class AuthLoginHandler
         // kontrol
         if (ServerVersion != ClientVersion)
         {
-            Notification notification = new Notification(10, "Güncelleme mevcut", "Sana güzel bir haberimiz var! Oyunumuz yeni güncelleme geldi hemen indir!", "https://store.supercell.com/tr/brawlstars", "Güncelle");
-            NotificationSender.Send(session, notification);
+            Notification notification = new Notification
+            {
+                Id = 10,
+                Title = "Güncelleme mevcut",
+                Message = "oyunumuzu güncelledik yenilikleri görmek için indirin!",
+                ButtonText = "indir",
+                Url = "https://arda64.xyz/"
+            };
+            NotificationSender.Send(session,notification);
             return;
         }
         if (string.IsNullOrWhiteSpace(token))
@@ -59,9 +66,10 @@ public static class AuthLoginHandler
             return;
         }*/
 
-        if (account.Banned)
+        if (BanManager.IsBanned(account.AccountId))
         {
-            Loginfailed.Send(session, "Hesabınız banlandı", 1);
+            string mesage = BanManager.GetBanMessage(account.AccountId);
+            Loginfailed.Send(session, mesage, 1);
             return;
         }
         session.AccountId = account.AccountId;
@@ -89,8 +97,18 @@ public static class AuthLoginHandler
 
         byteBuffer.WriteInt(account.Premium);
 
+        byteBuffer.WriteInt(account.Roles.Count);
+        foreach(var role in account.Roles)
+        {
+            byteBuffer.WriteString(role.ToString());
+        }
 
+        foreach (var notification in account.inboxesNotfications)
+        {
 
+            NotificationSender.İnboxSend(session, notification);
+            Console.WriteLine($"inbox gönderildi sender:{notification.Sender} message:{notification.Message} time: {notification.Timespam}");
+        }
 
        var club = ClubManager.LoadClub(account.Clubid);
 
@@ -110,20 +128,34 @@ public static class AuthLoginHandler
             byteBuffer.WriteInt(club.ClubId);
             byteBuffer.WriteString(club.ClubName ?? "kulüpte değil");
             byteBuffer.WriteString(club.Clubaciklama ?? "açıklama");
-            byteBuffer.WriteInt(club.TotalKupa ?? 1);
+            byteBuffer.WriteInt(club.TotalKupa ?? 0);
             byteBuffer.WriteInt(club.Members.Count);
             byteBuffer.WriteInt(club.Messages.Count);
         }
-
-        
-       foreach (var message in (club?.Messages ?? new List<ClubMessage>()))
+        foreach (var message in (club?.Messages ?? new List<ClubMessage>()))
         {
             byteBuffer.WriteString(message.SenderId);
-                byteBuffer.WriteString(message.SenderName);
-               byteBuffer.WriteInt(message.SenderAvatarID);
-                byteBuffer.WriteString("Üye");
-               byteBuffer.WriteString(message.Content);
+            byteBuffer.WriteString(message.SenderName);
+            byteBuffer.WriteInt(message.SenderAvatarID);
+            byteBuffer.WriteString("Üye");
+            byteBuffer.WriteString(message.Content);
         }
+        if (club == null) byteBuffer.WriteInt(0);
+        else byteBuffer.WriteInt(club.Members.Count);
+          
+       
+        foreach(var member in (club?.Members ?? new List<ClubMember>()))
+        {
+             
+            byteBuffer.WriteString(member.Accountid);
+            byteBuffer.WriteString(member.AccountName);
+            byteBuffer.WriteString(member.Role.ToString());
+            byteBuffer.WriteInt(member.NameColorID);
+            byteBuffer.WriteInt(member.AvatarID);
+        
+        }
+
+        
 
         var randomclubs = ClubManager.RandomList(10);
         byteBuffer.WriteInt(randomclubs.Count);
@@ -165,17 +197,19 @@ Console.WriteLine("Gönderilen paket boyu: " + accountdata.Length);
         byteBuffer.Dispose();
         session.Send(accountdata);
 
-       
-          // Notfications
+
+        // Notfications
         foreach (var notification in account.Notifications)
         {
             if (!notification.IsViewed) // görmediyse
             {
                 NotificationSender.Send(session, notification); // 
                 notification.IsViewed = true;
-                
+
             }
         }
+        
+        
 
 
 

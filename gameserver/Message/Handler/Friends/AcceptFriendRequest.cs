@@ -20,7 +20,7 @@ public static class FriendRequestAccept
                 var request = account.Requests.Find(r => r.Id == targetId);
                 if (request != null)
                     account.Requests.Remove(request);
-                else Logger.errorslog($"{request.Username} adlı istek bulunamadı");
+                else Logger.errorslog($"{request?.Username} adlı istek bulunamadı");
 
             }
             else
@@ -85,7 +85,7 @@ public static class FriendRequestAccept
                 }
                 byte[] targetveri = targetb.ToArray();
                     targetb.Dispose();
-                    targetsesion.Send(targetveri);
+                    targetsesion?.Send(targetveri);
                     
             }
         }

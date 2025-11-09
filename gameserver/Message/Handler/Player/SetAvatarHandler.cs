@@ -28,6 +28,7 @@ public static class SetAvatar
         }
         account.Avatarid = Id;
         Console.WriteLine("Avatar değiştirildi: " + Id);
+         if (account.Clubid != -1) ClubManager.MemberDataUpdate(account.AccountId, account.Clubid);
 
     }
 }

@@ -28,6 +28,7 @@ public static class SetNameColor
         }
         account.Namecolorid = Id;
         Console.WriteLine("Name Color değiştirildi: " + Id);
+         if (account.Clubid != -1) ClubManager.MemberDataUpdate(account.AccountId, account.Clubid);
 
     }
 }

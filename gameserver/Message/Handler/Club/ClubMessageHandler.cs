@@ -17,7 +17,11 @@ public static class ClubMessageHandler
 
         AccountManager.AccountData account = AccountCache.Load(accountıd);
         var club = ClubManager.LoadClub(account.Clubid);
-        if (club == null) Console.WriteLine("club null");
+        if (club == null)
+        {
+            Console.WriteLine("club null");
+            return;
+        } 
 
         Console.WriteLine($"{account.Username} adlı kullanıcı {club.ClubName ?? "PORNO"} adlı kulube {Message} mesajını gönderdi");
 
