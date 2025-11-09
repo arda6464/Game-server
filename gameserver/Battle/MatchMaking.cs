@@ -101,6 +101,7 @@ public static class MatchMaking
             {
                 ByteBuffer buffer = new ByteBuffer();
                 buffer.WriteInt((int)MessageType.MatchMakingAddPlayer);
+                buffer.WriteShort(PlayersPerMatch);
                 buffer.WriteShort(1);
                 byte[] bytes = buffer.ToArray();
                 buffer.Dispose();
