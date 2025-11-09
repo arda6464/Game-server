@@ -15,19 +15,17 @@ class Program
         // Graceful shutdown handler
         Console.CancelKeyPress += (sender, e) =>
         {
-            Console.WriteLine("\n[Shutdown] Ctrl+C algılandı. Graceful shutdown başlatılıyor...");
+            Console.WriteLine("\n[Shutdown] Ctrl+C algılandı. Veriler kaydediliyor...");
             e.Cancel = true; // Process'i hemen kill etme
-            Shutdown();
+            
+            // Hemen kaydet ve çık
+            SaveDataAndExit();
         };
-        
-        // Domain unload event
-        AppDomain.CurrentDomain.ProcessExit += (sender, e) => Shutdown();
-        
-       
         
         // Cache'leri başlat
         AccountCache.Init();
         ClubCache.Init();
+        BanManager.Init();
         
         // Thread'leri başlat
         cmdhandlerthread = new Thread(Cmdhandler.Start);
@@ -44,6 +42,10 @@ class Program
         try
         {
             gameserver.Start();
+            
+            // Ana thread'i bekle
+            Console.WriteLine("[Program] Server çalışıyor. Çıkmak için Ctrl+C'ye basın...");
+            Thread.Sleep(Timeout.Infinite); // Sonsuz bekle
         }
         catch (Exception ex)
         {
@@ -51,29 +53,28 @@ class Program
         }
         finally
         {
-            Shutdown();
+            SaveDataAndExit();
         }
     }
     
-    static void Shutdown()
+    static void SaveDataAndExit()
     {
-        Logger.genellog("[Program] Graceful shutdown başlatılıyor...");
+        Logger.genellog("[Program] Veriler kaydediliyor...");
         
         try
         {
-            // GameServer'ı durdur
-            gameserver?.Stop();
+            // Sadece dataları kaydet
+            AccountCache.SaveAll();
+            ClubCache.SaveAll();
             
-            // Thread'leri durdur (zaten Stop metodunda durdurulacaklar)
-            Thread.Sleep(1000); // Thread'lerin kapanması için bekle
-            
-            Logger.genellog("[Program] Shutdown tamamlandı!");
+            Logger.genellog("[Program] Veriler kaydedildi, program kapatılıyor!");
         }
         catch (Exception ex)
         {
-            Logger.errorslog($"[Program] Shutdown hatası: {ex.Message}");
+            Logger.errorslog($"[Program] Veri kaydetme hatası: {ex.Message}");
         }
         
+        // Hemen çık
         Environment.Exit(0);
     }
 }
