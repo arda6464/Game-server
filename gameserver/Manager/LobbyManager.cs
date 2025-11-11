@@ -38,27 +38,27 @@ public static class LobbyManager
     public static Dictionary<int, Lobby> Lobbies = new();
 
 
-   public static Lobby CreateLobby(AccountManager.AccountData owner)
+    public static Lobby CreateLobby(AccountManager.AccountData owner)
     {
-    Random lobbyıd = new Random();
-SelectLobbyID:
-    int id = lobbyıd.Next(100000, 999999);
-    if(Lobbies.ContainsKey(id)) goto SelectLobbyID;
+        Random lobbyıd = new Random();
+    SelectLobbyID:
+        int id = lobbyıd.Next(100000, 999999);
+        if (Lobbies.ContainsKey(id)) goto SelectLobbyID;
 
         Lobby lobby = new Lobby(id, owner.AccountId);
-    if(lobby == null)
-            {
+        if (lobby == null)
+        {
             Logger.errorslog("[LobbyManager] Lobby oluşturulamadı!");
             return null;
         }
-    lobby.AddPlayers(owner);
+        lobby.AddPlayers(owner);
         Lobbies[lobby.ID] = lobby;
-    Logger.genellog($"[Lobby Manager] Lobby oluşturuldu: {lobby.ID}");
+        Logger.genellog($"[Lobby Manager] Lobby oluşturuldu: {lobby.ID}");
 
 
 
-    return lobby;
-}
+        return lobby;
+    }
     public static Lobby GetLobby(int id)
     {
         return Lobbies.ContainsKey(id) ? Lobbies[id] : null;
@@ -69,20 +69,34 @@ SelectLobbyID:
         else Logger.errorslog($"[Lobby Manager] {id}'li lobby silinmek istedi fakat öyle bi lobby yok!");
     }
 
-   public static bool LeaveTeam(int teamid, string accid)
-{
-  
-    
-   Lobby lobby = GetLobby(teamid);
+    public static bool LeaveTeam(int teamid, string accid)
+    {
+
+
+        Lobby lobby = GetLobby(teamid);
         if (lobby == null) return false;
-    lobby.RemovePlayer(accid);
-       Console.WriteLine($"{accid} odadan ayrıldı total count: {lobby.Players.Count}" );
-    
+        lobby.RemovePlayer(accid);
+        Console.WriteLine($"{accid} odadan ayrıldı total count: {lobby.Players.Count}");
+
         if (lobby.Players.Count == 0)
         {
             Console.WriteLine($"[Lobby Manager] Lobby boş, siliniyor: {lobby.ID}");
             DeleteLobby(lobby.ID);
-        } 
-    return true;
-}
+            return true;
+        }
+        if (lobby.OwnerID == accid && lobby.Players.Count > 0) TransferLeader(lobby, lobby.Players[0]);
+            return true;
+    }
+
+    public static void TransferLeader(Lobby team, AccountManager.AccountData newownerid)
+    {
+        var acc = AccountCache.Load(newownerid.AccountId);
+        if(acc == null)
+        {
+            // todo...
+            return;
+        }
+        team.OwnerID = acc.AccountId;  
+         Console.WriteLine($"[Lobby Manager] Liderlik transfer edildi:  {acc.Username} - {acc.AccountId} ");  
+    }
 }
