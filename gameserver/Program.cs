@@ -63,6 +63,7 @@ class Program
         
         try
         {
+            Maintance.StartMaintance(TimeSpan.FromHours(3), true);
             // Sadece dataları kaydet
             AccountCache.SaveAll();
             ClubCache.SaveAll();

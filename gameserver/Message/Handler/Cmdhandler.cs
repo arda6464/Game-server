@@ -138,6 +138,12 @@ public class Cmdhandler
                     case "Lobby":
                         Console.WriteLine("lobby count " + LobbyManager.Lobbies.Count );
                         break;
+                    case "maintance":
+                        Maintance.StartMaintance(TimeSpan.FromHours(2), false);
+                        break;
+                    case "maintancefinish":
+                        Maintance.finishMaintence();
+                        break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("ilgili komut bulunamadı. komutlara erişmek için /help komutunu deneyin");
@@ -347,7 +353,8 @@ public class Cmdhandler
     }
     private static void Unban(string accountid)
     {
-        BanManager.UnbanPlayer(accountid,"Sistem", "Yanlış yasaklama");
+        BanManager.UnbanPlayer(accountid, "Sistem", "Yanlış yasaklama");
     }
+    
    
 }
