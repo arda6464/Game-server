@@ -1,8 +1,8 @@
 {
-  " ": {
+  "0FU8YO95": {
     "Id": 1,
-    "AccountId": "NBR2BR4U",
-    "Token": "593030991179",
+    "AccountId": "0FU8YO95",
+    "Token": "435852193284",
     "Username": "arda64best",
     "Dil": "TR",
     "Premium": 0,
@@ -10,93 +10,95 @@
     "Banned": false,
     "Banreason": null,
     "Avatarid": 1,
-    "Namecolorid": 1,
+    "Namecolorid": 8,
     "Level": 0,
     "Gems": 0,
     "Clubid": -1,
-    "clubRole": 0,
+    "clubRole": 2,
     "Friends": [],
-    "Requests": [
+    "Requests": [],
+    "Notifications": [],
+    "inboxesNotfications": [
       {
-        "Id": "NBR2BR4U",
-        "Username": "NBR2BR4U",
-        "AvatarId": 1,
-        "NameColorID": 0
+        "ID": 12,
+        "Sender": "Sistem",
+        "Message": "Teşekkür ederiz",
+        "İsViewed": true,
+        "Timespam": "2025-11-08T00:45:18.7679559+03:00"
+      },
+      {
+        "ID": 12,
+        "Sender": "Sistem",
+        "Message": "Teşekkür ederiz",
+        "İsViewed": true,
+        "Timespam": "2025-11-08T01:13:50.0431153+03:00"
+      },
+      {
+        "ID": 12,
+        "Sender": "Sistem",
+        "Message": "Teşekkür ederiz",
+        "İsViewed": true,
+        "Timespam": "2025-11-08T01:51:11.1894867+03:00"
       }
     ],
-    "Notifications": [],
-    "LastLogin": "2025-09-27T13:36:06.8105582+03:00",
+    "Roles": [
+      0
+    ],
+    "LastLogin": "2025-11-10T02:39:32.5885219+03:00",
     "LastIp": null,
     "Device": null
   },
-  "7LRLRJZ6": {
+  "XW2RY9UI": {
     "Id": 2,
-    "AccountId": "7LRLRJZ6",
-    "Token": "360389624670",
+    "AccountId": "XW2RY9UI",
+    "Token": "892641727093",
     "Username": "arda64best",
     "Dil": "TR",
     "Premium": 0,
     "PremiumEndTime": "0001-01-01T00:00:00",
     "Banned": false,
     "Banreason": null,
-    "Avatarid": 2,
-    "Namecolorid": 8,
-    "Level": 0,
+    "Avatarid": 3,
+    "Namecolorid": 1,
+    "Level": 1,
     "Gems": 0,
-    "Clubid": 7,
+    "Clubid": -1,
     "clubRole": 0,
     "Friends": [],
     "Requests": [],
     "Notifications": [],
-    "LastLogin": "2025-10-12T23:57:12.3476264+03:00",
-    "LastIp": null,
-    "Device": null
-  },
-  "WHM7ZVYY": {
-    "Id": 3,
-    "AccountId": "WHM7ZVYY",
-    "Token": "125258771246",
-    "Username": "arda64best",
-    "Dil": "TR",
-    "Premium": 0,
-    "PremiumEndTime": "0001-01-01T00:00:00",
-    "Banned": false,
-    "Banreason": null,
-    "Avatarid": 5,
-    "Namecolorid": 3,
-    "Level": 0,
-    "Gems": 0,
-    "Clubid": -1,
-    "clubRole": 0,
-    "Friends": [],
-    "Requests": [
+    "inboxesNotfications": [
       {
-        "Id": "3BT56SDS",
-        "Username": "test",
-        "AvatarId": 1,
-        "NameColorID": 0
+        "ID": 12,
+        "Sender": "Sistem",
+        "Message": "arda kulübünden atıldın.",
+        "İsViewed": true,
+        "Timespam": "0001-01-01T00:00:00"
       },
       {
-        "Id": "7LRLRJZ6",
-        "Username": "test31",
-        "AvatarId": 3,
-        "NameColorID": 0
+        "ID": 12,
+        "Sender": "Sistem",
+        "Message": "arda kulübünden atıldın.",
+        "İsViewed": true,
+        "Timespam": "0001-01-01T00:00:00"
       },
       {
-        "Id": "NBR2BR4U",
-        "Username": "NBR2BR4U",
-        "AvatarId": 1,
-        "NameColorID": 0
+        "ID": 12,
+        "Sender": "Sistem",
+        "Message": "arda kulübünden atıldın.",
+        "İsViewed": true,
+        "Timespam": "2025-11-06T22:33:47.9602749+03:00"
       },
       {
-        "Id": "NBR2BR4U",
-        "Username": "NBR2BR4U",
-        "AvatarId": 1,
-        "NameColorID": 0
+        "ID": 12,
+        "Sender": "Sistem",
+        "Message": "arda kulübünden atıldın.",
+        "İsViewed": true,
+        "Timespam": "2025-11-09T14:37:40.6153103+03:00"
       }
     ],
-    "Notifications": [],
-    "LastLogin": "2025-10-07T23:26:57.0003004+03:00",
+    "Roles": [],
+    "LastLogin": "2025-11-06T22:48:58.3412972+03:00",
     "LastIp": null,
     "Device": null
   }

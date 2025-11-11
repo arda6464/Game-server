@@ -39,6 +39,24 @@ public enum MessageType : int
     DeleteFriendResponse,
     NewFriendsList,
     NewRequestList,
+
+
+
+    // Team
+    CreateTeamRequest,
+    CreateTeamResponse,
+    JoinTeamRequest,
+    JoinTeamResponse,
+    LeaveTeamRequest,
+    LeaveTeamResponse,
+    SendTeamMessageRequest,
+    SendTeamMessageResponse,
+
+
+
+
+
+
     // notfications
     Notification,
     AddFriendsRequest,

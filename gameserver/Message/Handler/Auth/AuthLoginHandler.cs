@@ -103,12 +103,12 @@ public static class AuthLoginHandler
             byteBuffer.WriteString(role.ToString());
         }
 
-        foreach (var notification in account.inboxesNotfications)
+      /*  foreach (var notification in account.inboxesNotfications)
         {
 
             NotificationSender.İnboxSend(session, notification);
             Console.WriteLine($"inbox gönderildi sender:{notification.Sender} message:{notification.Message} time: {notification.Timespam}");
-        }
+        }*/
 
        var club = ClubManager.LoadClub(account.Clubid);
 

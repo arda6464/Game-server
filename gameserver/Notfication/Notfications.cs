@@ -1,6 +1,6 @@
 public class Notification
 {
-    public int Id { get; set; }        // 11 = düz metin, 10 = banner, 12 = inbox
+    public int Id { get; set; }        // 11 = toast, 10 = banner, 12 = inbox
     public string Title { get; set; }
     public string Message { get; set; }
     public string ButtonText;

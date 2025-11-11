@@ -87,6 +87,18 @@ public static class MessageManager
             case MessageType.AllNotficationViewed:
                 AllNotficationViewedHandler.Handle(session);
                 break;
+            case MessageType.CreateTeamRequest:
+                CreateTeamHandler.Handle(session, data);
+                break;
+            case MessageType.LeaveTeamRequest:
+                LeaveTeamHandler.Handle(session, data);
+                break;
+            case MessageType.JoinTeamRequest:
+                JoinTeamHandler.Handle(session, data);
+                break;
+            case MessageType.SendTeamMessageRequest:
+                TeamMessageHandler.Handle(session, data);
+                break;
             default:
                 Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);
                 break;

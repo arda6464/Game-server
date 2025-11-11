@@ -135,6 +135,9 @@ public class Cmdhandler
                     case "Porno":
                         PornoTest();
                         break;
+                    case "Lobby":
+                        Console.WriteLine("lobby count " + LobbyManager.Lobbies.Count );
+                        break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("ilgili komut bulunamadı. komutlara erişmek için /help komutunu deneyin");
