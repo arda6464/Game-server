@@ -41,6 +41,7 @@ public static class AuthLoginHandler
         {
             Logger.errorslog($"giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor");
             AccountManager.AccountData newaccount = AccountManager.CreateAccount(Dil);
+            session.AccountId = newaccount.AccountId;
             byteBuffer.WriteInt((int)MessageType.NewAccountCreateResponse); // response clientte gerçekleştirilcek unutma orda
             byteBuffer.WriteString(newaccount.Token);
             byteBuffer.WriteString(newaccount.AccountId); // clientte veriler  kaydedilcek, sonra clientin tekrar başlatılması istenecek
@@ -116,8 +117,8 @@ public static class AuthLoginHandler
         {
             // Club null ise default değerler yaz
             byteBuffer.WriteInt(-1); // ClubId
-            byteBuffer.WriteString("kulüpte değil");
-            byteBuffer.WriteString("açıklama");
+            byteBuffer.WriteString("");
+            byteBuffer.WriteString("");
             byteBuffer.WriteInt(1); // TotalKupa
             byteBuffer.WriteInt(0); // Members.Count
             byteBuffer.WriteInt(0);
@@ -126,8 +127,8 @@ public static class AuthLoginHandler
         {
             // Club null değilse normal değerleri yaz
             byteBuffer.WriteInt(club.ClubId);
-            byteBuffer.WriteString(club.ClubName ?? "kulüpte değil");
-            byteBuffer.WriteString(club.Clubaciklama ?? "açıklama");
+            byteBuffer.WriteString(club.ClubName);
+            byteBuffer.WriteString(club.Clubaciklama);
             byteBuffer.WriteInt(club.TotalKupa ?? 0);
             byteBuffer.WriteInt(club.Members.Count);
             byteBuffer.WriteInt(club.Messages.Count);
@@ -137,7 +138,7 @@ public static class AuthLoginHandler
             byteBuffer.WriteString(message.SenderId);
             byteBuffer.WriteString(message.SenderName);
             byteBuffer.WriteInt(message.SenderAvatarID);
-            byteBuffer.WriteString("Üye");
+            byteBuffer.WriteString("Üye"); // todo enum send
             byteBuffer.WriteString(message.Content);
         }
         if (club == null) byteBuffer.WriteInt(0);
