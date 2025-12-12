@@ -10,7 +10,7 @@ public static class ClubCache
     private static bool started = true;
 
     // Cache'deki kulüp sayısı
-    public static int Count => CachedClubs.Count;
+    public static int Count() => CachedClubs.Count;
 
     // Cache'i başlat
     public static void Init()
@@ -26,7 +26,7 @@ public static class ClubCache
         while (started)
         {
             SaveAll();
-            Logger.genellog("[ClubCache] Cache kaydedildi");
+         //   Logger.genellog("[ClubCache] Cache kaydedildi");
             Thread.Sleep(1000 * 120); // 2 dakikada bir
         }
     }

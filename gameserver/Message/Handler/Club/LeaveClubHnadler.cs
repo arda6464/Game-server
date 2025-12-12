@@ -22,7 +22,9 @@ public static class LeaveClubHandler
         byte[] veri = buffer.ToArray();
         buffer.Dispose();
         session.Send(veri);
-        if (Kicked) account.Clubid = -1;
+        account.Clubid = -1;
+        account.ClubName = null;
+       
 
        
         

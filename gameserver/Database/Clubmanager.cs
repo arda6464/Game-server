@@ -109,7 +109,7 @@ public static class ClubManager
         
         var json = JsonConvert.SerializeObject(Clubs, Formatting.Indented);
         File.WriteAllText(filePath, json);
-        Console.WriteLine("[ClubManager] Kulüpler kaydedildi.");
+   //     Console.WriteLine("[ClubManager] Kulüpler kaydedildi.");
     }
     #endregion
 
@@ -138,6 +138,7 @@ public static class ClubManager
         leaderAccount.Clubid = club.ClubId;
         leaderAccount.clubRole = ClubRole.Leader;
         Logger.genellog($"Club oluşturuldu: name: {club.ClubName} des: {club.Clubaciklama} id: {club.ClubId}");
+        leaderAccount.ClubName = club.ClubName;
 
         return club;
     }
@@ -149,7 +150,7 @@ public static class ClubManager
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
-
+            
         var newAccount = AccountManager.LoadAccount(newMemberId);
         if (newAccount == null) return false;
 
@@ -162,8 +163,13 @@ public static class ClubManager
             Accountid = newAccount.AccountId,
             Role = ClubRole.Member,
             NameColorID = newAccount.Namecolorid,
-             AvatarID = newAccount.Avatarid
+            AvatarID = newAccount.Avatarid
         });
+        newAccount.clubRole = ClubRole.Member;
+        newAccount.Clubid = club.ClubId;
+        newAccount.ClubName = club.ClubName;
+        Console.WriteLine("accounda club name data: " + newAccount.ClubName);
+       
 
         Save();
         return true;
@@ -200,6 +206,9 @@ public static class ClubManager
         var club = Clubs[clubId];
 
         var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
+        var targetAccount = AccountManager.LoadAccount(targetMemberId);
+        
+
 
         if (target == null)
         {
@@ -240,6 +249,7 @@ public static class ClubManager
         club.Members.Remove(target);
         var acccount = AccountCache.Load(targetMemberId);
         acccount.Clubid = -1;
+        acccount.ClubName= null;
        İnboxNotfication notfication= new İnboxNotfication
        {
            ID = 12,
