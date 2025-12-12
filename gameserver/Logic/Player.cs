@@ -15,8 +15,6 @@ public class Player
     public int AvatarId { get; set; }
 
     // Oyun içi değişkenler
-    public float PositionX { get; set; }
-        public float PositionY { get; set; }
     public Vector2 Position { get; set; }
 
     public float Rotation { get; set; }
