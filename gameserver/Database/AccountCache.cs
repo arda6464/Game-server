@@ -13,7 +13,7 @@ public static class AccountCache
     public static ConcurrentDictionary<string, AccountManager.AccountData> GetCachedAccounts() => CachedAccounts;
 
     // Cache'deki hesap sayısı
-    public static int Count => CachedAccounts.Count;
+    public static int Count() => CachedAccounts.Count;
 
     // Cache’i başlat ve 1 dakikada bir kaydet
     public static void Init()
@@ -33,7 +33,7 @@ public static class AccountCache
         while (started)
             {
                 SaveAll();
-            Logger.genellog("save alındı");
+          //  Logger.genellog("save alındı");
                 Thread.Sleep(1000 * 120);
             }
     }
@@ -51,7 +51,7 @@ public static class AccountCache
             Logger.errorslog($"Hata kaydederken: {ex.Message}");
         }
 
-        Logger.genellog("[AccountCache] Cache kaydedildi.");
+     //   Logger.genellog("[AccountCache] Cache kaydedildi.");
     }
 
     // add cache

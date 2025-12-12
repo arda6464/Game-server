@@ -17,6 +17,7 @@ public static class AccountManager
         public string? Token { get; set; }
         // acccount data
         public string? Username { get; set; }
+        public int Trophy { get; set; }
         public string? Dil { get; set; }
         public int Premium { get; set; }
         public DateTime PremiumEndTime { get; set; }
@@ -26,6 +27,7 @@ public static class AccountManager
         public int Namecolorid { get; set; }
         public int Level { get; set; }
         public int Gems { get; set; }
+        public string? ClubName { get; set; }
         public int Clubid { get; set; }
         public ClubRole clubRole { get; set; }
 
@@ -38,6 +40,8 @@ public static class AccountManager
         public DateTime LastLogin { get; set; }
         public string? LastIp { get; set; }
         public string? Device { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
 
     }
 
@@ -84,7 +88,7 @@ public static class AccountManager
 
         var json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
         File.WriteAllText(savePath, json);
-        Console.WriteLine("[AccountManager] Hesaplar kaydedildi.");
+        //Console.WriteLine("[AccountManager] Hesaplar kaydedildi.");
     }
 
     // Hesap oluştur
@@ -102,7 +106,9 @@ public static class AccountManager
             Namecolorid = 1,
             Token = TokenManager.GenerateNumericToken(),
             LastLogin = DateTime.Now,
-            Clubid = -1
+            Clubid = -1,
+            Trophy = 0
+
         };
 
         accounts[accountId] = newAccount;
@@ -119,7 +125,7 @@ public static class AccountManager
     {
         var account = LoadAccount(id);
         if (account != null)
-            Console.WriteLine($"isim: {account.Username}\n avatarid : {account.Avatarid} \n colorid: {account.Namecolorid}\n  son giriş: {account.LastLogin} \n Dil: {account.Dil} \n clubid: {account.Clubid}"); //
+            Console.WriteLine($"isim: {account.Username}\n avatarid : {account.Avatarid} \n colorid: {account.Namecolorid}\n  son giriş: {account.LastLogin} \n Dil: {account.Dil} \n clubid: {account.Clubid}\n club name: {account.ClubName}"); //
         if (account.Clubid != -1)
         {
             //   var club = ClubManager.LoadClub(account.Clubid);
@@ -174,5 +180,82 @@ public static class AccountManager
         account.Roles.Add(role);
         Logger.genellog($"{account.Username} ({account.AccountId}) kişisinden {role}'ü kaldırıldı!");
     }
+
+
+     public static List<AccountData> GetTop100Players()
+    {
+        return accounts.Values
+            .Where(a => !a.Banned) // Banlıları çıkar
+            .OrderByDescending(a => a.Trophy) // Sadece kupaya göre sırala
+            .Take(100) // İlk 100
+            .ToList();
+    }
+
+    // Oyuncunun sıralamasını bul
+    public static int GetPlayerRank(string accountId)
+    {
+
+        var sortedPlayers = accounts.Values
+            .Where(a => !a.Banned)
+            .OrderByDescending(a => a.Trophy)
+            .ToList();
+
+        // Oyuncunun sırasını bul (1'den başlar)
+        int rank = sortedPlayers.FindIndex(a => a.AccountId == accountId) + 1;
+        return rank;
+    }
+    public static bool CheckMail(string email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+        {
+            Console.WriteLine("[CheckMail] Geçersiz e-posta adresi");
+            return false;
+        }
+
+
+        string normalizedEmail = email.Trim().ToLower();
+
+
+        foreach (var account in accounts.Values)
+        {
+            if (!string.IsNullOrEmpty(account.Email) &&
+                account.Email.Trim().ToLower() == normalizedEmail)
+            {
+                Console.WriteLine($"[CheckMail] E-posta zaten kayıtlı: {email} (Kullanıcı: {account.Username} ({account.AccountId}))");
+                return true;
+            }
+        }
+
+        //  Console.WriteLine($"[CheckMail] E-posta kayıtlı değil: {email}");
+        return false;
+    }
+public static AccountData FindAccountByEmail(string email)
+{
+    if (string.IsNullOrWhiteSpace(email))
+    {
+        Console.WriteLine("[FindAccountByEmail] Geçersiz e-posta adresi");
+        return null;
+    }
+
+    string normalizedEmail = email.Trim().ToLower();
+    
+    foreach (var account in accounts.Values)
+    {
+        if (!string.IsNullOrEmpty(account.Email) && 
+            account.Email.Trim().ToLower() == normalizedEmail)
+        {
+            Console.WriteLine($"[FindAccountByEmail] Hesap bulundu: {account.Username} (ID: {account.AccountId})");
+            return account;
+        }
+    }
+    
+    Console.WriteLine($"[FindAccountByEmail] E-posta ile hesap bulunamadı: {email}");
+    return null;
+}
+    
+    
+   
+    
+   
           
 }
