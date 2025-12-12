@@ -4,14 +4,14 @@ public static class MatchMaking
 {
     public static readonly List<Session> waitingQueue = new();
     private static readonly object lockObj = new();
-    private const int PlayersPerMatch = 2;
+    public static int PlayersPerMatch = 2;
 
     public static void JoinQueue(Session session)
     {
         lock (lockObj)
         {
-            if (waitingQueue.Contains(session))
-                return;
+            if (waitingQueue.Contains(session)) return;
+                
 
             waitingQueue.Add(session);
             Console.WriteLine($"{session.PlayerData?.Username} matchmaking'e katıldı. Toplam: {waitingQueue.Count}");
@@ -19,6 +19,8 @@ public static class MatchMaking
             {
                 ByteBuffer buffer = new ByteBuffer();
                 buffer.WriteInt((int)MessageType.MatchMakingAddPlayer);
+               
+                buffer.WriteInt(PlayersPerMatch);
                 buffer.WriteShort(1);
                 byte[] bytes = buffer.ToArray();
                 buffer.Dispose();
@@ -41,6 +43,7 @@ public static class MatchMaking
         waitingQueue.RemoveRange(0, PlayersPerMatch);
 
         int arenaId = ArenaManager.CreateArena();
+          Arena arena = ArenaManager.GetArena(arenaId);
         Console.WriteLine($"Match başladı! Arena ID: {arenaId}");
         Vector2[] spawnPoints =
     {
@@ -67,11 +70,14 @@ public static class MatchMaking
             };
             session.PlayerData = player;
 
-           ArenaManager.AddPlayer(arenaId, player);
+          
+            arena.AddPlayer(player);
+            Console.WriteLine($"Oyuncu {player.Username} ({player.AccountId});" +
+                $" Arena {arenaId}'ye eklendi. Toplam oyuncu: {arena.GetPlayers().Count}");
 
         }
 
-          var allplayers = ArenaManager.GetPlayers(arenaId);
+          var allplayers = arena.GetPlayers();
             //client to send is matchfound packets:
            foreach (var session in players)
 {
@@ -101,7 +107,7 @@ public static class MatchMaking
             {
                 ByteBuffer buffer = new ByteBuffer();
                 buffer.WriteInt((int)MessageType.MatchMakingAddPlayer);
-                buffer.WriteShort(PlayersPerMatch);
+                buffer.WriteInt(PlayersPerMatch);
                 buffer.WriteShort(1);
                 byte[] bytes = buffer.ToArray();
                 buffer.Dispose();
