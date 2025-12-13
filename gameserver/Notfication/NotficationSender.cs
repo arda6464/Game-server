@@ -1,8 +1,8 @@
 using System;
 
-public static class NotificationSender
+public static class NotficationSender
 {
-    public static void Send(Session session, Notification notification)
+    public static void Send(Session session, Notfication notification)
     {
         if (session == null)
         {
@@ -14,11 +14,12 @@ public static class NotificationSender
 
 
         buffer.WriteInt((int)MessageType.Notification);
+        buffer.WriteInt(notification.Id);
         switch(notification.Id)
         {
             case 11:
                 {
-                    buffer.WriteInt(notification.Id);
+                    
                     buffer.WriteString(notification.Title);
                     buffer.WriteString(notification.Message);
                     buffer.WriteInt(notification.iconid);
@@ -26,11 +27,20 @@ public static class NotificationSender
                 break;
             case 10:
                 {
-                    buffer.WriteInt(notification.Id);
-                    buffer.WriteString(notification.Title);
+                    
+                    buffer.WriteString(notification.Title?? "");
+                    buffer.WriteString(notification.Message ?? "");
+                    buffer.WriteString(notification.ButtonText ?? " ");
+                    buffer.WriteString(notification.Url ?? " ");
+                }
+                break;
+            case 12:
+                {
+                      buffer.WriteString(notification.Sender);
                     buffer.WriteString(notification.Message);
-                    buffer.WriteString(notification.ButtonText);
-                    buffer.WriteString(notification.Url);
+                    buffer.WriteBool(notification.IsViewed);
+                    long unixTime = new DateTimeOffset(notification.Timespam.ToUniversalTime()).ToUnixTimeSeconds();
+                    buffer.WriteLong(unixTime);
                 }
                 break;
                 
@@ -49,20 +59,6 @@ public static class NotificationSender
 
         Logger.genellog($"[NotificationSender] Bildirim gönderildi: {notification.Message}");
     }
-    public static void İnboxSend(Session session, İnboxNotfication notification)
-    {
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.Notification);
-
-        buffer.WriteInt(notification.ID);
-        buffer.WriteString(notification.Sender);
-        buffer.WriteString(notification.Message);
-        buffer.WriteBool(notification.İsViewed);
-        long unixTime = new DateTimeOffset(notification.Timespam.ToUniversalTime()).ToUnixTimeSeconds();
-        buffer.WriteLong(unixTime);
-         byte[] data = buffer.ToArray();
-        session.Send(data);
-        buffer.Dispose();
-    } 
+    
    
 }

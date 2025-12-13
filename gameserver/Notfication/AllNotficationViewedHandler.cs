@@ -8,12 +8,12 @@ public static class AllNotficationViewedHandler
 
         foreach(var notification in acccount.inboxesNotfications)
         {
-            if (!notification.İsViewed)
+            if (!notification.IsViewed)
             {
-                notification.İsViewed = true;
+                notification.IsViewed= true;
             }
-            Console.WriteLine("Tüm bildirimler okundu");
+            
         }
-
+           Console.WriteLine("Tüm bildirimler okundu");
     }
 }

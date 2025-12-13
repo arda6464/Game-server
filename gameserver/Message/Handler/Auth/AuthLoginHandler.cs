@@ -26,7 +26,7 @@ public static class AuthLoginHandler
         // kontrol
         if (ServerVersion != ClientVersion)
         {
-            Notification notification = new Notification
+            Notfication notification = new Notfication
             {
                 Id = 10,
                 Title = "Güncelleme mevcut",
@@ -34,7 +34,7 @@ public static class AuthLoginHandler
                 ButtonText = "indir",
                 Url = "https://arda64.xyz/"
             };
-            NotificationSender.Send(session,notification);
+            NotficationSender.Send(session,notification);
             return;
         }
         if (string.IsNullOrWhiteSpace(token))
@@ -199,16 +199,24 @@ Console.WriteLine("Gönderilen paket boyu: " + accountdata.Length);
         session.Send(accountdata);
 
 
-        // Notfications
-        foreach (var notification in account.Notifications)
-        {
-            if (!notification.IsViewed) // görmediyse
-            {
-                NotificationSender.Send(session, notification); // 
-                notification.IsViewed = true;
 
-            }
+        foreach (var inboxnotification in account.inboxesNotfications)
+        {
+            NotficationSender.Send(session, inboxnotification);
+            System.Threading.Thread.Sleep(50);
         }
+        foreach(var notficaiton in account.Notfications)
+        {
+            if(!notficaiton.IsViewed)
+            {
+                NotficationSender.Send(session, notficaiton);
+                notficaiton.IsViewed = true;
+            }
+            
+            System.Threading.Thread.Sleep(50);
+        }
+
+
         
         
 

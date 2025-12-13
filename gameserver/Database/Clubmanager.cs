@@ -250,9 +250,9 @@ public static class ClubManager
         var acccount = AccountCache.Load(targetMemberId);
         acccount.Clubid = -1;
         acccount.ClubName= null;
-       İnboxNotfication notfication= new İnboxNotfication
+       Notfication notfication= new Notfication
        {
-           ID = 12,
+           Id = 12,
            Sender = "Sistem",
            Message = $"{club.ClubName} kulübünden atıldın.",
           Timespam = DateTime.Now
@@ -261,7 +261,7 @@ public static class ClubManager
         if(SessionManager.IsOnline(acccount.AccountId))
         {
             var session = SessionManager.GetSession(acccount.AccountId);
-            NotificationSender.İnboxSend(session,notfication);
+            NotficationSender.Send(session,notfication);
         }
         
 

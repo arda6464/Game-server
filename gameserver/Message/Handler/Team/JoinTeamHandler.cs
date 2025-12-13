@@ -17,14 +17,14 @@ public static class JoinTeamHandler
         Lobby Lobby = LobbyManager.GetLobby(code);
         if (Lobby == null)
         {
-            Notification notification = new Notification // todo client already message send
+            Notfication notification = new Notfication // todo client already message send
             {
                 Id = 11,
                 Title = "Başarısız",
                 Message = "Takım bulunamadı!",
                 iconid = 4
             };
-            NotificationSender.Send(session, notification); 
+            NotficationSender.Send(session, notification); 
             return;
         } 
 

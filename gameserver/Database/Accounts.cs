@@ -33,8 +33,8 @@ public static class AccountManager
 
         public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
         public List<FriendInfo> Requests { get; set; } = new List<FriendInfo>();
-        public List<Notification> Notifications { get; set; } = new List<Notification>();
-        public List<İnboxNotfication> inboxesNotfications { get; set; } = new List<İnboxNotfication>();
+        public List<Notfication> Notfications { get; set; } = new List<Notfication>();
+        public List<Notfication> inboxesNotfications { get; set; } = new List<Notfication>();
         public List<Role.Roles> Roles { get; set; } = new List<Role.Roles>();
         // login data
         public DateTime LastLogin { get; set; }
@@ -114,7 +114,15 @@ public static class AccountManager
         accounts[accountId] = newAccount;
         maxAccountId++;
         AccountCache.Cache(newAccount);
-
+        Notfication notification = new Notfication
+        {
+            Id = 10,
+            Title = "Yeni Düzeltmeler!",
+            Message = "Düzeltilen bazı şeyler:\n İnbox'a bildirim gelmeme hatası\n Avatar değiştirememe hatası\n Takım kodu gösterilmeme hatası\n Arkadaşlık isteği gönderirken ID'iniziz gözükmemesi\nDestek sisteminde bilet oluşturma spamı engellendi\n Marketdeki itemlerin düzgün gözükmemesi ",
+            ButtonText = "Tamam",
+            IsViewed = false
+        };
+        newAccount.Notfications.Add(notification);
         SaveAccounts();
 
         Console.WriteLine($"[AccountManager] Yeni hesap oluşturuldu: {username} (ID: {newAccount.Id}, AccountId: {newAccount.AccountId}) token:{newAccount.Token}");
@@ -151,7 +159,7 @@ public static class AccountManager
     {
         foreach (AccountData account in accounts.Values)
         {
-            account.Notifications.Clear();
+            account.Notfications.Clear();
 
         }
         Console.WriteLine("Accountsların notficationları silindi");

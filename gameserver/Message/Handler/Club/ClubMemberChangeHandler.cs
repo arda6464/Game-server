@@ -124,12 +124,12 @@ public static class ClubMemberChangeHandler
 
     private static void SendNotification(Session session, string message)
     {
-        Notification notification = new Notification
+        Notfication notification = new Notfication
         {
           Id = 11,
           Title = "Reddedildi",
            Message = message,
         };
-        NotificationSender.Send(session, notification);
+        NotficationSender.Send(session, notification);
     }
 }

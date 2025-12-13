@@ -11,7 +11,7 @@ public static class ClubShowHandler
         var club = ClubCache.Load(clubid);
         if (club == null)
         {
-            NotificationSender.Send(session, new Notification
+            NotficationSender.Send(session, new Notfication
 {
     Id = 11,
     Title = "Başarısız",

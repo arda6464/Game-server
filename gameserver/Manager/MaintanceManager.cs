@@ -12,7 +12,7 @@ public static class Maintance
         if (PanicMode)
         {
             Logger.genellog($"[Maintance] bakım molası aktif panicmode: {(PanicMode ? "Acil" : "Normal")}");
-            Notification notification = new Notification
+            Notfication notification = new Notfication
             {
                 Id = 11,
                 Title = "Bakım molası",
@@ -22,7 +22,7 @@ public static class Maintance
             var sessions = SessionManager.GetSessions().Values;
             foreach (var session in sessions)
             {
-                NotificationSender.Send(session, notification);
+                NotficationSender.Send(session, notification);
             }
             Thread.Sleep(PanicMS);
             foreach (var session in sessions)
@@ -35,7 +35,7 @@ public static class Maintance
         else
         {
             Logger.genellog($"[Maintance] bakım molası aktif Mode: {(PanicMode ? "Acil" : "Normal")}");
-            Notification notification = new Notification
+            Notfication notification = new Notfication
             {
                 Id = 11,
                 Title = "Bakım molası",
@@ -45,7 +45,7 @@ public static class Maintance
             var sessions = SessionManager.GetSessions().Values;
             foreach (var session in sessions)
             {
-                NotificationSender.Send(session, notification);
+                NotficationSender.Send(session, notification);
             }
             Thread.Sleep(NormalMS);
             foreach (var session in sessions)

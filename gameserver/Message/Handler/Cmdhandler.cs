@@ -44,11 +44,6 @@ public class Cmdhandler
                     case "clearcmd":
                         Console.Clear();
                         break;
-                    case "bakım":
-                        // bakımal(tahmini süre)???!
-                        break;
-                    case "bakım-kapat":
-                        break;
                     case "testcreateacc":
                         AccountManager.CreateAccount("tr");
                         break;
@@ -143,6 +138,19 @@ public class Cmdhandler
                         break;
                     case "maintancefinish":
                         Maintance.finishMaintence();
+                        break;
+                    case "changematch":
+                        MatchMaking.PlayersPerMatch = 1;
+                        Console.WriteLine("per match değişti: " + MatchMaking.PlayersPerMatch);
+                        break;
+                    case "testtropy":
+                        Testtropy();
+                        break;
+                    case "mail":
+                        showrank();
+                        break;
+                    case "Banner":
+                        SendBanner();
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
@@ -294,20 +302,21 @@ public class Cmdhandler
     private static void Sendinboxmessage()
     {
         Console.WriteLine("slm");
-        İnboxNotfication inbox = new İnboxNotfication
+        Notfication inbox = new Notfication
         {
-            ID = 12,
+            Id = 12,
             Sender = "Sistem",
             Message = "Teşekkür ederiz",
+            IsViewed = false,
             Timespam = DateTime.Now
         };
-        string accid = "0FU8YO95";
+        string accid = "DKNTY40T";
         AccountManager.AccountData acccount = AccountManager.LoadAccount(accid);
           acccount.inboxesNotfications.Add(inbox);
         if (SessionManager.IsOnline(acccount.AccountId))
         {
             Session session = SessionManager.GetSession(acccount.AccountId);
-            NotificationSender.İnboxSend(session, inbox);
+            NotficationSender.Send(session, inbox);
           
         }
         else
@@ -354,6 +363,37 @@ public class Cmdhandler
     private static void Unban(string accountid)
     {
         BanManager.UnbanPlayer(accountid, "Sistem", "Yanlış yasaklama");
+    }
+
+    private static void Testtropy()
+    {
+        var account = AccountCache.Load("LYOF542Y");
+        account.Trophy = 5000;
+        Console.WriteLine("trophy set edildi");
+    }
+    private static void showrank()
+    {
+        var account = AccountCache.Load("LYOF542Y");
+        account.Email = "arda646460@gmail.com";
+        account.Password = "1234";
+        Console.WriteLine("Eposta bağlandı");
+    }
+    public static void SendBanner()
+    {
+        var cachedacccounts = AccountCache.GetCachedAccounts();
+        foreach(var kvp in cachedacccounts)
+        {
+            var acccount = kvp.Value;
+            Notfication notification = new Notfication
+            {
+                Id = 10,
+                Title = "Yeni Düzeltmeler!",
+                Message = "Düzeltilen bazı şeyler:\n İnbox'a bildirim gelmeme hatası\n Avatar değiştirememe hatası\n Takım kodu gösterilmeme hatası\n Arkadaşlık isteği gönderirken ID'iniziz gözükmemesi\nDestek sisteminde bilet oluşturma spamı engellendi\n Marketdeki itemlerin düzgün gözükmemesi ",
+                ButtonText = "Tamam",
+                IsViewed = false
+            };
+            acccount.Notfications.Add(notification);
+        }
     }
     
    

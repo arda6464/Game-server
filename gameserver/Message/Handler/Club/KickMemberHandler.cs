@@ -11,7 +11,7 @@ public static class KickMemberHandler
         AccountManager.AccountData account = AccountCache.Load(session.AccountId);
         if (account == null)
         {
-            NotificationSender.Send(session, new Notification
+            NotficationSender.Send(session, new Notfication
             {
                 Id = 11,
                 Title = "Başarısız",
@@ -22,7 +22,7 @@ public static class KickMemberHandler
         var club = ClubCache.Load(account.Clubid);
         if (club == null)
         {
-            NotificationSender.Send(session, new Notification
+            NotficationSender.Send(session, new Notfication
             {
                 Id = 11,
                 Title = "Başarısız",
@@ -55,7 +55,7 @@ public static class KickMemberHandler
         }
         else
         {
-            NotificationSender.Send(session, new Notification
+            NotficationSender.Send(session, new Notfication
             {
                 Id = 11,
                 Title = "Başarısız",
