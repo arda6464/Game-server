@@ -5,6 +5,8 @@ public static class MessageManager
     public static void HandleMessage(Session session, byte[] data)
     {
         int value = BitConverter.ToInt32(data, 0);
+        if ((MessageType)value == MessageType.Ping) return;
+         Console.WriteLine($"[MessageManager] {session.AccountId} kullanıcısından {((MessageType)value).ToString()} mesajı alındı.");
         switch ((MessageType)value)
         {
             case MessageType.FirstConnectionRequest:
@@ -12,7 +14,7 @@ public static class MessageManager
                 break;
             case MessageType.AuthLoginRequest:
                 AuthLoginHandler.Handle(session, data);
-                break;
+                break;  
             case MessageType.Disconnect:
                 session.Close();
                 break;
@@ -99,10 +101,33 @@ public static class MessageManager
             case MessageType.SendTeamMessageRequest:
                 TeamMessageHandler.Handle(session, data);
                 break;
+            case MessageType.GetAllMarketItemsRequest:
+                ShopItemsHandler.Handle(session);
+                break;
+            case MessageType.LeaderboardRequest:
+            GetLeaderboard.Handle(session);
+                break;
+            case MessageType.AccountLogin:
+                LoginAccountHandler.Handle(session, data);
+                break;
+            case MessageType.VerifyCodeResponse:
+                CodeVerify.Handle(session, data);
+                break;
+            case MessageType.SignAccount:
+                CreateAccountHandler.Handle(session, data);
+                break;
+            case MessageType.SupporCreateTicketRequest:
+                CreateTicket.Handle(session);
+                break;
+            case MessageType.SupportMessageSend:
+                GetChatMessage.Handle(session, data);
+                break;
             default:
                 Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);
                 break;
+
         }
+       
     }
 
 

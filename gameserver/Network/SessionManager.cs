@@ -4,7 +4,7 @@ public static class SessionManager
     
     // Cmdhandler için public property
     public static Dictionary<string, Session> GetSessions() => activeSessions;
-
+    public static int GetCount() => activeSessions.Count;
     public static void AddSession(string accountId, Session session)
     {
         if (!activeSessions.ContainsKey(accountId))

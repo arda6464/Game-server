@@ -7,6 +7,7 @@ public enum MessageType : int
     Disconnect,
     Ping,
     Pong,
+    Maintance,
 
     // Authentication
     AuthLoginRequest,
@@ -16,6 +17,14 @@ public enum MessageType : int
     // Account
     AccountData,
     LoginFailed,
+    LoginOKRequest,
+    LoginOKResponse,
+    SendVerifyCode,
+    VerifyCodeResponse,
+    AccountLogin,
+    SignAccount,
+
+
 
     // Profile
     ChangeNameRequest,
@@ -63,6 +72,12 @@ public enum MessageType : int
     AddFriendsResponse,
     AllNotficationViewed,
 
+    // Leaderboards
+    LeaderboardRequest,
+    LeaderboardResponse,
+
+
+
 
     // Club
     GetRandomClubRequest,
@@ -88,6 +103,8 @@ public enum MessageType : int
 
 
 
+
+
     // Battle
     MatchMakingRequest,
     MatchMakingCancelRequest,
@@ -95,12 +112,26 @@ public enum MessageType : int
     MatchMakingAddPlayer,
     StartMatch,
     Move,
-    Dead,
+
     PlayerMoved,
     PlayerDead,
     ShootRequest,
     Shoot,
     HitRequest,
     PlayerHealthUpdate,
+
+    // Shop
+    GetAllMarketItemsRequest,
+    GetAllMarketItemsResponse,
+
+
+
+    // Support
+    SupportMessageSend,
+    SupportMessageResponse,
+    SupporCreateTicketRequest,
+    SupporCreateTicketResponse,
+    
+
 
 }

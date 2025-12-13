@@ -12,12 +12,7 @@ public static class ChangeNameHandler
         AccountManager.AccountData account = AccountCache.Load(session.AccountId);
         if (account == null) return;
         
-        // Aynı isim kontrolü
-        if (account.Username == newname) 
-        {
-            Logger.errorslog($"[ChangeNameHandler] Aynı isim tekrar kullanılamaz: {newname}");
-            return;
-        }
+        
         
         // İsim validasyonu
         if (string.IsNullOrWhiteSpace(newname) || newname.Length < 3 || newname.Length > 20)

@@ -1,33 +1,53 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
+    using System.Drawing;
 
 class Program
 {
     static GameServer? gameserver;
     static Thread? cmdhandlerthread;
     static Thread? pingthread;
-
+    static Thread? botthread;
+    double test = 0.7;
     static void Main()
     {
         Console.Clear();
-        
+         Colorful.Console.WriteWithGradient(
+                @"
+    _____        ____ __ ______    _____ ______ _______      ________ _____  
+  / ____|   /\   |  \/  |  ____|  / ____|  ____|  __ \ \    / /  ____|  __ \ 
+ | |  __   /  \  | \  / | |__    | (___ | |__  | |__) \ \  / /| |__  | |__) |
+ | | |_ | / /\ \ | |\/| |  __|    \___ \|  __| |  _  / \ \/ / |  __| |  _  / 
+ | |__| |/ ____ \| |  | | |____   ____) | |____| | \ \  \  /  | |____| | \ \ 
+  \_____/_/    \_\_|  |_|______| |_____/|______|_|  \_\  \/   |______|_|  \_\
+                                                                             
+   _____  __  ___   ___  ___  ___  ____ ____
+  / _ ) \/ / / _ | / _ \/ _ \/ _ |/ __// / /
+ / _  |\  / / __ |/ , _/ // / __ / _ \/_  _/
+/____/ /_/ /_/ |_/_/|_/____/_/ |_\___/ /_/                                                                                                                                                                                
+       " + "\n\n", Color.Fuchsia, Color.Cyan, 8);
         // Graceful shutdown handler
         Console.CancelKeyPress += (sender, e) =>
         {
             Console.WriteLine("\n[Shutdown] Ctrl+C algılandı. Veriler kaydediliyor...");
             e.Cancel = true; // Process'i hemen kill etme
-            
+
             // Hemen kaydet ve çık
             SaveDataAndExit();
         };
-        
+
         // Cache'leri başlat
+        BotManager bot = new BotManager();
+       
         AccountCache.Init();
         ClubCache.Init();
         BanManager.Init();
-        
+        ShopManager.InitializeMarket();
+
         // Thread'leri başlat
+        botthread = new Thread(() => bot.Start());
+        botthread.Start();
         cmdhandlerthread = new Thread(Cmdhandler.Start);
         cmdhandlerthread.Start();
         
@@ -35,15 +55,17 @@ class Program
         pingthread.Start();
         
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-        
+
         // GameServer'ı başlat
         gameserver = new GameServer();
+        TickManager tickManager = new TickManager(20); // 20 tick per second
         
         try
         {
+            tickManager.Start();
             gameserver.Start();
             
-            // Ana thread'i bekle
+            
             Console.WriteLine("[Program] Server çalışıyor. Çıkmak için Ctrl+C'ye basın...");
             Thread.Sleep(Timeout.Infinite); // Sonsuz bekle
         }
@@ -67,6 +89,7 @@ class Program
             // Sadece dataları kaydet
             AccountCache.SaveAll();
             ClubCache.SaveAll();
+            TickManager.instance.Stop();
             
             Logger.genellog("[Program] Veriler kaydedildi, program kapatılıyor!");
         }

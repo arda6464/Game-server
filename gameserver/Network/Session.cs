@@ -14,6 +14,7 @@ public class Session
     public string DeviceID { get; set; }
     public string IP { get; set; }
     public int TeamID = 0;
+   
     
     private bool _isClosed = false; // ✅ YENİ: Çift çağrıyı önlemek için flag
     private object _closeLock = new object(); // ✅ YENİ: Thread safety için lock
@@ -123,7 +124,8 @@ public class Session
         // Oyuncu match içindeyse arena'dan çıkar
         if (PlayerData != null && PlayerData.ArenaId > 0)
         {
-            ArenaManager.RemovePlayer(PlayerData.ArenaId, AccountId);
+            Arena arena = ArenaManager.GetArena(PlayerData.ArenaId);
+            arena.RemovePlayer(AccountId);
         }
 
         if (TeamID != 0)

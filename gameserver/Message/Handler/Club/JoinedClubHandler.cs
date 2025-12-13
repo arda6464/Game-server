@@ -35,7 +35,7 @@ public static class JoinedClubHandler
         buffer.WriteInt((int)MessageType.JoinClubResponse);
         if(isJoined)
         {
-            account.Clubid = Club.ClubId;
+            
             buffer.WriteInt(Club.ClubId);
             buffer.WriteInt(Club.ClubAvatarID);
             buffer.WriteString(Club.ClubName);
@@ -64,6 +64,7 @@ public static class JoinedClubHandler
             byte[] veri = buffer.ToArray();
             buffer.Dispose();
             session.Send(veri);
+            
         }
     }
 }
