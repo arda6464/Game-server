@@ -1,6 +1,6 @@
 
 
-🎮 Game Server
+# 🎮 Game Server
 
 > ⚡ C# ile geliştirilen, çok oyunculu oyunlar için hafif, ölçeklenebilir ve modüler bir sunucu altyapısı.
 
@@ -9,7 +9,7 @@
 
 ---
 
-🚀 Özellikler
+# 🚀 Özellikler
 
 ⚙️ Ağ ve Veri Sistemi
 
@@ -25,23 +25,24 @@ Paket kayıplarına karşı hata toleranslı yapı
 
 ---
 
-👤 Hesap Sistemi
+ ## 👤 Hesap Sistemi
 
-Giriş / kayıt mekanizması
+- Giriş / kayıt mekanizması
 
-Kalıcı AccountCache yönetimi
+- Kalıcı AccountCache yönetimi
 
-Avatar, kullanıcı adı ve kimlik yönetimi
+- Avatar, kullanıcı adı ve kimlik yönetimi
 
-Otomatik ID üretimi (örnek: 0FU8YO95)
+- Otomatik ID üretimi (örnek: 0FU8YO95)
 
-Hesap verileri diske JSON formatında kaydedilir
+- Hesap verileri diske JSON formatında kaydedilir
+
 
 
 
 ---
 
-🧑‍🤝‍🧑 Kulüp (Clan) Sistemi
+## 🧑‍🤝‍🧑 Kulüp (Clan) Sistemi
 
 Üye ekleme / çıkarma
 
@@ -57,19 +58,32 @@ Gerçek zamanlı güncelleme: üyeler online/offline olduğunda kulüp güncelle
 
 ---
 
-🤝 Arkadaşlık Sistemi (Geliştirme Aşamasında)
+## 🤝 Arkadaşlık Sistemi (Geliştirme Aşamasında)
 
 İstek gönderme / kabul etme / reddetme
 
 Gerçek zamanlı durum bildirimi (online / offline)
 
-(Planlanan) Arkadaş mesajlaşma sistemi
 
+## 🏪 Market sistemi
+
+İtem satın alma
 
 
 ---
 
-📦 Packet Sistemi
+## 🎫 Destek Sistemi (Geliştirme Aşamasında)
+
+destek oluşturma / Mesajlaşma 
+
+---
+
+## 🤖 Discord Bot Entegresi
+  Destek açan oyuncuların mesajlarına yanıt verme
+
+
+---
+## 📦 Packet Sistemi
 
 Tüm veri paketleri PacketHandler üzerinden yönetilir
 
@@ -137,11 +151,11 @@ Log kategorileri: genel, error, network
 
 🛠️ Geliştirme Notları
 
-Dil: C# (.NET 8.0)
+Dil: C# (.NET 10.0)
 
 Bağımlılıklar: Newtonsoft.Json, System.Net.Sockets
 
-Derleme: Visual Studio / Rider
+Derleme: Visual Studio Code / Rider
 
 Test Ortamı: Lokal TCP istemci simülasyonu
 
@@ -160,6 +174,16 @@ Test Ortamı: Lokal TCP istemci simülasyonu
 🔒 Güvenlik / DeviceID doğrulama
 
 💬 Gerçek zamanlı sohbet
+
+🎫 Destek Sistemi
+
+🫂 Kayıt/Giriş Sistemi
+
+📧 Eposta ile doğrulama
+
+🏪 Market sistemi
+
+🤖 Discord Sistemi
 
 🌐 Maç sistemi (PvP sunucuları)
 
