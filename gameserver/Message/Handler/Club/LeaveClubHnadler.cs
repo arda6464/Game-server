@@ -24,6 +24,35 @@ public static class LeaveClubHandler
         session.Send(veri);
         account.Clubid = -1;
         account.ClubName = null;
+
+
+         ByteBuffer buffer1 = new ByteBuffer();
+            buffer1.WriteInt((int)MessageType.GetClubMessage);
+
+              ClubMessage messages = new ClubMessage
+              {
+                  messageFlags = ClubMessageFlags.HasSystem,
+                  eventType = ClubEventType.LeaveMessage,
+                  ActorName = account.Username,
+                 ActorID = account.AccountId
+                };
+        Club.Messages.Add(messages);
+       
+                buffer1.WriteInt((int)MessageType.GetClubMessage);
+                buffer1.WriteByte((byte)ClubMessageFlags.HasSystem);
+                buffer1.WriteInt((int)ClubEventType.LeaveMessage);
+            buffer1.WriteString(messages.ActorName);
+            buffer1.WriteString(messages.ActorID);
+            byte[] response = buffer1.ToArray();
+            buffer1.Dispose();
+             foreach(var member in Club.Members)
+            {
+                if(SessionManager.IsOnline(member.Accountid))
+                {
+                    Session session1 = SessionManager.GetSession(member.Accountid);
+                    session.Send(response);
+                }
+            }
        
 
        

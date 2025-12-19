@@ -24,31 +24,32 @@ public static class ClubMessageHandler
         } 
 
         Console.WriteLine($"{account.Username} adlı kullanıcı {club.ClubName ?? "PORNO"} adlı kulube {Message} mesajını gönderdi");
-
-        club.Messages.Add(new ClubMessage
-        {
-            SenderName = account.Username,
-            SenderId = account.AccountId,
-           SenderAvatarID = account.Avatarid,
-            Content = Message,
-            Timestamp = DateTime.Now
-        });
-        ClubManager.Save();
+          ClubMessage clubMessage = new ClubMessage
+          {
+              messageFlags = ClubMessageFlags.None,
+              SenderName = account.Username,
+              SenderId = account.AccountId,
+              SenderAvatarID = account.Avatarid,
+              Content = Message,
+              Timestamp = DateTime.Now
+          };
+        club.Messages.Add(clubMessage);
+      //  ClubManager.Save();
+        ByteBuffer memberbuffer = new ByteBuffer();
+                memberbuffer.WriteInt((int)MessageType.GetClubMessage);
+                memberbuffer.WriteByte((byte)clubMessage.messageFlags);
+                memberbuffer.WriteString(account.AccountId);
+                memberbuffer.WriteString(account.Username);
+                memberbuffer.WriteInt(account.Avatarid);
+                memberbuffer.WriteString(account.clubRole.ToString());
+                memberbuffer.WriteString(Message);
+                byte[] messsage = memberbuffer.ToArray();
+                memberbuffer.Dispose();
         foreach(var member in club.Members)
         {
             if(SessionManager.IsOnline(member.Accountid))
             {
                 Session membersesion = SessionManager.GetSession(member.Accountid);
-                ByteBuffer memberbuffer = new ByteBuffer();
-                memberbuffer.WriteInt((int)MessageType.SendClubMessage);
-
-                memberbuffer.WriteString(account.AccountId);
-                memberbuffer.WriteString(account.Username);
-                memberbuffer.WriteInt(account.Avatarid);
-                memberbuffer.WriteString("Üye");
-                memberbuffer.WriteString(Message);
-                byte[] messsage = memberbuffer.ToArray();
-                memberbuffer.Dispose();
                 membersesion.Send(messsage);
             }
         }

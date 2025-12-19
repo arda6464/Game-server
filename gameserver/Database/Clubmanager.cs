@@ -10,6 +10,18 @@ public enum ClubRole
     CoLeader,
     Leader
 }
+public enum ClubMessageFlags : byte
+{
+    None = 0,
+    HasTarget = 1 << 0,
+    HasSystem = 2
+}
+public enum ClubEventType : byte
+{
+    JoinMessage,
+    LeaveMessage,
+    KickMessage, // todo....
+}
 
 public class ClubMember
 {
@@ -40,11 +52,17 @@ public class Club
 }
 public class ClubMessage
 {
+    public ClubMessageFlags messageFlags; 
+    public ClubEventType eventType;
     public string? SenderId { get; set; }
     public string? SenderName { get; set; }
     public int SenderAvatarID { get; set; }
     public DateTime Timestamp { get; set; }
     public string? Content { get; set; }
+    public string? ActorName;
+    public string? ActorID;
+    public string? TargetName;
+
 }
 
 public static class ClubManager
@@ -116,7 +134,7 @@ public static class ClubManager
     #region Kulüp oluşturma
     public static Club CreateClub(string name, string aciklama, int Avatarid, string leaderAccountId)
     {
-        var leaderAccount = AccountManager.LoadAccount(leaderAccountId);
+        var leaderAccount = AccountCache.Load(leaderAccountId);
         if (leaderAccount == null) return null;
 
         var club = new Club
@@ -150,12 +168,16 @@ public static class ClubManager
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
-            
-        var newAccount = AccountManager.LoadAccount(newMemberId);
+
+        var newAccount = AccountCache.Load(newMemberId);
         if (newAccount == null) return false;
 
         if (club.Members.Any(m => m.Accountid == newMemberId.ToString()))
-            return false;
+        {
+            Console.WriteLine("bu oyuncu bu clupte");
+             return false;
+        }
+           
 
         club.Members.Add(new ClubMember
         {
@@ -169,31 +191,31 @@ public static class ClubManager
         newAccount.Clubid = club.ClubId;
         newAccount.ClubName = club.ClubName;
         Console.WriteLine("accounda club name data: " + newAccount.ClubName);
-       
+
 
         Save();
         return true;
     }
     #endregion
+    static Random random = new Random();
    public static List<Club> RandomList(int count)
 {
     var availableClubs = Clubs.Values.ToList();
     
-    // Random nesnesini static yap veya daha iyisi bir kere oluştur
-    Random random = new Random();
     
-    // Mevcut kulüplerin kopyasını al ki orijinal liste bozulmasın
+    
+    
     List<Club> tempClubs = new List<Club>(availableClubs);
     List<Club> randomClubs = new List<Club>();
 
-    // count, mevcut kulüp sayısından fazla olamaz
+    
     count = Math.Min(count, tempClubs.Count);
 
     for (int i = 0; i < count; i++)
     {
         int index = random.Next(tempClubs.Count);
         randomClubs.Add(tempClubs[index]);
-        tempClubs.RemoveAt(index); // Seçileni listeden çıkar
+        tempClubs.RemoveAt(index); 
     }
     
     return randomClubs;
@@ -206,7 +228,7 @@ public static class ClubManager
         var club = Clubs[clubId];
 
         var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
-        var targetAccount = AccountManager.LoadAccount(targetMemberId);
+        var targetAccount = AccountCache.Load(targetMemberId);
         
 
 
@@ -264,6 +286,7 @@ public static class ClubManager
             NotficationSender.Send(session,notfication);
         }
         
+        
 
         return true;
     }
@@ -299,6 +322,7 @@ public static class ClubManager
 
         club.Messages.Add(new ClubMessage
         {
+            messageFlags = ClubMessageFlags.None,
             SenderName = sender.AccountName,
             SenderId = sender.Accountid,
             Timestamp = DateTime.Now,

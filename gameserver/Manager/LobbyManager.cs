@@ -1,3 +1,28 @@
+public class TeamMessage
+{
+    public TeamMessageFlags messageFlags;
+    public TeamEventType eventType;
+    public string? SenderId { get; set; }
+    public string? SenderName { get; set; }
+    public int SenderAvatarID { get; set; }
+    public DateTime Timestamp { get; set; }
+    public string? Content { get; set; }
+    public string? TargetName{ get; set; }
+
+}
+public enum TeamMessageFlags : byte
+{
+    None = 0,
+    HasTarget = 1,
+    HasSystem = 2       // 2 olarak kalabilir, client'te de 2 olmalı
+}
+public enum TeamEventType : byte
+{
+    JoinMessage,
+    LeaveMessage,
+    KickMessage, // todo....
+    CreateMessage,
+}
 public class Lobby
 {
 
@@ -8,7 +33,7 @@ public class Lobby
 
 
     public List<AccountManager.AccountData> Players { get; set; } = new();
-    public List<ClubMessage> Messages { get; set; } = new(); // Kulüp mesajları
+    public List<TeamMessage> Messages { get; set; } = new(); // Kulüp mesajları
 
 
     public Lobby(int id, string ownerid)
@@ -20,13 +45,13 @@ public class Lobby
     {
         if (Players.Count >= MaxPlayers) return;
         Players.Add(player);
-        Console.WriteLine($"{player.Username}({player.AccountId}) odaya katıldı total count: {Players.Count}" );
+        Console.WriteLine($"{player.Username}({player.AccountId}) odaya katıldı total count: {Players.Count}");
     }
     public void RemovePlayer(string accId)
     {
         Players.RemoveAll(x => x.AccountId == accId);
     }
-    
+
 
 }
 
