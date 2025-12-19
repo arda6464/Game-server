@@ -9,7 +9,7 @@ public static class CreateAccountHandler
         string password = read.ReadString();
 
         Console.WriteLine(email);
-        var acccount = AccountManager.LoadAccount(session.AccountId);
+        var acccount = AccountCache.Load(session.AccountId);
         if (acccount == null)
         {
             Console.WriteLine("account null konum: createaccount");
@@ -20,6 +20,7 @@ public static class CreateAccountHandler
         if (isfree)
         {
             Console.WriteLine("test");
+            MessageCodeManager.Send(session, MessageCodeManager.Message.EmailAlreadyUsed);
             return; // todo send message
 
         } 

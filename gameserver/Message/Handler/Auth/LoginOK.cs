@@ -2,7 +2,7 @@ public static class LoginOK
 {
     public static void Handle(Session session, string newtoken,string newid)
     {
-        var account = AccountManager.LoadAccount(session.AccountId);
+        var account = AccountCache.Load(session.AccountId);
         ByteBuffer buffer = new ByteBuffer();
         buffer.WriteInt((int)MessageType.LoginOKResponse);
         buffer.WriteString(newtoken);

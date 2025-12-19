@@ -9,7 +9,7 @@ public static class CreateTeamHandler
 
         if (session.TeamID != 0)
         {
-            Console.WriteLine("zaten aktif bir team'de");
+            MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidName);
             return;
         }
             var Account = AccountCache.Load(session.AccountId);
@@ -24,5 +24,30 @@ public static class CreateTeamHandler
         buffer.Dispose();
         session.Send(lobby);
         session.TeamID = Lobby.ID;       
+        ByteBuffer buffer1 = new ByteBuffer();
+        buffer1.WriteInt((int)MessageType.SendTeamMessageResponse);
+        TeamMessage teamMessage = new TeamMessage
+        {
+            messageFlags = TeamMessageFlags.HasSystem,
+         eventType= TeamEventType.CreateMessage,
+            SenderName = Account.Username,
+            SenderId = Account.AccountId
+        };
+        buffer1.WriteByte((byte)teamMessage.messageFlags); // Flag önce yazılmalı!
+        buffer1.WriteInt((int)teamMessage.eventType);
+        buffer1.WriteString(teamMessage.SenderName);
+        buffer1.WriteString(teamMessage.SenderId ?? "");
+        byte[] response = buffer1.ToArray();
+        buffer1.Dispose();
+                    Console.WriteLine($"System mesajı Flag: {(int)teamMessage.messageFlags}");
+
+        foreach(var member in Lobby.Players)
+        {
+            if (SessionManager.IsOnline(member.AccountId))
+            {
+                Session session1 = SessionManager.GetSession(member.AccountId);
+                session1.Send(response);
+            }
+        }
     }
 }

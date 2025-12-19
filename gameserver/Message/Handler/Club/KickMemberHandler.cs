@@ -22,13 +22,7 @@ public static class KickMemberHandler
         var club = ClubCache.Load(account.Clubid);
         if (club == null)
         {
-            NotficationSender.Send(session, new Notfication
-            {
-                Id = 11,
-                Title = "Başarısız",
-                Message = "aradığınız club bulunamadı...",
-                iconid = 3
-            });
+            MessageCodeManager.Send(session, MessageCodeManager.Message.NotAClub);
             return;
         }
 

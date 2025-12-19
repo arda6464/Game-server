@@ -16,7 +16,7 @@ public static class SetAvatar
         // Avatar ID validasyonu (1-10 arası)
         if (Id < 1 || Id > 10)
         {
-            Logger.errorslog($"[SetAvatar] Geçersiz avatar ID: {Id} from {session.AccountId}");
+            MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidAvatar);
             return;
         }
         

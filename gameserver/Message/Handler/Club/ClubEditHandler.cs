@@ -16,12 +16,14 @@ public static class ClubEditHandler
             // İsim validasyonu
             if (string.IsNullOrWhiteSpace(ClubName) || ClubName.Length < 3 || ClubName.Length > 30)
             {
+                MessageCodeManager.Send(session, MessageCodeManager.Message.ClubUnusableName);
                 Logger.errorslog($"[ClubEditHandler] Geçersiz kulüp adı: {ClubName}");
                 return;
             }
             
             if (string.IsNullOrWhiteSpace(ClubAciklama) || ClubAciklama.Length > 200)
             {
+                MessageCodeManager.Send(session, MessageCodeManager.Message.ClubUnusableDescription);
                 Logger.errorslog($"[ClubEditHandler] Geçersiz kulüp açıklaması");
                 return;
             }
@@ -29,6 +31,7 @@ public static class ClubEditHandler
             // Avatar ID validasyonu
             if (Avatarıd < 1 || Avatarıd > 10)
             {
+                MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidAvatar);
                 Logger.errorslog($"[ClubEditHandler] Geçersiz avatar ID: {Avatarıd}");
                 return;
             }

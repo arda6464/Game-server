@@ -11,12 +11,7 @@ public static class ClubShowHandler
         var club = ClubCache.Load(clubid);
         if (club == null)
         {
-            NotficationSender.Send(session, new Notfication
-{
-    Id = 11,
-    Title = "Başarısız",
-    Message = "aradığınız club bulunamadı..."
-});
+            MessageCodeManager.Send(session, MessageCodeManager.Message.NotAClub);
             return;
         }
         ByteBuffer buffer = new ByteBuffer();
