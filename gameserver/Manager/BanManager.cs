@@ -94,7 +94,7 @@ public static class BanManager
 
     public static void BanPlayer(string targetAccountId, string adminName, string reasonText, bool perma, TimeSpan? duration = null)
     {
-        var targetAccount = AccountManager.LoadAccount(targetAccountId);
+        var targetAccount = AccountCache.Load(targetAccountId);
         if (targetAccount == null)
         {
             Logger.errorslog($"[Ban Manager] {targetAccountId} idli hesap bulunamadı, banlanma başarısız");

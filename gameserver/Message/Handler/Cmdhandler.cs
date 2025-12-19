@@ -146,11 +146,17 @@ public class Cmdhandler
                     case "testtropy":
                         Testtropy();
                         break;
+                    case "system":
+                        TestMessage();
+                        break;
                     case "mail":
                         showrank();
                         break;
                     case "Banner":
                         SendBanner();
+                        break;
+                    case "tst":
+                        SendTestMessage();
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
@@ -172,7 +178,7 @@ public class Cmdhandler
     {
 
 
-        var account = AccountManager.LoadAccount(id);
+        var account = AccountCache.Load(id);
         if (account != null)
         {
             account.Premium += 1; // date eklemedik şimdilik
@@ -378,7 +384,7 @@ public class Cmdhandler
         account.Password = "1234";
         Console.WriteLine("Eposta bağlandı");
     }
-    public static void SendBanner()
+    private static void SendBanner()
     {
         var cachedacccounts = AccountCache.GetCachedAccounts();
         foreach(var kvp in cachedacccounts)
@@ -395,6 +401,50 @@ public class Cmdhandler
             acccount.Notfications.Add(notification);
         }
     }
-    
-   
+    private static void SendTestMessage()
+    {
+        var cachedacccounts = AccountCache.GetCachedAccounts();
+        foreach (var kvp in cachedacccounts)
+        {
+            var acccount = kvp.Value;
+            if (SessionManager.IsOnline(acccount.AccountId))
+            {
+                Session session = SessionManager.GetSession(acccount.AccountId);
+                MessageCodeManager.Send(session, MessageCodeManager.Message.ClubFull);
+            }
+
+        }
+    }
+    private static void TestMessage()
+    {
+
+        var club = ClubManager.LoadClub(1);
+
+        ClubMessage message = new ClubMessage
+        {
+            messageFlags = ClubMessageFlags.HasSystem,
+            eventType = ClubEventType.JoinMessage,
+              ActorName = "arda"
+        };
+        club.Messages.Add(message);
+        ByteBuffer buffer = new ByteBuffer();
+                buffer.WriteInt((int)MessageType.GetClubMessage);
+                buffer.WriteByte((byte)ClubMessageFlags.HasSystem);
+                buffer.WriteInt((int)ClubEventType.JoinMessage);
+        buffer.WriteString(message.ActorName);
+        buffer.WriteString("dskdslkdsjkdkjsd");
+
+        foreach (var member in club.Members)
+        {
+            if (SessionManager.IsOnline(member.Accountid))
+            {
+                Session session = SessionManager.GetSession(member.Accountid);
+                session.Send(buffer.ToArray());
+            }
+        }
+        buffer.Dispose();
+        
+
+    }
+            
 }

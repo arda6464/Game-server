@@ -117,8 +117,8 @@ public static class AccountManager
         Notfication notification = new Notfication
         {
             Id = 10,
-            Title = "Yeni Düzeltmeler!",
-            Message = "Düzeltilen bazı şeyler:\n İnbox'a bildirim gelmeme hatası\n Avatar değiştirememe hatası\n Takım kodu gösterilmeme hatası\n Arkadaşlık isteği gönderirken ID'iniziz gözükmemesi\nDestek sisteminde bilet oluşturma spamı engellendi\n Marketdeki itemlerin düzgün gözükmemesi ",
+            Title = "1.2!",
+            Message = "Düzeltilen bazı şeyler:\n Kulüp oluşturma  hatası\n Markette ürünleri tam görememe hatası\n Avatar değiştirememe hatası\n kulüp artık daha stabil bir görüntü(hala hatalı)",
             ButtonText = "Tamam",
             IsViewed = false
         };

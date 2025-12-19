@@ -2,7 +2,7 @@ public static class CreateTicket
 {
     public static void Handle(Session session)
     {
-        var acccount = AccountManager.LoadAccount(session.AccountId);
+        var acccount = AccountCache.Load(session.AccountId);
         BotManager.istance.TicketSystem.CreateTicket(session.AccountId, new TicketData
         {
             Accountid = acccount.AccountId,

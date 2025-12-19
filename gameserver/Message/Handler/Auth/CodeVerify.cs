@@ -17,7 +17,7 @@ public static class CodeVerify
         switch (data.Type)
         {
             case VerificationType.Create:
-                CrateAccount(session.AccountId,data.Email,data.Password);
+                CrateAccount(session,session.AccountId,data.Email,data.Password);
                 break;
             case VerificationType.Login:
                 LoginAccount(session, data.Email);
@@ -27,14 +27,25 @@ public static class CodeVerify
         }
 
     }
-    private static void CrateAccount(string acccountId, string email, string password)
+    private static void CrateAccount(Session session, string acccountId, string email, string password)
     {
-        var acccount = AccountManager.LoadAccount(acccountId);
+        var acccount = AccountCache.Load(acccountId);
         if (acccount == null) return;
 
         acccount.Email = email;
         acccount.Password = password;
         Console.WriteLine($"epostaya kayıt olundu!: eposta: {acccount.Email} password: {acccount.Password}");
+        Notfication notfication = new Notfication
+        {
+            Id = 12,
+            Sender = "Sistem",
+            Message = "Kayıt olduğun için teşekkürler!\n bu ödül senin için <3",
+            rewardItemType = RewardItemType.RewardItemTypes.Gem,
+            DonationCount = 300
+        };
+        NotficationSender.Send(session, notfication);
+        acccount.inboxesNotfications.Add(notfication);
+
     }    
     private static void LoginAccount(Session session,string email)
     {
