@@ -9,7 +9,7 @@ class Program
     static Thread? cmdhandlerthread;
     static Thread? pingthread;
     static Thread? botthread;
-    double test = 0.7;
+  
     static void Main()
     {
         Console.Clear();
@@ -39,7 +39,8 @@ class Program
 
         // Cache'leri başlat
         BotManager bot = new BotManager();
-       
+        Config.LoadFromFile("config.json");
+        Config.StartWatcher("config.json");
         AccountCache.Init();
         ClubCache.Init();
         BanManager.Init();
@@ -47,23 +48,23 @@ class Program
 
         // Thread'leri başlat
         botthread = new Thread(() => bot.Start());
-        botthread.Start();
+        //botthread.Start();
         cmdhandlerthread = new Thread(Cmdhandler.Start);
         cmdhandlerthread.Start();
         
-        pingthread = new Thread(SessionManager.PingManager);
+        pingthread = new Thread(() => SessionManager.PingManager(true));
         pingthread.Start();
         
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-        // GameServer'ı başlat
         gameserver = new GameServer();
-        TickManager tickManager = new TickManager(20); // 20 tick per second
+        Console.WriteLine($"Sunucu {Config.Instance.ServerVersion} sürümünde!");
+        TickManager tickManager = new TickManager(20); 
         
         try
         {
             tickManager.Start();
-            gameserver.Start();
+            gameserver.Start(Config.Instance.Port);
             
             
             Console.WriteLine("[Program] Server çalışıyor. Çıkmak için Ctrl+C'ye basın...");
@@ -85,6 +86,9 @@ class Program
         
         try
         {
+            // Config watcher'ı durdur
+            Config.StopWatcher();
+            
             Maintance.StartMaintance(TimeSpan.FromHours(3), true);
             // Sadece dataları kaydet
             AccountCache.SaveAll();
