@@ -5,7 +5,7 @@ public static class MessageManager
     public static void HandleMessage(Session session, byte[] data)
     {
         int value = BitConverter.ToInt32(data, 0);
-        if ((MessageType)value == MessageType.Ping) return;
+        if ((MessageType)value != MessageType.Ping)
          Console.WriteLine($"[MessageManager] {session.AccountId} kullanıcısından {((MessageType)value).ToString()} mesajı alındı.");
         switch ((MessageType)value)
         {
@@ -121,6 +121,12 @@ public static class MessageManager
                 break;
             case MessageType.SupportMessageSend:
                 GetChatMessage.Handle(session, data);
+                break;
+            case MessageType.ClubCreateRequest:
+                ClubCreateHandler.Handle(session, data);
+                break;
+            case MessageType.Alive:
+                session.LastAlive = DateTime.Now;
                 break;
             default:
                 Logger.errorslog("[MESSAGE MANAGER] gelen paket id bulunamadı: " + value);

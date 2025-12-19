@@ -4,8 +4,7 @@ public static class AuthLoginHandler
 {
     public static void Handle(Session session, byte[] data)
     {
-        string ServerVersion = "1.0"; // todo confid.json set
-
+       
 
         ByteBuffer buffer = new ByteBuffer();
         buffer.WriteBytes(data, true);
@@ -24,7 +23,7 @@ public static class AuthLoginHandler
 
         ByteBuffer byteBuffer = new ByteBuffer();
         // kontrol
-        if (ServerVersion != ClientVersion)
+        if (Config.Instance.ServerVersion != ClientVersion)
         {
             Notfication notification = new Notfication
             {
@@ -32,7 +31,7 @@ public static class AuthLoginHandler
                 Title = "Güncelleme mevcut",
                 Message = "oyunumuzu güncelledik yenilikleri görmek için indirin!",
                 ButtonText = "indir",
-                Url = "https://arda64.xyz/"
+                Url = Config.Instance.UpdateLink
             };
             NotficationSender.Send(session,notification);
             return;
@@ -73,8 +72,9 @@ public static class AuthLoginHandler
             Loginfailed.Send(session, mesage, 1);
             return;
         }
+        PlayerSetPresence.Handle(account.AccountId, PlayerSetPresence.PresenceState.Online);
         session.AccountId = account.AccountId;
-        
+         
         session.PlayerData = new Player
         {
             AccountId = account.AccountId,
@@ -135,11 +135,28 @@ public static class AuthLoginHandler
         }
         foreach (var message in (club?.Messages ?? new List<ClubMessage>()))
         {
-            byteBuffer.WriteString(message.SenderId);
+            byteBuffer.WriteByte((byte)message.messageFlags);
+           switch((ClubMessageFlags)message.messageFlags)
+             {
+                case ClubMessageFlags.None:
+                 byteBuffer.WriteString(message.SenderId);
             byteBuffer.WriteString(message.SenderName);
             byteBuffer.WriteInt(message.SenderAvatarID);
             byteBuffer.WriteString("Üye"); // todo enum send
             byteBuffer.WriteString(message.Content);
+                    break;
+                case ClubMessageFlags.HasSystem:
+                    byteBuffer.WriteInt((int)message.eventType);
+                    byteBuffer.WriteString(message.ActorName);
+                    byteBuffer.WriteString(message.ActorID ??"");
+                    break;
+                case ClubMessageFlags.HasTarget:
+                 byteBuffer.WriteInt((int)message.eventType);
+                    byteBuffer.WriteString(message.ActorName);
+                    byteBuffer.WriteString(message.ActorID);
+                    byteBuffer.WriteString(message.TargetName);
+                    break;
+            }
         }
         if (club == null) byteBuffer.WriteInt(0);
         else byteBuffer.WriteInt(club.Members.Count);

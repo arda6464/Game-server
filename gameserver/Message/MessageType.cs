@@ -8,6 +8,10 @@ public enum MessageType : int
     Ping,
     Pong,
     Maintance,
+    MessageCode,
+    Alive,
+    Presence,
+
 
     // Authentication
     AuthLoginRequest,
@@ -68,8 +72,6 @@ public enum MessageType : int
 
     // notfications
     Notification,
-    AddFriendsRequest,
-    AddFriendsResponse,
     AllNotficationViewed,
 
     // Leaderboards
@@ -80,6 +82,9 @@ public enum MessageType : int
 
 
     // Club
+
+    ClubCreateRequest,
+    ClubCreateResponse,
     GetRandomClubRequest,
     GetRandomClubResponse,
     ClubShowRequest,
@@ -125,13 +130,12 @@ public enum MessageType : int
     GetAllMarketItemsResponse,
 
 
-
     // Support
     SupportMessageSend,
     SupportMessageResponse,
     SupporCreateTicketRequest,
     SupporCreateTicketResponse,
-    
+
 
 
 }

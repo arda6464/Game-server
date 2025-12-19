@@ -28,25 +28,27 @@ public static class SessionManager
     }
     public static int Count() => activeSessions.Count();
 
-    public static void PingManager()
+    public static void PingManager(bool running)
     {
-        bool s = true;
+       
         Console.WriteLine("Ping Manager is started");
-      /*  while(s)
+        while(running)
         {
+            var now = DateTime.Now;
             foreach (var csession in activeSessions)
             {
                 // Check ping timeout (30 saniye ping alınmazsa disconnect)
                 var session = csession.Value;
                 var timeSinceLastPing = DateTime.Now - session.LastPingSent;
-                
-                if (timeSinceLastPing.TotalSeconds > 30)
+
+                if (timeSinceLastPing.TotalSeconds > 20)
                 {
                     Logger.errorslog($"[PingManager] Ping timeout for {session.AccountId}, closing connection.");
                     session.Close();
                 }
+                
             }
-            Thread.Sleep(1000 * 20);
-        }*/
+            Thread.Sleep(1000 * 10);
+        }
     }
 }

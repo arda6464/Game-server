@@ -10,10 +10,12 @@ public class Session
     public Player? PlayerData { get; set; }
     public string AccountId { get; set; }
     public DateTime LastPingSent { get; set; }
+    public DateTime LastAlive { get; set; }
     public int LastPing { get; set; }
     public string DeviceID { get; set; }
     public string IP { get; set; }
     public int TeamID = 0;
+
    
     
     private bool _isClosed = false; // ✅ YENİ: Çift çağrıyı önlemek için flag
@@ -103,7 +105,7 @@ public class Session
         {
             if (_isClosed) 
             {
-                Console.WriteLine($"[Close] {AccountId} ZATEN KAPATILMIŞ - İkinci çağrı engellendi!");
+              //  Console.WriteLine($"[Close] {AccountId} ZATEN KAPATILMIŞ - İkinci çağrı engellendi!");
                 return;
             }
             _isClosed = true;
@@ -143,5 +145,6 @@ public class Session
             MatchMaking.RemoveQueue(this);
 
         Console.WriteLine($"[Session] {AccountId ?? "Unknown"} bağlantısı kapatıldı.");
+        PlayerSetPresence.Handle(AccountId, PlayerSetPresence.PresenceState.Offline);
     }
 }
