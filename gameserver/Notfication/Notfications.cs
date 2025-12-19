@@ -8,13 +8,27 @@ public class Notfication
     public string Url;
     public int iconid = 2;
     public string Sender;
-    public DateTime Timespam; 
+    public DateTime Timespam = DateTime.Now;
+    public RewardItemType.RewardItemTypes rewardItemType;
+    public int DonationCount;
+    public bool İsclamed;
 
 
 
-   
-     public Notfication()
+    public Notfication()
     {
+    }
+}
+public class RewardItemType
+{
+    public enum RewardItemTypes
+
+    {
+        Chacter,
+        Skin,
+        Gem,
+        Coin
+
     }
 }
 

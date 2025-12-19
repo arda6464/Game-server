@@ -41,6 +41,9 @@ public static class NotficationSender
                     buffer.WriteBool(notification.IsViewed);
                     long unixTime = new DateTimeOffset(notification.Timespam.ToUniversalTime()).ToUnixTimeSeconds();
                     buffer.WriteLong(unixTime);
+                    buffer.WriteInt((int)notification.rewardItemType);
+                    buffer.WriteInt(notification.DonationCount);
+                    buffer.WriteBool(notification.İsclamed);
                 }
                 break;
                 
