@@ -8,8 +8,8 @@ public static class EmailServiceSync
     // Static olarak tanımlanan SMTP ayarları
     private static string smtpServer = "smtp.gmail.com";
     private static int smtpPort = 587;
-    private static string smtpUsername = "";
-    private static string smtpPassword = "";
+    private static string smtpUsername = Config.Instance.Email;
+    private static string smtpPassword = Config.Instance.EmailPassword;
     private static bool useSSL = true;
     private static string fromEmail = "noreply@sirketiniz.com";
     private static string fromName = "Doğrulama Sistemi";

@@ -32,9 +32,9 @@ public BotManager()
             Client.Ready += ReadyAsync;
             Client.MessageReceived += MessageReceivedAsync;
 
-            string token = "";
+            
 
-            await Client.LoginAsync(TokenType.Bot, token);
+            await Client.LoginAsync(TokenType.Bot, Config.Instance.BotToken);
             await Client.StartAsync();
 
             Console.WriteLine("🤖 Bot çalışıyor...");
