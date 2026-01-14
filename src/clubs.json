@@ -1,0 +1,330 @@
+{
+  "1": {
+    "Members": [
+      {
+        "AccountName": "tsttt",
+        "Accountid": "K3M1REI2",
+        "Role": 2,
+        "NameColorID": 1,
+        "AvatarID": 1
+      },
+      {
+        "AccountName": "dfdf",
+        "Accountid": "GDKV8W90",
+        "Role": 0,
+        "NameColorID": 1,
+        "AvatarID": 2
+      },
+      {
+        "AccountName": "amamama",
+        "Accountid": "CWRQGTAB",
+        "Role": 0,
+        "NameColorID": 1,
+        "AvatarID": 1
+      },
+      {
+        "AccountName": "arda",
+        "Accountid": "4P4ZDHN8",
+        "Role": 0,
+        "NameColorID": 1,
+        "AvatarID": 1
+      },
+      {
+        "AccountName": "arda",
+        "Accountid": "VHJ6K9DC",
+        "Role": 0,
+        "NameColorID": 1,
+        "AvatarID": 1
+      }
+    ],
+    "ClubId": 1,
+    "OwnerAccountId": null,
+    "MessageIdCounter": 1,
+    "ClubName": "testtt",
+    "Clubaciklama": "testtttr",
+    "ClubAvatarID": 1,
+    "TotalKupa": null,
+    "Messages": [
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "K3M1REI2",
+        "SenderName": "tsttt",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-17T21:53:36.2221247+03:00",
+        "Content": "sa"
+      },
+      {
+        "messageFlags": 2,
+        "eventType": 0,
+        "ActorName": "arda",
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": null,
+        "SenderName": null,
+        "SenderAvatarID": 0,
+        "Timestamp": "0001-01-01T00:00:00",
+        "Content": null
+      },
+      {
+        "messageFlags": 2,
+        "eventType": 0,
+        "ActorName": "arda",
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": null,
+        "SenderName": null,
+        "SenderAvatarID": 0,
+        "Timestamp": "0001-01-01T00:00:00",
+        "Content": null
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "K3M1REI2",
+        "SenderName": "tsttt",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-17T22:12:38.4920322+03:00",
+        "Content": "test"
+      },
+      {
+        "messageFlags": 2,
+        "eventType": 0,
+        "ActorName": "amamama",
+        "ActorID": "CWRQGTAB",
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": null,
+        "SenderName": null,
+        "SenderAvatarID": 0,
+        "Timestamp": "0001-01-01T00:00:00",
+        "Content": null
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "CWRQGTAB",
+        "SenderName": "amamama",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-17T23:53:42.6557892+03:00",
+        "Content": "aa"
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "CWRQGTAB",
+        "SenderName": "amamama",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-17T23:53:49.3609936+03:00",
+        "Content": "heh fixxinnng"
+      },
+      {
+        "messageFlags": 2,
+        "eventType": 1,
+        "ActorName": "amamama",
+        "ActorID": "CWRQGTAB",
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": null,
+        "SenderName": null,
+        "SenderAvatarID": 0,
+        "Timestamp": "0001-01-01T00:00:00",
+        "Content": null
+      },
+      {
+        "messageFlags": 2,
+        "eventType": 0,
+        "ActorName": "amamama",
+        "ActorID": "CWRQGTAB",
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": null,
+        "SenderName": null,
+        "SenderAvatarID": 0,
+        "Timestamp": "0001-01-01T00:00:00",
+        "Content": null
+      },
+      {
+        "messageFlags": 2,
+        "eventType": 0,
+        "ActorName": "arda",
+        "ActorID": "4P4ZDHN8",
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": null,
+        "SenderName": null,
+        "SenderAvatarID": 0,
+        "Timestamp": "0001-01-01T00:00:00",
+        "Content": null
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "CWRQGTAB",
+        "SenderName": "amamama",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-27T00:45:37.4549317+03:00",
+        "Content": "selam"
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "CWRQGTAB",
+        "SenderName": "amamama",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-27T00:45:40.339775+03:00",
+        "Content": "dsds"
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "CWRQGTAB",
+        "SenderName": "amamama",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-27T00:45:46.0892894+03:00",
+        "Content": "güzel oldu"
+      },
+      {
+        "messageFlags": 2,
+        "eventType": 0,
+        "ActorName": "arda",
+        "ActorID": "VHJ6K9DC",
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": null,
+        "SenderName": null,
+        "SenderAvatarID": 0,
+        "Timestamp": "0001-01-01T00:00:00",
+        "Content": null
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "VHJ6K9DC",
+        "SenderName": "arda",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-27T20:08:05.8320795+03:00",
+        "Content": "test"
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "VHJ6K9DC",
+        "SenderName": "arda",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-27T20:20:14.0302955+03:00",
+        "Content": "aaaaa"
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "VHJ6K9DC",
+        "SenderName": "arda",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-27T20:20:18.9482488+03:00",
+        "Content": "sonunda"
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 0,
+        "SenderId": "VHJ6K9DC",
+        "SenderName": "arda",
+        "SenderAvatarID": 1,
+        "Timestamp": "2025-12-27T20:33:23.0462764+03:00",
+        "Content": "sssss"
+      }
+    ]
+  },
+  "2": {
+    "Members": [
+      {
+        "AccountName": "arda64",
+        "Accountid": "WMBSQXG1",
+        "Role": 2,
+        "NameColorID": 1,
+        "AvatarID": 1
+      }
+    ],
+    "ClubId": 2,
+    "OwnerAccountId": "WMBSQXG1",
+    "MessageIdCounter": 3,
+    "ClubName": "testtt",
+    "Clubaciklama": "testtttt",
+    "ClubAvatarID": 1,
+    "TotalKupa": 0,
+    "Messages": [
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 1,
+        "SenderId": "WMBSQXG1",
+        "SenderName": "arda64",
+        "SenderAvatarID": 1,
+        "Timestamp": "2026-01-04T00:02:16.9904929+03:00",
+        "Content": "sa"
+      },
+      {
+        "messageFlags": 0,
+        "eventType": 0,
+        "ActorName": null,
+        "ActorID": null,
+        "TargetName": null,
+        "MessageId": 2,
+        "SenderId": "WMBSQXG1",
+        "SenderName": "arda64",
+        "SenderAvatarID": 1,
+        "Timestamp": "2026-01-04T00:02:23.6969901+03:00",
+        "Content": "/test"
+      }
+    ]
+  }
+}

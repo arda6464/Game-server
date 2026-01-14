@@ -1,0 +1,159 @@
+﻿[2025-11-11 20:02:19] [ERROR] hesaplardan biri null
+[2025-11-11 20:11:03] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 5
+[2025-11-12 11:59:11] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-11-13 17:33:36] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-11-13 17:33:53] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-11-15 17:47:19] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-11-16 00:57:39] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-04 16:48:22] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:22] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:26] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-04 16:48:26] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-05 23:19:06] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-05 23:19:07] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-05 23:19:09] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-06 14:07:34] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-06 14:07:36] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-06 14:07:37] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-06 14:07:37] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-06 15:04:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-06 15:04:18] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-06 15:04:19] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-06 15:04:19] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-06 15:04:19] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
+[2025-12-07 15:14:58] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 15:20:38] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 15:27:27] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 15:45:39] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 15:51:57] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 15:56:06] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 15:57:16] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 16:35:30] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 16:39:55] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 16:41:45] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 16:43:06] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 16:43:46] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 16:44:20] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 16:47:15] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 16:51:54] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 17:03:36] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 17:08:00] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-07 18:12:48] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
+[2025-12-07 18:45:17] [ERROR]  adlı istek bulunamadı
+[2025-12-07 21:25:40] [ERROR]  adlı istek bulunamadı
+[2025-12-07 21:26:39] [ERROR] arda64best zaten arrd'ye istek göndermiş
+[2025-12-07 21:33:40] [ERROR] arda64best zaten arrd'ye istek göndermiş
+[2025-12-07 21:35:54] [ERROR]  adlı istek bulunamadı
+[2025-12-07 21:36:20] [ERROR]  adlı istek bulunamadı
+[2025-12-07 21:37:19] [ERROR]  adlı istek bulunamadı
+[2025-12-07 21:37:41] [ERROR]  adlı istek bulunamadı
+[2025-12-07 21:43:16] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2025-12-07 21:43:16] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2025-12-07 21:43:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
+[2025-12-07 21:43:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
+[2025-12-07 21:43:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2025-12-07 21:43:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2025-12-07 21:43:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
+[2025-12-07 21:43:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
+[2025-12-07 21:43:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
+[2025-12-07 21:43:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
+[2025-12-07 21:43:26] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1000
+[2025-12-10 00:10:25] [ERROR] [ClubEditHandler] Geçersiz kulüp adı: s
+[2025-12-11 20:37:52] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-11 21:28:03] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-11 21:54:32] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
+[2025-12-12 19:22:52] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-12 19:55:09] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
+[2025-12-12 20:03:19] [ERROR] [Program] Veri kaydetme hatası: Object reference not set to an instance of an object.
+[2025-12-12 20:19:50] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-13 02:01:11] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 12
+[2025-12-13 21:57:31] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-14 01:01:20] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-14 21:53:25] [ERROR] [CMD HANDLER] hata: Object reference not set to an instance of an object.
+[2025-12-14 21:53:32] [ERROR] [CMD HANDLER] hata: Object reference not set to an instance of an object.
+[2025-12-15 23:46:05] [ERROR] [ClubEditHandler] Geçersiz kulüp adı: fd
+[2025-12-17 21:00:56] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-17 23:49:53] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-18 23:10:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 45
+[2025-12-18 23:10:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 45
+[2025-12-18 23:11:02] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 45
+[2025-12-19 23:35:21] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 9
+[2025-12-19 23:35:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 9
+[2025-12-19 23:38:52] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-19 23:39:08] [ERROR] [PingManager] Ping timeout for CWRQGTAB, closing connection.
+[2025-12-19 23:39:48] [ERROR] [PingManager] Ping timeout for 4P4ZDHN8, closing connection.
+[2025-12-19 23:40:28] [ERROR] [PingManager] Ping timeout for CWRQGTAB, closing connection.
+[2025-12-19 23:40:58] [ERROR] [PingManager] Ping timeout for CWRQGTAB, closing connection.
+[2025-12-19 23:42:29] [ERROR] [PingManager] Ping timeout for 4P4ZDHN8, closing connection.
+[2025-12-19 23:46:21] [ERROR] [PingManager] Ping timeout for CWRQGTAB, closing connection.
+[2025-12-19 23:47:11] [ERROR] [PingManager] Ping timeout for 4P4ZDHN8, closing connection.
+[2025-12-26 23:41:43] [ERROR] [Config] Dosya bulunamadı: 
+[2025-12-26 23:41:43] [ERROR] [Config] Dosya bulunamadı: 
+[2025-12-26 23:41:43] [ERROR] [Config] Dosya bulunamadı: 
+[2025-12-27 00:12:13] [ERROR] amamama zaten arda'nin arkadaşı
+[2025-12-27 01:17:56] [ERROR]  adlı istek bulunamadı
+[2025-12-27 01:19:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
+[2025-12-27 01:19:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
+[2025-12-27 01:19:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2025-12-27 01:19:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2025-12-27 01:19:58] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1000
+[2025-12-27 01:19:58] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1000
+[2025-12-27 01:19:59] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
+[2025-12-27 01:19:59] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
+[2025-12-27 16:58:44] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 47
+[2025-12-27 18:56:16] [ERROR] Account not found: 
+[2025-12-27 18:56:57] [ERROR] [Config] Dosya bulunamadı: 
+[2025-12-27 18:56:57] [ERROR] [Config] Dosya bulunamadı: 
+[2025-12-27 18:57:03] [ERROR] Account not found: 
+[2025-12-27 18:57:37] [ERROR] Account not found: 
+[2025-12-27 19:13:12] [ERROR] Account not found: 
+[2025-12-27 19:13:17] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2025-12-27 20:30:35] [ERROR] Account not found: 
+[2025-12-31 18:52:26] [ERROR] [CMD HANDLER] hata: Object reference not set to an instance of an object.
+[2026-01-03 23:13:03] [ERROR] Account not found: 
+[2026-01-03 23:13:34] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-01-03 23:28:58] [ERROR] [ClubEditHandler] Geçersiz kulüp adı: 
+[2026-01-05 18:16:34] [ERROR] Account not found: 
+[2026-01-05 18:16:43] [ERROR] Account not found: 
+[2026-01-05 18:44:06] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 14, position 0.
+[2026-01-05 18:44:07] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 14, position 0.
+[2026-01-05 18:44:22] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 14, position 0.
+[2026-01-05 18:44:22] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 14, position 0.
+[2026-01-05 18:44:28] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'DiscordAdminIDs', line 14, position 0.
+[2026-01-05 18:44:29] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'DiscordAdminIDs', line 14, position 0.
+[2026-01-05 18:44:30] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'DiscordAdminIDs', line 14, position 0.
+[2026-01-05 18:44:31] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'DiscordAdminIDs', line 14, position 0.
+[2026-01-05 18:44:35] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'DiscordAdminIDs', line 14, position 0.
+[2026-01-05 18:44:36] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'DiscordAdminIDs', line 14, position 0.
+[2026-01-05 19:05:54] [ERROR] Account not found: 
+[2026-01-05 22:14:36] [ERROR] [Config] JSON parse hatası: Unterminated string. Expected delimiter: ". Path 'DiscordAdminIDs', line 14, position 1.
+[2026-01-05 22:14:36] [ERROR] [Config] JSON parse hatası: Unterminated string. Expected delimiter: ". Path 'DiscordAdminIDs', line 14, position 1.
+[2026-01-05 22:14:39] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'DiscordAdminIDs', line 14, position 1.
+[2026-01-05 22:14:40] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'DiscordAdminIDs', line 14, position 1.
+[2026-01-05 22:14:54] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
+[2026-01-05 22:14:54] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
+[2026-01-05 22:14:55] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
+[2026-01-05 22:14:56] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
+[2026-01-05 22:14:57] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
+[2026-01-05 22:14:58] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
+[2026-01-08 20:34:40] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 93
+[2026-01-08 20:35:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 93
+[2026-01-09 17:24:45] [ERROR] Account not found: 
+[2026-01-10 21:47:12] [ERROR] [PingManager] Ping timeout for WMBSQXG1, closing connection.
+[2026-01-12 13:12:04] [ERROR] Account not found: 
+[2026-01-12 13:14:13] [ERROR] Account not found: 
+[2026-01-12 20:49:42] [ERROR] Account not found: 
+[2026-01-12 20:50:29] [ERROR] Account not found: 
+[2026-01-12 20:50:53] [ERROR] Account not found: 
+[2026-01-12 20:51:25] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor

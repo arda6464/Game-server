@@ -1,0 +1,23 @@
+{
+  "Port": 5000,
+  "anti-ddos": false,
+  "BotToken": "MTI1NDUzNzE0ODQ5MzcyNTc3Ng.GZwjtH.mroGL5G_QgkY7xjOTt6n3g3ytT_VVhF7PNIJmw",
+  "ChannelId": 0,
+  "DiscordAdminIDs": [
+    123456789012345678,
+    987654321098765432
+  ],
+  "CreatorCodes": [
+    "erder",
+    "xeon",
+    "santer",
+    "spz",
+    "8Hacc"
+  ],
+  "AllowEmulators": false,
+  "Maintance": true,
+  "EmailPassword": "wkft iclc qhaw nged",
+  "Email": "ardatutku999@gmail.com",
+  "UpdateLink": "sstd",
+  "ServerVersion": "1.5"
+}
