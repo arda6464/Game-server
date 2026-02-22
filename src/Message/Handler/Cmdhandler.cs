@@ -99,7 +99,7 @@ public class Cmdhandler
                                     string buttonText = Console.ReadLine();
                                     Notfication notfication = new Notfication
                                     {
-                                        Id = 10,
+                                         type =  (NotficationTypes.NotficationType)id,
                                         Title = title,
                                         Message = message,
                                         ButtonText = buttonText,
@@ -192,6 +192,20 @@ public class Cmdhandler
                         break;
                     case "tst":
                         SendTestMessage();
+                        break;
+                    case "quest":
+                        TestQuest();
+                        break;
+                    case "push":
+                        {
+                            Console.Write("ID: ");
+                            string acccid = Console.ReadLine();
+                            Console.Write("Title: ");
+                            string title = Console.ReadLine();
+                            Console.Write("Message: ");
+                            string message = Console.ReadLine();
+                            FireTOken(title, message, acccid);
+                        }
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Blue;
@@ -345,7 +359,7 @@ public class Cmdhandler
         Console.WriteLine("slm");
         Notfication inbox = new Notfication
         {
-            Id = 12,
+             type =  NotficationTypes.NotficationType.Inbox,
             Sender = "Sistem",
             Message = "Teşekkür ederiz",
             IsViewed = false,
@@ -427,7 +441,7 @@ public class Cmdhandler
             var acccount = kvp.Value;
             Notfication notification = new Notfication
             {
-                Id = 10,
+                 type =  NotficationTypes.NotficationType.banner,
                 Title = "Yeni Düzeltmeler!",
                 Message = "Düzeltilen bazı şeyler:\n İnbox'a bildirim gelmeme hatası\n Avatar değiştirememe hatası\n Takım kodu gösterilmeme hatası\n Arkadaşlık isteği gönderirken ID'iniziz gözükmemesi\nDestek sisteminde bilet oluşturma spamı engellendi\n Marketdeki itemlerin düzgün gözükmemesi ",
                 ButtonText = "Tamam",
@@ -459,13 +473,13 @@ public class Cmdhandler
         {
             messageFlags = ClubMessageFlags.HasSystem,
             eventType = ClubEventType.JoinMessage,
-              ActorName = "arda"
+            ActorName = "arda"
         };
         club.Messages.Add(message);
         ByteBuffer buffer = new ByteBuffer();
-                buffer.WriteInt((int)MessageType.GetClubMessage);
-                buffer.WriteByte((byte)ClubMessageFlags.HasSystem);
-                buffer.WriteInt((int)ClubEventType.JoinMessage);
+        buffer.WriteShort((short)MessageType.SendTeamMessageResponse);
+        buffer.WriteByte((byte)ClubMessageFlags.HasSystem);
+        buffer.WriteInt((int)ClubEventType.JoinMessage);
         buffer.WriteString(message.ActorName);
         buffer.WriteString("dskdslkdsjkdkjsd");
 
@@ -478,8 +492,74 @@ public class Cmdhandler
             }
         }
         buffer.Dispose();
-        
+    }
+    private static void TestQuest()
+    {
+        Console.Write("id: ");
+        string id = Console.ReadLine();
+        var acccount = AccountCache.Load(id);
+        if (acccount == null)
+        {
+            Console.WriteLine("Hesap bulunamadı");
+            return;
+        }
 
+        Quest quest = new Quest
+        {
+            Type = Quest.MissionType.SendChatMessage,
+            ID = 1,
+            IsCompleted = false,
+            CurrentGoal = 0,
+            IsDailyQuest = true,
+            IsPremium = false,
+            RewardType = ItemType.Gems,
+            Goal = 200,
+            Target = 3
+        };
+        Quest quest2 = new Quest
+        {
+            Type = Quest.MissionType.JoinTeam,
+            ID = 2,
+            IsCompleted = false,
+            CurrentGoal = 0,
+            IsDailyQuest = true,
+            IsPremium = true,
+            RewardType = ItemType.Coins,
+            Goal = 100,
+            Target = 5
+        };
+        Quest quest3 = new Quest
+        {
+            Type = Quest.MissionType.SendChatMessage,
+            ID = 3,
+            IsCompleted = false,
+            CurrentGoal = 0,
+            IsDailyQuest = false,
+            IsPremium = false,
+            RewardType = ItemType.Gems,
+            Goal = 1000,
+            Target = 10
+        };
+
+        acccount.Quests.Add(quest);
+        acccount.Quests.Add(quest2);
+        acccount.Quests.Add(quest3);
+    }
+    private static void FireTOken(string title, string message,string accountıd)
+    {
+        var acccount = AccountCache.Load(accountıd);
+        if (acccount == null)
+        {
+            Console.WriteLine("Hesap bulunamadı");
+            return;
+        }
+        Notfication notfication = new Notfication
+        {
+            type = NotficationTypes.NotficationType.Push,
+            Title = title,
+            Message = message
+        };
+       AndroidNotficationManager.SendNotification(title, message, acccount.FBNToken);
     }
             
 }

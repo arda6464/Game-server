@@ -4,7 +4,7 @@ public static class ClubSearchHandler
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        int _ = read.ReadInt();
+        int _ = read.ReadShort();
 
         string clubname = read.ReadString().ToLower();
         read.Dispose();

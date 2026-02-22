@@ -157,3 +157,357 @@
 [2026-01-12 20:50:29] [ERROR] Account not found: 
 [2026-01-12 20:50:53] [ERROR] Account not found: 
 [2026-01-12 20:51:25] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-01-15 12:34:15] [ERROR] Account not found: 
+[2026-01-15 12:34:50] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-01-15 12:38:14] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-01-15 13:28:17] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-01-18 15:20:50] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 24, position 0.
+[2026-01-18 15:20:51] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 24, position 0.
+[2026-01-18 15:20:52] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'QuestRefeshHour', line 24, position 0.
+[2026-01-18 15:20:52] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'QuestRefeshHour', line 24, position 0.
+[2026-01-18 15:57:48] [ERROR] Hata kaydederken: Collection was modified; enumeration operation may not execute.
+[2026-01-18 16:02:40] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
+[2026-01-18 16:02:40] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2026-01-18 16:02:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2026-01-18 16:02:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2026-01-18 16:02:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2026-01-18 16:02:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
+[2026-01-18 16:02:43] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
+[2026-01-18 16:02:44] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1000
+[2026-01-18 23:42:01] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'QuestRefeshHour', line 25, position 0.
+[2026-01-18 23:42:01] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'QuestRefeshHour', line 25, position 0.
+[2026-01-18 23:42:16] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'QuestRefeshHour', line 25, position 0.
+[2026-01-18 23:42:16] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'QuestRefeshHour', line 25, position 0.
+[2026-01-18 23:42:20] [ERROR] [Config] JSON parse hatası: Error converting value {null} to type 'System.DateTime'. Path 'SeasonQuestRefeshTime', line 24, position 31.
+[2026-01-18 23:42:21] [ERROR] [Config] JSON parse hatası: Error converting value {null} to type 'System.DateTime'. Path 'SeasonQuestRefeshTime', line 24, position 31.
+[2026-01-18 23:42:55] [ERROR] [Config] Dosya bulunamadı, default config oluşturuldu: C:\project\Game-server\src\config.json
+[2026-01-19 00:18:47] [ERROR] Hata kaydederken: Collection was modified; enumeration operation may not execute.
+[2026-01-19 13:26:10] [ERROR] Account not found: 
+[2026-01-19 13:28:03] [ERROR] Account not found: 
+[2026-01-19 13:43:19] [ERROR] Account not found: 
+[2026-01-19 13:45:02] [ERROR] Account not found: 
+[2026-01-19 13:46:38] [ERROR] Account not found: 
+[2026-01-19 13:52:16] [ERROR] Account not found: 
+[2026-01-19 13:53:43] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:12] [ERROR] Account not found: 
+[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:14] [ERROR] Account not found: 
+[2026-01-20 04:33:14] [ERROR] Account not found: 
+[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:14] [ERROR] Account not found: 
+[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 04:33:17] [ERROR] Account not found: 
+[2026-01-20 04:33:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 04:33:17] [ERROR] Account not found: 
+[2026-01-20 04:33:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 04:33:17] [ERROR] Account not found: 
+[2026-01-20 04:33:17] [ERROR] Account not found: 
+[2026-01-20 04:33:17] [ERROR] Account not found: 
+[2026-01-20 04:33:17] [ERROR] Account not found: 
+[2026-01-20 14:40:48] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:48] [ERROR] Account not found: 
+[2026-01-20 14:40:48] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:48] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:50] [ERROR] Account not found: 
+[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:51] [ERROR] Account not found: 
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:51] [ERROR] Account not found: 
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:51] [ERROR] Account not found: 
+[2026-01-20 14:40:51] [ERROR] Account not found: 
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:51] [ERROR] Account not found: 
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:51] [ERROR] Account not found: 
+[2026-01-20 14:40:51] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:52] [ERROR] Account not found: 
+[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:53] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:53] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:53] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:53] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:53] [ERROR] Account not found: 
+[2026-01-20 14:40:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
+[2026-01-20 14:40:54] [ERROR] Account not found: 
+[2026-01-20 14:40:54] [ERROR] Account not found: 
+[2026-01-20 14:40:54] [ERROR] Account not found: 
+[2026-01-20 14:40:54] [ERROR] Account not found: 
+[2026-01-20 14:40:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:54] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:54] [ERROR] Account not found: 
+[2026-01-20 14:40:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:54] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:54] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:54] [ERROR] Account not found: 
+[2026-01-20 14:40:54] [ERROR] Account not found: 
+[2026-01-20 14:40:54] [ERROR] Account not found: 
+[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:55] [ERROR] Account not found: 
+[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:55] [ERROR] Account not found: 
+[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:55] [ERROR] Account not found: 
+[2026-01-20 14:40:55] [ERROR] Account not found: 
+[2026-01-20 14:40:55] [ERROR] Account not found: 
+[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:56] [ERROR] Account not found: 
+[2026-01-20 14:40:56] [ERROR] Account not found: 
+[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:57] [ERROR] Account not found: 
+[2026-01-20 14:40:57] [ERROR] Account not found: 
+[2026-01-20 14:40:57] [ERROR] Account not found: 
+[2026-01-20 14:40:57] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:57] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:57] [ERROR] Account not found: 
+[2026-01-20 14:40:57] [ERROR] Account not found: 
+[2026-01-20 14:40:57] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:57] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:57] [ERROR] Account not found: 
+[2026-01-20 14:40:57] [ERROR] Account not found: 
+[2026-01-20 14:40:58] [ERROR] Account not found: 
+[2026-01-20 14:40:58] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:58] [ERROR] Account not found: 
+[2026-01-20 14:40:58] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:58] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
+[2026-01-20 14:40:58] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
+   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
+   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
+   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
+[2026-01-20 14:40:59] [ERROR] Account not found: 
+[2026-01-20 14:40:59] [ERROR] Account not found: 
+[2026-01-20 14:40:59] [ERROR] Account not found: 
+[2026-01-20 14:41:00] [ERROR] Account not found: 
+[2026-01-20 14:41:01] [ERROR] Account not found: 
+[2026-01-20 14:41:01] [ERROR] Account not found: 
+[2026-01-20 14:41:01] [ERROR] Account not found: 
+[2026-02-07 18:07:44] [ERROR] Account not found: 
+[2026-02-07 18:08:05] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-02-08 23:36:27] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-02-08 23:41:48] [ERROR] [PingManager] Connection timeout for CG7TYYUV (No packets for 40s), closing connection.
+[2026-02-08 23:47:13] [ERROR] Account not found: 
+[2026-02-09 01:23:20] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
+[2026-02-09 02:01:43] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
+[2026-02-09 02:03:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:13] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:14] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:15] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:16] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:17] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:17] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:17] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:18] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:18] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:18] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:18] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:19] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:19] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:19] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:20] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:20] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:20] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:21] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:21] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:22] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:22] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:23] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 02:03:23] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
+[2026-02-09 20:10:11] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
+[2026-02-09 20:13:58] [ERROR] Account not found: 
+[2026-02-09 22:03:16] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
+[2026-02-09 22:04:36] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
+[2026-02-09 22:11:54] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
+[2026-02-10 04:26:16] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
+[2026-02-15 01:22:29] [ERROR] Account not found: 
+[2026-02-15 01:30:27] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
+[2026-02-15 14:41:05] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: 1003 (1003)
+[2026-02-15 15:12:46] [ERROR] Account not found: 
+[2026-02-15 22:20:11] [ERROR] Account not found: 
+[2026-02-15 22:20:26] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-02-22 08:58:30] [ERROR] [PingManager] Connection timeout for YRQSBXHU (No packets for 40s), closing connection.

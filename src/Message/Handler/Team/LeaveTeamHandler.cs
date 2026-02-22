@@ -1,10 +1,11 @@
+[PacketHandler(MessageType.LeaveTeamRequest)]
 public static class LeaveTeamHandler
 {
      public static void Handle(Session session,Byte[] data)
     {
          ByteBuffer read = new ByteBuffer();
         read.WriteBytes(data, true);
-        int type = read.ReadInt();
+        read.ReadShort(); // Type - read but unused?
         read.Dispose();
 
         if (session.TeamID == 0)
@@ -15,44 +16,39 @@ public static class LeaveTeamHandler
          
      bool isleave = LobbyManager.LeaveTeam(session.TeamID,session.AccountId);
         if (!isleave) return;
-        ByteBuffer buffer = new ByteBuffer();
 
-        buffer.WriteInt((int)MessageType.LeaveTeamResponse);
-        buffer.WriteBool(isleave);
-        byte[] lobby = buffer.ToArray();
-        buffer.Dispose();
-        session.Send(lobby);
+        session.Send(new LeaveTeamResponsePacket { Success = isleave });
        
-          ByteBuffer buffer1 = new ByteBuffer();
-        buffer1.WriteInt((int)MessageType.SendTeamMessageResponse);
-        var acccount = AccountCache.Load(session.AccountId);
-        Lobby loby = LobbyManager.GetLobby(session.TeamID);
+        if (session.Account == null) return;
+        var acccount = session.Account;
+        Lobby loby = LobbyManager.GetLobby(session.TeamID); // Wait, if I leave, can I still get lobby? session.TeamID is not reset yet in original code?
+        // Original code: Lobby loby = LobbyManager.GetLobby(session.TeamID); after LeaveTeam called and before session.TeamID = 0;
+        
         if (loby == null)
         {
             Console.WriteLine($"leaveteam: {session.AccountId} ID'li oyuncunun ayrılmak istediği takım null");
+             session.TeamID = 0; // Ensure reset
             return;
         }
          session.TeamID = 0;
-        TeamMessage teamMessage = new TeamMessage
+
+        var broadcastPacket = new SendTeamMessageResponsePacket
         {
-            messageFlags = TeamMessageFlags.HasSystem,
-         eventType= TeamEventType.LeaveMessage,
+            Flags = TeamMessageFlags.HasSystem,
+            EventType = TeamEventType.LeaveMessage,
             SenderName = acccount.Username,
-            SenderId = acccount.AccountId
+            SenderAccountId = acccount.AccountId
         };
-        buffer1.WriteByte((byte)teamMessage.messageFlags); // Flag önce yazılmalı!
-        buffer1.WriteInt((int)teamMessage.eventType);
-        buffer1.WriteString(teamMessage.SenderName);
-        buffer1.WriteString(teamMessage.SenderId ?? "");
-        byte[] response = buffer1.ToArray();
-        buffer1.Dispose();
                     
-        foreach(var member in loby.Players)
+        lock (loby.SyncLock)
         {
-            if (SessionManager.IsOnline(member.AccountId))
+            foreach(var member in loby.Players)
             {
-                Session session1 = SessionManager.GetSession(member.AccountId);
-                session1.Send(response);
+                if (SessionManager.IsOnline(member.AccountId))
+                {
+                    Session session1 = SessionManager.GetSession(member.AccountId);
+                    session1.Send(broadcastPacket);
+                }
             }
         }
     

@@ -11,6 +11,14 @@
           12-[server] ping mesajı almıyor (fixxed)
           13-[client] Azimemin kulübü bozuk... (fixxed)
           14-[client] clubten bazen çıkılmıyor (fixxed)
+          ---------- 15.1.2026 (all fixxed 18.1.2026) ----------
+          15- [client] clube mesaj göndermiyor (maybe fixxed)
+          16- [client] ContextMenu ve Info doğru çalışmıyor (maybe fixxed)
+          17- [client] clube katılınca mesajlar gelmiyo (maybe fixxed)
+          18  [client] AuthLoginData gelince  ve eğer oyuncu aktifse aktif oyuncu olarak gözüküyormu ?!
+          19- [client] kulüp oluşturulmuo (mabe fixxed)
+          20- [client] hesap oluşturunca isim sorma yeri gelmedi
+          21 - 
           
 
      --------Yapılcaklar--------
@@ -19,6 +27,7 @@
 [✔️]2- ErrorCode sistemi(amaç gönderilen byte'ı azaltmak)   
      3- Shop json dosyasından çekilecek
      4- Daily quest sistemi
+     5- İconlar için bir manager
      11- Clan war sistemi
      12- Event sistemi
 [✔️]14- Leaderboard sistemi

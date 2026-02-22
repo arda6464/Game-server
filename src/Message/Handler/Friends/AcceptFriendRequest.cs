@@ -1,101 +1,108 @@
+[PacketHandler(MessageType.AcceptFriendRequest)]
 public static class FriendRequestAccept
 {
     public static void Handle(Session session, byte[] message)
     {
         ByteBuffer byteBuffer = new ByteBuffer();
         byteBuffer.WriteBytes(message, true);
-        int _ = byteBuffer.ReadInt();
+        int _ = byteBuffer.ReadShort();
 
-        string targetId = byteBuffer.ReadString();
+        var requestPacket = new FriendRequestAcceptPacket();
+        requestPacket.Deserialize(byteBuffer);
+
+        string targetId = requestPacket.TargetId;
         byteBuffer.Dispose();
 
+        
+      
 
-        AccountManager.AccountData account = AccountCache.Load(session.AccountId); // isteği kabul eden kişi
+
+        if (session.Account == null) return;
+        AccountManager.AccountData account = session.Account; // isteği kabul eden kişi
         AccountManager.AccountData target = AccountCache.Load(targetId); // isteği kabul edilen kişi
+        if (target == null) 
+        {
+            Logger.errorslog($"[Friend manager] {targetId}'li hesap bulunamadı");
+            return;
+        }
         try
         {
-
-            if (target != null)
+            lock (account.SyncLock)
             {
                 var request = account.Requests.Find(r => r.Id == targetId);
                 if (request != null)
+                {
                     account.Requests.Remove(request);
+                }
                 else
                 {
-                    Logger.errorslog($"{request?.Username} adlı istek bulunamadı");
+                    Logger.errorslog($"[Friend manager] {targetId} için gelen bir istek bulunamadı.");
                     return;
-                } 
-
-            }
-            else
-            {
-                Logger.errorslog($"[Friend manager] {targetId}'li hesap bulunamadı");
-                return;
+                }
             }
 
-           // account'ın listesine target'ın bilgilerini ekle
+            // Arkadaşlık bilgilerini hazırla
             FriendInfo friendForAccount = new FriendInfo()
             {
                 Username = target.Username,
                 AvatarId = target.Avatarid,
                 Id = target.AccountId,
-                NameColorID = target.Namecolorid
+                NameColorID = target.Namecolorid,
+                IsBestFriend = false,
+                Trophy = target.Trophy
             };
 
-            // target'ın listesine account'ın bilgilerini ekle
             FriendInfo friendForTarget = new FriendInfo()
             {
                 Username = account.Username,
                 AvatarId = account.Avatarid,
                 Id = account.AccountId,
-                NameColorID = account.Namecolorid
+                NameColorID = account.Namecolorid,
+                IsBestFriend = false,
+                Trophy = account.Trophy
             };
 
-            account.Friends.Add(friendForAccount);
-            target.Friends.Add(friendForTarget);
-            Console.WriteLine($"{account.Username}({account.AccountId})  adlı kullanıcı {target.Username}({target.AccountId}) adlı kullanıcının isteğini kabul etti");
-            ByteBuffer buffer = new ByteBuffer();
-            buffer.WriteInt((int)MessageType.NewFriendsList);
-
-            buffer.WriteInt(account.Friends.Count);
-            foreach (var friend in account.Friends)
+            // Listelere ekle (Thread-safe)
+            lock (account.SyncLock)
             {
-                buffer.WriteString(friend.Id);
-                buffer.WriteInt(friend.AvatarId);
-                buffer.WriteString(friend.Username);
-                buffer.WriteInt(friend.NameColorID);
-                buffer.WriteBool(SessionManager.IsOnline(friend.Id));
+                if (!account.Friends.Any(f => f.Id == targetId))
+                {
+                    account.Friends.Add(friendForAccount);
+                }
             }
-            byte[] veri = buffer.ToArray();
-            buffer.Dispose();
-            session.Send(veri);
 
+            lock (target.SyncLock)
+            {
+                if (!target.Friends.Any(f => f.Id == account.AccountId))
+                {
+                    target.Friends.Add(friendForTarget);
+                }
+            }
 
+            // Görev İlerlemesi - Arkadaş Ekleme
+            QuestManager.CheckQuestProgress(account, Quest.MissionType.AddFriend);
+            QuestManager.CheckQuestProgress(target, Quest.MissionType.AddFriend);
+
+            Console.WriteLine($"{account.Username}({account.AccountId}) ile {target.Username}({target.AccountId}) arkadaş oldu.");
+
+            // Kendi listesine yeni arkadaşı ekle (Incremental)
+            var myFriendAddedPacket = new FriendAddedPacket { Friend = friendForAccount };
+            session.Send(myFriendAddedPacket);
+
+            // Karşı taraf online ise ona da yeni arkadaşı ekle (Incremental)
             if (SessionManager.IsOnline(targetId))
             {
-                ByteBuffer targetb = new ByteBuffer();
-                Session targetsesion = SessionManager.GetSession(targetId);
-                targetb.WriteInt((int)MessageType.NewFriendsList);
-
-
-                targetb.WriteInt(target.Friends.Count);
-                foreach (var targetf in target.Friends)
+                Session targetSession = SessionManager.GetSession(targetId);
+                if (targetSession != null)
                 {
-                    targetb.WriteString(targetf.Id);
-                    targetb.WriteInt(targetf.AvatarId);
-                    targetb.WriteString(targetf.Username);
-                    targetb.WriteInt(targetf.NameColorID);
-                    targetb.WriteBool(SessionManager.IsOnline(targetf.Id));
+                    var targetFriendAddedPacket = new FriendAddedPacket { Friend = friendForTarget };
+                    targetSession.Send(targetFriendAddedPacket);
                 }
-                byte[] targetveri = targetb.ToArray();
-                    targetb.Dispose();
-                    targetsesion?.Send(targetveri);
-                    
             }
         }
         catch (Exception ex)
         {
-            Logger.errorslog("acceptfriends hata: " + ex.Message + "TAM HATA: " + ex.ToString());
+            Logger.errorslog("AcceptFriendRequest hata: " + ex.Message + "\n" + ex.ToString());
         }
 
 

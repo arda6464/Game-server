@@ -1,15 +1,19 @@
+[PacketHandler(MessageType.ChangeNameRequest)]
 public static class ChangeNameHandler
 {
     public static void Handle(Session session, byte[] message)
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        int _ = read.ReadInt();
+        int _ = read.ReadShort();
 
-        string newname = read.ReadString();
+        var request = new ChangeNameRequestPacket();
+        request.Deserialize(read);
+        
+        string newname = request.NewName;
         read.Dispose();
 
-        AccountManager.AccountData account = AccountCache.Load(session.AccountId);
+        AccountManager.AccountData account = session.Account;
         if (account == null) return;
         
         
@@ -25,18 +29,18 @@ public static class ChangeNameHandler
         string[] bannedWords = { "admin", "moderator", "admin", "null", "undefined" };
         if (bannedWords.Any(word => newname.ToLower().Contains(word.ToLower())))
         {
-            MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidName);
+            using(ByteBuffer buffer = new ByteBuffer()) {
+                buffer.WriteShort((short)MessageType.NameNotAcceptedRequest);
+                session.Send(buffer.ToArray());
+            }
             return;
         }
         
         string oldname = account.Username;
         account.Username = newname;
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.ChangeNameResponse);
-        buffer.WriteString(newname);
-        byte[] data = buffer.ToArray();
-        buffer.Dispose();
-        session.Send(data);
+        
+        var response = new ChangeNameResponsePacket { NewName = newname };
+        session.Send(response);
         Logger.genellog($"{oldname} adlı kullanıcının adı başarılı şekilde değişti. yeni ismi: {account.Username}");
 
         if (account.Clubid != -1) ClubManager.MemberDataUpdate(account.AccountId, account.Clubid);

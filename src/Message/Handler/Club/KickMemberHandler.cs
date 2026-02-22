@@ -1,3 +1,4 @@
+[PacketHandler(MessageType.KickMemberinClubRequest)]
 public static class KickMemberHandler
 {
     public static void Handle(Session session, byte[] message)
@@ -5,18 +6,25 @@ public static class KickMemberHandler
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
 
-        int type = read.ReadInt();
-        string targetid = read.ReadString();
+        int type = read.ReadShort();
+        
+        var request = new KickMemberRequestPacket();
+        request.Deserialize(read);
+        
+        string targetid = request.TargetId;
+        read.Dispose();
 
-        AccountManager.AccountData account = AccountCache.Load(session.AccountId);
+        if (session.Account == null) return;
+        AccountManager.AccountData account = session.Account;
         if (account == null)
         {
-            NotficationSender.Send(session, new Notfication
+           /* NotficationSender.Send(session, new Notfication
             {
                 Id = 11,
                 Title = "Başarısız",
                 Message = "hesap bulunamadı"
-            });
+            });*/
+           // MessageCodeManager.Send(session, )
             return;
         }
         var club = ClubCache.Load(account.Clubid);
@@ -30,16 +38,13 @@ public static class KickMemberHandler
         if (kicked)
         {
 
-            ByteBuffer buffer = new ByteBuffer();
-            buffer.WriteInt((int)MessageType.KickMemberinClubResponse);
-            buffer.WriteString(targetid);
-            byte[] bytes = buffer.ToArray();
-            buffer.Dispose();
-            session.Send(bytes);
+            var response = new KickMemberResponsePacket { TargetId = targetid };
+            session.Send(response);
+            
             if (SessionManager.IsOnline(targetid))
             {
                 var targetsesion = SessionManager.GetSession(targetid);
-                targetsesion.Send(bytes);
+                targetsesion.Send(response);
             }
 
 
@@ -49,13 +54,7 @@ public static class KickMemberHandler
         }
         else
         {
-            NotficationSender.Send(session, new Notfication
-            {
-                Id = 11,
-                Title = "Başarısız",
-                Message = "yetkiniz bulunmamaktadır",
-                iconid = 2
-            });
+            MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidTransaction);
         }
     }
 }

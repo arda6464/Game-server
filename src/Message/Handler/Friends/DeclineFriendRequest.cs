@@ -1,25 +1,33 @@
+[PacketHandler(MessageType.DeclineFriendRequest)]
 public static class FriendRequestDecline
 {
     public static void Handle(Session session, byte[] message)
     {
         ByteBuffer byteBuffer = new ByteBuffer();
          byteBuffer.WriteBytes(message,true);
-        int _ = byteBuffer.ReadInt();
+        int _ = byteBuffer.ReadShort();
 
-        string targetId = byteBuffer.ReadString();
+        var request = new FriendRequestDeclinePacket();
+        request.Deserialize(byteBuffer);
+        
+        string targetId = request.TargetId;
         byteBuffer.Dispose();
-        AccountManager.AccountData account = AccountCache.Load(session.AccountId);
+        if (session.Account == null) return;
+        AccountManager.AccountData account = session.Account;
         AccountManager.AccountData target = AccountCache.Load(targetId);
         bool result = false;
 
 
         if (target != null)
         {
-            var request = account.Requests.Find(r => r.Id == targetId);
-            if (request != null)
+            lock (account.SyncLock)
             {
-                account.Requests.Remove(request);
-                result = true;
+                var req = account.Requests.Find(r => r.Id == targetId);
+                if (req != null)
+                {
+                    account.Requests.Remove(req);
+                    result = true;
+                }
             }
                 
         }
@@ -30,11 +38,7 @@ public static class FriendRequestDecline
 
         }
         Console.WriteLine($"{account.Username}({account.AccountId})  adlı kullanıcı {target.Username}({target.AccountId}) adlı kullanıcının isteğini reddetti");
-        using (ByteBuffer buffer = new ByteBuffer())
-        {
-            buffer.WriteInt((int)MessageType.DeclineFriendResponse);
-            buffer.WriteString(targetId);
-            buffer.WriteBool(result);
-        }
+        
+        
     }
 }

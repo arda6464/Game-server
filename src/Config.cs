@@ -4,12 +4,14 @@ using System.Threading;
 
 public class Config
 {
-    public static Config Instance { get; private set; }
-    private static FileSystemWatcher _watcher;
-    private static string _configFilePath;
+    public static Config? Instance { get; private set; }
+    private static FileSystemWatcher? _watcher;
+    private static string? _configFilePath;
     private static readonly object _reloadLock = new object();
 
-    [JsonProperty("Port")] public int Port { get; private set; }
+    [JsonProperty("Port")] public int Port { get;  set; }
+    [JsonProperty("QuestRefeshHour")] public int QuestRefeshHour { get;  set; }
+    [JsonProperty("SeasonQuestRefeshTime")] public DateTime SeasonQuestRefeshTime { get;  set; }
     [JsonProperty("anti-ddos")] public bool AntiDdos { get; private set; }
     [JsonProperty("BotToken")] public string BotToken { get; private set; }
     [JsonProperty("ChannelId")] public ulong ChannelId { get; private set; }
@@ -21,6 +23,7 @@ public class Config
     [JsonProperty("Email")] public string Email { get; private set; }
     [JsonProperty("UpdateLink")] public string UpdateLink { get; private set; }
     [JsonProperty("ServerVersion")] public string ServerVersion { get; private set; }
+
 
     // Default değerlerle constructor
     public Config()
@@ -37,7 +40,9 @@ public class Config
         Email = "";
         UpdateLink = "https://default-update.com";
         ServerVersion = "1.0.0";
-         DiscordAdminIDs = new List<ulong>();
+        DiscordAdminIDs = new List<ulong>();
+        QuestRefeshHour = 11;
+        SeasonQuestRefeshTime = DateTime.Today.AddHours(8);
     }
 
     // Ana yükleme metodu
@@ -119,8 +124,8 @@ public class Config
 
         try
         {
-            string directory = Path.GetDirectoryName(_configFilePath);
-            string fileName = Path.GetFileName(_configFilePath);
+            string? directory = Path.GetDirectoryName(_configFilePath);
+            string? fileName = Path.GetFileName(_configFilePath);
 
             _watcher = new FileSystemWatcher
             {
@@ -167,6 +172,7 @@ public class Config
     private static void OnWatcherError(object sender, ErrorEventArgs e)
     {
         Logger.errorslog($"[Config] FileSystemWatcher hatası: {e.GetException()?.Message}");
+        SaveConfig();
     }
 
     public static void StopWatcher()
@@ -180,6 +186,7 @@ public class Config
             _watcher = null;
 
             Logger.genellog("[Config] FileSystemWatcher durduruldu.");
+            SaveConfig();
         }
     }
     public static bool AddAdmin(ulong id)

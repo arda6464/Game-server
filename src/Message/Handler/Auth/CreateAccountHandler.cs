@@ -1,15 +1,20 @@
+[PacketHandler(MessageType.SignAccount)]
 public static class CreateAccountHandler
 {
     public static void Handle(Session session,byte[] message)
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message);
-        int packetid = read.ReadInt();
-        string email = read.ReadString();
-        string password = read.ReadString();
+        int packetid = read.ReadShort();
+        
+        var request = new CreateAccountPacket();
+        request.Deserialize(read);
+        
+        string email = request.Email;
+        string password = request.Password;
 
         Console.WriteLine(email);
-        var acccount = AccountCache.Load(session.AccountId);
+        var acccount = session.Account;
         if (acccount == null)
         {
             Console.WriteLine("account null konum: createaccount");
@@ -39,10 +44,8 @@ public static class CreateAccountHandler
             Email = email,
             Password = password
         });
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.SendVerifyCode);
-        session.Send(buffer.ToArray());
-        buffer.Dispose();
+        
+        session.Send(new SendVerifyCodePacket());
         
      }
 }

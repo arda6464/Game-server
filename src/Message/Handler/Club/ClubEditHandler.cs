@@ -1,16 +1,22 @@
+[PacketHandler(MessageType.ClubEditRequest)]
 public static class ClubEditHandler
 {
     public static void Handle(Session session,byte[] message)
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        _ = read.ReadInt();
+        _ = read.ReadShort();
 
-        string ClubName = read.ReadString();
-        string ClubAciklama = read.ReadString();
-        int Avatarıd = read.ReadInt();
+        var request = new ClubEditRequestPacket();
+        request.Deserialize(read);
+        
+        string ClubName = request.ClubName;
+        string ClubAciklama = request.ClubDescription;
+        int Avatarıd = request.AvatarId;
 
-        AccountManager.AccountData account = AccountCache.Load(session.AccountId);
+        if (session.Account == null) return;
+        AccountManager.AccountData account = session.Account;
+
         if (account.Clubid == -1)
         {
             // İsim validasyonu
@@ -46,22 +52,20 @@ public static class ClubEditHandler
                 
                 if(change)
                 {
+                    var response = new ClubEditResponsePacket
+                    {
+                        ClubName = club.ClubName,
+                        ClubDescription = club.Clubaciklama,
+                        ClubAvatarId = club.ClubAvatarID,
+                        AccountId = account.AccountId
+                    };
                     
                     foreach(var clubmember in club.Members)
                     {
                         if(SessionManager.IsOnline(clubmember.Accountid))
                         {
                             Session membersession = SessionManager.GetSession(clubmember.Accountid);
-                            using (var buffer = new ByteBuffer())
-
-                           {
-                                           buffer.WriteInt((int)MessageType.ClubEditResponse);
- 
-                            buffer.WriteString(club.ClubName);
-                            buffer.WriteString(club.Clubaciklama);
-                            buffer.WriteInt(club.ClubAvatarID);
-                            buffer.WriteString(account.AccountId);
-                            membersession.Send(buffer.ToArray());
+                            membersession.Send(response);
                         }
                            
                             // todo change accountıd to client -> if(accountid == datamanager.playerıd) toast("change club data")
@@ -77,4 +81,3 @@ public static class ClubEditHandler
         }
         
     }
-}

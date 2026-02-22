@@ -1,5 +1,6 @@
 using System.Numerics;
 
+[PacketHandler(MessageType.HitRequest)]
 public static class PlayerHitRequest
 {
     public static void Handle(Session session, byte[] message)
@@ -8,9 +9,13 @@ public static class PlayerHitRequest
         
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        int type = read.ReadInt();
-        string targetid = read.ReadString();
-        int bulletid = read.ReadInt();
+        int _ = read.ReadShort();
+        
+        var request = new HitRequestPacket();
+        request.Deserialize(read);
+        
+        string targetid = request.TargetId;
+        int bulletid = request.BulletId;
         read.Dispose();
 
         Console.WriteLine($"🔫 Hasar paketi: Hedef={targetid}, Mermi={bulletid}, Gönderen={session.AccountId}");
@@ -18,15 +23,15 @@ public static class PlayerHitRequest
         // Kendine vurma kontrolü
        
 
-        Arena arena = ArenaManager.GetArena(session.PlayerData.ArenaId);
-        if (arena == null)
+        Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
+        if (battle == null)
         {
-            Console.WriteLine("❌ Arena bulunamadı");
+            Console.WriteLine("❌ Battle bulunamadı");
             return;
         }
 
-        Bullet bullet = arena.GetBullet(bulletid);
-        var targetplayer = arena.GetPlayer(targetid);
+        Bullet bullet = battle.GetBullet(bulletid);
+        var targetplayer = battle.GetPlayer(targetid);
 
         if (targetplayer == null)
         {
@@ -52,12 +57,12 @@ public static class PlayerHitRequest
         Console.WriteLine($"💥 Hasar: {targetplayer.AccountId} ->  Kalan can: {targetplayer.Health}");
 
         // ✅ Mermiyi sil
-        arena.RemoveBullet(bulletid);
+        battle.RemoveBullet(bulletid);
 
         // ✅ ÖLÜM KONTROLÜ
         if (targetplayer.Health <= 0)
         {
-            SendDeathMessage(targetplayer.AccountId, session.AccountId, arena);
+            battle.OnPlayerDied(targetplayer.AccountId, session.AccountId);
         }
         else
         {
@@ -65,35 +70,17 @@ public static class PlayerHitRequest
         }
     }
 
-    private static void SendDeathMessage(string deadPlayerId, string killerId, Arena arena)
-    {
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.PlayerDead);
-        buffer.WriteString(deadPlayerId);
-        buffer.WriteString(killerId);
-        
-        byte[] deathData = buffer.ToArray();
-        
-        foreach (var player in arena.GetPlayers())
-        {
-            player.session.Send(deathData);
-        }
-        
-        buffer.Dispose();
-        Console.WriteLine($"💀 Ölüm haberi gönderildi: {deadPlayerId} -> {killerId}");
-    }
 
     private static void SendHealthUpdate(string playerId, int health, Session targetSession)
     {
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.PlayerHealthUpdate);
-        buffer.WriteString(playerId);
-        buffer.WriteInt(health);
+        var packet = new PlayerHealthUpdatePacket
+        {
+            PlayerId = playerId,
+            Health = health
+        };
         
-        byte[] healthData = buffer.ToArray();
-        targetSession.Send(healthData);
+        targetSession.Send(packet);
         
-        buffer.Dispose();
         Console.WriteLine($"❤️ Can güncellemesi: {playerId} -> {health}");
     }
 }

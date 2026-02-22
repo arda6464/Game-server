@@ -1,3 +1,4 @@
+[PacketHandler(MessageType.ClubShowRequest)]
 public static class ClubShowHandler
 {
     public static void Handle(Session session, byte[] message)
@@ -5,8 +6,12 @@ public static class ClubShowHandler
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
 
-        int type = read.ReadInt();
-        int clubid = read.ReadInt();
+        int _ = read.ReadShort();
+        
+        var request = new ClubShowRequestPacket();
+        request.Deserialize(read);
+        
+        int clubid = request.ClubId;
 
         var club = ClubCache.Load(clubid);
         if (club == null)
@@ -14,27 +19,17 @@ public static class ClubShowHandler
             MessageCodeManager.Send(session, MessageCodeManager.Message.NotAClub);
             return;
         }
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.ClubShowResponse);
 
-        buffer.WriteInt(club.ClubId);
-        buffer.WriteString(club.ClubName);
-        buffer.WriteString(club.Clubaciklama);
-        buffer.WriteInt(club.ClubAvatarID);
-        buffer.WriteInt(club.TotalKupa ?? 0);
-        buffer.WriteInt(club.Members.Count);
-        foreach (var member in club.Members)
+        var response = new ClubShowResponsePacket
         {
-            buffer.WriteString(member.Accountid);
-            buffer.WriteString(member.AccountName);
-            // buffer.WriteInt(member.)
-            buffer.WriteString(member.Role.ToString());
-            buffer.WriteInt(member.NameColorID);
-            buffer.WriteInt(member.AvatarID);
-        }
-        byte[] data = buffer.ToArray();
-        buffer.Dispose();
-        session.Send(data);
+            ClubId = club.ClubId,
+            ClubName = club.ClubName,
+            ClubDescription = club.Clubaciklama,
+            ClubAvatarId = club.ClubAvatarID,
+            TotalTrophies = club.TotalKupa ?? 0,
+        };
+        response.Members.AddRange(club.Members);
+        session.Send(response);
     }
     
 }

@@ -1,6 +1,7 @@
 public class Notfication
 {
-    public int Id { get; set; }        // 11 = toast, 10 = banner, 12 = inbox
+    public int IndexID { get; set; }
+    public NotficationTypes.NotficationType type { get; set; }       
     public string Title { get; set; }
     public string Message { get; set; }
     public string ButtonText;
@@ -18,11 +19,11 @@ public class Notfication
     public Notfication()
     {
     }
+
 }
 public class RewardItemType
 {
     public enum RewardItemTypes
-
     {
         Chacter,
         Skin,
@@ -31,4 +32,14 @@ public class RewardItemType
 
     }
 }
+public class NotficationTypes
+{
+    public enum NotficationType : byte
+    {
+        toast,
+        banner,
+        Inbox,
+        Push,
+    }
 
+}

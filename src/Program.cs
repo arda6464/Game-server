@@ -40,12 +40,16 @@ class Program
         // Cache'leri başlat
         BotManager bot = new BotManager();
         Config.Load("config.json");
+        DatabaseManager.Initialize();
        
         AccountCache.Init();
         ClubCache.Init();
         BanManager.Init();
         ShopManager.InitializeMarket();
         TicketStorage.Initialize();
+        AndroidNotficationManager.Initialize();
+        MessageManager.Init(); // Packet Handler'larını yükle
+       
 
         // Thread'leri başlat
         botthread = new Thread(() => bot.Start());
@@ -56,7 +60,7 @@ class Program
         pingthread = new Thread(() => SessionManager.PingManager(true));
         pingthread.Start();
         
-        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+      
 
         gameserver = new GameServer();
         Console.WriteLine($"Sunucu {Config.Instance.ServerVersion} sürümünde!");
@@ -94,6 +98,7 @@ class Program
             // Sadece dataları kaydet
             AccountCache.SaveAll();
             ClubCache.SaveAll();
+            BanManager.Stop();
             TicketStorage.SaveAllData(BotManager.istance.TicketSystem.tickets,BotManager.istance.TicketSystem.channelToAccount);
             TickManager.instance.Stop();
             

@@ -40,7 +40,7 @@ public static class MessageCodeManager
     {
         ByteBuffer buffer = new ByteBuffer();
 
-        buffer.WriteInt((int)MessageType.MessageCode);
+        buffer.WriteShort((short)MessageType.MessageCode);
         buffer.WriteShort((short)message);
         byte[] response = buffer.ToArray();
         buffer.Dispose();

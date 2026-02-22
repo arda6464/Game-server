@@ -6,8 +6,22 @@ public class GameServer
     private TcpListener? _listener;
     private bool _isRunning = true;
 
+    public static UdpServer? UdpServer { get; private set; }
+
     public void Start(int port)
     {
+        // UDP Sunucusunu başlat (TCP portu + 1 veya aynı port kullanılabilir ama genelde farklı olması iyidir, şimdilik +1 diyelim veya aynısı)
+        // Eğer TCP ve UDP aynı portta çalışacaksa (örn 7777), o zaman aynı portu verelim.
+        // Genelde oyunlarda TCP ve UDP aynı port numarasını kullanır (protokol farklı olduğu için çakışmaz).
+        try
+        {
+            UdpServer = new UdpServer(port);
+            UdpServer.Start();
+        }
+        catch (Exception ex)
+        {
+            Logger.errorslog($"[UDP] Başlatma hatası: {ex.Message}");
+        }
 
         _listener = new TcpListener(IPAddress.Any, port);
         _listener.Start();
@@ -75,6 +89,7 @@ public class GameServer
             
             // TcpListener'ı kapat
             _listener?.Stop();
+            UdpServer?.Stop();
             
            
         }

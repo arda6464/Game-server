@@ -9947,3 +9947,845 @@ Destek sisteminde bilet oluşturma spamı engellendi
 [2026-01-12 20:54:07] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
 [2026-01-12 20:54:12] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
 [2026-01-12 20:54:12] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-15 12:33:21] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 12:33:21] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 12:33:21] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 12:33:21] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 12:35:00] [GENERAL] arda64best adlı kullanıcının adı başarılı şekilde değişti. yeni ismi: ardaaaatst
+[2026-01-15 12:35:07] [GENERAL] [NotificationSender] Bildirim gönderildi: Düzeltilen bazı şeyler:
+ Kulüp oluşturma  hatası
+ Markette ürünleri tam görememe hatası
+ Avatar değiştirememe hatası
+ kulüp artık daha stabil bir görüntü(hala hatalı)
+[2026-01-15 12:38:17] [GENERAL] arda64best adlı kullanıcının adı başarılı şekilde değişti. yeni ismi: aaaa
+[2026-01-15 12:38:24] [GENERAL] [NotificationSender] Bildirim gönderildi: Düzeltilen bazı şeyler:
+ Kulüp oluşturma  hatası
+ Markette ürünleri tam görememe hatası
+ Avatar değiştirememe hatası
+ kulüp artık daha stabil bir görüntü(hala hatalı)
+[2026-01-15 12:39:05] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 12:39:05] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 12:39:05] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 12:39:05] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 12:39:12] [GENERAL] [NotificationSender] Bildirim gönderildi: Düzeltilen bazı şeyler:
+ Kulüp oluşturma  hatası
+ Markette ürünleri tam görememe hatası
+ Avatar değiştirememe hatası
+ kulüp artık daha stabil bir görüntü(hala hatalı)
+[2026-01-15 12:47:13] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-15 12:47:13] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-15 12:47:13] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-15 12:47:13] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-01-15 12:47:18] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-15 12:47:18] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-15 12:47:30] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 12:47:30] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 12:47:30] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 12:47:30] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 12:49:49] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-15 12:49:49] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-15 12:49:49] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-15 12:49:49] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-01-15 12:49:54] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-15 12:49:54] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-15 12:50:17] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 12:50:17] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 12:50:17] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 12:50:17] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 12:56:35] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-15 12:56:35] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-15 12:56:35] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-15 12:56:35] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-01-15 12:56:41] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-15 12:56:41] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-15 12:58:50] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 12:58:50] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 12:58:50] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 12:58:50] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 13:02:29] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-15 13:02:29] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-15 13:02:29] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-15 13:02:29] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-01-15 13:02:34] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-15 13:02:34] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-15 13:02:49] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 13:02:49] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 13:02:49] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 13:02:49] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 13:16:29] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-15 13:16:29] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-15 13:16:29] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-15 13:16:34] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-15 13:16:34] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-15 13:18:34] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 13:18:34] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 13:18:34] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 13:18:34] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 13:18:42] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 279559
+[2026-01-15 13:24:25] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-15 13:24:25] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-15 13:24:25] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-15 13:24:25] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-01-15 13:24:30] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-15 13:24:30] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-15 13:24:59] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 13:24:59] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 13:24:59] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 13:24:59] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 13:25:57] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 13:25:57] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 13:25:57] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 13:25:57] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 13:26:44] [GENERAL] Oyuncu clubten kicklendi
+[2026-01-15 13:26:56] [GENERAL] Club oluşturuldu: name: kasdjkadjkakjdad des: dadadadad id: 3
+[2026-01-15 13:28:21] [GENERAL] arda64best adlı kullanıcının adı başarılı şekilde değişti. yeni ismi: arda
+[2026-01-15 13:28:26] [GENERAL] [NotificationSender] Bildirim gönderildi: Düzeltilen bazı şeyler:
+ Kulüp oluşturma  hatası
+ Markette ürünleri tam görememe hatası
+ Avatar değiştirememe hatası
+ kulüp artık daha stabil bir görüntü(hala hatalı)
+[2026-01-15 13:32:25] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-15 13:32:25] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-15 13:32:25] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-15 13:32:25] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-01-15 13:32:30] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-15 13:32:30] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-15 13:32:40] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 13:32:40] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 13:32:40] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 13:32:40] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-15 13:34:24] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-15 13:34:24] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-15 13:34:24] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-15 13:34:24] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-01-15 13:34:29] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-15 13:34:29] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-15 13:34:41] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-15 13:34:41] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-15 13:34:41] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-15 13:34:41] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-17 13:13:05] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-17 13:13:05] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-17 13:13:05] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-17 13:13:05] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 03:15:33] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 03:15:33] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 03:15:33] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 03:15:33] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 03:17:26] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 03:17:26] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 03:17:26] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 03:17:26] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 04:39:25] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 04:39:25] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 04:39:25] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 04:39:30] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 04:39:30] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 14:54:47] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 14:54:47] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 14:54:47] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 14:54:47] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 15:06:55] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:06:55] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 15:06:55] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 15:06:56] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 15:10:50] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:10:50] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 15:10:50] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 15:10:50] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 15:11:10] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:11:10] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 15:11:10] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 15:11:10] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 15:20:50] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:20:50] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:20:51] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:20:51] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:20:52] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:20:52] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:20:52] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:20:52] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:20:57] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:20:57] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:20:57] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:20:58] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:20:58] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:20:58] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:21:39] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:21:39] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:21:39] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:21:39] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:21:40] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:21:40] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:24:03] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:24:03] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:24:03] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:24:03] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 15:24:03] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:24:03] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 15:24:04] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 15:24:04] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 15:24:04] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 15:24:09] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 15:24:09] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 15:24:22] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:24:22] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 15:24:22] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 15:24:22] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 15:25:55] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 15:25:55] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 15:25:55] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 15:26:00] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 15:26:00] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 15:38:33] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:38:33] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 15:38:33] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 15:38:33] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 15:57:20] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 15:57:20] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 15:57:20] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 15:57:25] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 15:57:25] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 15:57:47] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 15:57:47] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 15:57:47] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 15:57:48] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 16:01:07] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 16:01:07] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 16:01:07] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 16:01:07] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 16:01:07] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 16:01:07] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 16:01:26] [GENERAL] [ShopItemsHandler] KEN8SOKI kullanıcısına mağaza öğeleri gönderildi.
+[2026-01-18 16:26:45] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 16:26:45] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 16:26:45] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 16:26:50] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 16:26:51] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 16:27:48] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 16:27:48] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 16:27:48] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 16:27:48] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 16:30:30] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 16:30:30] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 16:30:30] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 16:30:35] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 16:30:35] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 16:30:46] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 16:30:46] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 16:30:46] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 16:30:46] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 16:33:13] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 16:33:13] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 16:33:14] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 16:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-01-18 16:33:19] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 16:33:19] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 16:33:34] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 16:33:34] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 16:33:34] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 16:33:35] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 16:36:18] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 16:36:18] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 16:36:18] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 16:36:18] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-01-18 16:36:23] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 16:36:23] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 16:36:34] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 16:36:34] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 16:36:34] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 16:36:34] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 16:39:27] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 16:39:27] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 16:39:27] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 16:39:32] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 16:39:32] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 16:39:46] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 16:39:46] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 16:39:46] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 16:39:46] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 23:41:40] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 23:41:40] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 23:41:40] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 23:41:41] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-18 23:41:54] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 23:41:54] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 23:41:54] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 23:41:55] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 23:41:55] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 23:41:55] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 23:42:01] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 23:42:01] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 23:42:01] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 23:42:01] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 23:42:16] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 23:42:16] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 23:42:16] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 23:42:16] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 23:42:20] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 23:42:20] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 23:42:21] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-18 23:42:21] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-18 23:42:44] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-18 23:42:44] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-18 23:42:44] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-18 23:42:49] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-18 23:42:49] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-18 23:42:55] [GENERAL] [Config] Default config oluşturuldu: C:\project\Game-server\src\config.json
+[2026-01-18 23:42:55] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-18 23:42:55] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-18 23:42:55] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-18 23:42:55] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-19 00:16:40] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-19 00:16:40] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 00:16:40] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-19 00:16:40] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-19 00:16:40] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 00:16:40] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-19 00:17:56] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-19 00:17:56] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 00:17:56] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-19 00:17:56] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-19 00:17:56] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 00:17:56] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-19 00:18:28] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-19 00:18:28] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-19 00:18:28] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-19 00:18:33] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-19 00:18:33] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-19 00:18:46] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 00:18:46] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-19 00:18:46] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-19 00:18:47] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-19 13:19:22] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-19 13:19:22] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-19 13:19:22] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-19 13:19:22] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-19 13:19:27] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-19 13:19:27] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-19 13:22:14] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 13:22:14] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-19 13:22:14] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-19 13:22:14] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-19 13:22:20] [GENERAL] Keyler oluşmadı cihaza izin verilmedi
+[2026-01-19 13:26:42] [GENERAL] Keyler oluşmadı cihaza izin verilmedi
+[2026-01-19 13:28:00] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-19 13:28:00] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-19 13:28:00] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-19 13:28:00] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-19 13:28:05] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-19 13:28:05] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-19 13:30:09] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 13:30:09] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-19 13:30:09] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-19 13:30:09] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-19 13:45:02] [GENERAL] [NotificationSender] Bildirim gönderildi: oyunumuzu güncelledik yenilikleri görmek için indirin!
+[2026-01-19 13:46:38] [GENERAL] [NotificationSender] Bildirim gönderildi: oyunumuzu güncelledik yenilikleri görmek için indirin!
+[2026-01-19 13:51:00] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-19 13:51:00] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-19 13:51:00] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-19 13:51:00] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-19 13:51:05] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-19 13:51:05] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-19 13:51:22] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 13:51:22] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-19 13:51:22] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-19 13:51:22] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-19 13:52:16] [GENERAL] [NotificationSender] Bildirim gönderildi: oyunumuzu güncelledik yenilikleri görmek için indirin!
+[2026-01-19 13:53:36] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-19 13:53:36] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 13:53:36] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-19 13:53:37] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-19 13:53:37] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 13:53:37] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-19 13:53:46] [GENERAL] arda64best adlı kullanıcının adı başarılı şekilde değişti. yeni ismi: arda
+[2026-01-19 14:02:01] [GENERAL] [NotificationSender] Bildirim gönderildi: Düzeltilen bazı şeyler:
+ Kulüp oluşturma  hatası
+ Markette ürünleri tam görememe hatası
+ Avatar değiştirememe hatası
+ kulüp artık daha stabil bir görüntü(hala hatalı)
+[2026-01-19 14:10:50] [GENERAL] [ShopItemsHandler] F5MKJT3L kullanıcısına mağaza öğeleri gönderildi.
+[2026-01-19 14:11:50] [GENERAL] [ShopItemsHandler] F5MKJT3L kullanıcısına mağaza öğeleri gönderildi.
+[2026-01-19 23:13:28] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 23:13:28] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-19 23:13:28] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-19 23:13:29] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-19 23:26:42] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-19 23:26:42] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-19 23:26:42] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-19 23:26:42] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-19 23:26:47] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-19 23:26:47] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-19 23:27:11] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-19 23:27:11] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-19 23:27:11] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-19 23:27:12] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-19 23:59:42] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-19 23:59:42] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-19 23:59:42] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-19 23:59:42] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-19 23:59:47] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-19 23:59:47] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-20 00:00:17] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-20 00:00:17] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-20 00:00:17] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-20 00:00:17] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-20 00:01:59] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-20 00:01:59] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-20 00:01:59] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-20 00:02:00] [GENERAL] [Config] Config dosyası değişti, yeniden yükleniyor...
+[2026-01-20 00:02:00] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-20 00:02:00] [GENERAL] [Config] Config başarıyla yenilendi!
+[2026-01-20 00:02:00] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-20 00:02:00] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-20 00:02:00] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-20 00:02:00] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-20 00:02:05] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-20 00:02:05] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-20 00:02:15] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-20 00:02:15] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-20 00:02:15] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-20 00:02:15] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-20 00:04:40] [GENERAL] [ShopItemsHandler] F5MKJT3L kullanıcısına mağaza öğeleri gönderildi.
+[2026-01-20 04:25:43] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-20 04:25:43] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-20 04:25:43] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-20 04:25:43] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-20 04:25:48] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-20 04:25:48] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-20 04:32:06] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-20 04:32:06] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-20 04:32:06] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-20 04:32:07] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-20 04:33:12] [GENERAL] [NotificationSender] Bildirim gönderildi: oyunumuzu güncelledik yenilikleri görmek için indirin!
+[2026-01-20 14:40:36] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-20 14:40:36] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-20 14:40:36] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-20 14:40:37] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-20 14:40:48] [GENERAL] [NotificationSender] Bildirim gönderildi: oyunumuzu güncelledik yenilikleri görmek için indirin!
+[2026-01-20 14:50:41] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-20 14:50:41] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-20 14:50:41] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-20 14:50:41] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-20 14:50:46] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-20 14:50:46] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-20 14:51:05] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-20 14:51:05] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-20 14:51:05] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-20 14:51:05] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-20 15:06:47] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-20 15:06:47] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-20 15:06:47] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-20 15:06:47] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-20 15:06:52] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-20 15:06:52] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-20 15:07:04] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-20 15:07:04] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-20 15:07:04] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-20 15:07:04] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-20 15:13:28] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-20 15:13:28] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-20 15:13:28] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-20 15:13:28] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-20 15:13:33] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-20 15:13:33] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-01-20 15:16:52] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-20 15:16:52] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-20 15:16:52] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-20 15:16:52] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-21 15:12:27] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-01-21 15:12:27] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-01-21 15:12:27] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-01-21 15:12:28] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-01-21 19:22:37] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-01-21 19:22:37] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-01-21 19:22:37] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-01-21 19:22:37] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-01-21 19:22:42] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-01-21 19:22:42] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-05 21:37:52] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-05 21:37:52] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-05 21:37:52] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-05 21:37:53] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-05 21:41:20] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-05 21:41:20] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-05 21:41:20] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-05 21:41:20] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-05 21:41:25] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-05 21:41:25] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-06 17:24:05] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-06 17:24:05] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-06 17:24:05] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-06 17:24:06] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-06 17:24:06] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-06 17:30:37] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-06 17:30:37] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-06 17:30:37] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-06 17:30:37] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-06 17:30:42] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-06 17:30:42] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-06 17:47:00] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-06 17:47:00] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-06 17:47:00] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-06 17:47:01] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-06 17:47:01] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-07 18:05:54] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-07 18:05:54] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-07 18:05:54] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-07 18:05:55] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-07 18:05:56] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-07 18:08:05] [GENERAL] [NotificationSender] Bildirim gönderildi: Veritabanına geçiş yapıldı. Tüm verileriniz korundu.
+[2026-02-07 18:12:26] [GENERAL] arda64best adlı kullanıcının adı başarılı şekilde değişti. yeni ismi: ardatest
+[2026-02-08 22:51:54] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-08 22:51:54] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-08 22:51:54] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-08 22:51:55] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-08 22:51:56] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-08 23:36:28] [GENERAL] [NotificationSender] Bildirim gönderildi: Veritabanına geçiş yapıldı. Tüm verileriniz korundu.
+[2026-02-08 23:36:35] [GENERAL] arda64best adlı kullanıcının adı başarılı şekilde değişti. yeni ismi: ardaaa
+[2026-02-08 23:48:11] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-08 23:48:11] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-08 23:48:11] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-08 23:48:11] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-08 23:48:16] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-08 23:48:16] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-08 23:48:45] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-08 23:48:45] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-08 23:48:45] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-08 23:48:45] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-08 23:48:45] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-08 23:50:23] [GENERAL] ardatest(Q0SFS6FN) →  ardaaa(CG7TYYUV) 'ye istek attı
+[2026-02-08 23:56:06] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-08 23:56:06] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-08 23:56:06] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-08 23:56:06] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-08 23:56:11] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-08 23:56:11] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-08 23:56:38] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-08 23:56:38] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-08 23:56:38] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-08 23:56:39] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-08 23:56:39] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-09 00:37:43] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-09 00:37:43] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-09 00:37:43] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-09 00:37:43] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-09 00:37:48] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-09 00:37:48] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-09 00:45:40] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-09 00:45:40] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-09 00:45:40] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-09 00:45:40] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-09 00:45:40] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-09 00:55:55] [GENERAL] [ShopItemsHandler] Q0SFS6FN kullanıcısına mağaza öğeleri gönderildi.
+[2026-02-09 01:58:08] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-09 01:58:08] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-09 01:58:08] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-09 01:58:08] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-09 01:58:13] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-09 01:58:13] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-09 01:59:43] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-09 01:59:43] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-09 01:59:43] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-09 01:59:43] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-09 01:59:43] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-09 02:01:03] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 755070
+[2026-02-09 02:01:43] [GENERAL] [Lobby Manager] 755070'li lobby başarıyla silindi.
+[2026-02-09 19:52:21] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-09 19:52:21] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-09 19:52:21] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-09 19:52:21] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-09 19:52:26] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-09 19:52:26] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-09 19:52:59] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-09 19:52:59] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-09 19:52:59] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-09 19:53:00] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-09 19:53:00] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-09 20:09:25] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 619131
+[2026-02-09 20:10:11] [GENERAL] [Lobby Manager] 619131'li lobby başarıyla silindi.
+[2026-02-09 20:14:06] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 639779
+[2026-02-09 20:14:55] [GENERAL] [Lobby Manager] 639779'li lobby başarıyla silindi.
+[2026-02-09 21:46:30] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-09 21:46:30] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-09 21:46:30] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-09 21:46:30] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-09 21:46:35] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-09 21:46:35] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-09 21:58:53] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-09 21:58:53] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-09 21:58:53] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-09 21:58:55] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-09 21:58:55] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-09 22:02:28] [GENERAL] [NotificationSender] Bildirim gönderildi: ardatest oyuna girdi.
+[2026-02-09 22:03:47] [GENERAL] [NotificationSender] Bildirim gönderildi: ardatest oyuna girdi.
+[2026-02-09 22:07:34] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-09 22:07:34] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-09 22:07:34] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-09 22:07:34] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-09 22:07:39] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-09 22:07:39] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-09 22:07:53] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-09 22:07:54] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-09 22:07:54] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-09 22:07:54] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-09 22:07:54] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-09 22:08:03] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1770664086055079%d8095e1ad8095e1a
+[2026-02-09 22:10:32] [GENERAL] [NotificationSender] Bildirim gönderildi: ardaaa oyuna girdi.
+[2026-02-09 22:10:54] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1770664257274868%d8095e1ad8095e1a
+[2026-02-09 22:11:15] [GENERAL] [NotificationSender] Bildirim gönderildi: ardaaa oyuna girdi.
+[2026-02-09 22:13:36] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1770664418936235%d8095e1ad8095e1a
+[2026-02-09 22:13:46] [GENERAL] [NotificationSender] Bildirim gönderildi: ardaaa oyuna girdi.
+[2026-02-09 22:19:52] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1770664795410486%d8095e1ad8095e1a
+[2026-02-09 22:21:00] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1770664863134878%d8095e1ad8095e1a
+[2026-02-09 22:21:21] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 972039
+[2026-02-09 22:21:29] [GENERAL] [Lobby Manager] 972039'li lobby başarıyla silindi.
+[2026-02-09 22:25:02] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-09 22:25:02] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-09 22:25:02] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-09 22:25:02] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-09 22:25:07] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-09 22:25:07] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-09 22:25:27] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-09 22:25:27] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-09 22:25:27] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-09 22:25:27] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-09 22:25:28] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-09 22:25:35] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1770665137825857%d8095e1ad8095e1a
+[2026-02-09 22:25:42] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 184033
+[2026-02-10 04:26:16] [GENERAL] [Lobby Manager] 184033'li lobby başarıyla silindi.
+[2026-02-14 01:07:27] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-14 01:07:28] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-14 01:07:28] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-14 01:07:28] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-14 01:07:29] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-14 01:08:29] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771020509721116%d8095e1ad8095e1a
+[2026-02-14 01:09:32] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771020572077115%d8095e1ad8095e1a
+[2026-02-14 01:15:05] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771020905460678%d8095e1ad8095e1a
+[2026-02-14 01:17:42] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771021062285410%d8095e1ad8095e1a
+[2026-02-14 01:18:21] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771021101259497%d8095e1ad8095e1a
+[2026-02-14 01:30:30] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-14 01:30:30] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-14 01:30:30] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-14 01:30:30] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-14 01:30:35] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-14 01:30:35] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-14 01:36:15] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-14 01:36:15] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-14 01:36:15] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-14 01:36:15] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-14 01:36:15] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-14 01:36:37] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771022197066719%d8095e1ad8095e1a
+[2026-02-14 01:37:05] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771022225903696%d8095e1ad8095e1a
+[2026-02-14 01:55:26] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771023326616954%d8095e1ad8095e1a
+[2026-02-14 01:55:42] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 923433
+[2026-02-14 02:44:46] [GENERAL] [Lobby Manager] 923433'li lobby başarıyla silindi.
+[2026-02-15 01:19:55] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-15 01:19:55] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-15 01:19:55] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-15 01:19:56] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-15 01:19:57] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-15 01:20:17] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771107617144911%d8095e1ad8095e1a
+[2026-02-15 01:25:00] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771107900944848%d8095e1ad8095e1a
+[2026-02-15 01:28:10] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771108090542259%d8095e1ad8095e1a
+[2026-02-15 01:28:27] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771108107242501%d8095e1ad8095e1a
+[2026-02-15 01:29:30] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771108170573483%d8095e1ad8095e1a
+[2026-02-15 01:29:39] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771108179572107%d8095e1ad8095e1a
+[2026-02-15 01:29:43] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771108183826531%d8095e1ad8095e1a
+[2026-02-15 01:35:23] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771108523227809%d8095e1ad8095e1a
+[2026-02-15 02:36:28] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771112188408806%d8095e1ad8095e1a
+[2026-02-15 13:55:37] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771152937567311%d8095e1ad8095e1a
+[2026-02-15 14:40:45] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771155645799793%d8095e1ad8095e1a
+[2026-02-15 14:40:59] [GENERAL] [ShopItemsHandler] Q0SFS6FN kullanıcısına mağaza öğeleri gönderildi.
+[2026-02-15 14:41:16] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771155676717580%d8095e1ad8095e1a
+[2026-02-15 14:41:58] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771155719379975%d8095e1ad8095e1a
+[2026-02-15 15:09:35] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771157375676545%d8095e1ad8095e1a
+[2026-02-15 15:10:16] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771157417205219%d8095e1ad8095e1a
+[2026-02-15 15:11:14] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771157475366645%d8095e1ad8095e1a
+[2026-02-15 15:11:56] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771157517392283%d8095e1ad8095e1a
+[2026-02-15 15:13:05] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771157586304214%d8095e1ad8095e1a
+[2026-02-15 15:13:37] [GENERAL] [AndroidNotficationManager] Bildirim başarıyla gönderildi. ID: projects/game-1d364/messages/0:1771157618077829%d8095e1ad8095e1a
+[2026-02-15 15:13:41] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 716713
+[2026-02-15 15:13:51] [GENERAL] [ShopItemsHandler] Q0SFS6FN kullanıcısına mağaza öğeleri gönderildi.
+[2026-02-15 15:14:04] [GENERAL] [Lobby Manager] 716713'li lobby başarıyla silindi.
+[2026-02-15 18:01:22] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-15 18:01:22] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-15 18:01:22] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-15 18:01:24] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-15 18:01:25] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-15 18:01:30] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-15 18:01:30] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-15 18:01:30] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-15 18:01:30] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-15 18:01:35] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-15 18:01:35] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-15 22:19:59] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-15 22:19:59] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-15 22:19:59] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-15 22:20:01] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-15 22:20:02] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-15 22:20:26] [GENERAL] [NotificationSender] Bildirim gönderildi: Veritabanına geçiş yapıldı. Tüm verileriniz korundu.
+[2026-02-15 22:21:38] [GENERAL] arda64best adlı kullanıcının adı başarılı şekilde değişti. yeni ismi: arda5344545454
+[2026-02-16 23:39:00] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-16 23:39:00] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-16 23:39:00] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-16 23:39:04] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-16 23:39:05] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-17 00:15:06] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-17 00:15:06] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-17 00:15:06] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-17 00:15:06] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-17 00:15:06] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-02-17 00:15:11] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-17 00:15:11] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-17 00:22:12] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-17 00:22:12] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-17 00:22:12] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-17 00:22:12] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-17 00:22:12] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-17 00:22:34] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-17 00:22:34] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-17 00:22:34] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-17 00:22:34] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-17 00:22:34] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-02-17 00:22:39] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-17 00:22:39] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-19 16:22:12] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-19 16:22:12] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-19 16:22:12] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-19 16:22:13] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-19 16:22:13] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-19 16:23:09] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-19 16:23:09] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-19 16:23:09] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-19 16:23:09] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-19 16:23:14] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-19 16:23:14] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-19 16:23:21] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-19 16:23:21] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-19 16:23:21] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-19 16:23:22] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-19 16:23:22] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-19 16:34:52] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-19 16:34:52] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-19 16:34:52] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-19 16:34:52] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-19 16:34:57] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-19 16:34:57] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-19 16:35:33] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-19 16:35:33] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-19 16:35:33] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-19 16:35:33] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-19 16:35:33] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-19 16:40:31] [GENERAL] [ShopItemsHandler] YRQSBXHU kullanıcısına mağaza öğeleri gönderildi.
+[2026-02-19 16:40:33] [GENERAL] [ShopItemsHandler] YRQSBXHU kullanıcısına mağaza öğeleri gönderildi.
+[2026-02-19 18:06:31] [GENERAL] [ShopItemsHandler] YRQSBXHU kullanıcısına mağaza öğeleri gönderildi.
+[2026-02-19 18:06:36] [GENERAL] [ShopItemsHandler] YRQSBXHU kullanıcısına mağaza öğeleri gönderildi.
+[2026-02-19 22:00:13] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-19 22:00:13] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-19 22:00:13] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-19 22:00:13] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-19 22:00:18] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-19 22:00:18] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-19 22:10:25] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-19 22:10:25] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-19 22:10:25] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-19 22:10:25] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-19 22:10:25] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-20 17:48:28] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-20 17:48:28] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-20 17:48:28] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-20 17:48:28] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-20 17:48:33] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-20 17:48:33] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-20 19:18:00] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-20 19:18:00] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-20 19:18:00] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-20 19:18:01] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-20 19:18:01] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-20 19:18:41] [GENERAL] [MapManager] Varsayılan maps.json oluşturuldu.
+[2026-02-20 19:18:41] [GENERAL] [MapManager] 2 harita yüklendi.
+[2026-02-21 00:50:47] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-21 00:50:47] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-21 00:50:47] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-21 00:50:47] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-21 00:50:52] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-21 00:50:52] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-21 00:51:22] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-21 00:51:22] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-21 00:51:22] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-21 00:51:22] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-21 00:51:22] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-21 00:52:06] [GENERAL] [MapManager] 2 harita yüklendi.
+[2026-02-21 00:56:12] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-21 00:56:12] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-21 00:56:12] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-21 00:56:12] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-21 00:56:12] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-02-21 00:56:17] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-21 00:56:17] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-21 00:58:41] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-21 00:58:41] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-21 00:58:41] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-21 00:58:41] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-21 00:58:41] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-21 00:58:59] [GENERAL] [MapManager] 2 harita yüklendi.
+[2026-02-21 13:58:41] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-21 13:58:41] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-21 13:58:41] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-21 13:58:41] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-21 13:58:46] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-21 13:58:46] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-21 13:59:16] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-21 13:59:16] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-21 13:59:16] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-21 13:59:17] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-21 13:59:17] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-21 13:59:41] [GENERAL] [MapManager] 2 harita yüklendi.
+[2026-02-21 14:03:48] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-21 14:03:48] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-21 14:03:48] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-21 14:03:48] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-21 14:03:53] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-21 14:03:53] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-21 14:04:02] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-21 14:04:02] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-21 14:04:02] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-21 14:04:02] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-21 14:04:03] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-21 14:04:20] [GENERAL] [MapManager] 2 harita yüklendi.
+[2026-02-21 14:05:22] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-21 14:05:22] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-21 14:05:22] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-21 14:05:22] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-21 14:05:27] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-21 14:05:27] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-21 14:05:43] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-21 14:05:43] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-21 14:05:43] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-21 14:05:43] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-21 14:05:43] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-21 14:06:12] [GENERAL] [MapManager] 2 harita yüklendi.
+[2026-02-21 23:46:41] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-21 23:46:41] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-21 23:46:41] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-21 23:46:42] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-21 23:46:42] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-21 23:48:01] [GENERAL] [MapManager] 2 harita yüklendi.
+[2026-02-21 23:49:11] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-21 23:49:11] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-21 23:49:11] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-21 23:49:11] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-02-21 23:49:11] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-02-21 23:49:16] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-02-21 23:49:16] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-02-21 23:51:04] [GENERAL] [Config] C:\project\Game-server\src\config.json yüklendi
+[2026-02-21 23:51:05] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\project\Game-server\src\config.json
+[2026-02-21 23:51:05] [GENERAL] [Config] Config başarıyla yüklendi: C:\project\Game-server\src\config.json
+[2026-02-21 23:51:05] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-02-21 23:51:05] [GENERAL] Sunucu  5000 portunda dinleniyor...
+[2026-02-21 23:51:39] [GENERAL] [MapManager] 2 harita yüklendi.
+[2026-02-22 13:12:43] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-02-22 13:12:43] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-02-22 13:12:43] [GENERAL] [Config] Config kaydedildi: C:\project\Game-server\src\config.json
+[2026-02-22 13:12:43] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil

@@ -1,3 +1,5 @@
+[PacketHandler(MessageType.MemberToLowerRequest)]
+
 public static class ClubMemberChangeHandler
 {
     public static void Handle(Session session, byte[] message)
@@ -7,13 +9,18 @@ public static class ClubMemberChangeHandler
             ByteBuffer read = new ByteBuffer();
             read.WriteBytes(message, true);
 
-            int type = read.ReadInt();
-            string targetid = read.ReadString();
-            short status = read.ReadShort();
+            int _ = read.ReadShort();
+            
+            var request = new ClubMemberChangeRequestPacket();
+            request.Deserialize(read);
+            
+            string targetid = request.TargetId;
+            short status = request.Status;
 
             // Hesap kontrolleri
+            if (session.Account == null) return;
+            var myAccount = session.Account;
             AccountManager.AccountData targetAccount = AccountCache.Load(targetid);
-            var myAccount = AccountCache.Load(session.AccountId);
 
             // Temel kontroller
             if (targetAccount == null || myAccount == null)

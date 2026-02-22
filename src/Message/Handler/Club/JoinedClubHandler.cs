@@ -1,3 +1,4 @@
+[PacketHandler(MessageType.JoinClubRequest)]
 public static class JoinedClubHandler
 {
     
@@ -5,13 +6,17 @@ public static class JoinedClubHandler
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message,true);
-        int _ = read.ReadInt();
+        int _ = read.ReadShort();
 
-        int Clubıd = read.ReadInt();
+        var request = new JoinClubRequestPacket();
+        request.Deserialize(read);
+        
+        int Clubıd = request.ClubId;
         read.Dispose();
          bool isJoined = false;
         var Club = ClubManager.LoadClub(Clubıd);
-        AccountManager.AccountData account = AccountCache.Load(session.AccountId);
+        if (session.Account == null) return;
+        AccountManager.AccountData account = session.Account;
         if (Club == null) return;
 
         if (Club.Members.Count >= 100)
@@ -29,89 +34,38 @@ public static class JoinedClubHandler
         }
           
             
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.JoinClubResponse);
         if (isJoined)
         {
-
-
-            buffer.WriteInt(Club.ClubId);
-            buffer.WriteInt(Club.ClubAvatarID);
-            buffer.WriteString(Club.ClubName);
-            buffer.WriteString(Club.Clubaciklama);
-            buffer.WriteInt(Club.Members.Count);
-            foreach (var member in Club.Members)
+            var response = new JoinClubResponsePacket
             {
+                ClubId = Club.ClubId,
+                ClubAvatarId = Club.ClubAvatarID,
+                ClubName = Club.ClubName,
+                ClubDescription = Club.Clubaciklama,
+            };
+            response.Members.AddRange(Club.Members);
+            response.Messages.AddRange(Club.Messages);
+            session.Send(response);
 
-
-
-                buffer.WriteString(member.Accountid);
-                buffer.WriteString(member.AccountName);
-                buffer.WriteString(member.Role.ToString());
-                buffer.WriteInt(member.NameColorID);
-                buffer.WriteInt(member.AvatarID);
-
-            }
-
-            buffer.WriteInt(Club.Messages.Count);
-
-            foreach (var clubmessage in Club.Messages)
-            {
-                buffer.WriteByte((byte)clubmessage.messageFlags);
-
-              switch((ClubMessageFlags)clubmessage.messageFlags)
-             {
-                case ClubMessageFlags.None:
-                 buffer.WriteString(clubmessage.SenderId);
-            buffer.WriteString(clubmessage.SenderName);
-            buffer.WriteInt(clubmessage.SenderAvatarID);
-            buffer.WriteString("Üye"); // todo enum send
-            buffer.WriteString(clubmessage.Content);
-                    break;
-                case ClubMessageFlags.HasSystem:
-                    buffer.WriteInt((int)clubmessage.eventType);
-                    buffer.WriteString(clubmessage.ActorName);
-                    buffer.WriteString(clubmessage.ActorID ??"");
-                    break;
-                case ClubMessageFlags.HasTarget:
-                 buffer.WriteInt((int)clubmessage.eventType);
-                    buffer.WriteString(clubmessage.ActorName);
-                    buffer.WriteString(clubmessage.ActorID);
-                    buffer.WriteString(clubmessage.TargetName);
-                    break;
-            }
-            }
-            byte[] veri = buffer.ToArray();
-            buffer.Dispose();
-            session.Send(veri);
-
-               ByteBuffer buffer1 = new ByteBuffer();
-               buffer1.WriteInt((int)MessageType.GetClubMessage);
-
-                 ClubMessage messages = new ClubMessage
+               ClubMessage messages = new ClubMessage
                  {
                      messageFlags = ClubMessageFlags.HasSystem,
                      eventType = ClubEventType.JoinMessage,
                      ActorName = account.Username,
-                    ActorID = account.AccountId
+                    ActorID = account.AccountId,
+                    MessageId = 0 // Assuming default or generated elsewhere if needed
                    };
 
                    Club.Messages.Add(messages);
 
-                     buffer1.WriteInt((int)MessageType.GetClubMessage);
-                     buffer1.WriteInt(messages.MessageId); 
-                     buffer1.WriteByte((byte)ClubMessageFlags.HasSystem);
-                     buffer1.WriteInt((int)ClubEventType.JoinMessage);
-                     buffer1.WriteString(messages.ActorName);
-                     buffer1.WriteString(messages.ActorID);
-                     byte[] response = buffer1.ToArray();
-                     buffer1.Dispose();
+                     var broadcastPacket = new GetClubMessagePacket { Message = messages };
+
                      foreach(var memberrs in Club.Members)
                 {
                    if(SessionManager.IsOnline(memberrs.Accountid))
                    {
                        Session session1 = SessionManager.GetSession(memberrs.Accountid);
-                       session1.Send(response);
+                       session1.Send(broadcastPacket);
                    }
                }
 

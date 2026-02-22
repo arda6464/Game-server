@@ -109,6 +109,11 @@ public class SlashCommands
             .WithDescription("Botun pingini gösterir")
             .Build();
 
+        var TrafficCommand = new SlashCommandBuilder()
+            .WithName("traffic")
+            .WithDescription("Sunucu trafik analizini gösterir")
+            .Build();
+
         var SendNotficationCommand = new SlashCommandBuilder()
             .WithName("sendnotification")
             .WithDescription("Belirtilen oyuncuya bildirim gönderir")
@@ -116,9 +121,10 @@ public class SlashCommands
             .WithName("id")
             .WithDescription("Bildirim gönderilecek tür")
             .WithType(ApplicationCommandOptionType.Integer)
-            .AddChoice("Toast", 11)
-            .AddChoice("Popup", 10)
-            .AddChoice("İnbox",12)
+            .AddChoice("Toast", (int)NotficationTypes.NotficationType.toast)
+            .AddChoice("Popup", (int)NotficationTypes.NotficationType.banner)
+            .AddChoice("İnbox",(int)NotficationTypes.NotficationType.Inbox)
+            .AddChoice("Push",(int)NotficationTypes.NotficationType.Push)
             .WithRequired(true))
             
 
@@ -136,9 +142,10 @@ public class SlashCommands
             .WithName("id")
             .WithDescription("Bildirim gönderilecek tür")
             .WithType(ApplicationCommandOptionType.Integer)
-            .AddChoice("Toast", 11)
-            .AddChoice("Popup", 10)
-            .AddChoice("İnbox", 12)
+            .AddChoice("Toast", (int)NotficationTypes.NotficationType.toast)
+            .AddChoice("Popup", (int)NotficationTypes.NotficationType.banner)
+            .AddChoice("İnbox",(int)NotficationTypes.NotficationType.Inbox)
+            .AddChoice("Push",(int)NotficationTypes.NotficationType.Push)
             .WithRequired(true))
             .AddOption("başlık", ApplicationCommandOptionType.String, "Bildirim başlığı", isRequired: true)
             .AddOption("mesaj", ApplicationCommandOptionType.String, "Gönderilecek bildirim mesajı", isRequired: true)
@@ -184,6 +191,7 @@ public class SlashCommands
                 await bot.Client.CreateGlobalApplicationCommandAsync(banInfoCommand);
                 await bot.Client.CreateGlobalApplicationCommandAsync(ServerStatsCommand);
                 await bot.Client.CreateGlobalApplicationCommandAsync(PingCommand);
+                await bot.Client.CreateGlobalApplicationCommandAsync(TrafficCommand);
                 await bot.Client.CreateGlobalApplicationCommandAsync(SendNotficationCommand);
                 await bot.Client.CreateGlobalApplicationCommandAsync(SendAllNotificationCommand);
                 await bot.Client.CreateGlobalApplicationCommandAsync(AddRoleCommand.Build());
@@ -208,6 +216,7 @@ public class SlashCommands
             await guild.CreateApplicationCommandAsync(banInfoCommand);
             await guild.CreateApplicationCommandAsync(ServerStatsCommand);
             await guild.CreateApplicationCommandAsync(PingCommand);
+            await guild.CreateApplicationCommandAsync(TrafficCommand);
             await guild.CreateApplicationCommandAsync(SendNotficationCommand);
             await guild.CreateApplicationCommandAsync(SendAllNotificationCommand);
              await bot.Client.CreateGlobalApplicationCommandAsync(AddRoleCommand.Build());
@@ -296,6 +305,9 @@ public class SlashCommands
                 break;
             case "ping":
                 await PingCommand.HandlePingSlashAsync(command,bot);
+                break;
+            case "traffic":
+                await TrafficCommand.HandleTrafficSlashAsync(command, bot);
                 break;
             case "sendnotification":
                 await SendNotificationCommand.HandleSendNotificationSlashAsync(command);

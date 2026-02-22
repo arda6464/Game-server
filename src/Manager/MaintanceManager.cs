@@ -14,7 +14,7 @@ public static class Maintance
             Logger.genellog($"[Maintance] bakım molası aktif panicmode: {(PanicMode ? "Acil" : "Normal")}");
             Notfication notification = new Notfication
             {
-                Id = 11,
+                 type =  NotficationTypes.NotficationType.toast,
                 Title = "Bakım molası",
                 Message = "Sunucumuz bakım molasına giriyor",
                 iconid = 4
@@ -37,7 +37,7 @@ public static class Maintance
             Logger.genellog($"[Maintance] bakım molası aktif Mode: {(PanicMode ? "Acil" : "Normal")}");
             Notfication notification = new Notfication
             {
-                Id = 11,
+                 type  =  NotficationTypes.NotficationType.toast,
                 Title = "Bakım molası",
                 Message = "Sunucumuz bakım molasına giriyor",
                 iconid = 4

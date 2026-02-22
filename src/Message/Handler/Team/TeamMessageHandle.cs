@@ -1,18 +1,21 @@
+[PacketHandler(MessageType.SendTeamMessageRequest)]
 public static class TeamMessageHandler
 {
     public static void Handle(Session session, byte[] data)
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(data, true);
-        int _ = read.ReadInt();
+        int _ = read.ReadShort();
 
-
-
-        string Message = read.ReadString();
+        var request = new SendTeamMessageRequestPacket();
+        request.Deserialize(read);
+        
+        string Message = request.Message;
         read.Dispose();
 
 
-        var account = AccountCache.Load(session.AccountId);
+        if (session.Account == null) return;
+        var account = session.Account;
         Lobby lobby = LobbyManager.GetLobby(session.TeamID);
         if (lobby == null)
         {
@@ -39,24 +42,26 @@ public static class TeamMessageHandler
         };
         lobby.Messages.Add(teamMessage);
 
+        // Görev İlerlemesi - Mesaj Gönderme
+        QuestManager.CheckQuestProgress(account, Quest.MissionType.SendChatMessage);
+
+        var broadcastPacket = new SendTeamMessageResponsePacket
+        {
+            Flags = TeamMessageFlags.None,
+            MessageId = teamMessage.MessageId,
+            SenderAccountId = account.AccountId,
+            SenderName = account.Username,
+            SenderAvatarId = account.Avatarid,
+            Role = "",
+            Content = Message
+        };
+
         foreach (var player in lobby.Players)
         {
             if (SessionManager.IsOnline(player.AccountId))
             {
                 Session membersesion = SessionManager.GetSession(player.AccountId);
-                ByteBuffer memberbuffer = new ByteBuffer();
-
-                memberbuffer.WriteInt((int)MessageType.SendTeamMessageResponse);
-                memberbuffer.WriteByte((byte)teamMessage.messageFlags);
-                memberbuffer.WriteInt(teamMessage.MessageId);
-                memberbuffer.WriteString(account.AccountId);
-                memberbuffer.WriteString(account.Username);
-                memberbuffer.WriteInt(account.Avatarid);
-                memberbuffer.WriteString(""); // Team'de rol yok, boş string
-                memberbuffer.WriteString(Message);
-                byte[] messsage = memberbuffer.ToArray();
-                memberbuffer.Dispose();
-                membersesion.Send(messsage);
+                membersesion.Send(broadcastPacket);
             }
         }
 
@@ -81,19 +86,17 @@ public static class TeamMessageHandler
         }
 
 
-        using (ByteBuffer memberbuffer = new ByteBuffer())
+        var response = new SendTeamMessageResponsePacket
         {
-                memberbuffer.WriteInt((int)MessageType.SendTeamMessageResponse);
-            memberbuffer.WriteByte((byte)TeamMessageFlags.None);
-                memberbuffer.WriteInt(0); // Mesaj ID'si yok
-                memberbuffer.WriteString(account.AccountId);
-                memberbuffer.WriteString("SİSTEM");
-                memberbuffer.WriteInt(account.Avatarid);
-                memberbuffer.WriteString(""); // Team'de rol yok, boş string
-                memberbuffer.WriteString(EntryMessage);
-                byte[] messsage = memberbuffer.ToArray();
-                session.Send(messsage);
-        }
+            Flags = TeamMessageFlags.None,
+            MessageId = 0,
+            SenderAccountId = account.AccountId,
+            SenderName = "SİSTEM",
+            SenderAvatarId = account.Avatarid,
+            Role = "",
+            Content = EntryMessage
+        };
+        session.Send(response);
 
            
     }

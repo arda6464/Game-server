@@ -1,5 +1,6 @@
 using System.Reflection.Metadata;
 
+[PacketHandler(MessageType.SendClubMessage)]
 public static class ClubMessageHandler
 {
     public static void Handle(Session session, byte[] message)
@@ -7,11 +8,13 @@ public static class ClubMessageHandler
         Console.WriteLine("club message handler iss run");
         ByteBuffer readbuffer = new ByteBuffer();
         readbuffer.WriteBytes(message, true);
-        int _ = readbuffer.ReadInt();
+        int _ = readbuffer.ReadShort();
 
-
-        string accountıd = readbuffer.ReadString();
-        string Message = readbuffer.ReadString();
+        var request = new SendClubMessageRequestPacket();
+        request.Deserialize(readbuffer);
+        
+        string accountıd = request.AccountId;
+        string Message = request.Message;
         readbuffer.Dispose();
 
 
@@ -29,37 +32,40 @@ public static class ClubMessageHandler
         }
 
         Console.WriteLine($"{account.Username} adlı kullanıcı {club.ClubName ?? "PORNO"} adlı kulube {Message} mesajını gönderdi");
-        ClubMessage clubMessage = new ClubMessage
+        
+        ClubMessage clubMessage;
+        lock (club.SyncLock)
         {
-            MessageId = club.MessageIdCounter++,
-            messageFlags = ClubMessageFlags.None,
-            SenderName = account.Username,
-            SenderId = account.AccountId,
-            SenderAvatarID = account.Avatarid,
-            Content = Message,
-            Timestamp = DateTime.Now
-        };
-
-        club.Messages.Add(clubMessage);
-        //  ClubManager.Save();
-        ByteBuffer memberbuffer = new ByteBuffer();
-        memberbuffer.WriteInt((int)MessageType.GetClubMessage);
-
-        memberbuffer.WriteByte((byte)clubMessage.messageFlags);
-        memberbuffer.WriteInt(clubMessage.MessageId);
-        memberbuffer.WriteString(account.AccountId);
-        memberbuffer.WriteString(account.Username);
-        memberbuffer.WriteInt(account.Avatarid);
-        memberbuffer.WriteString(account.clubRole.ToString());
-        memberbuffer.WriteString(Message);
-        byte[] messsage = memberbuffer.ToArray();
-        memberbuffer.Dispose();
-        foreach (var member in club.Members)
-        {
-            if (SessionManager.IsOnline(member.Accountid))
+            clubMessage = new ClubMessage
             {
-                Session membersesion = SessionManager.GetSession(member.Accountid);
-                membersesion.Send(messsage);
+                MessageId = club.MessageIdCounter++,
+                messageFlags = ClubMessageFlags.None,
+                SenderName = account.Username,
+                SenderId = account.AccountId,
+                SenderAvatarID = account.Avatarid,
+                Content = Message,
+                Timestamp = DateTime.Now
+            };
+            club.Messages.Add(clubMessage);
+        }
+        
+        // Görev İlerlemesi - Mesaj Gönderme
+        QuestManager.CheckQuestProgress(account, Quest.MissionType.SendChatMessage);
+
+        var broadcastPacket = new GetClubMessagePacket
+        {
+            Message = clubMessage
+        };
+        
+        lock (club.SyncLock)
+        {
+            foreach (var member in club.Members)
+            {
+                if (SessionManager.IsOnline(member.Accountid))
+                {
+                    Session membersesion = SessionManager.GetSession(member.Accountid);
+                    membersesion.Send(broadcastPacket);
+                }
             }
         }
 
@@ -78,25 +84,30 @@ public static class ClubMessageHandler
             case "status":
                 EntryMessage = $"Çevrimiçi oyuncu sayısı: {SessionManager.GetCount}\n Server sürümü: {Config.Instance.ServerVersion}\n"; // todo....
                 break;
+            case "firebase":
+            EntryMessage = $"token: {account.FBNToken ?? "null..."}";
+                break;
             default:
                 EntryMessage = "komut bulunamadı... yardım için /help komutunu kullanın";
                 break;
         }
 
 
-        using (ByteBuffer memberbuffer = new ByteBuffer())
+        var response = new GetClubMessagePacket
         {
-                memberbuffer.WriteInt((int)MessageType.SendTeamMessageResponse);
-            memberbuffer.WriteByte((byte)TeamMessageFlags.None);
-                memberbuffer.WriteInt(0); // Mesaj ID'si yok
-                memberbuffer.WriteString(account.AccountId);
-                memberbuffer.WriteString("SİSTEM");
-                memberbuffer.WriteInt(account.Avatarid);
-                memberbuffer.WriteString("üye"); // todo...
-                memberbuffer.WriteString(EntryMessage);
-                byte[] messsage = memberbuffer.ToArray();
-                session.Send(messsage);
-        }
+            Message = new ClubMessage
+            {
+               messageFlags = ClubMessageFlags.None,
+               SenderId = account.AccountId,
+               SenderName = "SİSTEM",
+               SenderAvatarID = account.Avatarid,
+               Content = EntryMessage,
+               // MessageId and Timestamp might need defaults if not crucial for system message display
+               MessageId = 0, 
+               Timestamp = DateTime.Now
+            }
+        };
+        session.Send(response);
 
            
     }

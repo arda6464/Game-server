@@ -1,23 +1,16 @@
 {
   "Port": 5000,
+  "QuestRefeshHour": 0,
+  "SeasonQuestRefeshTime": "2026-02-23T00:00:00+03:00",
   "anti-ddos": false,
-  "BotToken": "MTI1NDUzNzE0ODQ5MzcyNTc3Ng.GZwjtH.mroGL5G_QgkY7xjOTt6n3g3ytT_VVhF7PNIJmw",
+  "BotToken": "MTI1NDUzNzE0ODQ5MzcyNTc3Ng.GGBW1o.yLrOlR1dh32q8qbQlr--Au6Yt2cA1Mdz8O2gxw",
   "ChannelId": 0,
-  "DiscordAdminIDs": [
-    123456789012345678,
-    987654321098765432
-  ],
-  "CreatorCodes": [
-    "erder",
-    "xeon",
-    "santer",
-    "spz",
-    "8Hacc"
-  ],
+  "DiscordAdminIDs": [],
+  "CreatorCodes": [],
   "AllowEmulators": false,
-  "Maintance": true,
-  "EmailPassword": "wkft iclc qhaw nged",
-  "Email": "ardatutku999@gmail.com",
-  "UpdateLink": "sstd",
+  "Maintance": false,
+  "EmailPassword": "",
+  "Email": "",
+  "UpdateLink": "https://default-update.com",
   "ServerVersion": "1.5"
 }

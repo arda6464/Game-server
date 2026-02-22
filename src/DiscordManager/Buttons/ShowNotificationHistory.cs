@@ -31,7 +31,7 @@ public static class ShowNotificationHistory
             foreach (var notif in account.Notfications.TakeLast(10))
             {
                 historyEmbed.AddField(
-                  $"**{notif.Title}**\n{notif.Message}", $"{notif.Timespam:dd.MM.yyyy HH:mm} - {IdToString(notif.Id.ToString())}");
+                  $"**{notif.Title}**\n{notif.Message}", $"{notif.Timespam:dd.MM.yyyy HH:mm} - {IdToString(notif.type.ToString())}");
 
             }
 

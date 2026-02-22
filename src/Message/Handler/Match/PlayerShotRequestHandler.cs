@@ -1,5 +1,6 @@
 using System.Numerics;
 
+[PacketHandler(MessageType.ShootRequest)]
 public static class PlayerShotRequestHandler
 {
     public static void Handle(Session session,byte[] message)
@@ -12,46 +13,51 @@ public static class PlayerShotRequestHandler
 
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        int type = read.ReadInt();
+        int _ = read.ReadShort();
 
-        float X = read.ReadFloat();
-        float Y = read.ReadFloat();
+        var request = new ShootRequestPacket();
+        request.Deserialize(read);
+        
+        float X = request.DirectionX;
+        float Y = request.DirectionY;
         read.Dispose();
-      Arena arena = ArenaManager.GetArena(session.PlayerData.ArenaId);
+        
+      Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
+        if (battle == null) return;
+
         Bullet bullet = new Bullet
         {
-            BulletId = arena.GetBulletId(),
-            Position = session.PlayerData.Position,
+            BulletId = battle.GetNextBulletId(),
+            Position = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Y),
             Direction = Vector2.Normalize(new Vector2(X, Y)),
             Speed = 10f,
             OwnerId = session.AccountId,
-            startPos = session.PlayerData.Position,
+            startPos = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Y),
             Damage = 50,
             menzil = 7f
 
         };
-        arena.AddBullet(bullet);
+        battle.AddBullet(bullet);
 
         Vector3 dir = new Vector3(X, Y, 0f);
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.Shoot);
-
-        buffer.WriteString(session.AccountId); // owner id
-        buffer.WriteInt(bullet.BulletId);
-        buffer.WriteFloat(bullet.Speed);
-        buffer.WriteFloat(session.PlayerData.Position.X);
-        buffer.WriteFloat(session.PlayerData.Position.Y);
-        buffer.WriteFloat(X);
-        buffer.WriteFloat(Y);
-       //  Console.WriteLine($"[PlayerShotRequestHandler] Oyuncu {session.AccountId} atış yaptı. Bullet ID: {bullet.BulletId}, Pozisyon: ({bullet.Position.X}, {bullet.Position.Y}), Yön: ({X}, {Y})  speed: {bullet.Speed}");
         
-        byte[] data = buffer.ToArray();
-        buffer.Dispose();
-        
-        var arenaplayers = arena.GetPlayers();
-        foreach(var acc in arenaplayers)
+        var response = new ShootResponsePacket
         {
-              acc.session.Send(data);
+            OwnerId = session.AccountId,
+            BulletId = bullet.BulletId,
+            Speed = bullet.Speed,
+            PositionX = session.PlayerData.Position.X,
+            PositionY = session.PlayerData.Position.Y,
+            PositionZ = session.PlayerData.Position.Z, 
+            DirectionX = X,
+            DirectionY = Y
+        };
+
+        
+        var battleplayers = battle.GetPlayers();
+        foreach(var acc in battleplayers)
+        {
+              acc.session.Send(response);
         }
     }
 }

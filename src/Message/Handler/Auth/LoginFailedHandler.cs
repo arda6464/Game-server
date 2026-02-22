@@ -6,7 +6,7 @@ public static class Loginfailed
     public static void Send(Session session, string erormessage, int erorid)
     {
         ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.LoginFailed);
+        buffer.WriteShort((short)MessageType.LoginFailed);
         buffer.WriteInt(erorid);
         buffer.WriteString(erormessage);
         byte[] veri = buffer.ToArray();

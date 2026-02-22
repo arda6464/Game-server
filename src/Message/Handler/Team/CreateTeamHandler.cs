@@ -1,3 +1,4 @@
+[PacketHandler(MessageType.CreateTeamRequest)]
 public static class CreateTeamHandler
 {
     public static void Handle(Session session)
@@ -9,41 +10,37 @@ public static class CreateTeamHandler
             MessageCodeManager.Send(session, MessageCodeManager.Message.AlreadyİnTeam);
             return;
         }
-            var Account = AccountCache.Load(session.AccountId);
+        if (session.Account == null) return;
+        var Account = session.Account;
             if (Account == null) return;
         Lobby Lobby = LobbyManager.CreateLobby(Account);
 
         ByteBuffer buffer = new ByteBuffer();
 
-        buffer.WriteInt((int)MessageType.CreateTeamResponse);
-        buffer.WriteInt(Lobby.ID);
-        byte[] lobby = buffer.ToArray();
-        buffer.Dispose();
-        session.Send(lobby);
-        session.TeamID = Lobby.ID;       
-        ByteBuffer buffer1 = new ByteBuffer();
-        buffer1.WriteInt((int)MessageType.SendTeamMessageResponse);
-        TeamMessage teamMessage = new TeamMessage
+        session.Send(new CreateTeamResponsePacket { TeamId = Lobby.ID }); 
+        session.TeamID = Lobby.ID;   
+        
+        // Görev İlerlemesi - Takım Kurma
+        QuestManager.CheckQuestProgress(Account, Quest.MissionType.CreateTeam);
+
+        var broadcastPacket = new SendTeamMessageResponsePacket
         {
-            messageFlags = TeamMessageFlags.HasSystem,
-         eventType= TeamEventType.CreateMessage,
+            Flags = TeamMessageFlags.HasSystem,
+            EventType = TeamEventType.CreateMessage,
             SenderName = Account.Username,
-            SenderId = Account.AccountId
+            SenderAccountId = Account.AccountId
         };
-        buffer1.WriteByte((byte)teamMessage.messageFlags); // Flag önce yazılmalı!
-        buffer1.WriteInt((int)teamMessage.eventType);
-        buffer1.WriteString(teamMessage.SenderName);
-        buffer1.WriteString(teamMessage.SenderId ?? "");
-        byte[] response = buffer1.ToArray();
-        buffer1.Dispose();
                  
 
-        foreach(var member in Lobby.Players)
+        lock (Lobby.SyncLock)
         {
-            if (SessionManager.IsOnline(member.AccountId))
+            foreach(var member in Lobby.Players)
             {
-                Session session1 = SessionManager.GetSession(member.AccountId);
-                session1.Send(response);
+                if (SessionManager.IsOnline(member.AccountId))
+                {
+                    Session session1 = SessionManager.GetSession(member.AccountId);
+                    session1.Send(broadcastPacket);
+                }
             }
         }
     }

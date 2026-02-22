@@ -1,3 +1,4 @@
+[PacketHandler(MessageType.LeaderboardRequest)]
 public static class GetLeaderboard
 {
     public static void Handle(Session session)
@@ -7,28 +8,28 @@ public static class GetLeaderboard
         {
             var topPlayers = AccountManager.GetTop100Players();
             var playerRank = AccountManager.GetPlayerRank(session.AccountId);
-            var acccount = AccountCache.Load(session.AccountId);
+            var acccount = session.Account;
             if (acccount == null) return;
 
-            ByteBuffer buffer = new ByteBuffer(2048);
-            buffer.WriteInt((int)MessageType.LeaderboardResponse);
-            buffer.WriteInt(topPlayers.Count);
+            var response = new LeaderboardResponsePacket
+            {
+                PlayerRankIndex = playerRank - 1,
+                PlayerTrophy = acccount.Trophy
+            };
+            
             foreach (var player in topPlayers)
             {
-                buffer.WriteString(player.Username);
-                buffer.WriteString(player.AccountId);
-                buffer.WriteString(player.ClubName ?? " ");
-
-
-                buffer.WriteInt(player.Trophy);
-                buffer.WriteInt(player.Avatarid);
-                buffer.WriteInt(player.Namecolorid);
-                buffer.WriteInt(player.Premium);
+                response.Players.Add(new LeaderboardResponsePacket.PlayerInfo
+                {
+                    Name = player.Username,
+                    AccountId = player.AccountId,
+                    ClubName = player.ClubName,
+                    Trophy = player.Trophy,
+                    AvatarId = player.Avatarid,
+                    NameColorId = player.Namecolorid,
+                    Premium = player.Premium
+                });
             }
-            buffer.WriteInt(playerRank-1);
-            buffer.WriteInt(acccount.Trophy);
-            byte[] response = buffer.ToArray();
-            buffer.Dispose();
 
             session.Send(response);
 

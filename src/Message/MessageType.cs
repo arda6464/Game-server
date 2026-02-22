@@ -1,7 +1,6 @@
-
-public enum MessageType : int
+public enum MessageType : short
 {
-    // Connection
+    #region Conntection
     FirstConnectionRequest,
     FirstConnectionResponse,
     Disconnect,
@@ -11,14 +10,21 @@ public enum MessageType : int
     MessageCode,
     Alive,
     Presence,
+    
+    // UDP
+    UdpConnect,
+    UdpConnectResponse,
+    UdpMove,
+    UdpShoot,
+    UdpInput, // Joystick verisi için
+    #endregion
 
-
-    // Authentication
+    #region Authentication
     AuthLoginRequest,
     AuthLoginResponse,
     NewAccountCreateResponse,
-
-    // Account
+    #endregion
+    #region  Account
     AccountData,
     LoginFailed,
     LoginOKRequest,
@@ -27,10 +33,12 @@ public enum MessageType : int
     VerifyCodeResponse,
     AccountLogin,
     SignAccount,
+    ChangeNotficationRequest,
+NameNotAcceptedRequest,
+    #endregion
 
 
-
-    // Profile
+    #region  Profile
     ChangeNameRequest,
     ChangeNameResponse,
     ChangeNameColorRequest,
@@ -39,12 +47,12 @@ public enum MessageType : int
     SetAvatarResponse,
     ShowProfileRequest,
     ShowProfileResponse,
+    #endregion
 
-
-    // Friends
+    #region  Friends
     SendFriendRequest,
-    SendFriendResponse,
     AcceptFriendRequest,
+    NewRequest,
     AcceptFriendResponse,
     DeclineFriendRequest,
     DeclineFriendResponse,
@@ -52,10 +60,11 @@ public enum MessageType : int
     DeleteFriendResponse,
     NewFriendsList,
     NewRequestList,
+    BestFriendChanged,
+    #endregion
 
 
-
-    // Team
+    #region  Team
     CreateTeamRequest,
     CreateTeamResponse,
     JoinTeamRequest,
@@ -66,24 +75,25 @@ public enum MessageType : int
     SendTeamMessageResponse,
     InviteToTeamRequest,
     InviteToTeamResponse,
+    #endregion
 
 
 
 
 
-
-    // notfications
+    #region  notfications
     Notification,
     AllNotficationViewed,
+    #endregion
 
-    // Leaderboards
+    #region  Leaderboards
     LeaderboardRequest,
     LeaderboardResponse,
+    #endregion
 
 
 
-
-    // Club
+    #region  Club
 
     ClubCreateRequest,
     ClubCreateResponse,
@@ -108,15 +118,15 @@ public enum MessageType : int
     MemberToLowerRequest,
     MemberToLowerResponse,
 
+    #endregion
 
 
 
-
-    // Battle
+    #region  Battle
     MatchMakingRequest,
     MatchMakingCancelRequest,
     MatchFound,
-    MatchMakingAddPlayer,
+    MatchMakingUpdate,
     StartMatch,
     Move,
 
@@ -127,13 +137,17 @@ public enum MessageType : int
     HitRequest,
     PlayerHealthUpdate,
 
-    // Shop
+    #endregion
+
+    #region  Shop
     GetAllMarketItemsRequest,
     GetAllMarketItemsResponse,
 
+    #endregion
 
 
-    // Support
+
+    #region  Support
     SupportMessageSend,
     SupportMessageResponse,
     SupporCreateTicketRequest,
@@ -142,8 +156,20 @@ public enum MessageType : int
     SupportGetAllTicketRequest,
     SupportGetAllTicketResponse,
     SupportTicketClosed,
-    SupportTicketOpened
+    SupportTicketOpened,
 
+    #endregion
+
+    #region Pass
+    NewQuest,
+    DeleteQuest,
+    QuestProgress,
+
+    #endregion
+
+    #region  Android
+    NewFBNTokenRequest
+    #endregion
 
 
 }

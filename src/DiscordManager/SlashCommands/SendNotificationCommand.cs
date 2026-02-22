@@ -18,7 +18,7 @@ public static class SendNotificationCommand
         return;
     }
     
-    int notificationType = Convert.ToInt32(idOption.Value);
+   NotficationTypes.NotficationType notificationType = (NotficationTypes.NotficationType)idOption.Value;
     Console.WriteLine($"Seçilen bildirim türü: {notificationType}");
         var playerIdOption = command.Data.Options
                     .FirstOrDefault(opt => opt.Name == "kullanıcıid");
@@ -55,7 +55,7 @@ public static class SendNotificationCommand
         string Messagestr = Message.Value as string;
      string ButtonNamestr = "";
      string ButtonLinkstr = "";
-        if (notificationType == 10)
+        if (notificationType == NotficationTypes.NotficationType.banner)
         {
             var ButtonName = command.Data.Options
                  .FirstOrDefault(opt => opt.Name == "butonadı");
@@ -67,39 +67,39 @@ public static class SendNotificationCommand
 
             notfication = new Notfication
             {
-                Id = notificationType,
+                type = notificationType,
                 Title = Titlestr,
                 Message = Messagestr,
                 ButtonText = ButtonNamestr,
                 Url = ButtonLinkstr
             };
         }
-
-        notfication = new Notfication
+        else
         {
-            Id = notificationType,
-            Title = Titlestr,
-            Message = Messagestr,
-        Timespam = DateTime.Now
-
-        };
-        NotificationManager.Add(account, notfication);
-        Embed embed = new EmbedBuilder()
-          .WithTitle("📨 Bildirim Gönderildi")
-          .WithDescription($"Kullanıcı {playerId} bildirim aldı!")
-          .AddField("Başlık", Titlestr)
-          .AddField("Mesaj", Messagestr)
-          .WithCurrentTimestamp()
-          .WithFooter("Bildirim Sistemi")
-          .WithColor(Color.Blue)
-          .Build();
-        ButtonBuilder shownotficationButton = new ButtonBuilder()
-        {
-            Label = "Bildirim Geçmişini Göster",
-            Style = ButtonStyle.Primary,
-            CustomId = $"shownotfication_{playerId}_{notfication.Timespam.Ticks}"
-        };
-        await command.RespondAsync(embed: embed, ephemeral: false,  components: new ComponentBuilder().WithButton(shownotficationButton).Build());
-        
+            notfication = new Notfication
+            {
+                type = notificationType,
+                Title = Titlestr,
+                Message = Messagestr
+            };
+        }
+         NotificationManager.Add(account, notfication);
+         Embed embed = new EmbedBuilder()
+           .WithTitle("📨 Bildirim Gönderildi")
+           .WithDescription($"Kullanıcı {playerId} bildirim Gönderildi!")
+           .AddField("Başlık", Titlestr)
+           .AddField("Mesaj", Messagestr)
+           .WithCurrentTimestamp()
+           .WithFooter("Bildirim Sistemi")
+           .WithColor(Color.Blue)
+           .Build();
+         ButtonBuilder shownotficationButton = new ButtonBuilder()
+         {
+             Label = "Bildirim Geçmişini Göster",
+             Style = ButtonStyle.Primary,
+           CustomId = $"shownotfication_{playerId}_{2}"
+         };
+         await command.RespondAsync(embed: embed, ephemeral: false,  components: new ComponentBuilder().WithButton(shownotficationButton).Build());
+         
     }
 }

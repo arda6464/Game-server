@@ -1,3 +1,4 @@
+[PacketHandler(MessageType.VerifyCodeResponse)]
 public static class CodeVerify
 {
     public static void Handle(Session session, byte[] message)
@@ -5,9 +6,12 @@ public static class CodeVerify
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message);
 
-        int packetid = read.ReadInt();
+        int packetid = read.ReadShort();
+        
+        var request = new VerifyCodeRequestPacket();
+        request.Deserialize(read);
 
-        int code = read.ReadInt();
+        int code = request.Code;
 
 
         var data = VerifyManager.GetData(session.AccountId);
@@ -37,7 +41,7 @@ public static class CodeVerify
         Console.WriteLine($"epostaya kayıt olundu!: eposta: {acccount.Email} password: {acccount.Password}");
         Notfication notfication = new Notfication
         {
-            Id = 12,
+             type =  NotficationTypes.NotficationType.Inbox,
             Sender = "Sistem",
             Message = "Kayıt olduğun için teşekkürler!\n bu ödül senin için <3",
             rewardItemType = RewardItemType.RewardItemTypes.Gem,

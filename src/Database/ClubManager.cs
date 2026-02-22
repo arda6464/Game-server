@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using Microsoft.Data.Sqlite;
+using System.Collections.Concurrent;
 
 public enum ClubRole
 {
@@ -20,12 +22,12 @@ public enum ClubEventType : byte
 {
     JoinMessage,
     LeaveMessage,
-    KickMessage, // todo....
+    KickMessage,
 }
 
 public class ClubMember
 {
-    public string?  AccountName { get; set; }
+    public string? AccountName { get; set; }
     public string? Accountid { get; set; }
     public ClubRole Role { get; set; }
     public int NameColorID { get; set; }
@@ -37,26 +39,29 @@ public class ClubMemberinfo
     public string? ClubName { get; set; }
     public string? Clubaciklama { get; set; }
     public int? TotalKupa { get; set; }
-    
 }
 
 public class Club
 {
+    [JsonIgnore]
     public int ClubId { get; set; }
     public string? OwnerAccountId { get; set; }
     public int MessageIdCounter { get; set; } = 1;
+    [JsonIgnore]
     public string? ClubName { get; set; }
-     public string? Clubaciklama { get; set; }
-     public int ClubAvatarID { get; set;}
+    public string? Clubaciklama { get; set; }
+    public int ClubAvatarID { get; set; }
     public int? TotalKupa { get; set; }
-    public List<ClubMember> Members  = new List<ClubMember>();
-     public List<ClubMessage> Messages { get; set; } = new List<ClubMessage>(); // Kulüp mesajları
+    public List<ClubMember> Members { get; set; } = new List<ClubMember>();
+    public List<ClubMessage> Messages { get; set; } = new List<ClubMessage>();
+
+    [JsonIgnore]
+    public object SyncLock = new object();
 }
 public class ClubMessage
 {
     public int MessageId { get; set; }
-public ClubMessageFlags messageFlags;
-
+    public ClubMessageFlags messageFlags;
     public ClubEventType eventType;
     public string? SenderId { get; set; }
     public string? SenderName { get; set; }
@@ -66,53 +71,83 @@ public ClubMessageFlags messageFlags;
     public string? ActorName;
     public string? ActorID;
     public string? TargetName;
-
 }
 
 public static class ClubManager
 {
-    public static Dictionary<int, Club> Clubs = new Dictionary<int, Club>();
-    private static string filePath = "clubs.json";
+    public static ConcurrentDictionary<int, Club> Clubs = new ConcurrentDictionary<int, Club>();
     private static int lastClubId = 1;
 
-    #region Load/Save
+    # region Load/Save
     public static void Allclubload()
     {
-        Console.WriteLine("kulüpler yükleniyor...");
-        if (File.Exists(filePath))
-        {
-            var json = File.ReadAllText(filePath);
-            Clubs = JsonConvert.DeserializeObject<Dictionary<int, Club>>(json) ?? new Dictionary<int, Club>();
-            lastClubId = Clubs.Keys.Count > 0 ? Clubs.Keys.Max() + 1 : 1;
-            
-            // Cache'e ekle
-            foreach (var club in Clubs.Values)
-            {
-                ClubCache.Cache(club);
-            }
-            
-            Console.WriteLine($"[ClubManager] {Clubs.Count} kulüp yüklendi.");
-        }
-        else
-        {
-            Logger.errorslog($"{filePath} dosyası bulunamadı. yeni olşturuluyor...");
-            File.Create(filePath).Close();
+        Console.WriteLine("Kulüpler veritabanından yükleniyor...");
 
-        }
-    }
-    public static Club LoadClub(int clubId)
-    {
-        // Cache'den yükle (daha hızlı)
-        var club = ClubCache.Load(clubId);
-        if (club != null)
+        using (var connection = DatabaseManager.GetConnection())
         {
-            return club;
+            connection.Open();
+
+
+            var selectCmd = connection.CreateCommand();
+            selectCmd.CommandText = "SELECT * FROM Clubs";
+            using (var reader = selectCmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    string jsonData = reader.GetString(reader.GetOrdinal("Data"));
+                    var club = JsonConvert.DeserializeObject<Club>(jsonData);
+                    
+                    if (club != null)
+                    {
+                        club.ClubId = reader.GetInt32(reader.GetOrdinal("ClubId"));
+                        club.ClubName = reader.IsDBNull(reader.GetOrdinal("ClubName")) ? null : reader.GetString(reader.GetOrdinal("ClubName"));
+
+                        Clubs[club.ClubId] = club;
+                        if (club.ClubId >= lastClubId)
+                            lastClubId = club.ClubId + 1;
+
+                        ClubCache.Cache(club);
+                    }
+                }
+            }
         }
         
-        // Cache'de yoksa normal dictionary'den yükle
+        Console.WriteLine($"[ClubManager] {Clubs.Count} kulüp yüklendi.");
+    }
+
+    private static void SaveClubToDb(Club club, SqliteConnection connection)
+    {
+        var upsertQuery = @"
+            INSERT INTO Clubs (ClubId, ClubName, Data) 
+            VALUES (@ClubId, @ClubName, @Data) 
+            ON CONFLICT(ClubId) DO UPDATE SET
+                ClubName=excluded.ClubName, 
+                Data=excluded.Data;";
+
+        using (var command = connection.CreateCommand())
+        {
+            string jsonData;
+            lock (club.SyncLock)
+            {
+                jsonData = JsonConvert.SerializeObject(club);
+            }
+
+            command.CommandText = upsertQuery;
+            command.Parameters.AddWithValue("@ClubId", club.ClubId);
+            command.Parameters.AddWithValue("@ClubName", club.ClubName ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@Data", jsonData);
+            command.ExecuteNonQuery();
+        }
+    }
+
+    public static Club LoadClub(int clubId)
+    {
+        var club = ClubCache.Load(clubId);
+        if (club != null) return club;
+        
         if (Clubs.TryGetValue(clubId, out club))
         {
-            ClubCache.Cache(club); // Tekrar cache'e ekle
+            ClubCache.Cache(club);
             return club;
         }
 
@@ -122,16 +157,26 @@ public static class ClubManager
 
     public static void Save()
     {
-        // Cache'den de kulüpleri güncelle
-       foreach (var cachedClub in ClubCache.GetCachedClubs())
-{
-    Clubs[cachedClub.Key] = cachedClub.Value; // güncel veriyi doğrudan yazar
-}
+        using (var connection = DatabaseManager.GetConnection())
+        {
+            connection.Open();
+            using (var transaction = connection.BeginTransaction())
+            {
+                foreach (var club in Clubs.Values)
+                {
+                    SaveClubToDb(club, connection);
+                }
 
-        
-        var json = JsonConvert.SerializeObject(Clubs, Formatting.Indented);
-        File.WriteAllText(filePath, json);
-   //     Console.WriteLine("[ClubManager] Kulüpler kaydedildi.");
+                foreach (var cachedClub in ClubCache.GetCachedClubs())
+                {
+                    if (!Clubs.ContainsKey(cachedClub.Key))
+                    {
+                        SaveClubToDb(cachedClub.Value, connection);
+                    }
+                }
+                transaction.Commit();
+            }
+        }
     }
     #endregion
 
@@ -141,30 +186,36 @@ public static class ClubManager
         var leaderAccount = AccountCache.Load(leaderAccountId);
         if (leaderAccount == null) return null;
 
+        int clubId = System.Threading.Interlocked.Increment(ref lastClubId);
         var club = new Club
         {
-            ClubId = lastClubId++,
+            ClubId = clubId,
             ClubName = name,
             Clubaciklama = aciklama,
             ClubAvatarID = Avatarid,
             OwnerAccountId = leaderAccount.AccountId,
             MessageIdCounter = 1,
             TotalKupa = leaderAccount.Trophy,
-
             Members = new List<ClubMember>
             {
                 new ClubMember { AccountName = leaderAccount.Username, Accountid = leaderAccount.AccountId, Role = ClubRole.Leader, NameColorID = leaderAccount.Namecolorid, AvatarID =leaderAccount.Avatarid }
             }
-
         };
 
         Clubs[club.ClubId] = club;
-        ClubCache.Cache(club); // Cache'e ekle
-        Save();
+        ClubCache.Cache(club);
+        
+        using (var connection = DatabaseManager.GetConnection())
+        {
+            connection.Open();
+            SaveClubToDb(club, connection);
+        }
+
         leaderAccount.Clubid = club.ClubId;
         leaderAccount.clubRole = ClubRole.Leader;
-        Logger.genellog($"Club oluşturuldu: name: {club.ClubName} des: {club.Clubaciklama} id: {club.ClubId}");
         leaderAccount.ClubName = club.ClubName;
+        
+        Logger.genellog($"Club oluşturuldu: name: {club.ClubName} des: {club.Clubaciklama} id: {club.ClubId}");
 
         return club;
     }
@@ -176,126 +227,125 @@ public static class ClubManager
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
-
         var newAccount = AccountCache.Load(newMemberId);
         if (newAccount == null) return false;
 
-        if (club.Members.Any(m => m.Accountid == newMemberId.ToString()))
+        lock (club.SyncLock)
         {
-            Console.WriteLine("bu oyuncu bu clupte");
-             return false;
-        }
-           
+            if (club.Members.Any(m => m.Accountid == newMemberId))
+            {
+                Console.WriteLine("bu oyuncu bu clupte");
+                return false;
+            }
 
-        club.Members.Add(new ClubMember
-        {
-            AccountName = newAccount.Username,
-            Accountid = newAccount.AccountId,
-            Role = ClubRole.Member,
-            NameColorID = newAccount.Namecolorid,
-            AvatarID = newAccount.Avatarid
-        });
+            club.Members.Add(new ClubMember
+            {
+                AccountName = newAccount.Username,
+                Accountid = newAccount.AccountId,
+                Role = ClubRole.Member,
+                NameColorID = newAccount.Namecolorid,
+                AvatarID = newAccount.Avatarid
+            });
+        }
         newAccount.clubRole = ClubRole.Member;
         newAccount.Clubid = club.ClubId;
         newAccount.ClubName = club.ClubName;
-        Console.WriteLine("accounda club name data: " + newAccount.ClubName);
-
 
         Save();
         return true;
     }
     #endregion
+    
     static Random random = new Random();
-   public static List<Club> RandomList(int count)
-{
-    var availableClubs = Clubs.Values.ToList();
-    
-    
-    
-    
-    List<Club> tempClubs = new List<Club>(availableClubs);
-    List<Club> randomClubs = new List<Club>();
-
-    
-    count = Math.Min(count, tempClubs.Count);
-
-    for (int i = 0; i < count; i++)
+    public static List<Club> RandomList(int count)
     {
-        int index = random.Next(tempClubs.Count);
-        randomClubs.Add(tempClubs[index]);
-        tempClubs.RemoveAt(index); 
+        var availableClubs = Clubs.Values.ToList();
+        List<Club> tempClubs = new List<Club>(availableClubs);
+        List<Club> randomClubs = new List<Club>();
+
+        count = Math.Min(count, tempClubs.Count);
+
+        for (int i = 0; i < count; i++)
+        {
+            int index = random.Next(tempClubs.Count);
+            randomClubs.Add(tempClubs[index]);
+            tempClubs.RemoveAt(index);
+        }
+        
+        return randomClubs;
     }
-    
-    return randomClubs;
-}
+
     #region Üye çıkarma
     public static bool RemoveMember(int clubId, string targetMemberId)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
-
-        var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
-        var targetAccount = AccountCache.Load(targetMemberId);
-        
-
-
-        if (target == null)
+        lock (club.SyncLock)
         {
-            Logger.errorslog("Oyuncu clubte bulanamadı");
-            return false;
-        }
+            var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
 
-        club.Members.Remove(target);
+            if (target == null)
+            {
+                Logger.errorslog("Oyuncu clubte bulanamadı");
+                return false;
+            }
+
+            club.Members.Remove(target);
+        }
         Save();
         Logger.genellog("Oyuncu clubten kicklendi");
-        if(club.Members.Count == 0)
+        if (club.Members.Count == 0)
         {
             DeleteClub(club.ClubId);
         }
         return true;
     }
     #endregion
+
     #region Üye Atma
     public static bool KickMember(int clubId, string actorId, string targetMemberId)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
-        var actor = club.Members.FirstOrDefault(m => m.Accountid == actorId);
-        var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
-
-        if (actor == null || target == null)
+        lock (club.SyncLock)
         {
-             Logger.errorslog($"[Club Manager] hesaplardan biri kulüp üyesi değil");
-            return false;
-        } 
+            var actor = club.Members.FirstOrDefault(m => m.Accountid == actorId);
+            var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
 
-        // Rol kontrolleri
-        if (actor.Role == ClubRole.Member) return false; // Member çıkaramaz
-        if (target.Role == ClubRole.Leader) return false; // Leader çıkarılamaz
-        if (actor.Role == ClubRole.CoLeader && target.Role == ClubRole.CoLeader) return false; // CoLeader sadece alt role çıkarabilir
+            if (actor == null || target == null)
+            {
+                Logger.errorslog($"[Club Manager] hesaplardan biri kulüp üyesi değil");
+                return false;
+            }
 
-        club.Members.Remove(target);
+            if (actor.Role == ClubRole.Member) return false;
+            if (target.Role == ClubRole.Leader) return false;
+            if (actor.Role == ClubRole.CoLeader && target.Role == ClubRole.CoLeader) return false;
+
+            club.Members.Remove(target);
+        }
         var acccount = AccountCache.Load(targetMemberId);
         acccount.Clubid = -1;
-        acccount.ClubName= null;
-       Notfication notfication= new Notfication
-       {
-           Id = 12,
-           Sender = "Sistem",
-           Message = $"{club.ClubName} kulübünden atıldın.",
-          Timespam = DateTime.Now
-       };
+        acccount.ClubName = null;
+        
+        Notfication notfication = new Notfication
+        {
+            type =  NotficationTypes.NotficationType.Inbox,
+            Sender = "Sistem",
+            Message = $"{club.ClubName} kulübünden atıldın.",
+            Timespam = DateTime.Now
+        };
         acccount.inboxesNotfications.Add(notfication);
-        if(SessionManager.IsOnline(acccount.AccountId))
+        
+        if (SessionManager.IsOnline(acccount.AccountId))
         {
             var session = SessionManager.GetSession(acccount.AccountId);
-            NotficationSender.Send(session,notfication);
+            NotficationSender.Send(session, notfication);
         }
         
-        
-
+        Save();
         return true;
     }
     #endregion
@@ -312,118 +362,111 @@ public static class ClubManager
         if (actor == null || target == null) return false;
 
         if (actor.Role != ClubRole.Leader && actor.Role != ClubRole.CoLeader) return false;
-        if (target.Role == ClubRole.Leader && actor.Role != ClubRole.Leader) return false; // Leader rolü sadece Leader değiştirebilir
+        if (target.Role == ClubRole.Leader && actor.Role != ClubRole.Leader) return false;
 
         target.Role = newRole;
         Save();
         return true;
     }
     #endregion
-    // Kulüp içi mesaj gönderme
-    // todo -> buffer yerine burdan gönder direk 
-    public static void SendMessage(int clubId, int senderAccountId, string content)
+
+    public static void SendMessage(int clubId, string senderAccountId, string content)
     {
         var club = LoadClub(clubId);
-        if (club == null)
+        if (club == null) return;
+
+        lock (club.SyncLock)
         {
-            // todo hata log
-            return;
+            var sender = club.Members.FirstOrDefault(m => m.Accountid == senderAccountId);
+            if (sender == null) return;
+
+            club.Messages.Add(new ClubMessage
+            {
+                MessageId = club.MessageIdCounter++,
+                messageFlags = ClubMessageFlags.None,
+                SenderName = sender.AccountName,
+                SenderId = sender.Accountid,
+                Timestamp = DateTime.Now,
+                Content = content
+            });
         }
 
-        var sender = club.Members.FirstOrDefault(m => m.Accountid == senderAccountId.ToString());
-        if (sender == null) return;
-
-        club.Messages.Add(new ClubMessage
-        {
-            MessageId = 0,
-            messageFlags = ClubMessageFlags.None,
-            SenderName = sender.AccountName,
-            SenderId = sender.Accountid,
-            Timestamp = DateTime.Now,
-            Content = content
-        });
-
         Save();
-      
     }
-    // Kulüp işlemi yapıldığında:
 
     public static bool ChangeClubSettings(int clubid, string acccountId, string name, string aciklama, int Avatarid)
     {
         Club club = ClubManager.LoadClub(clubid);
-        AccountManager.AccountData account = AccountCache.Load(acccountId);
-        if (account == null) return false;
         if (club == null) return false;
-        // if (account.clubRole == ClubRole.Member) return false;
+        
         if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(aciklama))
         {
             Logger.errorslog("Kulüp adı veya açıklama boş olamaz!");
             return false;
         }
-        club.ClubName = name;
-        club.Clubaciklama = aciklama;
-        club.ClubAvatarID = Avatarid;
+        
+        lock (club.SyncLock)
+        {
+            club.ClubName = name;
+            club.Clubaciklama = aciklama;
+            club.ClubAvatarID = Avatarid;
+        }
         ClubManager.Save();
         Logger.genellog($"Kulüp bilgileri güncellendi: {club.ClubName} ({club.ClubId})");
         return true;
-
     }
 
-    /*  public static Club SearchClub(string name)
-     {
-         List<Club> founded = new List<Club>();
-         foreach(var clubs in Clubs)
-         {
-             if(string.IsNullOrWhiteSpace(clubs.name))
-         }
-         return null;
-     }*/
-
+    #region  Üye data update
     public static void MemberDataUpdate(string accid, int clubid)
     {
-        var club = Clubs[clubid];
+        if (!Clubs.TryGetValue(clubid, out var club)) return;
         var member = club.Members.FirstOrDefault(m => m.Accountid == accid);
-        if (member == null)
-        {
-            Logger.errorslog($"[Club Manager] güncellenecek üye bulunamadı. accıd:{accid} clubid:{clubid}");
-            return;
-        }
+        if (member == null) return;
+
         AccountManager.AccountData account = AccountCache.Load(accid);
+        if (account == null) return;
 
-        if (account == null)
+        lock (club.SyncLock)
         {
-            Logger.errorslog($"[Club Manager] oyuncu bulunamadı. accıd:{accid} clubid:{clubid}");
-            return;
+            member.Accountid = account.AccountId;
+            member.AccountName = account.Username;
+            member.AvatarID = account.Avatarid;
+            member.NameColorID = account.Namecolorid;
         }
-        member.Accountid = account.AccountId;
-        member.AccountName = account.Username;
-        member.AvatarID = account.Avatarid;
-        member.NameColorID = account.Namecolorid;
-
+        
+        Save();
     }
+    #endregion
+
     #region Kulüp Silme
-public static bool DeleteClub(int clubId)
-{
-    if (!Clubs.ContainsKey(clubId))
+    public static bool DeleteClub(int clubId)
     {
-        Logger.errorslog($"[ClubManager] Silinecek kulüp bulunamadı: {clubId}");
-        return false;
-    }
+        if (!Clubs.ContainsKey(clubId)) return false;
 
-    var club = Clubs[clubId];
-
-        Clubs.Remove(clubId);
+        var club = Clubs[clubId];
+        Clubs.TryRemove(clubId, out _);
         ClubCache.GetCachedClubs().TryRemove(clubId, out _);
 
-        // ClubCache.RemoveFromCache(clubId); // Cache'den de kaldır
-
-
+        using (var connection = DatabaseManager.GetConnection())
+        {
+            connection.Open();
+            var deleteCmd = connection.CreateCommand();
+            deleteCmd.CommandText = "DELETE FROM Clubs WHERE ClubId = @ClubId";
+            deleteCmd.Parameters.AddWithValue("@ClubId", clubId);
+            deleteCmd.ExecuteNonQuery();
+        }
 
         Logger.genellog($"Kulüp silindi: {club.ClubName} ({clubId})");
-        Save();
         return true;
-    
-}
-#endregion
+    }
+    #endregion
 
+    #region  Mesaj bulma
+    public static ClubMessage GetCLubMessage(Club club, int messageid)
+    {
+        return club.Messages.Find(m => m.MessageId == messageid);
+    }
+    #endregion
 }
+
+

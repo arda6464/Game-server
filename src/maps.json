@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 1,
+    "Name": "Desert Arena",
+    "SpawnPoints": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "Ice Tundra",
+    "SpawnPoints": [
+      {},
+      {},
+      {},
+      {}
+    ]
+  }
+]

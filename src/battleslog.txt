@@ -21846,3 +21846,154 @@
 [2025-10-29 13:09:37] [BATTLE] tespornosu 3 arenasına katıldı!
 [2025-10-29 14:46:59] [BATTLE] [ARENA] N1ODE23L arenadan çıkarıldı. Kalan: 1
 [2025-10-29 16:31:14] [BATTLE] [ARENA] TC1LBZ7Y arenadan çıkarıldı. Kalan: 0
+[2026-02-19 22:11:44] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-02-19 22:11:44] [BATTLE] [BATTLE 1] Player added: arda5344545454 (Total: 1)
+[2026-02-19 22:11:44] [BATTLE] [BATTLE 1] Battle started.
+[2026-02-19 22:11:44] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-02-19 22:11:44] [BATTLE] Savaş silindi id: 1
+[2026-02-19 22:18:35] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-02-19 22:18:35] [BATTLE] [BATTLE 2] Player added: arda5344545454 (Total: 1)
+[2026-02-19 22:18:35] [BATTLE] [BATTLE 2] Battle started.
+[2026-02-19 22:18:35] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-02-19 22:18:35] [BATTLE] Savaş silindi id: 2
+[2026-02-19 22:22:25] [BATTLE] Yeni savaş oluşturuldu id: 3
+[2026-02-19 22:22:25] [BATTLE] [BATTLE 3] Player added: arda5344545454 (Total: 1)
+[2026-02-19 22:22:25] [BATTLE] [BATTLE 3] Battle started.
+[2026-02-19 22:22:25] [BATTLE] [BATTLE 3] Battle stopped.
+[2026-02-19 22:22:25] [BATTLE] Savaş silindi id: 3
+[2026-02-19 22:22:26] [BATTLE] Yeni savaş oluşturuldu id: 4
+[2026-02-19 22:22:26] [BATTLE] [BATTLE 4] Player added: arda5344545454 (Total: 1)
+[2026-02-19 22:22:26] [BATTLE] [BATTLE 4] Battle started.
+[2026-02-19 22:22:26] [BATTLE] [BATTLE 4] Battle stopped.
+[2026-02-19 22:22:26] [BATTLE] Savaş silindi id: 4
+[2026-02-19 22:22:27] [BATTLE] Yeni savaş oluşturuldu id: 5
+[2026-02-19 22:22:27] [BATTLE] [BATTLE 5] Player added: arda5344545454 (Total: 1)
+[2026-02-19 22:22:27] [BATTLE] [BATTLE 5] Battle started.
+[2026-02-19 22:22:27] [BATTLE] [BATTLE 5] Battle stopped.
+[2026-02-19 22:22:27] [BATTLE] Savaş silindi id: 5
+[2026-02-19 22:22:27] [BATTLE] Yeni savaş oluşturuldu id: 6
+[2026-02-19 22:22:27] [BATTLE] [BATTLE 6] Player added: arda5344545454 (Total: 1)
+[2026-02-19 22:22:27] [BATTLE] [BATTLE 6] Battle started.
+[2026-02-19 22:22:27] [BATTLE] [BATTLE 6] Battle stopped.
+[2026-02-19 22:22:27] [BATTLE] Savaş silindi id: 6
+[2026-02-19 22:22:28] [BATTLE] Yeni savaş oluşturuldu id: 7
+[2026-02-19 22:22:28] [BATTLE] [BATTLE 7] Player added: arda5344545454 (Total: 1)
+[2026-02-19 22:22:28] [BATTLE] [BATTLE 7] Battle started.
+[2026-02-19 22:22:28] [BATTLE] [BATTLE 7] Battle stopped.
+[2026-02-19 22:22:28] [BATTLE] Savaş silindi id: 7
+[2026-02-19 22:24:14] [BATTLE] Yeni savaş oluşturuldu id: 8
+[2026-02-19 22:24:14] [BATTLE] [BATTLE 8] Player added: arda5344545454 (Total: 1)
+[2026-02-19 22:24:14] [BATTLE] [BATTLE 8] Battle started.
+[2026-02-19 22:24:14] [BATTLE] [BATTLE 8] Battle stopped.
+[2026-02-19 22:24:14] [BATTLE] Savaş silindi id: 8
+[2026-02-19 22:24:16] [BATTLE] Yeni savaş oluşturuldu id: 9
+[2026-02-19 22:24:16] [BATTLE] [BATTLE 9] Player added: arda5344545454 (Total: 1)
+[2026-02-19 22:24:16] [BATTLE] [BATTLE 9] Battle started.
+[2026-02-19 22:24:16] [BATTLE] [BATTLE 9] Battle stopped.
+[2026-02-19 22:24:16] [BATTLE] Savaş silindi id: 9
+[2026-02-20 19:18:41] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-02-20 19:18:41] [BATTLE] [BATTLE 1] Player added: arda5344545454 (Total: 1)
+[2026-02-20 19:18:41] [BATTLE] [BATTLE 1] Battle started.
+[2026-02-20 19:18:41] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-02-20 19:18:41] [BATTLE] Savaş silindi id: 1
+[2026-02-20 19:20:34] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-02-20 19:20:34] [BATTLE] [BATTLE 2] Player added: arda5344545454 (Total: 1)
+[2026-02-20 19:20:34] [BATTLE] [BATTLE 2] Battle started.
+[2026-02-20 19:20:34] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-02-20 19:20:34] [BATTLE] Savaş silindi id: 2
+[2026-02-20 19:21:40] [BATTLE] Yeni savaş oluşturuldu id: 3
+[2026-02-20 19:21:40] [BATTLE] [BATTLE 3] Player added: arda5344545454 (Total: 1)
+[2026-02-20 19:21:40] [BATTLE] [BATTLE 3] Battle started.
+[2026-02-20 19:21:40] [BATTLE] [BATTLE 3] Battle stopped.
+[2026-02-20 19:21:40] [BATTLE] Savaş silindi id: 3
+[2026-02-20 19:22:50] [BATTLE] Yeni savaş oluşturuldu id: 4
+[2026-02-20 19:22:50] [BATTLE] [BATTLE 4] Player added: arda5344545454 (Total: 1)
+[2026-02-20 19:22:50] [BATTLE] [BATTLE 4] Battle started.
+[2026-02-20 19:22:50] [BATTLE] [BATTLE 4] Battle stopped.
+[2026-02-20 19:22:50] [BATTLE] Savaş silindi id: 4
+[2026-02-20 19:22:55] [BATTLE] Yeni savaş oluşturuldu id: 5
+[2026-02-20 19:22:55] [BATTLE] [BATTLE 5] Player added: arda5344545454 (Total: 1)
+[2026-02-20 19:22:55] [BATTLE] [BATTLE 5] Battle started.
+[2026-02-20 19:22:55] [BATTLE] [BATTLE 5] Battle stopped.
+[2026-02-20 19:22:55] [BATTLE] Savaş silindi id: 5
+[2026-02-21 00:52:06] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-02-21 00:52:06] [BATTLE] [BATTLE 1] Player added: arda5344545454 (Total: 1)
+[2026-02-21 00:52:06] [BATTLE] [BATTLE 1] Battle started.
+[2026-02-21 00:52:07] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-02-21 00:52:07] [BATTLE] Savaş silindi id: 1
+[2026-02-21 00:58:59] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-02-21 00:58:59] [BATTLE] [BATTLE 1] Player added: arda5344545454 (Total: 1)
+[2026-02-21 00:58:59] [BATTLE] [BATTLE 1] Battle started.
+[2026-02-21 00:58:59] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-02-21 00:58:59] [BATTLE] Savaş silindi id: 1
+[2026-02-21 13:59:41] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-02-21 13:59:41] [BATTLE] [BATTLE 1] Player added: arda5344545454 (Total: 1)
+[2026-02-21 13:59:41] [BATTLE] [BATTLE 1] Battle started.
+[2026-02-21 13:59:41] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-02-21 13:59:41] [BATTLE] Savaş silindi id: 1
+[2026-02-21 14:04:20] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-02-21 14:04:20] [BATTLE] [BATTLE 1] Player added: arda5344545454 (Total: 1)
+[2026-02-21 14:04:20] [BATTLE] [BATTLE 1] Battle started.
+[2026-02-21 14:04:20] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-02-21 14:04:20] [BATTLE] Savaş silindi id: 1
+[2026-02-21 14:06:12] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-02-21 14:06:12] [BATTLE] [BATTLE 1] Player added: arda5344545454 (Total: 1)
+[2026-02-21 14:06:12] [BATTLE] [BATTLE 1] Battle started.
+[2026-02-21 14:06:12] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-02-21 14:06:12] [BATTLE] Savaş silindi id: 1
+[2026-02-21 23:48:01] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-02-21 23:48:01] [BATTLE] [BATTLE 1] Player added: arda5344545454 (Total: 1)
+[2026-02-21 23:48:01] [BATTLE] [BATTLE 1] Battle started.
+[2026-02-21 23:48:01] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-02-21 23:48:01] [BATTLE] Savaş silindi id: 1
+[2026-02-21 23:51:39] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-02-21 23:51:39] [BATTLE] [BATTLE 1] Player added: arda5344545454 (Total: 1)
+[2026-02-21 23:51:39] [BATTLE] [BATTLE 1] Battle started.
+[2026-02-21 23:52:12] [BATTLE] [BATTLE 1] Player removed: YRQSBXHU (Remaining: 0)
+[2026-02-21 23:52:12] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-02-21 23:52:12] [BATTLE] Savaş silindi id: 1
+[2026-02-21 23:52:40] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-02-21 23:52:40] [BATTLE] [BATTLE 2] Player added: arda5344545454 (Total: 1)
+[2026-02-21 23:52:40] [BATTLE] [BATTLE 2] Battle started.
+[2026-02-21 23:53:34] [BATTLE] [BATTLE 2] Player removed: YRQSBXHU (Remaining: 0)
+[2026-02-21 23:53:34] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-02-21 23:53:34] [BATTLE] Savaş silindi id: 2
+[2026-02-22 00:00:46] [BATTLE] Yeni savaş oluşturuldu id: 3
+[2026-02-22 00:00:46] [BATTLE] [BATTLE 3] Player added: arda5344545454 (Total: 1)
+[2026-02-22 00:00:46] [BATTLE] [BATTLE 3] Battle started.
+[2026-02-22 00:01:37] [BATTLE] [BATTLE 3] Player removed: YRQSBXHU (Remaining: 0)
+[2026-02-22 00:01:37] [BATTLE] [BATTLE 3] Battle stopped.
+[2026-02-22 00:01:37] [BATTLE] Savaş silindi id: 3
+[2026-02-22 00:04:27] [BATTLE] Yeni savaş oluşturuldu id: 4
+[2026-02-22 00:04:27] [BATTLE] [BATTLE 4] Player added: arda5344545454 (Total: 1)
+[2026-02-22 00:04:27] [BATTLE] [BATTLE 4] Battle started.
+[2026-02-22 00:08:41] [BATTLE] [BATTLE 4] Player removed: YRQSBXHU (Remaining: 0)
+[2026-02-22 00:08:41] [BATTLE] [BATTLE 4] Battle stopped.
+[2026-02-22 00:08:41] [BATTLE] Savaş silindi id: 4
+[2026-02-22 00:10:14] [BATTLE] Yeni savaş oluşturuldu id: 5
+[2026-02-22 00:10:14] [BATTLE] [BATTLE 5] Player added: arda5344545454 (Total: 1)
+[2026-02-22 00:10:14] [BATTLE] [BATTLE 5] Battle started.
+[2026-02-22 00:10:33] [BATTLE] [BATTLE 5] Player removed: YRQSBXHU (Remaining: 0)
+[2026-02-22 00:10:33] [BATTLE] [BATTLE 5] Battle stopped.
+[2026-02-22 00:10:33] [BATTLE] Savaş silindi id: 5
+[2026-02-22 00:11:17] [BATTLE] Yeni savaş oluşturuldu id: 6
+[2026-02-22 00:11:17] [BATTLE] [BATTLE 6] Player added: arda5344545454 (Total: 1)
+[2026-02-22 00:11:17] [BATTLE] [BATTLE 6] Battle started.
+[2026-02-22 00:11:26] [BATTLE] Yeni savaş oluşturuldu id: 7
+[2026-02-22 00:11:26] [BATTLE] [BATTLE 7] Player added: arda5344545454 (Total: 1)
+[2026-02-22 00:11:26] [BATTLE] [BATTLE 7] Battle started.
+[2026-02-22 00:11:35] [BATTLE] [BATTLE 7] Player removed: YRQSBXHU (Remaining: 0)
+[2026-02-22 00:11:35] [BATTLE] [BATTLE 7] Battle stopped.
+[2026-02-22 00:11:35] [BATTLE] Savaş silindi id: 7
+[2026-02-22 00:12:03] [BATTLE] Yeni savaş oluşturuldu id: 8
+[2026-02-22 00:12:03] [BATTLE] [BATTLE 8] Player added: arda5344545454 (Total: 1)
+[2026-02-22 00:12:03] [BATTLE] [BATTLE 8] Battle started.
+[2026-02-22 08:58:30] [BATTLE] [BATTLE 8] Player removed: YRQSBXHU (Remaining: 0)
+[2026-02-22 08:58:30] [BATTLE] [BATTLE 8] Battle stopped.
+[2026-02-22 08:58:30] [BATTLE] Savaş silindi id: 8
+[2026-02-22 13:11:50] [BATTLE] Yeni savaş oluşturuldu id: 9
+[2026-02-22 13:11:50] [BATTLE] [BATTLE 9] Player added: arda5344545454 (Total: 1)
+[2026-02-22 13:11:50] [BATTLE] [BATTLE 9] Battle started.
+[2026-02-22 13:12:35] [BATTLE] [BATTLE 9] Player removed: YRQSBXHU (Remaining: 0)
+[2026-02-22 13:12:35] [BATTLE] [BATTLE 9] Battle stopped.
+[2026-02-22 13:12:35] [BATTLE] Savaş silindi id: 9

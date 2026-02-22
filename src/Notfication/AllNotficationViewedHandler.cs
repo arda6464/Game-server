@@ -1,9 +1,11 @@
+[PacketHandler(MessageType.AllNotficationViewed)]
 public static class AllNotficationViewedHandler
 {
     public static void Handle(Session session)
     {
 
-        var acccount = AccountCache.Load(session.AccountId);
+        if (session.Account == null) return;
+        var acccount = session.Account;
 
 
         foreach(var notification in acccount.inboxesNotfications)

@@ -1,5 +1,6 @@
 using System;
 
+[PacketHandler(MessageType.ChangeNameColorRequest)]
 public static class SetNameColor
 {
     public static void Handle(Session session, byte[] data)
@@ -8,9 +9,12 @@ public static class SetNameColor
         Console.WriteLine("SetCOLOR");
         ByteBuffer BUFFER = new ByteBuffer();
         BUFFER.WriteBytes(data, true);
-        int _ = BUFFER.ReadInt();
+        int _ = BUFFER.ReadShort();
 
-        int Id = BUFFER.ReadInt();
+        var request = new SetNameColorRequestPacket();
+        request.Deserialize(BUFFER);
+
+        int Id = request.ColorId;
         BUFFER.Dispose();
         
         // Color ID validasyonu (1-15 arası)
@@ -20,7 +24,7 @@ public static class SetNameColor
             return;
         }
         
-        AccountManager.AccountData account = AccountCache.Load(session.AccountId);
+        AccountManager.AccountData account = session.Account;
         if (account == null)
         {
             Logger.errorslog($"[SetColor] Account bulunamadı: {session.AccountId}");

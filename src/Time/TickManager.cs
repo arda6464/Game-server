@@ -6,7 +6,7 @@ public class TickManager
     private bool isRunning;
     private byte tick;
     private int tickInterval;
-
+    
     public TickManager(int tickRate = 20)
     {
         instance = this;
@@ -14,21 +14,23 @@ public class TickManager
         tickInterval = 1000 / tickRate;
         tickThread = new Thread(Tick);
     }
+    
     public void Start()
     {
         Console.WriteLine("[TICK] TickManager başlatılıyor...");
         isRunning = true;
         tickThread.Start();
-       
     }
+    
     public void Stop()
     {
         isRunning = false;
         Console.WriteLine("[TICK] TickManager durduruldu.");
     }
+    
     private void Tick()
     {
-        while(isRunning)
+        while (isRunning)
         {
             tick++;
             Time.Tick();
@@ -36,21 +38,22 @@ public class TickManager
             Thread.Sleep(tickInterval);
         }
     }
+    
     private void Handle()
     {
-
-        foreach (var arena in ArenaManager.GetAllArenas())
+        // Savaş güncellemeleri
+        foreach (var battle in ArenaManager.GetAllBattles())
         {
-            arena.UpdateBullets();
-
+            battle.Tick();
         }
-    
     }
+
+    
     public byte Get_Tick()
     {
         return this.tick;
     }
-   
+
     public bool IsRunning()
     {
         return this.isRunning;

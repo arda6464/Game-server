@@ -1,3 +1,4 @@
+[PacketHandler(MessageType.ClubCreateRequest)]
 public static class ClubCreateHandler
 {
     public static void Handle(Session session, byte[] messsage)
@@ -8,13 +9,17 @@ public static class ClubCreateHandler
 
             ByteBuffer read = new ByteBuffer();
             read.WriteBytes(messsage, true);
-            _ = read.ReadInt();
+            _ = read.ReadShort();
 
-            string ClubName = read.ReadString();
-            string ClubAciklama = read.ReadString();
-            int Avatarıd = read.ReadInt();
+            var request = new ClubCreateRequestPacket();
+            request.Deserialize(read);
+            
+            string ClubName = request.ClubName;
+            string ClubAciklama = request.ClubDescription;
+            int Avatarıd = request.AvatarId;
 
-            AccountManager.AccountData account = AccountCache.Load(session.AccountId);
+            if (session.Account == null) return;
+            AccountManager.AccountData account = session.Account;
             if (account.Clubid == -1)
             {
                 // İsim validasyonu
@@ -42,42 +47,18 @@ public static class ClubCreateHandler
 
                 var club = ClubManager.CreateClub(ClubName, ClubAciklama, Avatarıd, account.AccountId);
 
-                using (var buffer = new ByteBuffer())
-
+                var response = new ClubCreateResponsePacket
                 {
-                    buffer.WriteInt((int)MessageType.ClubCreateResponse);
-                    buffer.WriteInt(club.ClubId);
-                    buffer.WriteString(club.ClubName);
-                    buffer.WriteString(club.Clubaciklama);
-                    buffer.WriteInt(club.TotalKupa ?? 0);
-                    buffer.WriteInt(club.Messages.Count);
-                    foreach (var message in (club?.Messages ?? new List<ClubMessage>()))
-                    {
-                        buffer.WriteString(message.SenderId);
-                        buffer.WriteString(message.SenderName);
-                        buffer.WriteInt(message.SenderAvatarID);
-                        buffer.WriteString("Üye"); // todo enum send
-                        buffer.WriteString(message.Content);
-                    }
-
-                    buffer.WriteInt(club.Members.Count);
-
-
-                    foreach (var member in (club?.Members ?? new List<ClubMember>()))
-                    {
-
-                        buffer.WriteString(member.Accountid);
-                        buffer.WriteString(member.AccountName);
-                        buffer.WriteString(member.Role.ToString());
-                        buffer.WriteInt(member.NameColorID);
-                        buffer.WriteInt(member.AvatarID);
-
-                    }
-                    byte[] response = buffer.ToArray();
-                    buffer.Dispose();
-                    session.Send(response);
-                    Console.WriteLine("create club data Gönderildi");
-                }
+                    ClubId = club.ClubId,
+                    ClubName = club.ClubName,
+                    ClubDescription = club.Clubaciklama,
+                    TotalTrophies = club.TotalKupa ?? 0,
+                };
+                response.Messages.AddRange(club.Messages ?? new List<ClubMessage>());
+                response.Members.AddRange(club.Members ?? new List<ClubMember>());
+                
+                session.Send(response);
+                Console.WriteLine("create club data Gönderildi");
 
             }
             else

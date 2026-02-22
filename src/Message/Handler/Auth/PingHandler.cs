@@ -1,45 +1,30 @@
+[PacketHandler(MessageType.Ping)]
 public static class PingHandler
 {
-    public static void Handle(Session session,byte[] data)
+    public static void Handle(Session session, byte[] data)
     {
-        ByteBuffer read = new ByteBuffer();
-        read.WriteBytes(data, true);
-        int _ = read.ReadInt();
+        using (ByteBuffer read = new ByteBuffer())
+        {
+            read.WriteBytes(data, true);
+            int _ = read.ReadShort(); // Packet ID'yi oku ve atla
 
-        double clientsenttime = read.ReadDouble();
-        int lastping = read.ReadInt();
-        read.Dispose();
+            // 1. Gelen veriyi oku (Deserialize)
+            PingPacket request = new PingPacket();
+            request.Deserialize(read);
 
+            // 2. İşlemleri yap
+            session.LastPing = request.LastPing;
+            session.LastPingSent = DateTime.Now;
 
+           
 
-        session.LastPing = lastping;
-        session.LastPingSent = DateTime.Now;
+            // 3. Cevabı hazırla ve gönder (Serialize)
+            PongPacket response = new PongPacket
+            {
+                ClientSentTime = request.ClientSentTime
+            };
             
-           string str = "▂   ";
-        if (session.LastPing <= 75)
-        {
-            str = "▂▄▆█";
+            session.Send(response);
         }
-        else if (session.LastPing <= 125)
-        {
-            str = "▂▄▆ ";
-        }
-        else if (session.LastPing <= 300)
-        {
-            str = "▂▄  ";
-        }
-
-        string message = $"Test Server\n Online oyuncu: {SessionManager.Count()}\n   {session.LastPing} Ms";
-       // Console.WriteLine(message);
-        ByteBuffer buffer = new ByteBuffer();
-        
-        buffer.WriteInt((int)MessageType.Pong);
-        buffer.WriteString(message);
-        buffer.WriteDouble(clientsenttime);
-        byte[] seks = buffer.ToArray();
-        buffer.Dispose();
-        session.Send(seks);
-
-       
     }
 }

@@ -10,55 +10,23 @@ public static class NotficationSender
             return;
         }
 
-        ByteBuffer buffer = new ByteBuffer();
-
-
-        buffer.WriteInt((int)MessageType.Notification);
-        buffer.WriteInt(notification.Id);
-        switch(notification.Id)
+        var packet = new NotificationPacket
         {
-            case 11:
-                {
-                    
-                    buffer.WriteString(notification.Title);
-                    buffer.WriteString(notification.Message);
-                    buffer.WriteInt(notification.iconid);
-                }
-                break;
-            case 10:
-                {
-                    
-                    buffer.WriteString(notification.Title?? "");
-                    buffer.WriteString(notification.Message ?? "");
-                    buffer.WriteString(notification.ButtonText ?? " ");
-                    buffer.WriteString(notification.Url ?? " ");
-                }
-                break;
-            case 12:
-                {
-                      buffer.WriteString(notification.Sender);
-                    buffer.WriteString(notification.Message);
-                    buffer.WriteBool(notification.IsViewed);
-                    long unixTime = new DateTimeOffset(notification.Timespam.ToUniversalTime()).ToUnixTimeSeconds();
-                    buffer.WriteLong(unixTime);
-                    buffer.WriteInt((int)notification.rewardItemType);
-                    buffer.WriteInt(notification.DonationCount);
-                    buffer.WriteBool(notification.İsclamed);
-                }
-                break;
-                
-        }
-       
-    
-       
+            Type = notification.type,
+            Title = notification.Title,
+            Message = notification.Message,
+            IconId = notification.iconid,
+            ButtonText = notification.ButtonText,
+            Url = notification.Url,
+            Sender = notification.Sender,
+            IsViewed = notification.IsViewed,
+            UnixTime = new DateTimeOffset(notification.Timespam.ToUniversalTime()).ToUnixTimeSeconds(),
+            RewardType = (int)notification.rewardItemType,
+            DonationCount = notification.DonationCount,
+            IsClaimed = notification.İsclamed
+        };
 
-
-
-
-        byte[] data = buffer.ToArray();
-        buffer.Dispose();
-
-        session.Send(data);
+        session.Send(packet);
 
         Logger.genellog($"[NotificationSender] Bildirim gönderildi: {notification.Message}");
     }

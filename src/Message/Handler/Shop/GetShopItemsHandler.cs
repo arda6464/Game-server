@@ -1,3 +1,4 @@
+[PacketHandler(MessageType.GetAllMarketItemsRequest)]
 public static class ShopItemsHandler
 {
     public static void Handle(Session session)
@@ -7,38 +8,34 @@ public static class ShopItemsHandler
         var baseshopItems = ShopManager.GetMarketItems();
         var offers = ShopManager.GetOffers();
         bool offer = offers.Count > 0; // offer packet daha sonra değiştirilcek 
-        ByteBuffer buffer = new ByteBuffer();
-
-        buffer.WriteInt((int)MessageType.GetAllMarketItemsResponse);
-        buffer.WriteInt(baseshopItems.Count);
+        var response = new GetAllMarketItemsResponsePacket();
+        
         foreach (var item in baseshopItems)
         {
-            buffer.WriteInt(item.itemId);
-            buffer.WriteString(item.itemName);
-            buffer.WriteInt((int)item.itemType);
-            buffer.WriteInt(item.basePrice);
-            buffer.WriteInt(item.Count);
-        }
-        buffer.WriteBool(offer);
-        Console.WriteLine("Offer durumu: " + offer);
-        if (offer)
-        {
-            buffer.WriteInt(offers.Count);
-            foreach (var offerItem in offers)
+            response.Items.Add(new GetAllMarketItemsResponsePacket.ShopItem
             {
-                buffer.WriteString(offerItem.Title);
-                buffer.WriteInt(offerItem.offerId);
-                buffer.WriteInt((int)offerItem.itemType);
-                buffer.WriteInt((int)offerItem.offerType);
-                buffer.WriteInt(offerItem.basePrice);
-                buffer.WriteInt(offerItem.Count);
-                long unixTime = ((DateTimeOffset)offerItem.EndTime).ToUnixTimeSeconds();
-                buffer.WriteLong(unixTime);
-
-            }
+                Id = item.itemId,
+                Name = item.itemName,
+                Type = (int)item.itemType,
+                Price = item.basePrice,
+                Count = item.Count
+            });
         }
-        byte[] response = buffer.ToArray();
-        buffer.Dispose();
+        
+        foreach (var offerItem in offers)
+        {
+            response.Offers.Add(new GetAllMarketItemsResponsePacket.OfferItem
+            {
+                Title = offerItem.Title,
+                Id = offerItem.offerId,
+                ItemType = (int)offerItem.itemType,
+                OfferType = (int)offerItem.offerType,
+                Price = offerItem.basePrice,
+                Count = offerItem.Count,
+                EndTime = ((DateTimeOffset)offerItem.EndTime).ToUnixTimeSeconds()
+            });
+        }
+
         session.Send(response);
        
         Logger.genellog($"[ShopItemsHandler] {session.AccountId} kullanıcısına mağaza öğeleri gönderildi.");

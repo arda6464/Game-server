@@ -1,16 +1,20 @@
+[PacketHandler(MessageType.AccountLogin)]
 public static class LoginAccountHandler
 {
     public static void Handle(Session session,byte[] message)
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        int packetid = read.ReadInt();
-        string eposta = read.ReadString();
-        string password = read.ReadString();
+        int _ = read.ReadShort();
+        
+        var request = new LoginAccountPacket();
+        request.Deserialize(read);
+        
+        string email = request.Email;
+        string password = request.Password;
         read.Dispose();
         
-        ByteBuffer buffer = new ByteBuffer();
-        var account = AccountManager.FindAccountByEmail(eposta);
+        var account = AccountManager.FindAccountByEmail(email);
         if(account == null)
         {
             Console.WriteLine("böyle bir hesap bulunamadı");
@@ -20,23 +24,21 @@ public static class LoginAccountHandler
         {
             
             string code = VerificationCodeManager.GenerateCode();
-            VerificationCodeManager.SaveCode(eposta, code);
-            EmailServiceSync.SendVerificationCode(eposta, code);
+            VerificationCodeManager.SaveCode(email, code);
+            EmailServiceSync.SendVerificationCode(email, code);
             VerifyManager.CreateData(session.AccountId, new VerifyManager.VerificationData
             {
-                Email = eposta,
+                Email = email,
                  Type = VerificationType.Login
             });
-            Console.WriteLine($"{eposta} adresine doğrulama kodu gönderildi: {code}");
-            buffer.WriteInt((int)MessageType.SendVerifyCode);
+            Console.WriteLine($"{email} adresine doğrulama kodu gönderildi: {code}");
+            
+            session.Send(new SendVerifyCodePacket());
         }
         else
         {
                   // todo
         }
-        byte[] response = buffer.ToArray();
-        buffer.Dispose();
-        session.Send(response);
         
         
 

@@ -1,11 +1,16 @@
+[PacketHandler(MessageType.JoinTeamRequest)]
 public static class JoinTeamHandler
 {
     public static void Handle(Session session,byte[] message)
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        read.ReadInt();
-        int code = read.ReadInt();
+        read.ReadShort();
+        
+        var request = new JoinTeamRequestPacket();
+        request.Deserialize(read);
+        
+        int code = request.TeamId;
         read.Dispose();
 
         if (session.TeamID != 0)
@@ -21,49 +26,43 @@ public static class JoinTeamHandler
             return;
         } 
 
-        var acccount = AccountCache.Load(session.AccountId);
+        var acccount = session.Account;
         if (acccount == null) return;
         Lobby.AddPlayers(acccount);
-        ByteBuffer buffer1 = new ByteBuffer();
-        buffer1.WriteInt((int)MessageType.SendTeamMessageResponse);
-        TeamMessage teamMessage = new TeamMessage
+
+        var broadcastPacket = new SendTeamMessageResponsePacket
         {
-            messageFlags = TeamMessageFlags.HasSystem,
-         eventType= TeamEventType.JoinMessage,
+            Flags = TeamMessageFlags.HasSystem,
+            EventType = TeamEventType.JoinMessage,
             SenderName = acccount.Username,
-            SenderId = acccount.AccountId
+            SenderAccountId = acccount.AccountId
         };
-        buffer1.WriteByte((byte)teamMessage.messageFlags); // Flag önce yazılmalı!
-        buffer1.WriteInt((int)teamMessage.eventType);
-        buffer1.WriteString(teamMessage.SenderName);
-        buffer1.WriteString(teamMessage.SenderId ?? "");
-        byte[] response = buffer1.ToArray();
-        buffer1.Dispose();
                     
-        foreach(var member in Lobby.Players)
+        lock (Lobby.SyncLock)
         {
-            if (SessionManager.IsOnline(member.AccountId))
+            foreach(var member in Lobby.Players)
             {
-                Session session1 = SessionManager.GetSession(member.AccountId);
-                session1.Send(response);
+                if (SessionManager.IsOnline(member.AccountId))
+                {
+                    Session session1 = SessionManager.GetSession(member.AccountId);
+                    session1.Send(broadcastPacket);
+                }
             }
         }
-        ByteBuffer buffer = new ByteBuffer();
- 
-        buffer.WriteInt((int)MessageType.JoinTeamResponse);
-        buffer.WriteInt(Lobby.ID);
-        buffer.WriteInt(Lobby.Messages.Count);
-        foreach(var teammessage in Lobby.Messages)
+        var response = new JoinTeamResponsePacket
         {
-            buffer.WriteString(teammessage.SenderId);
-                buffer.WriteString(teammessage.SenderName);
-                buffer.WriteInt(teammessage.SenderAvatarID);
-                buffer.WriteString("");
-                buffer.WriteString(teammessage.Content);
+             TeamId = Lobby.ID
+        };
+        
+        lock (Lobby.SyncLock)
+        {
+             response.Messages.AddRange(Lobby.Messages);
         }
-        byte[] lobby = buffer.ToArray(); 
-        buffer.Dispose();
-        session.Send(lobby);
-        session.TeamID = Lobby.ID;       
+        
+        session.Send(response);
+        session.TeamID = Lobby.ID;  
+
+        // Görev İlerlemesi - Takıma Katılma
+        QuestManager.CheckQuestProgress(acccount, Quest.MissionType.JoinTeam);
     }
 } 

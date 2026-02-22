@@ -2,20 +2,25 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.Data.Sqlite;
+using System.Linq;
+using System.Collections.Concurrent;
 
 public static class AccountManager
 {
-    private static Dictionary<string, AccountData> accounts = new Dictionary<string, AccountData>();
+    private static ConcurrentDictionary<string, AccountData> accounts = new ConcurrentDictionary<string, AccountData>();
     private static int maxAccountId = 1;
-    private static string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "accounts.json");
 
     public class AccountData
     {
         // security data
-        public int Id { get; set; }
+        public int IDCounter { get; set; }
+        [JsonIgnore]
         public string? AccountId { get; set; }
         public string? Token { get; set; }
+        public string? FBNToken { get; set; }
         // account data
+        [JsonIgnore]
         public string? Username { get; set; }
         public int Trophy { get; set; }
         public string? Dil { get; set; }
@@ -27,80 +32,131 @@ public static class AccountManager
         public int Namecolorid { get; set; }
         public int Level { get; set; }
         public int Gems { get; set; }
+        public int Coins { get; set; }
         public string? ClubName { get; set; }
         public int Clubid { get; set; }
         public ClubRole clubRole { get; set; }
         public bool TicketBan { get; set; } = false;
         public bool ChatBan { get; set; } = false;
+        public bool SendOnlineBestFriendNotification { get; set; } = true;
+        public bool SendNewEventNotification { get; set; } = true;
+        public bool SendInviteNotification { get; set; } = true;
+        public bool SendClaimRewardNotification { get; set; } = true;
 
         public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
         public List<FriendInfo> Requests { get; set; } = new List<FriendInfo>();
         public List<Notfication> Notfications { get; set; } = new List<Notfication>();
         public List<Notfication> inboxesNotfications { get; set; } = new List<Notfication>();
         public List<Role.Roles> Roles { get; set; } = new List<Role.Roles>();
-        public List<SupportTicketData> Tickets { get; set; } =  new List<SupportTicketData>();
+        public List<SupportTicketData> Tickets { get; set; } = new List<SupportTicketData>();
+        public List<Quest> Quests { get; set; } = new List<Quest>();
+        public List<BanData> BanHistory { get; set; } = new List<BanData>();
+        public Dictionary<int, DateTime> NotificationCooldowns { get; set; } = new Dictionary<int, DateTime>();
+        
+
         // login data
         public DateTime LastLogin { get; set; }
         public string? LastIp { get; set; }
         public string? Device { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string Email { get; set; } = "";
+        public string Password { get; set; } = "";
+        public DateTime LastQuestRefreshDate { get; set; } = DateTime.MinValue;
+
+        [JsonIgnore]
+        public object SyncLock = new object();
 
     }
 
     // Tüm hesapları yükle
     public static void LoadAccounts()
     {
-        Console.WriteLine("hesaplar yükleniyor...");
-        if (File.Exists(savePath))
-        {
-            var json = File.ReadAllText(savePath);
-            accounts = JsonConvert.DeserializeObject<Dictionary<string, AccountData>>(json)
-                       ?? new Dictionary<string, AccountData>();
+        Console.WriteLine("Hesaplar veritabanından yükleniyor...");
 
-            // maxAccountId güncelle
-            foreach (var account in accounts.Values)
+        using (var connection = DatabaseManager.GetConnection())
+        {
+            connection.Open();
+
+
+            var selectCmd = connection.CreateCommand();
+            selectCmd.CommandText = "SELECT * FROM Accounts";
+            using (var reader = selectCmd.ExecuteReader())
             {
-                if (account.Id >= maxAccountId)
-                    maxAccountId = account.Id + 1;
+                while (reader.Read())
+                {
+                    string jsonData = reader.GetString(reader.GetOrdinal("Data"));
+                    var account = JsonConvert.DeserializeObject<AccountData>(jsonData);
+                    
+                    if (account != null)
+                    {
+                        // Sütunlardan her ihtimale karşı güncelleyelim (sorgulama için dışarıdalar)
+                        account.AccountId = reader.GetString(reader.GetOrdinal("AccountId"));
+                        account.Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username"));
 
-                AccountCache.Cache(account);
+                        accounts[account.AccountId] = account;
+                        if (account.IDCounter >= maxAccountId)
+                            maxAccountId = account.IDCounter + 1;
+
+                        AccountCache.Cache(account);
+                    }
+                }
             }
-
-            Console.WriteLine($"[AccountManager] {accounts.Count} hesap yüklendi.");
         }
-        else
-        {
-            Logger.errorslog("[AccountManager] accounts.json bulunamadı, yeni dosya oluşturulacak.");
-            File.Create(savePath).Close();
 
+        Console.WriteLine($"[AccountManager] {accounts.Count} hesap yüklendi.");
+    }
+
+    private static void SaveAccountToDb(AccountData account, SqliteConnection connection)
+    {
+        var upsertQuery = @"
+            INSERT INTO Accounts (AccountId, Username, Data) 
+            VALUES (@AccountId, @Username, @Data) 
+            ON CONFLICT(AccountId) DO UPDATE SET
+                Username=excluded.Username, 
+                Data=excluded.Data;";
+
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = upsertQuery;
+            command.Parameters.AddWithValue("@AccountId", account.AccountId ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@Username", account.Username ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@Data", JsonConvert.SerializeObject(account));
+            command.ExecuteNonQuery();
         }
     }
 
-    // Hesap kaydet
+    // Hesapları kaydet
     public static void SaveAccounts()
     {
-        // Cache'den de hesapları güncelle (eğer cache'deki daha güncel ise)
-        foreach (var cachedAccount in AccountCache.GetCachedAccounts())
+        using (var connection = DatabaseManager.GetConnection())
         {
-            if (!accounts.ContainsKey(cachedAccount.Key))
+            connection.Open();
+            using (var transaction = connection.BeginTransaction())
             {
-                accounts[cachedAccount.Key] = cachedAccount.Value;
+                foreach (var account in accounts.Values)
+                {
+                    SaveAccountToDb(account, connection);
+                }
+                
+                // Cache'den güncel olanları da al (eğer dictionary'de yoksa)
+                foreach (var cachedAccount in AccountCache.GetCachedAccounts())
+                {
+                    if (!accounts.ContainsKey(cachedAccount.Key))
+                    {
+                        SaveAccountToDb(cachedAccount.Value, connection);
+                    }
+                }
+                transaction.Commit();
             }
         }
-
-        var json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
-        File.WriteAllText(savePath, json);
-        //Console.WriteLine("[AccountManager] Hesaplar kaydedildi.");
     }
 
     // Hesap oluştur
     public static AccountData CreateAccount(string dil, string username = "arda64best")
     {
-        string accountId = TokenManager.GeneratePlayerId(); // senin TokenManager metodun
+        string accountId = TokenManager.GeneratePlayerId();
         var newAccount = new AccountData
         {
-            Id = maxAccountId,
+            IDCounter = maxAccountId,
             AccountId = accountId,
             Username = username,
             Dil = dil,
@@ -111,38 +167,40 @@ public static class AccountManager
             LastLogin = DateTime.Now,
             Clubid = -1,
             Trophy = 0,
-            
-
+            Email = null,
+            Password = null
         };
 
         accounts[accountId] = newAccount;
         maxAccountId++;
         AccountCache.Cache(newAccount);
+        
         Notfication notification = new Notfication
         {
-            Id = 10,
-            Title = "1.2!",
-            Message = "Düzeltilen bazı şeyler:\n Kulüp oluşturma  hatası\n Markette ürünleri tam görememe hatası\n Avatar değiştirememe hatası\n kulüp artık daha stabil bir görüntü(hala hatalı)",
+             type =  NotficationTypes.NotficationType.banner,
+            Title = "SQLite Geçişi!",
+            Message = "Veritabanına geçiş yapıldı. Tüm verileriniz korundu.",
             ButtonText = "Tamam",
             IsViewed = false
         };
         newAccount.Notfications.Add(notification);
-        SaveAccounts();
 
-        Console.WriteLine($"[AccountManager] Yeni hesap oluşturuldu: {username} (ID: {newAccount.Id}, AccountId: {newAccount.AccountId}) token:{newAccount.Token}");
+        using (var connection = DatabaseManager.GetConnection())
+        {
+            connection.Open();
+            SaveAccountToDb(newAccount, connection);
+        }
+
+        Console.WriteLine($"[AccountManager] Yeni hesap oluşturuldu: {username} (ID: {newAccount.IDCounter}, AccountId: {newAccount.AccountId})");
 
         return newAccount;
     }
+
     public static void Getaccountinfo(string id)
     {
         var account = LoadAccount(id);
         if (account != null)
-            Console.WriteLine($"isim: {account.Username}\n avatarid : {account.Avatarid} \n colorid: {account.Namecolorid}\n  son giriş: {account.LastLogin} \n Dil: {account.Dil} \n clubid: {account.Clubid}\n club name: {account.ClubName}"); //
-        if (account.Clubid != -1)
-        {
-            //   var club = ClubManager.LoadClub(account.Clubid);
-            // Console.WriteLine($"kulup adı :  {club.ClubName} \n toplam kişi: {club.Members.Count}\n toplam kupa {club.TotalKupa} ");
-        }
+            Console.WriteLine($"isim: {account.Username}\n avatarid : {account.Avatarid} \n pushtoken : {account.FBNToken} \n colorid: {account.Namecolorid}\n  son giriş: {account.LastLogin} \n Dil: {account.Dil} \n clubid: {account.Clubid}\n club name: {account.ClubName}");
     }
 
     // Hesap yükle (AccountId ile)
@@ -158,111 +216,82 @@ public static class AccountManager
         return null;
     }
 
-    
     public static void DeleteNotfications()
     {
         foreach (AccountData account in accounts.Values)
         {
-            account.Notfications.Clear();
-
+            lock (account.SyncLock)
+            {
+                account.Notfications.Clear();
+            }
         }
+        SaveAccounts();
         Console.WriteLine("Accountsların notficationları silindi");
     }
+
     public static void AddRole(AccountData account, Role.Roles role)
     {
-        if (account.Roles.Contains(role))
+        lock (account.SyncLock)
         {
-            Logger.genellog($"{account.Username} ({account.AccountId}) kişisine {role}'ü eklenmeye çalıştı fakat zaten var olduğu için eklenmedi");
-            return;
+            if (account.Roles.Contains(role))
+            {
+                Logger.genellog($"{account.Username} ({account.AccountId}) kişisine {role}'ü eklenmeye çalıştı fakat zaten var olduğu için eklenmedi");
+                return;
+            }
+            account.Roles.Add(role);
         }
-        if (account.Roles.Count == 4)
-        {
-            Logger.genellog($"{account.Username} ({account.AccountId}) kişisine {role}'ü eklenmeye çalıştı fakat zaten var olduğu için eklenmedi");
-        }
-        account.Roles.Add(role);
         Logger.genellog($"{account.Username} ({account.AccountId}) kişisine {role}'ü eklendi!");
     }
+
     public static void RemoveRole(AccountData account, Role.Roles role)
     {
-        if (!account.Roles.Contains(role))
+        lock (account.SyncLock)
         {
-            Logger.genellog($"{account.Username} ({account.AccountId}) kişisinden {role}'ü kaldırılmaya çalıştı fakat zaten o role sahip olmadığı için kaldırılmadı");
-            return;
+            if (!account.Roles.Contains(role))
+            {
+                Logger.genellog($"{account.Username} ({account.AccountId}) kişisinden {role}'ü kaldırılmaya çalıştı fakat zaten o role sahip olmadığı için kaldırılmadı");
+                return;
+            }
+            account.Roles.Remove(role);
         }
-        account.Roles.Add(role);
         Logger.genellog($"{account.Username} ({account.AccountId}) kişisinden {role}'ü kaldırıldı!");
     }
 
-
-     public static List<AccountData> GetTop100Players()
+    public static List<AccountData> GetTop100Players()
     {
         return accounts.Values
-            .Where(a => !a.Banned) // Banlıları çıkar
-            .OrderByDescending(a => a.Trophy) // Sadece kupaya göre sırala
-            .Take(100) // İlk 100
+            .Where(a => !a.Banned)
+            .OrderByDescending(a => a.Trophy)
+            .Take(100)
             .ToList();
     }
 
-    // Oyuncunun sıralamasını bul
     public static int GetPlayerRank(string accountId)
     {
-
         var sortedPlayers = accounts.Values
             .Where(a => !a.Banned)
             .OrderByDescending(a => a.Trophy)
             .ToList();
 
-        // Oyuncunun sırasını bul (1'den başlar)
         int rank = sortedPlayers.FindIndex(a => a.AccountId == accountId) + 1;
         return rank;
     }
+
     public static bool CheckMail(string email)
     {
-        if (string.IsNullOrWhiteSpace(email))
-        {
-            Console.WriteLine("[CheckMail] Geçersiz e-posta adresi");
-            return false;
-        }
-
-
+        if (string.IsNullOrWhiteSpace(email)) return false;
         string normalizedEmail = email.Trim().ToLower();
 
-
-        foreach (var account in accounts.Values)
-        {
-            if (!string.IsNullOrEmpty(account.Email) &&
-                account.Email.Trim().ToLower() == normalizedEmail)
-            {
-                Console.WriteLine($"[CheckMail] E-posta zaten kayıtlı: {email} (Kullanıcı: {account.Username} ({account.AccountId}))");
-                return true;
-            }
-        }
-
-        //  Console.WriteLine($"[CheckMail] E-posta kayıtlı değil: {email}");
-        return false;
+        return accounts.Values.Any(a => !string.IsNullOrEmpty(a.Email) && a.Email.Trim().ToLower() == normalizedEmail);
     }
-public static AccountData FindAccountByEmail(string email)
-{
-    if (string.IsNullOrWhiteSpace(email))
+
+    public static AccountData FindAccountByEmail(string email)
     {
-        Console.WriteLine("[FindAccountByEmail] Geçersiz e-posta adresi");
-        return null;
+        if (string.IsNullOrWhiteSpace(email)) return null;
+        string normalizedEmail = email.Trim().ToLower();
+        
+        return accounts.Values.FirstOrDefault(a => !string.IsNullOrEmpty(a.Email) && a.Email.Trim().ToLower() == normalizedEmail);
     }
-
-    string normalizedEmail = email.Trim().ToLower();
-    
-    foreach (var account in accounts.Values)
-    {
-        if (!string.IsNullOrEmpty(account.Email) && 
-            account.Email.Trim().ToLower() == normalizedEmail)
-        {
-            Console.WriteLine($"[FindAccountByEmail] Hesap bulundu: {account.Username} (ID: {account.AccountId})");
-            return account;
-        }
-    }
-    
-    Console.WriteLine($"[FindAccountByEmail] E-posta ile hesap bulunamadı: {email}");
-    return null;
 }
     
     
@@ -270,4 +299,4 @@ public static AccountData FindAccountByEmail(string email)
     
    
           
-}
+

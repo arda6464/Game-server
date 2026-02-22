@@ -1,3 +1,4 @@
+[PacketHandler(MessageType.InviteToTeamRequest)]
 public static class TeamInviteHandler
 {
     public static void Handle(Session session, byte[] data)
@@ -6,7 +7,7 @@ public static class TeamInviteHandler
         using (ByteBuffer read = new ByteBuffer())
         {
             read.WriteBytes(data);
-            read.ReadInt();
+            read.ReadShort();
             accid = read.ReadString();
         }
         var targetacccount = AccountCache.Load(accid);
@@ -14,7 +15,8 @@ public static class TeamInviteHandler
 
 
         //todo: oyuncu takım davetlerini kabul ediyormu?
-        var acccount = AccountCache.Load(session.AccountId);
+        if (session.Account == null) return;
+        var acccount = session.Account;
         if (session.TeamID == 0) CreateTeamHandler.Handle(session);
 
 
@@ -33,30 +35,51 @@ public static class TeamInviteHandler
         }
         else
         {
-            Session? targetsession = SessionManager.GetSession(targetacccount.AccountId);
-            using (ByteBuffer buffer = new ByteBuffer())
+
+
+            if (SessionManager.IsOnline(targetacccount.AccountId))
             {
-                buffer.WriteInt((int)MessageType.InviteToTeamRequest);
-                buffer.WriteString(acccount.Username);
-                buffer.WriteString(acccount.AccountId);
-                buffer.WriteInt(acccount.Avatarid);
-                buffer.WriteInt(acccount.Trophy);
-                buffer.WriteByte((byte)lobby.Players.Count);
-                buffer.WriteByte((byte)lobby.MaxPlayers);
-                targetsession?.Send(buffer.ToArray());
+                Session? targetsession = SessionManager.GetSession(targetacccount.AccountId);
+
+
+                    var notificationPacket = new TeamInviteNotificationPacket
+                    {
+                        SenderName = acccount.Username,
+                        SenderId = acccount.AccountId,
+                        SenderAvatarId = acccount.Avatarid,
+                        SenderTrophy = acccount.Trophy,
+                        CurrentPlayers = lobby.Players.Count,
+                        MaxPlayers = lobby.MaxPlayers
+                    };
+                    targetsession?.Send(notificationPacket);
             }
+            else
+            {// todo if notfi almak istemiyorsa
+                if (NotificationPolicyManager.CanSendNotification(targetacccount, NotificationPolicyManager.NotificationType.Invite))
+                {
+                    AndroidNotficationManager.SendNotification($"Davet!", $"{targetacccount.Username} sizi  takıma davet etti!", targetacccount.FBNToken);
+                    NotificationPolicyManager.UpdateCooldown(targetacccount, NotificationPolicyManager.NotificationType.Invite);
+                }
+            }
+           
         }
     }
     public static void ResponseHandle(Session session,byte[] responsedata)
     {
         bool Accept = false;
         string targetacc;
+        
         using (ByteBuffer read = new ByteBuffer())
         {
             read.WriteBytes(responsedata);
-            read.ReadInt();
-            targetacc = read.ReadString();
-            Accept = read.ReadBool();
+            
+            int _ = read.ReadShort();
+            
+            var response = new TeamInviteResponsePacket();
+            response.Deserialize(read);
+            
+            targetacc = response.InviterAccountId;
+            Accept = response.Accept;
         }
 
         if (!SessionManager.IsOnline(targetacc))
@@ -64,15 +87,18 @@ public static class TeamInviteHandler
        Session Invitersession = SessionManager.GetSession(targetacc);
         if (Accept)
         {
+            // Replicating logic using packets where possible, or keeping it compatible.
+            // Original code creates a ByteBuffer simulating JoinTeamRequest.
+            // JoinTeamRequestPacket expects { TeamId }.
+            
+            var joinPacket = new JoinTeamRequestPacket { TeamId = Invitersession.TeamID };
+            
             using (ByteBuffer fakebuffer = new ByteBuffer())
-
             {
-            fakebuffer.WriteInt(23232); // fake id
-            fakebuffer.WriteInt(Invitersession.TeamID);
-            byte[] fakebyte = fakebuffer.ToArray();
-
-            JoinTeamHandler.Handle(session,fakebyte);         
-                
+                fakebuffer.WriteShort((short)MessageType.JoinTeamRequest);
+                fakebuffer.WriteInt(joinPacket.TeamId);
+                byte[] fakebyte = fakebuffer.ToArray();
+                JoinTeamHandler.Handle(session, fakebyte);
             }
         }
         else return; // todo messagecode

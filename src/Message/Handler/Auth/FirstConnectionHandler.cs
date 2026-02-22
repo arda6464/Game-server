@@ -1,6 +1,7 @@
 using System;
 
 
+[PacketHandler(MessageType.FirstConnectionRequest)]
 public static class FirstConnectionHandler
 {
     
@@ -13,18 +14,19 @@ public static class FirstConnectionHandler
 
 
         // OKUMA
-        ByteBuffer byteBuffer = new ByteBuffer();
-        byteBuffer.WriteBytes(data, true);
-        int mesajtipi = byteBuffer.ReadInt(); //  gereksiz atlamak için
-        string cihazadı = byteBuffer.ReadString();
-        string device = byteBuffer.ReadString();
-        Console.WriteLine("cihaz adı: " + device);
-        string ClientKey = byteBuffer.ReadString();
+        ByteBuffer read = new ByteBuffer();
+        read.WriteBytes(data);
+        read.ReadShort(); // Packet ID atla
         
- 
-
-        byteBuffer.Dispose(); // yoket   ramde kalmasın diye siliyoruz çünkü alacağımızı aldık
-                              //todo device control add
+        var request = new FirstConnectionRequestPacket();
+        request.Deserialize(read);
+        
+        string cihazadı = request.DeviceName;
+        string device = request.DeviceModel;
+        Console.WriteLine("cihaz adı: " + device);
+        string ClientKey = request.ClientKey;
+        
+        read.Dispose();
         session.DeviceID = device;
 
         if (Keyversion != ClientKey)
@@ -38,19 +40,14 @@ public static class FirstConnectionHandler
             Maintance.SendMaintancePacket(session);
             return;
         }
-       
-
 
         //  YAZMA
-            ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.FirstConnectionResponse);
-        buffer.WriteBool(Login);
-        buffer.WriteString(Loginreason);
-
-
-        byte[] gonderilcekveri = buffer.ToArray();
-        buffer.Dispose();
-        session.Send(gonderilcekveri);
+        var response = new FirstConnectionResponsePacket
+        {
+            Success = true,
+            Message = Loginreason
+        };
+        session.Send(response);
         Console.WriteLine($"{device} adlı kullanıcı sunucuya giriş yaptı incelenmeye başlanıyor...");
 
 

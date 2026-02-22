@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 
+[PacketHandler(MessageType.SupporCreateTicketRequest)]
 public static class CreateTicket
 {
     public static void Handle(Session session,byte[] data)
@@ -7,13 +8,17 @@ public static class CreateTicket
 
         byte reasontype;
         using (ByteBuffer read = new ByteBuffer())
-
         {
             read.WriteBytes(data);
-            read.ReadInt();
-            reasontype = read.ReadByte();
+            int _ = read.ReadShort();
+            
+            var request = new CreateTicketRequestPacket();
+            request.Deserialize(read);
+            
+            reasontype = request.ReasonType;
         }
-        var acccount = AccountCache.Load(session.AccountId);
+        if (session.Account == null) return;
+        var acccount = session.Account;
         if (acccount.TicketBan) return;
         if (acccount.Tickets.Count > 10) return;
         if (BotManager.istance.TicketSystem != null)

@@ -1,3 +1,6 @@
+using System.Collections.Concurrent;
+using Newtonsoft.Json;
+
 public class TeamMessage
 {
     public TeamMessageFlags messageFlags;
@@ -37,6 +40,9 @@ public class Lobby
     public List<AccountManager.AccountData> Players { get; set; } = new();
     public List<TeamMessage> Messages { get; set; } = new(); // Kulüp mesajları
 
+    [JsonIgnore]
+    public object SyncLock = new object();
+
 
     public Lobby(int id, string ownerid)
     {
@@ -45,13 +51,19 @@ public class Lobby
     }
     public void AddPlayers(AccountManager.AccountData player)
     {
-        if (Players.Count >= MaxPlayers) return;
-        Players.Add(player);
-        Console.WriteLine($"{player.Username}({player.AccountId}) odaya katıldı total count: {Players.Count}");
+        lock (SyncLock)
+        {
+            if (Players.Count >= MaxPlayers) return;
+            Players.Add(player);
+            Console.WriteLine($"{player.Username}({player.AccountId}) odaya katıldı total count: {Players.Count}");
+        }
     }
     public void RemovePlayer(string accId)
     {
-        Players.RemoveAll(x => x.AccountId == accId);
+        lock (SyncLock)
+        {
+            Players.RemoveAll(x => x.AccountId == accId);
+        }
     }
 
 
@@ -62,7 +74,7 @@ public class Lobby
 public static class LobbyManager
 {
 
-    public static Dictionary<int, Lobby> Lobbies = new();
+    public static ConcurrentDictionary<int, Lobby> Lobbies = new();
 
 
     public static Lobby CreateLobby(AccountManager.AccountData owner)
@@ -92,8 +104,14 @@ public static class LobbyManager
     }
     public static void DeleteLobby(int id)
     {
-        if (Lobbies.ContainsKey(id)) Lobbies.Remove(id);
-        else Logger.errorslog($"[Lobby Manager] {id}'li lobby silinmek istedi fakat öyle bi lobby yok!");
+        if (Lobbies.TryRemove(id, out _))
+        {
+            Logger.genellog($"[Lobby Manager] {id}'li lobby başarıyla silindi.");
+        }
+        else 
+        {
+            Logger.errorslog($"[Lobby Manager] {id}'li lobby silinmek istedi fakat öyle bi lobby yok!");
+        }
     }
 
     public static bool LeaveTeam(int teamid, string accid)
@@ -102,28 +120,42 @@ public static class LobbyManager
 
         Lobby lobby = GetLobby(teamid);
         if (lobby == null) return false;
-        lobby.RemovePlayer(accid);
-        Console.WriteLine($"{accid} odadan ayrıldı total count: {lobby.Players.Count}");
-
-        if (lobby.Players.Count == 0)
+        
+        lock (lobby.SyncLock)
         {
-            Console.WriteLine($"[Lobby Manager] Lobby boş, siliniyor: {lobby.ID}");
-            DeleteLobby(lobby.ID);
-            return true;
+            lobby.RemovePlayer(accid);
+            Console.WriteLine($"{accid} odadan ayrıldı total count: {lobby.Players.Count}");
+
+            if (lobby.Players.Count == 0)
+            {
+                Console.WriteLine($"[Lobby Manager] Lobby boş, siliniyor: {lobby.ID}");
+                DeleteLobby(lobby.ID);
+                return true;
+            }
+            if (lobby.OwnerID == accid && lobby.Players.Count > 0) 
+            {
+                TransferLeader(lobby, lobby.Players[0]);
+            }
         }
-        if (lobby.OwnerID == accid && lobby.Players.Count > 0) TransferLeader(lobby, lobby.Players[0]);
-            return true;
+        return true;
     }
 
     public static void TransferLeader(Lobby team, AccountManager.AccountData newownerid)
     {
         var acc = AccountCache.Load(newownerid.AccountId);
-        if(acc == null)
+        if (acc == null) return;
+
+        lock (team.SyncLock)
         {
-            // todo...
-            return;
+            team.OwnerID = acc.AccountId;
         }
-        team.OwnerID = acc.AccountId;  
-         Console.WriteLine($"[Lobby Manager] Liderlik transfer edildi:  {acc.Username} - {acc.AccountId} ");  
+        Console.WriteLine($"[Lobby Manager] Liderlik transfer edildi:  {acc.Username} - {acc.AccountId} ");
+    }
+    public static TeamMessage GetMessage(Lobby lobby,int messageid)
+    {
+        lock (lobby.SyncLock)
+        {
+            return lobby.Messages.Find(m => m.MessageId == messageid);
+        }
     }
 }

@@ -1,34 +1,39 @@
+[PacketHandler(MessageType.SupportGetAllTicketRequest)]
 public static class GetAllTickets
 {
     public static void Handle(Session session)
     {
-        var account = AccountCache.Load(session.AccountId);
-        using (ByteBuffer buffer = new ByteBuffer(2048))
+        if (session.Account == null) return;
+        var account = session.Account;
+        var response = new SupportGetAllTicketResponsePacket
         {
-            buffer.WriteInt((int)MessageType.SupportGetAllTicketResponse);
-            buffer.WriteBool(account.TicketBan);
-            buffer.WriteByte((byte)account.Tickets.Count());
-            foreach (var ticket in account.Tickets)
-            {
-                buffer.WriteByte((byte)ticket.NO);
-                buffer.WriteString(ticket.Title ?? " ");
-                buffer.WriteBool(ticket.IsClosed);
-                if(ticket.IsClosed)
-                {
-                    buffer.WriteString(ticket.ClosedReason);
-                    buffer.WriteInt((int)new DateTimeOffset(ticket.ClosedAt).ToUnixTimeSeconds());
-                }
-                buffer.WriteByte((byte)ticket.ticketMessages.Count);
-                foreach (var msg in ticket.ticketMessages)
-                {
-                    buffer.WriteString(msg.Name);
-                    buffer.WriteString(msg.Message);
+            TicketBan = account.TicketBan
+        };
 
-                }
+        foreach (var ticket in account.Tickets)
+        {
+            var ticketInfo = new SupportGetAllTicketResponsePacket.TicketInfo
+            {
+                No = (byte)ticket.NO,
+                Title = ticket.Title,
+                IsClosed = ticket.IsClosed,
+                ClosedReason = ticket.ClosedReason,
+                ClosedAt = ticket.IsClosed ? (int)new DateTimeOffset(ticket.ClosedAt).ToUnixTimeSeconds() : 0
+            };
+
+            foreach (var msg in ticket.ticketMessages)
+            {
+                ticketInfo.Messages.Add(new SupportGetAllTicketResponsePacket.MessageInfo
+                {
+                    Name = msg.Name,
+                    Content = msg.Message
+                });
             }
-            byte[] response = buffer.ToArray();
-            session.Send(response)  ;
+            
+            response.Tickets.Add(ticketInfo);
         }
+
+        session.Send(response);
 
     }
 }

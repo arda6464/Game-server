@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using System.Collections.Concurrent;
+using Microsoft.Data.Sqlite;
 
 public class BanData
 {
@@ -13,82 +15,137 @@ public class BanData
     public string? DeviceId { get; set; }
     public bool Active { get; set; }
     public string? Notes { get; set; }
-
-
 }
+
 public static class BanManager
 {
-       private static Dictionary<string, BanData> activeBans = new Dictionary<string, BanData>();
-    private static List<BanData> banHistory = new List<BanData>();
-    private static string banFilePath = "bans.json";
-    private static string banHistoryPath = "ban_history.json";
-
-
+    private static ConcurrentDictionary<string, BanData> activeBans = new ConcurrentDictionary<string, BanData>();
+    private static System.Threading.Timer saveTimer;
+    private static readonly object saveLock = new object();
 
     public static void Init()
     {
         LoadBans();
         
+        // Her 5 dakikada bir otomatik kaydet
+        saveTimer = new System.Threading.Timer(
+            callback: _ => SaveAll(),
+            state: null,
+            dueTime: TimeSpan.FromMinutes(5),
+            period: TimeSpan.FromMinutes(5)
+        );
+    }
 
+    public static void Stop()
+    {
+        saveTimer?.Dispose();
+        SaveAll();
+        Console.WriteLine("[BanManager] Tüm ban verileri kaydedildi.");
+    }
+
+    public static void SaveAll()
+    {
+        lock (saveLock)
+        {
+            try
+            {
+                using (var connection = DatabaseManager.GetConnection())
+                {
+                    connection.Open();
+                    using (var transaction = connection.BeginTransaction())
+                    {
+                        // Aktif banları kaydet
+                        foreach (var ban in activeBans.Values)
+                        {
+                            SaveBanToDb(ban, connection);
+                        }
+
+                        transaction.Commit();
+                    }
+                }
+              //  Console.WriteLine($"[BanManager] {activeBans.Count} ban kaydedildi.");
+            }
+            catch (Exception ex)
+            {
+                Logger.errorslog($"[BanManager] SaveAll hatası: {ex.Message}");
+            }
+        }
     }
 
     private static void LoadBans()
-{
-    if (File.Exists(banFilePath))
     {
-        try
+        using (var connection = DatabaseManager.GetConnection())
         {
-            var json = File.ReadAllText(banFilePath);
-            var bans = JsonConvert.DeserializeObject<List<BanData>>(json);
+            connection.Open();
             
-            Console.WriteLine($"[BanManager] JSON'dan {bans?.Count ?? 0} ban yüklendi");
+            var selectBans = connection.CreateCommand();
+            selectBans.CommandText = "SELECT * FROM Bans WHERE Active = 1";
+            
+            using (var reader = selectBans.ExecuteReader())
+            {
+                int count = 0;
+                while (reader.Read())
+                {
+                    var ban = new BanData
+                    {
+                        AccountId = reader.GetString(reader.GetOrdinal("AccountId")),
+                        AccountName = reader.IsDBNull(reader.GetOrdinal("AccountName")) ? null : reader.GetString(reader.GetOrdinal("AccountName")),
+                        Reason = reader.IsDBNull(reader.GetOrdinal("Reason")) ? null : reader.GetString(reader.GetOrdinal("Reason")),
+                        BannedBy = reader.IsDBNull(reader.GetOrdinal("BannedBy")) ? null : reader.GetString(reader.GetOrdinal("BannedBy")),
+                        BanDate = DateTime.Parse(reader.GetString(reader.GetOrdinal("BanDate"))),
+                        BanFinishDate = reader.IsDBNull(reader.GetOrdinal("BanFinishDate")) ? null : DateTime.Parse(reader.GetString(reader.GetOrdinal("BanFinishDate"))),
+                        Perma = reader.GetInt32(reader.GetOrdinal("Perma")) == 1,
+                        IP = reader.IsDBNull(reader.GetOrdinal("IP")) ? null : reader.GetString(reader.GetOrdinal("IP")),
+                        DeviceId = reader.IsDBNull(reader.GetOrdinal("DeviceId")) ? null : reader.GetString(reader.GetOrdinal("DeviceId")),
+                        Active = reader.GetInt32(reader.GetOrdinal("Active")) == 1,
+                        Notes = reader.IsDBNull(reader.GetOrdinal("Notes")) ? null : reader.GetString(reader.GetOrdinal("Notes"))
+                    };
+                    
+                    if (ban.Perma || (ban.BanFinishDate.HasValue && ban.BanFinishDate > DateTime.Now))
+                    {
+                        activeBans[ban.AccountId] = ban;
+                        count++;
+                    }
+                }
+                Console.WriteLine($"[BanManager] {count} aktif ban yüklendi (SQLite)");
+            }
+        }
+    }
 
-            activeBans = bans?
-                .Where(ban => ban.Active && (ban.Perma || 
-                      (ban.BanFinishDate.HasValue && ban.BanFinishDate > DateTime.Now)))
-                .ToDictionary(ban => ban.AccountId) ?? new Dictionary<string, BanData>();
-
-            Console.WriteLine($"[BanManager] {activeBans.Count} aktif ban filtrelendi");
-        }
-        catch (Exception ex)
-        {
-            Logger.errorslog($"[BanManager] Banlar yüklenirken hata: {ex.Message}");
-        }
-    }
-    else
+    private static void SaveBanToDb(BanData ban, SqliteConnection connection)
     {
-        Logger.errorslog($"[BanManager] {banFilePath} bulunamadı, yeni dosya oluşturulacak.");
-        // Sadece dosya oluştur, içi boş kalsın
-        File.WriteAllText(banFilePath, "[]");
+        var upsertQuery = @"
+            INSERT INTO Bans (AccountId, AccountName, Reason, BannedBy, BanDate, BanFinishDate, Perma, IP, DeviceId, Active, Notes) 
+            VALUES (@AccountId, @AccountName, @Reason, @BannedBy, @BanDate, @BanFinishDate, @Perma, @IP, @DeviceId, @Active, @Notes) 
+            ON CONFLICT(AccountId) DO UPDATE SET
+                AccountName=excluded.AccountName,
+                Reason=excluded.Reason,
+                BannedBy=excluded.BannedBy,
+                BanDate=excluded.BanDate,
+                BanFinishDate=excluded.BanFinishDate,
+                Perma=excluded.Perma,
+                IP=excluded.IP,
+                DeviceId=excluded.DeviceId,
+                Active=excluded.Active,
+                Notes=excluded.Notes;";
+        
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = upsertQuery;
+            command.Parameters.AddWithValue("@AccountId", ban.AccountId);
+            command.Parameters.AddWithValue("@AccountName", ban.AccountName ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@Reason", ban.Reason ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@BannedBy", ban.BannedBy ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@BanDate", ban.BanDate.ToString("o"));
+            command.Parameters.AddWithValue("@BanFinishDate", ban.BanFinishDate?.ToString("o") ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@Perma", ban.Perma ? 1 : 0);
+            command.Parameters.AddWithValue("@IP", ban.IP ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@DeviceId", ban.DeviceId ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@Active", ban.Active ? 1 : 0);
+            command.Parameters.AddWithValue("@Notes", ban.Notes ?? (object)DBNull.Value);
+            command.ExecuteNonQuery();
+        }
     }
-}
-    private static void SaveBans()
-    {
-        try
-        {
-            var activeBanList = activeBans.Values.ToList();
-            var json = JsonConvert.SerializeObject(activeBanList, Formatting.Indented);
-            File.WriteAllText(banFilePath, json);
-        }
-        catch (Exception ex)
-        {
-            Logger.errorslog($"[BanManager] Banlar kaydedilirken hata: {ex.Message}");
-        }
-    }
-
-     private static void SaveBanHistory()
-    {
-        try
-        {
-            var json = JsonConvert.SerializeObject(banHistory, Formatting.Indented);
-            File.WriteAllText(banHistoryPath, json);
-        }
-        catch (Exception ex)
-        {
-            Logger.errorslog($"[BanManager] Ban geçmişi kaydedilirken hata: {ex.Message}");
-        }
-    }
-      
 
 
 
@@ -98,91 +155,62 @@ public static class BanManager
         if (targetAccount == null)
         {
             Logger.errorslog($"[Ban Manager] {targetAccountId} idli hesap bulunamadı, banlanma başarısız");
-        }
-
-        
-          if (IsBanned(targetAccountId))
-        {
-             Logger.errorslog($"[Ban Manager] {targetAccountId} idli hesap zaten banlı, banlanma başarısız");
             return;
         }
-       
 
-
-        // Admin yetkisi kontrolü (bu kısmı kendi sistemine göre özelleştir)
-      
-
-       
+        if (IsBanned(targetAccountId))
+        {
+            Logger.errorslog($"[Ban Manager] {targetAccountId} idli hesap zaten banlı, banlanma başarısız");
+            return;
+        }
 
         var banRecord = new BanData
         {
             AccountId = targetAccountId,
             AccountName = targetAccount.Username,
             Reason = reasonText,
-
             BannedBy = adminName,
             BanDate = DateTime.Now,
             BanFinishDate = perma ? null : DateTime.Now.Add(duration.Value),
-            IP = targetAccount.LastIp, // IP'yi session'dan al
-            DeviceId = targetAccount.Device, // Hardware ID'yi kaydet
+            Perma = perma,
+            IP = targetAccount.LastIp,
+            DeviceId = targetAccount.Device,
             Active = true,
-
         };
 
-        // Aktif banlara ekle
         activeBans[targetAccountId] = banRecord;
-        banHistory.Add(banRecord);
 
-        // Eğer oyuncu online ise disconnect et
+        // Account'un ban geçmişine ekle
+        lock (targetAccount.SyncLock)
+        {
+            targetAccount.BanHistory.Add(banRecord);
+        }
+
         if (SessionManager.IsOnline(targetAccountId))
         {
             var session = SessionManager.GetSession(targetAccountId);
             // DisconnectBannedPlayer(session, banRecord);
         }
 
-
-
-        SaveBans();
-        SaveBanHistory();
-
-
         Logger.genellog($"Oyuncu banlandı: {targetAccount.Username} ({targetAccountId}) - Sebep: {banRecord.Reason} süre {banRecord.BanFinishDate}({banRecord.BanFinishDate - DateTime.Now})");
-
-
     }
-     
-     #region  Unbanned
-    public static void UnbanPlayer(string targetAccountId, string adminName, string note ="")
+
+    #region Unbanned
+    public static void UnbanPlayer(string targetAccountId, string adminName, string note = "")
     {
         if (!activeBans.ContainsKey(targetAccountId))
-
         {
             Logger.genellog($"{targetAccountId} adlı oyuncu zaten banlı değil");
-            return;     
+            return;
         }
-
-       
 
         var banRecord = activeBans[targetAccountId];
         banRecord.Active = false;
-        
-        // Ban geçmişini güncelle
-        var historyRecord = banHistory.FirstOrDefault(b => b.AccountId == targetAccountId && b.Active);
-        if (historyRecord != null)
-        {
-            historyRecord.Active = false;
-            historyRecord.Notes += $"\nBan kaldıran: {adminName} | Tarih: {DateTime.Now} | Not: {note}";
-        }
+        banRecord.Notes += $"\nBan kaldıran: {adminName} | Tarih: {DateTime.Now} | Not: {note}";
 
-        activeBans.Remove(targetAccountId);
-        
-        SaveBans();
-        SaveBanHistory();
-      
+        activeBans.TryRemove(targetAccountId, out _);
 
         Logger.genellog($"Oyuncunun banı kaldırıldı: {banRecord.AccountName} ({targetAccountId})");
-
-      
     }
     #endregion
 
@@ -191,7 +219,6 @@ public static class BanManager
     {
         if (activeBans.TryGetValue(accountId, out var ban))
         {
-            // Geçici ban süresi doldu mu kontrol et
             if (!ban.Perma && ban.BanFinishDate.HasValue && ban.BanFinishDate < DateTime.Now)
             {
                 UnbanExpired(accountId);
@@ -201,7 +228,6 @@ public static class BanManager
         }
         return false;
     }
-
 
     public static BanData GetBanInfo(string accountId)
     {
@@ -216,25 +242,35 @@ public static class BanManager
 
     public static List<BanData> GetBanHistory(string accountId = null)
     {
-        if (accountId == null)
-            return banHistory;
-        
-        return banHistory.Where(b => b.AccountId == accountId).ToList();
+        if (string.IsNullOrEmpty(accountId))
+        {
+            // todo
+        }
+
+        var account = AccountCache.Load(accountId);
+        if (account == null)
+        {
+            return new List<BanData>();
+        }
+
+        lock (account.SyncLock)
+        {
+            return account.BanHistory.OrderByDescending(b => b.BanDate).ToList();
+        }
     }
     #endregion
 
     #region Yardımcı Metodlar
     private static void UnbanExpired(string accountId)
     {
-        if (activeBans.ContainsKey(accountId))
+        if (activeBans.TryGetValue(accountId, out var ban))
         {
-            activeBans[accountId].Active = false;
-            activeBans.Remove(accountId);
-            SaveBans();
+            ban.Active = false;
+            activeBans.TryRemove(accountId, out _);
         }
     }
 
-      public static string GetBanMessage(string accountId)
+    public static string GetBanMessage(string accountId)
     {
         if (!IsBanned(accountId)) return null;
 
@@ -264,9 +300,5 @@ public static class BanManager
     {
         return true;
     }
-
-  
-
-   
     #endregion
 }

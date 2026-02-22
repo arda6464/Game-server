@@ -1,5 +1,6 @@
 using System;
 
+[PacketHandler(MessageType.SetAvatarRequest)]
 public static class SetAvatar
 {
     public static void Handle(Session session, byte[] data)
@@ -8,9 +9,12 @@ public static class SetAvatar
         Console.WriteLine("Set Avatar");
         ByteBuffer BUFFER = new ByteBuffer();
         BUFFER.WriteBytes(data, true);
-        int _ = BUFFER.ReadInt();
+        int _ = BUFFER.ReadShort();
 
-        int Id = BUFFER.ReadInt();
+        var request = new SetAvatarRequestPacket();
+        request.Deserialize(BUFFER);
+        
+        int Id = request.AvatarId;
         BUFFER.Dispose();
         
         // Avatar ID validasyonu (1-10 arası)
@@ -20,7 +24,7 @@ public static class SetAvatar
             return;
         }
         
-        AccountManager.AccountData account = AccountCache.Load(session.AccountId);
+        AccountManager.AccountData account = session.Account;
         if (account == null)
         {
             Logger.errorslog($"[SetAvatar] Account bulunamadı: {session.AccountId}");

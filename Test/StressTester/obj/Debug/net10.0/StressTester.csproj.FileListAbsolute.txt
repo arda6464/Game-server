@@ -1,0 +1,15 @@
+C:\project\Game-server\test\StressTester\bin\Debug\net10.0\StressTester.exe
+C:\project\Game-server\test\StressTester\bin\Debug\net10.0\StressTester.deps.json
+C:\project\Game-server\test\StressTester\bin\Debug\net10.0\StressTester.runtimeconfig.json
+C:\project\Game-server\test\StressTester\bin\Debug\net10.0\StressTester.dll
+C:\project\Game-server\test\StressTester\bin\Debug\net10.0\StressTester.pdb
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\StressTester.GeneratedMSBuildEditorConfig.editorconfig
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\StressTester.AssemblyInfoInputs.cache
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\StressTester.AssemblyInfo.cs
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\StressTester.csproj.CoreCompileInputs.cache
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\StressTester.sourcelink.json
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\StressTester.dll
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\refint\StressTester.dll
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\StressTester.pdb
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\StressTester.genruntimeconfig.cache
+C:\project\Game-server\test\StressTester\obj\Debug\net10.0\ref\StressTester.dll
