@@ -23,6 +23,7 @@ public class Config
     [JsonProperty("Email")] public string Email { get; private set; }
     [JsonProperty("UpdateLink")] public string UpdateLink { get; private set; }
     [JsonProperty("ServerVersion")] public string ServerVersion { get; private set; }
+    [JsonProperty("WebsiteUrl")] public string WebsiteUrl { get;  set; }
 
 
     // Default değerlerle constructor
@@ -41,6 +42,7 @@ public class Config
         UpdateLink = "https://default-update.com";
         ServerVersion = "1.0.0";
         DiscordAdminIDs = new List<ulong>();
+        WebsiteUrl = "http://yourdomain.com";
         QuestRefeshHour = 11;
         SeasonQuestRefeshTime = DateTime.Today.AddHours(8);
     }

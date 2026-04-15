@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapor Yönetimi - Admin Core</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="modals.js"></script>
+    <style>
+        .report-container {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 1.5rem;
+            height: calc(100vh - 180px);
+        }
+
+        .report-list-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 0 !important;
+        }
+
+        .report-list-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .report-items {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .report-item {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .report-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .report-item.active {
+            background: rgba(244, 63, 94, 0.05);
+            border-left: 4px solid var(--accent-fuchsia);
+        }
+
+        .report-id {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 0.25rem;
+        }
+
+        .report-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .report-sub {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .report-detail-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 0 !important;
+        }
+
+        .detail-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .context-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .message-row {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            display: grid;
+            grid-template-columns: 80px 150px 1fr;
+            gap: 1rem;
+            font-size: 0.85rem;
+            align-items: center;
+        }
+
+        .message-row:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .message-row.reported {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .status-pending { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+        .status-resolved { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+
+        .type-tag {
+            font-size: 0.6rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.3rem;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-secondary);
+        }
+
+        .no-selection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Modal Selection Buttons */
+        .selection-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            width: 100%;
+        }
+
+        .selection-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-fuchsia);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar" id="sidebar-container">
+        <!-- Sidebar logic here or static -->
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="reports.html" class="nav-item active">
+                <i class="fas fa-flag"></i> Raporlar
+            </a>
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="client_errors.html" class="nav-item">
+                <i class="fas fa-bug"></i> İstemci Hataları
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="admins.html" class="nav-item">
+                <i class="fas fa-user-shield"></i> Yönetim
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up delay-1">
+            <h1 class="page-title">Rapor Merkezi</h1>
+            <p style="color: var(--text-secondary); margin-top: -1rem; font-weight: 500;">Oyuncu şikayetleri ve sohbet ihlallerini inceleyin.</p>
+        </header>
+
+        <div class="report-container animate-slide-up delay-2">
+            <!-- Sol: Rapor Listesi -->
+            <div class="card report-list-card">
+                <div class="report-list-header">
+                    <h3 style="font-size: 1.1rem; display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fas fa-flag-checkered" style="color: var(--accent-fuchsia);"></i> Son Raporlar
+                    </h3>
+                </div>
+                <div class="report-items" id="report-list">
+                    <div style="padding: 2rem; text-align: center; opacity: 0.5;">Yükleniyor...</div>
+                </div>
+            </div>
+
+            <!-- Sağ: Rapor Detayı -->
+            <div class="card report-detail-card" id="detail-panel">
+                <div class="no-selection">
+                    <i class="fas fa-shield-heart" style="font-size: 4rem; opacity: 0.1; margin-bottom: 2rem;"></i>
+                    <h2 style="font-weight: 800;">Rapor Detayı</h2>
+                    <p>İncelemek istediğiniz raporu yandaki listeden seçin.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentReports = [];
+        let selectedId = null;
+
+        async function fetchReports() {
+            try {
+                const res = await fetch('/api/reports');
+                const data = await res.json();
+                currentReports = data;
+                renderList();
+                if (selectedId) {
+                    const report = currentReports.find(r => r.id === selectedId);
+                    if (report) renderDetail(report);
+                }
+            } catch (e) { showToast('Raporlar yüklenemedi', 'error'); }
+        }
+
+        function renderList() {
+            const list = document.getElementById('report-list');
+            if (currentReports.length === 0) {
+                list.innerHTML = `<div style="padding: 3rem 2rem; text-align: center; color: var(--text-secondary);">
+                    <i class="fas fa-check-double" style="display: block; font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.2; color: #10b981;"></i>
+                    Harika! Hiç bekleyen rapor yok.
+                </div>`;
+                return;
+            }
+
+            list.innerHTML = currentReports.map(r => `
+                <div class="report-item ${selectedId === r.id ? 'active' : ''}" onclick="selectReport('${r.id}')">
+                    <div class="report-id">#${r.id} <span class="type-tag">${r.type}</span></div>
+                    <div class="report-title">
+                        <i class="fas fa-user-ninja" style="opacity:0.6;"></i> ${r.targetName || 'Bilinmiyor'}
+                    </div>
+                    <div class="report-sub">Raporlayan: ${r.reporterName}</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+                        <span class="report-sub">${r.time}</span>
+                        <span class="status-badge status-${r.status.toLowerCase()}">${r.status === 'Pending' ? 'BEKLEYEN' : 'ÇÖZÜLDÜ'}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectReport(id) {
+            selectedId = id;
+            const report = currentReports.find(r => r.id === id);
+            renderList();
+            renderDetail(report);
+        }
+
+        function renderDetail(report) {
+            const panel = document.getElementById('detail-panel');
+            
+            // Özgün katılımcıları topla
+            const participants = [];
+            const seen = new Set();
+            
+            // Eğer ana hedef varsa ama listede yoksa (bağlamda mesajı yoksa) ekle
+            if (report.targetId && !seen.has(report.targetId)) {
+                participants.push({ id: report.targetId, name: report.targetName });
+                seen.add(report.targetId);
+            }
+
+            report.context.forEach(m => {
+                const id = m.senderId;
+                const name = m.senderName;
+                if (!seen.has(name)) {
+                    participants.push({ id: id, name: name }); 
+                    seen.add(name);
+                }
+            });
+
+            panel.innerHTML = `
+                <div class="detail-header">
+                    <div>
+                        <div style="font-size: 0.75rem; font-weight: 800; color: var(--accent-fuchsia);">RAPOR #${report.id}</div>
+                        <h3 style="margin: 0; font-size: 1.25rem;">Rapor Özeti</h3>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top:0.2rem;">
+                            Raporlayan: <b>${report.reporterName}</b> | Tip: <b>${report.type}</b>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button class="btn-refresh" onclick="resolveReport('${report.id}')" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16,185,129,0.2); color: #10b981;">
+                            <i class="fas fa-check-circle"></i> ÇÖZÜLDÜ
+                        </button>
+                    </div>
+                </div>
+
+                <div style="padding: 1.5rem 2rem; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                        <h4 style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">Moderasyon İşlemleri</h4>
+                        <p style="font-size: 0.75rem; opacity: 0.6; margin: 0;">Bağlamdaki herhangi bir oyuncuya işlem yapın.</p>
+                    </div>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button class="btn-refresh" onclick="openModSelection('${report.id}', 'mute')" style="background: rgba(245, 158, 11, 0.1); border-color: rgba(245,158,11,0.2); color: #f59e0b; padding: 0.75rem 1.5rem;">
+                            <i class="fas fa-comment-slash"></i> SUSTUR
+                        </button>
+                        <button class="btn-refresh" onclick="openModSelection('${report.id}', 'ban')" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239,68,68,0.2); color: #ef4444; padding: 0.75rem 1.5rem;">
+                            <i class="fas fa-gavel"></i> BANLA
+                        </button>
+                    </div>
+                </div>
+
+                <div class="context-area">
+                    <h4 style="margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-secondary);">SOHBET BAĞLAMI</h4>
+                    <div style="background: rgba(255,255,255,0.02); border-radius: 1rem; border: 1px solid var(--glass-border); overflow: hidden;">
+                        ${report.context.map(m => `
+                            <div class="message-row ${m.senderName === report.targetName ? 'reported' : ''}">
+                                <div style="color: var(--text-secondary); opacity: 0.5;">${m.time}</div>
+                                <div style="font-weight: 700; color: ${m.senderName === report.targetName ? '#ef4444' : 'inherit'}">${m.senderName}</div>
+                                <div>${m.content}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div style="padding: 1.5rem 2rem; border-top: 1px solid var(--glass-border); display: flex; justify-content: flex-end;">
+                    <button onclick="deleteReport('${report.id}')" style="background: none; border: none; color: var(--text-secondary); font-size: 0.8rem; cursor: pointer; text-decoration: underline;">
+                        Rapor Kaydını Sil
+                    </button>
+                </div>
+            `;
+        }
+
+        function openModSelection(reportId, type) {
+            const report = currentReports.find(r => r.id === reportId);
+            if (!report) return;
+
+            // Özgün katılımcıları topla
+            const participants = [];
+            const seen = new Set();
+            
+            // Eğer ana hedef varsa ama listede yoksa ekle
+            if (report.targetId && !seen.has(report.targetId)) {
+                participants.push({ id: report.targetId, name: `${report.targetName} (ANA HEDEF)` });
+                seen.add(report.targetName); // İsim üzerinden de gidelim
+            }
+
+            report.context.forEach(m => {
+                if (m.senderName && !seen.has(m.senderName)) {
+                    let id = m.senderId;
+                    // Eğer ID boşsa ama isim ana hedefle eşleşiyorsa oradan al
+                    if (!id && m.senderName === report.targetName) id = report.targetId;
+                    
+                    participants.push({ id: id, name: m.senderName });
+                    seen.add(m.senderName);
+                }
+            });
+
+            const actionTitle = type === 'ban' ? 'Banlama Hedefi Seç' : 'Susturma Hedefi Seç';
+            const actionIcon = type === 'ban' ? 'fa-gavel' : 'fa-microphone-slash';
+
+            Modal.selectionPrompt(
+                actionTitle, 
+                'İşlem uygulamak istediğiniz oyuncuyu listeden seçin:', 
+                participants,
+                (id, name) => {
+                    const cleanName = name.replace(' (ANA HEDEF)', '');
+                    if (type === 'ban') {
+                        banPlayer(id, cleanName);
+                    } else {
+                        mutePlayer(id, cleanName);
+                    }
+                }
+            );
+        }
+
+        async function mutePlayer(id, name) {
+            Modal.prompt('Oyuncuyu Sustur', `${name} için susturma süresi (dakika):`, '60', async (minutes) => {
+                try {
+                    const res = await fetch('/api/player/mute', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ id: id, minutes: minutes })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        showToast(`${name} ${minutes} dakika susturuldu.`);
+                    }
+                } catch (e) { showToast('Susturulamadı', 'error'); }
+            });
+        }
+
+        async function resolveReport(id) {
+            try {
+                const res = await fetch('/api/reports/resolve', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ id })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('Rapor çözüldü olarak işaretlendi.');
+                    fetchReports();
+                }
+            } catch (e) { showToast('Hata oluştu', 'error'); }
+        }
+
+        async function deleteReport(id) {
+            Modal.confirm('Raporu Sil', 'Bu rapor kaydını kalıcı olarak silmek istediğinize emin misiniz?', async () => {
+                try {
+                    const res = await fetch('/api/reports/delete', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ id })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        showToast('Rapor silindi.');
+                        selectedId = null;
+                        fetchReports();
+                        document.getElementById('detail-panel').innerHTML = `
+                            <div class="no-selection">
+                                <i class="fas fa-shield-heart" style="font-size: 4rem; opacity: 0.1; margin-bottom: 2rem;"></i>
+                                <h2 style="font-weight: 800;">Rapor Detayı</h2>
+                                <p>İncelemek istediğiniz raporu yandaki listeden seçin.</p>
+                            </div>
+                        `;
+                    }
+                } catch (e) { showToast('Hata oluştu', 'error'); }
+            });
+        }
+
+        function banPlayer(id, name) {
+            Modal.prompt('Oyuncuyu Yasakla', `${name} adlı oyuncuyu yasaklamak için sebep girin:`, 'Kural ihlali', async (reason) => {
+                try {
+                    const res = await fetch('/api/player/ban', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ id: id, reason: reason })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        showToast('Oyuncu başarıyla yasaklandı.');
+                        // Banladıktan sonra raporu da çözüldü yaparsak mantıklı olur
+                        if (selectedId) resolveReport(selectedId);
+                    }
+                } catch (e) { showToast('Yasaklanamadı', 'error'); }
+            });
+        }
+
+        setInterval(fetchReports, 5000);
+        fetchReports();
+    </script>
+</body>
+
+</html>

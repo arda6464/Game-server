@@ -10,13 +10,9 @@ public enum MessageType : short
     MessageCode,
     Alive,
     Presence,
-    
-    // UDP
-    UdpConnect,
-    UdpConnectResponse,
-    UdpMove,
-    UdpShoot,
-    UdpInput, // Joystick verisi için
+    ClientErrorRequest,
+
+    // UDP tipleri artık UdpMessageType.cs dosyasında (byte olarak)
     #endregion
 
     #region Authentication
@@ -34,7 +30,7 @@ public enum MessageType : short
     AccountLogin,
     SignAccount,
     ChangeNotficationRequest,
-NameNotAcceptedRequest,
+    NameNotAcceptedRequest,
     #endregion
 
 
@@ -167,9 +163,27 @@ NameNotAcceptedRequest,
 
     #endregion
 
-    #region  Android
-    NewFBNTokenRequest
+    #region Invite
+    JoinByInviteRequest,
     #endregion
+
+    
+
+    #region  Android
+    NewFBNTokenRequest,
+    #endregion
+
+
+
+
+    #region Events
+    GetEvents,
+    DeleteEvent,
+    EventsResponse,
+    AddEvent,
+    #endregion
+
+
 
 
 }

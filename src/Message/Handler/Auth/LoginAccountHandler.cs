@@ -5,7 +5,6 @@ public static class LoginAccountHandler
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        int _ = read.ReadShort();
         
         var request = new LoginAccountPacket();
         request.Deserialize(read);
@@ -26,7 +25,7 @@ public static class LoginAccountHandler
             string code = VerificationCodeManager.GenerateCode();
             VerificationCodeManager.SaveCode(email, code);
             EmailServiceSync.SendVerificationCode(email, code);
-            VerifyManager.CreateData(session.AccountId, new VerifyManager.VerificationData
+            VerifyManager.CreateData(session.ID, new VerifyManager.VerificationData
             {
                 Email = email,
                  Type = VerificationType.Login

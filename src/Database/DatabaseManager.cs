@@ -16,7 +16,7 @@ public static class DatabaseManager
             // Accounts tablosu (Minimalist)
             var createAccountsTable = @"
                 CREATE TABLE IF NOT EXISTS Accounts (
-                    AccountId TEXT PRIMARY KEY,
+                    ID INTEGER PRIMARY KEY,
                     Username TEXT,
                     Data JSON
                 );";
@@ -32,7 +32,7 @@ public static class DatabaseManager
             // Bans tablosu
             var createBansTable = @"
                 CREATE TABLE IF NOT EXISTS Bans (
-                    AccountId TEXT PRIMARY KEY,
+                    AccountId INTEGER PRIMARY KEY,
                     AccountName TEXT,
                     Reason TEXT,
                     BannedBy TEXT,

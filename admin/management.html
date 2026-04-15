@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Ayarları - Admin Core</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="modals.js"></script>
+    <style>
+        .config-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+
+        .switch-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 1.25rem;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 1.25rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .switch-container:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .switch-label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .switch-title {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .switch-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Essential UI Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: .4s;
+            border-radius: 34px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: #fff;
+            transition: .4s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        input:checked+.slider {
+            background-color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(24px);
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .event-info {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .event-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(34, 211, 238, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+        }
+
+        .event-details h4 {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-details p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .value-badge {
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--accent-cyan);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            white-space: nowrap;
+        }
+
+        .time-badge {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-flag"></i> Raporlar
+            </a>
+            <a href="management.html" class="nav-item active">
+                <i class="fas fa-gears"></i> Sistem Ayarları
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="client_errors.html" class="nav-item">
+                <i class="fas fa-bug"></i> İstemci Hataları
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="admins.html" class="nav-item">
+                <i class="fas fa-user-shield"></i> Yönetim
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up delay-1">
+            <h1 class="page-title">Sistem Yapılandırması</h1>
+            <div style="display: flex; gap: 1rem;">
+                <button onclick="saveConfig()" class="primary-btn">
+                    <i class="fas fa-save"></i> DEĞİŞİKLİKLERİ KAYDET
+                </button>
+            </div>
+        </header>
+
+        <div class="config-grid">
+            <!-- Sistem Toggles -->
+            <div class="card animate-slide-up delay-2">
+                <h3 style="margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; font-size: 1.5rem;">
+                    <i class="fas fa-toggle-on" style="color:var(--accent-cyan)"></i> Servis Kontrolleri
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
+                    <div class="switch-container">
+                        <div class="switch-label">
+                            <span class="switch-title">Matchmaking</span>
+                            <span class="switch-desc">Eşleştirme sistemini aktif/pasif yapar.</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="check-mm">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="switch-container">
+                        <div class="switch-label">
+                            <span class="switch-title">Market / Mağaza</span>
+                            <span class="switch-desc">Oyuncuların markete girmesini engeller.</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="check-shop">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="switch-container">
+                        <div class="switch-label">
+                            <span class="switch-title">Rank Sistemi</span>
+                            <span class="switch-desc">Kupa kazanma/kaybetme işlemlerini durdurur.</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="check-rank">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aktif Etkinlikler -->
+            <div class="card animate-slide-up delay-3">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h3 style="display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fas fa-star" style="color:var(--accent-amber)"></i> Aktif Etkinlikler
+                    </h3>
+                    <button class="btn-refresh" style="padding: 0.5rem 1rem; font-size: 0.7rem;" onclick="addEventModal()">
+                        <i class="fas fa-plus"></i> ETKINLIK EKLE
+                    </button>
+                </div>
+                <div id="event-list">
+                    <!-- Events here -->
+                </div>
+            </div>
+
+            <!-- Özel Hata Duyuruları -->
+            <div class="card animate-slide-up delay-4">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h3 style="display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fas fa-triangle-exclamation" style="color:#f43f5e"></i> Özel Hata Duyuruları
+                    </h3>
+                    <button class="btn-refresh" style="padding: 0.5rem 1rem; font-size: 0.7rem; background: rgba(244, 63, 94, 0.1); color: #f43f5e; border-color: rgba(244, 63, 94, 0.2);" onclick="addCustomErrorModal()">
+                        <i class="fas fa-plus"></i> DUYURU EKLE
+                    </button>
+                </div>
+                <div id="custom-error-list">
+                    <!-- Custom errors here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentConfig = {
+            IsMatchmakingEnabled: true,
+            IsShopEnabled: true,
+            IsRankSystemEnabled: true,
+            ActiveEvents: [],
+            CustomErrors: []
+        };
+
+        const eventTypes = [
+            { type: 1, name: "XP Çarpanı", icon: "fa-angles-up", color: "#818cf8", desc: "Tüm oyuncuların kazandığı XP'yi katlar." },
+            { type: 2, name: "Altın Yağmuru", icon: "fa-coins", color: "#fbbf24", desc: "Maç sonu ve görev altın kazancını artırır." },
+            { type: 4, name: "Kupa Koruma", icon: "fa-shield-heart", color: "#f43f5e", desc: "Yenilgi durumunda kupa kaybını engeller." },
+            { type: 5, name: "Çift Kupa", icon: "fa-trophy", color: "#c084fc", desc: "Galibiyetlerde kazanılan kupayı ikiye katlar." }
+        ];
+
+        function getEventData(type) {
+            return eventTypes.find(e => e.type == type) || { name: 'Özel Etkinlik', icon: 'fa-star', color: '#fff' };
+        }
+
+        async function loadConfig() {
+            try {
+                const res = await fetch('/api/dynamicconfig');
+                currentConfig = await res.json();
+                
+                document.getElementById('check-mm').checked = currentConfig.IsMatchmakingEnabled;
+                document.getElementById('check-shop').checked = currentConfig.IsShopEnabled;
+                document.getElementById('check-rank').checked = currentConfig.IsRankSystemEnabled;
+                
+                if(!currentConfig.CustomErrors) currentConfig.CustomErrors = [];
+                
+                renderEvents();
+                renderCustomErrors();
+            } catch (e) {
+                showToast("Yapılandırma yüklenemedi", "error");
+            }
+        }
+
+        function renderEvents() {
+            const list = document.getElementById('event-list');
+            if (currentConfig.ActiveEvents.length === 0) {
+                list.innerHTML = '<div class="empty-state">Şu an aktif bir etkinlik yok.</div>';
+                return;
+            }
+
+            const now = new Date();
+
+            list.innerHTML = currentConfig.ActiveEvents.map((evt, index) => {
+                const data = getEventData(evt.Type);
+                const startTime = new Date(evt.StartTime);
+                const endTime = new Date(evt.EndTime);
+                const isPermanent = endTime.getFullYear() > 3000;
+                let timeStr = "";
+                
+                if (isPermanent) {
+                    timeStr = "Sınırsız";
+                } else if (!evt.IsStarted && startTime > now) {
+                    const diffMs = startTime - now;
+                    const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
+                    const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+                    timeStr = `<span style="color: #fbbf24;">${diffHrs}sa ${diffMins}dk sonra başlayacak</span>`;
+                } else {
+                    const diffMs = endTime - now;
+                    const diffHrs = Math.max(0, Math.floor(diffMs / (1000 * 60 * 60)));
+                    const diffMins = Math.max(0, Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)));
+                    timeStr = `${diffHrs}sa ${diffMins}dk kaldı`;
+                }
+
+                let detailStr = "";
+                let valueStr = `x${evt.Value}`;
+
+                if (evt.Type == 3) { // Shop
+                    const shopItems = ["Elmas", "Altın", "Bilet"];
+                    const itemName = shopItems[evt.Value] || "Ürün";
+                    detailStr = `${evt.Value2} ${itemName}`;
+                    valueStr = "BEDAVA";
+                } else if (evt.Type == 1 || evt.Type == 5) { // XP / Trophy
+                    detailStr = `${evt.Value} Kat Kazanç`;
+                    valueStr = `x${evt.Value}`;
+                } else {
+                    detailStr = "Aktif Mod";
+                    valueStr = "AÇIK";
+                }
+
+                return `
+                <div class="event-card animate-slide-up" style="animation-delay: ${index * 0.1}s; border-left: 4px solid ${data.color}">
+                    <div class="event-info">
+                        <div class="event-icon" style="background: ${data.color}20; color: ${data.color}">
+                            <i class="fas ${data.icon}"></i>
+                        </div>
+                        <div class="event-details">
+                            <h4>${data.name}</h4>
+                            <p style="font-size: 0.75rem; font-weight: 600; color: #fff;">${detailStr}</p>
+                            <div class="time-badge">
+                                <i class="far fa-clock"></i> ${timeStr}
+                            </div>
+                            ${!evt.IsStarted && startTime > now ? `<div style="font-size: 0.6rem; color: #fbbf24; font-weight: 800; margin-top: 0.2rem;"><i class="fas fa- hourglass-start"></i> BEKLEMEDE</div>` : ""}
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <span class="value-badge" style="background: ${data.color}15; color: ${data.color}; border-color: ${data.color}30;">${valueStr}</span>
+                        <button onclick="removeEvent(${index})" style="background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444; cursor: pointer; padding: 0.6rem; border-radius: 10px; transition: all 0.2s;">
+                            <i class="fas fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+
+        function removeEvent(index) {
+            currentConfig.ActiveEvents.splice(index, 1);
+            renderEvents();
+        }
+
+        function renderCustomErrors() {
+            const list = document.getElementById('custom-error-list');
+            if (!currentConfig.CustomErrors || currentConfig.CustomErrors.length === 0) {
+                list.innerHTML = '<div class="empty-state">Şu an aktif bir hata duyurusu yok.</div>';
+                return;
+            }
+
+            list.innerHTML = currentConfig.CustomErrors.map((err, index) => {
+                const startTime = new Date(err.StartDate).toLocaleString('tr-TR');
+                return `
+                <div class="event-card animate-slide-up" style="animation-delay: ${index * 0.1}s; border-left: 4px solid #f43f5e;">
+                    <div class="event-info">
+                        <div class="event-icon" style="background: rgba(244, 63, 94, 0.2); color: #f43f5e">
+                            <i class="fas fa-circle-exclamation"></i>
+                        </div>
+                        <div class="event-details">
+                            <h4>${err.Title}</h4>
+                            <p style="font-size: 0.75rem; font-weight: 600; color: #fff;">${err.Message}</p>
+                            <div class="time-badge">
+                                <i class="far fa-clock"></i> Başlangıç: ${startTime}
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <button onclick="removeCustomError(${index})" style="background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444; cursor: pointer; padding: 0.6rem; border-radius: 10px; transition: all 0.2s;">
+                            <i class="fas fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function removeCustomError(index) {
+            currentConfig.CustomErrors.splice(index, 1);
+            renderCustomErrors();
+        }
+
+        function addEventModal() {
+            window.Modal.eventSelectionPrompt(
+                'Etkinlik Türü Seçin',
+                'Başlatmak istediğiniz etkinlik türünü seçerek işleme devam edin.',
+                eventTypes,
+                (type, name) => {
+                    const data = getEventData(type);
+                    const html = `
+                        <div style="text-align: left;">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 1rem; border: 1px solid ${data.color}40;">
+                                <div style="font-size: 2rem; color: ${data.color};"><i class="fas ${data.icon}"></i></div>
+                                <div>
+                                    <div style="font-weight: 800; font-size: 1.1rem; color: #fff;">${data.name}</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary);">${data.desc}</div>
+                                </div>
+                            </div>
+                            
+                            ${type == 3 ? `
+                                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">Market Ürünü Seçin</label>
+                                <select id="modal-evt-val" class="modal-input">
+                                    <option value="0">Elmas (Gems)</option>
+                                    <option value="1">Altın (Coins)</option>
+                                    <option value="2">Savaş Bileti (BattlePass)</option>
+                                </select>
+                                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">Miktar / Adet</label>
+                                <input type="number" id="modal-evt-val2" class="modal-input" value="100" min="1">
+                            ` : type == 1 || type == 5 ? `
+                                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">Çarpan Değeri (x2, x5...)</label>
+                                <input type="number" id="modal-evt-val" class="modal-input" value="2" min="1">
+                                <input type="hidden" id="modal-evt-val2" value="0">
+                            ` : `
+                                <div style="padding: 1rem; background: rgba(34, 211, 238, 0.05); border-radius: 0.75rem; margin-bottom: 1.5rem; font-size: 0.8rem; color: var(--accent-cyan); text-align: center;">
+                                    Bu etkinlik için ek bir değer girmenize gerek yoktur.
+                                </div>
+                                <input type="hidden" id="modal-evt-val" value="1">
+                                <input type="hidden" id="modal-evt-val2" value="0">
+                            `}
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">Başlangıç Zamanı</label>
+                                    <input type="datetime-local" id="modal-evt-start" class="modal-input">
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">Bitiş Zamanı</label>
+                                    <input type="datetime-local" id="modal-evt-end" class="modal-input">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    const now = new Date();
+                    const nowStr = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+                    const defaultEnd = new Date(now.getTime() + (2 * 60 * 60 * 1000)); // Default 2 hours
+                    const defaultEndStr = new Date(defaultEnd.getTime() - defaultEnd.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+
+                    setTimeout(() => {
+                        document.getElementById('modal-evt-start').value = nowStr;
+                        document.getElementById('modal-evt-end').value = defaultEndStr;
+                    }, 50);
+
+                    window.Modal.show({
+                        title: 'Etkinlik Detayları',
+                        message: html,
+                        icon: data.icon,
+                        color: data.color,
+                        onConfirm: () => {
+                            const start = document.getElementById('modal-evt-start').value;
+                            const end = document.getElementById('modal-evt-end').value;
+                            const val = parseInt(document.getElementById('modal-evt-val').value);
+                            const val2 = parseInt(document.getElementById('modal-evt-val2').value);
+                            
+                            if (!start || !end) {
+                                showToast("Başlangıç ve bitiş zamanı seçilmelidir!", "error");
+                                return;
+                            }
+
+                                currentConfig.ActiveEvents.push({ 
+                                    Type: parseInt(type), 
+                                    Value: val,
+                                    Value2: val2,
+                                    StartTime: new Date(start).toISOString(),
+                                    EndTime: new Date(end).toISOString(),
+                                    IsStarted: new Date(start) <= new Date()
+                                });
+                                renderEvents();
+                                showToast(`${name} listeye eklendi.`, "success");
+                            }
+                        });
+                    }
+                );
+            }
+
+        function addCustomErrorModal() {
+            const html = `
+                <div style="text-align: left;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">Duyuru Başlığı</label>
+                    <input type="text" id="modal-err-title" class="modal-input" placeholder="Örn: Sunucu Bakımı" value="Sistem Duyurusu">
+                    
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.75rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">Duyuru Mesajı</label>
+                    <textarea id="modal-err-msg" class="modal-input" style="height: 100px; resize: none;" placeholder="Gösterilecek mesajı girin..."></textarea>
+                </div>
+            `;
+
+            window.Modal.show({
+                title: 'Özel Hata Duyurusu Ekle',
+                message: html,
+                icon: 'fa-triangle-exclamation',
+                color: '#f43f5e',
+                confirmText: 'EKLE',
+                onConfirm: () => {
+                    const title = document.getElementById('modal-err-title').value;
+                    const message = document.getElementById('modal-err-msg').value;
+
+                    if (!title || !message) {
+                        showToast("Başlık ve mesaj boş olamaz!", "error");
+                        return;
+                    }
+
+                    currentConfig.CustomErrors.push({
+                        Title: title,
+                        Message: message,
+                        StartDate: new Date().toISOString()
+                    });
+                    
+                    renderCustomErrors();
+                    showToast("Duyuru listeye eklendi. Kaydetmeyi unutmayın.", "success");
+                }
+            });
+        }
+
+        async function saveConfig() {
+            currentConfig.IsMatchmakingEnabled = document.getElementById('check-mm').checked;
+            currentConfig.IsShopEnabled = document.getElementById('check-shop').checked;
+            currentConfig.IsRankSystemEnabled = document.getElementById('check-rank').checked;
+
+            try {
+                const res = await fetch('/api/dynamicconfig/update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(currentConfig)
+                });
+                const result = await res.json();
+                if (result.success) {
+                    showToast("Sistem başarıyla güncellendi!", "success");
+                } else {
+                    showToast(result.message, "error");
+                }
+            } catch (e) {
+                showToast("Bağlantı hatası", "error");
+            }
+        }
+
+        window.onload = loadConfig;
+    </script>
+</body>
+
+</html>

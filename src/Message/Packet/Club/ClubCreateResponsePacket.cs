@@ -11,30 +11,30 @@ public class ClubCreateResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.ClubCreateResponse);
-        buffer.WriteInt(ClubId);
-        buffer.WriteString(ClubName);
-        buffer.WriteString(ClubDescription);
-        buffer.WriteInt(TotalTrophies);
+        buffer.WriteVarInt((int)MessageType.ClubCreateResponse);
+        buffer.WriteVarInt(ClubId);
+        buffer.WriteVarString(ClubName);
+        buffer.WriteVarString(ClubDescription);
+        buffer.WriteVarInt(TotalTrophies);
         
-        buffer.WriteInt(Messages.Count);
+        buffer.WriteVarInt(Messages.Count);
         foreach (var message in Messages)
         {
-            buffer.WriteString(message.SenderId);
-            buffer.WriteString(message.SenderName);
-            buffer.WriteInt(message.SenderAvatarID);
-            buffer.WriteString("Üye"); // todo enum send
-            buffer.WriteString(message.Content);
+            buffer.WriteVarInt(message.SenderId);
+            buffer.WriteVarString(message.SenderName);
+            buffer.WriteVarInt(message.SenderAvatarID);
+            buffer.WriteVarString("Üye"); // todo enum send
+            buffer.WriteVarString(message.Content);
         }
 
-        buffer.WriteInt(Members.Count);
+        buffer.WriteVarInt(Members.Count);
         foreach (var member in Members)
         {
-            buffer.WriteString(member.Accountid);
-            buffer.WriteString(member.AccountName);
-            buffer.WriteString(member.Role.ToString());
-            buffer.WriteInt(member.NameColorID);
-            buffer.WriteInt(member.AvatarID);
+            buffer.WriteVarInt(member.ID);
+            buffer.WriteVarString(member.AccountName);
+            buffer.WriteVarString(member.Role.ToString());
+            buffer.WriteVarInt(member.NameColorID);
+            buffer.WriteVarInt(member.AvatarID);
         }
     }
 

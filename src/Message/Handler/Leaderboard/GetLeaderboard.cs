@@ -7,7 +7,7 @@ public static class GetLeaderboard
 
         {
             var topPlayers = AccountManager.GetTop100Players();
-            var playerRank = AccountManager.GetPlayerRank(session.AccountId);
+            var playerRank = AccountManager.GetPlayerRank(session.ID);
             var acccount = session.Account;
             if (acccount == null) return;
 
@@ -22,7 +22,7 @@ public static class GetLeaderboard
                 response.Players.Add(new LeaderboardResponsePacket.PlayerInfo
                 {
                     Name = player.Username,
-                    AccountId = player.AccountId,
+                    ID = player.ID,
                     ClubName = player.ClubName,
                     Trophy = player.Trophy,
                     AvatarId = player.Avatarid,

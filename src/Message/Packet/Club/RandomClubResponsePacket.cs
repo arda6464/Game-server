@@ -6,15 +6,15 @@ public class RandomClubResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.GetRandomClubResponse);
-        buffer.WriteInt(Clubs.Count);
+        buffer.WriteVarInt((int)MessageType.GetRandomClubResponse);
+        buffer.WriteVarInt(Clubs.Count);
         foreach (var rclub in Clubs)
         {
-            buffer.WriteInt(rclub.ClubId);
-            buffer.WriteString(rclub.ClubName);
-            buffer.WriteString(rclub.Clubaciklama);
-            buffer.WriteInt(rclub.TotalKupa ?? 0);
-            buffer.WriteInt(rclub.Members.Count);
+            buffer.WriteVarInt(rclub.ClubId);
+            buffer.WriteVarString(rclub.ClubName);
+            buffer.WriteVarString(rclub.Clubaciklama);
+            buffer.WriteVarInt(rclub.TotalKupa ?? 0);
+            buffer.WriteVarInt(rclub.Members.Count);
         }
     }
 

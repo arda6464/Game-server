@@ -6,7 +6,7 @@ public class Bullet
     public Vector2 Position { get; set; }
     public Vector2 Direction { get; set; }
     public float Speed { get; set; }
-    public string? OwnerId { get; set; }
+    public int OwnerID { get; set; }
     public int Damage { get; set; } = 40;
     public float menzil { get; set; } = 40f;
     public Vector2 startPos { get; set; }

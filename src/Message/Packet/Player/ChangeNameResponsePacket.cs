@@ -4,8 +4,8 @@ public class ChangeNameResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.ChangeNameResponse);
-        buffer.WriteString(NewName);
+        buffer.WriteVarInt((int)MessageType.ChangeNameResponse);
+        buffer.WriteVarString(NewName);
     }
 
     public void Deserialize(ByteBuffer buffer)

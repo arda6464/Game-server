@@ -9,130 +9,206 @@ public enum ContextMode
     TeamChat,
     CLubChat
 }
+
+public class ReportMessage
+{
+    public int SenderId { get; set; }
+    public string? SenderName { get; set; }
+    public string? Content { get; set; }
+    public string? Time { get; set; }
+}
+
+public class ReportData
+{
+    public string? Id { get; set; }
+    public int? ReporterId { get; set; }
+    public string? ReporterName { get; set; }
+    public int? TargetId { get; set; }
+    public string? TargetName { get; set; }
+    public string? Reason { get; set; }
+    public string? Type { get; set; } // Club / Team
+    public string? ClubName { get; set; }
+    public List<ReportMessage> Context { get; set; } = new List<ReportMessage>();
+    public DateTime Timestamp { get; set; }
+    public string Status { get; set; } = "Pending"; // Pending, Resolved
+}
+
 [PacketHandler(MessageType.ReportPlayerRequest)]
 public static class ReportManager
 {
- private static List<string> bannedWords;
+    private static List<ReportData> reports = new List<ReportData>();
+    private static List<string>? bannedWords;
+    private static readonly string ReportsFile = "reports.json";
+
+    public static void Init()
+    {
+        LoadReports();
+        LoadBannedWords();
+    }
+
+    private static void LoadReports()
+    {
+        if (File.Exists(ReportsFile))
+        {
+            try
+            {
+                reports = JsonConvert.DeserializeObject<List<ReportData>>(File.ReadAllText(ReportsFile)) ?? new List<ReportData>();
+            }
+            catch { reports = new List<ReportData>(); }
+        }
+    }
+
+    private static void SaveReports()
+    {
+        try
+        {
+            File.WriteAllText(ReportsFile, JsonConvert.SerializeObject(reports, Formatting.Indented));
+        }
+        catch (Exception ex) { Console.WriteLine("[ReportManager] Save error: " + ex.Message); }
+    }
+
+    public static List<ReportData> GetReports() => reports;
+
+    public static bool ResolveReport(string reportId)
+    {
+        var report = reports.Find(r => r.Id == reportId);
+        if (report != null)
+        {
+            report.Status = "Resolved";
+            SaveReports();
+            return true;
+        }
+        return false;
+    }
+
+    public static bool DeleteReport(string reportId)
+    {
+        var report = reports.Find(r => r.Id == reportId);
+        if (report != null)
+        {
+            reports.Remove(report);
+            SaveReports();
+            return true;
+        }
+        return false;
+    }
+
     public static void Handle(Session session, byte[] data)
     {
-        string accountıd;
         ContextMode mode;
         byte messageid;
         using (ByteBuffer read = new ByteBuffer())
         {
             read.WriteBytes(data);
-            read.ReadInt();
-            mode = (ContextMode)read.ReadByte();
-            messageid = read.ReadByte();
+            read.ReadVarInt(); // Length
+            mode = (ContextMode)read.ReadVarInt();
+            messageid = (byte)read.ReadVarInt();
         }
-        Console.WriteLine("mode: "+ mode );
+
         if (session.Account == null) return;
         AccountManager.AccountData acc = session.Account;
-
-       
-        
 
         switch (mode)
         {
             case ContextMode.CLubChat:
-                SearchingClub(messageid,acc);
+                CreateClubReport(messageid, acc);
                 break;
             case ContextMode.TeamChat:
-                SearchingChat(session,messageid,acc);
+                CreateTeamReport(session, messageid, acc);
                 break;
             default:
-                Console.WriteLine("mode bulunamadı");
+                Console.WriteLine("[ReportManager] Geçersiz mod: " + mode);
                 break;
         }
+    }
 
-    }
-    private static void SearchingClub(int messageid,AccountManager.AccountData account)
+    private static void CreateClubReport(int messageid, AccountManager.AccountData account)
     {
-        if (account.Clubid == -1 || messageid == 0)
+        if (account.Clubid == -1 || messageid == 0) return;
+        Club club = ClubCache.Load(account.Clubid);
+        if (club == null) return;
+
+        var report = new ReportData
         {
-            Console.WriteLine("clubid veya messageid sıkıntılı messgeid: " + messageid);
-            return;
-        } 
-       Club club = ClubCache.Load(account.Clubid);
-        if (club == null)
+            Id = Guid.NewGuid().ToString().Substring(0, 8),
+            ReporterId = account.ID,
+            ReporterName = account.Username,
+            Type = "Club",
+            ClubName = club.ClubName,
+            Timestamp = DateTime.Now,
+            Status = "Pending",
+            Reason = "Sohbet İhlali"
+        };
+
+        // Bağlam mesajlarını topla (-5, +5)
+        for (int i = messageid - 5; i <= messageid + 5; i++)
         {
-            Console.WriteLine("club null");
-            return;
-        } 
-         Console.WriteLine($"========================================");
-        Console.WriteLine($"[REPORT CLUB] Kulüp: {club.ClubName ?? "Bilinmiyor"}");
-        Console.WriteLine($"[REPORT CLUB] Raporlayan: {account.Username}");
-      //  Console.WriteLine($"[REPORT CLUB] Hedef: {targetaccount.Username}");
-        Console.WriteLine($"[REPORT CLUB] Mesaj ID: {messageid}");
-        Console.WriteLine($"========================================");
-      //  if (messageid - 10 < 0) return; // demekki 10dan daha az mesaj var
-        Console.WriteLine($"-----Önceki mesajlar----");
-        for (int backmsg = messageid; backmsg > messageid - 10 && backmsg >= 0; backmsg--)
-        {
-            ClubMessage message = ClubManager.GetCLubMessage(club, backmsg);
-            if (message == null)
+            if (i < 0) continue;
+            ClubMessage msg = ClubManager.GetCLubMessage(club, i);
+            if (msg != null && msg.messageFlags == ClubMessageFlags.None)
             {
-                Console.WriteLine("böyle bi mesaj bulunamadı");
-                continue;
+                if (i == messageid)
+                {
+                    report.TargetName = msg.SenderName;
+                    report.TargetId = msg.SenderId;
+                }
+                report.Context.Add(new ReportMessage 
+                { 
+                    SenderId = msg.SenderId,
+                    SenderName = msg.SenderName, 
+                    Content = msg.Content, 
+                    Time = msg.Timestamp.ToString("HH:mm:ss") 
+                });
             }
-            if (message.messageFlags != ClubMessageFlags.None) continue;
-            Console.WriteLine($"[{backmsg}] gönderen: {message.SenderName}, conent: {message.Content} tarih: {message.Timestamp}");
         }
-        Console.WriteLine($"---------");
-         Console.WriteLine($"-----Sonraki mesajlar----");
-        for (int backmsg = messageid+1; backmsg < messageid + 10; backmsg++)
-        {
-            ClubMessage message = ClubManager.GetCLubMessage(club, backmsg);
-            
-            if (message == null)
-            {
-                Console.WriteLine("böyle bi mesaj bulunamadı");
-                continue;
-            }
-             if (message.messageFlags != ClubMessageFlags.None) continue;
-            Console.WriteLine($"[{backmsg}] gönderen: {message.SenderName}, conent: {message.Content} tarih: {message.Timestamp}");
-        }
-        Console.WriteLine($"---------");
-         
+
+        reports.Add(report);
+        SaveReports();
+        Console.WriteLine($"[ReportManager] Yeni kulüp raporu oluşturuldu: {report.Id} (Reporter: {report.ReporterName})");
     }
-    private static void SearchingChat(Session session, int messageid, AccountManager.AccountData account)
+
+    private static void CreateTeamReport(Session session, int messageid, AccountManager.AccountData account)
     {
-        if (session.TeamID == -1 && messageid == 0) return;
+        if (session.TeamID == -1 || messageid == 0) return;
         Lobby lobby = LobbyManager.GetLobby(session.TeamID);
         if (lobby == null) return;
-        //  if (messageid - 10 < 0) return; // demekki 10dan daha az mesaj var
-        Console.WriteLine($"-----Önceki mesajlar----");
-        for (int backmsg = messageid; backmsg > messageid - 10 && backmsg >= 0; backmsg--)
-        {
-            TeamMessage message = LobbyManager.GetMessage(lobby, backmsg);
-            if (message == null)
-            {
-                Console.WriteLine("böyle bi mesaj bulunamadı");
-                continue;
-            }
-            if (message.messageFlags != TeamMessageFlags.None) continue;
-            Console.WriteLine($"gönderen: {message.SenderName} conent: {message.Content} tarih: {message.Timestamp}");
-        }
-        Console.WriteLine($"---------");
-        Console.WriteLine($"-----Sonraki mesajlar----");
-        for (int backmsg = messageid; backmsg < messageid + 10; backmsg++)
-        {
-            TeamMessage message = LobbyManager.GetMessage(lobby, backmsg);
 
-            if (message == null)
+        var report = new ReportData
+        {
+            Id = Guid.NewGuid().ToString().Substring(0, 8),
+            ReporterId = account.ID,
+            ReporterName = account.Username,
+            Type = "Team",
+            Timestamp = DateTime.Now,
+            Status = "Pending",
+            Reason = "Lobi Sohbet İhlali"
+        };
+
+        for (int i = messageid - 5; i <= messageid + 5; i++)
+        {
+            if (i < 0) continue;
+            TeamMessage msg = LobbyManager.GetMessage(lobby, i);
+            if (msg != null && msg.messageFlags == TeamMessageFlags.None)
             {
-                Console.WriteLine("böyle bi mesaj bulunamadı");
-                continue;
+                if (i == messageid)
+                {
+                    report.TargetName = msg.SenderName;
+                    report.TargetId = msg.SenderId;
+                }
+                report.Context.Add(new ReportMessage 
+                { 
+                    SenderId = msg.SenderId,
+                    SenderName = msg.SenderName, 
+                    Content = msg.Content, 
+                    Time = msg.Timestamp.ToString("HH:mm:ss") 
+                });
             }
-            if (message.messageFlags != TeamMessageFlags.None) continue;
-            Console.WriteLine($"gönderen: {message.SenderName} conent: {message.Content} tarih: {message.Timestamp}");
         }
-        Console.WriteLine($"---------");
+
+        reports.Add(report);
+        SaveReports();
+        Console.WriteLine($"[ReportManager] Yeni takım raporu oluşturuldu: {report.Id} (Reporter: {report.ReporterName})");
     }
-    
-
-
-
 
     public static void LoadBannedWords()
     {
@@ -150,21 +226,13 @@ public static class ReportManager
         }
         else
         {
-            Console.WriteLine("[BannedWordManager] Banned word JSON file not found.");
             bannedWords = new List<string>();
         }
     }
 
     public static bool IsBannedWord(string word)
     {
-    
-            if (bannedWords == null)
-            return false;
-
+        if (bannedWords == null) return false;
         return bannedWords.Contains(word.ToLower());
     }
-
-
 }
-
-

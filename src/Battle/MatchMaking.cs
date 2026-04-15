@@ -9,28 +9,41 @@ public static class MatchMaking
 
     public static void JoinQueue(Session session)
     {
+        List<Session> toNotify;
+        int currentCount;
+        bool matchReady = false;
+
         lock (lockObj)
         {
             if (waitingQueue.Contains(session)) return;
-                
 
             waitingQueue.Add(session);
-            Console.WriteLine($"{session.PlayerData?.Username} matchmaking'e katıldı. Toplam: {waitingQueue.Count}");
-             MatchMakingAddPlayerPacket packet = new MatchMakingAddPlayerPacket
-                {
-                    PlayersPerMatch = PlayersPerMatch,
-                    CurrentPlayers = waitingQueue.Count,
-                };
-            foreach(var player in waitingQueue)
-            {
-                 player.Send(packet);
-            }
+            Console.WriteLine($"{session.PlayerData?.Username} matchmaking'e katildı. Toplam: {waitingQueue.Count}");
+
+            toNotify = waitingQueue.ToList();
+            currentCount = waitingQueue.Count;
 
             if (waitingQueue.Count >= PlayersPerMatch)
             {
-                
-                MatchFound();
+                matchReady = true;
             }
+        }
+
+        // Lock dışında işlem yap — TCP bloklaması lockObj'i etkilemez
+        if (matchReady)
+        {
+            MatchFound();
+            return;
+        }
+
+        var packet = new MatchMakingAddPlayerPacket
+        {
+            PlayersPerMatch = PlayersPerMatch,
+            CurrentPlayers = currentCount,
+        };
+        foreach (var player in toNotify)
+        {
+            player.Send(packet);
         }
     }
 
@@ -42,83 +55,87 @@ public static class MatchMaking
         waitingQueue.RemoveRange(0, PlayersPerMatch);
 
         int battleId = ArenaManager.CreateBattle();
-          Battle battle = ArenaManager.GetBattle(battleId);
+        Battle battle = ArenaManager.GetBattle(battleId);
         Console.WriteLine($"Match başladı! Battle ID: {battleId}");
-       
-   
 
-      
-        MapData map = MapManager.GetRandomMap();
-        battle.Map = map;
-        
-      //  int index = 0;
+
+
+
+
+
+        int index = 0;
         foreach (var session in players)
         {
-            int spawnIndex = 1;
-            Vector3 spawnPoint = map.SpawnPoints[spawnIndex];
-            
-            var player = new Player
+
+
+
+            Player player = new Player
             {
                 AccountId = session?.PlayerData?.AccountId,
                 Username = session?.PlayerData?.Username ?? "No Name",
                 Health = 100,
                 session = session,
-                Position = new Vector3(10,2,10),
-                SpawnIndex = spawnIndex
+                Position = battle.SpawnPoints[index],
+                StartPoint = battle.SpawnPoints[index],
             };
             session.PlayerData = player;
             session.ChangeState(PlayerState.Battle);
-
             battle.AddPlayer(player);
-            Console.WriteLine($"Oyuncu {player.Username} ({player.AccountId});" +
-                $" Battle {battleId}'ye eklendi. Harita: {map.Name} SpawnIndex: {spawnIndex}");
-           
+            Console.WriteLine($"{player.Username} adlı oyuncu şurada spawn olcak: {player.Position}");
+            index++;
         }
-        
+
         battle.Start();
 
         var allplayers = battle.GetPlayers();
-        
-        // Create the packet once
-        var packet = new MatchFoundPacket();
-        foreach (var p in allplayers)
-        {
-            packet.Players.Add(p);
-        }
 
-        // Send the same packet to all clients in the match
+
+        var packet = new MatchFoundPacket();
+        packet.Tick = TickManager.instance.Get_Tick(); // Tüm oyunculara maçın başladığı anlık Tick'i bildiriyoruz
+        ByteBuffer buffer = new ByteBuffer();
+        packet.Players = allplayers;
+        packet.Serialize(buffer);
+
         foreach (var session in players)
         {
             session.Send(packet);
         }
-
-
-
+        buffer.Dispose();
 
     }
     public static void RemoveQueue(Session session)
     {
+        List<Session> toNotify = new();
+        int currentCount = 0;
+
         lock (lockObj)
         {
             if (waitingQueue.Contains(session))
             {
                 waitingQueue.Remove(session);
                 Console.WriteLine($"{session?.PlayerData?.Username} kuyruktan kaldırıldı!");
-                MatchMakingAddPlayerPacket packet = new MatchMakingAddPlayerPacket
-                {
-                    PlayersPerMatch = PlayersPerMatch,
-                    CurrentPlayers = waitingQueue.Count,
-                };
-                foreach(var player in waitingQueue)
-                {
-                  
-                    player.Send(packet);
-                }
+                toNotify = waitingQueue.ToList();
+                currentCount = waitingQueue.Count;
             }
-            else  Console.WriteLine($"{session?.PlayerData?.Username} kuyrukta değilki?!");
+            else
+            {
+                Console.WriteLine($"{session?.PlayerData?.Username} kuyrukta değilki?!");
+                return;
+            }
+        }
+
+        // Lock dışında gönder
+        var packet = new MatchMakingAddPlayerPacket
+        {
+            PlayersPerMatch = PlayersPerMatch,
+            CurrentPlayers = currentCount,
+        };
+        foreach (var player in toNotify)
+        {
+            player.Send(packet);
         }
     }
-    
 
-    
+
+
 }

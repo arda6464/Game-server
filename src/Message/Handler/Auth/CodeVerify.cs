@@ -6,22 +6,20 @@ public static class CodeVerify
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message);
 
-        int packetid = read.ReadShort();
-        
         var request = new VerifyCodeRequestPacket();
         request.Deserialize(read);
 
         int code = request.Code;
 
 
-        var data = VerifyManager.GetData(session.AccountId);
+        var data = VerifyManager.GetData(session.ID);
         bool isverify = VerificationCodeManager.VerifyCode(data.Email, code.ToString());
 
         if (!isverify) return; // todo
         switch (data.Type)
         {
             case VerificationType.Create:
-                CrateAccount(session,session.AccountId,data.Email,data.Password);
+                CrateAccount(session,session.ID,data.Email,data.Password);
                 break;
             case VerificationType.Login:
                 LoginAccount(session, data.Email);
@@ -31,7 +29,7 @@ public static class CodeVerify
         }
 
     }
-    private static void CrateAccount(Session session, string acccountId, string email, string password)
+    private static void CrateAccount(Session session, int acccountId, string email, string password)
     {
         var acccount = AccountCache.Load(acccountId);
         if (acccount == null) return;
@@ -56,7 +54,7 @@ public static class CodeVerify
         var account = AccountManager.FindAccountByEmail(email);
         if (account == null) return; // todo
 
-        LoginOK.Handle(session, account.Token, account.AccountId);
+        LoginOK.Handle(session, account.Token, account.ID);
     }
 
 }

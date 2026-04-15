@@ -27,15 +27,15 @@ public class GetAllMarketItemsResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.GetAllMarketItemsResponse);
-        buffer.WriteInt(Items.Count);
+        buffer.WriteVarInt((int)MessageType.GetAllMarketItemsResponse);
+        buffer.WriteVarInt(Items.Count);
         foreach (var item in Items)
         {
-            buffer.WriteInt(item.Id);
-            buffer.WriteString(item.Name);
-            buffer.WriteInt(item.Type);
-            buffer.WriteInt(item.Price);
-            buffer.WriteInt(item.Count);
+            buffer.WriteVarInt(item.Id);
+            buffer.WriteVarString(item.Name);
+            buffer.WriteVarInt(item.Type);
+            buffer.WriteVarInt(item.Price);
+            buffer.WriteVarInt(item.Count);
         }
 
         bool hasOffers = Offers.Count > 0;
@@ -43,16 +43,16 @@ public class GetAllMarketItemsResponsePacket : IPacket
 
         if (hasOffers)
         {
-            buffer.WriteInt(Offers.Count);
+            buffer.WriteVarInt(Offers.Count);
             foreach (var offer in Offers)
             {
-                buffer.WriteString(offer.Title);
-                buffer.WriteInt(offer.Id);
-                buffer.WriteInt(offer.ItemType);
-                buffer.WriteInt(offer.OfferType);
-                buffer.WriteInt(offer.Price);
-                buffer.WriteInt(offer.Count);
-                buffer.WriteLong(offer.EndTime);
+                buffer.WriteVarString(offer.Title);
+                buffer.WriteVarInt(offer.Id);
+                buffer.WriteVarInt(offer.ItemType);
+                buffer.WriteVarInt(offer.OfferType);
+                buffer.WriteVarInt(offer.Price);
+                buffer.WriteVarInt(offer.Count);
+                buffer.WriteVarLong(offer.EndTime);
             }
         }
     }

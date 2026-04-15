@@ -5,8 +5,7 @@ public static class TeamMessageHandler
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(data, true);
-        int _ = read.ReadShort();
-
+        
         var request = new SendTeamMessageRequestPacket();
         request.Deserialize(read);
         
@@ -35,7 +34,7 @@ public static class TeamMessageHandler
             messageFlags = TeamMessageFlags.None,
             MessageId = lobby.MessageIdCounter++,
             SenderName = account.Username,
-            SenderId = account.AccountId,
+            SenderId = account.ID,
             SenderAvatarID = account.Avatarid,
             Content = Message,
             Timestamp = DateTime.Now
@@ -49,7 +48,7 @@ public static class TeamMessageHandler
         {
             Flags = TeamMessageFlags.None,
             MessageId = teamMessage.MessageId,
-            SenderAccountId = account.AccountId,
+      SenderId = account.ID, 
             SenderName = account.Username,
             SenderAvatarId = account.Avatarid,
             Role = "",
@@ -58,9 +57,9 @@ public static class TeamMessageHandler
 
         foreach (var player in lobby.Players)
         {
-            if (SessionManager.IsOnline(player.AccountId))
+            if (SessionManager.IsOnline(player.ID))
             {
-                Session membersesion = SessionManager.GetSession(player.AccountId);
+                Session membersesion = SessionManager.GetSession(player.ID);
                 membersesion.Send(broadcastPacket);
             }
         }
@@ -90,7 +89,7 @@ public static class TeamMessageHandler
         {
             Flags = TeamMessageFlags.None,
             MessageId = 0,
-            SenderAccountId = account.AccountId,
+             SenderId = account.ID,
             SenderName = "SİSTEM",
             SenderAvatarId = account.Avatarid,
             Role = "",

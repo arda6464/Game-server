@@ -6,8 +6,7 @@ public static class PingHandler
         using (ByteBuffer read = new ByteBuffer())
         {
             read.WriteBytes(data, true);
-            int _ = read.ReadShort(); // Packet ID'yi oku ve atla
-
+            
             // 1. Gelen veriyi oku (Deserialize)
             PingPacket request = new PingPacket();
             request.Deserialize(read);

@@ -10,6 +10,6 @@ public class LeaveTeamRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        Type = buffer.ReadShort(); 
+        Type = buffer.ReadVarInt(); 
     }
 }

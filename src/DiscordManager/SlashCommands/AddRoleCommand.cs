@@ -36,23 +36,23 @@ public static class AddRoleCommand
             await command.RespondAsync("Kullanıcı ID'si belirtilmedi!", ephemeral: false);
             return;
         }
-        string playerId = playerIdOption.Value as string;
+        int playerId = Convert.ToInt32(playerIdOption.Value);
         if (playerId == null)
         {
             await command.RespondAsync("Geçersiz kullanıcı ID'si!", ephemeral: false);
             return;
         }
-        var account = AccountCache.Load(playerId);
-        if (account == null)
+        var logic = Logic.AccountLogic.Get(playerId);
+        if (logic == null)
         {
             await command.RespondAsync("Bu ID'ye sahip bir hesap bulunamadı.", ephemeral: false);
             return;
         }
-
-        AccountManager.AddRole(account, role);
+        
+        logic.AddRole(role);
         Embed rolembed = new EmbedBuilder()
         .WithTitle("Yeni rol verildi!")
-        .WithDescription($"oyuncu {account.Username} adlı kullanıcıya oyun içi {role} rolü verildi!")
+        .WithDescription($"oyuncu {logic.Data.Username} adlı kullanıcıya oyun içi {role} rolü verildi!")
         .WithCurrentTimestamp()
         .WithColor(Color.Green)
         .Build();

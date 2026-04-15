@@ -40,8 +40,8 @@ public static class MessageCodeManager
     {
         ByteBuffer buffer = new ByteBuffer();
 
-        buffer.WriteShort((short)MessageType.MessageCode);
-        buffer.WriteShort((short)message);
+        buffer.WriteVarInt((int)MessageType.MessageCode);
+        buffer.WriteVarInt((int)message);
         byte[] response = buffer.ToArray();
         buffer.Dispose();
         session.Send(response);        

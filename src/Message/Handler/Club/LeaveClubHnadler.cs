@@ -9,42 +9,41 @@ public static class LeaveClubHandler
             Logger.errorslog("[LEAVE CLUB]Hesap bulunamadı");
             return;
         }
-        var Club = ClubManager.LoadClub(account.Clubid);
-        bool Kicked = false;
 
-        if (Club != null)
+        var club = ClubManager.LoadClub(account.Clubid);
+        bool result = false;
+
+        if (club != null)
         {
-            Kicked = ClubManager.RemoveMember(Club.ClubId, account.AccountId);
-        }
-      
-        session.Send(new LeaveClubResponsePacket { Kicked = Kicked });
-        account.Clubid = -1;
-        account.ClubName = null;
-
-
-          ClubMessage messages = new ClubMessage
-          {
-              messageFlags = ClubMessageFlags.HasSystem,
-              eventType = ClubEventType.LeaveMessage,
-              ActorName = account.Username,
-             ActorID = account.AccountId,
-             MessageId = 0
-            };
-        Club.Messages.Add(messages);
-       
-        var broadcastPacket = new GetClubMessagePacket { Message = messages };
-        
-             foreach(var member in Club.Members)
+            result = ClubManager.RemoveMember(club.ClubId, account.ID);
+            
+            ClubMessage leaveMessage = new ClubMessage
             {
-                if(SessionManager.IsOnline(member.Accountid))
+                messageFlags = ClubMessageFlags.HasSystem,
+                eventType = ClubEventType.LeaveMessage,
+                ActorName = account.Username,
+                ActorID = account.ID,
+                MessageId = 0
+            };
+            
+            lock (club.SyncLock)
+            {
+                club.Messages.Add(leaveMessage);
+            }
+
+            var broadcastPacket = new GetClubMessagePacket { Message = leaveMessage };
+            foreach (var member in club.Members)
+            {
+                if (SessionManager.IsOnline(member.ID))
                 {
-                    Session session1 = SessionManager.GetSession(member.Accountid);
-                    session1.Send(broadcastPacket);
+                    Session targetSession = SessionManager.GetSession(member.ID);
+                    targetSession?.Send(broadcastPacket);
                 }
             }
-       
-
-       
-        
+        }
+      
+        session.Send(new LeaveClubResponsePacket { Kicked = result });
+        account.Clubid = -1;
+        account.ClubName = null;
     }
 }

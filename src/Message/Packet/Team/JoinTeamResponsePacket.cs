@@ -7,17 +7,17 @@ public class JoinTeamResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.JoinTeamResponse);
-        buffer.WriteInt(TeamId);
+        buffer.WriteVarInt((int)MessageType.JoinTeamResponse);
+        buffer.WriteVarInt(TeamId);
         
-        buffer.WriteInt(Messages.Count);
+        buffer.WriteVarInt(Messages.Count);
         foreach(var teammessage in Messages)
         {
-            buffer.WriteString(teammessage.SenderId);
-            buffer.WriteString(teammessage.SenderName);
-            buffer.WriteInt(teammessage.SenderAvatarID);
-            buffer.WriteString("");
-            buffer.WriteString(teammessage.Content);
+            buffer.WriteVarInt(teammessage.SenderId);
+            buffer.WriteVarString(teammessage.SenderName);
+            buffer.WriteVarInt(teammessage.SenderAvatarID);
+            buffer.WriteVarString("");
+            buffer.WriteVarString(teammessage.Content);
         }
     }
 

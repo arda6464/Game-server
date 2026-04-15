@@ -3,7 +3,7 @@ public class AuthLoginRequestPacket : IPacket
 {
     public string ClientVersion { get; set; }
     public string Token { get; set; }
-    public string AccountId { get; set; }
+    public int ID { get; set; }
     public string Language { get; set; }
 
     public void Serialize(ByteBuffer buffer)
@@ -15,9 +15,9 @@ public class AuthLoginRequestPacket : IPacket
     public void Deserialize(ByteBuffer buffer)
     {
         // Packet ID zaten okundu
-        ClientVersion = buffer.ReadString();
-        Token = buffer.ReadString();
-        AccountId = buffer.ReadString();
-        Language = buffer.ReadString();
+        ClientVersion = buffer.ReadVarString();
+        Token = buffer.ReadVarString();
+        ID = buffer.ReadVarInt();
+        Language = buffer.ReadVarString();
     }
 }

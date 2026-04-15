@@ -10,6 +10,6 @@ public class VerifyCodeRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        Code = buffer.ReadInt();
+        Code = buffer.ReadVarInt();
     }
 }

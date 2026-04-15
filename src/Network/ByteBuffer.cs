@@ -1,4 +1,4 @@
-﻿using System.Buffers;
+using System.Buffers;
 using System.Text;
 
 public sealed class ByteBuffer : IDisposable
@@ -58,9 +58,63 @@ public sealed class ByteBuffer : IDisposable
     }
 
     // Write methods
-    public void WriteByte(byte value) => _writer.Write(value);
+    public void WriteVarInt(int value)
+    {
+        uint zigzag = (uint)((value << 1) ^ (value >> 31));
+        WriteVarUInt(zigzag);
+    }
 
-    public void WriteBytes(ReadOnlySpan<byte> values, bool resetPosition=true)
+    public void WriteVarUInt(uint value)
+    {
+        EnsureCapacity(Position + 5);
+        while (value >= 0x80)
+        {
+            _writer.Write((byte)(value | 0x80));
+            value >>= 7;
+        }
+        _writer.Write((byte)value);
+    }
+
+    public void WriteVarLong(long value)
+    {
+        ulong zigzag = (ulong)((value << 1) ^ (value >> 63));
+        WriteVarULong(zigzag);
+    }
+
+    public void WriteVarULong(ulong value)
+    {
+        EnsureCapacity(Position + 10);
+        while (value >= 0x80)
+        {
+            _writer.Write((byte)(value | 0x80));
+            value >>= 7;
+        }
+        _writer.Write((byte)value);
+    }
+
+    public void WriteVarString(string value)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            WriteVarUInt(0);
+            return;
+        }
+
+        int byteCount = Encoding.UTF8.GetByteCount(value);
+        WriteVarUInt((uint)byteCount);
+
+        EnsureCapacity(Position + byteCount);
+        Span<byte> buffer = stackalloc byte[byteCount];
+        Encoding.UTF8.GetBytes(value.AsSpan(), buffer);
+        _writer.Write(buffer);
+    }
+    public void WriteByte(byte value) 
+    {
+        EnsureCapacity(Position + 1);
+        _writer.Write(value);
+    }
+
+    public void WriteBytes(ReadOnlySpan<byte> values, bool resetPosition = true)
     {
         EnsureCapacity(Position + values.Length);
         _writer.Write(values);
@@ -68,15 +122,15 @@ public sealed class ByteBuffer : IDisposable
         if (resetPosition) _stream.Position = 0;
     }
 
-    public void WriteInt(int value) => _writer.Write(value);
-    public void WriteUInt(uint value) => _writer.Write(value);
-    public void WriteShort(short value) => _writer.Write(value);
-    public void WriteUShort(ushort value) => _writer.Write(value);
-    public void WriteLong(long value) => _writer.Write(value);
-    public void WriteULong(ulong value) => _writer.Write(value);
-    public void WriteFloat(float value) => _writer.Write(value);
-    public void WriteDouble(double value) => _writer.Write(value);
-    public void WriteBool(bool value) => _writer.Write(value);
+    public void WriteInt(int value) { EnsureCapacity(Position + 4); _writer.Write(value); }
+    public void WriteUInt(uint value) { EnsureCapacity(Position + 4); _writer.Write(value); }
+    public void WriteShort(short value) { EnsureCapacity(Position + 2); _writer.Write(value); }
+    public void WriteUShort(ushort value) { EnsureCapacity(Position + 2); _writer.Write(value); }
+    public void WriteLong(long value) { EnsureCapacity(Position + 8); _writer.Write(value); }
+    public void WriteULong(ulong value) { EnsureCapacity(Position + 8); _writer.Write(value); }
+    public void WriteFloat(float value) { EnsureCapacity(Position + 4); _writer.Write(value); }
+    public void WriteDouble(double value) { EnsureCapacity(Position + 8); _writer.Write(value); }
+    public void WriteBool(bool value) { EnsureCapacity(Position + 1); _writer.Write(value); }
     public void WriteString(string value)
     {
         int byteCount = Encoding.UTF8.GetByteCount(value);
@@ -88,6 +142,58 @@ public sealed class ByteBuffer : IDisposable
         _writer.Write(buffer);
     }
     // Read methods
+    public int ReadVarInt()
+    {
+        uint zigzag = ReadVarUInt();
+        return (int)(zigzag >> 1) ^ -(int)(zigzag & 1);
+    }
+
+    public uint ReadVarUInt()
+    {
+        uint result = 0;
+        int shift = 0;
+        while (true)
+        {
+            byte b = ReadByte();
+            result |= (uint)(b & 0x7F) << shift;
+            if ((b & 0x80) == 0) break;
+            shift += 7;
+            if (shift >= 35) throw new FormatException("VarUInt is too long.");
+        }
+        return result;
+    }
+
+    public long ReadVarLong()
+    {
+        ulong zigzag = ReadVarULong();
+        return (long)(zigzag >> 1) ^ -(long)(zigzag & 1);
+    }
+
+    public ulong ReadVarULong()
+    {
+        ulong result = 0;
+        int shift = 0;
+        while (true)
+        {
+            byte b = ReadByte();
+            result |= (ulong)(b & 0x7F) << shift;
+            if ((b & 0x80) == 0) break;
+            shift += 7;
+            if (shift >= 70) throw new FormatException("VarULong is too long.");
+        }
+        return result;
+    }
+
+    public string ReadVarString()
+    {
+        uint length = ReadVarUInt();
+        if (length == 0) return string.Empty;
+
+        var span = new ReadOnlySpan<byte>(_buffer, (int)_stream.Position, (int)length);
+        _stream.Position += length;
+
+        return Encoding.UTF8.GetString(span);
+    }
     public byte ReadByte() => _reader.ReadByte();
     public byte[] ReadBytes(byte[] message, int length)
     {

@@ -6,14 +6,14 @@ public static class BestFriendHandler
         using (ByteBuffer read = new ByteBuffer())
         {
             read.WriteBytes(data);
-            read.ReadShort();
-            string accid = read.ReadString();
+            read.ReadVarInt();
+            int accid = read.ReadVarInt();
             var acc = AccountCache.Load(accid);
             if (acc == null) return;
-            FriendInfo friend = session.Account.Friends.Find(f => f.Id == accid);
+            FriendInfo friend = session.Account.Friends.Find(f => f.ID == accid);
             if (friend == null) return;
             friend.IsBestFriend = !friend.IsBestFriend;
-            Console.WriteLine($"{session.Account.Username} ({session.Account.AccountId}) {acc.Username} ({acc.AccountId}) ile artık {(friend.IsBestFriend ? "best friend" : "best friend degil")}");
+            Console.WriteLine($"{session.Account.Username} ({session.Account.ID}) {acc.Username} ({acc.ID}) ile artık {(friend.IsBestFriend ? "best friend" : "best friend degil")}");
         }
     }
 }

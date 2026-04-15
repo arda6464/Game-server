@@ -1,0 +1,18 @@
+[
+  {
+    "ItemId": 1001,
+    "ItemName": "Küçük Elmas Paketi",
+    "ItemType": 0,
+    "PriceType": 0,
+    "BasePrice": 10,
+    "Count": 100
+  },
+  {
+    "ItemId": 1002,
+    "ItemName": "Büyük Elmas Paketi",
+    "ItemType": 0,
+    "PriceType": 0,
+    "BasePrice": 50,
+    "Count": 600
+  }
+]

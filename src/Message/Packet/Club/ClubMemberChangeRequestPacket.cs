@@ -1,8 +1,8 @@
 [PacketHandler(MessageType.MemberToLowerRequest)]
 public class ClubMemberChangeRequestPacket : IPacket
 {
-    public string TargetId { get; set; }
-    public short Status { get; set; }
+    public int TargetId { get; set; }
+    public int Status { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {
@@ -11,7 +11,7 @@ public class ClubMemberChangeRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        TargetId = buffer.ReadString();
-        Status = buffer.ReadShort();
+        TargetId = buffer.ReadVarInt();
+        Status = buffer.ReadVarInt();
     }
 }

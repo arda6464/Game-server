@@ -1,8 +1,8 @@
 [PacketHandler(MessageType.SupportMessageSend)]
 public class SupportSendMessageRequestPacket : IPacket
 {
-    public byte TicketNo { get; set; }
-    public string Content { get; set; }
+    public int TicketNo { get; set; }
+    public string?  Content { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {
@@ -11,7 +11,7 @@ public class SupportSendMessageRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        TicketNo = buffer.ReadByte();
-        Content = buffer.ReadString();
+        TicketNo = buffer.ReadVarInt();
+        Content = buffer.ReadVarString();
     }
 }

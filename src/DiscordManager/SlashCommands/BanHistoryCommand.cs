@@ -16,9 +16,9 @@ public static class BanHistoryCommand
             await command.RespondAsync("Kullanıcı ID'si belirtilmedi!", ephemeral: false);
             return;
         }
-        string playerId = playerIdOption?.Value.ToString() ?? "Bilinmiyor";
+        int playerId = int.Parse(playerIdOption?.Value.ToString() ?? "0");
 
-        if (playerId.Length != 8)
+        if (playerId <= 0)
         {
             await command.RespondAsync("Geçersiz player ID. Lütfen doğru bir ID girin.", ephemeral: false);
             return;

@@ -3,26 +3,26 @@ using System.Numerics;
 
 public class MatchFoundPacket : IPacket
 {
-    
+
 
     public List<Player> Players { get; set; } = new List<Player>();
+    public uint Tick { get; set; } // Başlangıç Tick'i (Client senkronizasyonu için)
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.MatchFound);
-        buffer.WriteByte((byte)Players.Count);
+        buffer.WriteVarInt((int)MessageType.MatchFound);
+        buffer.WriteVarInt((int)Players.Count);
+          buffer.WriteUInt(Tick); // Client bu değeri alıp kendi sayacını başlatacak
 
-        foreach(var p in Players)
+        foreach (var p in Players)
         {
-            buffer.WriteString(p.AccountId ?? "");
-            buffer.WriteString(p.Username ?? "Unknown");
-            buffer.WriteByte((byte)p.Health);
-            buffer.WriteInt(p.SpawnIndex);
-            
-            // Send the connection token (useful for UDP setup on the client side)
-            buffer.WriteInt(p.session?.ConnectionToken ?? 0);
-
-            Console.WriteLine($" index: {p.SpawnIndex}");
+            buffer.WriteVarInt(p.ID); // Yeni eklenen Internal ID
+            buffer.WriteVarString(p.AccountId ?? "");
+            buffer.WriteVarString(p.Username ?? "Unknown");
+            buffer.WriteVarInt(p.Health);
+            buffer.WriteFloat(p.Position.X);
+            buffer.WriteFloat(p.Position.Y);
+            buffer.WriteFloat(p.Position.Z);
         }
     }
 

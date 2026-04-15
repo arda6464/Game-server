@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "3f0d0382",
+    "ReporterId": "FF78CE2F",
+    "ReporterName": "arda64",
+    "TargetId": null,
+    "TargetName": "ardAaaa",
+    "Reason": "Lobi Sohbet İhlali",
+    "Type": "Team",
+    "ClubName": null,
+    "Context": [
+      {
+        "SenderId": null,
+        "SenderName": "arda64",
+        "Content": "ne yazıyon lan göt",
+        "Time": "23:41:33"
+      },
+      {
+        "SenderId": null,
+        "SenderName": "ardAaaa",
+        "Content": "nebicim konusuyon lans en",
+        "Time": "23:41:43"
+      },
+      {
+        "SenderId": null,
+        "SenderName": "arda64",
+        "Content": "siskik kurbaaaa senii",
+        "Time": "23:41:52"
+      },
+      {
+        "SenderId": null,
+        "SenderName": "arda64",
+        "Content": "aaaa",
+        "Time": "23:41:56"
+      },
+      {
+        "SenderId": null,
+        "SenderName": "arda64",
+        "Content": "bbbbb",
+        "Time": "23:41:58"
+      },
+      {
+        "SenderId": null,
+        "SenderName": "ardAaaa",
+        "Content": "pornoooo",
+        "Time": "23:42:02"
+      },
+      {
+        "SenderId": null,
+        "SenderName": "ardAaaa",
+        "Content": "zmdnnfjsndjf",
+        "Time": "23:42:06"
+      },
+      {
+        "SenderId": null,
+        "SenderName": "arda64",
+        "Content": "sdasdsdasdas",
+        "Time": "23:42:09"
+      },
+      {
+        "SenderId": null,
+        "SenderName": "ardAaaa",
+        "Content": "aaaaa",
+        "Time": "23:42:12"
+      },
+      {
+        "SenderId": null,
+        "SenderName": "arda64",
+        "Content": " yarraaaaa",
+        "Time": "23:42:17"
+      }
+    ],
+    "Timestamp": "2026-03-28T23:42:20.8426527+03:00",
+    "Status": "Resolved"
+  },
+  {
+    "Id": "db68981f",
+    "ReporterId": "FF78CE2F",
+    "ReporterName": "arda64",
+    "TargetId": "6YJ3RRG5",
+    "TargetName": "ardAaaa",
+    "Reason": "Lobi Sohbet İhlali",
+    "Type": "Team",
+    "ClubName": null,
+    "Context": [
+      {
+        "SenderId": "FF78CE2F",
+        "SenderName": "arda64",
+        "Content": "testttt",
+        "Time": "16:46:35"
+      },
+      {
+        "SenderId": "6YJ3RRG5",
+        "SenderName": "ardAaaa",
+        "Content": "merhabaaaa",
+        "Time": "16:46:42"
+      },
+      {
+        "SenderId": "FF78CE2F",
+        "SenderName": "arda64",
+        "Content": " sikayet edimmi seni",
+        "Time": "16:47:29"
+      },
+      {
+        "SenderId": "6YJ3RRG5",
+        "SenderName": "ardAaaa",
+        "Content": "nah ddersin",
+        "Time": "16:47:36"
+      }
+    ],
+    "Timestamp": "2026-03-29T16:47:39.7958677+03:00",
+    "Status": "Pending"
+  }
+]

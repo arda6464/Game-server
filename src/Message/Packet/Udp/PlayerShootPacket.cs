@@ -2,8 +2,8 @@ using System.Numerics;
 
 public class PlayerShootPacket : IPacket
 {
-    public ushort SequenceNumber { get; set; }
-    public string OwnerId { get; set; }
+    public int SequenceNumber { get; set; }
+    public int OwnerID { get; set; }
     public float DirectionX { get; set; }
     public float DirectionY { get; set; }
     public int BulletId { get; set; } // Response için
@@ -12,33 +12,28 @@ public class PlayerShootPacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        // 1. UDP Header (Flags + Sequence)
-        buffer.WriteByte((byte)Network.UdpPacketFlags.Reliable); // Reliable
-        buffer.WriteUShort(SequenceNumber);
-        
         // Sadece Client -> Server (Token varsa) gönderiyoruz. 
-        // Sunucu yayınlarında (Broadcast) Token gönderilmez (Optimizasyon).
         if (ConnectionToken != 0)
         {
-            buffer.WriteInt(ConnectionToken);
+            buffer.WriteVarInt(ConnectionToken);
         }
 
-        // 2. Payload
-        buffer.WriteShort((short)MessageType.UdpShoot);
-        buffer.WriteString(OwnerId);
+        // Payload
+        buffer.WriteByte((byte)UdpMessageType.Shoot);
+        buffer.WriteVarInt(OwnerID);
         buffer.WriteFloat(DirectionX);
         buffer.WriteFloat(DirectionY);
-        buffer.WriteInt(BulletId);
+        buffer.WriteVarInt(BulletId);
     }
 
 
     public void Deserialize(ByteBuffer buffer)
     {
         // Header UdpServer tarafında ayıklandı.
-        OwnerId = buffer.ReadString();
+        OwnerID = buffer.ReadVarInt();
         DirectionX = buffer.ReadFloat();
         DirectionY = buffer.ReadFloat();
-        BulletId = buffer.ReadInt();
+        BulletId = buffer.ReadVarInt();
     }
 
 }

@@ -1,29 +1,31 @@
-using System.Security.Cryptography;
+using System;
+using System.Linq;
+using System.Collections.Generic;
 
 [PacketHandler(MessageType.SupporCreateTicketRequest)]
 public static class CreateTicket
 {
     public static void Handle(Session session,byte[] data)
     {
-
         byte reasontype;
         using (ByteBuffer read = new ByteBuffer())
         {
             read.WriteBytes(data);
-            int _ = read.ReadShort();
             
             var request = new CreateTicketRequestPacket();
             request.Deserialize(read);
             
             reasontype = request.ReasonType;
         }
+
         if (session.Account == null) return;
-        var acccount = session.Account;
-        if (acccount.TicketBan) return;
-        if (acccount.Tickets.Count > 10) return;
+        var account = session.Account;
+        if (account.TicketBan) return;
+        if (account.Tickets.Count > 10) return;
+
         if (BotManager.istance.TicketSystem != null)
         {
-            var existingTicketIds = acccount.Tickets.Select(t => t.NO).ToList();
+            var existingTicketIds = account.Tickets.Select(t => t.NO).ToList();
 
             string? Title;
             int newTicketId = 1;
@@ -31,6 +33,7 @@ public static class CreateTicket
             {
                 newTicketId++;
             }
+
             switch (reasontype)
             {
                 case 1:
@@ -46,20 +49,20 @@ public static class CreateTicket
                     Title = $"Bilinmiyor - #{newTicketId}";
                     break;
             }
-            Random random = new Random();
+
             SupportTicketData support = new SupportTicketData
             {
-                AccountId = session.AccountId,
-                Username = acccount.Username,
+                PlayerID = session.ID,
+                Username = account.Username,
                 Title = Title,
                 NO = newTicketId,
                 ID = TicketStorage.MaxTicketID++,
                 CreatedAt = DateTime.Now,
                 ticketMessages = new List<TicketMessage>(),
-
             };
-            acccount.Tickets.Add(support);
-            BotManager.istance.TicketSystem.CreateTicket(session.AccountId,support);
+
+            account.Tickets.Add(support);
+            BotManager.istance.TicketSystem.CreateTicket(session.ID, support);
         }
         else Console.WriteLine("bota ulaşılmıyor...");
     }

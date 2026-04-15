@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.InviteToTeamResponse)]
 public class TeamInviteResponsePacket : IPacket
 {
-    public string InviterAccountId { get; set; }
+    public int InviterId { get; set; }
     public bool Accept { get; set; }
 
     public void Serialize(ByteBuffer buffer)
@@ -11,7 +11,7 @@ public class TeamInviteResponsePacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        InviterAccountId = buffer.ReadString();
+        InviterId = buffer.ReadVarInt();
         Accept = buffer.ReadBool();
     }
 }

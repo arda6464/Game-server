@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Admin Core</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="modals.js"></script>
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.15);
+            background: var(--card-hover);
+        }
+
+        .stat-icon-bg {
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            font-size: 5rem;
+            opacity: 0.05;
+            color: var(--accent-cyan);
+            transform: rotate(-15deg);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2.75rem;
+            font-weight: 800;
+            display: block;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .progress-container {
+            margin-top: 2rem;
+        }
+
+        .progress-bar-wrap {
+            background: rgba(255, 255, 255, 0.03);
+            height: 12px;
+            border-radius: 6px;
+            margin-top: 0.75rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-top-bar">
+        <div class="mobile-logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <div class="status-pill" style="padding: 0.4rem 0.8rem; font-size: 0.7rem;">
+            LIVE
+        </div>
+    </div>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item active">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-flag"></i> Raporlar
+            </a>
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="client_errors.html" class="nav-item">
+                <i class="fas fa-bug"></i> İstemci Hataları
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="admins.html" class="nav-item">
+                <i class="fas fa-user-shield"></i> Yönetim
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+        <div
+            style="margin-top: auto; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 1rem; border: 1px solid var(--glass-border);">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div
+                    style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-fuchsia), var(--accent-cyan)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user-shield" style="color: #000; font-size: 1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.9rem;">Server Admin</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary);">v1.0.8-beta</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up delay-1">
+            <h1 class="page-title">Sunucu Durum Paneli</h1>
+            <div class="status-pill">
+                <div
+                    style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 12px #10b981;">
+                </div>
+                SYSTEM ONLINE
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card animate-slide-up delay-2">
+                <i class="fas fa-users stat-icon-bg"></i>
+                <span class="stat-label"><i class="fas fa-user-group" style="color:var(--accent-cyan)"></i>
+                    Online</span>
+                <span class="stat-value" id="dash-players">0</span>
+            </div>
+            <div class="stat-card animate-slide-up delay-3">
+                <i class="fas fa-microchip stat-icon-bg"></i>
+                <span class="stat-label"><i class="fas fa-plug-circle-bolt" style="color:var(--accent-fuchsia)"></i> CPU
+                    Yükü</span>
+                <span class="stat-value" id="dash-cpu">0%</span>
+            </div>
+            <div class="stat-card animate-slide-up delay-4">
+                <i class="fas fa-diagram-project stat-icon-bg"></i>
+                <span class="stat-label"><i class="fas fa-microchip" style="color:#fbbf24"></i> Aktif Thread</span>
+                <span class="stat-value" id="dash-threads" style="font-size: 2rem;">0</span>
+            </div>
+            <div class="stat-card animate-slide-up delay-5">
+                <i class="fas fa-memory stat-icon-bg"></i>
+                <span class="stat-label"><i class="fas fa-server" style="color:#bbf7d0"></i> Bellek</span>
+                <span class="stat-value" id="dash-ram" style="font-size: 2rem;">0 MB</span>
+            </div>
+            <div class="stat-card animate-slide-up delay-6"
+                style="background: linear-gradient(135deg, rgba(129, 140, 248, 0.1), transparent);">
+                <i class="fas fa-clock stat-icon-bg"></i>
+                <span class="stat-label"><i class="fas fa-hourglass-start" style="color:var(--accent-indigo)"></i>
+                    Uptime</span>
+                <span class="stat-value" id="dash-uptime"
+                    style="font-size: 1.8rem; letter-spacing: -0.02em;">00:00:00</span>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+            <div class="card animate-slide-up delay-4">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h3 style="display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fas fa-chart-line" style="color:var(--accent-cyan)"></i> Canlı Ağ Trafiği (KB/s)
+                    </h3>
+                    <div style="display: flex; gap: 1rem;">
+                        <button id="maint-btn" onclick="toggleMaintenance()" class="btn-refresh"
+                            style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;">
+                            <i class="fas fa-screwdriver-wrench"></i> BAKIM: KAPALI
+                        </button>
+                        <button onclick="location.href='traffic.html'" class="btn-refresh">
+                            <i class="fas fa-magnifying-glass-chart"></i> Detaylı Analiz
+                        </button>
+                    </div>
+                </div>
+                <div style="height: 300px; position: relative;">
+                    <canvas id="trafficChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card animate-slide-up delay-5">
+                <h3 style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fas fa-chart-simple" style="color:var(--accent-fuchsia)"></i> Performans
+                </h3>
+                <div class="progress-container">
+                    <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 0.85rem;">
+                        <span>SUNUCU TPS</span>
+                        <span id="tps-val" style="color: var(--accent-cyan)">98.5%</span>
+                    </div>
+                    <div class="progress-bar-wrap">
+                        <div id="tps-bar" class="progress-fill"
+                            style="width: 98.5%; background: linear-gradient(to right, #06b6d4, #22d3ee);"></div>
+                    </div>
+                </div>
+                <div
+                    style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 1rem; border: 1px solid var(--glass-border);">
+                    <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">SON SISTEM MESAJI
+                    </div>
+                    <div style="font-weight: 600; font-size: 0.9rem;">Sunucu stabil çalışıyor. Tüm servisler aktif.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let trafficChart = null;
+
+        function initChart() {
+            const ctx = document.getElementById('trafficChart').getContext('2d');
+            trafficChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array(60).fill(''),
+                    datasets: [
+                        {
+                            label: 'Giriş (KB/s)',
+                            borderColor: '#22d3ee',
+                            backgroundColor: 'rgba(34, 211, 238, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true,
+                            data: Array(60).fill(0)
+                        },
+                        {
+                            label: 'Çıkış (KB/s)',
+                            borderColor: '#d946ef',
+                            backgroundColor: 'rgba(217, 70, 239, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true,
+                            data: Array(60).fill(0)
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { display: false },
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: 'rgba(255,255,255,0.5)', font: { family: 'Outfit', size: 10 } }
+                        }
+                    },
+                    animation: { duration: 0 }
+                }
+            });
+        }
+
+
+        let isMaintenanceMode = false;
+
+        async function updateDashboard() {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+                document.getElementById('dash-players').innerText = data.onlinePlayers;
+                document.getElementById('dash-cpu').innerText = data.cpuUsage + '%';
+                document.getElementById('dash-threads').innerText = data.threadCount;
+                document.getElementById('dash-ram').innerText = data.memoryUsage;
+                if (document.getElementById('dash-uptime')) {
+                    document.getElementById('dash-uptime').innerText = data.uptime;
+                }
+
+                isMaintenanceMode = data.maintenanceMode;
+                const btn = document.getElementById('maint-btn');
+                if (isMaintenanceMode) {
+                    btn.innerHTML = '<i class="fas fa-screwdriver-wrench"></i> BAKIM: AKTİF';
+                    btn.style.background = 'rgba(16, 185, 129, 0.2)';
+                    btn.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+                    btn.style.color = '#10b981';
+                } else {
+                    btn.innerHTML = '<i class="fas fa-screwdriver-wrench"></i> BAKIM: KAPALI';
+                    btn.style.background = 'rgba(239, 68, 68, 0.1)';
+                    btn.style.borderColor = 'rgba(239, 68, 68, 0.2)';
+                    btn.style.color = '#ef4444';
+                }
+
+                const trafficRes = await fetch('/api/traffic/history');
+                const trafficData = await trafficRes.json();
+
+                if (trafficChart && trafficData.history) {
+                    const ins = trafficData.history.map(h => h.in);
+                    const outs = trafficData.history.map(h => h.out);
+                    while (ins.length < 60) ins.unshift(0);
+                    while (outs.length < 60) outs.unshift(0);
+                    trafficChart.data.datasets[0].data = ins;
+                    trafficChart.data.datasets[1].data = outs;
+                    trafficChart.update();
+                }
+            } catch (e) { console.error('Dash update failed'); }
+        }
+
+        async function toggleMaintenance() {
+            const newState = !isMaintenanceMode;
+            Modal.confirm('Bakım Modu', `Bakım modunu ${newState ? 'AÇMAK' : 'KAPATMAK'} istediğinize emin misiniz?`, async () => {
+
+                try {
+                    const res = await fetch('/api/maintenance/toggle', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ enabled: newState, panic: true })
+                    });
+                    const result = await res.json();
+                    showToast(result.message);
+                    updateDashboard();
+                } catch (e) { showToast('İşlem başarısız: ' + e.message, 'error'); }
+            });
+        }
+
+        initChart();
+        setInterval(updateDashboard, 1000);
+        updateDashboard();
+    </script>
+    <!-- Mobil Alt Menü -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-item active">
+            <i class="fas fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+        <a href="players.html" class="mobile-nav-item">
+            <i class="fas fa-users"></i>
+            <span>Oyuncular</span>
+        </a>
+        <a href="traffic.html" class="mobile-nav-item">
+            <i class="fas fa-chart-line"></i>
+            <span>Trafik</span>
+        </a>
+        <a href="support.html" class="mobile-nav-item">
+            <i class="fas fa-headset"></i>
+            <span>Destek</span>
+        </a>
+    </nav>
+</body>
+
+</html>

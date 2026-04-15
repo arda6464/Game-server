@@ -1,17 +1,19 @@
 [PacketHandler(MessageType.HitRequest)]
 public class HitRequestPacket : IPacket
 {
-    public string TargetId { get; set; }
+    public int TargetID { get; set; }
     public int BulletId { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {
-        throw new NotImplementedException();
+        buffer.WriteVarInt((int)MessageType.HitRequest);
+        buffer.WriteVarInt(TargetID);
+        buffer.WriteVarInt(BulletId);
     }
 
     public void Deserialize(ByteBuffer buffer)
     {
-        TargetId = buffer.ReadString();
-        BulletId = buffer.ReadInt();
+        TargetID = buffer.ReadVarInt();
+        BulletId = buffer.ReadVarInt();
     }
 }

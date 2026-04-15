@@ -346,7 +346,7 @@ public class SlashCommands
                 var listEmbed = new EmbedBuilder()
                     .WithTitle("📋 Aktif Ticket'lar")
                     .WithDescription(tickets.Count > 0 ? $"Toplam **{tickets.Count}** aktif ticket!" : "Aktif ticket bulunmamaktadır.")
-                       .AddField("Ticket Listesi", tickets.Count > 0 ? string.Join("\n", tickets.Select(t => $"• ID: {t.AccountId}, Kullanıcı: {t.Username}")) : "—")
+                       .AddField("Ticket Listesi", tickets.Count > 0 ? string.Join("\n", tickets.Select(t => $"• ID: {t.ID}, Kullanıcı: {t.Username}")) : "—")
                     .WithColor(Color.Blue)
                     .Build();
 

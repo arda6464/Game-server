@@ -1,11 +1,11 @@
 public class FriendRemovedPacket : IPacket
 {
-    public string TargetId { get; set; }
+    public int TargetId { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.DeleteFriendResponse);
-        buffer.WriteString(TargetId);
+        buffer.WriteVarInt((int)MessageType.DeleteFriendResponse);
+        buffer.WriteVarInt(TargetId);
     }
 
     public void Deserialize(ByteBuffer buffer)

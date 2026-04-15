@@ -11,20 +11,20 @@ public class ClubShowResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.ClubShowResponse);
-        buffer.WriteInt(ClubId);
-        buffer.WriteString(ClubName);
-        buffer.WriteString(ClubDescription);
-        buffer.WriteInt(ClubAvatarId);
-        buffer.WriteInt(TotalTrophies);
-        buffer.WriteInt(Members.Count);
+        buffer.WriteVarInt((int)MessageType.ClubShowResponse);
+        buffer.WriteVarInt(ClubId);
+        buffer.WriteVarString(ClubName);
+        buffer.WriteVarString(ClubDescription);
+        buffer.WriteVarInt(ClubAvatarId);
+        buffer.WriteVarInt(TotalTrophies);
+        buffer.WriteVarInt(Members.Count);
         foreach (var member in Members)
         {
-            buffer.WriteString(member.Accountid);
-            buffer.WriteString(member.AccountName);
-            buffer.WriteString(member.Role.ToString());
-            buffer.WriteInt(member.NameColorID);
-            buffer.WriteInt(member.AvatarID);
+            buffer.WriteVarInt(member.ID);
+            buffer.WriteVarString(member.AccountName);
+            buffer.WriteVarString(member.Role.ToString());
+            buffer.WriteVarInt(member.NameColorID);
+            buffer.WriteVarInt(member.AvatarID);
         }
     }
 

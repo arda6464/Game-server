@@ -5,7 +5,6 @@ public static class CreateAccountHandler
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message);
-        int packetid = read.ReadShort();
         
         var request = new CreateAccountPacket();
         request.Deserialize(read);
@@ -38,7 +37,7 @@ public static class CreateAccountHandler
             Console.WriteLine("mail gönderilmemiş?");
             return;
         }
-        VerifyManager.CreateData(session.AccountId, new VerifyManager.VerificationData
+        VerifyManager.CreateData(session.ID, new VerifyManager.VerificationData
         {
             Type = VerificationType.Create,
             Email = email,

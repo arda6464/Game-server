@@ -6,7 +6,7 @@ public static class ClubShowHandler
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
 
-        int _ = read.ReadShort();
+    
         
         var request = new ClubShowRequestPacket();
         request.Deserialize(read);

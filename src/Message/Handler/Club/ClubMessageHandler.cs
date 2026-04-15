@@ -8,12 +8,11 @@ public static class ClubMessageHandler
         Console.WriteLine("club message handler iss run");
         ByteBuffer readbuffer = new ByteBuffer();
         readbuffer.WriteBytes(message, true);
-        int _ = readbuffer.ReadShort();
 
         var request = new SendClubMessageRequestPacket();
         request.Deserialize(readbuffer);
         
-        string accountıd = request.AccountId;
+        int accountıd = session.Account.ID;
         string Message = request.Message;
         readbuffer.Dispose();
 
@@ -25,6 +24,14 @@ public static class ClubMessageHandler
             Console.WriteLine("club null");
             return;
         }
+        if (session.Logic.IsMuted())
+        {
+          // todo toast
+          //  session.Send(muteResponse);
+          Console.WriteLine("oyuncu muteli");
+            return;
+        }
+
         if (Message.StartsWith("/"))
         {
             GameinCmd(session, account, Message);
@@ -41,7 +48,7 @@ public static class ClubMessageHandler
                 MessageId = club.MessageIdCounter++,
                 messageFlags = ClubMessageFlags.None,
                 SenderName = account.Username,
-                SenderId = account.AccountId,
+                SenderId = account.ID,
                 SenderAvatarID = account.Avatarid,
                 Content = Message,
                 Timestamp = DateTime.Now
@@ -54,16 +61,17 @@ public static class ClubMessageHandler
 
         var broadcastPacket = new GetClubMessagePacket
         {
-            Message = clubMessage
+            Message = clubMessage,
+             Role = account.clubRole
         };
         
         lock (club.SyncLock)
         {
             foreach (var member in club.Members)
             {
-                if (SessionManager.IsOnline(member.Accountid))
+                if (SessionManager.IsOnline(member.ID))
                 {
-                    Session membersesion = SessionManager.GetSession(member.Accountid);
+                    Session membersesion = SessionManager.GetSession(member.ID);
                     membersesion.Send(broadcastPacket);
                 }
             }
@@ -98,7 +106,7 @@ public static class ClubMessageHandler
             Message = new ClubMessage
             {
                messageFlags = ClubMessageFlags.None,
-               SenderId = account.AccountId,
+               SenderId = account.ID,
                SenderName = "SİSTEM",
                SenderAvatarID = account.Avatarid,
                Content = EntryMessage,

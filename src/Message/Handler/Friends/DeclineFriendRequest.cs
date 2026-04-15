@@ -5,12 +5,11 @@ public static class FriendRequestDecline
     {
         ByteBuffer byteBuffer = new ByteBuffer();
          byteBuffer.WriteBytes(message,true);
-        int _ = byteBuffer.ReadShort();
 
-        var request = new FriendRequestDeclinePacket();
+         var request = new FriendRequestDeclinePacket();
         request.Deserialize(byteBuffer);
         
-        string targetId = request.TargetId;
+        int targetId = request.TargetId;
         byteBuffer.Dispose();
         if (session.Account == null) return;
         AccountManager.AccountData account = session.Account;
@@ -22,7 +21,7 @@ public static class FriendRequestDecline
         {
             lock (account.SyncLock)
             {
-                var req = account.Requests.Find(r => r.Id == targetId);
+                var req = account.Requests.Find(r => r.ID == targetId);
                 if (req != null)
                 {
                     account.Requests.Remove(req);
@@ -37,7 +36,7 @@ public static class FriendRequestDecline
             result = false;
 
         }
-        Console.WriteLine($"{account.Username}({account.AccountId})  adlı kullanıcı {target.Username}({target.AccountId}) adlı kullanıcının isteğini reddetti");
+        Console.WriteLine($"{account.Username}({account.ID})  adlı kullanıcı {target.Username}({target.ID}) adlı kullanıcının isteğini reddetti");
         
         
     }

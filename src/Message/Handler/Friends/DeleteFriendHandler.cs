@@ -5,54 +5,53 @@ public static class DeleteFriendHandler
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        int _ = read.ReadShort();
         
         var request = new DeleteFriendRequestPacket();
         request.Deserialize(read);
         
-        string acccountId = request.TargetId;
+        int targetId = request.TargetId;
          read.Dispose();
         if (session.Account == null) return;
-        AccountManager.AccountData targetaccount = AccountCache.Load(acccountId);
+        AccountManager.AccountData targetaccount = AccountCache.Load(targetId);
         AccountManager.AccountData account = session.Account;
         if (account != null && targetaccount != null)
         {
             lock (account.SyncLock)
             lock (targetaccount.SyncLock)
             {
-                var friends = account.Friends.Find(f => f.Id == acccountId);
-                var targetfriends = targetaccount.Friends.Find(f => f.Id == session.AccountId);
-                if (friends != null && targetfriends != null)
+                var friend = account.Friends.Find(f => f.ID == targetId);
+                var targetFriend = targetaccount.Friends.Find(f => f.ID == account.ID);
+                if (friend != null && targetFriend != null)
                 {
-                    account.Friends.Remove(friends);
-                    targetaccount.Friends.Remove(targetfriends);
-                    Logger.genellog($"{account.Username}({account.AccountId}) adlı oyuncu {targetaccount.Username}({targetaccount.AccountId}) adlı oyuncuyu arkadaşlıktan çıkardı!");
+                    account.Friends.Remove(friend);
+                    targetaccount.Friends.Remove(targetFriend);
+                    Logger.genellog($"{account.Username}({account.ID}) adlı oyuncu {targetaccount.Username}({targetaccount.ID}) adlı oyuncuyu arkadaşlıktan çıkardı!");
                 }
                 else
                 {
-                    Logger.genellog($"{account.Username}({account.AccountId}) {targetaccount.Username}({targetaccount.AccountId}) ile zaten arkadaş değil!");
+                    Logger.genellog($"{account.Username}({account.ID}) {targetaccount.Username}({targetaccount.ID}) ile zaten arkadaş değil!");
                     return;
                 }
             }
 
             // Kendi listesinden çıkar (Incremental)
-            var myRemovedPacket = new FriendRemovedPacket { TargetId = acccountId };
+            var myRemovedPacket = new FriendRemovedPacket { TargetId = targetId };
             session.Send(myRemovedPacket);
 
             // Karşı taraf online ise onun listesinden de çıkar (Incremental)
-            if (SessionManager.IsOnline(targetaccount.AccountId))
+            if (SessionManager.IsOnline(targetaccount.ID))
             {
-                Session targetSession = SessionManager.GetSession(targetaccount.AccountId);
+                Session targetSession = SessionManager.GetSession(targetaccount.ID);
                 if (targetSession != null)
                 {
-                    var targetRemovedPacket = new FriendRemovedPacket { TargetId = session.AccountId };
+                    var targetRemovedPacket = new FriendRemovedPacket { TargetId = account.ID };
                     targetSession.Send(targetRemovedPacket);
                 }
             }
         }
             else
             {
-                Logger.genellog($"{account.Username}({account.AccountId}) {targetaccount.Username}({targetaccount.AccountId}) ile zaten arkadaş değil!");
+                Logger.genellog($"{account.Username}({account.ID}) {targetaccount.Username}({targetaccount.ID}) ile zaten arkadaş değil!");
                 
             }
         }

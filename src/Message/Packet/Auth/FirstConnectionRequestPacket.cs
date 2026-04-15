@@ -12,8 +12,8 @@ public class FirstConnectionRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        DeviceName = buffer.ReadString();
-        DeviceModel = buffer.ReadString();
-        ClientKey = buffer.ReadString();
+        DeviceName = buffer.ReadVarString();
+        DeviceModel = buffer.ReadVarString();
+        ClientKey = buffer.ReadVarString();
     }
 }

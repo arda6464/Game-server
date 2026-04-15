@@ -13,7 +13,7 @@ public static class ShowNotificationHistory
         var parts = component.Data.CustomId.Split('_');
         if (parts.Length >= 2)
         {
-            string playerId = parts[1];
+            int playerId = Convert.ToInt32(parts[1]);
             var account = AccountCache.Load(playerId);
             if (account == null)
             {

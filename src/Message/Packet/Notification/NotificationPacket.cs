@@ -22,29 +22,29 @@ public class NotificationPacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.Notification);
+        buffer.WriteVarInt((int)MessageType.Notification);
         buffer.WriteByte((byte)Type);
 
         switch (Type)
         {
             case NotficationTypes.NotficationType.toast:
-                buffer.WriteString(Title);
-                buffer.WriteString(Message);
-                buffer.WriteInt(IconId);
+
+                buffer.WriteVarString(Message);
+                buffer.WriteVarInt(IconId);
                 break;
             case NotficationTypes.NotficationType.banner:
-                buffer.WriteString(Title ?? "");
-                buffer.WriteString(Message ?? "");
-                buffer.WriteString(ButtonText ?? " ");
-                buffer.WriteString(Url ?? " ");
+                buffer.WriteVarString(Title ?? "");
+                buffer.WriteVarString(Message ?? "");
+                buffer.WriteVarString(ButtonText ?? " ");
+                buffer.WriteVarString(Url ?? " ");
                 break;
             case NotficationTypes.NotficationType.Inbox:
-                buffer.WriteString(Sender);
-                buffer.WriteString(Message);
+                buffer.WriteVarString(Sender);
+                buffer.WriteVarString(Message);
                 buffer.WriteBool(IsViewed);
-                buffer.WriteLong(UnixTime);
-                buffer.WriteInt(RewardType);
-                buffer.WriteInt(DonationCount);
+                buffer.WriteVarLong(UnixTime);
+                buffer.WriteVarInt(RewardType);
+                buffer.WriteVarInt(DonationCount);
                 buffer.WriteBool(IsClaimed);
                 break;
         }

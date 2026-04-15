@@ -1,56 +1,52 @@
+using System.Net.NetworkInformation;
 using System.Numerics;
+using Network;
 
 public static class UdpGameHandler
 {
-  
 
-    public static void HandleInput(Session session, ByteBuffer buffer, ushort seqNo)
+
+    public static void HandleInput(Session session, ByteBuffer buffer, int seqNo)
     {
-        
+      
         var packet = new PlayerInputPacket();
         packet.SequenceNumber = seqNo;
         packet.Deserialize(buffer);
 
         if (session.PlayerData != null && session.PlayerData.IsAlive)
         {
-            // Client'tan gelen Joystick verisi (Genelde Y ekseni 2D UI'da dikey iken, 3D dünyada Z eksenini temsil eder)
+            // Client'tan gelen Joystick verisi
             float moveX = packet.InputX;
-            float moveZ = packet.InputY; 
-            Console.WriteLine("Handle input geldi moveX: " + moveX + " moveZ: " + moveZ);
-            
-            // Eğer isMoving false ise input'u sıfırla
-            if (!packet.IsMoving)
-            {
-                moveX = 0;
-                moveZ = 0;
-            }
+            float moveZ = packet.InputY;
 
             session.PlayerData.InputDirection = new Vector3(moveX, 0, moveZ);
-            session.PlayerData.Rotation = packet.Rotation;
+            Console.WriteLine($"playerdata input save: name: {session?.Account?.Username} pozisyon:{session?.PlayerData.InputDirection}");
+        }
+    }
+    public static void HandleConnect(Session session)
+    {
+        using (ByteBuffer buffer = new ByteBuffer())
+        {
+            int seqNo = session.GetNextReliableSequence();
+            var packet = new UdpConnectionPacket
+            {
+                seqNo = seqNo,
+            };
+            packet.Serialize(buffer);
+            session.SendReliableUDP(buffer.ToArray(), seqNo);
         }
     }
 
 
-    public static void HandleMove(Session session, ByteBuffer buffer, ushort seqNo)
-    {
-        var packet = new PlayerMovePacket();
-        packet.SequenceNumber = seqNo;
-        packet.Deserialize(buffer);
-        
-        // HandleMove logic would go here. For now, it's just deserializing.
-        // The original snippet had errors and seemed to copy from HandleShoot.
-        // Assuming the intent was to add a new handler for PlayerMovePacket.
-        if (session.PlayerData == null) return; // Example check, similar to HandleShoot
-        // Further processing for PlayerMovePacket would be added here.
-    }
+   
 
 
-    public static void HandleShoot(Session session, ByteBuffer buffer, ushort seqNo)
+    public static void HandleShoot(Session session, ByteBuffer buffer, int seqNo)
     {
         var packet = new PlayerShootPacket();
         packet.SequenceNumber = seqNo;
         packet.Deserialize(buffer);
-        
+
         // Shoot reliable olmalı veya hemen işlenmeli
         if (session.PlayerData == null) return;
 
@@ -60,11 +56,11 @@ public static class UdpGameHandler
         Bullet bullet = new Bullet
         {
             BulletId = battle.GetNextBulletId(),
-            Position = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Y),
+            Position = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Z),
             Direction = Vector2.Normalize(new Vector2(packet.DirectionX, packet.DirectionY)),
             Speed = 10f,
-            OwnerId = session.AccountId,
-            startPos = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Y),
+            OwnerID = session.ID,
+            startPos = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Z),
             Damage = 50,
             menzil = 7f
         };
@@ -75,28 +71,43 @@ public static class UdpGameHandler
         // Şimdilik UDP ile geri gönderelim
         var response = new PlayerShootPacket
         {
-           SequenceNumber = packet.SequenceNumber,
-           OwnerId = session.AccountId,
-           DirectionX = packet.DirectionX,
-           DirectionY = packet.DirectionY,
-           BulletId = bullet.BulletId
+            SequenceNumber = packet.SequenceNumber,
+            OwnerID = session.ID,
+            DirectionX = packet.DirectionX,
+            DirectionY = packet.DirectionY,
+            BulletId = bullet.BulletId
         };
-        
+
         // Arenadaki herkese gönder (Reliable UDP)
-        foreach(var p in battle.GetPlayers())
+        foreach (var p in battle.GetPlayers())
         {
             if (p.session == null) continue;
 
             using (ByteBuffer sendBuffer = new ByteBuffer())
             {
-                response.SequenceNumber = p.session.GetNextSequence();
-                // response.ConnectionToken set etmiyoruz (Token gönderilmemesi için 0 kalıyor)
+                response.SequenceNumber = p.session.GetNextReliableSequence();
                 response.Serialize(sendBuffer);
                 p.session.SendReliableUDP(sendBuffer.ToArray(), response.SequenceNumber);
             }
-
         }
 
 
+
+
+    }
+    public static void HandlePing(Session session, ByteBuffer buffer)
+    {
+        PingPacket pingPacket = new PingPacket();
+        pingPacket.Deserialize(buffer);
+
+        using (ByteBuffer response = new ByteBuffer())
+        {
+            ushort seqNo = 0; // Unreliable, sıra numarası gönderilmeli (client header'ı okur)
+            response.WriteVarInt((int)UdpPacketFlags.None);
+            response.WriteVarInt(seqNo);         // seqNo (VarInt) — eksikti
+            response.WriteVarInt((int)UdpMessageType.Pong);
+            response.WriteFloat(pingPacket.ClientSentTime);
+            session.SendUnreliableUDP(response.ToArray());
+        }
     }
 }

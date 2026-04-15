@@ -5,6 +5,7 @@ using System.Numerics;
 public class Player
 {
     public string? AccountId { get; set; }
+    public int ID { get; set; }
     public string? Username { get; set; }
     public int AvatarId { get; set; }
 
@@ -20,17 +21,20 @@ public class Player
     // Optimizasyon için
     public Vector3 LastSentPosition { get; set; }
     public float LastSentRotation { get; set; }
-    
+
+    // Gecikme Telafisi (Lag Compensation) için geçmiş pozisyonlar
+    public Dictionary<uint, Vector3> PositionHistory { get; set; } = new Dictionary<uint, Vector3>();
+
     // Ağ bağlantısı
     public Session? session;
 
     // Yetenekler, silahlar
     public string? CharacterId { get; set; }
     public int WeaponId { get; set; }
-    public int BattleId { get; set;}
+    public int BattleId { get; set; }
     public Vector3 StartPoint { get; set; }
-    public int SpawnIndex { get; set; }
 
 
-  
+
+
 }

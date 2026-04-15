@@ -1,11 +1,11 @@
 public class KickMemberResponsePacket : IPacket
 {
-    public string TargetId { get; set; }
+    public int TargetId { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.KickMemberinClubResponse);
-        buffer.WriteString(TargetId);
+        buffer.WriteVarInt((int)MessageType.KickMemberinClubResponse);
+        buffer.WriteVarInt(TargetId);
     }
 
     public void Deserialize(ByteBuffer buffer)

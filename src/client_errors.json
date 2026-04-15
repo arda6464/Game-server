@@ -1,0 +1,111 @@
+[
+  {
+    "Id": "10f7a77b",
+    "FirstSeen": "2026-04-10T23:51:07.0769852+03:00",
+    "LastSeen": "2026-04-10T23:51:07.0769858+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "FriendsManager.Start () (at Assets/Scripts/Handler/Friends/FrendsManager.cs:43)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "2c173b0e",
+    "FirstSeen": "2026-04-10T23:40:53.6886205+03:00",
+    "LastSeen": "2026-04-10T23:43:47.2138978+03:00",
+    "Count": 2,
+    "LogMessage": " authlogin eror: Unable to read beyond the end of the stream.",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nAuthLoginResponse/<>c__DisplayClass0_0:<Handle>b__0 () (at Assets/Scripts/Handler/Login/AuthLoginResponse.cs:110)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:27)\n",
+    "LogType": 0,
+    "SceneName": "SampleScene",
+    "AffectedPlayerIds": []
+  },
+  {
+    "Id": "7af814ee",
+    "FirstSeen": "2026-04-08T00:07:31.1290376+03:00",
+    "LastSeen": "2026-04-08T00:08:35.980885+03:00",
+    "Count": 2,
+    "LogMessage": " authlogin eror: Specified argument was out of the range of valid values.",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nAuthLoginResponse/<>c__DisplayClass0_0:<Handle>b__0 () (at Assets/Scripts/Handler/Login/AuthLoginResponse.cs:110)\nUnityMainThread:Update () (at Assets/Scripts/Handler/ActiveThread.cs:27)\n",
+    "LogType": 0,
+    "SceneName": "SampleScene",
+    "AffectedPlayerIds": []
+  },
+  {
+    "Id": "da2ec8aa",
+    "FirstSeen": "2026-04-07T21:53:59.6496043+03:00",
+    "LastSeen": "2026-04-07T21:53:59.6496047+03:00",
+    "Count": 1,
+    "LogMessage": "MissingReferenceException: The object of type 'UnityEngine.GameObject' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object.",
+    "StackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.GameObject.SetActive (System.Boolean value) (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nInfoManager.Show (System.String Info) (at Assets/Scripts/Manager/InfoManager.cs:98)\nLobbyManager.ShowServerError () (at Assets/Scripts/Manager/LobbyManager.cs:184)\nUnityEngine.Events.InvokableCall.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.Events.UnityEvent.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.UI.Button.Press () (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:70)\nUnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:114)\nUnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:57)\nUnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:272)\nUnityEngine.EventSystems.EventSystem:Update() (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/EventSystem.cs:514)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "861054f0",
+    "FirstSeen": "2026-04-07T21:52:05.6043199+03:00",
+    "LastSeen": "2026-04-07T22:06:15.7215125+03:00",
+    "Count": 10,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "PressButtonAnimation.Start () (at Assets/Scripts/Tools/PressButtonAnimation.cs:43)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "cf9ee88b",
+    "FirstSeen": "2026-04-07T21:28:44.0164261+03:00",
+    "LastSeen": "2026-04-07T21:50:17.8706543+03:00",
+    "Count": 4,
+    "LogMessage": " authlogin eror: Unable to read beyond the end of the stream.",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nAuthLoginResponse/<>c__DisplayClass0_0:<Handle>b__0 () (at Assets/Scripts/Handler/Login/AuthLoginResponse.cs:110)\nUnityMainThread:Update () (at Assets/Scripts/Handler/ActiveThread.cs:27)\n",
+    "LogType": 0,
+    "SceneName": "SampleScene",
+    "AffectedPlayerIds": []
+  },
+  {
+    "Id": "14a1c61f",
+    "FirstSeen": "2026-04-05T23:29:41.4850546+03:00",
+    "LastSeen": "2026-04-05T23:29:41.4850554+03:00",
+    "Count": 1,
+    "LogMessage": "'NullReferenceExce",
+    "StackTrace": "tion: routine is null|UnityEngine.MonoBehaviour.StartCoroutine (System.Collections.IEnumerator routine) (at <000",
+    "LogType": 24,
+    "SceneName": "00000000000000000000000000>:0)\n\b\u0000\u000bSampleScenee\u000f\u0001",
+    "AffectedPlayerIds": [
+      24
+    ]
+  },
+  {
+    "Id": "6e1d5cb3",
+    "FirstSeen": "2026-04-05T23:20:16.2271259+03:00",
+    "LastSeen": "2026-04-05T23:20:16.2271263+03:00",
+    "Count": 1,
+    "LogMessage": "�\u0001ArgumentExceptio",
+    "StackTrace": ": Texture '' is not readable. For this reason, scripts cannot access the memory allocated to it. You can make ",
+    "LogType": 58,
+    "SceneName": "s texture readable in the Texture Import Settings.�\u0011UnityEngine.ImageConversion.EncodeToJPG (UnityEngine.",
+    "AffectedPlayerIds": [
+      52
+    ]
+  },
+  {
+    "Id": "aa725f77",
+    "FirstSeen": "2026-04-05T23:18:46.9797747+03:00",
+    "LastSeen": "2026-04-05T23:45:32.1270971+03:00",
+    "Count": 3,
+    "LogMessage": "'NullReferenceExce",
+    "StackTrace": "tion: routine is null�\u0001UnityEngine.MonoBehaviour.StartCoroutine (System.Collections.IEnumerator routine) (at <31",
+    "LogType": 51,
+    "SceneName": "d5c2a074982a9d5664e7709cac1>:0)\nNetworkManager.Start () (at Assets/Scripts/Network/NetworkManager.c",
+    "AffectedPlayerIds": []
+  }
+]

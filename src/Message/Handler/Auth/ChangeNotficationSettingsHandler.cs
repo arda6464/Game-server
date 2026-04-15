@@ -5,7 +5,6 @@ public static class ChangeNotficationSettingsHandler
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(data);
-        read.ReadShort();
         byte index = read.ReadByte();
         read.Dispose();
         switch (index)
@@ -23,7 +22,7 @@ public static class ChangeNotficationSettingsHandler
                 session.Account?.SendClaimRewardNotification = !session.Account.SendClaimRewardNotification;
                 break;
             default:
-            Logger.errorslog($"[ChangeNotficationSettingsHandler] Geçersiz index: {index} from {session.AccountId}");
+            Logger.errorslog($"[ChangeNotficationSettingsHandler] Geçersiz index: {index} from {session.ID}");
                 break;
         }
 

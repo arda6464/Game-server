@@ -5,7 +5,6 @@ public static class JoinTeamHandler
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        read.ReadShort();
         
         var request = new JoinTeamRequestPacket();
         request.Deserialize(read);
@@ -35,16 +34,16 @@ public static class JoinTeamHandler
             Flags = TeamMessageFlags.HasSystem,
             EventType = TeamEventType.JoinMessage,
             SenderName = acccount.Username,
-            SenderAccountId = acccount.AccountId
+            SenderId = acccount.ID
         };
                     
         lock (Lobby.SyncLock)
         {
             foreach(var member in Lobby.Players)
             {
-                if (SessionManager.IsOnline(member.AccountId))
+                if (SessionManager.IsOnline(member.ID))
                 {
-                    Session session1 = SessionManager.GetSession(member.AccountId);
+                    Session session1 = SessionManager.GetSession(member.ID);
                     session1.Send(broadcastPacket);
                 }
             }

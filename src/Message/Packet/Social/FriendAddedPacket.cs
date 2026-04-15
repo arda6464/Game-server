@@ -4,14 +4,14 @@ public class FriendAddedPacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.AcceptFriendResponse);
-        buffer.WriteString(Friend?.Id);
-        buffer.WriteInt(Friend.AvatarId);
-        buffer.WriteString(Friend.Username);
-        buffer.WriteInt(Friend.NameColorID);
+        buffer.WriteVarInt((int)MessageType.AcceptFriendResponse);
+        buffer.WriteVarInt(Friend.ID);
+        buffer.WriteVarInt(Friend.AvatarId);
+        buffer.WriteVarString(Friend.Username);
+        buffer.WriteVarInt(Friend.NameColorID);
         buffer.WriteBool(Friend.IsBestFriend);
-        buffer.WriteInt(Friend.Trophy);
-        buffer.WriteBool(SessionManager.IsOnline(Friend.Id));
+        buffer.WriteVarInt(Friend.Trophy);
+        buffer.WriteBool(SessionManager.IsOnline(Friend.ID));
     }
 
     public void Deserialize(ByteBuffer buffer)

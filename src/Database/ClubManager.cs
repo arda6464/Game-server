@@ -12,7 +12,7 @@ public enum ClubRole
     CoLeader,
     Leader
 }
-public enum ClubMessageFlags : byte
+public enum ClubMessageFlags : int
 {
     None = 0,
     HasTarget = 1 << 0,
@@ -28,7 +28,7 @@ public enum ClubEventType : byte
 public class ClubMember
 {
     public string? AccountName { get; set; }
-    public string? Accountid { get; set; }
+    public int ID { get; set; }
     public ClubRole Role { get; set; }
     public int NameColorID { get; set; }
     public int AvatarID { get; set; }
@@ -45,7 +45,7 @@ public class Club
 {
     [JsonIgnore]
     public int ClubId { get; set; }
-    public string? OwnerAccountId { get; set; }
+    public int OwnerID { get; set; }
     public int MessageIdCounter { get; set; } = 1;
     [JsonIgnore]
     public string? ClubName { get; set; }
@@ -63,13 +63,14 @@ public class ClubMessage
     public int MessageId { get; set; }
     public ClubMessageFlags messageFlags;
     public ClubEventType eventType;
-    public string? SenderId { get; set; }
+    public int SenderId { get; set; }
+   
     public string? SenderName { get; set; }
     public int SenderAvatarID { get; set; }
     public DateTime Timestamp { get; set; }
     public string? Content { get; set; }
     public string? ActorName;
-    public string? ActorID;
+    public int ActorID;
     public string? TargetName;
 }
 
@@ -181,9 +182,9 @@ public static class ClubManager
     #endregion
 
     #region Kulüp oluşturma
-    public static Club CreateClub(string name, string aciklama, int Avatarid, string leaderAccountId)
+    public static Club CreateClub(string name, string aciklama, int Avatarid, int leaderId)
     {
-        var leaderAccount = AccountCache.Load(leaderAccountId);
+        var leaderAccount = AccountCache.Load(leaderId);
         if (leaderAccount == null) return null;
 
         int clubId = System.Threading.Interlocked.Increment(ref lastClubId);
@@ -193,12 +194,12 @@ public static class ClubManager
             ClubName = name,
             Clubaciklama = aciklama,
             ClubAvatarID = Avatarid,
-            OwnerAccountId = leaderAccount.AccountId,
+            OwnerID = leaderAccount.ID,
             MessageIdCounter = 1,
             TotalKupa = leaderAccount.Trophy,
             Members = new List<ClubMember>
             {
-                new ClubMember { AccountName = leaderAccount.Username, Accountid = leaderAccount.AccountId, Role = ClubRole.Leader, NameColorID = leaderAccount.Namecolorid, AvatarID =leaderAccount.Avatarid }
+                new ClubMember { AccountName = leaderAccount.Username, ID = leaderAccount.ID, Role = ClubRole.Leader, NameColorID = leaderAccount.Namecolorid, AvatarID =leaderAccount.Avatarid }
             }
         };
 
@@ -222,7 +223,7 @@ public static class ClubManager
     #endregion
 
     #region Üye ekleme
-    public static bool AddMember(int clubId, string newMemberId)
+    public static bool AddMember(int clubId, int newMemberId)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
@@ -232,7 +233,7 @@ public static class ClubManager
 
         lock (club.SyncLock)
         {
-            if (club.Members.Any(m => m.Accountid == newMemberId))
+            if (club.Members.Any(m => m.ID == newMemberId))
             {
                 Console.WriteLine("bu oyuncu bu clupte");
                 return false;
@@ -241,7 +242,7 @@ public static class ClubManager
             club.Members.Add(new ClubMember
             {
                 AccountName = newAccount.Username,
-                Accountid = newAccount.AccountId,
+                ID = newAccount.ID,
                 Role = ClubRole.Member,
                 NameColorID = newAccount.Namecolorid,
                 AvatarID = newAccount.Avatarid
@@ -276,14 +277,14 @@ public static class ClubManager
     }
 
     #region Üye çıkarma
-    public static bool RemoveMember(int clubId, string targetMemberId)
+    public static bool RemoveMember(int clubId, int targetMemberId)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
         lock (club.SyncLock)
         {
-            var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
+            var target = club.Members.FirstOrDefault(m => m.ID == targetMemberId);
 
             if (target == null)
             {
@@ -304,15 +305,15 @@ public static class ClubManager
     #endregion
 
     #region Üye Atma
-    public static bool KickMember(int clubId, string actorId, string targetMemberId)
+    public static bool KickMember(int clubId, int actorId, int targetMemberId)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
         lock (club.SyncLock)
         {
-            var actor = club.Members.FirstOrDefault(m => m.Accountid == actorId);
-            var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
+            var actor = club.Members.FirstOrDefault(m => m.ID == actorId);
+            var target = club.Members.FirstOrDefault(m => m.ID == targetMemberId);
 
             if (actor == null || target == null)
             {
@@ -339,9 +340,9 @@ public static class ClubManager
         };
         acccount.inboxesNotfications.Add(notfication);
         
-        if (SessionManager.IsOnline(acccount.AccountId))
+        if (SessionManager.IsOnline(acccount.ID))
         {
-            var session = SessionManager.GetSession(acccount.AccountId);
+            var session = SessionManager.GetSession(acccount.ID);
             NotficationSender.Send(session, notfication);
         }
         
@@ -351,13 +352,13 @@ public static class ClubManager
     #endregion
 
     #region Rol değiştirme
-    public static bool ChangeMemberRole(int clubId, string actorId, string targetMemberId, ClubRole newRole)
+    public static bool ChangeMemberRole(int clubId, int actorId, int targetMemberId, ClubRole newRole)
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
         var club = Clubs[clubId];
-        var actor = club.Members.FirstOrDefault(m => m.Accountid == actorId);
-        var target = club.Members.FirstOrDefault(m => m.Accountid == targetMemberId);
+        var actor = club.Members.FirstOrDefault(m => m.ID == actorId);
+        var target = club.Members.FirstOrDefault(m => m.ID == targetMemberId);
 
         if (actor == null || target == null) return false;
 
@@ -370,14 +371,14 @@ public static class ClubManager
     }
     #endregion
 
-    public static void SendMessage(int clubId, string senderAccountId, string content)
+    public static void SendMessage(int clubId, int senderId, string content)
     {
         var club = LoadClub(clubId);
         if (club == null) return;
 
         lock (club.SyncLock)
         {
-            var sender = club.Members.FirstOrDefault(m => m.Accountid == senderAccountId);
+            var sender = club.Members.FirstOrDefault(m => m.ID == senderId);
             if (sender == null) return;
 
             club.Messages.Add(new ClubMessage
@@ -385,7 +386,7 @@ public static class ClubManager
                 MessageId = club.MessageIdCounter++,
                 messageFlags = ClubMessageFlags.None,
                 SenderName = sender.AccountName,
-                SenderId = sender.Accountid,
+                SenderId = sender.ID,
                 Timestamp = DateTime.Now,
                 Content = content
             });
@@ -394,7 +395,7 @@ public static class ClubManager
         Save();
     }
 
-    public static bool ChangeClubSettings(int clubid, string acccountId, string name, string aciklama, int Avatarid)
+    public static bool ChangeClubSettings(int clubid,int accid, string name, string aciklama, int Avatarid)
     {
         Club club = ClubManager.LoadClub(clubid);
         if (club == null) return false;
@@ -417,18 +418,17 @@ public static class ClubManager
     }
 
     #region  Üye data update
-    public static void MemberDataUpdate(string accid, int clubid)
+    public static void MemberDataUpdate(int playerid, int clubid)
     {
         if (!Clubs.TryGetValue(clubid, out var club)) return;
-        var member = club.Members.FirstOrDefault(m => m.Accountid == accid);
+        var member = club.Members.FirstOrDefault(m => m.ID == playerid);
         if (member == null) return;
 
-        AccountManager.AccountData account = AccountCache.Load(accid);
+        AccountManager.AccountData account = AccountCache.Load(playerid);
         if (account == null) return;
 
         lock (club.SyncLock)
         {
-            member.Accountid = account.AccountId;
             member.AccountName = account.Username;
             member.AvatarID = account.Avatarid;
             member.NameColorID = account.Namecolorid;

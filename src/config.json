@@ -1,9 +1,9 @@
 {
   "Port": 5000,
   "QuestRefeshHour": 0,
-  "SeasonQuestRefeshTime": "2026-02-23T00:00:00+03:00",
+  "SeasonQuestRefeshTime": "2026-04-14T00:00:00+03:00",
   "anti-ddos": false,
-  "BotToken": "MTI1NDUzNzE0ODQ5MzcyNTc3Ng.GGBW1o.yLrOlR1dh32q8qbQlr--Au6Yt2cA1Mdz8O2gxw",
+  "BotToken": "MTI1NDUzNzE0ODQ5MzcyNTc3Ng.GEQ__j.GehC9FIriZTN7xJFKwoqBpPCnkAcJhU3Wh71BQ",
   "ChannelId": 0,
   "DiscordAdminIDs": [],
   "CreatorCodes": [],
@@ -12,5 +12,6 @@
   "EmailPassword": "",
   "Email": "",
   "UpdateLink": "https://default-update.com",
-  "ServerVersion": "1.5"
+  "ServerVersion": "1.0",
+  "WebsiteUrl": "http://yourdomain.com"
 }

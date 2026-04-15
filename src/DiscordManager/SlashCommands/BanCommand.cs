@@ -17,15 +17,15 @@ public static class BanCommand
             await command.RespondAsync("Kullanıcı ID'si belirtilmedi!", ephemeral: false);
             return;
         }
-        string playerId = playerIdOption?.Value.ToString() ?? "Bilinmiyor";
+        int playerId = int.Parse(playerIdOption?.Value.ToString() ?? "0");
 
-        if (playerId.Length != 8)
+        if (playerId <= 0)
         {
             await command.RespondAsync("Geçersiz player ID. Lütfen doğru bir ID girin.", ephemeral: false);
             return;
         }
-        var account = AccountCache.Load(playerId);
-        if (account == null)
+        var logic = Logic.AccountLogic.Get(playerId);
+        if (logic == null)
         {
             await command.RespondAsync("Bu ID'ye sahip bir hesap bulunamadı.", ephemeral: false);
             return;

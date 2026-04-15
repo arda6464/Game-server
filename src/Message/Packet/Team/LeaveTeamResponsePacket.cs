@@ -4,7 +4,7 @@ public class LeaveTeamResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.LeaveTeamResponse);
+        buffer.WriteVarInt((int)MessageType.LeaveTeamResponse);
         buffer.WriteBool(Success);
     }
 

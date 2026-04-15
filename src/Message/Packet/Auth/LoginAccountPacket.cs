@@ -11,7 +11,7 @@ public class LoginAccountPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        Email = buffer.ReadString();
-        Password = buffer.ReadString();
+        Email = buffer.ReadVarString();
+        Password = buffer.ReadVarString();
     }
 }

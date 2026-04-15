@@ -1,7 +1,6 @@
 [PacketHandler(MessageType.SendClubMessage)]
 public class SendClubMessageRequestPacket : IPacket
 {
-    public string AccountId { get; set; }
     public string Message { get; set; }
 
     public void Serialize(ByteBuffer buffer)
@@ -11,7 +10,7 @@ public class SendClubMessageRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        AccountId = buffer.ReadString();
-        Message = buffer.ReadString();
+      
+        Message = buffer.ReadVarString();
     }
 }

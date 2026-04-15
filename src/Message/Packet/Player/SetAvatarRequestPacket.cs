@@ -10,6 +10,6 @@ public class SetAvatarRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        AvatarId = buffer.ReadInt();
+        AvatarId = buffer.ReadVarInt();
     }
 }

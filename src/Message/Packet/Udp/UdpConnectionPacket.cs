@@ -1,17 +1,20 @@
+using Network;
+
 public class UdpConnectionPacket : IPacket
 {
-    public int ConnectionToken { get; set; }
-    public string Username { get; set; }
+   public int seqNo {get;set;}
+
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.UdpConnect);
-       
+        buffer.WriteVarInt((byte)UdpPacketFlags.Reliable);
+        buffer.WriteVarInt(seqNo);
+        buffer.WriteVarInt((byte)UdpMessageType.ConnectResponse);
+
     }
 
     public void Deserialize(ByteBuffer buffer)
     {
-        ConnectionToken = buffer.ReadInt();
-        Username = buffer.ReadString();
+       
     }
 }

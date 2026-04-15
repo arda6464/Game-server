@@ -5,9 +5,9 @@ public class MatchMakingAddPlayerPacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.MatchMakingUpdate);
-        buffer.WriteInt(PlayersPerMatch);
-        buffer.WriteShort((short)CurrentPlayers);
+        buffer.WriteVarInt((int)MessageType.MatchMakingUpdate);
+        buffer.WriteVarInt(PlayersPerMatch);
+        buffer.WriteVarInt(CurrentPlayers);
     }
 
     public void Deserialize(ByteBuffer buffer)

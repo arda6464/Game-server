@@ -1,0 +1,233 @@
+[
+  {
+    "Timestamp": "2026-04-12T16:41:06.6599548+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Silindi",
+    "Target": "pornocu",
+    "Details": "Admin hesabı silindi."
+  },
+  {
+    "Timestamp": "2026-04-05T23:07:32.5624495+03:00",
+    "AdminUsername": "admin",
+    "Action": "Genel Hata Yayınla",
+    "Target": "Herkes",
+    "Details": "Sistem Duyurusu: sadasdas"
+  },
+  {
+    "Timestamp": "2026-04-05T22:46:52.3319582+03:00",
+    "AdminUsername": "admin",
+    "Action": "Hata Günlüğü Temizlendi",
+    "Target": "ClientErrors",
+    "Details": "Tüm istemci hata kayıtları silindi."
+  },
+  {
+    "Timestamp": "2026-04-04T01:59:21.3038071+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "ardaaaaa64",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-04-04T01:58:46.6506657+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "ardaaaaa64",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-04-04T01:58:41.1414038+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasaklama (Ban)",
+    "Target": "ardaaaaa64",
+    "Details": "Sebep: k"
+  },
+  {
+    "Timestamp": "2026-04-02T02:03:49.4258916+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "hafta sonu fırsatı!",
+    "Details": "100 adet, 1 Fiyat"
+  },
+  {
+    "Timestamp": "2026-04-02T02:03:24.5143847+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "hafta sonu fırsatı!",
+    "Details": "100 adet, 0 Fiyat"
+  },
+  {
+    "Timestamp": "2026-03-31T18:25:07.9423763+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "",
+    "Details": "100 adet, 100 Fiyat"
+  },
+  {
+    "Timestamp": "2026-03-31T18:24:49.2530403+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "",
+    "Details": "100 adet, 0 Fiyat"
+  },
+  {
+    "Timestamp": "2026-03-31T18:14:26.3981481+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "s",
+    "Details": "100 adet, 0 Fiyat"
+  },
+  {
+    "Timestamp": "2026-03-31T18:14:03.7317031+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Silme",
+    "Target": "2000",
+    "Details": "Teklif marketten kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-31T18:13:53.8463815+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "",
+    "Details": "100 adet, 0 Fiyat"
+  },
+  {
+    "Timestamp": "2026-03-31T17:37:56.3999114+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda64best",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-29T14:46:41.3819561+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yeni Admin",
+    "Target": "pornocu",
+    "Details": "Rol: Admin"
+  },
+  {
+    "Timestamp": "2026-03-29T03:26:22.1892192+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda64best",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-28T23:54:09.5630509+03:00",
+    "AdminUsername": "admin",
+    "Action": "Rapor Çözüldü",
+    "Target": "3f0d0382",
+    "Details": "Rapor admin tarafından incelendi."
+  },
+  {
+    "Timestamp": "2026-03-28T23:46:29.1547086+03:00",
+    "AdminUsername": "admin",
+    "Action": "Rapor Çözüldü",
+    "Target": "3f0d0382",
+    "Details": "Rapor admin tarafından incelendi."
+  },
+  {
+    "Timestamp": "2026-03-28T23:46:29.1360403+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasaklama (Ban)",
+    "Target": "null",
+    "Details": "Sebep: ailevi küfür"
+  },
+  {
+    "Timestamp": "2026-03-28T23:46:19.4216705+03:00",
+    "AdminUsername": "admin",
+    "Action": "Rapor Çözüldü",
+    "Target": "3f0d0382",
+    "Details": "Rapor admin tarafından incelendi."
+  },
+  {
+    "Timestamp": "2026-03-28T23:46:13.3402948+03:00",
+    "AdminUsername": "admin",
+    "Action": "Rapor Çözüldü",
+    "Target": "3f0d0382",
+    "Details": "Rapor admin tarafından incelendi."
+  },
+  {
+    "Timestamp": "2026-03-28T23:33:58.4803076+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda64best",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-28T23:26:46.8203215+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda64best",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-28T23:26:37.291938+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda64best",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-28T23:23:03.943377+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda64best",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-28T23:22:59.2411064+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasaklama (Ban)",
+    "Target": "arda64best",
+    "Details": "Sebep: pornocu"
+  },
+  {
+    "Timestamp": "2026-03-28T23:18:37.4142392+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda64best",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-07T15:08:11.9350069+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda64best",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-07T14:50:33.9160143+03:00",
+    "AdminUsername": "ardaa",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda64best",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-03-07T14:50:15.8036231+03:00",
+    "AdminUsername": "ardaa",
+    "Action": "Admin Silindi",
+    "Target": "ardaa",
+    "Details": "Admin hesabı silindi."
+  },
+  {
+    "Timestamp": "2026-03-07T14:48:44.2641198+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yeni Admin",
+    "Target": "ardaa",
+    "Details": "Rol: Admin"
+  },
+  {
+    "Timestamp": "2026-03-07T14:48:37.2533559+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Silindi",
+    "Target": "arda64thebest",
+    "Details": "Admin hesabı silindi."
+  },
+  {
+    "Timestamp": "2026-03-07T14:47:55.3435976+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yeni Admin",
+    "Target": "arda64thebest",
+    "Details": "Rol: Admin"
+  }
+]

@@ -12,8 +12,8 @@ public class ClubCreateRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        ClubName = buffer.ReadString();
-        ClubDescription = buffer.ReadString();
-        AvatarId = buffer.ReadInt();
+        ClubName = buffer.ReadVarString();
+        ClubDescription = buffer.ReadVarString();
+        AvatarId = buffer.ReadVarInt();
     }
 }

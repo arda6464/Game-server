@@ -10,8 +10,8 @@ public enum VerificationType
 
 public static class VerifyManager
 {
-    // AccountId → VerificationData mapping
-    private static ConcurrentDictionary<string, VerificationData> _dataStore = new ConcurrentDictionary<string, VerificationData>();
+    // Player ID (int) → VerificationData mapping
+    private static ConcurrentDictionary<int, VerificationData> _dataStore = new ConcurrentDictionary<int, VerificationData>();
 
     public class VerificationData
     {
@@ -19,37 +19,28 @@ public static class VerifyManager
         public string Code { get; set; }
         public string Password{ get; set; }
         public VerificationType Type { get; set; }
-       
     }
 
-    // 1. CREATE DATA - Tek metod
-    public static void CreateData(string accountId, VerificationData data)
+    public static void CreateData(int accountId, VerificationData data)
     {
-        // Store'a ekle
         _dataStore[accountId] = data;
-
-        Console.WriteLine($"[VerifyManager] Data created for: {accountId}");
+        Console.WriteLine($"[VerifyManager] Data created for Player ID: {accountId}");
     }
 
-    // 2. GET DATA - Tek metod
-    public static VerificationData GetData(string accountId)
+    public static VerificationData GetData(int accountId)
     {
         if (_dataStore.TryGetValue(accountId, out var data))
         {
             return data;
         }
 
-        // Süresi dolmuşsa temizle
         _dataStore.TryRemove(accountId, out _);
         return null;
     }
 
-    // Bonus: Temizleme (opsiyonel)
-    public static void RemoveData(string accountId)
+    public static void RemoveData(int accountId)
     {
         _dataStore.TryRemove(accountId, out _);
-        Console.WriteLine($"[VerifyManager] Data removed for: {accountId}");
+        Console.WriteLine($"[VerifyManager] Data removed for Player ID: {accountId}");
     }
-
-    
 }

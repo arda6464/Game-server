@@ -6,13 +6,13 @@ public class NewRequestListPacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.NewRequestList);
-        buffer.WriteInt(Requests.Count);
+        buffer.WriteVarInt((int)MessageType.NewRequestList);
+        buffer.WriteVarInt(Requests.Count);
         foreach (var request in Requests)
         {
-            buffer.WriteString(request.Id);
-            buffer.WriteInt(request.AvatarId);
-            buffer.WriteString(request.Username);
+            buffer.WriteVarInt(request.ID); // Sayısal I
+            buffer.WriteVarInt(request.AvatarId);
+            buffer.WriteVarString(request.Username);
         }
     }
 

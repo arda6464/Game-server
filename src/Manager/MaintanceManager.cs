@@ -15,7 +15,6 @@ public static class Maintance
             Notfication notification = new Notfication
             {
                  type =  NotficationTypes.NotficationType.toast,
-                Title = "Bakım molası",
                 Message = "Sunucumuz bakım molasına giriyor",
                 iconid = 4
             };
@@ -38,7 +37,6 @@ public static class Maintance
             Notfication notification = new Notfication
             {
                  type  =  NotficationTypes.NotficationType.toast,
-                Title = "Bakım molası",
                 Message = "Sunucumuz bakım molasına giriyor",
                 iconid = 4
             };
@@ -59,9 +57,9 @@ public static class Maintance
     public static void SendMaintancePacket(Session session)
     {
         ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteInt((int)MessageType.Maintance);
+        buffer.WriteVarInt((int)MessageType.Maintance);
         long unixTime = new DateTimeOffset(FinishTime.ToUniversalTime()).ToUnixTimeSeconds();
-        buffer.WriteLong(unixTime);
+        buffer.WriteVarLong(unixTime);
         byte[] bytes = buffer.ToArray();
         buffer.Dispose();
         session.Send(bytes);

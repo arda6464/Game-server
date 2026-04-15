@@ -20,8 +20,8 @@ public static class show_online_players
         if (SessionManager.GetCount() == 0) embed.AddField("-","aktif oyuncu bulanamadı...");
         foreach (var data in SessionManager.GetAllSessions())
         {
-            var account = AccountCache.Load(data.AccountId);
-            embed.AddField($"{account.Username} - {account.AccountId}", $"Kupa: {account.Trophy}", false);
+            var account = AccountCache.Load(data.ID);
+            embed.AddField($"{account.Username} - {account.ID}", $"Kupa: {account.Trophy}", false);
         }
         var playerembed = embed.Build();
            

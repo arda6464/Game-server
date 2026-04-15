@@ -17,7 +17,10 @@ public static class CreateTeamHandler
 
         ByteBuffer buffer = new ByteBuffer();
 
-        session.Send(new CreateTeamResponsePacket { TeamId = Lobby.ID }); 
+        session.Send(new CreateTeamResponsePacket { 
+            TeamId = Lobby.ID,
+             Link = Lobby.Link
+         }); 
         session.TeamID = Lobby.ID;   
         
         // Görev İlerlemesi - Takım Kurma
@@ -28,7 +31,7 @@ public static class CreateTeamHandler
             Flags = TeamMessageFlags.HasSystem,
             EventType = TeamEventType.CreateMessage,
             SenderName = Account.Username,
-            SenderAccountId = Account.AccountId
+            SenderId = Account.ID
         };
                  
 
@@ -36,9 +39,9 @@ public static class CreateTeamHandler
         {
             foreach(var member in Lobby.Players)
             {
-                if (SessionManager.IsOnline(member.AccountId))
+                if (SessionManager.IsOnline(member.ID))
                 {
-                    Session session1 = SessionManager.GetSession(member.AccountId);
+                    Session session1 = SessionManager.GetSession(member.ID);
                     session1.Send(broadcastPacket);
                 }
             }

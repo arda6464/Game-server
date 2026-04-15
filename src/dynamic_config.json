@@ -1,0 +1,13 @@
+{
+  "IsMatchmakingEnabled": false,
+  "IsShopEnabled": false,
+  "IsRankSystemEnabled": true,
+  "ActiveEvents": [],
+  "CustomErrors": [
+    {
+      "Title": "Sistem Duyurusu",
+      "Message": "Arkadaş ekleme işlemleri geçici olarak kapalı",
+      "StartDate": "2026-04-07T19:02:57.748Z"
+    }
+  ]
+}

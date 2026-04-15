@@ -11,45 +11,45 @@ public class JoinClubResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.JoinClubResponse);
-        buffer.WriteInt(ClubId);
-        buffer.WriteInt(ClubAvatarId);
-        buffer.WriteString(ClubName);
-        buffer.WriteString(ClubDescription);
+        buffer.WriteVarInt((int)MessageType.JoinClubResponse);
+        buffer.WriteVarInt(ClubId);
+        buffer.WriteVarInt(ClubAvatarId);
+        buffer.WriteVarString(ClubName);
+        buffer.WriteVarString(ClubDescription);
         
-        buffer.WriteInt(Members.Count);
+        buffer.WriteVarInt(Members.Count);
         foreach (var member in Members)
         {
-            buffer.WriteString(member.Accountid);
-            buffer.WriteString(member.AccountName);
-            buffer.WriteString(member.Role.ToString());
-            buffer.WriteInt(member.NameColorID);
-            buffer.WriteInt(member.AvatarID);
+            buffer.WriteVarInt(member.ID);
+            buffer.WriteVarString(member.AccountName);
+            buffer.WriteVarString(member.Role.ToString());
+            buffer.WriteVarInt(member.NameColorID);
+            buffer.WriteVarInt(member.AvatarID);
         }
 
-        buffer.WriteInt(Messages.Count);
+        buffer.WriteVarInt(Messages.Count);
         foreach (var clubmessage in Messages)
         {
             buffer.WriteByte((byte)clubmessage.messageFlags);
             switch((ClubMessageFlags)clubmessage.messageFlags)
             {
                 case ClubMessageFlags.None:
-                    buffer.WriteString(clubmessage.SenderId);
-                    buffer.WriteString(clubmessage.SenderName);
-                    buffer.WriteInt(clubmessage.SenderAvatarID);
-                    buffer.WriteString("Üye");
-                    buffer.WriteString(clubmessage.Content);
+                    buffer.WriteVarInt(clubmessage.SenderId);
+                    buffer.WriteVarString(clubmessage.SenderName);
+                    buffer.WriteVarInt(clubmessage.SenderAvatarID);
+                    buffer.WriteVarString("Üye");
+                    buffer.WriteVarString(clubmessage.Content);
                     break;
                 case ClubMessageFlags.HasSystem:
-                    buffer.WriteInt((int)clubmessage.eventType);
-                    buffer.WriteString(clubmessage.ActorName);
-                    buffer.WriteString(clubmessage.ActorID ??"");
+                    buffer.WriteVarInt((int)clubmessage.eventType);
+                    buffer.WriteVarString(clubmessage.ActorName);
+                    buffer.WriteVarInt(clubmessage.ActorID);
                     break;
                 case ClubMessageFlags.HasTarget:
-                    buffer.WriteInt((int)clubmessage.eventType);
-                    buffer.WriteString(clubmessage.ActorName);
-                    buffer.WriteString(clubmessage.ActorID);
-                    buffer.WriteString(clubmessage.TargetName);
+                    buffer.WriteVarInt((int)clubmessage.eventType);
+                    buffer.WriteVarString(clubmessage.ActorName);
+                    buffer.WriteVarInt(clubmessage.ActorID);
+                    buffer.WriteVarString(clubmessage.TargetName);
                     break;
             }
         }

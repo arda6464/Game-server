@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Yönetimi - Admin Core</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="modals.js"></script>
+    <style>
+        .admin-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .admin-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 1.25rem 1.5rem;
+            border-radius: 1.25rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .admin-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .role-tag {
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 0.25rem 0.6rem;
+            border-radius: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .role-owner {
+            background: rgba(244, 63, 94, 0.15);
+            color: #f43f5e;
+            border: 1px solid rgba(244, 63, 94, 0.3);
+        }
+
+        .role-admin {
+            background: rgba(34, 211, 238, 0.15);
+            color: #22d3ee;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+
+        /* Audit Log List */
+        .log-item {
+            font-size: 0.85rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            display: grid;
+            grid-template-columns: 80px 100px 150px 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .log-time {
+            color: var(--text-secondary);
+            font-family: monospace;
+            font-size: 0.75rem;
+        }
+
+        .log-admin {
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .log-action {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        .log-target {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .log-details {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .btn-add {
+            background: var(--accent-cyan);
+            color: #000;
+            font-weight: 800;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(34, 211, 238, 0.3);
+        }
+
+        .delete-btn {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-flag"></i> Raporlar
+            </a>
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="client_errors.html" class="nav-item">
+                <i class="fas fa-bug"></i> İstemci Hataları
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="admins.html" class="nav-item active">
+                <i class="fas fa-user-shield"></i> Yönetim
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1 class="page-title">Ekip Yönetimi</h1>
+                    <p style="color: var(--text-secondary); margin-top: -1rem;">Yetkili hesapları ve sistem hareketleri.
+                    </p>
+                </div>
+                <button class="btn-add" onclick="showAddAdmin()">
+                    <i class="fas fa-plus"></i> YENİ ADMİN EKLE
+                </button>
+            </div>
+        </header>
+
+        <div class="admin-container">
+            <!-- Sol: Admin Listesi -->
+            <div class="card animate-slide-up delay-1">
+                <h3 style="margin-bottom: 2rem;"><i class="fas fa-users-gear" style="color: var(--accent-cyan);"></i>
+                    Aktif Yetkililer</h3>
+                <div id="admin-list">
+                    <!-- Üyeler buraya yüklenecek -->
+                </div>
+            </div>
+
+            <!-- Sağ: Audit Logs -->
+            <div class="card animate-slide-up delay-2">
+                <h3 style="margin-bottom: 2rem;"><i class="fas fa-file-contract"
+                        style="color: var(--accent-fuchsia);"></i> Sistem Hareketleri (Audit)</h3>
+                <div id="audit-logs" style="max-height: 600px; overflow-y: auto; padding-right: 1rem;">
+                    <!-- Loglar buraya yüklenecek -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        async function fetchAdmins() {
+            try {
+                const res = await fetch('/api/admin/accounts');
+                const data = await res.json();
+                renderAdmins(data);
+            } catch (e) { showToast('Admin listesi alınamadı', 'error'); }
+        }
+
+        async function fetchAuditLogs() {
+            try {
+                const res = await fetch('/api/admin/logs');
+                const data = await res.json();
+                renderAuditLogs(data);
+            } catch (e) { console.error('Loglar alınamadı'); }
+        }
+
+        function renderAdmins(admins) {
+            const list = document.getElementById('admin-list');
+            list.innerHTML = admins.map(a => `
+                <div class="admin-item">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 45px; height: 45px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-user-shield" style="color: ${a.role === 'Owner' ? '#f43f5e' : '#22d3ee'};"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 800; font-size: 1rem;">${a.username}</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Son IP: ${a.lastIp}</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <span class="role-tag role-${a.role.toLowerCase()}">${a.role}</span>
+                        ${a.role !== 'Owner' ? `<button class="delete-btn" onclick="deleteAdmin('${a.username}')"><i class="fas fa-trash"></i></button>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderAuditLogs(logs) {
+            const list = document.getElementById('audit-logs');
+            list.innerHTML = logs.map(l => `
+                <div class="log-item">
+                    <div class="log-time">${l.time}</div>
+                    <div class="log-admin">${l.admin}</div>
+                    <div class="log-action">${l.action}</div>
+                    <div>
+                        <div class="log-target">${l.target}</div>
+                        <div class="log-details">${l.details}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showAddAdmin() {
+            Modal.show({
+                title: 'Yeni Admin Ekle',
+                message: 'Yeni yetkili için bilgileri girin:',
+                showInput: true,
+                inputPlaceholder: 'Kullanıcı Adı',
+                confirmText: 'DEVAM ET',
+                onConfirm: (username) => {
+                    if (!username) return;
+                    Modal.show({
+                        title: 'Parola Belirle',
+                        message: `${username} için bir parola girin:`,
+                        showInput: true,
+                        inputPlaceholder: 'Parola',
+                        confirmText: 'HESABI OLUŞTUR',
+                        onConfirm: (password) => {
+                            if (!password) return;
+                            addAdmin(username, password);
+                        }
+                    });
+                }
+            });
+        }
+
+        async function addAdmin(username, password) {
+            try {
+                const res = await fetch('/api/admin/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password, role: 'Admin' })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showToast('Admin hesabı oluşturuldu');
+                    fetchAdmins();
+                    fetchAuditLogs();
+                } else showToast(data.message, 'error');
+            } catch (e) { showToast('Hata oluştu', 'error'); }
+        }
+
+        async function deleteAdmin(username) {
+            Modal.confirm('Admini Sil', `${username} isimli yetkiliyi kaldırmak istediğinize emin misiniz?`, async () => {
+                try {
+                    const res = await fetch('/api/admin/delete', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        showToast('Admin silindi');
+                        fetchAdmins();
+                        fetchAuditLogs();
+                    } else showToast(data.message, 'error');
+                } catch (e) { showToast('Hata oluştu', 'error'); }
+            });
+        }
+
+        fetchAdmins();
+        fetchAuditLogs();
+        setInterval(fetchAuditLogs, 5000);
+    </script>
+</body>
+
+</html>

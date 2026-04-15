@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.DeclineFriendRequest)]
 public class FriendRequestDeclinePacket : IPacket
 {
-    public string TargetId { get; set; }
+    public int TargetId { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {
@@ -10,6 +10,6 @@ public class FriendRequestDeclinePacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        TargetId = buffer.ReadString();
+        TargetId = buffer.ReadVarInt();
     }
 }

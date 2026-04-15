@@ -13,7 +13,6 @@ public static class PlayerMoveHandler
 
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(data, true);
-        int _ = read.ReadShort();
         
         var request = new PlayerMoveRequestPacket();
         request.Deserialize(read);
@@ -26,12 +25,12 @@ public static class PlayerMoveHandler
        Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
         if (battle == null) return;
 
-        battle.UpdatePlayerPosition(session.AccountId, new Vector3(X, Y, Z));
+        battle.UpdatePlayerPosition(session.ID, new Vector3(X, Y, Z));
         var battleplayers = battle.GetPlayers();
         
         var response = new PlayerMovedPacket
         {
-             AccountId = session.AccountId,
+             AccountID = session.ID,
              X = X,
              Y = Y,
              Z = Z
@@ -40,7 +39,7 @@ public static class PlayerMoveHandler
         
         foreach(var p in battleplayers)
         {
-            if (p.AccountId != session.AccountId)
+            if (p.ID != session.ID)
                 p.session?.Send(response);
         }
     }

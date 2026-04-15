@@ -17,7 +17,7 @@ public static class PlayerSetPresence
         var acccount = sessions.Account;
          if (acccount == null) 
         {
-            Logger.errorslog($"Account not found: {sessions.AccountId}");
+            Logger.errorslog($"Account not found: {sessions.ID}");
             return;
         }
 
@@ -26,8 +26,8 @@ public static class PlayerSetPresence
         if (acccount.Friends.Count != 0)
         {
             ByteBuffer bufer = new ByteBuffer();
-            bufer.WriteShort((short)MessageType.Presence);
-            bufer.WriteString(acccount.AccountId);
+            bufer.WriteVarInt((int)MessageType.Presence);
+            bufer.WriteVarInt(sessions.ID);
             bufer.WriteByte((byte)presence);
             bufer.WriteByte((byte)PresenceScope.Friend);
             byte[] friendresponse = bufer.ToArray();
@@ -35,9 +35,9 @@ public static class PlayerSetPresence
 
             foreach (var friend in acccount.Friends)
             {
-                if (SessionManager.IsOnline(friend.Id))
+                if (SessionManager.IsOnline(friend.ID))
                 {
-                    Session? session = SessionManager.GetSession(friend.Id);
+                    Session? session = SessionManager.GetSession(friend.ID);
                     if (session != null)
                     {
                         session.Send(friendresponse);
@@ -49,7 +49,7 @@ public static class PlayerSetPresence
                             if (targetAccount != null)
                             {
                                 // Arkadaşın listesinde biz "En İyi Arkadaş" mıyız?
-                                var relation = targetAccount.Friends.Find(f => f.Id == acccount.AccountId);
+                                var relation = targetAccount.Friends.Find(f => f.ID == acccount.ID);
                                 if (relation != null && relation.IsBestFriend)
                                 {
                                     // Cooldown Kontrolü (Oyun içi Toast)
@@ -58,7 +58,6 @@ public static class PlayerSetPresence
                                         Notfication toast = new Notfication
                                         {
                                             type = NotficationTypes.NotficationType.toast,
-                                            Title = "En İyi Arkadaşın Çevrimiçi!",
                                             Message = $"{acccount.Username} oyuna girdi.",
                                             iconid = acccount.Avatarid
                                         };
@@ -73,10 +72,10 @@ public static class PlayerSetPresence
                 else if (presence == PresenceState.Online)
                 {
                     // Oyuncu çevrimdışı -> Push Bildirimi Gönder (Sadece Best Friend ise)
-                    var friendAccount = AccountCache.Load(friend.Id);
+                    var friendAccount = AccountCache.Load(friend.ID);
                     if (friendAccount != null)
                     {
-                        var relation = friendAccount.Friends.Find(f => f.Id == acccount.AccountId);
+                        var relation = friendAccount.Friends.Find(f => f.ID == acccount.ID);
                         if (relation != null && relation.IsBestFriend)
                         {
                             // Cooldown Kontrolü (Push Bildirimi)
@@ -101,8 +100,8 @@ public static class PlayerSetPresence
         if(acccount.Clubid != -1)
         {
             ByteBuffer bufer = new ByteBuffer();
-            bufer.WriteShort((short)MessageType.Presence);
-            bufer.WriteString(acccount.AccountId);
+            bufer.WriteVarInt((int)MessageType.Presence);
+            bufer.WriteVarInt(sessions.ID);
             bufer.WriteByte((byte)presence);
             bufer.WriteByte((byte)PresenceScope.Club);
             byte[] Clubresponse = bufer.ToArray();
@@ -110,15 +109,15 @@ public static class PlayerSetPresence
             var club = ClubCache.Load(acccount.Clubid);
             if(club == null)
             {
-                Logger.errorslog($"[Presence]{acccount.Username}({acccount.AccountId}) adlı hesabın clubune erişilmedi");
+                Logger.errorslog($"[Presence]{acccount.Username}({acccount.ID}) adlı hesabın clubune erişilmedi");
                 return;
             }
             foreach (var clubmember in club.Members)
             {
-                if (clubmember.Accountid == acccount.AccountId) continue;
-                if (SessionManager.IsOnline(clubmember.Accountid))
+                if (clubmember.ID == acccount.ID) continue;
+                if (SessionManager.IsOnline(clubmember.ID))
                 {
-                    Session? session = SessionManager.GetSession(clubmember.Accountid);
+                    Session? session = SessionManager.GetSession(clubmember.ID);
                        session.Send(Clubresponse);
                     
                 }

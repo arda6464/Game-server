@@ -8,7 +8,7 @@ public class SendTeamMessageResponsePacket : IPacket
 
     // User Message Fields
     public int MessageId { get; set; }
-    public string SenderAccountId { get; set; }
+    public int SenderId { get; set; }
     public string SenderName { get; set; }
     public int SenderAvatarId { get; set; }
     public string Role { get; set; }
@@ -16,23 +16,23 @@ public class SendTeamMessageResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.SendTeamMessageResponse);
+        buffer.WriteVarInt((int)MessageType.SendTeamMessageResponse);
         buffer.WriteByte((byte)Flags);
 
         if (Flags == TeamMessageFlags.HasSystem)
         {
-            buffer.WriteInt((int)EventType);
-            buffer.WriteString(SenderName);
-            buffer.WriteString(SenderAccountId ?? "");
+            buffer.WriteVarInt((int)EventType);
+            buffer.WriteVarString(SenderName);
+            buffer.WriteVarInt(SenderId);
         }
         else
         {
-            buffer.WriteInt(MessageId);
-            buffer.WriteString(SenderAccountId);
-            buffer.WriteString(SenderName);
-            buffer.WriteInt(SenderAvatarId);
-            buffer.WriteString(Role ?? ""); 
-            buffer.WriteString(Content);
+            buffer.WriteVarInt(MessageId);
+            buffer.WriteVarInt(SenderId);
+            buffer.WriteVarString(SenderName);
+            buffer.WriteVarInt(SenderAvatarId);
+            buffer.WriteVarString(Role ?? ""); 
+            buffer.WriteVarString(Content);
         }
     }
 

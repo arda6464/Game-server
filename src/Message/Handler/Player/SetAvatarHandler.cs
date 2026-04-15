@@ -9,7 +9,6 @@ public static class SetAvatar
         Console.WriteLine("Set Avatar");
         ByteBuffer BUFFER = new ByteBuffer();
         BUFFER.WriteBytes(data, true);
-        int _ = BUFFER.ReadShort();
 
         var request = new SetAvatarRequestPacket();
         request.Deserialize(BUFFER);
@@ -24,15 +23,7 @@ public static class SetAvatar
             return;
         }
         
-        AccountManager.AccountData account = session.Account;
-        if (account == null)
-        {
-            Logger.errorslog($"[SetAvatar] Account bulunamadı: {session.AccountId}");
-            return;
-        }
-        account.Avatarid = Id;
-        Console.WriteLine("Avatar değiştirildi: " + Id);
-         if (account.Clubid != -1) ClubManager.MemberDataUpdate(account.AccountId, account.Clubid);
+        session.Logic.SetAvatar(Id);
 
     }
 }

@@ -1,5 +1,4 @@
 [PacketHandler(MessageType.MemberToLowerRequest)]
-
 public static class ClubMemberChangeHandler
 {
     public static void Handle(Session session, byte[] message)
@@ -8,43 +7,32 @@ public static class ClubMemberChangeHandler
         {
             ByteBuffer read = new ByteBuffer();
             read.WriteBytes(message, true);
-
-            int _ = read.ReadShort();
             
             var request = new ClubMemberChangeRequestPacket();
             request.Deserialize(read);
             
-            string targetid = request.TargetId;
-            short status = request.Status;
+            int targetid = request.TargetId;
+            int status = request.Status;
 
-            // Hesap kontrolleri
             if (session.Account == null) return;
             var myAccount = session.Account;
             AccountManager.AccountData targetAccount = AccountCache.Load(targetid);
 
-            // Temel kontroller
-            if (targetAccount == null || myAccount == null)
-            {
-              //  SendNotification(session, "Hesap bulunamadı!");
-                return;
-            }
+            if (targetAccount == null || myAccount == null) return;
 
-            // Aynı kulüpte mi kontrolü
             if (targetAccount.Clubid != myAccount.Clubid)
             {
                 MessageCodeManager.Send(session, MessageCodeManager.Message.MemberNotİnClub);
                 return;
             }
 
-            // Yetki kontrolü - sadece lider ve yardımcı liderler işlem yapabilir
             if (myAccount.clubRole != ClubRole.Leader && myAccount.clubRole != ClubRole.CoLeader)
             {
                MessageCodeManager.Send(session, MessageCodeManager.Message.NoAuthorityClub);
                 return;
             }
 
-            // Kendi kendine işlem yapamaz
-            if (targetAccount.AccountId == session.AccountId)
+            if (targetAccount.ID == session.ID)
             {
                 MessageCodeManager.Send(session, MessageCodeManager.Message.ThisYou);
                 return;
@@ -65,7 +53,6 @@ public static class ClubMemberChangeHandler
         }
         catch (Exception ex)
         {
-            // Hata loglama
            MessageCodeManager.Send(session, MessageCodeManager.Message.GeneralError);
         }
     }
@@ -73,7 +60,6 @@ public static class ClubMemberChangeHandler
     private static void HandlePromotion(Session session, AccountManager.AccountData targetAccount, 
                                       AccountManager.AccountData myAccount)
     {
-        // Sadece lider yardımcı lider atayabilir veya liderlik devredebilir
         if (myAccount.clubRole != ClubRole.Leader)
         {
            MessageCodeManager.Send(session, MessageCodeManager.Message.JustClubOwnerChange);
@@ -82,18 +68,16 @@ public static class ClubMemberChangeHandler
 
         if (targetAccount.clubRole == ClubRole.Member)
         {
-            // Üyeyi yardımcı liders yükselt
-            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.AccountId,
-                                       targetAccount.AccountId, ClubRole.CoLeader);
+            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.ID,
+                                       targetAccount.ID, ClubRole.CoLeader);
             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubRoleUpdateCoOwner);
         }
         else if (targetAccount.clubRole == ClubRole.CoLeader)
         {
-            // Yardımcı lidere liderlik devret
-            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.AccountId,
-                                       targetAccount.AccountId, ClubRole.Leader);
-            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.AccountId,
-                                       session.AccountId, ClubRole.CoLeader);
+            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.ID,
+                                       targetAccount.ID, ClubRole.Leader);
+            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.ID,
+                                       session.ID, ClubRole.CoLeader);
             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubRoleDoOwner);
         }
         else
@@ -103,22 +87,14 @@ public static class ClubMemberChangeHandler
     private static void HandleDemotion(Session session, AccountManager.AccountData targetAccount, 
                                      AccountManager.AccountData myAccount)
     {
-        // Sadece lider rol düşürebilir
-        /*if (myAccount.clubRole != ClubRole.Leader)
-        {
-             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubRoleDoOwner);
-            return;
-        }*/
-
         if (targetAccount.clubRole == ClubRole.Member)
         {
              MessageCodeManager.Send(session, MessageCodeManager.Message.MemberAlreadyLowest);
         }
         else if (targetAccount.clubRole == ClubRole.CoLeader)
         {
-            // Yardımcı lideri üyeye düşür
-            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.AccountId, 
-                                       targetAccount.AccountId, ClubRole.Member);
+            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.ID, 
+                                       targetAccount.ID, ClubRole.Member);
             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubRoleLowerCoOwner);
         }
         else if (targetAccount.clubRole == ClubRole.Leader)

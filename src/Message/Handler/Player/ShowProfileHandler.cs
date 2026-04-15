@@ -8,39 +8,38 @@ public static class ShowProfileHandler
         Console.WriteLine("show profiile handler");
         ByteBuffer byteBuffer = new ByteBuffer();
         byteBuffer.WriteBytes(data, true);
-        int _ = byteBuffer.ReadShort();
-        
+
         var request = new ShowProfileRequestPacket();
         request.Deserialize(byteBuffer);
         
-        string accountId = request.AccountId;
-        byteBuffer.Dispose();
+        AccountManager.AccountData? account = null;
+       
+            account = AccountCache.Load(request.ID);
         
-        AccountManager.AccountData account = AccountCache.Load(accountId);
+        
         if (account == null) return;
 
         var response = new ShowProfileResponsePacket
         {
-            AccountId = account.AccountId,
-            Username = account.Username,
-            NameColorId = account.Namecolorid,
-            AvatarId = account.Avatarid
+            account = account
         };
         session.Send(response);
+        Console.WriteLine("profile response gönderildi: " + response);
 
     }
     public static void test(Session session)
     {
        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteShort((short)MessageType.ShowProfileResponse);
+        buffer.WriteVarInt((int)MessageType.ShowProfileResponse);
         
         buffer.WriteString("ARDA-TEST");
-        buffer.WriteInt(5);
-        buffer.WriteInt(5);
+        buffer.WriteVarInt(5);
+        buffer.WriteVarInt(5);
 
         
         byte[] veri = buffer.ToArray();
         buffer.Dispose();
         session.Send(veri);
-    }
+        
+    } 
 }

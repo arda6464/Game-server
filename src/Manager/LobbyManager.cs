@@ -5,13 +5,13 @@ public class TeamMessage
 {
     public TeamMessageFlags messageFlags;
     public TeamEventType eventType;
-    public string? SenderId { get; set; }
+    public int SenderId { get; set; }
     public string? SenderName { get; set; }
     public int SenderAvatarID { get; set; }
     public DateTime Timestamp { get; set; }
     public string? Content { get; set; }
-    public string? TargetName { get; set; }
     public int MessageId { get; set; }
+    
 
 }
 public enum TeamMessageFlags : byte
@@ -31,10 +31,11 @@ public class Lobby
 {
 
     public int ID { get; set; }
-    public string OwnerID { get; set; }
+    public int OwnerID { get; set; }
     public int MaxPlayers { get; set; } = 3;
     public bool IsInGame { get; set; }
     public int MessageIdCounter { get; set; } = 1;
+    public string Link {get;set;}
 
 
     public List<AccountManager.AccountData> Players { get; set; } = new();
@@ -44,10 +45,11 @@ public class Lobby
     public object SyncLock = new object();
 
 
-    public Lobby(int id, string ownerid)
+    public Lobby(int id, int ownerid, string link)
     {
         ID = id;
         OwnerID = ownerid;
+        Link = link;
     }
     public void AddPlayers(AccountManager.AccountData player)
     {
@@ -55,14 +57,14 @@ public class Lobby
         {
             if (Players.Count >= MaxPlayers) return;
             Players.Add(player);
-            Console.WriteLine($"{player.Username}({player.AccountId}) odaya katıldı total count: {Players.Count}");
+            Console.WriteLine($"{player.Username}({player.ID}) odaya katıldı total count: {Players.Count}");
         }
     }
-    public void RemovePlayer(string accId)
+    public void RemovePlayer(int id)
     {
         lock (SyncLock)
         {
-            Players.RemoveAll(x => x.AccountId == accId);
+            Players.RemoveAll(x => x.ID == id);
         }
     }
 
@@ -83,8 +85,9 @@ public static class LobbyManager
     SelectLobbyID:
         int id = lobbyıd.Next(100000, 999999);
         if (Lobbies.ContainsKey(id)) goto SelectLobbyID;
-
-        Lobby lobby = new Lobby(id, owner.AccountId);
+      
+      string link = InviteManager.CreateTeamInvite(id, owner.ID);
+        Lobby lobby = new Lobby(id, owner.ID, link);
         if (lobby == null)
         {
             Logger.errorslog("[LobbyManager] Lobby oluşturulamadı!");
@@ -114,7 +117,7 @@ public static class LobbyManager
         }
     }
 
-    public static bool LeaveTeam(int teamid, string accid)
+    public static bool LeaveTeam(int teamid, int id)
     {
 
 
@@ -123,8 +126,8 @@ public static class LobbyManager
         
         lock (lobby.SyncLock)
         {
-            lobby.RemovePlayer(accid);
-            Console.WriteLine($"{accid} odadan ayrıldı total count: {lobby.Players.Count}");
+            lobby.RemovePlayer(id);
+            Console.WriteLine($"{id} odadan ayrıldı total count: {lobby.Players.Count}");
 
             if (lobby.Players.Count == 0)
             {
@@ -132,7 +135,7 @@ public static class LobbyManager
                 DeleteLobby(lobby.ID);
                 return true;
             }
-            if (lobby.OwnerID == accid && lobby.Players.Count > 0) 
+            if (lobby.OwnerID == id && lobby.Players.Count > 0) 
             {
                 TransferLeader(lobby, lobby.Players[0]);
             }
@@ -142,14 +145,14 @@ public static class LobbyManager
 
     public static void TransferLeader(Lobby team, AccountManager.AccountData newownerid)
     {
-        var acc = AccountCache.Load(newownerid.AccountId);
+        var acc = AccountCache.Load(newownerid.ID);
         if (acc == null) return;
 
         lock (team.SyncLock)
         {
-            team.OwnerID = acc.AccountId;
+            team.OwnerID = newownerid.ID;
         }
-        Console.WriteLine($"[Lobby Manager] Liderlik transfer edildi:  {acc.Username} - {acc.AccountId} ");
+        Console.WriteLine($"[Lobby Manager] Liderlik transfer edildi:  {newownerid.Username} - {newownerid.ID} ");
     }
     public static TeamMessage GetMessage(Lobby lobby,int messageid)
     {

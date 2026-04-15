@@ -10,7 +10,7 @@ public static class banInfoCommand
     {
         var playerIdOption = command.Data.Options
                     .FirstOrDefault(opt => opt.Name == "kullanıcı");
-        string playerId = playerIdOption?.Value.ToString() ?? "Bilinmiyor";
+        int playerId = int.Parse(playerIdOption?.Value.ToString() ?? "0");
         BanData data = BanManager.GetBanInfo(playerId);
         if (data == null)
         {

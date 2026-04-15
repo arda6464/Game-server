@@ -5,7 +5,6 @@ public static class LeaveTeamHandler
     {
          ByteBuffer read = new ByteBuffer();
         read.WriteBytes(data, true);
-        read.ReadShort(); // Type - read but unused?
         read.Dispose();
 
         if (session.TeamID == 0)
@@ -14,7 +13,7 @@ public static class LeaveTeamHandler
             return;
         }
          
-     bool isleave = LobbyManager.LeaveTeam(session.TeamID,session.AccountId);
+     bool isleave = LobbyManager.LeaveTeam(session.TeamID,session.ID);
         if (!isleave) return;
 
         session.Send(new LeaveTeamResponsePacket { Success = isleave });
@@ -26,7 +25,7 @@ public static class LeaveTeamHandler
         
         if (loby == null)
         {
-            Console.WriteLine($"leaveteam: {session.AccountId} ID'li oyuncunun ayrılmak istediği takım null");
+            Console.WriteLine($"leaveteam: {session.ID} ID'li oyuncunun ayrılmak istediği takım null");
              session.TeamID = 0; // Ensure reset
             return;
         }
@@ -37,16 +36,16 @@ public static class LeaveTeamHandler
             Flags = TeamMessageFlags.HasSystem,
             EventType = TeamEventType.LeaveMessage,
             SenderName = acccount.Username,
-            SenderAccountId = acccount.AccountId
+            SenderId = acccount.ID
         };
                     
         lock (loby.SyncLock)
         {
             foreach(var member in loby.Players)
             {
-                if (SessionManager.IsOnline(member.AccountId))
+                if (SessionManager.IsOnline(member.ID))
                 {
-                    Session session1 = SessionManager.GetSession(member.AccountId);
+                    Session session1 = SessionManager.GetSession(member.ID);
                     session1.Send(broadcastPacket);
                 }
             }

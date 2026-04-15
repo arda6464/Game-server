@@ -1,7 +1,11 @@
+using System.Linq;
+using System.Collections.Generic;
+using System;
+
 public class SupportTicketData
 {
     public string? Username { get; set; }
-    public string AccountId { get; set; }
+    public int PlayerID { get; set; }
     public int ID { get; set; }
     public int NO { get; set; }
     public string? Title { get; set; }
@@ -12,17 +16,19 @@ public class SupportTicketData
     public string? ClosedReason;
     public ulong channelid;
 }
+
 public class TicketMessage
 {
     public string? Name;
     public string? Message;
     public DateTime time;
 }
+
 public static class TicketManager
 {
-    public static SupportTicketData GetTicketData(string accountid, int ticketid)
+    public static SupportTicketData GetTicketData(int playerid, int ticketid)
     {
-        var account = AccountCache.Load(accountid);
+        var account = AccountCache.Load(playerid);
         if (account == null) return null;
 
         SupportTicketData ticket = account.Tickets.FirstOrDefault(t => t.ID == ticketid);
@@ -32,9 +38,10 @@ public static class TicketManager
         }
         return ticket;
     }
-      public static SupportTicketData GetTicketDataByNo(string accountid,int ticketNo)
+
+    public static SupportTicketData GetTicketDataByNo(int playerid, int ticketNo)
     {
-        var account = AccountCache.Load(accountid);
+        var account = AccountCache.Load(playerid);
         if (account == null) return null;
 
         SupportTicketData ticket = account.Tickets.FirstOrDefault(t => t.NO == ticketNo);

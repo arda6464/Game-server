@@ -5,9 +5,9 @@ public class FirstConnectionResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.FirstConnectionResponse);
+        buffer.WriteVarInt((int)MessageType.FirstConnectionResponse);
         buffer.WriteBool(Success);
-        buffer.WriteString(Message);
+        buffer.WriteVarString(Message);
     }
 
     public void Deserialize(ByteBuffer buffer)

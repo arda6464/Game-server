@@ -1,13 +1,16 @@
+using System;
+
 public class NewAccountCreateResponsePacket : IPacket
 {
     public string Token { get; set; }
-    public string AccountId { get; set; }
+    public int ID { get; set; }
+    public int ConnectionToken { get; set; }    
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.NewAccountCreateResponse);
-        buffer.WriteString(Token);
-        buffer.WriteString(AccountId);
+        buffer.WriteVarInt((int)MessageType.NewAccountCreateResponse);
+        buffer.WriteVarString(Token);
+        buffer.WriteVarInt(ID);
     }
 
     public void Deserialize(ByteBuffer buffer)

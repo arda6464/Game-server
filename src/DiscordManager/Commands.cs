@@ -50,10 +50,10 @@ public class PrefixCommands
 
     private async Task HandleTicketCommandAsync(SocketMessage msg, string[] args)
     {
-        bot.TicketSystem.CreateTicket(msg.Author.Id.ToString(), new SupportTicketData
+       /* bot.TicketSystem.CreateTicket(msg.Author.Id, new SupportTicketData
         {
             // Ticket verileri
-        });
+        });*/
         
         var embed = new EmbedBuilder()
             .WithTitle("✅ Ticket Açıldı")

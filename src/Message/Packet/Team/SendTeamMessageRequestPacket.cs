@@ -10,6 +10,6 @@ public class SendTeamMessageRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        Message = buffer.ReadString();
+        Message = buffer.ReadVarString();
     }
 }

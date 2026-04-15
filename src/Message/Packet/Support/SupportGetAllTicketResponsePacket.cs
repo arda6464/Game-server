@@ -23,24 +23,24 @@ public class SupportGetAllTicketResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.SupportGetAllTicketResponse);
+        buffer.WriteVarInt((int)MessageType.SupportGetAllTicketResponse);
         buffer.WriteBool(TicketBan);
         buffer.WriteByte((byte)Tickets.Count);
         foreach (var ticket in Tickets)
         {
             buffer.WriteByte(ticket.No);
-            buffer.WriteString(ticket.Title ?? " ");
+            buffer.WriteVarString(ticket.Title ?? " ");
             buffer.WriteBool(ticket.IsClosed);
             if(ticket.IsClosed)
             {
-                buffer.WriteString(ticket.ClosedReason ?? "");
-                buffer.WriteInt(ticket.ClosedAt);
+                buffer.WriteVarString(ticket.ClosedReason ?? "");
+                buffer.WriteVarInt(ticket.ClosedAt);
             }
             buffer.WriteByte((byte)ticket.Messages.Count);
             foreach (var msg in ticket.Messages)
             {
-                buffer.WriteString(msg.Name);
-                buffer.WriteString(msg.Content);
+                buffer.WriteVarString(msg.Name);
+                buffer.WriteVarString(msg.Content);
             }
         }
     }

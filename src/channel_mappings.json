@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "ChannelId": 1479652030955126875,
+    "TicketId": 1
+  },
+  {
+    "ChannelId": 1488307766614560948,
+    "TicketId": 2
+  },
+  {
+    "ChannelId": 1488461188516937849,
+    "TicketId": 3
+  },
+  {
+    "ChannelId": 1488462306877636699,
+    "TicketId": 4
+  }
+]

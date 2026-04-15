@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "Username": "arda64",
+    "PlayerID": 0,
+    "ID": 2,
+    "NO": 4,
+    "Title": "Teknik destek - #4",
+    "IsClosed": false,
+    "CreatedAt": "2026-03-31T01:43:42.6544054+03:00",
+    "ClosedAt": "0001-01-01T00:00:00"
+  },
+  {
+    "Username": "arda64",
+    "PlayerID": 0,
+    "ID": 3,
+    "NO": 5,
+    "Title": "Teknik destek - #5",
+    "IsClosed": false,
+    "CreatedAt": "2026-03-31T11:53:18.6014002+03:00",
+    "ClosedAt": "0001-01-01T00:00:00"
+  }
+]

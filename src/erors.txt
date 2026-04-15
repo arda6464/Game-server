@@ -1,513 +1,366 @@
-﻿[2025-11-11 20:02:19] [ERROR] hesaplardan biri null
-[2025-11-11 20:11:03] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 5
-[2025-11-12 11:59:11] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-11-13 17:33:36] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-11-13 17:33:53] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-11-15 17:47:19] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-11-16 00:57:39] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-04 16:48:22] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:22] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:26] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-04 16:48:26] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-05 23:19:06] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-05 23:19:07] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-05 23:19:09] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-06 14:07:34] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-06 14:07:36] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-06 14:07:37] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-06 14:07:37] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-06 15:04:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-06 15:04:18] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-06 15:04:19] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-06 15:04:19] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-06 15:04:19] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1
-[2025-12-07 15:14:58] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 15:20:38] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 15:27:27] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 15:45:39] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 15:51:57] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 15:56:06] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 15:57:16] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 16:35:30] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 16:39:55] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 16:41:45] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 16:43:06] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 16:43:46] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 16:44:20] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 16:47:15] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 16:51:54] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 17:03:36] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 17:08:00] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-07 18:12:48] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
-[2025-12-07 18:45:17] [ERROR]  adlı istek bulunamadı
-[2025-12-07 21:25:40] [ERROR]  adlı istek bulunamadı
-[2025-12-07 21:26:39] [ERROR] arda64best zaten arrd'ye istek göndermiş
-[2025-12-07 21:33:40] [ERROR] arda64best zaten arrd'ye istek göndermiş
-[2025-12-07 21:35:54] [ERROR]  adlı istek bulunamadı
-[2025-12-07 21:36:20] [ERROR]  adlı istek bulunamadı
-[2025-12-07 21:37:19] [ERROR]  adlı istek bulunamadı
-[2025-12-07 21:37:41] [ERROR]  adlı istek bulunamadı
-[2025-12-07 21:43:16] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2025-12-07 21:43:16] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2025-12-07 21:43:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
-[2025-12-07 21:43:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
-[2025-12-07 21:43:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2025-12-07 21:43:23] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2025-12-07 21:43:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
-[2025-12-07 21:43:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
-[2025-12-07 21:43:24] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
-[2025-12-07 21:43:25] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
-[2025-12-07 21:43:26] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1000
-[2025-12-10 00:10:25] [ERROR] [ClubEditHandler] Geçersiz kulüp adı: s
-[2025-12-11 20:37:52] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-11 21:28:03] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-11 21:54:32] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
-[2025-12-12 19:22:52] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-12 19:55:09] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
-[2025-12-12 20:03:19] [ERROR] [Program] Veri kaydetme hatası: Object reference not set to an instance of an object.
-[2025-12-12 20:19:50] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-13 02:01:11] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 12
-[2025-12-13 21:57:31] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-14 01:01:20] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-14 21:53:25] [ERROR] [CMD HANDLER] hata: Object reference not set to an instance of an object.
-[2025-12-14 21:53:32] [ERROR] [CMD HANDLER] hata: Object reference not set to an instance of an object.
-[2025-12-15 23:46:05] [ERROR] [ClubEditHandler] Geçersiz kulüp adı: fd
-[2025-12-17 21:00:56] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-17 23:49:53] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-18 23:10:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 45
-[2025-12-18 23:10:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 45
-[2025-12-18 23:11:02] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 45
-[2025-12-19 23:35:21] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 9
-[2025-12-19 23:35:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 9
-[2025-12-19 23:38:52] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-19 23:39:08] [ERROR] [PingManager] Ping timeout for CWRQGTAB, closing connection.
-[2025-12-19 23:39:48] [ERROR] [PingManager] Ping timeout for 4P4ZDHN8, closing connection.
-[2025-12-19 23:40:28] [ERROR] [PingManager] Ping timeout for CWRQGTAB, closing connection.
-[2025-12-19 23:40:58] [ERROR] [PingManager] Ping timeout for CWRQGTAB, closing connection.
-[2025-12-19 23:42:29] [ERROR] [PingManager] Ping timeout for 4P4ZDHN8, closing connection.
-[2025-12-19 23:46:21] [ERROR] [PingManager] Ping timeout for CWRQGTAB, closing connection.
-[2025-12-19 23:47:11] [ERROR] [PingManager] Ping timeout for 4P4ZDHN8, closing connection.
-[2025-12-26 23:41:43] [ERROR] [Config] Dosya bulunamadı: 
-[2025-12-26 23:41:43] [ERROR] [Config] Dosya bulunamadı: 
-[2025-12-26 23:41:43] [ERROR] [Config] Dosya bulunamadı: 
-[2025-12-27 00:12:13] [ERROR] amamama zaten arda'nin arkadaşı
-[2025-12-27 01:17:56] [ERROR]  adlı istek bulunamadı
-[2025-12-27 01:19:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
-[2025-12-27 01:19:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
-[2025-12-27 01:19:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2025-12-27 01:19:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2025-12-27 01:19:58] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1000
-[2025-12-27 01:19:58] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1000
-[2025-12-27 01:19:59] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
-[2025-12-27 01:19:59] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
-[2025-12-27 16:58:44] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 47
-[2025-12-27 18:56:16] [ERROR] Account not found: 
-[2025-12-27 18:56:57] [ERROR] [Config] Dosya bulunamadı: 
-[2025-12-27 18:56:57] [ERROR] [Config] Dosya bulunamadı: 
-[2025-12-27 18:57:03] [ERROR] Account not found: 
-[2025-12-27 18:57:37] [ERROR] Account not found: 
-[2025-12-27 19:13:12] [ERROR] Account not found: 
-[2025-12-27 19:13:17] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2025-12-27 20:30:35] [ERROR] Account not found: 
-[2025-12-31 18:52:26] [ERROR] [CMD HANDLER] hata: Object reference not set to an instance of an object.
-[2026-01-03 23:13:03] [ERROR] Account not found: 
-[2026-01-03 23:13:34] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2026-01-03 23:28:58] [ERROR] [ClubEditHandler] Geçersiz kulüp adı: 
-[2026-01-05 18:16:34] [ERROR] Account not found: 
-[2026-01-05 18:16:43] [ERROR] Account not found: 
-[2026-01-05 18:44:06] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 14, position 0.
-[2026-01-05 18:44:07] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 14, position 0.
-[2026-01-05 18:44:22] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 14, position 0.
-[2026-01-05 18:44:22] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 14, position 0.
-[2026-01-05 18:44:28] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'DiscordAdminIDs', line 14, position 0.
-[2026-01-05 18:44:29] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'DiscordAdminIDs', line 14, position 0.
-[2026-01-05 18:44:30] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'DiscordAdminIDs', line 14, position 0.
-[2026-01-05 18:44:31] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'DiscordAdminIDs', line 14, position 0.
-[2026-01-05 18:44:35] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'DiscordAdminIDs', line 14, position 0.
-[2026-01-05 18:44:36] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'DiscordAdminIDs', line 14, position 0.
-[2026-01-05 19:05:54] [ERROR] Account not found: 
-[2026-01-05 22:14:36] [ERROR] [Config] JSON parse hatası: Unterminated string. Expected delimiter: ". Path 'DiscordAdminIDs', line 14, position 1.
-[2026-01-05 22:14:36] [ERROR] [Config] JSON parse hatası: Unterminated string. Expected delimiter: ". Path 'DiscordAdminIDs', line 14, position 1.
-[2026-01-05 22:14:39] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'DiscordAdminIDs', line 14, position 1.
-[2026-01-05 22:14:40] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'DiscordAdminIDs', line 14, position 1.
-[2026-01-05 22:14:54] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
-[2026-01-05 22:14:54] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
-[2026-01-05 22:14:55] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
-[2026-01-05 22:14:56] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
-[2026-01-05 22:14:57] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
-[2026-01-05 22:14:58] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: [. Path 'DiscordAdminIDs', line 12, position 3.
-[2026-01-08 20:34:40] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 93
-[2026-01-08 20:35:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 93
-[2026-01-09 17:24:45] [ERROR] Account not found: 
-[2026-01-10 21:47:12] [ERROR] [PingManager] Ping timeout for WMBSQXG1, closing connection.
-[2026-01-12 13:12:04] [ERROR] Account not found: 
-[2026-01-12 13:14:13] [ERROR] Account not found: 
-[2026-01-12 20:49:42] [ERROR] Account not found: 
-[2026-01-12 20:50:29] [ERROR] Account not found: 
-[2026-01-12 20:50:53] [ERROR] Account not found: 
-[2026-01-12 20:51:25] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2026-01-15 12:34:15] [ERROR] Account not found: 
-[2026-01-15 12:34:50] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2026-01-15 12:38:14] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2026-01-15 13:28:17] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2026-01-18 15:20:50] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 24, position 0.
-[2026-01-18 15:20:51] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'ServerVersion', line 24, position 0.
-[2026-01-18 15:20:52] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'QuestRefeshHour', line 24, position 0.
-[2026-01-18 15:20:52] [ERROR] [Config] JSON parse hatası: Unexpected character encountered while parsing value: }. Path 'QuestRefeshHour', line 24, position 0.
-[2026-01-18 15:57:48] [ERROR] Hata kaydederken: Collection was modified; enumeration operation may not execute.
-[2026-01-18 16:02:40] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1002
-[2026-01-18 16:02:40] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2026-01-18 16:02:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2026-01-18 16:02:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2026-01-18 16:02:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2026-01-18 16:02:41] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1003
-[2026-01-18 16:02:43] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1001
-[2026-01-18 16:02:44] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 1000
-[2026-01-18 23:42:01] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'QuestRefeshHour', line 25, position 0.
-[2026-01-18 23:42:01] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'QuestRefeshHour', line 25, position 0.
-[2026-01-18 23:42:16] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'QuestRefeshHour', line 25, position 0.
-[2026-01-18 23:42:16] [ERROR] [Config] JSON parse hatası: Invalid character after parsing property name. Expected ':' but got: }. Path 'QuestRefeshHour', line 25, position 0.
-[2026-01-18 23:42:20] [ERROR] [Config] JSON parse hatası: Error converting value {null} to type 'System.DateTime'. Path 'SeasonQuestRefeshTime', line 24, position 31.
-[2026-01-18 23:42:21] [ERROR] [Config] JSON parse hatası: Error converting value {null} to type 'System.DateTime'. Path 'SeasonQuestRefeshTime', line 24, position 31.
-[2026-01-18 23:42:55] [ERROR] [Config] Dosya bulunamadı, default config oluşturuldu: C:\project\Game-server\src\config.json
-[2026-01-19 00:18:47] [ERROR] Hata kaydederken: Collection was modified; enumeration operation may not execute.
-[2026-01-19 13:26:10] [ERROR] Account not found: 
-[2026-01-19 13:28:03] [ERROR] Account not found: 
-[2026-01-19 13:43:19] [ERROR] Account not found: 
-[2026-01-19 13:45:02] [ERROR] Account not found: 
-[2026-01-19 13:46:38] [ERROR] Account not found: 
-[2026-01-19 13:52:16] [ERROR] Account not found: 
-[2026-01-19 13:53:43] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:12] [ERROR] Account not found: 
-[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:12] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:13] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:14] [ERROR] Account not found: 
-[2026-01-20 04:33:14] [ERROR] Account not found: 
-[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:14] [ERROR] Account not found: 
-[2026-01-20 04:33:14] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 04:33:17] [ERROR] Account not found: 
-[2026-01-20 04:33:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 04:33:17] [ERROR] Account not found: 
-[2026-01-20 04:33:17] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 04:33:17] [ERROR] Account not found: 
-[2026-01-20 04:33:17] [ERROR] Account not found: 
-[2026-01-20 04:33:17] [ERROR] Account not found: 
-[2026-01-20 04:33:17] [ERROR] Account not found: 
-[2026-01-20 14:40:48] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:48] [ERROR] Account not found: 
-[2026-01-20 14:40:48] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:48] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:49] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:50] [ERROR] Account not found: 
-[2026-01-20 14:40:50] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:51] [ERROR] Account not found: 
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:51] [ERROR] Account not found: 
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:51] [ERROR] Account not found: 
-[2026-01-20 14:40:51] [ERROR] Account not found: 
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:51] [ERROR] Account not found: 
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:51] [ERROR] Account not found: 
-[2026-01-20 14:40:51] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:51] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:52] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:52] [ERROR] Account not found: 
-[2026-01-20 14:40:52] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:53] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:53] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:53] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:53] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:53] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:53] [ERROR] Account not found: 
-[2026-01-20 14:40:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 25
-[2026-01-20 14:40:54] [ERROR] Account not found: 
-[2026-01-20 14:40:54] [ERROR] Account not found: 
-[2026-01-20 14:40:54] [ERROR] Account not found: 
-[2026-01-20 14:40:54] [ERROR] Account not found: 
-[2026-01-20 14:40:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:54] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:54] [ERROR] Account not found: 
-[2026-01-20 14:40:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:54] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:54] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:54] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:54] [ERROR] Account not found: 
-[2026-01-20 14:40:54] [ERROR] Account not found: 
-[2026-01-20 14:40:54] [ERROR] Account not found: 
-[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:55] [ERROR] Account not found: 
-[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:55] [ERROR] Account not found: 
-[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:55] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:55] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:55] [ERROR] Account not found: 
-[2026-01-20 14:40:55] [ERROR] Account not found: 
-[2026-01-20 14:40:55] [ERROR] Account not found: 
-[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:56] [ERROR] Account not found: 
-[2026-01-20 14:40:56] [ERROR] Account not found: 
-[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:56] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:56] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:57] [ERROR] Account not found: 
-[2026-01-20 14:40:57] [ERROR] Account not found: 
-[2026-01-20 14:40:57] [ERROR] Account not found: 
-[2026-01-20 14:40:57] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:57] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:57] [ERROR] Account not found: 
-[2026-01-20 14:40:57] [ERROR] Account not found: 
-[2026-01-20 14:40:57] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:57] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:57] [ERROR] Account not found: 
-[2026-01-20 14:40:57] [ERROR] Account not found: 
-[2026-01-20 14:40:58] [ERROR] Account not found: 
-[2026-01-20 14:40:58] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:58] [ERROR] Account not found: 
-[2026-01-20 14:40:58] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:58] [ERROR] [MESSAGE MANAGER] gelen paket id bulunamadı: 41
-[2026-01-20 14:40:58] [ERROR] [Session] Message handler hatası (): Object reference not set to an instance of an object.
-   at ClubMessageHandler.Handle(Session session, Byte[] message) in C:\project\Game-server\src\Message\Handler\Club\ClubMessageHandler.cs:line 19
-   at MessageManager.HandleMessage(Session session, Byte[] data) in C:\project\Game-server\src\Message\MessageManager.cs:line 55
-   at Session.Start() in C:\project\Game-server\src\Network\Session.cs:line 86
-[2026-01-20 14:40:59] [ERROR] Account not found: 
-[2026-01-20 14:40:59] [ERROR] Account not found: 
-[2026-01-20 14:40:59] [ERROR] Account not found: 
-[2026-01-20 14:41:00] [ERROR] Account not found: 
-[2026-01-20 14:41:01] [ERROR] Account not found: 
-[2026-01-20 14:41:01] [ERROR] Account not found: 
-[2026-01-20 14:41:01] [ERROR] Account not found: 
-[2026-02-07 18:07:44] [ERROR] Account not found: 
-[2026-02-07 18:08:05] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2026-02-08 23:36:27] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2026-02-08 23:41:48] [ERROR] [PingManager] Connection timeout for CG7TYYUV (No packets for 40s), closing connection.
-[2026-02-08 23:47:13] [ERROR] Account not found: 
-[2026-02-09 01:23:20] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
-[2026-02-09 02:01:43] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
-[2026-02-09 02:03:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:13] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:14] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:15] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:16] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:17] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:17] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:17] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:18] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:18] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:18] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:18] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:19] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:19] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:19] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:20] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:20] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:20] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:21] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:21] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:22] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:22] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:23] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 02:03:23] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: BestFriendChanged (38)
-[2026-02-09 20:10:11] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
-[2026-02-09 20:13:58] [ERROR] Account not found: 
-[2026-02-09 22:03:16] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
-[2026-02-09 22:04:36] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
-[2026-02-09 22:11:54] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
-[2026-02-10 04:26:16] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
-[2026-02-15 01:22:29] [ERROR] Account not found: 
-[2026-02-15 01:30:27] [ERROR] [PingManager] Connection timeout for Q0SFS6FN (No packets for 40s), closing connection.
-[2026-02-15 14:41:05] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: 1003 (1003)
-[2026-02-15 15:12:46] [ERROR] Account not found: 
-[2026-02-15 22:20:11] [ERROR] Account not found: 
-[2026-02-15 22:20:26] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
-[2026-02-22 08:58:30] [ERROR] [PingManager] Connection timeout for YRQSBXHU (No packets for 40s), closing connection.
+﻿[2026-03-07 02:48:40] [ERROR] [PingManager] Connection timeout for 7K62TLKN (No packets for 40s), closing connection.
+[2026-03-07 02:50:59] [ERROR] [MessageManager] Handler hatası (SupporCreateTicketRequest): Exception has been thrown by the target of an invocation.
+[2026-03-07 02:53:01] [ERROR] [PingManager] Connection timeout for 7K62TLKN (No packets for 40s), closing connection.
+[2026-03-07 03:03:26] [ERROR] Account not found: 
+[2026-03-07 03:11:10] [ERROR] [PingManager] Connection timeout for 7K62TLKN (No packets for 40s), closing connection.
+[2026-03-07 03:15:00] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\profile.html
+[2026-03-07 03:20:30] [ERROR] [PingManager] Connection timeout for 7K62TLKN (No packets for 40s), closing connection.
+[2026-03-07 03:46:32] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\.well-known/appspecific/com.chrome.devtools.json
+[2026-03-07 03:46:34] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\.well-known/appspecific/com.chrome.devtools.json
+[2026-03-07 03:48:58] [ERROR] [Ban Manager] 7K62TLKN idli hesap zaten banlı, banlanma başarısız
+[2026-03-07 03:50:55] [ERROR] Account not found: 
+[2026-03-07 03:51:09] [ERROR] Account not found: 
+[2026-03-07 03:51:14] [ERROR] Account not found: 
+[2026-03-07 03:51:34] [ERROR] Account not found: 
+[2026-03-07 03:55:20] [ERROR] Account not found: 
+[2026-03-07 03:59:04] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\.well-known/appspecific/com.chrome.devtools.json
+[2026-03-07 04:25:37] [ERROR] Account not found: 
+[2026-03-07 04:26:03] [ERROR] [MessageManager] Handler hatası (SupporCreateTicketRequest): Exception has been thrown by the target of an invocation.
+[2026-03-07 04:26:48] [ERROR] [PingManager] Connection timeout for 7K62TLKN (No packets for 40s), closing connection.
+[2026-03-07 04:28:28] [ERROR] Account not found: 
+[2026-03-07 04:31:34] [ERROR] [PingManager] Connection timeout for 7K62TLKN (No packets for 40s), closing connection.
+[2026-03-07 04:40:02] [ERROR] [PingManager] Connection timeout for 7K62TLKN (No packets for 40s), closing connection.
+[2026-03-07 04:42:22] [ERROR] [PingManager] Connection timeout for 7K62TLKN (No packets for 40s), closing connection.
+[2026-03-07 15:06:29] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\.well-known/appspecific/com.chrome.devtools.json
+[2026-03-07 15:07:34] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\.well-known/appspecific/com.chrome.devtools.json
+[2026-03-07 15:55:30] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-07 15:55:42] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-07 15:55:50] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-07 16:04:19] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
+[2026-03-13 01:30:49] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-13 01:32:17] [ERROR] [PingManager] Connection timeout for 1C1RYTS1 (No packets for 40s), closing connection.
+[2026-03-13 01:32:34] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-13 15:03:16] [ERROR] [PingManager] Connection timeout for 1C1RYTS1 (No packets for 40s), closing connection.
+[2026-03-13 15:05:06] [ERROR] [PingManager] Connection timeout for 1C1RYTS1 (No packets for 40s), closing connection.
+[2026-03-13 16:51:27] [ERROR] [PingManager] Connection timeout for 1C1RYTS1 (No packets for 40s), closing connection.
+[2026-03-13 16:53:07] [ERROR] [PingManager] Connection timeout for 1C1RYTS1 (No packets for 40s), closing connection.
+[2026-03-13 16:54:01] [ERROR] Account not found: 
+[2026-03-13 16:54:49] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 16:54:49] [ERROR] Account not found: 
+[2026-03-13 16:55:11] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -52 (-52)
+[2026-03-13 16:56:17] [ERROR] [PingManager] Connection timeout for 1C1RYTS1 (No packets for 40s), closing connection.
+[2026-03-13 17:00:27] [ERROR] [PingManager] Connection timeout for 1C1RYTS1 (No packets for 40s), closing connection.
+[2026-03-13 17:02:33] [ERROR] Account not found: 
+[2026-03-13 17:03:07] [ERROR] [PingManager] Connection timeout for 1C1RYTS1 (No packets for 40s), closing connection.
+[2026-03-13 17:11:50] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-13 17:31:51] [ERROR] Account not found: 
+[2026-03-13 17:32:06] [ERROR] [MessageManager] Handler hatası (NewFBNTokenRequest): Exception has been thrown by the target of an invocation.
+[2026-03-13 17:32:38] [ERROR] Account not found: 
+[2026-03-13 17:35:54] [ERROR] Account not found: 
+[2026-03-13 17:43:28] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-13 18:00:46] [ERROR] Account not found: 
+[2026-03-13 20:37:21] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-13 20:55:22] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -5 (-5)
+[2026-03-13 20:55:51] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 20:55:52] [ERROR] Account not found: 
+[2026-03-13 20:55:55] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -5 (-5)
+[2026-03-13 20:58:32] [ERROR] Account not found: 
+[2026-03-13 20:58:55] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -5 (-5)
+[2026-03-13 21:00:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 21:00:13] [ERROR] Account not found: 
+[2026-03-13 21:00:37] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 21:07:08] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 21:07:08] [ERROR] Account not found: 
+[2026-03-13 21:08:18] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 21:08:37] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 21:08:46] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 21:09:05] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 21:09:32] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 21:09:54] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 21:10:15] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -52 (-52)
+[2026-03-13 21:24:56] [ERROR] Account not found: 
+[2026-03-13 21:56:10] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:11] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:11] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:13] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:13] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:15] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:15] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:15] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:16] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:16] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:16] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:16] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:16] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:17] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-13 21:56:24] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -45 (-45)
+[2026-03-13 21:57:49] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -27 (-27)
+[2026-03-13 21:59:19] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 22:00:56] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: LoginOKRequest (14)
+[2026-03-13 22:00:59] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: LoginOKRequest (14)
+[2026-03-13 22:01:00] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: LoginOKRequest (14)
+[2026-03-13 22:01:08] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: SendTeamMessageResponse (48)
+[2026-03-13 22:01:25] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 22:04:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 22:14:37] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -52 (-52)
+[2026-03-13 22:14:37] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 22:14:40] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 22:15:12] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 22:15:45] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 22:15:53] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 22:43:20] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 22:43:20] [ERROR] Account not found: 
+[2026-03-13 22:45:28] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 22:45:29] [ERROR] Account not found: 
+[2026-03-13 22:46:59] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 22:48:24] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 22:48:24] [ERROR] Account not found: 
+[2026-03-13 22:50:25] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 22:53:46] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 22:53:47] [ERROR] Account not found: 
+[2026-03-13 22:59:14] [ERROR] Account not found: 
+[2026-03-13 23:17:31] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 23:20:32] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 23:20:57] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 23:21:24] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 23:21:27] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 23:22:33] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 23:23:11] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-13 23:23:30] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: NewAccountCreateResponse (11)
+[2026-03-13 23:24:22] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 23:25:05] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-13 23:27:35] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-14 00:56:11] [ERROR] Account not found: 
+[2026-03-14 00:57:20] [ERROR] Account not found: 
+[2026-03-14 01:10:03] [ERROR] Account not found: 
+[2026-03-14 01:13:21] [ERROR] Account not found: 
+[2026-03-14 01:18:46] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 01:18:47] [ERROR] Account not found: 
+[2026-03-14 01:25:26] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 01:25:27] [ERROR] Account not found: 
+[2026-03-14 01:43:07] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 01:43:08] [ERROR] Account not found: 
+[2026-03-14 01:52:42] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 01:52:43] [ERROR] Account not found: 
+[2026-03-14 01:54:48] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 01:54:49] [ERROR] Account not found: 
+[2026-03-14 02:10:27] [ERROR] Account not found: 
+[2026-03-14 02:16:41] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: LoginOKRequest (14)
+[2026-03-14 02:16:42] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: LoginOKRequest (14)
+[2026-03-14 02:16:42] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: LoginOKRequest (14)
+[2026-03-14 02:16:43] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: LoginOKRequest (14)
+[2026-03-14 02:16:43] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: LoginOKRequest (14)
+[2026-03-14 02:17:48] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 13:58:34] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 14:09:30] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: LoginOKResponse (15)
+[2026-03-14 14:11:00] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 14:13:52] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 14:14:14] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-14 14:14:16] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -30 (-30)
+[2026-03-14 14:22:56] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: FirstConnectionResponse (1)
+[2026-03-14 15:05:18] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-14 15:50:55] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-14 16:17:49] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-03-16 13:04:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-03-16 13:04:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-03-16 13:04:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-03-16 13:04:41] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-03-16 13:05:31] [ERROR] [MessageManager] Handler hatası (NewFBNTokenRequest): Exception has been thrown by the target of an invocation.
+[2026-03-16 13:05:32] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-16 13:05:57] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-16 13:08:13] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-16 13:08:43] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-16 13:20:35] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
+[2026-03-16 13:25:02] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-03-16 13:31:21] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: NewRequestList (39)
+[2026-03-16 13:36:53] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
+[2026-03-16 13:49:10] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-17 02:32:00] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-17 02:40:21] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-17 02:52:50] [ERROR] [PingManager] Connection timeout for 6YJ3RRG5 (No packets for 40s), closing connection.
+[2026-03-19 00:21:24] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-19 00:22:29] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-19 00:27:05] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-19 00:37:36] [ERROR] [PingManager] Connection timeout for 6YJ3RRG5 (No packets for 40s), closing connection.
+[2026-03-19 00:47:57] [ERROR] [PingManager] Connection timeout for 6YJ3RRG5 (No packets for 40s), closing connection.
+[2026-03-20 01:36:27] [ERROR] [PingManager] Connection timeout for FF78CE2F (No packets for 40s), closing connection.
+[2026-03-20 01:54:19] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-20 02:27:14] [ERROR] [PingManager] Connection timeout for 6YJ3RRG5 (No packets for 40s), closing connection.
+[2026-03-27 18:18:55] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -21 (-21)
+[2026-03-27 18:18:59] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -21 (-21)
+[2026-03-27 18:36:29] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-27 18:37:48] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -36 (-36)
+[2026-03-27 18:39:30] [ERROR] Account not found: 
+[2026-03-27 18:39:30] [ERROR] Account not found: 
+[2026-03-27 18:46:29] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-27 18:50:05] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-27 18:50:15] [ERROR] [AdminServer-FATAL] Başlatma hatası: Cannot access a disposed object.
+Object name: 'System.Net.HttpListener'.
+[2026-03-27 18:55:15] [ERROR] [Program] Veri kaydetme hatası: Thread has not been started.
+[2026-03-27 18:55:30] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-27 18:57:07] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-27 19:02:24] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-28 02:42:08] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-28 23:18:07] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-28 23:32:39] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\.well-known/appspecific/com.chrome.devtools.json
+[2026-03-28 23:32:46] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\.well-known/appspecific/com.chrome.devtools.json
+[2026-03-28 23:35:14] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:23] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:24] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:24] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:25] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:25] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:25] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:25] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:25] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:25] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:26] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:26] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:26] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:26] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:26] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:26] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:27] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:27] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:27] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:27] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:27] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:28] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:28] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:35:28] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -22 (-22)
+[2026-03-28 23:39:00] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -48 (-48)
+[2026-03-29 03:46:56] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -23 (-23)
+[2026-03-29 03:46:57] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -23 (-23)
+[2026-03-29 03:46:57] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -23 (-23)
+[2026-03-29 03:46:58] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -23 (-23)
+[2026-03-29 03:46:58] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -23 (-23)
+[2026-03-29 03:46:58] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -23 (-23)
+[2026-03-29 03:46:58] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -23 (-23)
+[2026-03-29 03:46:58] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -23 (-23)
+[2026-03-29 03:46:58] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -23 (-23)
+[2026-03-29 16:59:44] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -46 (-46)
+[2026-03-29 17:00:25] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -46 (-46)
+[2026-03-30 15:09:00] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: NewRequestList (39)
+[2026-03-30 19:24:26] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-30 19:35:57] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-03-30 21:05:40] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-03-30 21:43:15] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
+[2026-03-30 21:54:58] [ERROR] [Program] Veri kaydetme hatası: Bağlantı kapalı
+[2026-03-30 22:05:29] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -33 (-33)
+[2026-03-30 22:05:32] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -33 (-33)
+[2026-03-30 23:44:38] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-03-31 01:07:07] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-03-31 01:31:31] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-31 17:33:04] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-31 18:03:30] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-03-31 18:15:40] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: 1001 (1001)
+[2026-03-31 18:15:41] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: 1002 (1002)
+[2026-03-31 18:15:41] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: 1002 (1002)
+[2026-03-31 18:15:41] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: 1002 (1002)
+[2026-03-31 18:17:15] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: 1002 (1002)
+[2026-03-31 18:17:15] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: 1002 (1002)
+[2026-03-31 19:56:02] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-04-02 01:50:53] [ERROR] [AdminServer] 404 Dosya bulunamadı: C:\Project\Game-server\admin\favicon.ico
+[2026-04-02 01:53:27] [ERROR] Account not found: 0
+[2026-04-02 01:54:03] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-04-02 01:54:03] [ERROR] [MessageManager] Handler hatası (AuthLoginRequest): Exception has been thrown by the target of an invocation.
+[2026-04-02 01:54:39] [ERROR] Hata kaydederken: SQLite Error 1: 'table Accounts has no column named AccountId'.
+[2026-04-02 01:55:33] [ERROR] Hata kaydederken: SQLite Error 1: 'table Accounts has no column named AccountId'.
+[2026-04-02 01:55:51] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-04-02 01:56:37] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -29 (-29)
+[2026-04-02 19:12:00] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-04-02 19:58:56] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: ClientErrorRequest (9)
+[2026-04-02 19:59:01] [ERROR] Account not found: 0
+[2026-04-04 01:25:28] [ERROR] [MessageManager] Handler hatası (ClubShowRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:25:29] [ERROR] [MessageManager] Handler hatası (ClubShowRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:25:30] [ERROR] [MessageManager] Handler hatası (ClubShowRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:25:30] [ERROR] [MessageManager] Handler hatası (ClubShowRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:25:30] [ERROR] [MessageManager] Handler hatası (ClubShowRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:25:31] [ERROR] [MessageManager] Handler hatası (ClubShowRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:25:31] [ERROR] [MessageManager] Handler hatası (ClubShowRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:30:42] [ERROR] [MessageManager] Handler hatası (AuthLoginRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:31:22] [ERROR] [MessageManager] Handler hatası (AuthLoginRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:32:16] [ERROR] [MessageManager] Handler hatası (AuthLoginRequest): Exception has been thrown by the target of an invocation.
+[2026-04-04 01:34:48] [ERROR] [MessageManager] Handler hatası (AuthLoginRequest): Memory stream is not expandable.
+   at System.IO.MemoryStream.set_Capacity(Int32 value)
+   at System.IO.MemoryStream.EnsureCapacity(Int32 value)
+   at System.IO.MemoryStream.WriteByte(Byte value)
+   at ByteBuffer.WriteVarUInt(UInt32 value) in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 71
+   at ByteBuffer.WriteVarInt(Int32 value) in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 64
+   at AuthLoginResponsePacket.Serialize(ByteBuffer buffer) in C:\Project\Game-server\src\Message\Packet\Auth\AuthLoginResponsePacket.cs:line 156
+   at Session.Send(IPacket packet) in C:\Project\Game-server\src\Network\Session.cs:line 211
+   at AuthLoginHandler.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Auth\AuthLoginHandler.cs:line 103
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[2026-04-04 21:17:53] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:17:54] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:17:55] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:17:57] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:17:58] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:17:59] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:18:12] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:18:22] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:19:32] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:19:43] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:19:47] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:19:57] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:20:36] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:20:37] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:20:43] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:21:01] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:21:02] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:21:11] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:22:29] [ERROR] [MessageManager] Handler hatası (MatchMakingRequest): Bağlantı kapalı
+   at Session.Send(Byte[] buffer) in C:\Project\Game-server\src\Network\Session.cs:line 220
+   at Session.Send(IPacket packet) in C:\Project\Game-server\src\Network\Session.cs:line 212
+   at MatchMaking.MatchFound() in C:\Project\Game-server\src\Battle\MatchMaking.cs:line 101
+   at MatchMaking.JoinQueue(Session session) in C:\Project\Game-server\src\Battle\MatchMaking.cs:line 35
+   at MatchMakingHandler.Handle(Session session) in C:\Project\Game-server\src\Message\Handler\Match\MatchMakingHandler.cs:line 15
+   at InvokeStub_MatchMakingHandler.Handle(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[2026-04-04 21:22:34] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 21:23:00] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:01] [ERROR] [MessageManager] Handler hatası (MatchMakingRequest): Bağlantı kapalı
+   at Session.Send(Byte[] buffer) in C:\Project\Game-server\src\Network\Session.cs:line 220
+   at Session.Send(IPacket packet) in C:\Project\Game-server\src\Network\Session.cs:line 212
+   at MatchMaking.MatchFound() in C:\Project\Game-server\src\Battle\MatchMaking.cs:line 101
+   at MatchMaking.JoinQueue(Session session) in C:\Project\Game-server\src\Battle\MatchMaking.cs:line 35
+   at MatchMakingHandler.Handle(Session session) in C:\Project\Game-server\src\Message\Handler\Match\MatchMakingHandler.cs:line 15
+   at InvokeStub_MatchMakingHandler.Handle(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[2026-04-04 22:02:02] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:03] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:03] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:04] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:05] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:05] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:06] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:07] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:08] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:09] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:10] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:16] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:56] [ERROR] [MessageManager] Handler hatası (MatchMakingRequest): Bağlantı kapalı
+   at Session.Send(Byte[] buffer) in C:\Project\Game-server\src\Network\Session.cs:line 220
+   at Session.Send(IPacket packet) in C:\Project\Game-server\src\Network\Session.cs:line 212
+   at MatchMaking.MatchFound() in C:\Project\Game-server\src\Battle\MatchMaking.cs:line 101
+   at MatchMaking.JoinQueue(Session session) in C:\Project\Game-server\src\Battle\MatchMaking.cs:line 35
+   at MatchMakingHandler.Handle(Session session) in C:\Project\Game-server\src\Message\Handler\Match\MatchMakingHandler.cs:line 15
+   at InvokeStub_MatchMakingHandler.Handle(Object, Span`1)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[2026-04-04 22:02:57] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:02:59] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:00] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:01] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:02] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:03] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:03] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:04] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:04] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:09] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:10] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:15] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:29] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:30] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:31] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:33] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:34] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:36] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:42] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-04 22:03:43] [ERROR] [MESSAGE MANAGER] Handler bulunamadı: -40 (-40)
+[2026-04-10 23:39:23] [ERROR] Account not found: 0
+[2026-04-13 19:17:07] [ERROR] Account not found: 0

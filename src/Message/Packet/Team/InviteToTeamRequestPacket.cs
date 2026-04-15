@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.InviteToTeamRequest)]
 public class InviteToTeamRequestPacket : IPacket
 {
-    public string TargetAccountId { get; set; }
+    public int TargetId { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {
@@ -10,6 +10,6 @@ public class InviteToTeamRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        TargetAccountId = buffer.ReadString();
+        TargetId = buffer.ReadVarInt();
     }
 }

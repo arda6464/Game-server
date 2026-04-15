@@ -4,7 +4,7 @@ public class LeaveClubResponsePacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.LeaveClubResponse);
+        buffer.WriteVarInt((int)MessageType.LeaveClubResponse);
         buffer.WriteBool(Kicked);
     }
 

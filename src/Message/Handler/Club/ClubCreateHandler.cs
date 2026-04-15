@@ -9,7 +9,6 @@ public static class ClubCreateHandler
 
             ByteBuffer read = new ByteBuffer();
             read.WriteBytes(messsage, true);
-            _ = read.ReadShort();
 
             var request = new ClubCreateRequestPacket();
             request.Deserialize(read);
@@ -45,7 +44,7 @@ public static class ClubCreateHandler
                     return;
                 }
 
-                var club = ClubManager.CreateClub(ClubName, ClubAciklama, Avatarıd, account.AccountId);
+                var club = ClubManager.CreateClub(ClubName, ClubAciklama, Avatarıd, account.ID);
 
                 var response = new ClubCreateResponsePacket
                 {

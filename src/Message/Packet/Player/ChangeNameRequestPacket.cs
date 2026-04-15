@@ -10,6 +10,6 @@ public class ChangeNameRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        NewName = buffer.ReadString();
+        NewName = buffer.ReadVarString();
     }
 }

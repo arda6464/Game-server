@@ -5,12 +5,11 @@ public static class FriendRequestAccept
     {
         ByteBuffer byteBuffer = new ByteBuffer();
         byteBuffer.WriteBytes(message, true);
-        int _ = byteBuffer.ReadShort();
 
         var requestPacket = new FriendRequestAcceptPacket();
         requestPacket.Deserialize(byteBuffer);
 
-        string targetId = requestPacket.TargetId;
+        int targetId = requestPacket.TargetId;
         byteBuffer.Dispose();
 
         
@@ -29,7 +28,7 @@ public static class FriendRequestAccept
         {
             lock (account.SyncLock)
             {
-                var request = account.Requests.Find(r => r.Id == targetId);
+                var request = account.Requests.Find(r => r.ID == targetId);
                 if (request != null)
                 {
                     account.Requests.Remove(request);
@@ -44,19 +43,19 @@ public static class FriendRequestAccept
             // Arkadaşlık bilgilerini hazırla
             FriendInfo friendForAccount = new FriendInfo()
             {
+                ID = target.ID,
                 Username = target.Username,
                 AvatarId = target.Avatarid,
-                Id = target.AccountId,
                 NameColorID = target.Namecolorid,
                 IsBestFriend = false,
                 Trophy = target.Trophy
             };
 
-            FriendInfo friendForTarget = new FriendInfo()
+            FriendInfo friendForTarget = new FriendInfo
             {
+                ID = account.ID,
                 Username = account.Username,
                 AvatarId = account.Avatarid,
-                Id = account.AccountId,
                 NameColorID = account.Namecolorid,
                 IsBestFriend = false,
                 Trophy = account.Trophy
@@ -65,7 +64,7 @@ public static class FriendRequestAccept
             // Listelere ekle (Thread-safe)
             lock (account.SyncLock)
             {
-                if (!account.Friends.Any(f => f.Id == targetId))
+                if (!account.Friends.Any(f => f.ID == targetId))
                 {
                     account.Friends.Add(friendForAccount);
                 }
@@ -73,7 +72,7 @@ public static class FriendRequestAccept
 
             lock (target.SyncLock)
             {
-                if (!target.Friends.Any(f => f.Id == account.AccountId))
+                if (!target.Friends.Any(f => f.ID == account.ID))
                 {
                     target.Friends.Add(friendForTarget);
                 }
@@ -83,16 +82,16 @@ public static class FriendRequestAccept
             QuestManager.CheckQuestProgress(account, Quest.MissionType.AddFriend);
             QuestManager.CheckQuestProgress(target, Quest.MissionType.AddFriend);
 
-            Console.WriteLine($"{account.Username}({account.AccountId}) ile {target.Username}({target.AccountId}) arkadaş oldu.");
+            Console.WriteLine($"{account.Username}({account.ID}) ile {target.Username}({target.ID}) arkadaş oldu.");
 
             // Kendi listesine yeni arkadaşı ekle (Incremental)
             var myFriendAddedPacket = new FriendAddedPacket { Friend = friendForAccount };
             session.Send(myFriendAddedPacket);
 
             // Karşı taraf online ise ona da yeni arkadaşı ekle (Incremental)
-            if (SessionManager.IsOnline(targetId))
+            if (SessionManager.IsOnline(target.ID))
             {
-                Session targetSession = SessionManager.GetSession(targetId);
+                Session targetSession = SessionManager.GetSession(target.ID);
                 if (targetSession != null)
                 {
                     var targetFriendAddedPacket = new FriendAddedPacket { Friend = friendForTarget };

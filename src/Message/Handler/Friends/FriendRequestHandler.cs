@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 [PacketHandler(MessageType.SendFriendRequest)]
 public static class SendFriendRequestHandler
@@ -7,24 +8,21 @@ public static class SendFriendRequestHandler
     {
         ByteBuffer byteBuffer = new ByteBuffer();
         byteBuffer.WriteBytes(data, true);
-        int _ = byteBuffer.ReadShort();
 
         var request = new SendFriendRequestPacket();
         request.Deserialize(byteBuffer);
 
-        string accıd = request.TargetId;
+        int targetId = request.TargetId;
         byteBuffer.Dispose();
           
         AccountManager.AccountData account = session.Account;
-        AccountManager.AccountData target = AccountCache.Load(accıd); //istek atılan kişi
-
+        AccountManager.AccountData target = AccountCache.Load(targetId);
 
         if (account != null && target != null)
         {
             lock (account.SyncLock)
             {
-                // Zaten arkadaş mı?
-                if (account.Friends.Any(f => f.Id == accıd))
+                if (account.Friends.Any(f => f.ID == target.ID))
                 {
                     Logger.errorslog($"{account.Username} zaten {target.Username}'nin arkadaşı");
                     return;
@@ -33,14 +31,13 @@ public static class SendFriendRequestHandler
 
             lock (target.SyncLock)
             {
-                if (target.Requests.Any(r => r.Id == account.AccountId))
+                if (target.Requests.Any(r => r.ID == account.ID))
                 {
                     Logger.errorslog($"{account.Username} zaten {target.Username}'ye istek göndermiş");
                     return;
                 }
 
-                // Kendine istek atamaz
-                if (account.AccountId == accıd)
+                if (account.ID == target.ID)
                 {
                     Logger.errorslog($"{account.Username} kendine istek atıyor");
                     return;
@@ -48,28 +45,26 @@ public static class SendFriendRequestHandler
 
                 FriendInfo info = new FriendInfo
                 {
+                    ID = account.ID,
                     Username = account.Username,
-                    Id = account.AccountId,
                     AvatarId = account.Avatarid,
-                    NameColorID = account.Namecolorid
+                    NameColorID = account.Namecolorid,
+                    Trophy = account.Trophy
                 };
-                 if (SessionManager.IsOnline(target.AccountId))
-            {
-                Session targetSession = SessionManager.GetSession(target.AccountId);
-                if (targetSession != null)
+
+                if (SessionManager.IsOnline(target.ID))
                 {
-                    var response = new FriendRequestAddedPacket { Request = info };
-                    targetSession.Send(response);
+                    Session targetSession = SessionManager.GetSession(target.ID);
+                    if (targetSession != null)
+                    {
+                        var response = new FriendRequestAddedPacket { Request = info };
+                        targetSession.Send(response);
+                    }
                 }
-            }
             
                 target.Requests.Add(info);
             }
-            Logger.genellog($"{account.Username}({account.AccountId}) →  {target.Username}({target.AccountId}) 'ye istek attı");
-
-
-           
-            
+            Logger.genellog($"{account.Username}({account.ID}) → {target.Username}({target.ID}) 'ye istek attı");
         }
     }
 }

@@ -13,7 +13,6 @@ public static class PlayerShotRequestHandler
 
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        int _ = read.ReadShort();
 
         var request = new ShootRequestPacket();
         request.Deserialize(read);
@@ -31,7 +30,7 @@ public static class PlayerShotRequestHandler
             Position = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Y),
             Direction = Vector2.Normalize(new Vector2(X, Y)),
             Speed = 10f,
-            OwnerId = session.AccountId,
+            OwnerID = session.ID,
             startPos = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Y),
             Damage = 50,
             menzil = 7f
@@ -43,7 +42,7 @@ public static class PlayerShotRequestHandler
         
         var response = new ShootResponsePacket
         {
-            OwnerId = session.AccountId,
+            OwnerID = session.ID,
             BulletId = bullet.BulletId,
             Speed = bullet.Speed,
             PositionX = session.PlayerData.Position.X,

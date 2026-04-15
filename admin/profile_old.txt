@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyuncu Profili - Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="modals.js"></script>
+    <style>
+        .profile-container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Moderation Button Styles */
+        .kick-btn,
+        .ban-btn,
+        .unban-btn {
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            font-weight: 800;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .kick-btn {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+
+        .kick-btn:hover {
+            background: #ef4444;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .ban-btn {
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            border-color: #ef4444;
+        }
+
+        .ban-btn:hover {
+            background: #ef4444;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+
+        .unban-btn {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        .unban-btn:hover {
+            background: #10b981;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item active">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up delay-1"
+            style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <button onclick="history.back()" class="secondary-btn"
+                    style="margin-bottom: 1rem; padding: 0.6rem 1.2rem; border-radius: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-chevron-left"></i> GERİ DÖN
+                </button>
+                <h1 class="page-title" id="prof-username">Yükleniyor...</h1>
+                <p id="prof-accid" style="color: var(--text-secondary); margin-top: -1rem; font-family: monospace;"></p>
+            </div>
+            <div id="prof-status-badge"></div>
+        </header>
+
+        <div class="profile-container" id="profile-content" style="display: none;">
+            <!-- Left Column: Identity Card -->
+            <div class="card animate-slide-up delay-2" style="height: fit-content; text-align: center;">
+                <div
+                    style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--accent-fuchsia), var(--accent-cyan)); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; border: 4px solid rgba(255,255,255,0.1);">
+                    <i class="fas fa-user-ninja" style="font-size: 3.5rem; color: #000;"></i>
+                </div>
+                <h2 id="card-username">...</h2>
+                <div id="card-premium"></div>
+
+                <div style="margin-top: 2rem; text-align: left;">
+                    <div style="margin-bottom: 1rem;">
+                        <span class="stat-label">Kulüp</span>
+                        <div id="prof-club" style="font-weight: 700;">-</div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <span class="stat-label">Son IP Adresi</span>
+                        <div id="prof-ip" style="font-family: monospace; color: var(--accent-cyan);">0.0.0.0</div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <span class="stat-label">Cihaz</span>
+                        <div id="prof-device" style="font-size: 0.9rem;">-</div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <span class="stat-label">Son Giriş</span>
+                        <div id="prof-lastseen" style="font-size: 0.9rem;">-</div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <span class="stat-label">E-Posta Adresi</span>
+                        <div id="prof-email" style="font-size: 0.9rem; color: var(--text-secondary);">...</div>
+                    </div>
+                </div>
+
+                <div class="badge-list" id="prof-roles"></div>
+            </div>
+
+            <!-- Right Column: Stats & Actions -->
+            <div class="animate-slide-up delay-3" style="display: flex; flex-direction: column; gap: 2rem;">
+                <div class="stats-grid-compact">
+                    <div class="stat-card-compact">
+                        <i class="fas fa-crown" style="color: #fbbf24;"></i>
+                        <div class="stat-label">Seviye</div>
+                        <div class="stat-value" id="stat-level">0</div>
+                    </div>
+                    <div class="stat-card-compact">
+                        <i class="fas fa-trophy" style="color: #fb7185;"></i>
+                        <div class="stat-label">Kupa</div>
+                        <div class="stat-value" id="stat-trophies" style="color: #fb7185;">0</div>
+                    </div>
+                    <div class="stat-card-compact">
+                        <i class="fas fa-gem" style="color: #22d3ee;"></i>
+                        <div class="stat-label">Elmas</div>
+                        <div class="stat-value" id="stat-gems" style="color: #22d3ee;">0</div>
+                    </div>
+                    <div class="stat-card-compact">
+                        <i class="fas fa-coins" style="color: #facc15;"></i>
+                        <div class="stat-label">Altın</div>
+                        <div class="stat-value" id="stat-coins" style="color: #facc15;">0</div>
+                    </div>
+                    <div class="stat-card-compact">
+                        <i class="fas fa-palette" style="color: var(--accent-fuchsia);"></i>
+                        <div class="stat-label">Görsel</div>
+                        <div class="stat-value" id="stat-visuals" style="font-size: 0.9rem;">ID 1 | C 1</div>
+                    </div>
+                    <div class="stat-card-compact">
+                        <i class="fas fa-calendar-check" style="color: #818cf8;"></i>
+                        <div class="stat-label">Görev</div>
+                        <div class="stat-value" id="stat-quests">0</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="margin-bottom: 1.5rem;"><i class="fas fa-shield-halved"
+                            style="color: var(--accent-fuchsia)"></i> Güvenlik & İşlemler</h3>
+                    <div id="ban-info-box"
+                        style="padding: 1.5rem; border-radius: 1rem; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 2.5rem;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 800; font-size: 1.1rem;" id="ban-status-text">...</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;"
+                                    id="ban-reason-text">Sebep belirtilmemiş.</div>
+                            </div>
+                            <div id="ban-action-btn" style="display: flex; gap: 1rem;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="margin-bottom: 1.5rem;"><i class="fas fa-users"></i> Sosyal Bilgiler & Destek</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem;">
+                        <div class="stat-card">
+                            <div class="stat-label">Arkadaş Sayısı</div>
+                            <div class="stat-value" id="stat-friends">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Destek Talepleri</div>
+                            <div class="stat-value" id="stat-tickets" style="color: var(--accent-cyan);">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Sohbet Yasağı</div>
+                            <div class="stat-value" id="stat-chatban">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Destek Yasağı</div>
+                            <div class="stat-value" id="stat-ticketban">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const playerId = urlParams.get('id');
+
+        async function loadProfile() {
+            if (!playerId) {
+                showToast('HATA: Oyuncu ID bulunamadı.', 'error');
+                return;
+            }
+            try {
+                const response = await fetch(`/api/player/profile?id=${playerId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const p = data.profile;
+                    document.getElementById('profile-content').style.display = 'grid';
+                    document.getElementById('prof-username').innerText = p.username;
+                    document.getElementById('card-username').innerText = p.username;
+                    document.getElementById('prof-accid').innerText = `@${p.accountId}`;
+                    document.getElementById('prof-club').innerText = p.clubName;
+                    document.getElementById('prof-ip').innerText = p.ip;
+                    document.getElementById('prof-device').innerText = p.device;
+                    document.getElementById('prof-lastseen').innerText = p.lastLogin;
+
+                    document.getElementById('stat-level').innerText = p.level;
+                    document.getElementById('stat-trophies').innerText = p.trophies;
+                    document.getElementById('stat-gems').innerText = p.gems;
+                    document.getElementById('stat-coins').innerText = p.coins;
+                    document.getElementById('stat-friends').innerText = p.friendCount;
+                    document.getElementById('stat-tickets').innerText = p.ticketCount;
+                    document.getElementById('stat-quests').innerText = p.questCount;
+                    document.getElementById('stat-visuals').innerText = `ID ${p.avatarId} | C ${p.nameColorId}`;
+                    document.getElementById('prof-email').innerText = p.email;
+                    document.getElementById('stat-chatban').innerText = p.chatBan ? 'YES AKLI' : 'TEMİZ';
+                    document.getElementById('stat-chatban').style.color = p.chatBan ? '#ef4444' : '#10b981';
+                    document.getElementById('stat-ticketban').innerText = p.ticketBan ? 'YASAKLI' : 'TEMİZ';
+                    document.getElementById('stat-ticketban').style.color = p.ticketBan ? '#ef4444' : '#10b981';
+
+                    // Badges
+                    const rolesContainer = document.getElementById('prof-roles');
+                    rolesContainer.innerHTML = '';
+                    p.roles.forEach(role => {
+                        const b = document.createElement('span');
+                        b.className = 'role-badge';
+                        b.innerText = role;
+                        rolesContainer.appendChild(b);
+                    });
+
+                    if (p.premium) {
+                        document.getElementById('card-premium').innerHTML = `<span class="premium-badge"><i class="fas fa-crown"></i> PREMIUM ÜYE</span><div style="font-size:0.7rem; color:var(--text-secondary); margin-top:0.3rem">${p.premiumEndTime}</div>`;
+                    }
+
+                    // Status
+                    const statusBadge = document.getElementById('prof-status-badge');
+                    if (p.status === 'Online') {
+                        statusBadge.innerHTML = `<span class="status-badge status-online" style="padding: 0.75rem 1.5rem; font-size: 1rem;">● ONLINE</span>`;
+                    } else {
+                        statusBadge.innerHTML = `<span class="status-badge status-offline" style="padding: 0.75rem 1.5rem; font-size: 1rem;">○ OFFLINE</span>`;
+                    }
+
+                    // Ban
+                    const banBox = document.getElementById('ban-info-box');
+                    const banText = document.getElementById('ban-status-text');
+                    const banReason = document.getElementById('ban-reason-text');
+                    const banAction = document.getElementById('ban-action-btn');
+
+                    banAction.innerHTML = '';
+                    const kickBtn = document.createElement('button');
+                    kickBtn.className = 'kick-btn';
+                    kickBtn.innerHTML = '<i class="fas fa-door-open"></i> KOV';
+                    kickBtn.onclick = () => kickPlayer(p.accountId);
+                    banAction.appendChild(kickBtn);
+
+                    if (p.banStatus === 'Yasaklı') {
+                        banBox.style.borderColor = '#ef4444';
+                        banBox.style.background = 'rgba(239, 68, 68, 0.05)';
+                        banText.innerText = 'HESAP YASAKLANMIŞ';
+                        banText.style.color = '#ef4444';
+                        banReason.innerText = `Neden: ${p.banReason}`;
+
+                        const unbanBtn = document.createElement('button');
+                        unbanBtn.className = 'unban-btn';
+                        unbanBtn.innerHTML = '<i class="fas fa-unlock"></i> YASAĞI KALDIR';
+                        unbanBtn.onclick = () => unbanPlayer(p.accountId);
+                        banAction.appendChild(unbanBtn);
+                    } else {
+                        banText.innerText = 'TEMİZ HESAP';
+                        banText.style.color = '#10b981';
+                        banReason.innerText = 'Hesaba ait aktif bir yasaklama bulunmuyor.';
+
+                        const banBtn = document.createElement('button');
+                        banBtn.className = 'ban-btn';
+                        banBtn.innerHTML = '<i class="fas fa-ban"></i> YASAKLA';
+                        banBtn.onclick = () => banPlayer(p.accountId);
+                        banAction.appendChild(banBtn);
+                    }
+                } else {
+                    showToast('Hata: ' + data.message, 'error');
+                }
+            } catch (e) { showToast('Profil fetch failed: ' + e.message, 'error'); }
+        }
+
+        async function unbanPlayer(id) {
+            Modal.confirm('Yasağı Kaldır', 'Bu oyuncunun yasaklamasını kaldırmak istediğinize emin misiniz?', async () => {
+                try {
+                    const res = await fetch('/api/player/unban', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ accountId: id })
+                    });
+                    const result = await res.json();
+                    showToast(result.message);
+                    loadProfile();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        async function banPlayer(id) {
+            Modal.prompt('Oyuncuyu Yasakla', 'Bu oyuncuyu yasaklamak için bir neden belirtin:', 'Kural İhlali', async (reason) => {
+                if (!reason) return;
+                try {
+                    const res = await fetch('/api/player/ban', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ accountId: id, reason: reason })
+                    });
+                    const result = await res.json();
+                    showToast(result.message, result.success ? 'success' : 'error');
+                    loadProfile();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        async function kickPlayer(id) {
+            Modal.confirm('Oyuncuyu Kov', 'Bu oyuncuyu sunucudan atmak istediğinize emin misiniz?', async () => {
+                try {
+                    const res = await fetch('/api/player/kick', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ accountId: id })
+                    });
+                    const result = await res.json();
+                    showToast(result.message, result.success ? 'success' : 'error');
+                    loadProfile();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        loadProfile();
+    </script>
+</body>
+
+</html>

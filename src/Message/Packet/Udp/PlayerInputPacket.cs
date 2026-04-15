@@ -2,36 +2,29 @@ using System.Numerics;
 
 public class PlayerInputPacket : IPacket
 {
-    public ushort SequenceNumber { get; set; }
-    public float InputX { get; set; }
-    public float InputY { get; set; }
-    public float Rotation { get; set; } // Karakterin baktığı yön (Joystick'ten bağımsız olabilir)
-    public bool IsMoving { get; set; } // Hareket ediyor mu?
+    public int SequenceNumber { get; set; }
+    public int Tick { get; set; } // Olayın gerçekleştiği zaman damgası
+    public float InputX { get; set; } = 0;
+    public float InputY { get; set; }=0;
 
     public int ConnectionToken { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {
-        // 1. UDP Header (Flags + Sequence + Token)
-        buffer.WriteByte((byte)Network.UdpPacketFlags.None); // Unreliable
-        buffer.WriteUShort(SequenceNumber);
-        buffer.WriteInt(ConnectionToken);
-
-        // 2. Payload
-        buffer.WriteShort((short)MessageType.UdpInput);
-        buffer.WriteFloat(InputX);
-        buffer.WriteFloat(InputY);
-        buffer.WriteFloat(Rotation);
-        buffer.WriteBool(IsMoving);
+        
     }
 
     public void Deserialize(ByteBuffer buffer)
     {
-        // Header (7 byte) UdpServer tarafından ayıklandı. Payload'dan devam ediyoruz.
-        InputX = buffer.ReadFloat();
-        InputY = buffer.ReadFloat();
-        Rotation = buffer.ReadFloat();
-        IsMoving = buffer.ReadBool();
-    }
+       Tick = buffer.ReadInt(); // Client'ın bu input'u ürettiği tick (Lag compensation ve Prediction için)
+       byte inputbyte = buffer.ReadByte();
 
+       if((inputbyte &1) != 0) InputX = 1;
+       else if ((inputbyte & 2) != 0) InputX = -1;
+
+       // YUKARI (Değeri 4 olan lamba yanıyor mu?)
+       if ((inputbyte & 4) != 0) InputY = 1;
+       // AŞAĞI (Değeri 8 olan lamba yanıyor mu?)
+       else if ((inputbyte & 8) != 0) InputY = -1;
+    }
 }

@@ -10,6 +10,6 @@ public class SetNameColorRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        ColorId = buffer.ReadInt();
+        ColorId = buffer.ReadVarInt();
     }
 }

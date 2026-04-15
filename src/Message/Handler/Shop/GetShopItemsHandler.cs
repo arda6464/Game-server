@@ -14,10 +14,10 @@ public static class ShopItemsHandler
         {
             response.Items.Add(new GetAllMarketItemsResponsePacket.ShopItem
             {
-                Id = item.itemId,
-                Name = item.itemName,
-                Type = (int)item.itemType,
-                Price = item.basePrice,
+                Id = item.ItemId,
+                Name = item.ItemName,
+                Type = (int)item.ItemType,
+                Price = item.BasePrice,
                 Count = item.Count
             });
         }
@@ -27,10 +27,10 @@ public static class ShopItemsHandler
             response.Offers.Add(new GetAllMarketItemsResponsePacket.OfferItem
             {
                 Title = offerItem.Title,
-                Id = offerItem.offerId,
-                ItemType = (int)offerItem.itemType,
-                OfferType = (int)offerItem.offerType,
-                Price = offerItem.basePrice,
+                Id = offerItem.OfferId,
+                ItemType = (int)offerItem.ItemType,
+                OfferType = (int)offerItem.OfferType,
+                Price = offerItem.BasePrice,
                 Count = offerItem.Count,
                 EndTime = ((DateTimeOffset)offerItem.EndTime).ToUnixTimeSeconds()
             });
@@ -38,7 +38,7 @@ public static class ShopItemsHandler
 
         session.Send(response);
        
-        Logger.genellog($"[ShopItemsHandler] {session.AccountId} kullanıcısına mağaza öğeleri gönderildi.");
+        Logger.genellog($"[ShopItemsHandler] {session.ID} kullanıcısına mağaza öğeleri gönderildi.");
        
     }
 }

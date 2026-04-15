@@ -6,17 +6,17 @@ public class NewFriendsListPacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.NewFriendsList);
-        buffer.WriteInt(Friends.Count);
+        buffer.WriteVarInt((int)MessageType.NewFriendsList);
+        buffer.WriteVarInt(Friends.Count);
         foreach (var friend in Friends)
         {
-            buffer.WriteString(friend.Id);
-            buffer.WriteInt(friend.AvatarId);
-            buffer.WriteString(friend.Username);
-            buffer.WriteInt(friend.NameColorID);
+            buffer.WriteVarInt(friend.ID); // Sayısal I
+            buffer.WriteVarInt(friend.AvatarId);
+            buffer.WriteVarString(friend.Username);
+            buffer.WriteVarInt(friend.NameColorID);
             buffer.WriteBool(friend.IsBestFriend);
-            buffer.WriteInt(friend.Trophy);
-            buffer.WriteBool(SessionManager.IsOnline(friend.Id));
+            buffer.WriteVarInt(friend.Trophy);
+            buffer.WriteBool(SessionManager.IsOnline(friend.ID));
         }
     }
 

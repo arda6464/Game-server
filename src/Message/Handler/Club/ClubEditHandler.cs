@@ -5,7 +5,6 @@ public static class ClubEditHandler
     {
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(message, true);
-        _ = read.ReadShort();
 
         var request = new ClubEditRequestPacket();
         request.Deserialize(read);
@@ -42,13 +41,13 @@ public static class ClubEditHandler
                 return;
             }
             
-            ClubManager.CreateClub(ClubName, ClubAciklama, Avatarıd, account.AccountId);
+            ClubManager.CreateClub(ClubName, ClubAciklama, Avatarıd, account.ID);
         }
         else
         {
             var club = ClubManager.LoadClub(account.Clubid);
             {
-                bool change = ClubManager.ChangeClubSettings(account.Clubid, account.AccountId, ClubName, ClubAciklama, Avatarıd);
+                bool change = ClubManager.ChangeClubSettings(account.Clubid, account.ID, ClubName, ClubAciklama, Avatarıd);
                 
                 if(change)
                 {
@@ -57,14 +56,14 @@ public static class ClubEditHandler
                         ClubName = club.ClubName,
                         ClubDescription = club.Clubaciklama,
                         ClubAvatarId = club.ClubAvatarID,
-                        AccountId = account.AccountId
+                         AccountId = account.ID
                     };
                     
                     foreach(var clubmember in club.Members)
                     {
-                        if(SessionManager.IsOnline(clubmember.Accountid))
+                        if(SessionManager.IsOnline(clubmember.ID))
                         {
-                            Session membersession = SessionManager.GetSession(clubmember.Accountid);
+                            Session membersession = SessionManager.GetSession(clubmember.ID);
                             membersession.Send(response);
                         }
                            

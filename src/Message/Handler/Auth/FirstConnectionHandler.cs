@@ -16,14 +16,14 @@ public static class FirstConnectionHandler
         // OKUMA
         ByteBuffer read = new ByteBuffer();
         read.WriteBytes(data);
-        read.ReadShort(); // Packet ID atla
         
         var request = new FirstConnectionRequestPacket();
         request.Deserialize(read);
         
         string cihazadı = request.DeviceName;
         string device = request.DeviceModel;
-        Console.WriteLine("cihaz adı: " + device);
+        Console.WriteLine("cihaz adı: " + cihazadı);
+        Console.WriteLine("cihaz model: " + device);
         string ClientKey = request.ClientKey;
         
         read.Dispose();
@@ -44,11 +44,11 @@ public static class FirstConnectionHandler
         //  YAZMA
         var response = new FirstConnectionResponsePacket
         {
-            Success = true,
+            Success = Login,
             Message = Loginreason
         };
         session.Send(response);
-        Console.WriteLine($"{device} adlı kullanıcı sunucuya giriş yaptı incelenmeye başlanıyor...");
+        
 
 
     }

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyuncu Profili - Admin Core</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="modals.js"></script>
+    <style>
+        body {
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* Bento Grid Yapısı */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr 1fr;
+            grid-template-rows: auto;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Profil Kartı (Sol Büyük) */
+        .profile-main-card {
+            grid-row: span 20; /* Prosedürel olarak diğer tüm kartların yanında durması için uzun tutuyoruz */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 2rem;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin-bottom: 2.5rem;
+        }
+
+        .avatar-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #090e1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid rgba(255, 255, 255, 0.05);
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .avatar-img i {
+            font-size: 4.5rem;
+            filter: drop-shadow(0 0 15px var(--accent-cyan));
+        }
+
+        /* İstatistikler */
+        .stat-value-large {
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-label-large {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+        }
+
+        .info-list {
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .info-item:last-child {
+            border: none;
+        }
+
+        .info-key {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .info-val {
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        /* Setting Badges */
+        .setting-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.1rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .setting-badge i {
+            font-size: 1rem;
+            opacity: 0.5;
+        }
+
+        .setting-badge.active {
+            background: rgba(34, 211, 238, 0.08);
+            border-color: rgba(34, 211, 238, 0.2);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+        }
+
+        .setting-badge.active i {
+            opacity: 1;
+            color: var(--accent-cyan);
+        }
+
+        /* Danger state for bans */
+        .setting-badge.danger.active {
+            background: rgba(239, 68, 68, 0.08);
+            border-color: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.1);
+        }
+
+        .setting-badge.danger.active i {
+            color: #ef4444;
+        }
+
+        .mod-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-premium {
+            padding: 0.8rem 1.5rem;
+            border-radius: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+        }
+
+        .btn-premium-red {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-premium-red:hover {
+            background: #ef4444;
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-premium-green {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-premium-green:hover {
+            background: #10b981;
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .span-2 {
+            grid-column: 2 / span 2;
+        }
+
+        /* Expiration Info Style */
+        .expiry-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.4rem;
+            font-weight: 600;
+        }
+
+        .expiry-info i {
+            color: var(--accent-amber);
+            font-size: 0.8rem;
+        }
+
+        .action-needed-box {
+            background: rgba(239, 68, 68, 0.03);
+            border: 1px solid rgba(239, 68, 68, 0.1);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-top-bar">
+        <div class="mobile-logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <div class="status-pill" style="padding: 0.4rem 0.8rem; font-size: 0.7rem;">
+            PLAYER
+        </div>
+    </div>
+    <!-- Aurora V2 Arkaplan -->
+    <div class="aurora-bg-v2">
+        <div class="aurora-blur" style="background: var(--accent-fuchsia); top: -10%; left: -10%;"></div>
+        <div class="aurora-blur"
+            style="background: var(--accent-cyan); bottom: -10%; right: -10%; animation-delay: -5s;"></div>
+        <div class="aurora-blur"
+            style="background: var(--accent-indigo); top: 40%; left: 30%; animation-delay: -10s; opacity: 0.08;"></div>
+    </div>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-flag"></i> Raporlar
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="admins.html" class="nav-item">
+                <i class="fas fa-user-shield"></i> Yönetim
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up"
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;">
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <button onclick="history.back()" class="secondary-btn">
+                    <i class="fas fa-arrow-left"></i> GERİ
+                </button>
+                <div>
+                    <h1 class="page-title hologram-text" id="top-username" style="margin:0;">Yükleniyor...</h1>
+                    <div id="top-accid"
+                        style="color: var(--text-secondary); font-size: 0.9rem; font-family: 'Outfit'; font-weight: 500; opacity: 0.7;">
+                    </div>
+                </div>
+            </div>
+            <div id="top-status"></div>
+        </header>
+
+        <div class="bento-grid" id="profile-container" style="display: none;">
+            <!-- Sol Panel: Ana Kimlik -->
+            <div class="bento-card glass-v2 profile-main-card animate-slide-up">
+                <div class="avatar-container">
+                    <div class="neon-ring"></div>
+                    <div class="avatar-img">
+                        <i class="fas fa-user-ninja" style="color: var(--accent-cyan);"></i>
+                    </div>
+                </div>
+
+                <h2 id="card-username"
+                    style="font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem; letter-spacing: -0.02em;">...</h2>
+                <div id="card-badge-container"
+                    style="margin-bottom: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+                </div>
+
+                <div class="info-list">
+                    <div class="info-item">
+                        <span class="info-key"><i class="fas fa-envelope"></i> E-Posta</span>
+                        <span class="info-val" id="info-email">...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key"><i class="fas fa-globe"></i> Dil</span>
+                        <span class="info-val" id="info-language">Türkçe</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key"><i class="fas fa-network-wired"></i> Son IP</span>
+                        <span class="info-val" id="info-ip" style="color: var(--accent-cyan);">0.0.0.0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key"><i class="fas fa-mobile-screen"></i> Cihaz</span>
+                        <span class="info-val" id="info-device">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key"><i class="fas fa-clock"></i> Son Görülme</span>
+                        <span class="info-val" id="info-lastseen">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İstatistik Kartları -->
+            <div class="bento-card glass-v2 animate-slide-up"
+                style="padding: 2rem; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, rgba(34, 211, 238, 0.05), transparent);">
+                <div class="stat-label-large">Kupa Sayısı</div>
+                <div class="stat-value-large" id="big-trophies" style="color: var(--accent-cyan);">0</div>
+                <div
+                    style="margin-top: 1rem; font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-circle-check"></i> DOĞRULANMIŞ SKOR
+                </div>
+            </div>
+
+            <div class="bento-card glass-v2 animate-slide-up"
+                style="padding: 2rem; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, rgba(244, 114, 182, 0.05), transparent);">
+                <div class="stat-label-large">Değerli Taşlar</div>
+                <div class="stat-value-large" id="big-gems" style="color: var(--accent-fuchsia);">0</div>
+                <div
+                    style="margin-top: 1rem; font-size: 0.8rem; color: var(--accent-fuchsia); font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-gem"></i> PREMİUM VARLIK
+                </div>
+            </div>
+
+            <!-- Kulüp Kartı -->
+            <div class="bento-card glass-v2 animate-slide-up" style="padding: 1.5rem 2rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), transparent);">
+                <h3 style="font-weight: 800; font-size: 1.1rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem;">
+                    <i class="fas fa-shield-cat" style="color: var(--accent-indigo);"></i> Kulüp Bilgileri
+                </h3>
+                <div id="club-info-content">
+                    <div style="font-size: 1.5rem; font-weight: 900; color: #fff; margin-bottom: 0.3rem;" id="info-club-name">Yükleniyor...</div>
+                    <div class="status-pill" id="info-club-role" style="font-size: 0.65rem; padding: 0.3rem 0.8rem;">Üye</div>
+                </div>
+            </div>
+
+            <!-- Premium Durumu -->
+            <div class="bento-card glass-v2 animate-slide-up" style="padding: 1.5rem 2rem; background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), transparent);">
+                <h3 style="font-weight: 800; font-size: 1.1rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem;">
+                    <i class="fas fa-crown" style="color: #fbbf24;"></i> Premium Durumu
+                </h3>
+                <div id="premium-status-content">
+                    <div style="font-size: 1.2rem; font-weight: 800; color: #fff;" id="info-premium-expiry">Aktif Değil</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;" id="info-premium-days">-</div>
+                </div>
+            </div>
+
+            <!-- Güvenlik & Bildirimler -->
+            <div class="bento-card glass-v2 span-2 animate-slide-up" style="padding: 1.5rem 2rem;">
+                <div class="mod-header">
+                    <h3 style="font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fas fa-shield-halved" style="color: var(--accent-amber);"></i> Güvenlik & Tercihler
+                    </h3>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.5rem;">
+                    <div class="setting-badge" id="badge-pushtoken"><i class="fas fa-bell"></i> PUSH TOKEN</div>
+                    <div class="setting-badge" id="badge-emailbound"><i class="fas fa-envelope-circle-check"></i>
+                        E-POSTA BAĞLI</div>
+                    <div class="setting-badge danger" id="badge-chat-ban"><i class="fas fa-message-slash"></i> CHAT BAN
+                    </div>
+                    <div class="setting-badge danger" id="badge-ticket-ban"><i class="fas fa-headset"></i> DESTEK BAN
+                    </div>
+                    <div class="setting-badge danger" id="badge-muted"><i class="fas fa-microphone-slash"></i> SUSTURULMUŞ
+                    </div>
+                </div>
+                
+                <h4 style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.1em;">BİLDİRİM AYARLARI</h4>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin-bottom: 1.5rem;">
+                    <div class="setting-badge" id="set-bestfriends" style="font-size: 0.65rem;"><i class="fas fa-heart"></i> EN İYİ ARKADAŞ</div>
+                    <div class="setting-badge" id="set-events" style="font-size: 0.65rem;"><i class="fas fa-calendar-star"></i> ETKİNLİKLER</div>
+                    <div class="setting-badge" id="set-invites" style="font-size: 0.65rem;"><i class="fas fa-user-plus"></i> DAVETLER</div>
+                    <div class="setting-badge" id="set-rewards" style="font-size: 0.65rem;"><i class="fas fa-gift"></i> ÖDÜLLER</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem;">
+                    <div class="info-item">
+                        <span class="info-key">Ban Geçmişi</span>
+                        <span class="info-val" id="info-ban-history">0 Kayıt</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key">Arkadaşlık İstekleri</span>
+                        <span class="info-val" id="info-friend-requests">0 Bekleyen</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key">Okunmamış Bildirim</span>
+                        <span class="info-val" id="info-inbox-count" style="color: var(--accent-fuchsia);">0 Mesaj</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Moderasyon -->
+            <div class="bento-card glass-v2 span-2 animate-slide-up"
+                style="border: 1px solid rgba(239, 68, 68, 0.15) !important;">
+                <div class="mod-header" style="margin-bottom: 1rem;">
+                    <h3 style="font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fas fa-gavel" style="color: #ef4444;"></i> Moderasyon Merkezi
+                    </h3>
+                    <div id="ban-status-badge"></div>
+                </div>
+                <p id="ban-status-text" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem;">
+                    Hesap durumu kontrol ediliyor...</p>
+                <div style="display: flex; gap: 1rem;" id="mod-actions">
+                    <!-- Dinamik Butonlar -->
+                </div>
+            </div>
+
+            <!-- Ban Geçmişi (Tablo) -->
+            <div class="bento-card glass-v2 span-2 animate-slide-up" id="ban-history-card" style="display: none; padding: 2rem;">
+                <h3 style="font-weight: 800; font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fas fa-history" style="color: #ef4444;"></i> Yasaklama Geçmişi
+                </h3>
+                <div class="table-container" style="max-height: 250px; overflow-y: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                        <thead>
+                            <tr style="text-align: left; border-bottom: 2px solid rgba(255,255,255,0.05); color: var(--text-secondary);">
+                                <th style="padding: 0.8rem;">Tarih</th>
+                                <th style="padding: 0.8rem;">Yetkili</th>
+                                <th style="padding: 0.8rem;">Sebep</th>
+                                <th style="padding: 0.8rem;">Bitiş</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ban-history-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Diğer Veriler Grid -->
+            <div class="bento-card glass-v2 span-2 animate-slide-up" style="padding: 2rem;">
+                <h3
+                    style="font-weight: 800; font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fas fa-layer-group" style="color: var(--accent-indigo);"></i> Varlık Özeti
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                    <div
+                        style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.02); border-radius: 1.5rem;">
+                        <div style="color: #fbbf24; font-size: 1.5rem; margin-bottom: 0.5rem;"><i
+                                class="fas fa-coins"></i></div>
+                        <div class="info-label" style="font-size: 0.6rem;">ALTIN</div>
+                        <div class="info-val" id="mini-coins">0</div>
+                    </div>
+                    <div
+                        style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.02); border-radius: 1.5rem;">
+                        <div style="color: #818cf8; font-size: 1.5rem; margin-bottom: 0.5rem;"><i
+                                class="fas fa-users"></i></div>
+                        <div class="info-label" style="font-size: 0.6rem;">ARKADAŞ</div>
+                        <div class="info-val" id="mini-friends">0</div>
+                    </div>
+                    <div
+                        style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.02); border-radius: 1.5rem;">
+                        <div style="color: #22d3ee; font-size: 1.5rem; margin-bottom: 0.5rem;"><i
+                                class="fas fa-list-check"></i></div>
+                        <div class="info-label" style="font-size: 0.6rem;">GÖREVLER</div>
+                        <div class="info-val" id="mini-quests">0</div>
+                    </div>
+                    <div
+                        style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.02); border-radius: 1.5rem;">
+                        <div style="color: #f472b6; font-size: 1.5rem; margin-bottom: 0.5rem;"><i
+                                class="fas fa-star"></i></div>
+                        <div class="info-label" style="font-size: 0.6rem;">SEVİYE</div>
+                        <div class="info-val" id="mini-level">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const playerId = urlParams.get('id');
+
+        async function loadProfile() {
+            if (!playerId) return;
+            try {
+                const response = await fetch(`/api/player/profile?id=${playerId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const p = data.profile;
+                    document.getElementById('profile-container').style.display = 'grid';
+
+                    // Header & Identity
+                    document.getElementById('top-username').innerText = p.username;
+                    document.getElementById('top-accid').innerText = `@${p.id}`;
+                    document.getElementById('card-username').innerText = p.username;
+                    document.getElementById('info-email').innerText = p.email || 'Email Yok';
+                    document.getElementById('info-language').innerText = p.dil == 'tr' ? 'Türkçe' : p.dil.toUpperCase();
+                    document.getElementById('info-ip').innerText = p.ip;
+                    document.getElementById('info-device').innerText = p.device || 'Bilinmiyor';
+                    document.getElementById('info-lastseen').innerText = p.lastLogin;
+
+                    // Security Badges
+                    const badgeIds = ['badge-pushtoken', 'badge-emailbound', 'badge-chat-ban', 'badge-ticket-ban'];
+                    badgeIds.forEach(id => document.getElementById(id).classList.remove('active'));
+
+                    if (p.hasPushToken) document.getElementById('badge-pushtoken').classList.add('active');
+                    if (p.email && p.email !== 'Bağlı Değil') document.getElementById('badge-emailbound').classList.add('active');
+                    if (p.chatBan) document.getElementById('badge-chat-ban').classList.add('active');
+                    if (p.ticketBan) document.getElementById('badge-ticket-ban').classList.add('active');
+                    if (p.muted) {
+                        const mutedEl = document.getElementById('badge-muted');
+                        mutedEl.classList.add('active');
+                        mutedEl.innerHTML = `
+                            <div>
+                                <i class="fas fa-microphone-slash"></i> SUSTURULMUŞ
+                                <div class="expiry-info"><i class="fas fa-clock"></i> Açılma: ${p.mutedEndTime}</div>
+                            </div>
+                        `;
+                        mutedEl.style.height = 'auto';
+                        mutedEl.style.flexDirection = 'column';
+                        mutedEl.style.alignItems = 'flex-start';
+                    }
+
+                    // Extended Info
+                    document.getElementById('info-ban-history').innerText = `${p.banHistoryCount} Kayıt`;
+                    document.getElementById('info-friend-requests').innerText = `${p.friendRequestCount} Bekleyen`;
+                    document.getElementById('info-inbox-count').innerText = `${p.inboxCount} Mesaj`;
+
+                    // Club & Premium
+                    document.getElementById('info-club-name').innerText = p.clubName || 'Kulüp Yok';
+                    document.getElementById('info-club-role').innerText = p.clubRole || '-';
+                    document.getElementById('info-premium-expiry').innerText = p.premium ? p.premiumEndTime : 'Aktif Değil';
+                    
+                    if (p.premium) {
+                        document.getElementById('info-premium-expiry').style.color = '#fbbf24';
+                        document.getElementById('info-premium-days').innerText = 'Premium avantajları aktif';
+                    } else {
+                        document.getElementById('info-premium-expiry').style.color = 'var(--text-secondary)';
+                        document.getElementById('info-premium-days').innerText = 'Marketten premium alabilir';
+                    }
+
+                    // Notification Settings
+                    const setBadges = {
+                        'set-bestfriends': p.notificationSettings.bestFriends,
+                        'set-events': p.notificationSettings.events,
+                        'set-invites': p.notificationSettings.invites,
+                        'set-rewards': p.notificationSettings.rewards
+                    };
+                    Object.keys(setBadges).forEach(id => {
+                        const el = document.getElementById(id);
+                        if (setBadges[id]) el.classList.add('active');
+                        else el.classList.remove('active');
+                    });
+
+                    // Badges
+                    const badgeCont = document.getElementById('card-badge-container');
+                    badgeCont.innerHTML = '';
+                    if (p.premium) {
+                        badgeCont.innerHTML += `<span class="status-pill" style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), transparent); border-color: rgba(251, 191, 36, 0.3); color: #fbbf24;"><i class="fas fa-crown"></i> PREMİUM</span>`;
+                    }
+                    p.roles.forEach(role => {
+                        badgeCont.innerHTML += `<span class="status-pill">${role}</span>`;
+                    });
+
+                    // Stats
+                    document.getElementById('big-trophies').innerText = p.trophies.toLocaleString();
+                    document.getElementById('big-gems').innerText = p.gems.toLocaleString();
+                    document.getElementById('mini-coins').innerText = p.coins.toLocaleString();
+                    document.getElementById('mini-friends').innerText = p.friendCount;
+                    document.getElementById('mini-quests').innerText = p.questCount;
+                    document.getElementById('mini-level').innerText = p.level;
+
+                    // Ban History Table
+                    const banHistoryCard = document.getElementById('ban-history-card');
+                    const banHistoryBody = document.getElementById('ban-history-body');
+                    if (p.banHistory && p.banHistory.length > 0) {
+                        banHistoryCard.style.display = 'block';
+                        banHistoryBody.innerHTML = p.banHistory.map(b => `
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.02);">
+                                <td style="padding: 0.8rem; color: var(--text-secondary);">${b.time}</td>
+                                <td style="padding: 0.8rem;"><span class="status-pill" style="font-size: 0.6rem;">${b.banner}</span></td>
+                                <td style="padding: 0.8rem;">${b.reason}</td>
+                                <td style="padding: 0.8rem; color: ${b.isPerma ? '#ef4444' : '#10b981'}; font-weight: 700;">${b.isPerma ? 'KALICI' : b.finishDate}</td>
+                            </tr>
+                        `).join('');
+                    } else {
+                        banHistoryCard.style.display = 'none';
+                    }
+
+                    // Status
+                    const statusEl = document.getElementById('top-status');
+                    statusEl.innerHTML = p.status === 'Online'
+                        ? `<span class="status-pill" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: rgba(16, 185, 129, 0.2); padding: 0.8rem 1.5rem;">ONLINE</span>`
+                        : `<span class="status-pill" style="background: rgba(255, 255, 255, 0.05); color: var(--text-secondary); border-color: rgba(255, 255, 255, 0.1); padding: 0.8rem 1.5rem;">OFFLINE</span>`;
+
+                    // Moderation
+                    const modActions = document.getElementById('mod-actions');
+                    modActions.innerHTML = '';
+
+                    const kickBtn = document.createElement('button');
+                    kickBtn.className = 'btn-premium';
+                    kickBtn.innerHTML = '<i class="fas fa-door-open"></i> SUNUCUDAN AT';
+                    kickBtn.onclick = () => kickPlayer(p.accountId);
+                    modActions.appendChild(kickBtn);
+
+                    const banStatusText = document.getElementById('ban-status-text');
+                    const banBadge = document.getElementById('ban-status-badge');
+
+                    if (p.banStatus === 'Yasaklı') {
+                        banBadge.innerHTML = `<span class="setting-badge active" style="background: rgba(239, 68, 68, 0.2); color: #ef4444; border-color: #ef4444;">YASAKLI</span>`;
+                        banStatusText.innerHTML = `
+                            <div class="action-needed-box">
+                                <div style="color: #ef4444; font-weight: 800; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-circle-exclamation"></i> AKTİF YASAKLAMA
+                                </div>
+                                <div style="font-size: 1.1rem; color: #fff; font-weight: 700; margin-bottom: 0.3rem;">Sebep: ${p.banReason}</div>
+                                <div class="expiry-info" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                                    <i class="fas fa-calendar-xmark" style="color: #ef4444;"></i> 
+                                    Açılma Tarihi: <span style="color: #fff; font-weight: 800; margin-left: 0.3rem;">${p.banEndTime}</span>
+                                </div>
+                            </div>
+                        `;
+
+                        const unbanBtn = document.createElement('button');
+                        unbanBtn.className = 'btn-premium btn-premium-green';
+                        unbanBtn.innerHTML = '<i class="fas fa-unlock"></i> YASAĞI KALDIR';
+                        unbanBtn.onclick = () => unbanPlayer(p.id);
+                        modActions.appendChild(unbanBtn);
+                    } else {
+                        banBadge.innerHTML = `<span class="setting-badge active" style="background: rgba(16, 185, 129, 0.2); color: #10b981; border-color: #10b981;">TEMİZ</span>`;
+                        banStatusText.innerText = 'Bu hesap üzerinde aktif bir kısıtlama veya yasaklama bulunmuyor.';
+
+                        const banBtn = document.createElement('button');
+                        banBtn.className = 'btn-premium btn-premium-red';
+                        banBtn.innerHTML = '<i class="fas fa-ban"></i> OYUNCUYU YASAKLA';
+                        banBtn.onclick = () => banPlayer(p.id);
+                        modActions.appendChild(banBtn);
+                    }
+
+                    // Mute Actions
+                    if (p.muted) {
+                        const unmuteBtn = document.createElement('button');
+                        unmuteBtn.className = 'btn-premium btn-premium-green';
+                        unmuteBtn.innerHTML = '<i class="fas fa-microphone"></i> SESİ AÇ';
+                        unmuteBtn.onclick = () => unmutePlayer(p.id);
+                        modActions.appendChild(unmuteBtn);
+                    } else {
+                        const muteBtn = document.createElement('button');
+                        muteBtn.className = 'btn-premium';
+                        muteBtn.innerHTML = '<i class="fas fa-microphone-slash"></i> SUSTUR';
+                        muteBtn.onclick = () => mutePlayer(p.id);
+                        modActions.appendChild(muteBtn);
+                    }
+
+                }
+            } catch (e) { showToast('Yükleme hatası: ' + e.message, 'error'); }
+        }
+
+        async function unbanPlayer(id) {
+            Modal.confirm('Yasağı Kaldır', 'Bu oyuncunun yasaklamasını kaldırmak istediğinize emin misiniz?', async () => {
+                try {
+                    const res = await fetch('/api/player/unban', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: id })
+                    });
+                    const result = await res.json();
+                    showToast(result.message);
+                    loadProfile();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        async function banPlayer(id) {
+            Modal.prompt('Oyuncuyu Yasakla', 'Bu oyuncuyu yasaklamak için bir neden belirtin:', 'Kural İhlali', async (reason) => {
+                if (!reason) return;
+                try {
+                    const res = await fetch('/api/player/ban', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: id, reason: reason })
+                    });
+                    const result = await res.json();
+                    showToast(result.message, result.success ? 'success' : 'error');
+                    loadProfile();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        async function mutePlayer(id) {
+            Modal.mutePrompt('Oyuncuyu Sustur', 'Süreyi girin ve birimi seçin:', '60', async (totalMinutes) => {
+                if (!totalMinutes || isNaN(totalMinutes)) return;
+                try {
+                    const res = await fetch('/api/player/mute', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: id, minutes: totalMinutes })
+                    });
+                    const result = await res.json();
+                    showToast(result.message, result.success ? 'success' : 'error');
+                    loadProfile();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        async function unmutePlayer(id) {
+            Modal.confirm('Sesi Aç', 'Bu oyuncunun susturmasını kaldırmak istediğinize emin misiniz?', async () => {
+                try {
+                    const res = await fetch('/api/player/unmute', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: id })
+                    });
+                    const result = await res.json();
+                    showToast(result.message, result.success ? 'success' : 'error');
+                    loadProfile();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        async function kickPlayer(id) {
+            Modal.confirm('Oyuncuyu Kov', 'Bu oyuncuyu sunucudan atmak istediğinize emin misiniz?', async () => {
+                try {
+                    const res = await fetch('/api/player/kick', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: id })
+                    });
+                    const result = await res.json();
+                    showToast(result.message, result.success ? 'success' : 'error');
+                    loadProfile();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        function logout() {
+            Modal.confirm('Çıkış Yap', 'Oturumunuzu kapatmak istediğinize emin misiniz?', async () => {
+                await fetch('/api/auth/logout');
+                window.location.href = 'login.html';
+            });
+        }
+
+        loadProfile();
+    </script>
+    <!-- Mobil Alt Menü -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-item">
+            <i class="fas fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+        <a href="players.html" class="mobile-nav-item active">
+            <i class="fas fa-users"></i>
+            <span>Oyuncular</span>
+        </a>
+        <a href="traffic.html" class="mobile-nav-item">
+            <i class="fas fa-chart-line"></i>
+            <span>Trafik</span>
+        </a>
+        <a href="support.html" class="mobile-nav-item">
+            <i class="fas fa-headset"></i>
+            <span>Destek</span>
+        </a>
+    </nav>
+</body>
+
+</html>

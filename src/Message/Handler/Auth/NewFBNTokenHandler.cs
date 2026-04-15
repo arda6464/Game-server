@@ -6,7 +6,6 @@ public static class NewFBNTokenHandler
         using (ByteBuffer read = new ByteBuffer())
         {
             read.WriteBytes(data);
-            read.ReadShort();
             string newtoken = read.ReadString();
 
             if (session.Account == null)
@@ -17,7 +16,7 @@ public static class NewFBNTokenHandler
             else
             {
                 session.Account.FBNToken = newtoken;
-                Console.WriteLine($"FBN Token kaydedildi: {newtoken} (AccountID: {session.Account.AccountId})");
+                Console.WriteLine($"FBN Token kaydedildi: {newtoken} (AccountID: {session.Account.ID})");
             }
         }
     }

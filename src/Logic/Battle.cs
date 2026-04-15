@@ -11,15 +11,23 @@ public enum BattleState
 public class Battle
 {
     public int BattleId { get; set; }
-    public MapData? Map { get; set; }
+
     public BattleState State { get; private set; } = BattleState.WaitingToStart;
-    
+
     public int BulletIdCounter = 0;
     public List<Player> Players { get; set; } = new List<Player>();
     public List<Bullet> Bullets { get; set; } = new List<Bullet>();
-    
+
     private readonly object _lock = new object();
     private DateTime _startTime;
+    public List<Vector3> SpawnPoints = new List<Vector3>
+    {
+        new Vector3(11,1,-8),
+        new Vector3(11,1,17),
+        new Vector3(40,1,16),
+        new Vector3(41,1,-9)
+    };
+
 
     public void Start()
     {
@@ -39,17 +47,17 @@ public class Battle
             if (State == BattleState.Finished) return;
             State = BattleState.Finished;
             Logger.battlelog($"[BATTLE {BattleId}] Battle stopped.");
-            
+
             // Cleanup players' arena reference
-            foreach(var player in Players)
+            foreach (var player in Players)
             {
                 if (player.session != null)
                 {
-                    player.BattleId= 0;
+                    player.BattleId = 0;
                     player.session.ChangeState(PlayerState.Lobby);
                 }
             }
-            
+
             ArenaManager.RemoveBattle(BattleId);
         }
     }
@@ -57,7 +65,7 @@ public class Battle
     public void Tick()
     {
         if (State != BattleState.Active) return;
-        
+
         UpdatePlayerPositions();
         UpdateBullets();
         BroadcastSnapshot();
@@ -102,9 +110,9 @@ public class Battle
             {
                 if (bullet.IsActive)
                 {
-                    bullet.Position += bullet.Direction * bullet.Speed;
+                    bullet.Position += bullet.Direction * bullet.Speed * TickManager.instance.DeltaTime * 20f; // *20f to keep original feel if Speed was units/tick @ 20Hz
                     float traveledDistance = Vector2.Distance(bullet.startPos, bullet.Position);
-                    
+
                     if (traveledDistance >= bullet.menzil)
                     {
                         bullet.IsActive = false;
@@ -124,27 +132,40 @@ public class Battle
     {
         lock (_lock)
         {
-            float deltaTime = 0.05f; // Fixed delta time for now (20Hz)
+            float deltaTime = TickManager.instance.DeltaTime;
+            uint currentTick = TickManager.instance.Get_Tick();
 
             foreach (var player in Players)
             {
                 if (player.IsAlive && player.InputDirection != Vector3.Zero)
                 {
-                    player.Position += player.InputDirection * player.Speed * deltaTime;
+                    Vector3 direction = Vector3.Normalize(player.InputDirection);
+                    player.Position += direction * player.Speed * deltaTime;
                     if (player.session?.PlayerData != null)
                     {
                         player.session.PlayerData.Position = player.Position;
+                        player.session.PlayerData.InputDirection = Vector3.Zero;
                     }
+                }
+
+                // --- HAFIZA SİSTEMİ (HISTORY BUFFER) ---
+                // Oyuncunun bu tick'teki pozisyonunu kaydet
+                player.PositionHistory[currentTick] = player.Position;
+
+                // Eski pozisyonları sil (maksimum 1 saniye geriye bakılmasına izin verilir)
+                if (currentTick > TickManager.instance.TickRate)
+                {
+                    player.PositionHistory.Remove(currentTick - (uint)TickManager.instance.TickRate);
                 }
             }
         }
     }
 
-    public void UpdatePlayerPosition(string accountId, Vector3 newPos)
+    public void UpdatePlayerPosition(int id, Vector3 newPos)
     {
         lock (_lock)
         {
-            var player = Players.FirstOrDefault(p => p.AccountId == accountId);
+            var player = Players.FirstOrDefault(p => p.ID == id);
             if (player != null)
             {
                 player.Position = newPos;
@@ -162,36 +183,37 @@ public class Battle
         {
             foreach (var pSource in Players)
             {
-                if (Vector3.Distance(pSource.Position, pSource.LastSentPosition) < 0.01f && 
-                    Math.Abs(pSource.Rotation - pSource.LastSentRotation) < 0.5f)
-                {
-                    continue;
-                }
+                /* if (Vector3.Distance(pSource.Position, pSource.LastSentPosition) < 0.01f &&
+                     Math.Abs(pSource.Rotation - pSource.LastSentRotation) < 0.5f)
+                 {
+                     Console.WriteLine("broadcast'te contue edildi");
+                     continue;
+                 }*/
 
                 pSource.LastSentPosition = pSource.Position;
                 pSource.LastSentRotation = pSource.Rotation;
 
                 var packet = new PlayerMovePacket
                 {
-                    AccountId = pSource.AccountId,
+                    Tick = TickManager.instance.Get_Tick(),
+                    ID = pSource.ID,
                     X = pSource.Position.X,
                     Y = pSource.Position.Y,
                     Z = pSource.Position.Z,
-                    Rotation = pSource.Rotation,
-                    SequenceNumber = 0
                 };
+
+                byte[] payloadData;
+                using (ByteBuffer payloadBuffer = new ByteBuffer())
+                {
+                    packet.Serialize(payloadBuffer);
+                    payloadData = payloadBuffer.ToArray();
+                }
 
                 foreach (var pTarget in Players)
                 {
-                    if (pTarget.AccountId != pSource.AccountId && pTarget.session?.UdpEndPoint != null)
+                    if (/*pTarget.AccountId != pSource.AccountId &&*/ pTarget.session?.UdpEndPoint != null)
                     {
-                        using (ByteBuffer buffer = new ByteBuffer())
-                        {
-                          
-                            packet.SequenceNumber = pTarget.session.GetNextSequence();
-                            packet.Serialize(buffer);
-                            pTarget.session.SendUnreliableUDP(buffer.ToArray());
-                        }
+                        pTarget.session.SendUnreliableUDP_Payload(payloadData);
                     }
                 }
 
@@ -200,11 +222,11 @@ public class Battle
         }
     }
 
-    public Player? GetPlayer(string accountId)
+    public Player? GetPlayer(int id)
     {
         lock (_lock)
         {
-            return Players.FirstOrDefault(p => p.AccountId == accountId);
+            return Players.FirstOrDefault(p => p.ID == id);
         }
     }
 
@@ -226,13 +248,13 @@ public class Battle
         }
     }
 
-    public void RemovePlayer(string accountId)
+    public void RemovePlayer(int id)
     {
         lock (_lock)
         {
-            Players.RemoveAll(p => p.AccountId == accountId);
-            Logger.battlelog($"[BATTLE {BattleId}] Player removed: {accountId} (Remaining: {Players.Count})");
-            
+            Players.RemoveAll(p => p.ID == id);
+            Logger.battlelog($"[BATTLE {BattleId}] Player removed: {id} (Remaining: {Players.Count})");
+
             if (Players.Count == 0 || (State == BattleState.Active && Players.Count(p => p.IsAlive) <= 1))
             {
                 Stop();
@@ -240,7 +262,7 @@ public class Battle
         }
     }
 
-    public void OnPlayerDied(string deadPlayerId, string killerId)
+    public void OnPlayerDied(int deadPlayerId, int killerId)
     {
         var deadPlayer = GetPlayer(deadPlayerId);
         if (deadPlayer != null)
@@ -253,12 +275,12 @@ public class Battle
             DeadPlayerId = deadPlayerId,
             KillerId = killerId
         };
-        
+
         foreach (var player in GetPlayers())
         {
             player.session?.Send(packet);
         }
-        
+
         CheckMatchEnd();
     }
 
@@ -269,11 +291,11 @@ public class Battle
             if (State != BattleState.Active) return;
 
             var alivePlayers = Players.Where(p => p.IsAlive).ToList();
-          /*  if (alivePlayers.Count <= 1)
-            {
-                // TODO: Victory/Defeat packets
-                Stop();
-            }*/
+            /*  if (alivePlayers.Count <= 1)
+              {
+                  // TODO: Victory/Defeat packets
+                  Stop();
+              }*/
         }
     }
 

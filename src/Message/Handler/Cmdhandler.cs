@@ -1,4 +1,7 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
+
 public class Cmdhandler
 {
     public static void Start()
@@ -14,552 +17,176 @@ public class Cmdhandler
                 cmd = cmd.Substring(1);
                 string[] args = cmd.Split(" ");
                 if (args.Length < 1) continue;
+
                 switch (args[0])
                 {
                     case "addpre":
-                        if (args.Length != 2) Console.WriteLine("kullanım: /addpre (accid)");
-                        else
-                            Addpremium(args[1]);
+                        if (args.Length != 2) Console.WriteLine("kullanım: /addpre (ID)");
+                        else Addpremium(args[1]);
                         break;
                     case "removepre":
-                        if (args.Length != 2) Console.WriteLine("kullanım: /removepre (accid)");
-                        else
-                            Removepremium(args[1]);
+                        if (args.Length != 2) Console.WriteLine("kullanım: /removepre (ID)");
+                        else Removepremium(args[1]);
                         break;
                     case "setcolorid":
-                        if (args.Length != 3) Console.WriteLine("kullanım: /setcolorid (accid) (colorid)");
-                        else
-                            Setcolorid(args[1], args[2]);
+                        if (args.Length != 3) Console.WriteLine("kullanım: /setcolorid (ID) (colorid)");
+                        else Setcolorid(args[1], args[2]);
                         break;
                     case "help":
-                        Console.WriteLine("/help - bu komut\n /addpre (accid) - hesaba premium ekler\n /removepre (accid) - hesaptan premium'u kaldırır\n /setcolorid (accid) (colorid) - hesbaın isim rengine müdahale eder\n /clearcmd - cmd temizler\n /accinfo (id) - account info verilir \n /saveacss - tüm hesapları kaydeder \n /sendfriends - belirli bir hesaba belirli bir hesaptan istek atar \n /allistekdelete  - hesabın  tüm  friends isteklerini temizler \n /sendbildirim- banner ile bildirim yollar \n /createclub - 20 kulüp oluşturur \n /ban - hesap banlar \n /showprofile - belirli hesabın profiline baktırır \n /DeleteAllNotfications - hesapların tüm bildirim geçmişini siler \n ");
+                        Console.WriteLine("/help - bu komut\n /addpre (ID) - hesaba premium ekler\n /removepre (ID) - hesaptan premium'u kaldırır\n /setcolorid (ID) (colorid) - hesabın isim rengine müdahale eder\n /clearcmd - cmd temizler\n /accinfo (ID) - account info verilir \n /saveaccs - tüm hesapları kaydeder \n /mute (ID) (dakika) - oyuncuyu susturur\n /unmute (ID) - oyuncunun susturmasını kaldırır\n /ban (ID) (sebep) - oyuncuyu yasaklar \n /unban (ID) - yasagı kaldırır");
                         break;
-                    case "addcoin":
+                    case "mute":
+                        if (args.Length != 3) Console.WriteLine("kullanım: /mute (ID) (dakika)");
+                        else
+                        {
+                            var muteAcc = ResolveAccount(args[1]);
+                            if (muteAcc != null)
+                            {
+                                var sess = SessionManager.GetSession(muteAcc.ID);
+                                var logic = sess?.Logic ?? new Logic.AccountLogic(muteAcc, sess);
+                                logic.Mute(TimeSpan.FromMinutes(int.Parse(args[2])));
+                                Console.WriteLine($"{muteAcc.Username} {args[2]} dakika susturuldu.");
+                            }
+                        }
+                        break;
+                    case "unmute":
+                        if (args.Length != 2) Console.WriteLine("kullanım: /unmute (ID)");
+                        else
+                        {
+                            var unmuteAcc = ResolveAccount(args[1]);
+                            if (unmuteAcc != null)
+                            {
+                                var sess = SessionManager.GetSession(unmuteAcc.ID);
+                                var logic = sess?.Logic ?? new Logic.AccountLogic(unmuteAcc, sess);
+                                logic.Unmute();
+                                Console.WriteLine($"{unmuteAcc.Username} susturması kaldırıldı.");
+                            }
+                        }
                         break;
                     case "accinfo":
-                        if (args.Length != 2) Console.WriteLine("kullanım: /accinfo (accid)");
+                        if (args.Length != 2) Console.WriteLine("kullanım: /accinfo (ID)");
                         else
-                            AccountManager.Getaccountinfo(args[1]);
+                        {
+                            var acc = ResolveAccount(args[1]);
+                            if (acc != null) AccountManager.Getaccountinfo(acc.ID);
+                        }
                         break;
                     case "clearcmd":
                         Console.Clear();
                         break;
-                    case "testcreateacc":
-                        AccountManager.CreateAccount("tr");
-                        break;
                     case "saveaccs":
-                        AccountManager.SaveAccounts();
+                        AccountCache.SaveAll();
                         break;
-                    case "sendfriends":
-                        if (args.Length != 2) Console.WriteLine("kullanım: /sendfriends (accid)");
-                        else
-                            Sendfakefriendsrequest(args[1]);
+                    case "ban":
+                        if (args.Length < 2) Console.WriteLine("kullanım: /ban (ID) (sebep)");
+                        else AccountBan(args[1], args.Length > 2 ? args[2] : "");
+                        break;
+                    case "unban":
+                        if (args.Length != 2) Console.WriteLine("kullanım: /unban (ID)");
+                        else Unban(args[1]);
+                        break;
+                    case "showprofile":
+                        if (args.Length != 2) Console.WriteLine("kullanım: /showprofile (ID)");
+                        else ProfileShow(args[1]);
                         break;
                     case "restartserver":
                         Console.WriteLine("Sunucu yeniden başlatılıyor...");
-                        Logger.genellog("[CMD] Sunucu restart komutu alındı");
-                        // Tüm bağlantıları kapat ve temizle
-                        foreach (var session in SessionManager.GetSessions().ToList())
-                        {
-                            session.Value.Close();
-                        }
+                        foreach (var session in SessionManager.GetSessions().ToList()) session.Value.Close();
                         AccountCache.Stop();
                         ClubManager.Save();
                         AccountManager.SaveAccounts();
-                        Environment.Exit(0); // Programı sonlandır
-                        break;
-                    case "allistekdelete":
-                        if (args.Length != 2) Console.WriteLine("kullanım: /allistekdelete (accid)");
-                        else
-                            DeleteAllİstek(args[1]);
-                        break;
-                    case "sendbildirim":
-                      
-                    //    if (args.Length < 2 || args.Length > 6) Console.WriteLine("kullanım: /sendbildirim (notficaiton id) (message) posiyonel: (acıklama)(url)");
-                       
-                            Console.WriteLine("Göndermek istediğiniz ID'yi giriniz:");
-                            string player = Console.ReadLine();
-                            Console.WriteLine("bildirim gönderme işlemi başladı... lütfen ID giriniz \n 10- Banner Bildirimi \n 11- Güncelleme Bildirimi \n 12- Özel Bildirim ");
-                            string  idstr = Console.ReadLine();
-                            int id = Convert.ToInt32(idstr);
-                            //int index = args.Length;
-                                  
-
-
-                            switch (id)
-                            {
-                                case 10:
-                                Console.WriteLine("Banner Title giriniz:");
-                                    string title = Console.ReadLine();
-                                    Console.WriteLine("Banner Message giriniz:");
-                                    string message = Console.ReadLine();
-                                    Console.WriteLine("Url  giriniz:");
-                                    string Url = Console.ReadLine();
-                                    Console.WriteLine("buton text giriniz:");
-                                    string buttonText = Console.ReadLine();
-                                    Notfication notfication = new Notfication
-                                    {
-                                         type =  (NotficationTypes.NotficationType)id,
-                                        Title = title,
-                                        Message = message,
-                                        ButtonText = buttonText,
-                                        Url = Url,
-                                    };
-                                NotificationManager.Add(AccountCache.Load(player), notfication);
-                                    if( SessionManager.IsOnline(player))
-                                    {
-                                        Session session = SessionManager.GetSession(player);
-                                        NotficationSender.Send(session, notfication);
-                                    }
-                                    else
-                                        Console.WriteLine("oyuncu aktif değil");
-                                    break;
-                                case 4:
-                                   // SendNotfication(id, args[2], args[3]);
-                                    break;
-                                case 5:
-                                   
-                                   // SendNotfication(id, args[2], args[3], args[4]);
-                                    break;
-
-                            }
-
-
-
-                        break;
-                    case "deleteticket":
-                        Console.WriteLine("id girin:");
-                        string accid = Console.ReadLine();
-                        var acc = AccountCache.Load(accid);
-                        acc.Tickets.Clear();
-                        break;
-                    case "createclub":
-                        if (args.Length != 2) Console.WriteLine("kullanım: /createclub (club name)");
-                        else
-                            CreateClub(20, args[1]);
-                        break;
-                    case "ban":
-                        if (args.Length < 1 || args.Length < 4) Console.WriteLine("kullanım: /ban (accountid) (sebep(opsiyonel))");
-                        else
-                            AccountBan(args[1], args[2]);
-                        break;
-                    case "unban":
-                        if (args.Length < 1 || args.Length < 4) Console.WriteLine("kullanım: /ban (accountid) (sebep(opsiyonel))");
-                        else
-                           Unban(args[1]);
-                        break;
-                    case "showprofile":
-                        if (args.Length != 2) Console.WriteLine("kullanım: /showprofile (accountıd)");
-                        else
-                            ProfileShow(args[1]);
-                        break;
-                    case "deleteAllNotfications":
-                        AccountManager.DeleteNotfications();
-                        break;
-                    case "inbox":
-                        Sendinboxmessage();
-                        break;
-                    case "ResetAccount":
-                        ResetAccount();
-                        break;
-                    case "Porno":
-                        PornoTest();
-                        break;
-                    case "Lobby":
-                        Console.WriteLine("lobby count " + LobbyManager.Lobbies.Count );
-                        break;
-                    case "maintance":
-                        Maintance.StartMaintance(TimeSpan.FromHours(2), false);
-                        break;
-                    case "maintancefinish":
-                        Maintance.finishMaintence();
-                        break;
-                    case "changematch":
-                        MatchMaking.PlayersPerMatch = 1;
-                        Console.WriteLine("per match değişti: " + MatchMaking.PlayersPerMatch);
-                        break;
-                    case "testtropy":
-                        Testtropy();
-                        break;
-                    case "system":
-                        TestMessage();
-                        break;
-                    case "mail":
-                        showrank();
-                        break;
-                    case "Banner":
-                        SendBanner();
-                        break;
-                    case "tst":
-                        SendTestMessage();
-                        break;
-                    case "quest":
-                        TestQuest();
-                        break;
-                    case "push":
-                        {
-                            Console.Write("ID: ");
-                            string acccid = Console.ReadLine();
-                            Console.Write("Title: ");
-                            string title = Console.ReadLine();
-                            Console.Write("Message: ");
-                            string message = Console.ReadLine();
-                            FireTOken(title, message, acccid);
-                        }
+                        Environment.Exit(0);
                         break;
                     default:
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.WriteLine("ilgili komut bulunamadı. komutlara erişmek için /help komutunu deneyin");
-                        Console.ResetColor();
-
+                        Console.WriteLine("Komut bulunamadı. /help yazın.");
                         break;
                 }
             }
             catch (Exception ex)
             {
                 Logger.errorslog("[CMD HANDLER] hata: " + ex.Message);
-
             }
-
         }
     }
-    public static void Addpremium(string id)
+
+    private static AccountManager.AccountData? ResolveAccount(string input)
     {
+        if (int.TryParse(input, out int id))
+        {
+            return AccountCache.Load(id);
+        }
+        Console.WriteLine("Hata: Geçersiz sayısal ID.");
+        return null;
+    }
 
-
-        var account = AccountCache.Load(id);
+    public static void Addpremium(string input)
+    {
+        var account = ResolveAccount(input);
         if (account != null)
         {
-            account.Premium += 1; // date eklemedik şimdilik
-            AccountManager.SaveAccounts();
-            Logger.genellog($"{account.Username}({account.AccountId})'ye premium eklendi bitiş tarihi: {account.PremiumEndTime}");
-
-
+            var session = SessionManager.GetSession(account.ID);
+            var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
+            logic.SetPremium(account.Premium + 1);
+            Console.WriteLine($"{account.Username} premium seviyesi artırıldı.");
         }
-        else
-            Logger.errorslog($"[cmd handler] {id} ile aranan oyuncunun hesabı bulunamadı");
-
-
     }
-    private static void Removepremium(string id)
+
+    private static void Removepremium(string input)
     {
-        var account = AccountManager.LoadAccount(id);
+        var account = ResolveAccount(input);
         if (account != null)
         {
-            if (account.Premium > 0)
-            {
-                account.Premium = 0;
-                Logger.genellog($"{account.Username} ({account.AccountId})'nin premium'u kaldırıldı.");
-            }
-            else
-                Logger.errorslog($"{account.Username} ({account.AccountId})'nin premium'u zaten yok?! : {account.Premium}");
+            var session = SessionManager.GetSession(account.ID);
+            var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
+            logic.RemovePremium();
+            Console.WriteLine($"{account.Username} premium üyeliği kaldırıldı.");
         }
-        else
-            Logger.errorslog($"[cmd handler] {id} ile aranan oyuncunun hesabı bulunamadı");
     }
-    private static void Setcolorid(string id, string colorids)
+
+    private static void Setcolorid(string input, string colorids)
     {
-        var account = AccountManager.LoadAccount(id);
+        var account = ResolveAccount(input);
+        if (account != null && int.TryParse(colorids, out int colorid))
+        {
+            var session = SessionManager.GetSession(account.ID);
+            var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
+            logic.SetNameColor(colorid);
+            Console.WriteLine($"{account.Username} isim rengi güncellendi.");
+        }
+    }
+
+    private static void AccountBan(string input, string sebep)
+    {
+        var account = ResolveAccount(input);
         if (account != null)
         {
-            try
-            {
-                int colorid = Convert.ToInt32(colorids);
-                account.Namecolorid = colorid;
-            }
-            catch (Exception ex)
-            {
-                Logger.errorslog($"[CMD HANDLER - SETCOLORİD] hata: {ex.Message} ");
-            }
+            BanManager.BanPlayer(account.ID, "Sistem", string.IsNullOrEmpty(sebep) ? "Konsol üzerinden yasaklandı" : sebep, true);
+            Console.WriteLine($"{account.Username} banlandı.");
         }
     }
 
-    private static void Sendfakefriendsrequest(string id)
+    private static void Unban(string input)
     {
-        var acccount = AccountCache.Load("WHM7ZVYY");
-        string fakeid = "7LRLRJZ6";
-        acccount.Requests.Add(new FriendInfo
-        {
-            Id = fakeid,
-            AvatarId = 3,
-            Username = "test31"
-        });
-
-        Logger.genellog($"{acccount.Username} ({acccount.AccountId}) kişisini arkadaş ekleme sistemi test etme işlemi başladı...");
-    }
-    private static void DeleteAllİstek(string id)
-    {
-        AccountManager.AccountData acccount = AccountManager.LoadAccount(id);
-
-
-        AccountManager.SaveAccounts();
-        Console.WriteLine("tüm hesaplar silindi");
-    }
-   /* private static void SendNotfication(int id, string message, string acıklamna = "", string url = "time brawl")
-    {
-        string accid = "WHM7ZVYY";
-        AccountManager.AccountData acccount = AccountCache.Load(accid);
-        if (acccount != null)
-        {
-           Notification notification = new Notification(
-    id,
-    message,
-    acıklamna,
-    url
-);
-            NotificationManager.Add(acccount, notification);
-            if (SessionManager.IsOnline(acccount.AccountId))
-            {
-                Session session = SessionManager.GetSession(acccount.AccountId);
-                NotificationSender.Send(session, notification);
-            }
-            else
-                Console.WriteLine("oyuncu aktif değil");
-            Logger.genellog($"{acccount.Username} adlı kullanıcısına {notification} bildirimi eklendi");
-        }
-    }*/
-    private static void CreateClub(int count, string name)
-    {
-        int index = 0;
-        for (int i = 0; i < count; i++)
-        {
-            string des = name + "aciklama" + index;
-            ClubManager.CreateClub(name + index, des, 1,"WHM7ZVYY");
-            index++;
-        }
-        Logger.genellog(" Toplam  oluşturulan klan: " + index);
-    }
-    private static void AccountBan(string id, string sebep)
-    {
-        AccountManager.AccountData account = AccountCache.Load(id);
+        var account = ResolveAccount(input);
         if (account != null)
         {
-            BanManager.BanPlayer(account.AccountId,"Sistem","PORNOMATİK HİLELER KULLANMASI", false, TimeSpan.FromMinutes(5));
-           
-            if (SessionManager.IsOnline(account.AccountId))
+            BanManager.UnbanPlayer(account.ID, "Sistem", "Konsol üzerinden kaldırıldı");
+            Console.WriteLine($"{account.Username} banı kaldırıldı.");
+        }
+    }
+
+    private static void ProfileShow(string input)
+    {
+        var account = ResolveAccount(input);
+        if (account != null)
+        {
+            if (SessionManager.IsOnline(account.ID))
             {
-                Session session = SessionManager.GetSession(account.AccountId);
-                if (session != null)
-                {
-                    string banmesage = BanManager.GetBanMessage(account.AccountId);
-                    Loginfailed.Send(session, banmesage, 99);
-                    SessionManager.RemoveSession(account.AccountId);
-                }
+                Session session = SessionManager.GetSession(account.ID);
+                ShowProfileHandler.test(session);
+                Console.WriteLine($"{account.Username} için profil testi çalıştırıldı.");
             }
+            else Console.WriteLine("Oyuncu online değil.");
         }
     }
-    private static void ProfileShow(string acccountId)
-    {
-        Session session = SessionManager.GetSession(acccountId);
-        ShowProfileHandler.test(session);
-        Console.WriteLine("profile test runing");
-    }
-    private static void Sendinboxmessage()
-    {
-        Console.WriteLine("slm");
-        Notfication inbox = new Notfication
-        {
-             type =  NotficationTypes.NotficationType.Inbox,
-            Sender = "Sistem",
-            Message = "Teşekkür ederiz",
-            IsViewed = false,
-            Timespam = DateTime.Now
-        };
-        string accid = "DKNTY40T";
-        AccountManager.AccountData acccount = AccountManager.LoadAccount(accid);
-          acccount.inboxesNotfications.Add(inbox);
-        if (SessionManager.IsOnline(acccount.AccountId))
-        {
-            Session session = SessionManager.GetSession(acccount.AccountId);
-            NotficationSender.Send(session, inbox);
-          
-        }
-        else
-        {
-            Console.WriteLine("oyuncu aktif değil");
-            Logger.genellog($"{acccount.Username} adlı kullanıcısına  bildirim eklendi");
-        }
-
-    }
-    private static void ResetAccount()
-    {
-        Console.WriteLine("Hesap resetleniyor...");
-        AccountManager.AccountData account = AccountCache.Load("XW2RY9UI");
-        if (account == null)
-        {
-            Logger.errorslog("[ResetAccount] Account bulunamadı!");
-            return;
-        }
-        if(account.Clubid != -1)
-        {
-            ClubManager.RemoveMember(account.Clubid, account.AccountId);
-        }
-        // Hesabı sıfırla
-        account.Clubid = -1;
-        account.clubRole = ClubRole.Member;
-        account.Level = 1;
-        account.Gems = 0;
-        account.Avatarid = 1;
-        account.Namecolorid = 1;
-        account.Friends.Clear();
-        account.Requests.Clear();
-        
-        AccountManager.SaveAccounts();
-        Logger.genellog($"[ResetAccount] {account.Username} hesabı resetlendi");
-    }
-
-    private static void PornoTest()
-    {
-        string id = "0FU8YO95";
-        var acccount = AccountCache.Load(id);
-        AccountManager.AddRole(acccount, Role.Roles.Owner);
-
-    }
-    private static void Unban(string accountid)
-    {
-        BanManager.UnbanPlayer(accountid, "Sistem", "Yanlış yasaklama");
-    }
-
-    private static void Testtropy()
-    {
-        var account = AccountCache.Load("4P4ZDHN8");
-        account.Trophy = 5000;
-        Console.WriteLine("trophy set edildi");
-    }
-    private static void showrank()
-    {
-        var account = AccountCache.Load("LYOF542Y");
-        account.Email = "arda646460@gmail.com";
-        account.Password = "1234";
-        Console.WriteLine("Eposta bağlandı");
-    }
-    private static void SendBanner()
-    {
-        var cachedacccounts = AccountCache.GetCachedAccounts();
-        foreach(var kvp in cachedacccounts)
-        {
-            var acccount = kvp.Value;
-            Notfication notification = new Notfication
-            {
-                 type =  NotficationTypes.NotficationType.banner,
-                Title = "Yeni Düzeltmeler!",
-                Message = "Düzeltilen bazı şeyler:\n İnbox'a bildirim gelmeme hatası\n Avatar değiştirememe hatası\n Takım kodu gösterilmeme hatası\n Arkadaşlık isteği gönderirken ID'iniziz gözükmemesi\nDestek sisteminde bilet oluşturma spamı engellendi\n Marketdeki itemlerin düzgün gözükmemesi ",
-                ButtonText = "Tamam",
-                IsViewed = false
-            };
-            acccount.Notfications.Add(notification);
-        }
-    }
-    private static void SendTestMessage()
-    {
-        var cachedacccounts = AccountCache.GetCachedAccounts();
-        foreach (var kvp in cachedacccounts)
-        {
-            var acccount = kvp.Value;
-            if (SessionManager.IsOnline(acccount.AccountId))
-            {
-                Session session = SessionManager.GetSession(acccount.AccountId);
-                MessageCodeManager.Send(session, MessageCodeManager.Message.ClubFull);
-            }
-
-        }
-    }
-    private static void TestMessage()
-    {
-
-        var club = ClubManager.LoadClub(1);
-
-        ClubMessage message = new ClubMessage
-        {
-            messageFlags = ClubMessageFlags.HasSystem,
-            eventType = ClubEventType.JoinMessage,
-            ActorName = "arda"
-        };
-        club.Messages.Add(message);
-        ByteBuffer buffer = new ByteBuffer();
-        buffer.WriteShort((short)MessageType.SendTeamMessageResponse);
-        buffer.WriteByte((byte)ClubMessageFlags.HasSystem);
-        buffer.WriteInt((int)ClubEventType.JoinMessage);
-        buffer.WriteString(message.ActorName);
-        buffer.WriteString("dskdslkdsjkdkjsd");
-
-        foreach (var member in club.Members)
-        {
-            if (SessionManager.IsOnline(member.Accountid))
-            {
-                Session session = SessionManager.GetSession(member.Accountid);
-                session.Send(buffer.ToArray());
-            }
-        }
-        buffer.Dispose();
-    }
-    private static void TestQuest()
-    {
-        Console.Write("id: ");
-        string id = Console.ReadLine();
-        var acccount = AccountCache.Load(id);
-        if (acccount == null)
-        {
-            Console.WriteLine("Hesap bulunamadı");
-            return;
-        }
-
-        Quest quest = new Quest
-        {
-            Type = Quest.MissionType.SendChatMessage,
-            ID = 1,
-            IsCompleted = false,
-            CurrentGoal = 0,
-            IsDailyQuest = true,
-            IsPremium = false,
-            RewardType = ItemType.Gems,
-            Goal = 200,
-            Target = 3
-        };
-        Quest quest2 = new Quest
-        {
-            Type = Quest.MissionType.JoinTeam,
-            ID = 2,
-            IsCompleted = false,
-            CurrentGoal = 0,
-            IsDailyQuest = true,
-            IsPremium = true,
-            RewardType = ItemType.Coins,
-            Goal = 100,
-            Target = 5
-        };
-        Quest quest3 = new Quest
-        {
-            Type = Quest.MissionType.SendChatMessage,
-            ID = 3,
-            IsCompleted = false,
-            CurrentGoal = 0,
-            IsDailyQuest = false,
-            IsPremium = false,
-            RewardType = ItemType.Gems,
-            Goal = 1000,
-            Target = 10
-        };
-
-        acccount.Quests.Add(quest);
-        acccount.Quests.Add(quest2);
-        acccount.Quests.Add(quest3);
-    }
-    private static void FireTOken(string title, string message,string accountıd)
-    {
-        var acccount = AccountCache.Load(accountıd);
-        if (acccount == null)
-        {
-            Console.WriteLine("Hesap bulunamadı");
-            return;
-        }
-        Notfication notfication = new Notfication
-        {
-            type = NotficationTypes.NotficationType.Push,
-            Title = title,
-            Message = message
-        };
-       AndroidNotficationManager.SendNotification(title, message, acccount.FBNToken);
-    }
-            
 }

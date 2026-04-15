@@ -1,11 +1,11 @@
 public class PongPacket : IPacket
 {
-       public double ClientSentTime { get; set; }
+       public float ClientSentTime { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {
-        buffer.WriteShort((short)MessageType.Pong);
-        buffer.WriteDouble(ClientSentTime);
+        buffer.WriteVarInt((int)MessageType.Pong);
+        buffer.WriteFloat(ClientSentTime);
     }
 
     public void Deserialize(ByteBuffer buffer)

@@ -10,6 +10,6 @@ public class JoinTeamRequestPacket : IPacket
 
     public void Deserialize(ByteBuffer buffer)
     {
-        TeamId = buffer.ReadInt();
+        TeamId = buffer.ReadVarInt();
     }
 }

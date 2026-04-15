@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market & Ekonomi - Admin Core</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="modals.js"></script>
+    <style>
+        .market-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .economy-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .total-value {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin: 1rem 0;
+        }
+
+        .rich-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .rich-table th {
+            text-align: left;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .rich-table td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-weight: 600;
+        }
+
+        .rank-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .rank-1 {
+            background: #fbbf24;
+            color: #000;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        }
+
+        .rank-2 {
+            background: #94a3b8;
+            color: #000;
+        }
+
+        .rank-3 {
+            background: #b45309;
+            color: #fff;
+        }
+
+        .currency-tag {
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-flag"></i> Raporlar
+            </a>
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="client_errors.html" class="nav-item">
+                <i class="fas fa-bug"></i> İstemci Hataları
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="admins.html" class="nav-item">
+                <i class="fas fa-user-shield"></i> Yönetim
+            </a>
+            <a href="market.html" class="nav-item active">
+                <i class="fas fa-shopping-cart"></i> Market
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up">
+            <h1 class="page-title">Market & Ekonomi Analizi</h1>
+            <p style="color: var(--text-secondary); margin-top: -1rem;">Sunucu genelindeki varlık dağılımı ve ekonomi
+                sağlığı.</p>
+        </header>
+
+        <div class="market-grid">
+            <!-- Genel Ekonomi Statları -->
+            <div class="card economy-card animate-slide-up delay-1">
+                <i class="fas fa-gem" style="font-size: 2.5rem; color: var(--accent-cyan);"></i>
+                <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem; font-weight: 700;">TOPLAM ELMAS</div>
+                <div class="total-value" id="total-gems" style="color: var(--accent-cyan);">0</div>
+            </div>
+
+            <div class="card economy-card animate-slide-up delay-1">
+                <i class="fas fa-coins" style="font-size: 2.5rem; color: #fbbf24;"></i>
+                <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem; font-weight: 700;">TOPLAM ALTIN</div>
+                <div class="total-value" id="total-coins" style="color: #fbbf24;">0</div>
+            </div>
+
+            <!-- Market Paket Yönetimi -->
+            <div class="card span-2 animate-slide-up delay-2" style="grid-column: span 2;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h3><i class="fas fa-box-open" style="color: #6366f1;"></i> Market Ürünleri & Paketler</h3>
+                    <button class="btn-refresh" style="padding: 0.6rem 1.2rem;" onclick="showAddPackageModal()">
+                        <i class="fas fa-plus"></i> YENİ PAKET EKLE
+                    </button>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1rem;">Temel Ürünler</h4>
+                    <table class="rich-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>İsim</th>
+                                <th>Tür</th>
+                                <th>Miktar</th>
+                                <th>Fiyat</th>
+                                <th width="100">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="item-list">
+                            <!-- Items here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1rem;">Özel Teklifler (Limited)</h4>
+                    <table class="rich-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Başlık</th>
+                                <th>Tür</th>
+                                <th>Süre</th>
+                                <th>Fiyat</th>
+                                <th width="100">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="offer-list">
+                            <!-- Offers here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        async function fetchData() {
+            try {
+                // Analytics
+                const resAnly = await fetch('/api/market/analytics');
+                const dataAnly = await resAnly.json();
+                document.getElementById('total-gems').innerText = dataAnly.totalGems.toLocaleString();
+                document.getElementById('total-coins').innerText = dataAnly.totalCoins.toLocaleString();
+
+                // Market Items & Offers
+                const resMkt = await fetch('/api/market/all');
+                const dataMkt = await resMkt.json();
+                renderMarket(dataMkt);
+            } catch (e) { showToast('Veriler alınamadı', 'error'); }
+        }
+
+        function renderMarket(data) {
+            const itemList = document.getElementById('item-list');
+            itemList.innerHTML = data.items.map(item => {
+                let priceHtml = '';
+                if (item.priceType == 0) priceHtml = `${item.basePrice} <i class="fas fa-gem" style="font-size:0.8rem; color:var(--accent-cyan)"></i>`;
+                else if (item.priceType == 1) priceHtml = `${item.basePrice} <i class="fas fa-coins" style="font-size:0.8rem; color:#fbbf24"></i>`;
+                else priceHtml = `${item.basePrice} TL`;
+
+                return `
+                <tr>
+                    <td>#${item.itemId}</td>
+                    <td>${item.itemName}</td>
+                    <td><span class="currency-tag" style="background: ${item.itemType == 0 ? 'rgba(34,211,238,0.1)' : 'rgba(251,191,36,0.1)'}; color: ${item.itemType == 0 ? 'var(--accent-cyan)' : '#fbbf24'}">
+                        <i class="fas ${item.itemType == 0 ? 'fa-gem' : 'fa-coins'}"></i> ${item.itemType == 0 ? 'Gems' : 'Coins'}
+                    </span></td>
+                    <td>${item.Count}</td>
+                    <td>${item.basePrice == 0 ? '<span style="color:var(--accent-green)">BEDAVA</span>' : priceHtml}</td>
+                    <td>
+                        <button onclick="removeItem(${item.itemId})" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            `}).join('');
+
+            const offerList = document.getElementById('offer-list');
+            offerList.innerHTML = data.offers.map(offer => {
+                const end = new Date(offer.EndTime);
+                const diff = Math.max(0, Math.floor((end - new Date()) / (1000 * 60 * 60)));
+                
+                let priceHtml = '';
+                if (offer.priceType == 0) priceHtml = `${offer.basePrice} <i class="fas fa-gem" style="font-size:0.8rem; color:var(--accent-cyan)"></i>`;
+                else if (offer.priceType == 1) priceHtml = `${offer.basePrice} <i class="fas fa-coins" style="font-size:0.8rem; color:#fbbf24"></i>`;
+                else priceHtml = `${offer.basePrice} TL`;
+
+                return `
+                <tr>
+                    <td>#${offer.offerId}</td>
+                    <td>${offer.Title}</td>
+                    <td>${offer.offerType == 4 ? 'Flash Sale' : 'Özel Teklif'}</td>
+                    <td>${diff} saat kaldı</td>
+                    <td>${offer.basePrice == 0 ? '<span style="color:var(--accent-green)">BEDAVA</span>' : priceHtml}</td>
+                    <td>
+                        <button onclick="removeOffer(${offer.offerId})" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            `}).join('');
+        }
+
+        function showAddPackageModal() {
+            const html = `
+                <div style="text-align: left;">
+                    <label class="modal-label">Paket Başlığı / İsmi</label>
+                    <input type="text" id="pkg-name" class="modal-input" placeholder="Örn: Hafta Sonu Fırsatı">
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label class="modal-label">Satılacak Ürün</label>
+                            <select id="pkg-type" class="modal-input">
+                                <option value="0">Elmas (Gems)</option>
+                                <option value="1">Altın (Coins)</option>
+                                <option value="2">Battle Pass</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="modal-label">Miktar</label>
+                            <input type="number" id="pkg-count" class="modal-input" value="100">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label class="modal-label">Ödeme Birimi</label>
+                            <select id="pkg-price-type" class="modal-input">
+                                <option value="2">Gerçek Para (TL)</option>
+                                <option value="0">Elmas (Gems)</option>
+                                <option value="1">Altın (Coins)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="modal-label">Fiyat</label>
+                            <input type="number" id="pkg-price" class="modal-input" value="0">
+                        </div>
+                    </div>
+
+                    <label class="modal-label">Süre (Saat)</label>
+                    <input type="number" id="pkg-hours" class="modal-input" value="24" style="width: 100%;">
+                </div>
+            `;
+
+            window.Modal.show({
+                title: 'Yeni Paket Oluştur',
+                message: html,
+                confirmText: 'YAYINLA',
+                onConfirm: async () => {
+                    const offer = {
+                        Title: document.getElementById('pkg-name').value,
+                        itemType: parseInt(document.getElementById('pkg-type').value),
+                        priceType: parseInt(document.getElementById('pkg-price-type').value),
+                        offerType: 4, // Flash Sale default
+                        basePrice: parseInt(document.getElementById('pkg-price').value),
+                        Count: parseInt(document.getElementById('pkg-count').value),
+                        EndTime: new Date(Date.now() + (parseInt(document.getElementById('pkg-hours').value) * 3600000)).toISOString()
+                    };
+
+                    const res = await fetch('/api/market/offer/add', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(offer)
+                    });
+                    if (res.ok) {
+                        showToast('Paket başarıyla yayınlandı!', 'success');
+                        fetchData();
+                    }
+                }
+            });
+        }
+
+        async function removeItem(id) {
+            if (await confirm('Bu ürünü silmek istediğinize emin misiniz?')) {
+                await fetch('/api/market/item/remove', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ id: id.toString() })
+                });
+                fetchData();
+            }
+        }
+
+        async function removeOffer(id) {
+            if (await confirm('Bu teklifi kaldırmak istediğinize emin misiniz?')) {
+                await fetch('/api/market/offer/remove', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ id: id.toString() })
+                });
+                fetchData();
+            }
+        }
+
+        fetchData();
+        setInterval(fetchData, 15000);
+    </script>
+</body>
+
+</html>

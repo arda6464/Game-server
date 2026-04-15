@@ -3,12 +3,11 @@ public static class TeamInviteHandler
 {
     public static void Handle(Session session, byte[] data)
     {
-        string accid;
+        int accid;
         using (ByteBuffer read = new ByteBuffer())
         {
             read.WriteBytes(data);
-            read.ReadShort();
-            accid = read.ReadString();
+            accid = read.ReadVarInt();
         }
         var targetacccount = AccountCache.Load(accid);
         if (targetacccount == null) return; // todo messagecode (aslında gerek varmı?)
@@ -23,7 +22,7 @@ public static class TeamInviteHandler
         Lobby lobby = LobbyManager.GetLobby(session.TeamID);
 
 
-        if (!SessionManager.IsOnline(targetacccount.AccountId))
+        if (!SessionManager.IsOnline(targetacccount.ID))
         {
             // todo playeroflinemessage.....
             return;
@@ -37,15 +36,15 @@ public static class TeamInviteHandler
         {
 
 
-            if (SessionManager.IsOnline(targetacccount.AccountId))
+            if (SessionManager.IsOnline(targetacccount.ID))
             {
-                Session? targetsession = SessionManager.GetSession(targetacccount.AccountId);
+                Session? targetsession = SessionManager.GetSession(targetacccount.ID);
 
 
                     var notificationPacket = new TeamInviteNotificationPacket
                     {
                         SenderName = acccount.Username,
-                        SenderId = acccount.AccountId,
+                        SenderId = acccount.ID,
                         SenderAvatarId = acccount.Avatarid,
                         SenderTrophy = acccount.Trophy,
                         CurrentPlayers = lobby.Players.Count,
@@ -67,18 +66,16 @@ public static class TeamInviteHandler
     public static void ResponseHandle(Session session,byte[] responsedata)
     {
         bool Accept = false;
-        string targetacc;
+        int targetacc;
         
         using (ByteBuffer read = new ByteBuffer())
         {
             read.WriteBytes(responsedata);
             
-            int _ = read.ReadShort();
-            
             var response = new TeamInviteResponsePacket();
             response.Deserialize(read);
             
-            targetacc = response.InviterAccountId;
+            targetacc = response.InviterId;
             Accept = response.Accept;
         }
 
@@ -95,8 +92,8 @@ public static class TeamInviteHandler
             
             using (ByteBuffer fakebuffer = new ByteBuffer())
             {
-                fakebuffer.WriteShort((short)MessageType.JoinTeamRequest);
-                fakebuffer.WriteInt(joinPacket.TeamId);
+                // MessageManager artık ID'yi atladığı için buraya ID eklemiyoruz
+                fakebuffer.WriteVarInt(joinPacket.TeamId);
                 byte[] fakebyte = fakebuffer.ToArray();
                 JoinTeamHandler.Handle(session, fakebyte);
             }
