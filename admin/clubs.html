@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kulüpler - Admin Core</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="modals.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 0.75rem;
+        }
+
+        th {
+            text-align: left;
+            color: var(--text-secondary);
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0 1.5rem 1rem 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        td {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            transition: background 0.3s ease;
+        }
+
+        tr.main-row:hover td {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        td:first-child {
+            border-left: 1px solid var(--glass-border);
+            border-top-left-radius: 1.25rem;
+            border-bottom-left-radius: 1.25rem;
+        }
+
+        td:last-child {
+            border-right: 1px solid var(--glass-border);
+            border-top-right-radius: 1.25rem;
+            border-bottom-right-radius: 1.25rem;
+        }
+
+        .club-id {
+            font-family: monospace;
+            background: rgba(168, 85, 247, 0.1);
+            padding: 0.4rem 0.75rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            color: #c084fc;
+            font-size: 0.85rem;
+        }
+
+        .club-name {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .avatar-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .btn-kick {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            padding: 0.4rem 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-kick:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .btn-edit {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+        
+        .btn-edit:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-delete {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-delete:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        /* Members Dropdown Row */
+        .members-row {
+            display: none;
+        }
+        
+        .members-row.active {
+            display: table-row;
+            animation: slideDown 0.3s ease forwards;
+        }
+
+        .members-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px inset var(--glass-border);
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .member-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .member-item:last-child {
+            border-bottom: none;
+        }
+
+        .role-badge {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .role-leader { background: rgba(234, 179, 8, 0.2); color: #facc15; }
+        .role-coleader { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+        .role-member { background: rgba(156, 163, 175, 0.2); color: #9ca3af; }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Edit Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-card {
+            width: 500px;
+            padding: 2.5rem;
+            border: 1px solid var(--accent-fuchsia);
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .primary-btn {
+            background: var(--accent-fuchsia);
+            color: #fff;
+            border: none;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="delivery.html" class="nav-item">
+                <i class="fas fa-gift"></i> Eşya Gönderimi
+            </a>
+            <a href="clubs.html" class="nav-item active">
+                <i class="fas fa-users-viewfinder"></i> Kulüpler
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-flag"></i> Raporlar
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="chests.html" class="nav-item">
+                <i class="fas fa-box-open"></i> Sandık & Drop
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="client_errors.html" class="nav-item">
+                <i class="fas fa-bug"></i> İstemci Hataları
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="admins.html" class="nav-item">
+                <i class="fas fa-user-shield"></i> Yönetim
+            </a>
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+        <div
+            style="margin-top: auto; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 1rem; border: 1px solid var(--glass-border);">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div
+                    style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-fuchsia), var(--accent-cyan)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user-shield" style="color: #000; font-size: 1.2rem;"></i>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.9rem;">Server Admin</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary);">v1.0.4-beta</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up delay-1">
+            <h1 class="page-title">Kulüp Yönetimi</h1>
+            <div id="club-count-badge" class="status-pill" style="background:rgba(168, 85, 247, 0.1); color:#c084fc;">
+                <i class="fas fa-shield-halved"></i>
+                0 KULÜP
+            </div>
+        </header>
+
+        <div class="card animate-slide-up delay-2">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <div style="flex: 1; max-width: 400px; position: relative;">
+                    <i class="fas fa-search"
+                        style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary);"></i>
+                    <input type="text" id="club-search" placeholder="Kulüp Adı veya ID ile ara..."
+                        oninput="filterClubs()"
+                        style="width: 100%; padding: 0.8rem 1rem 0.8rem 3rem; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 0.75rem; color: #fff;">
+                </div>
+                <button onclick="updateClubs()" class="btn-refresh">
+                    <i class="fas fa-rotate"></i> Yenile
+                </button>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table id="club-table">
+                    <thead>
+                        <tr>
+                            <th>KULÜP ID</th>
+                            <th>KULÜP ADI</th>
+                            <th>AÇIKLAMA</th>
+                            <th>DURUM</th>
+                            <th>BÖLGE</th>
+                            <th>KUPA</th>
+                            <th>ÜYE</th>
+                            <th>AKSİYONLAR</th>
+                        </tr>
+                    </thead>
+                    <tbody id="club-list-body">
+                        <!-- JS populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-card card">
+            <h2 id="modal-title">Kulüp Düzenle</h2>
+            <div style="margin-top: 1.5rem;">
+                <label class="input-label">KULÜP ADI</label>
+                <input type="text" id="edit-name" class="modal-input">
+
+                <label class="input-label">AÇIKLAMA</label>
+                <input type="text" id="edit-desc" class="modal-input">
+
+                <label class="input-label">AVATAR ID</label>
+                <input type="number" id="edit-avatar" class="modal-input">
+
+                <label class="input-label">DURUM</label>
+                <select id="edit-state" class="modal-input" style="cursor:pointer;">
+                    <option value="0">Açık (Open)</option>
+                    <option value="1">Kapalı (Closed)</option>
+                    <option value="2">Sadece Davet (OnlyInvite)</option>
+                </select>
+
+                <label class="input-label">BÖLGE</label>
+                <input type="text" id="edit-region" class="modal-input" placeholder="Global, TR, EU ...">
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem;">
+                <button onclick="closeModal()" class="secondary-btn">İptal</button>
+                <button onclick="saveClub()" class="primary-btn" style="padding: 0.75rem 2rem;">Kaydet</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allClubs = [];
+        let editingClubId = null;
+
+        async function updateClubs() {
+            try {
+                const response = await fetch('/api/clubs');
+                allClubs = await response.json();
+                filterClubs();
+            } catch (e) { console.error('Clubs update failed'); }
+        }
+
+        function filterClubs() {
+            const query = document.getElementById('club-search').value.toLowerCase();
+            const tbody = document.getElementById('club-list-body');
+            tbody.innerHTML = '';
+
+            let filtered = allClubs.filter(c => {
+                return c.name.toLowerCase().includes(query) || c.id.toString().includes(query);
+            });
+
+            document.getElementById('club-count-badge').innerHTML = `<i class="fas fa-shield-halved"></i> ${allClubs.length} KULÜP (${filtered.length} BULUNDU)`;
+
+            filtered.forEach(c => {
+                // Main Row
+                const tr = document.createElement('tr');
+                tr.className = 'main-row';
+                
+                tr.innerHTML = `
+                    <td><span class="club-id">#${c.id}</span></td>
+                    <td>
+                        <div class="club-name">
+                            <div class="avatar-img"><i class="fas fa-shield"></i></div>
+                            ${c.name}
+                        </div>
+                    </td>
+                    <td><span style="color:var(--text-secondary); font-size:0.9rem;">${c.description || '-'}</span></td>
+                    <td>${getStateBadge(c.state)}</td>
+                    <td><span style="font-size:0.8rem; background:rgba(255,255,255,0.05); padding:0.3rem 0.6rem; border-radius:0.5rem;">
+                        ${getRegionFlag(c.region)}
+                    </span></td>
+                    <td><span style="color:#facc15; font-weight:700;"><i class="fas fa-trophy"></i> ${c.trophies}</span></td>
+                    <td><span style="font-weight:700;">${c.memberCount}</span> <span style="color:var(--text-secondary); font-size:0.8rem;">/ ${c.maxMembers || 50}</span></td>
+                    <td>
+                        <div style="display:flex; gap:0.6rem;">
+                            <button class="btn-edit" onclick="toggleMembers(${c.id})" style="background:var(--accent-cyan); color:#000; border:none;">
+                                <i class="fas fa-users"></i> ÜYELER
+                            </button>
+                            <button class="btn-edit" onclick="openEditModal(${c.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-delete" onclick="deleteClub(${c.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+
+                // Expanded Members Row
+                const memTr = document.createElement('tr');
+                memTr.id = `members-row-${c.id}`;
+                memTr.className = 'members-row';
+                
+                let membersHtml = `<div class="members-container"><h4 style="margin-bottom:1rem; color:var(--text-secondary);"><i class="fas fa-users"></i> Kulüp Üyeleri</h4>`;
+                
+                if (c.members.length === 0) {
+                    membersHtml += `<p style="color:var(--text-secondary); font-size:0.9rem;">Kulüpte hiç üye yok.</p>`;
+                } else {
+                    c.members.forEach(m => {
+                        let roleClass = 'role-member';
+                        let roleName = 'Üye';
+                        if (m.role === 'Leader') { roleClass = 'role-leader'; roleName = 'Başkan'; }
+                        else if (m.role === 'CoLeader') { roleClass = 'role-coleader'; roleName = 'Başkan Yrd.'; }
+                        
+                        membersHtml += `
+                            <div class="member-item">
+                                <div style="display:flex; align-items:center; gap:1rem;">
+                                    <div style="font-weight:700;">${m.name} <span style="color:var(--text-secondary); font-size:0.8rem; margin-left:0.5rem;">(#${m.id})</span></div>
+                                    <span class="role-badge ${roleClass}">${roleName}</span>
+                                </div>
+                                <button class="btn-kick" onclick="kickMember(${c.id}, ${m.id}, '${m.name}')">
+                                    <i class="fas fa-user-minus"></i> Kov
+                                </button>
+                            </div>
+                        `;
+                    });
+                }
+                membersHtml += `</div>`;
+                
+                const memTd = document.createElement('td');
+                memTd.colSpan = 8;
+                memTd.style.padding = '0';
+                memTd.style.border = 'none';
+                memTd.innerHTML = membersHtml;
+                memTr.appendChild(memTd);
+                
+                tbody.appendChild(memTr);
+            });
+        }
+
+        function toggleMembers(clubId) {
+            const row = document.getElementById(`members-row-${clubId}`);
+            if (row) {
+                row.classList.toggle('active');
+            }
+        }
+
+        function openEditModal(clubId) {
+            const club = allClubs.find(c => c.id == clubId);
+            if (!club) return;
+            editingClubId = clubId;
+            document.getElementById('modal-title').innerText = `${club.name} Düzenleniyor`;
+            document.getElementById('edit-name').value = club.name;
+            document.getElementById('edit-desc').value = club.description;
+            document.getElementById('edit-avatar').value = club.avatarId;
+            const stateMap = { 'Open': 0, 'Closed': 1, 'OnlyInvite': 2 };
+            document.getElementById('edit-state').value = stateMap[club.state] ?? 0;
+            document.getElementById('edit-region').value = club.region || 'Global';
+            document.getElementById('edit-modal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('edit-modal').style.display = 'none'; }
+
+        async function saveClub() {
+            const data = {
+                id: editingClubId.toString(),
+                name: document.getElementById('edit-name').value,
+                description: document.getElementById('edit-desc').value,
+                avatarId: document.getElementById('edit-avatar').value,
+                state: document.getElementById('edit-state').value,
+                region: document.getElementById('edit-region').value
+            };
+            try {
+                const res = await fetch('/api/clubs/update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                showToast(result.message, result.success ? 'success' : 'error');
+                closeModal();
+                updateClubs();
+            } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+        }
+
+        function getStateBadge(state) {
+            const map = {
+                'Open':       { icon: 'fa-lock-open',    color: '#4ade80', bg: 'rgba(74,222,128,0.1)',   label: 'Açık' },
+                'Closed':     { icon: 'fa-lock',          color: '#f87171', bg: 'rgba(248,113,113,0.1)', label: 'Kapalı' },
+                'OnlyInvite': { icon: 'fa-envelope',      color: '#facc15', bg: 'rgba(250,204,21,0.1)',  label: 'Davetli' }
+            };
+            const s = map[state] || map['Open'];
+            return `<span style="display:inline-flex;align-items:center;gap:0.4rem;background:${s.bg};color:${s.color};padding:0.3rem 0.7rem;border-radius:0.5rem;font-size:0.78rem;font-weight:700;">
+                <i class="fas ${s.icon}"></i>${s.label}
+            </span>`;
+        }
+
+        function getRegionFlag(region) {
+            if (!region) return '<i class="fas fa-globe" style="margin-right:0.3rem;"></i>Global';
+            const code = region.toUpperCase();
+            // GB = Global in default server logic, ama 2 karakterliyse flagcdn'den çekelim
+            if (code === 'GLOBAL' || code.length !== 2) {
+                return `<i class="fas fa-globe" style="margin-right:0.3rem;"></i>${code}`;
+            }
+            
+            const flagUrl = `https://flagcdn.com/w20/${code.toLowerCase()}.png`;
+            return `<img src="${flagUrl}" style="width:16px; margin-right:0.3rem; vertical-align:middle; border-radius:2px;" alt="${code}">${code}`;
+        }
+
+        async function deleteClub(clubId) {
+            Modal.confirm('Kulübü Sil', 'Bu kulübü tamamen silmek istediğinize emin misiniz? Bu işlem geri alınamaz.', async () => {
+                try {
+                    const response = await fetch('/api/clubs/delete', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: clubId.toString() })
+                    });
+                    const result = await response.json();
+                    showToast(result.message, result.success ? 'success' : 'error');
+                    updateClubs();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        async function kickMember(clubId, memberId, memberName) {
+            Modal.confirm('Üyeyi Kov', `${memberName} adlı oyuncuyu kulüpten atmak istediğinize emin misiniz?`, async () => {
+                try {
+                    const response = await fetch('/api/clubs/kick', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ clubId: clubId.toString(), memberId: memberId.toString() })
+                    });
+                    const result = await response.json();
+                    showToast(result.message, result.success ? 'success' : 'error');
+                    updateClubs();
+                } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        updateClubs();
+    </script>
+</body>
+
+</html>

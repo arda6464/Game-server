@@ -3,7 +3,7 @@ public static class LeaveTeamHandler
 {
      public static void Handle(Session session,Byte[] data)
     {
-         ByteBuffer read = new ByteBuffer();
+         ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(data, true);
         read.Dispose();
 

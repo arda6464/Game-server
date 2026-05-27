@@ -42,111 +42,114 @@ class Program
             // Hemen kaydet ve çık
             SaveDataAndExit();
         };
-
+       MapManager.Load("MapData.json");
+   
         // Cache'leri başlat
-        BotManager bot = new BotManager();
-        Config.Load("config.json");
-        DatabaseManager.Initialize();
+          BotManager bot = new BotManager();
+          Config.Load("config.json");
+          DatabaseManager.Initialize();
 
-        AccountCache.Init();
-        ClubCache.Init();
-        BanManager.Init();
-        ShopManager.InitializeMarket();
-        TicketStorage.Initialize();
-        AndroidNotficationManager.Initialize();
-        ReportManager.Init();
-        MessageManager.Init(); // Packet Handler'larını yükle
+          AccountCache.Init();
+          ClubCache.Init();
+          BanManager.Init();
+          ShopManager.InitializeMarket();
+          TicketStorage.Initialize();
+          AndroidNotficationManager.Initialize();
+          ReportManager.Init();
+          MessageManager.Init(); // Packet Handler'larını yükle
+          GachaSystem.GachaManager.Init(); // Gacha sistemini yükle
+          UpdateNotesManager.Init();
 
 
-        // Thread'leri başlat
-        botthread = new Thread(() => bot.Start());
-        botthread.Start();
-        cmdhandlerthread = new Thread(Cmdhandler.Start);
-        cmdhandlerthread.Start();
+          // Thread'leri başlat
+          botthread = new Thread(() => bot.Start());
+          botthread.Start();
+          cmdhandlerthread = new Thread(Cmdhandler.Start);
+          cmdhandlerthread.Start();
 
-        pingthread = new Thread(() => SessionManager.PingManager(true));
-        pingthread.Start();
+          pingthread = new Thread(() => SessionManager.PingManager(true));
+          pingthread.Start();
 
-        int publicPort = Config.Instance.Port;
+          int publicPort = Config.Instance.Port;
 
-        adminServer = new AdminServer();
-        adminServer.Start();
+          adminServer = new AdminServer();
+          adminServer.Start();
 
-        gameserver = new GameServer();
-        gameserver.Start(publicPort); // Sadece UDP'yi başlatacak
+          gameserver = new GameServer();
+          gameserver.Start(publicPort); // Sadece UDP'yi başlatacak
 
-        Console.WriteLine($"Sunucu {Config.Instance.ServerVersion} sürümünde!");
-        ScheduleManager.Init();
-        TickManager tickManager = new TickManager(30);
+          Console.WriteLine($"Sunucu {Config.Instance.ServerVersion} sürümünde!");
+          ScheduleManager.Init();
+          TickManager tickManager = new TickManager(30);
 
-        try
-        {
-       //     tickManager.Start();
+          try
+          {
+              tickManager.Start();
 
-            // Ana TCP Dinleyicisi (Tek Port)
-            TcpListener listener = new TcpListener(IPAddress.Any, publicPort);
-            listener.Start();
-            Logger.genellog($"[MULTIPLEXER] Tek port üzerinden dinleniyor: {publicPort}");
+              // Ana TCP Dinleyicisi (Tek Port)
+              TcpListener listener = new TcpListener(IPAddress.Any, publicPort);
+              listener.Start();
+              Logger.genellog($"[MULTIPLEXER] Tek port üzerinden dinleniyor: {publicPort}");
 
-            Console.WriteLine("[Program] Server çalışıyor. Çıkmak için Ctrl+C'ye basın...");
+              Console.WriteLine("[Program] Server çalışıyor. Çıkmak için Ctrl+C'ye basın...");
 
-            while (true)
-            {
-                try
-                {
-                    TcpClient client = listener.AcceptTcpClient();
-                    _ = Task.Run(async () =>
-                    {
-                        try
-                        {
-                            NetworkStream stream = client.GetStream();
-                            byte[] buffer = new byte[1024];
-                            int read = await stream.ReadAsync(buffer, 0, buffer.Length);
-                            if (read <= 0) return;
+              while (true)
+              {
+                  try
+                  {
+                      TcpClient client = listener.AcceptTcpClient();
+                      _ = Task.Run(async () =>
+                      {
+                          try
+                          {
+                              NetworkStream stream = client.GetStream();
+                              byte[] buffer = new byte[1024];
+                              int read = await stream.ReadAsync(buffer, 0, buffer.Length);
+                              if (read <= 0) return;
 
-                            string initialData = Encoding.ASCII.GetString(buffer, 0, read);
-                            bool isHttp = initialData.StartsWith("GET ") ||
-                                          initialData.StartsWith("POST ") ||
-                                          initialData.StartsWith("OPTIONS ") ||
-                                          initialData.StartsWith("HEAD ") ||
-                                          initialData.StartsWith("PUT ") ||
-                                          initialData.StartsWith("DELETE ");
+                              string initialData = Encoding.ASCII.GetString(buffer, 0, read);
+                              bool isHttp = initialData.StartsWith("GET ") ||
+                                            initialData.StartsWith("POST ") ||
+                                            initialData.StartsWith("OPTIONS ") ||
+                                            initialData.StartsWith("HEAD ") ||
+                                            initialData.StartsWith("PUT ") ||
+                                            initialData.StartsWith("DELETE ");
 
-                            if (isHttp)
-                            {
-                                // Kalan veriyi de içerecek şekilde byte array oluştur
-                                byte[] data = new byte[read];
-                                Array.Copy(buffer, 0, data, 0, read);
-                                adminServer.HandleConnection(client, data);
-                            }
-                            else
-                            {
-                                // Oyun verisi
-                                byte[] data = new byte[read];
-                                Array.Copy(buffer, 0, data, 0, read);
-                                gameserver.HandleConnection(client, data);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.errorslog($"[Multiplexer] Bağlantı hatası: {ex.Message}");
-                        }
-                    });
-                }
-                catch (Exception ex)
-                {
-                    Logger.errorslog($"[Multiplexer] Accept hatası: {ex.Message}");
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            Logger.errorslog($"[Program] Ana thread hatası: {ex}");
-        }
-        finally
-        {
-            SaveDataAndExit();
-        }
+                              if (isHttp)
+                              {
+                                  // Kalan veriyi de içerecek şekilde byte array oluştur
+                                  byte[] data = new byte[read];
+                                  Array.Copy(buffer, 0, data, 0, read);
+                                  adminServer.HandleConnection(client, data);
+                              }
+                              else
+                              {
+                                  // Oyun verisi
+                                  byte[] data = new byte[read];
+                                  Array.Copy(buffer, 0, data, 0, read);
+                                  gameserver.HandleConnection(client, data);
+                              }
+                          }
+                          catch (Exception ex)
+                          {
+                              Logger.errorslog($"[Multiplexer] Bağlantı hatası: {ex.Message}");
+                          }
+                      });
+                  }
+                  catch (Exception ex)
+                  {
+                      Logger.errorslog($"[Multiplexer] Accept hatası: {ex.Message}");
+                  }
+              }
+          }
+          catch (Exception ex)
+          {
+              Logger.errorslog($"[Program] Ana thread hatası: {ex}");
+          }
+          finally
+          {
+              SaveDataAndExit();
+          }
     }
 
     static void SaveDataAndExit()
@@ -164,7 +167,7 @@ class Program
             ClubCache.SaveAll();
             BanManager.Stop();
             TicketStorage.SaveAllData(BotManager.istance.TicketSystem.tickets, BotManager.istance.TicketSystem.channelToTicket);
-            TickManager.instance.Stop();
+            TickManager.instance?.Stop();
             ScheduleManager.Stop();
             adminServer?.Stop();
 

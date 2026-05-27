@@ -7,7 +7,7 @@ public static class SetAvatar
     {
 
         Console.WriteLine("Set Avatar");
-        ByteBuffer BUFFER = new ByteBuffer();
+        ByteBuffer BUFFER = ByteBufferPool.Get();
         BUFFER.WriteBytes(data, true);
 
         var request = new SetAvatarRequestPacket();

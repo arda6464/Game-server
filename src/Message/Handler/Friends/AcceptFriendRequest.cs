@@ -3,7 +3,7 @@ public static class FriendRequestAccept
 {
     public static void Handle(Session session, byte[] message)
     {
-        ByteBuffer byteBuffer = new ByteBuffer();
+        ByteBuffer byteBuffer = ByteBufferPool.Get();
         byteBuffer.WriteBytes(message, true);
 
         var requestPacket = new FriendRequestAcceptPacket();

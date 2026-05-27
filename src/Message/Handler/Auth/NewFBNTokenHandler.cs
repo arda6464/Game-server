@@ -3,7 +3,7 @@ public static class NewFBNTokenHandler
 {
     public static void Handle(Session session, byte[] data)
     {
-        using (ByteBuffer read = new ByteBuffer())
+        using (ByteBuffer read = ByteBufferPool.Get())
         {
             read.WriteBytes(data);
             string newtoken = read.ReadString();

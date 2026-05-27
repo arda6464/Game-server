@@ -98,7 +98,7 @@ body {
 .logo {
     font-size: 1.75rem;
     font-weight: 800;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     background: linear-gradient(to right, var(--accent-fuchsia), var(--accent-cyan));
     -webkit-background-clip: text;
     background-clip: text;
@@ -112,6 +112,27 @@ body {
 .nav-list {
     list-style: none;
     flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 6px;
+    margin-right: -6px;
+}
+
+.nav-list::-webkit-scrollbar {
+    width: 3px;
+}
+
+.nav-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+}
+
+.nav-list:hover::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .nav-item {
@@ -849,181 +870,9 @@ body {
     font-size: var(--font-size-h1);
 }
 
-@media (max-width: 1024px) {
-    :root {
-        --sidebar-width: 0px;
-    }
-
-    .sidebar {
-        display: none !important;
-    }
-
-    .main-content {
-        margin-left: 0 !important;
-        padding: 1.25rem !important;
-        padding-top: calc(var(--mobile-header-height) + 1.5rem) !important;
-        padding-bottom: calc(var(--mobile-nav-height) + 1.5rem) !important;
-    }
-
-    /* Mobile Header (Fixed) */
-    .mobile-top-bar {
-        display: flex !important;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: var(--mobile-header-height);
-        background: rgba(3, 7, 18, 0.7);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--glass-border);
-        z-index: 1000;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 1.25rem;
-    }
-
-    .mobile-logo {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-weight: 800;
-        font-size: 1.1rem;
-        color: #fff;
-    }
-
-    .mobile-logo i {
-        background: linear-gradient(135deg, var(--accent-fuchsia), var(--accent-cyan));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    /* Premium Mobile Nav Bar */
-    .mobile-nav {
-        display: flex !important;
-        position: fixed;
-        bottom: 1.25rem;
-        left: 1.25rem;
-        right: 1.25rem;
-        height: 65px;
-        background: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(25px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        justify-content: space-around;
-        align-items: center;
-        z-index: 2000;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    .mobile-nav-item {
-        flex: 1;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        color: var(--text-secondary);
-        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        position: relative;
-    }
-
-    .mobile-nav-item i {
-        font-size: 1.4rem;
-        transition: transform 0.3s;
-    }
-
-    .mobile-nav-item span {
-        font-size: 0.6rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .mobile-nav-item.active {
-        color: #fff;
-    }
-
-    .mobile-nav-item.active i {
-        transform: translateY(-4px) scale(1.1);
-        color: var(--accent-cyan);
-        filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.6));
-    }
-
-    .mobile-nav-item.active::after {
-        content: '';
-        position: absolute;
-        bottom: 8px;
-        width: 4px;
-        height: 4px;
-        background: var(--accent-cyan);
-        border-radius: 50%;
-        box-shadow: 0 0 10px var(--accent-cyan);
-    }
-
-    /* Grid Adjustments */
-    .stats-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 1rem !important;
-    }
-
-    .stat-card {
-        padding: 1.25rem !important;
-        border-radius: 1.5rem !important;
-    }
-
-    .stat-value {
-        font-size: clamp(1.75rem, 5vw, 2.5rem);
-    }
-
-    /* Bento Grid Mobile - Stacking with Intent */
-    .bento-grid {
-        display: flex !important;
-        flex-direction: column;
-        gap: 1.25rem !important;
-    }
-
-    .bento-card {
-        width: 100% !important;
-        grid-column: span 1 !important;
-        grid-row: span 1 !important;
-    }
-
-    .profile-main-card {
-        padding: 2.5rem 1.5rem !important;
-    }
-
-    .avatar-container {
-        width: 140px;
-        height: 140px;
-    }
-
-    .hologram-text {
-        letter-spacing: -0.02em;
-    }
-
-    /* Table Mobile - Carousel-like or Scroll */
-    .table-container {
-        margin: 0 -1.25rem;
-        padding: 0 1.25rem;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        overflow-x: auto;
-    }
-
-    .btn-kick,
-    .btn-ban,
-    .btn-unban,
-    .btn-view {
-        padding: 0.75rem 1rem;
-        font-size: 0.75rem;
-    }
-}
-
-/* Utils for Mobile Header */
-.mobile-top-bar {
-    display: none;
+/* Mobil Destek Kaldırıldı */
+.mobile-top-bar, .mobile-nav {
+    display: none !important;
 }
 
 /* --- EVENT SELECTION UI (WIDE BANNER GRID) --- */
@@ -1119,3 +968,58 @@ body {
         grid-column: span 1;
     }
 }
+
+/* --- NEW PREMIUM GLOBAL COMPONENTS --- */
+.search-island {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.stat-box {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-box i {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    font-size: 5rem;
+    opacity: 0.05;
+    transform: rotate(-15deg);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+}

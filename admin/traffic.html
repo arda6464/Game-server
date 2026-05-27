@@ -4,11 +4,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trafik Analizi - Admin Panel</title>
+    <title>Trafik Analizi - Admin Core</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <script src="modals.js"></script>
+    <style>
+        .traffic-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-card {
+            padding: 2rem !important;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stats-sidebar {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--accent-cyan);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Packet Detail Tables */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .table-card {
+            max-height: 500px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .table-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-container {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem 1.5rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            background: rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .badge-type {
+            font-family: monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .badge-size {
+            font-weight: 600;
+            color: var(--accent-fuchsia);
+        }
+    </style>
 </head>
 
 <body>
@@ -25,20 +144,29 @@
             <a href="players.html" class="nav-item">
                 <i class="fas fa-id-badge"></i> Oyuncular
             </a>
+            <a href="delivery.html" class="nav-item">
+                <i class="fas fa-gift"></i> Eşya Gönderimi
+            </a>
+            <a href="clubs.html" class="nav-item">
+                <i class="fas fa-users-viewfinder"></i> Kulüpler
+            </a>
             <a href="reports.html" class="nav-item">
                 <i class="fas fa-flag"></i> Raporlar
-            </a>
-            <a href="management.html" class="nav-item">
-                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="announcement.html" class="nav-item">
                 <i class="fas fa-bullhorn"></i> Duyurular
             </a>
-            <a href="traffic.html" class="nav-item active">
-                <i class="fas fa-chart-area"></i> Trafik Analizi
+            <a href="chests.html" class="nav-item">
+                <i class="fas fa-box-open"></i> Sandık & Drop
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
             </a>
             <a href="logs.html" class="nav-item">
                 <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="traffic.html" class="nav-item active">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
             </a>
             <a href="client_errors.html" class="nav-item">
                 <i class="fas fa-bug"></i> İstemci Hataları
@@ -49,8 +177,8 @@
             <a href="admins.html" class="nav-item">
                 <i class="fas fa-user-shield"></i> Yönetim
             </a>
-            <a href="market.html" class="nav-item">
-                <i class="fas fa-shopping-cart"></i> Market
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="#" class="nav-item" onclick="logout()"
                 style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
@@ -66,110 +194,242 @@
                 </div>
                 <div>
                     <div style="font-weight: 700; font-size: 0.9rem;">Server Admin</div>
-                    <div style="font-size: 0.75rem; color: var(--text-secondary);">v1.0.4-beta</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary);">v1.0.8-beta</div>
                 </div>
             </div>
         </div>
     </aside>
 
     <main class="main-content">
-        <header class="animate-slide-up delay-1">
-            <h1 class="page-title">Detaylı Paket Analizi</h1>
-            <p style="color: var(--text-secondary); margin-top: -1rem; font-weight: 500;">Sunucuya gelen ve giden
-                paketlerin tip bazlı dağılımı.</p>
+        <header class="animate-slide-up">
+            <h1 class="page-title">Trafik Analiz Sistemi</h1>
+            <p style="color: var(--text-secondary); margin-top: -1rem;">Gerçek zamanlı ağ throughput ve paket hiyerarşisi.</p>
         </header>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-            <!-- Incoming Table -->
-            <div class="card animate-slide-up delay-2">
-                <h3 style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem;">
-                    <i class="fas fa-cloud-download" style="color:var(--accent-cyan)"></i> Gelen Paketler (Inbound)
-                </h3>
-                <div style="overflow-x: auto;">
-                    <table class="traffic-table">
+        <div class="traffic-grid animate-slide-up delay-1">
+            <div class="card chart-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1rem;"><i class="fas fa-wave-square" style="color: var(--accent-cyan); margin-right: 0.5rem;"></i> THROUGHPUT (KB/s)</h3>
+                    <div id="real-time-badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.65rem; font-weight: 800; display: flex; align-items: center; gap: 0.4rem;">
+                        <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; display: inline-block;"></span> CANLI
+                    </div>
+                </div>
+                <div style="flex: 1; min-height: 0;">
+                    <canvas id="trafficChart"></canvas>
+                </div>
+            </div>
+
+            <div class="stats-sidebar">
+                <div class="stat-item">
+                    <span class="stat-label">MAX GİRİŞ (PEAK)</span>
+                    <span class="stat-value" id="val-peak-in" style="color: var(--accent-cyan);">0 KB/s</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">MAX ÇIKIŞ (PEAK)</span>
+                    <span class="stat-value" id="val-peak-out" style="color: var(--accent-fuchsia);">0 KB/s</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">TOPLAM PAKET</span>
+                    <span class="stat-value" id="val-total-packets" style="color: var(--accent-amber);">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-grid animate-slide-up delay-2">
+            <!-- Inbound Details -->
+            <div class="card table-card">
+                <div class="table-header">
+                    <h3><i class="fas fa-arrow-down" style="color: var(--accent-cyan); margin-right: 0.5rem;"></i> GELEN PAKETLER</h3>
+                </div>
+                <div class="table-container">
+                    <table>
                         <thead>
                             <tr>
-                                <th>PAKET TİPİ</th>
-                                <th>ADET</th>
-                                <th>TOPLAM BOYUT</th>
-                                <th>ORT.</th>
+                                <th>Paket Tipi</th>
+                                <th>Adet</th>
+                                <th>Toplam</th>
+                                <th>Ort</th>
                             </tr>
                         </thead>
-                        <tbody id="incoming-list"></tbody>
+                        <tbody id="table-inbound">
+                            <!-- JS -->
+                        </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Outgoing Table -->
-            <div class="card animate-slide-up delay-3">
-                <h3 style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem;">
-                    <i class="fas fa-cloud-upload" style="color:var(--accent-fuchsia)"></i> Giden Paketler (Outbound)
-                </h3>
-                <div style="overflow-x: auto;">
-                    <table class="traffic-table">
+            <!-- Outbound Details -->
+            <div class="card table-card">
+                <div class="table-header">
+                    <h3><i class="fas fa-arrow-up" style="color: var(--accent-fuchsia); margin-right: 0.5rem;"></i> GİDEN PAKETLER</h3>
+                </div>
+                <div class="table-container">
+                    <table>
                         <thead>
                             <tr>
-                                <th>PAKET TİPİ</th>
-                                <th>ADET</th>
-                                <th>TOPLAM BOYUT</th>
-                                <th>ORT.</th>
+                                <th>Paket Tipi</th>
+                                <th>Adet</th>
+                                <th>Toplam</th>
+                                <th>Ort</th>
                             </tr>
                         </thead>
-                        <tbody id="outgoing-list"></tbody>
+                        <tbody id="table-outbound">
+                            <!-- JS -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        async function fetchTraffic() {
-            try {
-                const response = await fetch('/api/traffic/details');
-                if (!response.ok) throw new Error('Sunucu hatası');
-                const data = await response.json();
+        let trafficChart = null;
+        let peakIn = 0;
+        let peakOut = 0;
 
-                updateTable('incoming-list', data.incoming);
-                updateTable('outgoing-list', data.outgoing);
-            } catch (e) {
-                console.error('Traffic fetch failed', e);
-                document.getElementById('incoming-list').innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--text-secondary); padding: 2rem;">Veri alınamıyor: ${e.message}</td></tr>`;
-            }
-        }
-
-        function formatBytes(bytes) {
-            if (!bytes || bytes === 0) return '0 B';
-            const k = 1024;
-            const sizes = ['B', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-        }
-
-        function updateTable(elementId, list) {
-            const tbody = document.getElementById(elementId);
-            if (!list || list.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--text-secondary); padding: 3rem;">
-                    <i class="fas fa-satellite-dish fa-spin" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
-                    Henüz paket verisi kaydedilmedi...
-                </td></tr>`;
-                return;
-            }
-
-            tbody.innerHTML = '';
-            list.forEach(item => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td><span style="font-weight:700; color:var(--text-primary); font-size:0.85rem;">${item.type}</span></td>
-                    <td><span class="ip-badge">${item.count}</span></td>
-                    <td><span style="font-weight:700;">${formatBytes(item.bytes)}</span></td>
-                    <td style="font-size:0.8rem; color:var(--text-secondary); font-family: monospace;">${item.avg} B</td>
-                `;
-                tbody.appendChild(tr);
+        function initChart() {
+            const ctx = document.getElementById('trafficChart').getContext('2d');
+            trafficChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array(60).fill(''),
+                    datasets: [
+                        {
+                            label: 'Gelen (IN)',
+                            borderColor: '#22d3ee',
+                            backgroundColor: 'rgba(34, 211, 238, 0.1)',
+                            data: Array(60).fill(0),
+                            tension: 0.4,
+                            fill: true,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Giden (OUT)',
+                            borderColor: '#f472b6',
+                            backgroundColor: 'rgba(244, 114, 182, 0.1)',
+                            data: Array(60).fill(0),
+                            tension: 0.4,
+                            fill: true,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { 
+                            position: 'top',
+                            align: 'end',
+                            labels: { color: '#9ca3af', boxWidth: 12, font: { family: 'Outfit', size: 11 } } 
+                        },
+                        tooltip: {
+                            enabled: true,
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#9ca3af',
+                            borderColor: 'rgba(255, 255, 255, 0.1)',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 6,
+                            cornerRadius: 8,
+                            titleFont: { family: 'Outfit', size: 13, weight: 'bold' },
+                            bodyFont: { family: 'Outfit', size: 12 },
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.dataset.label}: ${context.parsed.y.toFixed(1)} KB/s`;
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.03)' }, 
+                            ticks: { color: '#4b5563', font: { size: 10 } } 
+                        },
+                        x: { display: false }
+                    },
+                    animation: { duration: 200 }
+                }
             });
         }
 
-        setInterval(fetchTraffic, 2000);
-        fetchTraffic();
+        async function updateData() {
+            try {
+                // 1. Chart & Stats Update
+                const historyRes = await fetch('/api/traffic/history');
+                const historyData = await historyRes.json();
+                
+                if (historyData.history && trafficChart) {
+                    const ins = historyData.history.map(h => h.In);
+                    const outs = historyData.history.map(h => h.Out);
+
+                    // Padding to keep 60 points
+                    while(ins.length < 60) ins.unshift(0);
+                    while(outs.length < 60) outs.unshift(0);
+
+                    trafficChart.data.datasets[0].data = ins.slice(-60);
+                    trafficChart.data.datasets[1].data = outs.slice(-60);
+                    trafficChart.update('none');
+
+                    // Peaks
+                    const currentPeakIn = Math.max(...ins);
+                    const currentPeakOut = Math.max(...outs);
+                    if (currentPeakIn > peakIn) peakIn = currentPeakIn;
+                    if (currentPeakOut > peakOut) peakOut = currentPeakOut;
+
+                    document.getElementById('val-peak-in').innerText = peakIn.toFixed(1) + ' KB/s';
+                    document.getElementById('val-peak-out').innerText = peakOut.toFixed(1) + ' KB/s';
+                }
+
+                // 2. Detailed Table Update
+                const detailRes = await fetch('/api/traffic/details');
+                const details = await detailRes.json();
+
+                renderTable('table-inbound', details.incoming);
+                renderTable('table-outbound', details.outgoing);
+
+                // Total Packets
+                const total = (details.incoming?.reduce((a, b) => a + b.count, 0) || 0) + 
+                             (details.outgoing?.reduce((a, b) => a + b.count, 0) || 0);
+                document.getElementById('val-total-packets').innerText = total.toLocaleString();
+
+            } catch (e) { console.error('Traffic update error', e); }
+        }
+
+        function renderTable(id, data) {
+            const tbody = document.getElementById(id);
+            if (!data || !tbody) return;
+
+            tbody.innerHTML = data.map(item => `
+                <tr>
+                    <td><span class="badge-type">${item.type}</span></td>
+                    <td style="font-weight: 700;">${item.count.toLocaleString()}</td>
+                    <td><span class="badge-size">${(item.bytes / 1024).toFixed(1)} KB</span></td>
+                    <td style="color: var(--text-secondary); font-size: 0.75rem;">${item.avg.toFixed(0)} B</td>
+                </tr>
+            `).join('');
+        }
+
+        function logout() {
+            Modal.confirm('Çıkış Yap', 'Oturumunuzu kapatmak istediğinize emin misiniz?', async () => {
+                await fetch('/api/auth/logout');
+                window.location.href = 'login.html';
+            });
+        }
+
+        initChart();
+        updateData();
+        setInterval(updateData, 2000);
     </script>
 </body>
 

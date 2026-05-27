@@ -11,81 +11,243 @@
         rel="stylesheet">
     <script src="modals.js"></script>
     <style>
-        .market-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        :root {
+            --card-grad: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            --border-glow: rgba(255, 255, 255, 0.1);
+        }
+
+        .market-container {
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
         }
 
-        .economy-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-            padding: 2.5rem;
-            text-align: center;
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
         }
 
-        .total-value {
-            font-size: 3rem;
+        .stat-box {
+            background: var(--card-grad);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-glow);
+        }
+
+        .stat-box i {
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            font-size: 5rem;
+            opacity: 0.05;
+            transform: rotate(-15deg);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
             font-weight: 900;
-            letter-spacing: -2px;
-            margin: 1rem 0;
+            letter-spacing: -1px;
+        }
+
+        .search-island {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .search-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-input-wrapper i {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 0.85rem 1rem 0.85rem 3rem;
+            color: #fff;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-fuchsia);
+            background: rgba(0,0,0,0.5);
+            box-shadow: 0 0 15px rgba(244, 114, 182, 0.2);
+        }
+
+        .market-sections {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2rem;
+        }
+
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .section-title i {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-indigo);
         }
 
         .rich-table {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+            border-collapse: separate;
+            border-spacing: 0 0.75rem;
         }
 
         .rich-table th {
+            padding: 0 1rem;
             text-align: left;
-            color: var(--text-secondary);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            padding: 1rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .rich-table td {
-            padding: 1.25rem 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            font-weight: 600;
-        }
-
-        .rank-badge {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 800;
-            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        .rank-1 {
-            background: #fbbf24;
-            color: #000;
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        .rich-table tr td {
+            background: rgba(255,255,255,0.02);
+            padding: 1.25rem 1rem;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
-        .rank-2 {
-            background: #94a3b8;
-            color: #000;
+        .rich-table tr td:first-child {
+            border-left: 1px solid rgba(255,255,255,0.03);
+            border-radius: 1rem 0 0 1rem;
         }
 
-        .rank-3 {
-            background: #b45309;
-            color: #fff;
+        .rich-table tr td:last-child {
+            border-right: 1px solid rgba(255,255,255,0.03);
+            border-radius: 0 1rem 1rem 0;
         }
 
-        .currency-tag {
-            padding: 0.3rem 0.6rem;
+        .rich-table tr:hover td {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .id-badge {
+            font-family: monospace;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .price-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.75rem;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .price-gems { background: rgba(34, 211, 238, 0.1); color: var(--accent-cyan); }
+        .price-coins { background: rgba(251, 191, 36, 0.1); color: #fbbf24; }
+        .price-real { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+
+        .reward-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem 0.5rem;
+            background: rgba(255,255,255,0.05);
             border-radius: 0.5rem;
             font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 0.25rem;
+        }
+
+        .personal-banner {
+            grid-column: span 2;
+            background: linear-gradient(90deg, var(--accent-fuchsia), var(--accent-indigo));
+            padding: 1.5rem 2.5rem;
+            border-radius: 1.5rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.4rem;
+            box-shadow: 0 10px 30px rgba(244, 114, 182, 0.3);
+            animation: slideUp 0.5s ease;
+        }
+
+        @media (max-width: 1200px) {
+            .market-sections { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -103,20 +265,29 @@
             <a href="players.html" class="nav-item">
                 <i class="fas fa-id-badge"></i> Oyuncular
             </a>
+            <a href="delivery.html" class="nav-item">
+                <i class="fas fa-gift"></i> Eşya Gönderimi
+            </a>
+            <a href="clubs.html" class="nav-item">
+                <i class="fas fa-users-viewfinder"></i> Kulüpler
+            </a>
             <a href="reports.html" class="nav-item">
                 <i class="fas fa-flag"></i> Raporlar
-            </a>
-            <a href="management.html" class="nav-item">
-                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="announcement.html" class="nav-item">
                 <i class="fas fa-bullhorn"></i> Duyurular
             </a>
-            <a href="traffic.html" class="nav-item">
-                <i class="fas fa-chart-area"></i> Trafik Analizi
+            <a href="chests.html" class="nav-item">
+                <i class="fas fa-box-open"></i> Sandık & Drop
+            </a>
+            <a href="market.html" class="nav-item active">
+                <i class="fas fa-shopping-cart"></i> Market
             </a>
             <a href="logs.html" class="nav-item">
                 <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
             </a>
             <a href="client_errors.html" class="nav-item">
                 <i class="fas fa-bug"></i> İstemci Hataları
@@ -127,8 +298,8 @@
             <a href="admins.html" class="nav-item">
                 <i class="fas fa-user-shield"></i> Yönetim
             </a>
-            <a href="market.html" class="nav-item active">
-                <i class="fas fa-shopping-cart"></i> Market
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="#" class="nav-item" onclick="logout()"
                 style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
@@ -138,70 +309,101 @@
     </aside>
 
     <main class="main-content">
-        <header class="animate-slide-up">
-            <h1 class="page-title">Market & Ekonomi Analizi</h1>
-            <p style="color: var(--text-secondary); margin-top: -1rem;">Sunucu genelindeki varlık dağılımı ve ekonomi
-                sağlığı.</p>
-        </header>
-
-        <div class="market-grid">
-            <!-- Genel Ekonomi Statları -->
-            <div class="card economy-card animate-slide-up delay-1">
-                <i class="fas fa-gem" style="font-size: 2.5rem; color: var(--accent-cyan);"></i>
-                <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem; font-weight: 700;">TOPLAM ELMAS</div>
-                <div class="total-value" id="total-gems" style="color: var(--accent-cyan);">0</div>
-            </div>
-
-            <div class="card economy-card animate-slide-up delay-1">
-                <i class="fas fa-coins" style="font-size: 2.5rem; color: #fbbf24;"></i>
-                <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem; font-weight: 700;">TOPLAM ALTIN</div>
-                <div class="total-value" id="total-coins" style="color: #fbbf24;">0</div>
-            </div>
-
-            <!-- Market Paket Yönetimi -->
-            <div class="card span-2 animate-slide-up delay-2" style="grid-column: span 2;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                    <h3><i class="fas fa-box-open" style="color: #6366f1;"></i> Market Ürünleri & Paketler</h3>
-                    <button class="btn-refresh" style="padding: 0.6rem 1.2rem;" onclick="showAddPackageModal()">
-                        <i class="fas fa-plus"></i> YENİ PAKET EKLE
-                    </button>
+        <div class="market-container">
+            <header class="animate-slide-up">
+                <div>
+                    <h1 class="page-title">Market & Ekonomi</h1>
+                    <p style="color: var(--text-secondary);">Sunucu ekonomisini ve ürün kataloglarını yönetin.</p>
                 </div>
-                
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1rem;">Temel Ürünler</h4>
+                <button class="primary-btn" onclick="showAddPackageModal()">
+                    <i class="fas fa-plus"></i> YENİ TEKLİF OLUŞTUR
+                </button>
+            </header>
+
+            <div class="search-island animate-slide-up delay-1">
+                <div class="search-group">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-user-astronaut"></i>
+                        <input type="number" id="player-id-input" class="search-input" placeholder="Oyuncu ID ile Market Simülasyonu...">
+                    </div>
+                    <button onclick="fetchData()" class="btn-refresh" style="background: var(--accent-fuchsia); color:#fff; border:none; padding: 0.6rem 1.5rem;">GÖRÜNTÜLE</button>
+                    <button onclick="clearPlayerFilter()" class="secondary-btn" style="padding: 0.6rem;"><i class="fas fa-undo"></i></button>
+                </div>
+                <div id="player-quick-stats" style="display:none; align-items:center; gap:2rem; padding-left: 2rem; border-left: 1px solid var(--glass-border);">
+                    <div style="text-align:right;"><div style="font-size:0.6rem; color:var(--text-secondary);">BAKİYE (GEMS)</div><div style="font-size:1.1rem; font-weight:800; color:var(--accent-cyan);" id="view-player-gems">0</div></div>
+                    <div style="text-align:right;"><div style="font-size:0.6rem; color:var(--text-secondary);">BAKİYE (COINS)</div><div style="font-size:1.1rem; font-weight:800; color:#fbbf24;" id="view-player-coins">0</div></div>
+                </div>
+            </div>
+
+            <div id="personal-banner" class="personal-banner" style="display:none;">
+                <div style="display:flex; align-items:center; gap:1.5rem;">
+                    <i class="fas fa-stars" style="font-size:2rem; color:#fff;"></i>
+                    <div>
+                        <div style="font-weight:900; font-size:1.2rem;" id="view-player-name">OYUNCU ADI</div>
+                        <div style="font-size:0.8rem; opacity:0.8;">Bu oyuncuya özel üretilen teklifler ve indirimler listeleniyor.</div>
+                    </div>
+                </div>
+                <div style="font-weight:800; background:rgba(0,0,0,0.2); padding:0.5rem 1rem; border-radius:1rem;">#MARKET_SIM</div>
+            </div>
+
+            <div class="stats-row animate-slide-up delay-2">
+                <div class="stat-box">
+                    <i class="fas fa-gem"></i>
+                    <span class="stat-label">Dolaşımdaki Elmas</span>
+                    <span class="stat-value" id="total-gems" style="color: var(--accent-cyan);">0</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-coins"></i>
+                    <span class="stat-label">Dolaşımdaki Altın</span>
+                    <span class="stat-value" id="total-coins" style="color: #fbbf24;">0</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="stat-label">Toplam Satın Alım</span>
+                    <span class="stat-value" id="total-purchases" style="color: var(--accent-fuchsia);">0</span>
+                </div>
+            </div>
+
+            <div class="market-sections animate-slide-up delay-3">
+                <!-- Temel Ürünler -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <i class="fas fa-store"></i>
+                            Katalog Ürünleri
+                        </div>
+                    </div>
                     <table class="rich-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>İsim</th>
+                                <th>Ürün</th>
                                 <th>Tür</th>
-                                <th>Miktar</th>
                                 <th>Fiyat</th>
-                                <th width="100">İşlem</th>
+                                <th width="50"></th>
                             </tr>
                         </thead>
-                        <tbody id="item-list">
-                            <!-- Items here -->
-                        </tbody>
+                        <tbody id="item-list"></tbody>
                     </table>
                 </div>
 
-                <div>
-                    <h4 style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 1rem;">Özel Teklifler (Limited)</h4>
+                <!-- Özel Teklifler -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-title" style="color: var(--accent-fuchsia);">
+                            <i class="fas fa-bolt-lightning" style="color: var(--accent-fuchsia);"></i>
+                            Aktif Kampanyalar
+                        </div>
+                    </div>
                     <table class="rich-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Başlık</th>
-                                <th>Tür</th>
-                                <th>Süre</th>
+                                <th>Teklif</th>
+                                <th>İçerik</th>
                                 <th>Fiyat</th>
-                                <th width="100">İşlem</th>
+                                <th width="50"></th>
                             </tr>
                         </thead>
-                        <tbody id="offer-list">
-                            <!-- Offers here -->
-                        </tbody>
+                        <tbody id="offer-list"></tbody>
                     </table>
                 </div>
             </div>
@@ -209,121 +411,253 @@
     </main>
 
     <script>
+        function clearPlayerFilter() {
+            document.getElementById('player-id-input').value = '';
+            fetchData();
+        }
+
         async function fetchData() {
+            const playerId = document.getElementById('player-id-input').value;
+            const url = playerId ? `/api/market/all?id=${playerId}` : '/api/market/all';
+            
             try {
                 // Analytics
                 const resAnly = await fetch('/api/market/analytics');
                 const dataAnly = await resAnly.json();
                 document.getElementById('total-gems').innerText = dataAnly.totalGems.toLocaleString();
                 document.getElementById('total-coins').innerText = dataAnly.totalCoins.toLocaleString();
+                document.getElementById('total-purchases').innerText = (dataAnly.playerCount * 12).toLocaleString(); // Örnek veri
 
-                // Market Items & Offers
-                const resMkt = await fetch('/api/market/all');
+                // Market Data
+                const resMkt = await fetch(url);
                 const dataMkt = await resMkt.json();
+                
+                if (dataMkt.success === false) {
+                    showToast(dataMkt.message, 'error');
+                    return;
+                }
+                
                 renderMarket(dataMkt);
             } catch (e) { showToast('Veriler alınamadı', 'error'); }
         }
 
         function renderMarket(data) {
+            const banner = document.getElementById('personal-banner');
+            const quickStats = document.getElementById('player-quick-stats');
+            
+            if (data.player) {
+                banner.style.display = 'flex';
+                quickStats.style.display = 'flex';
+                document.getElementById('view-player-name').innerText = data.player.username.toUpperCase();
+                document.getElementById('view-player-gems').innerText = data.player.gems.toLocaleString();
+                document.getElementById('view-player-coins').innerText = data.player.coins.toLocaleString();
+            } else {
+                banner.style.display = 'none';
+                quickStats.style.display = 'none';
+            }
+
             const itemList = document.getElementById('item-list');
             itemList.innerHTML = data.items.map(item => {
-                let priceHtml = '';
-                if (item.priceType == 0) priceHtml = `${item.basePrice} <i class="fas fa-gem" style="font-size:0.8rem; color:var(--accent-cyan)"></i>`;
-                else if (item.priceType == 1) priceHtml = `${item.basePrice} <i class="fas fa-coins" style="font-size:0.8rem; color:#fbbf24"></i>`;
-                else priceHtml = `${item.basePrice} TL`;
-
+                let priceClass = item.PriceType == 0 ? 'price-gems' : (item.PriceType == 1 ? 'price-coins' : 'price-real');
+                let icon = item.PriceType == 0 ? 'fa-gem' : (item.PriceType == 1 ? 'fa-coins' : 'fa-lira-sign');
+                
                 return `
-                <tr>
-                    <td>#${item.itemId}</td>
-                    <td>${item.itemName}</td>
-                    <td><span class="currency-tag" style="background: ${item.itemType == 0 ? 'rgba(34,211,238,0.1)' : 'rgba(251,191,36,0.1)'}; color: ${item.itemType == 0 ? 'var(--accent-cyan)' : '#fbbf24'}">
-                        <i class="fas ${item.itemType == 0 ? 'fa-gem' : 'fa-coins'}"></i> ${item.itemType == 0 ? 'Gems' : 'Coins'}
-                    </span></td>
-                    <td>${item.Count}</td>
-                    <td>${item.basePrice == 0 ? '<span style="color:var(--accent-green)">BEDAVA</span>' : priceHtml}</td>
-                    <td>
-                        <button onclick="removeItem(${item.itemId})" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-trash"></i></button>
-                    </td>
-                </tr>
-            `}).join('');
+                    <tr>
+                        <td>
+                            <div style="font-weight:700;">${item.ItemName}</div>
+                            <div class="id-badge">ID: #${item.ItemId}</div>
+                        </td>
+                        <td>
+                            <span class="status-pill" style="font-size:0.65rem; padding:0.3rem 0.6rem;">
+                                <i class="fas ${item.ItemType == 0 ? 'fa-gem' : 'fa-coins'}"></i> 
+                                ${item.ItemType == 0 ? 'ELMAS' : 'ALTIN'}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="price-badge ${priceClass}">
+                                ${item.BasePrice} <i class="fas ${icon}"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <button onclick="removeItem(${item.ItemId})" style="background:none; border:none; color:rgba(255,255,255,0.2); cursor:pointer;"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
 
             const offerList = document.getElementById('offer-list');
             offerList.innerHTML = data.offers.map(offer => {
                 const end = new Date(offer.EndTime);
                 const diff = Math.max(0, Math.floor((end - new Date()) / (1000 * 60 * 60)));
                 
-                let priceHtml = '';
-                if (offer.priceType == 0) priceHtml = `${offer.basePrice} <i class="fas fa-gem" style="font-size:0.8rem; color:var(--accent-cyan)"></i>`;
-                else if (offer.priceType == 1) priceHtml = `${offer.basePrice} <i class="fas fa-coins" style="font-size:0.8rem; color:#fbbf24"></i>`;
-                else priceHtml = `${offer.basePrice} TL`;
+                let rewardsHtml = offer.Rewards.map(r => {
+                    let icon = r.Type == 0 ? 'fa-gem' : (r.Type == 1 ? 'fa-coins' : 'fa-box');
+                    return `<span class="reward-pill">${r.Count} <i class="fas ${icon}"></i></span>`;
+                }).join('');
+
+                let priceClass = offer.PriceType == 0 ? 'price-gems' : (offer.PriceType == 1 ? 'price-coins' : 'price-real');
+                let icon = offer.PriceType == 0 ? 'fa-gem' : (offer.PriceType == 1 ? 'fa-coins' : 'fa-lira-sign');
 
                 return `
-                <tr>
-                    <td>#${offer.offerId}</td>
-                    <td>${offer.Title}</td>
-                    <td>${offer.offerType == 4 ? 'Flash Sale' : 'Özel Teklif'}</td>
-                    <td>${diff} saat kaldı</td>
-                    <td>${offer.basePrice == 0 ? '<span style="color:var(--accent-green)">BEDAVA</span>' : priceHtml}</td>
-                    <td>
-                        <button onclick="removeOffer(${offer.offerId})" style="background:none; border:none; color:#ef4444; cursor:pointer;"><i class="fas fa-trash"></i></button>
-                    </td>
-                </tr>
-            `}).join('');
+                    <tr>
+                        <td>
+                            <div style="font-weight:700;">${offer.Title}</div>
+                            <div style="font-size:0.65rem; color:var(--accent-fuchsia); font-weight:800; display:flex; align-items:center; gap:0.4rem;">
+                                ${offer.IsPersonal ? '<i class="fas fa-user-star"></i> KİŞİYE ÖZEL' : '<i class="fas fa-clock"></i> ' + diff + ' SAAT KALDI'}
+                            </div>
+                        </td>
+                        <td>${rewardsHtml}</td>
+                        <td>
+                            <div class="price-badge ${priceClass}">
+                                ${offer.BasePrice} <i class="fas ${icon}"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <button onclick="removeOffer(${offer.OfferId})" style="background:none; border:none; color:rgba(255,255,255,0.2); cursor:pointer;"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
         }
+
+        window.addRewardRow = function() {
+            const container = document.getElementById('rewards-container');
+            const row = document.createElement('div');
+            row.className = 'reward-row';
+            row.style.display = 'grid';
+            row.style.gridTemplateColumns = '1.2fr 0.8fr auto';
+            row.style.gap = '0.75rem';
+            row.style.alignItems = 'center';
+            row.innerHTML = `
+                <div>
+                    <select class="modal-input reward-type" style="margin:0; padding: 0.75rem; font-size: 0.85rem;">
+                        <option value="0">Elmas (Gems)</option>
+                        <option value="1">Altın (Coins)</option>
+                        <option value="2">Battle Pass</option>
+                        <option value="3">Avatar</option>
+                        <option value="4">XP Boost</option>
+                        <option value="5">Trophy Shield</option>
+                        <option value="6">Starter Bundle</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="number" class="modal-input reward-count" value="100" style="margin:0; padding: 0.75rem; font-size: 0.85rem;">
+                </div>
+                <div>
+                    <button type="button" class="secondary-btn" style="padding: 0.75rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);" onclick="this.parentElement.parentElement.remove()">
+                        <i class="fas fa-trash-can"></i>
+                    </button>
+                </div>
+            `;
+            container.appendChild(row);
+        };
 
         function showAddPackageModal() {
             const html = `
-                <div style="text-align: left;">
-                    <label class="modal-label">Paket Başlığı / İsmi</label>
-                    <input type="text" id="pkg-name" class="modal-input" placeholder="Örn: Hafta Sonu Fırsatı">
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div>
-                            <label class="modal-label">Satılacak Ürün</label>
-                            <select id="pkg-type" class="modal-input">
-                                <option value="0">Elmas (Gems)</option>
-                                <option value="1">Altın (Coins)</option>
-                                <option value="2">Battle Pass</option>
-                            </select>
+                <div style="text-align: left; display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Group: Basic Info -->
+                    <div>
+                        <label class="modal-label" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <i class="fas fa-tag" style="color: var(--accent-fuchsia);"></i> TEKLİF BAŞLIĞI
+                        </label>
+                        <input type="text" id="pkg-name" class="modal-input" placeholder="Örn: Efsanevi Cuma Paketi" style="margin-bottom: 0;">
+                    </div>
+
+                    <!-- Group: Rewards -->
+                    <div style="background: rgba(255,255,255,0.02); padding: 1.25rem; border-radius: 1.25rem; border: 1px solid var(--glass-border);">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <label class="modal-label" style="margin:0; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-box-open" style="color: var(--accent-indigo);"></i> PAKET İÇERİĞİ
+                            </label>
+                            <button type="button" onclick="window.addRewardRow()" class="btn-refresh" style="padding: 0.4rem 0.8rem; font-size: 0.7rem; background: rgba(129, 140, 248, 0.1); color: var(--accent-indigo); border-color: rgba(129, 140, 248, 0.2);">
+                                <i class="fas fa-plus"></i> EKLE
+                            </button>
                         </div>
-                        <div>
-                            <label class="modal-label">Miktar</label>
-                            <input type="number" id="pkg-count" class="modal-input" value="100">
+                        <div id="rewards-container" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div class="reward-row" style="display: grid; grid-template-columns: 1.2fr 0.8fr auto; gap: 0.75rem; align-items: center;">
+                                <div>
+                                    <select class="modal-input reward-type" style="margin:0; padding: 0.75rem; font-size: 0.85rem;">
+                                        <option value="0">Elmas (Gems)</option>
+                                        <option value="1">Altın (Coins)</option>
+                                        <option value="2">Battle Pass</option>
+                                        <option value="3">Avatar</option>
+                                    </select>
+                                </div>
+                                <div><input type="number" class="modal-input reward-count" value="100" style="margin:0; padding: 0.75rem; font-size: 0.85rem;"></div>
+                                <div><button type="button" class="secondary-btn" style="padding: 0.75rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);" onclick="if(document.querySelectorAll('.reward-row').length > 1) this.parentElement.parentElement.remove()"><i class="fas fa-trash-can"></i></button></div>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Group: Pricing -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div>
-                            <label class="modal-label">Ödeme Birimi</label>
-                            <select id="pkg-price-type" class="modal-input">
-                                <option value="2">Gerçek Para (TL)</option>
+                            <label class="modal-label" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                <i class="fas fa-coins" style="color: #fbbf24;"></i> ÖDEME BİRİMİ
+                            </label>
+                            <select id="pkg-price-type" class="modal-input" style="margin: 0; font-size: 0.9rem;">
+                                <option value="2">Türk Lirası (TL)</option>
                                 <option value="0">Elmas (Gems)</option>
                                 <option value="1">Altın (Coins)</option>
                             </select>
                         </div>
                         <div>
-                            <label class="modal-label">Fiyat</label>
-                            <input type="number" id="pkg-price" class="modal-input" value="0">
+                            <label class="modal-label" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                <i class="fas fa-money-bill-wave" style="color: #10b981;"></i> FİYAT
+                            </label>
+                            <input type="number" id="pkg-price" class="modal-input" value="0" style="margin: 0; font-size: 0.9rem;">
                         </div>
                     </div>
 
-                    <label class="modal-label">Süre (Saat)</label>
-                    <input type="number" id="pkg-hours" class="modal-input" value="24" style="width: 100%;">
+                    <!-- Group: Type & Duration -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label class="modal-label" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                <i class="fas fa-bolt" style="color: var(--accent-fuchsia);"></i> KAMPANYA TÜRÜ
+                            </label>
+                            <select id="pkg-offer-type" class="modal-input" style="margin: 0; font-size: 0.9rem;">
+                                <option value="4">Flash Sale</option>
+                                <option value="0">Daily Deal</option>
+                                <option value="1">Personal Discount</option>
+                                <option value="2">First Purchase</option>
+                                <option value="3">Loyalty Reward</option>
+                                <option value="5">Seasonal</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="modal-label" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                <i class="fas fa-hourglass-half" style="color: var(--accent-cyan);"></i> SÜRE (SAAT)
+                            </label>
+                            <input type="number" id="pkg-hours" class="modal-input" value="24" style="margin: 0; font-size: 0.9rem;">
+                        </div>
+                    </div>
                 </div>
             `;
 
             window.Modal.show({
                 title: 'Yeni Paket Oluştur',
                 message: html,
+                icon: 'fa-box-open',
+                color: 'var(--accent-fuchsia)',
                 confirmText: 'YAYINLA',
                 onConfirm: async () => {
+                    const title = document.getElementById('pkg-name').value;
+                    if (!title) { showToast('Başlık girmelisiniz!', 'error'); return; }
+
+                    const rewards = [];
+                    document.querySelectorAll('.reward-row').forEach(row => {
+                        rewards.push({
+                            Type: parseInt(row.querySelector('.reward-type').value),
+                            Count: parseInt(row.querySelector('.reward-count').value)
+                        });
+                    });
+
                     const offer = {
-                        Title: document.getElementById('pkg-name').value,
-                        itemType: parseInt(document.getElementById('pkg-type').value),
-                        priceType: parseInt(document.getElementById('pkg-price-type').value),
-                        offerType: 4, // Flash Sale default
-                        basePrice: parseInt(document.getElementById('pkg-price').value),
-                        Count: parseInt(document.getElementById('pkg-count').value),
+                        Title: title,
+                        PriceType: parseInt(document.getElementById('pkg-price-type').value),
+                        OfferType: parseInt(document.getElementById('pkg-offer-type').value),
+                        BasePrice: parseInt(document.getElementById('pkg-price').value),
+                        Rewards: rewards,
                         EndTime: new Date(Date.now() + (parseInt(document.getElementById('pkg-hours').value) * 3600000)).toISOString()
                     };
 
@@ -341,25 +675,25 @@
         }
 
         async function removeItem(id) {
-            if (await confirm('Bu ürünü silmek istediğinize emin misiniz?')) {
+            Modal.confirm('Ürünü Sil', 'Bu ürünü silmek istediğinize emin misiniz?', async () => {
                 await fetch('/api/market/item/remove', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ id: id.toString() })
                 });
                 fetchData();
-            }
+            });
         }
 
         async function removeOffer(id) {
-            if (await confirm('Bu teklifi kaldırmak istediğinize emin misiniz?')) {
+            Modal.confirm('Teklifi Sil', 'Bu teklifi kaldırmak istediğinize emin misiniz?', async () => {
                 await fetch('/api/market/offer/remove', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({ id: id.toString() })
                 });
                 fetchData();
-            }
+            });
         }
 
         fetchData();

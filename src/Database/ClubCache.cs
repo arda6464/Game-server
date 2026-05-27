@@ -47,7 +47,7 @@ public static class ClubCache
     // Cache'e kulüp ekle
     public static void Cache(Club club)
     {
-        CachedClubs[club.ClubId] = club;
+        CachedClubs[club.ID] = club;
     }
 
     // Cache'den kulüp yükle

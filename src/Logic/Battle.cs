@@ -1,5 +1,5 @@
-using System.Numerics;
 using Logic;
+using DietPhysics;
 
 public enum BattleState
 {
@@ -15,19 +15,43 @@ public class Battle
     public BattleState State { get; private set; } = BattleState.WaitingToStart;
 
     public int BulletIdCounter = 0;
+    public int LootIdCounter = 0;
     public List<Player> Players { get; set; } = new List<Player>();
     public List<Bullet> Bullets { get; set; } = new List<Bullet>();
+    public List<LootItem> Loots { get; set; } = new List<LootItem>();
 
     private readonly object _lock = new object();
     private DateTime _startTime;
-    public List<Vector3> SpawnPoints = new List<Vector3>
-    {
-        new Vector3(11,1,-8),
-        new Vector3(11,1,17),
-        new Vector3(40,1,16),
-        new Vector3(41,1,-9)
-    };
+    private DietWorld World = new DietWorld();
+    public List<Vec3> SpawnPoints = new List<Vec3>();
 
+    public Battle()
+    {
+        try
+        {
+            MapManager.Load("MapData.json");
+        }
+        catch (System.Exception ex)
+        {
+            Console.WriteLine($"[Battle] HATA: MapData.json yuklenemedi: {ex.Message}");
+        }
+
+        var map = MapManager.LoadedMap;
+
+        // Duvarlar statik collider olarak ekleniyor.
+        foreach (WallData wall in map.walls)
+        {
+            DietBox box = new DietBox(wall.pos, wall.center, wall.size, wall.rot);
+            World.AddColliderStatic(box);
+            Console.WriteLine($"[Harita] Duvar eklendi: pos={box.GetPosition()} size={box.Size}");
+        }
+
+        // Statik collider'ları pişir (spatial optimizasyon için).
+        World.Bake();
+
+        SpawnPoints = map.spawnPoints;
+        Console.WriteLine("----- Harita yüklendi -----");
+    }
 
     public void Start()
     {
@@ -48,7 +72,6 @@ public class Battle
             State = BattleState.Finished;
             Logger.battlelog($"[BATTLE {BattleId}] Battle stopped.");
 
-            // Cleanup players' arena reference
             foreach (var player in Players)
             {
                 if (player.session != null)
@@ -110,8 +133,8 @@ public class Battle
             {
                 if (bullet.IsActive)
                 {
-                    bullet.Position += bullet.Direction * bullet.Speed * TickManager.instance.DeltaTime * 20f; // *20f to keep original feel if Speed was units/tick @ 20Hz
-                    float traveledDistance = Vector2.Distance(bullet.startPos, bullet.Position);
+                    bullet.Position += bullet.Direction * bullet.Speed * TickManager.instance.DeltaTime;
+                    float traveledDistance = Vec3.Distance(bullet.startPos, bullet.Position);
 
                     if (traveledDistance >= bullet.menzil)
                     {
@@ -137,43 +160,135 @@ public class Battle
 
             foreach (var player in Players)
             {
-                if (player.IsAlive && player.InputDirection != Vector3.Zero)
+                // Depenetration: Oyuncu bir nesnenin içindeyse dışarı it.
+                if (player.Collider != null)
                 {
-                    Vector3 direction = Vector3.Normalize(player.InputDirection);
-                    player.Position += direction * player.Speed * deltaTime;
-                    if (player.session?.PlayerData != null)
+                    if (World.ResolveOverlap(player.Collider, out Vec3 resolvedPos))
                     {
-                        player.session.PlayerData.Position = player.Position;
-                        player.session.PlayerData.InputDirection = Vector3.Zero;
+                        player.Position = resolvedPos;
+                        player.Collider.Position = resolvedPos;
                     }
                 }
 
-                // --- HAFIZA SİSTEMİ (HISTORY BUFFER) ---
-                // Oyuncunun bu tick'teki pozisyonunu kaydet
+                while (player.InputQueue.Count > 0)
+                {
+                    var input = player.InputQueue.Dequeue();
+                    player.LastProcessedTick = input.Tick;
+
+                    if (!player.IsAlive || input.Direction == Vec3.zero) continue;
+
+                    Vec3 direction = input.Direction.normalized;
+                    float distance = player.Speed * deltaTime;
+
+                    if (player.Collider == null)
+                    {
+                        // Collider yoksa fizik kontrolü yapma, doğrudan hareket et.
+                        player.Position += direction * distance;
+                    }
+                    else
+                    {
+                        ApplyMovementWithSliding(player, direction, distance);
+                    }
+
+                    if (player.session?.PlayerData != null)
+                        player.session.PlayerData.Position = player.Position;
+                }
+
+                // Bu tick'teki pozisyonu kayıt et.
                 player.PositionHistory[currentTick] = player.Position;
 
-                // Eski pozisyonları sil (maksimum 1 saniye geriye bakılmasına izin verilir)
-                if (currentTick > TickManager.instance.TickRate)
-                {
-                    player.PositionHistory.Remove(currentTick - (uint)TickManager.instance.TickRate);
-                }
+                // 1 saniyeden eski pozisyon kayıtlarını temizle.
+                uint oldTick = currentTick > (uint)TickManager.instance.TickRate
+                    ? currentTick - (uint)TickManager.instance.TickRate
+                    : 0;
+                player.PositionHistory.Remove(oldTick);
             }
         }
     }
 
-    public void UpdatePlayerPosition(int id, Vector3 newPos)
+    /// <summary>
+    /// Önce tam yönde hareket dene, engel varsa X ve Z eksenlerinde ayrı ayrı kayma dene.
+    /// </summary>
+    private void ApplyMovementWithSliding(Player player, Vec3 direction, float distance)
+    {
+        const int SweepIterations = 5;
+
+        // Tam hareket mümkünse direkt ilerle.
+        if (!World.SweepTest(player.Collider, direction, distance, SweepIterations, out _))
+        {
+            player.Position += direction * distance;
+            player.Collider.Position = player.Position;
+            return;
+        }
+
+        // Engel var — eksen bazlı kayma dene.
+        bool movedX = false;
+        bool movedZ = false;
+
+        if (MathF.Abs(direction.x) > 0.1f)
+        {
+            Vec3 xDir = new Vec3(direction.x, 0, 0).normalized;
+            float xDist = distance * MathF.Abs(direction.x);
+            if (!World.SweepTest(player.Collider, xDir, xDist, SweepIterations, out _))
+            {
+                player.Position += xDir * xDist;
+                player.Collider.Position = player.Position;
+                movedX = true;
+            }
+        }
+
+        if (MathF.Abs(direction.z) > 0.1f)
+        {
+            Vec3 zDir = new Vec3(0, 0, direction.z).normalized;
+            float zDist = distance * MathF.Abs(direction.z);
+            if (!World.SweepTest(player.Collider, zDir, zDist, SweepIterations, out _))
+            {
+                player.Position += zDir * zDist;
+                player.Collider.Position = player.Position;
+                movedZ = true;
+            }
+        }
+
+        if (!movedX && !movedZ)
+            Console.WriteLine($"[Fizik] {player.Username} tamamen bloklandı.");
+    }
+
+    /// <summary>
+    /// Sunucuya gelen ham pozisyon paketini fizik doğrulamasından geçirir.
+    /// Geçersizse oyuncuyu sınır noktasına çeker.
+    /// </summary>
+    public void UpdatePlayerPosition(int id, Vec3 newPos)
     {
         lock (_lock)
         {
             var player = Players.FirstOrDefault(p => p.ID == id);
-            if (player != null)
+            if (player == null) return;
+
+            if (player.Collider == null)
             {
                 player.Position = newPos;
-                if (player.session?.PlayerData != null)
-                {
-                    player.session.PlayerData.Position = newPos;
-                }
             }
+            else
+            {
+                Vec3 delta = newPos - player.Position;
+                float distance = delta.magnitude;
+
+                if (distance > 0.001f && World.SweepTest(player.Collider, delta.normalized, distance, 3, out Vec3 collidedPos))
+                {
+                    // Collision tespit edildi: collider yüzeyinin biraz gerisine al.
+                    player.Position = collidedPos + delta.normalized * -0.01f;
+                    Console.WriteLine($"[Fizik] {player.Username} paket ile duvara çarptı, sınırda tutuldu.");
+                }
+                else
+                {
+                    player.Position = newPos;
+                }
+
+                player.Collider.Position = player.Position;
+            }
+
+            if (player.session?.PlayerData != null)
+                player.session.PlayerData.Position = player.Position;
         }
     }
 
@@ -183,27 +298,20 @@ public class Battle
         {
             foreach (var pSource in Players)
             {
-                /* if (Vector3.Distance(pSource.Position, pSource.LastSentPosition) < 0.01f &&
-                     Math.Abs(pSource.Rotation - pSource.LastSentRotation) < 0.5f)
-                 {
-                     Console.WriteLine("broadcast'te contue edildi");
-                     continue;
-                 }*/
-
                 pSource.LastSentPosition = pSource.Position;
                 pSource.LastSentRotation = pSource.Rotation;
 
                 var packet = new PlayerMovePacket
                 {
-                    Tick = TickManager.instance.Get_Tick(),
+                    ClientTick = pSource.LastProcessedTick,
                     ID = pSource.ID,
-                    X = pSource.Position.X,
-                    Y = pSource.Position.Y,
-                    Z = pSource.Position.Z,
+                    X = pSource.Position.x,
+                    Y = pSource.Position.y,
+                    Z = pSource.Position.z,
                 };
 
                 byte[] payloadData;
-                using (ByteBuffer payloadBuffer = new ByteBuffer())
+                using (ByteBuffer payloadBuffer = ByteBufferPool.Get())
                 {
                     packet.Serialize(payloadBuffer);
                     payloadData = payloadBuffer.ToArray();
@@ -211,13 +319,9 @@ public class Battle
 
                 foreach (var pTarget in Players)
                 {
-                    if (/*pTarget.AccountId != pSource.AccountId &&*/ pTarget.session?.UdpEndPoint != null)
-                    {
+                    if (pTarget.session?.UdpEndPoint != null)
                         pTarget.session.SendUnreliableUDP_Payload(payloadData);
-                    }
                 }
-
-
             }
         }
     }
@@ -243,6 +347,19 @@ public class Battle
         lock (_lock)
         {
             player.BattleId = BattleId;
+
+            int spawnIndex = Players.Count % SpawnPoints.Count;
+            player.Position = SpawnPoints[spawnIndex];
+
+            if (player.session?.PlayerData != null)
+                player.session.PlayerData.Position = player.Position;
+
+            Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} spawned at {player.Position}");
+
+            // Oyuncu collider'ı dynamic olarak ekleniyor (oyuncular hareket eden objeler).
+            player.Collider = new DietSphere(player.Position, Vec3.zero, 0.5f);
+            World.AddColliderDynamic(player.Collider);
+
             Players.Add(player);
             Logger.battlelog($"[BATTLE {BattleId}] Player added: {player.Username} (Total: {Players.Count})");
         }
@@ -252,13 +369,15 @@ public class Battle
     {
         lock (_lock)
         {
+            var player = Players.FirstOrDefault(p => p.ID == id);
+            if (player?.Collider != null)
+                World.RemoveColliderDynamic(player.Collider);
+
             Players.RemoveAll(p => p.ID == id);
             Logger.battlelog($"[BATTLE {BattleId}] Player removed: {id} (Remaining: {Players.Count})");
 
             if (Players.Count == 0 || (State == BattleState.Active && Players.Count(p => p.IsAlive) <= 1))
-            {
                 Stop();
-            }
         }
     }
 
@@ -266,9 +385,7 @@ public class Battle
     {
         var deadPlayer = GetPlayer(deadPlayerId);
         if (deadPlayer != null)
-        {
             deadPlayer.IsAlive = false;
-        }
 
         var packet = new PlayerDeadPacket
         {
@@ -277,9 +394,7 @@ public class Battle
         };
 
         foreach (var player in GetPlayers())
-        {
             player.session?.Send(packet);
-        }
 
         CheckMatchEnd();
     }
@@ -291,11 +406,28 @@ public class Battle
             if (State != BattleState.Active) return;
 
             var alivePlayers = Players.Where(p => p.IsAlive).ToList();
-            /*  if (alivePlayers.Count <= 1)
-              {
-                  // TODO: Victory/Defeat packets
-                  Stop();
-              }*/
+            // if (alivePlayers.Count <= 1) Stop();
+        }
+    }
+
+    public int GetNextLootId()
+    {
+        return Interlocked.Increment(ref LootIdCounter);
+    }
+
+    public void SpawnLoot(int dataId, Vec3 position)
+    {
+        lock (_lock)
+        {
+            var loot = new LootItem
+            {
+                LootId = GetNextLootId(),
+                DataId = dataId,
+                Position = position,
+                SpawnTime = GetCurrentTime()
+            };
+            Loots.Add(loot);
+            Logger.battlelog($"[BATTLE {BattleId}] Loot spawned: {dataId} at {position}");
         }
     }
 

@@ -97,7 +97,7 @@ public static class ReportManager
     {
         ContextMode mode;
         byte messageid;
-        using (ByteBuffer read = new ByteBuffer())
+        using (ByteBuffer read = ByteBufferPool.Get())
         {
             read.WriteBytes(data);
             read.ReadVarInt(); // Length
@@ -134,7 +134,7 @@ public static class ReportManager
             ReporterId = account.ID,
             ReporterName = account.Username,
             Type = "Club",
-            ClubName = club.ClubName,
+            ClubName = club.Name,
             Timestamp = DateTime.Now,
             Status = "Pending",
             Reason = "Sohbet İhlali"
@@ -144,7 +144,7 @@ public static class ReportManager
         for (int i = messageid - 5; i <= messageid + 5; i++)
         {
             if (i < 0) continue;
-            ClubMessage msg = ClubManager.GetCLubMessage(club, i);
+            ClubMessage msg = club.GetCLubMessage(i);
             if (msg != null && msg.messageFlags == ClubMessageFlags.None)
             {
                 if (i == messageid)

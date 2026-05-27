@@ -194,20 +194,29 @@
             <a href="players.html" class="nav-item">
                 <i class="fas fa-id-badge"></i> Oyuncular
             </a>
+            <a href="delivery.html" class="nav-item">
+                <i class="fas fa-gift"></i> Eşya Gönderimi
+            </a>
+            <a href="clubs.html" class="nav-item">
+                <i class="fas fa-users-viewfinder"></i> Kulüpler
+            </a>
             <a href="reports.html" class="nav-item">
                 <i class="fas fa-flag"></i> Raporlar
-            </a>
-            <a href="management.html" class="nav-item">
-                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="announcement.html" class="nav-item">
                 <i class="fas fa-bullhorn"></i> Duyurular
             </a>
-            <a href="traffic.html" class="nav-item">
-                <i class="fas fa-chart-area"></i> Trafik Analizi
+            <a href="chests.html" class="nav-item">
+                <i class="fas fa-box-open"></i> Sandık & Drop
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
             </a>
             <a href="logs.html" class="nav-item">
                 <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
             </a>
             <a href="client_errors.html" class="nav-item">
                 <i class="fas fa-bug"></i> İstemci Hataları
@@ -218,8 +227,8 @@
             <a href="admins.html" class="nav-item">
                 <i class="fas fa-user-shield"></i> Yönetim
             </a>
-            <a href="market.html" class="nav-item">
-                <i class="fas fa-shopping-cart"></i> Market
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="#" class="nav-item" onclick="logout()"
                 style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
@@ -235,7 +244,7 @@
                 </div>
                 <div>
                     <div style="font-weight: 700; font-size: 0.9rem;">Server Admin</div>
-                    <div style="font-size: 0.75rem; color: var(--text-secondary);">v1.0.9-beta</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary);">v1.0.8-beta</div>
                 </div>
             </div>
         </div>
@@ -293,6 +302,7 @@
 
         function renderTicketList() {
             const list = document.getElementById('ticket-list');
+            if (!list) return;
             if (currentTickets.length === 0) {
                 list.innerHTML = `<div style="padding: 3rem 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
                     <i class="fas fa-check-circle" style="display: block; font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.2; color: #10b981;"></i>
@@ -322,6 +332,7 @@
 
         function renderChat(ticket) {
             const panel = document.getElementById('chat-panel');
+            if (!panel) return;
 
             // Eğer panel boşsa veya bilet değişmişse tam yapıyı kur
             const isDifferentTicket = panel.getAttribute('data-id') !== ticket.id.toString();
@@ -342,31 +353,35 @@
 
             // Üst başlığı güncelle
             const header = document.getElementById('chat-header-content');
-            header.innerHTML = `
-                <div>
-                    <div style="font-size: 0.75rem; font-weight: 800; color: var(--accent-cyan);">TICKET #${ticket.id}</div>
-                    <h3 style="margin: 0; font-size: 1.15rem;">${ticket.username} / ${ticket.title || 'Destek Talebi'}</h3>
-                </div>
-                <button class="btn-refresh" onclick="closeTicket(${ticket.id})" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444; padding: 0.6rem 1.2rem; font-size: 0.8rem;">
-                    <i class="fas fa-times-circle"></i> BİLETİ KAPAT
-                </button>
-            `;
+            if (header) {
+                header.innerHTML = `
+                    <div>
+                        <div style="font-size: 0.75rem; font-weight: 800; color: var(--accent-cyan);">TICKET #${ticket.id}</div>
+                        <h3 style="margin: 0; font-size: 1.15rem;">${ticket.username} / ${ticket.title || 'Destek Talebi'}</h3>
+                    </div>
+                    <button class="btn-refresh" onclick="closeTicket(${ticket.id})" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444; padding: 0.6rem 1.2rem; font-size: 0.8rem;">
+                        <i class="fas fa-times-circle"></i> BİLETİ KAPAT
+                    </button>
+                `;
+            }
 
             // Mesajları güncelle
             const messagesDiv = document.getElementById('chat-messages');
-            const currentMessageCount = messagesDiv.children.length;
-            const newMessageCount = ticket.messages.length;
+            if (messagesDiv) {
+                const currentMessageCount = messagesDiv.children.length;
+                const newMessageCount = ticket.messages.length;
 
-            // Sadece yeni mesaj varsa veya sayı değişmişse güncelle
-            if (currentMessageCount !== newMessageCount) {
-                messagesDiv.innerHTML = ticket.messages.map(m => `
-                    <div class="bubble ${m.name === 'Admin' || m.name === 'Sistem' ? 'admin' : 'user'}">
-                        <div class="bubble-name">${m.name}</div>
-                        <div class="bubble-content">${m.message}</div>
-                        <div class="bubble-time">${m.time}</div>
-                    </div>
-                `).join('');
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                // Sadece yeni mesaj varsa veya sayı değişmişse güncelle
+                if (currentMessageCount !== newMessageCount) {
+                    messagesDiv.innerHTML = ticket.messages.map(m => `
+                        <div class="bubble ${m.name === 'Admin' || m.name === 'Sistem' ? 'admin' : 'user'}">
+                            <div class="bubble-name">${m.name}</div>
+                            <div class="bubble-content">${m.message}</div>
+                            <div class="bubble-time">${m.time}</div>
+                        </div>
+                    `).join('');
+                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                }
             }
         }
 
@@ -413,6 +428,13 @@
                         `;
                     }
                 } catch (e) { showToast('Hata oluştu', 'error'); }
+            });
+        }
+
+        function logout() {
+            Modal.confirm('Çıkış Yap', 'Oturumunuzu kapatmak istediğinize emin misiniz?', async () => {
+                await fetch('/api/auth/logout');
+                window.location.href = 'login.html';
             });
         }
 

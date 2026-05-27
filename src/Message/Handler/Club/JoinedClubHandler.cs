@@ -3,18 +3,18 @@ public static class JoinedClubHandler
 {
     public static void Handle(Session session, byte[] message)
     {
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(message, true);
 
         var request = new JoinClubRequestPacket();
         request.Deserialize(read);
-        
+
         int clubId = request.ClubId;
         read.Dispose();
 
         if (session.Account == null) return;
         AccountManager.AccountData account = session.Account;
-        
+
         var club = ClubManager.LoadClub(clubId);
         if (club == null) return;
 
@@ -24,55 +24,65 @@ public static class JoinedClubHandler
             return;
         }
 
-        if (account.Clubid != -1)
+        if (account.Clubid != 0)
         {
-            MessageCodeManager.Send(session, MessageCodeManager.Message.AlreadyİnClub);
+            MessageCodeManager.Send(session, MessageCodeManager.Message.AlreadyInClub);
             return;
         }
-
-        bool isJoined = ClubManager.AddMember(club.ClubId, account.ID);
-            
-        if (isJoined)
+        if (club.State == ClubState.OnlyInvite)
         {
-            var response = new JoinClubResponsePacket
+            if(club.PendingInvites.Contains(account.ID))
             {
-                ClubId = club.ClubId,
-                ClubAvatarId = club.ClubAvatarID,
-                ClubName = club.ClubName,
-                ClubDescription = club.Clubaciklama,
-            };
-            response.Members.AddRange(club.Members);
-            response.Messages.AddRange(club.Messages);
-            session.Send(response);
+                MessageCodeManager.Send(session, MessageCodeManager.Message.AlreadyRequestClub);
+                return;
+            }
 
-            ClubMessage joinMessage = new ClubMessage
+               club.PendingInvites.Add(session.ID);
+            ClubMessage clubMessage = new ClubMessage
             {
-                messageFlags = ClubMessageFlags.HasSystem,
-                eventType = ClubEventType.JoinMessage,
-                ActorName = account.Username,
+                messageFlags = ClubMessageFlags.Request,
                 ActorID = account.ID,
-                MessageId = 0
+                ActorName = account.Username,
+                Content = request.jointext,
+                RequestState = ClubRequestState.Waiting,
+                SenderAvatarID = account.Avatarid
             };
-
-            lock (club.SyncLock)
-            {
-                club.Messages.Add(joinMessage);
-            }
-
-            var broadcastPacket = new GetClubMessagePacket { Message = joinMessage };
-
-            foreach (var member in club.Members)
-            {
-                if (SessionManager.IsOnline(member.ID))
-                {
-                    Session targetSession = SessionManager.GetSession(member.ID);
-                    targetSession?.Send(broadcastPacket);
-                }
-            }
+            club.SendMessageToClubMembers(clubMessage);
+           MessageCodeManager.Send(session, MessageCodeManager.Message.SendClubJoinRequest );
+           Console.WriteLine("Kulübe katılma isteği başarıyla alındı");
         }
-        else 
+        else
         {
-            Console.WriteLine("joinclub else döndürüyormuş");
+            bool isJoined = club.AddMember(account.ID);
+
+            if (isJoined)
+            {
+                var response = new JoinClubResponsePacket
+                {
+                    Club = club
+                };
+
+                session.Send(response);
+
+                ClubMessage joinMessage = new ClubMessage
+                {
+                    messageFlags = ClubMessageFlags.HasSystem,
+                    eventType = ClubEventType.JoinMessage,
+                    ActorName = account.Username,
+                    ActorID = account.ID
+                };
+                club.SendMessageToClubMembers(joinMessage);
+
+            }
+            else
+            {
+                Console.WriteLine("joinclub else döndürüyormuş");
+            }
+
         }
+
+
+
     }
 }
+

@@ -3,7 +3,7 @@ public static class TeamMessageHandler
 {
     public static void Handle(Session session, byte[] data)
     {
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(data, true);
         
         var request = new SendTeamMessageRequestPacket();

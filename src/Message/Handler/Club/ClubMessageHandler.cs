@@ -6,7 +6,7 @@ public static class ClubMessageHandler
     public static void Handle(Session session, byte[] message)
     {
         Console.WriteLine("club message handler iss run");
-        ByteBuffer readbuffer = new ByteBuffer();
+        ByteBuffer readbuffer = ByteBufferPool.Get();
         readbuffer.WriteBytes(message, true);
 
         var request = new SendClubMessageRequestPacket();
@@ -38,46 +38,22 @@ public static class ClubMessageHandler
             return;
         }
 
-        Console.WriteLine($"{account.Username} adlı kullanıcı {club.ClubName ?? "PORNO"} adlı kulube {Message} mesajını gönderdi");
+        Console.WriteLine($"{account.Username} adlı kullanıcı {club.Name ?? "PORNO"} adlı kulube {Message} mesajını gönderdi");
         
-        ClubMessage clubMessage;
-        lock (club.SyncLock)
+        ClubMessage clubMessage = new ClubMessage
         {
-            clubMessage = new ClubMessage
-            {
-                MessageId = club.MessageIdCounter++,
-                messageFlags = ClubMessageFlags.None,
-                SenderName = account.Username,
-                SenderId = account.ID,
-                SenderAvatarID = account.Avatarid,
-                Content = Message,
-                Timestamp = DateTime.Now
-            };
-            club.Messages.Add(clubMessage);
-        }
+            messageFlags = ClubMessageFlags.None,
+            SenderName = account.Username,
+            SenderId = account.ID,
+            SenderAvatarID = account.Avatarid,
+            Content = Message,
+            Timestamp = DateTime.Now
+        };
         
         // Görev İlerlemesi - Mesaj Gönderme
         QuestManager.CheckQuestProgress(account, Quest.MissionType.SendChatMessage);
 
-        var broadcastPacket = new GetClubMessagePacket
-        {
-            Message = clubMessage,
-             Role = account.clubRole
-        };
-        
-        lock (club.SyncLock)
-        {
-            foreach (var member in club.Members)
-            {
-                if (SessionManager.IsOnline(member.ID))
-                {
-                    Session membersesion = SessionManager.GetSession(member.ID);
-                    membersesion.Send(broadcastPacket);
-                }
-            }
-        }
-
-
+        club.SendMessageToClubMembers(clubMessage);
     }
      public static void GameinCmd(Session session, AccountManager.AccountData account, string message)
     {
@@ -86,6 +62,15 @@ public static class ClubMessageHandler
              //   if (cmd.Length == 0) return;
         switch (cmd[0])
         {
+            case "help":
+                EntryMessage = "Mevcut komutlar: /help, /clubid, /status, /firebase";
+                break;
+            case "ping":
+                EntryMessage = "pong!";
+                break;
+            case "myid":
+                EntryMessage = $" senin id:{account.ID}";
+                break;
             case "clubid":
                 EntryMessage = $" senin club id:{account.Clubid}";
                 break;
@@ -106,7 +91,7 @@ public static class ClubMessageHandler
             Message = new ClubMessage
             {
                messageFlags = ClubMessageFlags.None,
-               SenderId = account.ID,
+               SenderId = account.ID+1,
                SenderName = "SİSTEM",
                SenderAvatarID = account.Avatarid,
                Content = EntryMessage,

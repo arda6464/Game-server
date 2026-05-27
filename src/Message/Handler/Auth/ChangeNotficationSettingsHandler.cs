@@ -3,7 +3,7 @@ public static class ChangeNotficationSettingsHandler
 {
     public static void Handle(Session session, byte[] data)
     {
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(data);
         byte index = read.ReadByte();
         read.Dispose();

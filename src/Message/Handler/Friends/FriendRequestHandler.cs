@@ -6,7 +6,7 @@ public static class SendFriendRequestHandler
 {
     public static void Handle(Session session, byte[] data)
     {
-        ByteBuffer byteBuffer = new ByteBuffer();
+        ByteBuffer byteBuffer = ByteBufferPool.Get();
         byteBuffer.WriteBytes(data, true);
 
         var request = new SendFriendRequestPacket();

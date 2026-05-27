@@ -11,7 +11,8 @@ public static class NotficationSender
         }
 
         var packet = new NotificationPacket
-        {
+        { 
+            IndexID = notification.IndexID,
             Type = notification.type,
             Title = notification.Title,
             Message = notification.Message,
@@ -21,9 +22,8 @@ public static class NotficationSender
             Sender = notification.Sender,
             IsViewed = notification.IsViewed,
             UnixTime = new DateTimeOffset(notification.Timespam.ToUniversalTime()).ToUnixTimeSeconds(),
-            RewardType = (int)notification.rewardItemType,
-            DonationCount = notification.DonationCount,
-            IsClaimed = notification.İsclamed
+            IsClaimed = notification.IsClaimed,
+            Rewards = notification.Rewards
         };
 
         session.Send(packet);

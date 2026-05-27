@@ -4,7 +4,7 @@ public static class GetEvents
     public static void Handle(Session session, byte[] data)
     {
         Console.WriteLine("events handler ");
-        ByteBuffer buffer = new ByteBuffer();
+        ByteBuffer buffer = ByteBufferPool.Get();
         buffer.WriteVarInt((int)MessageType.EventsResponse);
         buffer.WriteVarInt(DynamicConfigManager.Config.ActiveEvents.Count);
         foreach (var events in DynamicConfigManager.Config.ActiveEvents)

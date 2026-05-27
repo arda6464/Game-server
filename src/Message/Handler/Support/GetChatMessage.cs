@@ -5,7 +5,7 @@ public static class GetChatMessage
 {
     public static void Handle(Session session,byte[] message)
     {
-        ByteBuffer buffer = new ByteBuffer();
+        ByteBuffer buffer = ByteBufferPool.Get();
         buffer.WriteBytes(message);
         
         var request = new SupportSendMessageRequestPacket();

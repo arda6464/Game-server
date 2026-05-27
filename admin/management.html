@@ -165,6 +165,107 @@
             color: var(--text-secondary);
             font-style: italic;
         }
+
+        /* Discord-style floating unsaved changes bar */
+        .unsaved-bar {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 4rem);
+            max-width: 900px;
+            background: rgba(17, 18, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border-radius: 1rem;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @media (min-width: 1025px) {
+            .unsaved-bar {
+                left: calc(50% + 140px); /* 140px is half of 280px sidebar */
+                width: calc(100% - 280px - 6rem);
+            }
+        }
+
+        .unsaved-bar.active {
+            bottom: 2rem;
+        }
+
+        .unsaved-bar-text {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .unsaved-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .unsaved-btn-reset {
+            background: none;
+            border: none;
+            color: #b9bbbe;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .unsaved-btn-reset:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .unsaved-btn-save {
+            background: #248046;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(36, 128, 70, 0.2);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .unsaved-btn-save:hover {
+            background: #1a6535;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(36, 128, 70, 0.3);
+        }
+
+        @keyframes shakeAndGrow {
+            0% { transform: translateX(-50%) scale(1); }
+            10% { transform: translateX(calc(-50% - 10px)) scale(1.05); }
+            20% { transform: translateX(calc(-50% + 10px)) scale(1.05); }
+            30% { transform: translateX(calc(-50% - 10px)) scale(1.05); }
+            40% { transform: translateX(calc(-50% + 10px)) scale(1.05); }
+            50% { transform: translateX(calc(-50% - 10px)) scale(1.05); }
+            60% { transform: translateX(calc(-50% + 10px)) scale(1.05); }
+            70% { transform: translateX(calc(-50% - 10px)) scale(1.05); }
+            80% { transform: translateX(calc(-50% + 10px)) scale(1.05); }
+            90% { transform: translateX(calc(-50% - 5px)) scale(1.02); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        .unsaved-bar.shake-grow {
+            animation: shakeAndGrow 0.6s cubic-bezier(.36,.07,.19,.97) both;
+            box-shadow: 0 0 30px rgba(244, 63, 94, 0.5), 0 20px 40px rgba(0, 0, 0, 0.6);
+            border-color: rgba(244, 63, 94, 0.5);
+        }
     </style>
 </head>
 
@@ -181,20 +282,29 @@
             <a href="players.html" class="nav-item">
                 <i class="fas fa-id-badge"></i> Oyuncular
             </a>
+            <a href="delivery.html" class="nav-item">
+                <i class="fas fa-gift"></i> Eşya Gönderimi
+            </a>
+            <a href="clubs.html" class="nav-item">
+                <i class="fas fa-users-viewfinder"></i> Kulüpler
+            </a>
             <a href="reports.html" class="nav-item">
                 <i class="fas fa-flag"></i> Raporlar
-            </a>
-            <a href="management.html" class="nav-item active">
-                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="announcement.html" class="nav-item">
                 <i class="fas fa-bullhorn"></i> Duyurular
             </a>
-            <a href="traffic.html" class="nav-item">
-                <i class="fas fa-chart-area"></i> Trafik Analizi
+            <a href="chests.html" class="nav-item">
+                <i class="fas fa-box-open"></i> Sandık & Drop
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
             </a>
             <a href="logs.html" class="nav-item">
                 <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
             </a>
             <a href="client_errors.html" class="nav-item">
                 <i class="fas fa-bug"></i> İstemci Hataları
@@ -205,8 +315,8 @@
             <a href="admins.html" class="nav-item">
                 <i class="fas fa-user-shield"></i> Yönetim
             </a>
-            <a href="market.html" class="nav-item">
-                <i class="fas fa-shopping-cart"></i> Market
+            <a href="management.html" class="nav-item active">
+                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="#" class="nav-item" onclick="logout()"
                 style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
@@ -218,11 +328,6 @@
     <main class="main-content">
         <header class="animate-slide-up delay-1">
             <h1 class="page-title">Sistem Yapılandırması</h1>
-            <div style="display: flex; gap: 1rem;">
-                <button onclick="saveConfig()" class="primary-btn">
-                    <i class="fas fa-save"></i> DEĞİŞİKLİKLERİ KAYDET
-                </button>
-            </div>
         </header>
 
         <div class="config-grid">
@@ -317,6 +422,8 @@
             return eventTypes.find(e => e.type == type) || { name: 'Özel Etkinlik', icon: 'fa-star', color: '#fff' };
         }
 
+        let originalConfigStr = "";
+
         async function loadConfig() {
             try {
                 const res = await fetch('/api/dynamicconfig');
@@ -328,8 +435,18 @@
                 
                 if(!currentConfig.CustomErrors) currentConfig.CustomErrors = [];
                 
+                // Deep copy to capture original state
+                originalConfigStr = JSON.stringify({
+                    IsMatchmakingEnabled: currentConfig.IsMatchmakingEnabled,
+                    IsShopEnabled: currentConfig.IsShopEnabled,
+                    IsRankSystemEnabled: currentConfig.IsRankSystemEnabled,
+                    ActiveEvents: JSON.parse(JSON.stringify(currentConfig.ActiveEvents)),
+                    CustomErrors: JSON.parse(JSON.stringify(currentConfig.CustomErrors))
+                });
+                
                 renderEvents();
                 renderCustomErrors();
+                checkChanges();
             } catch (e) {
                 showToast("Yapılandırma yüklenemedi", "error");
             }
@@ -410,6 +527,7 @@
         function removeEvent(index) {
             currentConfig.ActiveEvents.splice(index, 1);
             renderEvents();
+            checkChanges();
         }
 
         function renderCustomErrors() {
@@ -423,24 +541,24 @@
                 const startTime = new Date(err.StartDate).toLocaleString('tr-TR');
                 return `
                 <div class="event-card animate-slide-up" style="animation-delay: ${index * 0.1}s; border-left: 4px solid #f43f5e;">
-                    <div class="event-info">
-                        <div class="event-icon" style="background: rgba(244, 63, 94, 0.2); color: #f43f5e">
-                            <i class="fas fa-circle-exclamation"></i>
-                        </div>
-                        <div class="event-details">
-                            <h4>${err.Title}</h4>
-                            <p style="font-size: 0.75rem; font-weight: 600; color: #fff;">${err.Message}</p>
-                            <div class="time-badge">
-                                <i class="far fa-clock"></i> Başlangıç: ${startTime}
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 1rem;">
-                        <button onclick="removeCustomError(${index})" style="background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444; cursor: pointer; padding: 0.6rem; border-radius: 10px; transition: all 0.2s;">
-                            <i class="fas fa-trash-can"></i>
-                        </button>
-                    </div>
-                </div>
+                     <div class="event-info">
+                         <div class="event-icon" style="background: rgba(244, 63, 94, 0.2); color: #f43f5e">
+                             <i class="fas fa-circle-exclamation"></i>
+                         </div>
+                         <div class="event-details">
+                             <h4>${err.Title}</h4>
+                             <p style="font-size: 0.75rem; font-weight: 600; color: #fff;">${err.Message}</p>
+                             <div class="time-badge">
+                                 <i class="far fa-clock"></i> Başlangıç: ${startTime}
+                             </div>
+                         </div>
+                     </div>
+                     <div style="display: flex; align-items: center; gap: 1rem;">
+                         <button onclick="removeCustomError(${index})" style="background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444; cursor: pointer; padding: 0.6rem; border-radius: 10px; transition: all 0.2s;">
+                             <i class="fas fa-trash-can"></i>
+                         </button>
+                     </div>
+                 </div>
                 `;
             }).join('');
         }
@@ -448,6 +566,7 @@
         function removeCustomError(index) {
             currentConfig.CustomErrors.splice(index, 1);
             renderCustomErrors();
+            checkChanges();
         }
 
         function addEventModal() {
@@ -536,6 +655,7 @@
                                     IsStarted: new Date(start) <= new Date()
                                 });
                                 renderEvents();
+                                checkChanges();
                                 showToast(`${name} listeye eklendi.`, "success");
                             }
                         });
@@ -576,12 +696,20 @@
                     });
                     
                     renderCustomErrors();
+                    checkChanges();
                     showToast("Duyuru listeye eklendi. Kaydetmeyi unutmayın.", "success");
                 }
             });
         }
 
+        let hasUnsavedChanges = false;
+
         async function saveConfig() {
+            const saveBtn = document.querySelector('.unsaved-btn-save');
+            const originalHtml = saveBtn.innerHTML;
+            saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Kaydediliyor...';
+            saveBtn.disabled = true;
+
             currentConfig.IsMatchmakingEnabled = document.getElementById('check-mm').checked;
             currentConfig.IsShopEnabled = document.getElementById('check-shop').checked;
             currentConfig.IsRankSystemEnabled = document.getElementById('check-rank').checked;
@@ -595,16 +723,100 @@
                 const result = await res.json();
                 if (result.success) {
                     showToast("Sistem başarıyla güncellendi!", "success");
+                    originalConfigStr = JSON.stringify({
+                        IsMatchmakingEnabled: currentConfig.IsMatchmakingEnabled,
+                        IsShopEnabled: currentConfig.IsShopEnabled,
+                        IsRankSystemEnabled: currentConfig.IsRankSystemEnabled,
+                        ActiveEvents: JSON.parse(JSON.stringify(currentConfig.ActiveEvents)),
+                        CustomErrors: JSON.parse(JSON.stringify(currentConfig.CustomErrors))
+                    });
+                    checkChanges();
                 } else {
                     showToast(result.message, "error");
                 }
             } catch (e) {
-                showToast("Bağlantı hatası", "error");
+                showToast("Bağlantı hatası: " + e.message, "error");
+            } finally {
+                if(saveBtn) {
+                    saveBtn.innerHTML = originalHtml;
+                    saveBtn.disabled = false;
+                }
             }
         }
 
-        window.onload = loadConfig;
+        function checkChanges() {
+            const currentFormConfig = {
+                IsMatchmakingEnabled: document.getElementById('check-mm').checked,
+                IsShopEnabled: document.getElementById('check-shop').checked,
+                IsRankSystemEnabled: document.getElementById('check-rank').checked,
+                ActiveEvents: currentConfig.ActiveEvents,
+                CustomErrors: currentConfig.CustomErrors
+            };
+            
+            const currentConfigStr = JSON.stringify(currentFormConfig);
+            const bar = document.getElementById('unsaved-changes-bar');
+            
+            if (currentConfigStr !== originalConfigStr) {
+                if(bar) bar.classList.add('active');
+                hasUnsavedChanges = true;
+            } else {
+                if(bar) bar.classList.remove('active');
+                hasUnsavedChanges = false;
+            }
+        }
+
+        function resetChanges() {
+            loadConfig();
+            showToast("Değişiklikler sıfırlandı", "info");
+            hasUnsavedChanges = false;
+        }
+
+        function interceptNavigation() {
+            const links = document.querySelectorAll('a[href]');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && href !== '#' && !href.startsWith('javascript:')) {
+                        if (hasUnsavedChanges) {
+                            e.preventDefault();
+                            const bar = document.getElementById('unsaved-changes-bar');
+                            if(bar) {
+                                bar.classList.remove('shake-grow');
+                                void bar.offsetWidth; // trigger reflow
+                                bar.classList.add('shake-grow');
+                            }
+                        }
+                    }
+                });
+            });
+            window.addEventListener('beforeunload', (e) => {
+                if (hasUnsavedChanges) {
+                    e.preventDefault();
+                    e.returnValue = '';
+                }
+            });
+        }
+
+        window.onload = () => {
+            loadConfig().then(() => {
+                document.getElementById('check-mm').addEventListener('change', checkChanges);
+                document.getElementById('check-shop').addEventListener('change', checkChanges);
+                document.getElementById('check-rank').addEventListener('change', checkChanges);
+                interceptNavigation();
+            });
+        };
     </script>
+
+    <!-- Unsaved Changes Alert Bar -->
+    <div id="unsaved-changes-bar" class="unsaved-bar">
+        <div class="unsaved-bar-text">
+            Dikkat — kaydetmediğin değişiklikler var!
+        </div>
+        <div class="unsaved-bar-actions">
+            <button onclick="resetChanges()" class="unsaved-btn-reset">Sıfırla</button>
+            <button onclick="saveConfig()" class="unsaved-btn-save"><i class="fas fa-check"></i> Değişiklikleri Kaydet</button>
+        </div>
+    </div>
 </body>
 
 </html>

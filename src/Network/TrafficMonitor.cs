@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 public static class TrafficMonitor
 {
@@ -15,35 +16,40 @@ public static class TrafficMonitor
 
         public void Record(int bytes)
         {
-            Count++;
-            TotalBytes += bytes;
+            Interlocked.Increment(ref Count);
+            Interlocked.Add(ref TotalBytes, bytes);
+            // Min/Max are less critical but could be fixed with CompareExchange if needed
             if (bytes < MinBytes) MinBytes = bytes;
             if (bytes > MaxBytes) MaxBytes = bytes;
         }
     }
 
-    private static ConcurrentDictionary<MessageType, PacketStats> IncomingStats = new();
-    private static ConcurrentDictionary<MessageType, PacketStats> OutgoingStats = new();
+    private static ConcurrentDictionary<string, PacketStats> IncomingStats = new();
+    private static ConcurrentDictionary<string, PacketStats> OutgoingStats = new();
 
     // throughput history (KB/s)
     public struct ThroughputEntry { public DateTime Time; public double In; public double Out; }
     private static List<ThroughputEntry> History = new();
     private static long _lastInBytes;
     private static long _lastOutBytes;
-    private static System.Threading.Timer _timer;
+    private static Timer _timer;
 
     static TrafficMonitor()
     {
-        _timer = new System.Threading.Timer(_ => UpdateThroughput(), null, 1000, 1000);
+        _timer = new Timer(_ => UpdateThroughput(), null, 1000, 1000);
     }
 
     private static void UpdateThroughput()
     {
-        long currentIn = IncomingStats.Values.Sum(s => s.TotalBytes);
-        long currentOut = OutgoingStats.Values.Sum(s => s.TotalBytes);
+        long currentIn = IncomingStats.Values.Sum(s => Interlocked.Read(ref s.TotalBytes));
+        long currentOut = OutgoingStats.Values.Sum(s => Interlocked.Read(ref s.TotalBytes));
 
         double diffIn = (currentIn - _lastInBytes) / 1024.0;
         double diffOut = (currentOut - _lastOutBytes) / 1024.0;
+
+        // Reset check
+        if (diffIn < 0) diffIn = 0;
+        if (diffOut < 0) diffOut = 0;
 
         _lastInBytes = currentIn;
         _lastOutBytes = currentOut;
@@ -62,26 +68,37 @@ public static class TrafficMonitor
 
     public static void RecordIncoming(MessageType type, int length)
     {
-        var stats = IncomingStats.GetOrAdd(type, _ => new PacketStats());
+        string key = "[TCP] " + type.ToString();
+        var stats = IncomingStats.GetOrAdd(key, _ => new PacketStats());
         stats.Record(length);
     }
 
-    public static void RecordOutgoing(byte[] data)
+    public static void RecordIncomingUdp(UdpMessageType type, int length)
     {
-        if (data.Length < 2) return;
+        string key = "[UDP] " + type.ToString();
+        var stats = IncomingStats.GetOrAdd(key, _ => new PacketStats());
+        stats.Record(length);
+    }
 
-        try
-        {
-            short opcode = BitConverter.ToInt16(data, 0);
-            MessageType type = (MessageType)opcode;
+    public static void RecordOutgoing(MessageType type, int length)
+    {
+        string key = "[TCP] " + type.ToString();
+        var stats = OutgoingStats.GetOrAdd(key, _ => new PacketStats());
+        stats.Record(length);
+    }
 
-            var stats = OutgoingStats.GetOrAdd(type, _ => new PacketStats());
-            stats.Record(data.Length);
-        }
-        catch
-        {
-            // Invalid packet format or unknown opcode
-        }
+    public static void RecordOutgoingUdp(UdpMessageType type, int length)
+    {
+        string key = "[UDP] " + type.ToString();
+        var stats = OutgoingStats.GetOrAdd(key, _ => new PacketStats());
+        stats.Record(length);
+    }
+
+    // Generic fallback
+    public static void RecordOutgoingRaw(int length)
+    {
+        var stats = OutgoingStats.GetOrAdd("[RAW] Outbound", _ => new PacketStats());
+        stats.Record(length);
     }
 
     public static object GetDetailedReport()
@@ -90,18 +107,18 @@ public static class TrafficMonitor
         {
             incoming = IncomingStats.Select(kvp => new
             {
-                type = kvp.Key.ToString(),
-                count = kvp.Value.Count,
-                bytes = kvp.Value.TotalBytes,
-                avg = kvp.Value.Count > 0 ? kvp.Value.TotalBytes / kvp.Value.Count : 0
-            }).OrderByDescending(x => x.bytes).ToList(),
+                type = kvp.Key,
+                count = Interlocked.Read(ref kvp.Value.Count),
+                bytes = Interlocked.Read(ref kvp.Value.TotalBytes),
+                avg = Interlocked.Read(ref kvp.Value.Count) > 0 ? Interlocked.Read(ref kvp.Value.TotalBytes) / Interlocked.Read(ref kvp.Value.Count) : 0
+            }).OrderByDescending(x => x.bytes).Take(20).ToList(),
             outgoing = OutgoingStats.Select(kvp => new
             {
-                type = kvp.Key.ToString(),
-                count = kvp.Value.Count,
-                bytes = kvp.Value.TotalBytes,
-                avg = kvp.Value.Count > 0 ? kvp.Value.TotalBytes / kvp.Value.Count : 0
-            }).OrderByDescending(x => x.bytes).ToList()
+                type = kvp.Key,
+                count = Interlocked.Read(ref kvp.Value.Count),
+                bytes = Interlocked.Read(ref kvp.Value.TotalBytes),
+                avg = Interlocked.Read(ref kvp.Value.Count) > 0 ? Interlocked.Read(ref kvp.Value.TotalBytes) / Interlocked.Read(ref kvp.Value.Count) : 0
+            }).OrderByDescending(x => x.bytes).Take(20).ToList()
         };
     }
 
@@ -122,9 +139,9 @@ public static class TrafficMonitor
         return sb.ToString();
     }
 
-    private static void AppendStats(StringBuilder sb, ConcurrentDictionary<MessageType, PacketStats> statsDict)
+    private static void AppendStats(StringBuilder sb, ConcurrentDictionary<string, PacketStats> statsDict)
     {
-        var sorted = statsDict.OrderByDescending(x => x.Value.TotalBytes).ToList();
+        var sorted = statsDict.OrderByDescending(x => Interlocked.Read(ref x.Value.TotalBytes)).ToList();
 
         if (!sorted.Any())
         {
@@ -137,12 +154,14 @@ public static class TrafficMonitor
 
         foreach (var item in sorted)
         {
-            double totalKb = item.Value.TotalBytes / 1024.0;
-            double avg = item.Value.TotalBytes / (double)item.Value.Count;
+            long bytes = Interlocked.Read(ref item.Value.TotalBytes);
+            long count = Interlocked.Read(ref item.Value.Count);
+            double totalKb = bytes / 1024.0;
+            double avg = count > 0 ? bytes / (double)count : 0;
 
             sb.AppendLine(string.Format("{0,-30} | {1,-8} | {2,-12:F2} | {3,-10:F0}",
-                item.Key.ToString(),
-                item.Value.Count,
+                item.Key,
+                count,
                 totalKb,
                 avg));
         }
@@ -152,5 +171,7 @@ public static class TrafficMonitor
     {
         IncomingStats.Clear();
         OutgoingStats.Clear();
+        _lastInBytes = 0;
+        _lastOutBytes = 0;
     }
 }

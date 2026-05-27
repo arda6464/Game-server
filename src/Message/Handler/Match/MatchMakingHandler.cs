@@ -8,7 +8,13 @@ public static class MatchMakingHandler
         if (!DynamicConfigManager.Config.IsMatchmakingEnabled)
         {
             // Eşleştirme kapalıysa oyuncuya bildirim gönderilebilir veya istek görmezden gelinebilir.
-            // session.Send(new NotificationPacket { ... });
+            Notfication not = new Notfication
+            {
+                Message = "Bakımda",
+                type = NotficationTypes.NotficationType.toast
+            };
+            NotficationSender.Send(session, not);
+
             return;
         }
 

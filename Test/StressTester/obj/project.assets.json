@@ -8,26 +8,24 @@
     "net10.0": []
   },
   "packageFolders": {
-    "C:\\Users\\arda64\\.nuget\\packages\\": {}
+    "C:\\Users\\ardat\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\project\\Game-server\\Test\\StressTester\\StressTester.csproj",
+      "projectUniqueName": "C:\\Project\\Game-server\\test\\StressTester\\StressTester.csproj",
       "projectName": "StressTester",
-      "projectPath": "C:\\project\\Game-server\\Test\\StressTester\\StressTester.csproj",
-      "packagesPath": "C:\\Users\\arda64\\.nuget\\packages\\",
-      "outputPath": "C:\\project\\Game-server\\Test\\StressTester\\obj\\",
+      "projectPath": "C:\\Project\\Game-server\\test\\StressTester\\StressTester.csproj",
+      "packagesPath": "C:\\Users\\ardat\\.nuget\\packages\\",
+      "outputPath": "C:\\Project\\Game-server\\test\\StressTester\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\arda64\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ardat\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -67,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

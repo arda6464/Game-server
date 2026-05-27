@@ -3,7 +3,7 @@ public static class KickMemberHandler
 {
     public static void Handle(Session session, byte[] message)
     {
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(message, true);
         
         var request = new KickMemberRequestPacket();
@@ -21,7 +21,7 @@ public static class KickMemberHandler
             return;
         }
 
-        bool kicked = ClubManager.KickMember(club.ClubId, session.ID, targetid);
+        bool kicked = club.KickMember(session.ID, targetid);
         if (kicked)
         {
             var response = new KickMemberResponsePacket { TargetId = targetid };
@@ -32,6 +32,7 @@ public static class KickMemberHandler
                 var targetsession = SessionManager.GetSession(targetid);
                 targetsession.Send(response);
             }
+           
         }
         else
         {

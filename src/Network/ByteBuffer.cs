@@ -260,6 +260,12 @@ public sealed class ByteBuffer : IDisposable
     }
     public void Dispose()
     {
+        // Havuza geri iade et. GC tarafından silinmesini engelliyoruz.
+        ByteBufferPool.Return(this);
+    }
+
+    public void Destroy()
+    {
         if (!_disposed)
         {
             _disposed = true;
@@ -272,6 +278,6 @@ public sealed class ByteBuffer : IDisposable
     // Finalizer for safety
     ~ByteBuffer()
     {
-        Dispose();
+        Destroy();
     }
 }

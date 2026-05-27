@@ -44,6 +44,11 @@ public static class AccountManager
         public bool SendClaimRewardNotification { get; set; } = true;
         public int WinStreak { get; set; }
 
+        // Market / Satın alma verileri
+        public int TotalPurchases { get; set; } = 0;
+        public DateTime LastPurchaseDate { get; set; } = DateTime.MinValue;
+        public List<int> OwnedItems { get; set; } = new List<int>(); // Sahip olunan tekil ürünler (Avatar, NameColor vb.)
+
         public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
         public List<FriendInfo> Requests { get; set; } = new List<FriendInfo>();
         public List<Notfication> Notfications { get; set; } = new List<Notfication>();
@@ -148,7 +153,7 @@ public static class AccountManager
             Namecolorid = 1,
             Token = TokenManager.GenerateNumericToken(),
             LastLogin = DateTime.Now,
-            Clubid = -1,
+            Clubid = 0,
             Trophy = 0,
             Email = null,
             Password = null,

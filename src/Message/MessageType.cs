@@ -49,13 +49,13 @@ public enum MessageType : short
     SendFriendRequest,
     AcceptFriendRequest,
     NewRequest,
+    ShowFriendRequest,
+    ShowFriendResponse,
     AcceptFriendResponse,
     DeclineFriendRequest,
     DeclineFriendResponse,
     DeleteFriendRequest,
     DeleteFriendResponse,
-    NewFriendsList,
-    NewRequestList,
     BestFriendChanged,
     #endregion
 
@@ -80,6 +80,8 @@ public enum MessageType : short
     #region  notfications
     Notification,
     AllNotficationViewed,
+    ClaimInboxRewardRequest,
+    ClaimInboxRewardResponse,
     #endregion
 
     #region  Leaderboards
@@ -113,6 +115,8 @@ public enum MessageType : short
     MemberToUpperResponse,
     MemberToLowerRequest,
     MemberToLowerResponse,
+    ClubJoinRespondRequest,
+    ClubRequestStateUpdate,
 
     #endregion
 
@@ -138,6 +142,8 @@ public enum MessageType : short
     #region  Shop
     GetAllMarketItemsRequest,
     GetAllMarketItemsResponse,
+    BuyMarketItemRequest,
+    BuyMarketItemResponse,
 
     #endregion
 
@@ -181,9 +187,12 @@ public enum MessageType : short
     DeleteEvent,
     EventsResponse,
     AddEvent,
+    GachaResponse,
     #endregion
 
-
-
+    #region News
+    GetUpdateNotesRequest,
+    GetUpdateNotesResponse,
+    #endregion
 
 }

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 101,
+    "Name": "ShellyBullet",
+    "Speed": 12.0,
+    "Damage": 340,
+    "Range": 7.67,
+    "HitRadius": 0.5
+  },
+  {
+    "Id": 102,
+    "Name": "ColtBullet",
+    "Speed": 18.0,
+    "Damage": 660,
+    "Range": 11.67,
+    "HitRadius": 0.3
+  }
+]

@@ -8,7 +8,7 @@ public static class AuthLoginHandler
     {
 
 
-        using (ByteBuffer buffer = new ByteBuffer())
+        using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             buffer.WriteBytes(data, true);
             

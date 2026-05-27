@@ -4,16 +4,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duyuru Yönetimi - Admin Panel</title>
+    <title>Duyuru Yönetimi - Admin Core</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <script src="modals.js"></script>
+    <style>
+        .announce-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .type-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .type-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .type-card.active {
+            border-color: var(--accent-fuchsia);
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.1), rgba(34, 211, 238, 0.05));
+            box-shadow: 0 15px 35px rgba(244, 114, 182, 0.15);
+        }
+
+        .type-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .type-card.active i {
+            transform: scale(1.1);
+        }
+
+        .type-title {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .type-desc {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .gift-section {
+            background: rgba(251, 191, 36, 0.03);
+            border: 1px dashed rgba(251, 191, 36, 0.3);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-top: 1rem;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .input-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .premium-input {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            color: #fff;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .premium-input:focus {
+            border-color: var(--accent-cyan);
+            background: rgba(0,0,0,0.5);
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, var(--accent-fuchsia), var(--accent-indigo));
+            color: #fff;
+            border: none;
+            padding: 1.5rem;
+            border-radius: 1.25rem;
+            font-weight: 900;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(244, 114, 182, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(244, 114, 182, 0.3);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
 </head>
 
 <body>
-
     <aside class="sidebar">
         <div class="logo">
             <i class="fas fa-bolt-lightning"></i>
@@ -26,20 +160,29 @@
             <a href="players.html" class="nav-item">
                 <i class="fas fa-id-badge"></i> Oyuncular
             </a>
+            <a href="delivery.html" class="nav-item">
+                <i class="fas fa-gift"></i> Eşya Gönderimi
+            </a>
+            <a href="clubs.html" class="nav-item">
+                <i class="fas fa-users-viewfinder"></i> Kulüpler
+            </a>
             <a href="reports.html" class="nav-item">
                 <i class="fas fa-flag"></i> Raporlar
-            </a>
-            <a href="management.html" class="nav-item">
-                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="announcement.html" class="nav-item active">
                 <i class="fas fa-bullhorn"></i> Duyurular
             </a>
-            <a href="traffic.html" class="nav-item">
-                <i class="fas fa-chart-area"></i> Trafik Analizi
+            <a href="chests.html" class="nav-item">
+                <i class="fas fa-box-open"></i> Sandık & Drop
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
             </a>
             <a href="logs.html" class="nav-item">
                 <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
             </a>
             <a href="client_errors.html" class="nav-item">
                 <i class="fas fa-bug"></i> İstemci Hataları
@@ -50,111 +193,155 @@
             <a href="admins.html" class="nav-item">
                 <i class="fas fa-user-shield"></i> Yönetim
             </a>
-            <a href="market.html" class="nav-item">
-                <i class="fas fa-shopping-cart"></i> Market
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="#" class="nav-item" onclick="logout()"
                 style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
                 <i class="fas fa-sign-out-alt"></i> Çıkış Yap
             </a>
         </nav>
-        <!-- User info block same as others -->
-        <div
-            style="margin-top: auto; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 1rem; border: 1px solid var(--glass-border);">
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <div
-                    style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-fuchsia), var(--accent-cyan)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-user-shield" style="color: #000; font-size: 1.2rem;"></i>
-                </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 0.9rem;">Server Admin</div>
-                    <div style="font-size: 0.75rem; color: var(--text-secondary);">v1.0.4-beta</div>
-                </div>
-            </div>
-        </div>
     </aside>
 
     <main class="main-content">
-        <header class="animate-slide-up delay-1">
-            <h1 class="page-title">Sistem Duyurusu Yayınla</h1>
-            <p style="color: var(--text-secondary); margin-top: -1rem; font-weight: 500;">Oyun içindeki tüm aktif
-                oyunculara bildirim gönderir.</p>
-        </header>
+        <div class="announce-container">
+            <header class="animate-slide-up">
+                <h1 class="page-title">Küresel Duyuru Merkezi</h1>
+                <p style="color: var(--text-secondary); margin-top: -0.5rem;">Sunucu genelindeki tüm oyunculara anlık veya kalıcı mesajlar gönderin.</p>
+            </header>
 
-        <div class="card animate-slide-up delay-2">
-            <h3 style="margin-bottom: 2rem;">1. Bildirim Tipini Seçin</h3>
-            <div class="selection-grid">
-                <div class="selection-card" id="type-toast" onclick="selectType(0)">
-                    <i class="fas fa-comment-dots" style="color: var(--accent-cyan);"></i>
-                    <div class="selection-title">TOAST BİLDİRİM</div>
-                    <div class="selection-desc">Ekranın sağ üstünde beliren kısa süreli mesaj.</div>
-                </div>
-                <div class="selection-card active" id="type-banner" onclick="selectType(2)">
-                    <i class="fas fa-window-maximize" style="color: var(--accent-fuchsia);"></i>
-                    <div class="selection-title">SİSTEM BANNER</div>
-                    <div class="selection-desc">Ekranın üstünde sabit duran dikkat çekici duyuru.</div>
-                </div>
-                <div class="selection-card" id="type-inbox" onclick="selectType(1)">
-                    <i class="fas fa-envelope-open-text" style="color: #fbbf24;"></i>
-                    <div class="selection-title">GELEN KUTUSU</div>
-                    <div class="selection-desc">Oyuncunun mesaj kutusuna kalıcı olarak iletilir.</div>
+            <div class="card animate-slide-up delay-1">
+                <div class="input-label" style="margin-bottom: 1.5rem;"><i class="fas fa-layer-group"></i> 1. DUYURU FORMATI</div>
+                <div class="type-grid">
+                    <div class="type-card" id="type-toast" onclick="selectType(0)">
+                        <i class="fas fa-comment-dots" style="color: var(--accent-cyan);"></i>
+                        <div class="type-title">TOAST</div>
+                        <div class="type-desc">Kısa süreli, hızlı bildirim.</div>
+                    </div>
+                    <div class="type-card active" id="type-banner" onclick="selectType(2)">
+                        <i class="fas fa-window-maximize" style="color: var(--accent-fuchsia);"></i>
+                        <div class="type-title">BANNER</div>
+                        <div class="type-desc">Sabit duran duyuru çubuğu.</div>
+                    </div>
+                    <div class="type-card" id="type-inbox" onclick="selectType(1)">
+                        <i class="fas fa-envelope-open-text" style="color: #fbbf24;"></i>
+                        <div class="type-title">INBOX</div>
+                        <div class="type-desc">Mesaj kutusuna kalıcı iletim.</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card animate-slide-up delay-3" style="margin-top: 2rem;">
-            <h3 style="margin-bottom: 2rem;">2. Mesaj Detayları</h3>
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div>
-                    <label
-                        style="display:block; margin-bottom:0.8rem; font-size:0.8rem; font-weight:800; color:var(--text-secondary); letter-spacing:1px;">DUYURU
-                        BAŞLIĞI</label>
-                    <input type="text" id="announce-title" placeholder="Örn: Sunucu Güncellemesi"
-                        style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 0.75rem; color: #fff; font-weight: 600;">
+            <div class="card animate-slide-up delay-2">
+                <div class="input-label" style="margin-bottom: 1.5rem;"><i class="fas fa-pen-nib"></i> 2. MESAJ İÇERİĞİ</div>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div class="input-group" id="announce-title-group">
+                        <label class="input-label">BAŞLIK</label>
+                        <input type="text" id="announce-title" class="premium-input" placeholder="Örn: Hafta Sonu Etkinliği Başladı!">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">MESAJ</label>
+                        <textarea id="announce-message" class="premium-input" style="height: 120px; resize: none;" placeholder="Oyunculara iletilecek detaylı açıklama..."></textarea>
+                    </div>
+
+                    <!-- Gift Section (Only for Inbox) -->
+                    <div id="gift-section" class="gift-section">
+                        <div class="input-label" style="color: #fbbf24; margin-bottom: 1.25rem;">
+                            <i class="fas fa-gift"></i> HEDİYE EKLE (OPSİYONEL)
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="input-group">
+                                <label class="input-label">EŞYA TİPİ</label>
+                                <select id="reward-type" class="premium-input" style="background: rgba(0,0,0,0.4);" onchange="handleRewardTypeChange()">
+                                    <option value="-1">Hediye Yok</option>
+                                    <option value="2">Elmas (Gem)</option>
+                                    <option value="3">Altın (Coin)</option>
+                                    <option value="4">Sandık (Chest/Loot Box)</option>
+                                    <option value="0">Karakter (Character)</option>
+                                    <option value="1">Kostüm (Skin)</option>
+                                </select>
+                            </div>
+                            <div class="input-group" id="reward-count-group">
+                                <label class="input-label" id="reward-count-label">MİKTAR</label>
+                                <input type="number" id="reward-count" class="premium-input" value="100">
+                            </div>
+                            <div class="input-group" id="reward-box-group" style="display:none; grid-column: span 2;">
+                                <label class="input-label">SANDIK SEÇİN</label>
+                                <select id="reward-box-id" class="premium-input" style="background: rgba(0,0,0,0.4);">
+                                    <!-- Loaded via JS -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="sendAnnouncement()" id="send-btn" class="send-btn">
+                        <i class="fas fa-paper-plane"></i> DUYURUYU ŞİMDİ YAYINLA
+                    </button>
                 </div>
-                <div>
-                    <label
-                        style="display:block; margin-bottom:0.8rem; font-size:0.8rem; font-weight:800; color:var(--text-secondary); letter-spacing:1px;">MESAJ
-                        İÇERİĞİ</label>
-                    <textarea id="announce-message" placeholder="Mesajınızı buraya yazın..."
-                        style="width: 100%; height: 120px; padding: 1rem; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 0.75rem; color: #fff; font-family: inherit; resize: none;"></textarea>
-                </div>
-                <button onclick="sendAnnouncement()" id="send-btn"
-                    style="background: linear-gradient(to right, var(--accent-fuchsia), var(--accent-cyan)); border:none; padding:1.25rem; border-radius:1rem; color:#000; font-weight:900; cursor:pointer; font-size:1.1rem; letter-spacing:0.05em; transition: all 0.3s ease;">
-                    <i class="fas fa-paper-plane"></i> DUYURUYU ŞİMDİ YAYINLA
-                </button>
             </div>
         </div>
     </main>
 
     <script>
+        let selectedType = 2;
+        let allGachaBoxes = [];
 
-        let selectedType = 2; // Default banner
+        async function fetchGachaBoxes() {
+            try {
+                const res = await fetch('/api/gacha/all');
+                allGachaBoxes = await res.json();
+                const select = document.getElementById('reward-box-id');
+                select.innerHTML = allGachaBoxes.map(b => `<option value="${b.Id}">${b.Name}</option>`).join('');
+            } catch (e) {
+                console.error("Gacha boxes load error:", e);
+            }
+        }
+
+        function handleRewardTypeChange() {
+            const type = document.getElementById('reward-type').value;
+            const countGroup = document.getElementById('reward-count-group');
+            const boxGroup = document.getElementById('reward-box-group');
+
+            if (type === "4") { // Gacha Box
+                countGroup.style.display = 'none';
+                boxGroup.style.display = 'block';
+            } else {
+                countGroup.style.display = 'block';
+                boxGroup.style.display = 'none';
+            }
+        }
 
         function selectType(type) {
             selectedType = type;
-            // Tüm kartlardan active class'ını kaldır
-            document.querySelectorAll('.selection-card').forEach(c => {
-                c.classList.remove('active');
-            });
+            document.querySelectorAll('.type-card').forEach(c => c.classList.remove('active'));
+            
+            let targetId = type === 0 ? 'type-toast' : (type === 1 ? 'type-inbox' : 'type-banner');
+            document.getElementById(targetId).classList.add('active');
 
-            // Seçilen tipin ID'sini belirle
-            let targetId = '';
-            if (type === 0) targetId = 'type-toast';
-            else if (type === 1) targetId = 'type-inbox';
-            else targetId = 'type-banner';
+            // Başlık alanını sadece Banner (2) için göster, Toast (0) ve Inbox (1) için gizle
+            const titleGroup = document.getElementById('announce-title-group');
+            if (type === 2) {
+                titleGroup.style.display = 'flex';
+            } else {
+                titleGroup.style.display = 'none';
+            }
 
-            // Kartı aktif yap
-            const selectedCard = document.getElementById(targetId);
-            if (selectedCard) {
-                selectedCard.classList.add('active');
+            const giftSec = document.getElementById('gift-section');
+            if (type === 1) {
+                giftSec.style.display = 'block';
+            } else {
+                giftSec.style.display = 'none';
             }
         }
 
         async function sendAnnouncement() {
             const title = document.getElementById('announce-title').value || 'SİSTEM DUYURUSU';
             const message = document.getElementById('announce-message').value;
-            const btn = document.getElementById('send-btn');
+            let rewardType = parseInt(document.getElementById('reward-type').value);
+            let rewardCount = parseInt(document.getElementById('reward-count').value);
+
+            if (rewardType === 4) { // Gacha Box
+                rewardCount = parseInt(document.getElementById('reward-box-id').value);
+            }
 
             if (!message) {
                 showToast('Lütfen bir mesaj girin.', 'warning');
@@ -162,9 +349,9 @@
             }
 
             Modal.confirm('Duyuru Onayı', 'Bu duyuruyu tüm oyunculara yayınlamak istediğinize emin misiniz?', async () => {
+                const btn = document.getElementById('send-btn');
                 btn.disabled = true;
-                btn.style.opacity = '0.5';
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GÖNDERİLİYOR...';
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> YAYINLANIYOR...';
 
                 try {
                     const response = await fetch('/api/announce', {
@@ -173,13 +360,15 @@
                         body: JSON.stringify({
                             title: title,
                             message: message,
-                            type: selectedType
+                            type: selectedType,
+                            rewardType: rewardType,
+                            rewardCount: rewardCount
                         })
                     });
                     const result = await response.json();
 
                     if (result.success) {
-                        showToast(result.message);
+                        showToast(result.message, 'success');
                         document.getElementById('announce-message').value = '';
                     } else {
                         showToast('HATA: ' + result.message, 'error');
@@ -188,11 +377,12 @@
                     showToast('Bağlantı Hatası: ' + e.message, 'error');
                 } finally {
                     btn.disabled = false;
-                    btn.style.opacity = '1';
                     btn.innerHTML = '<i class="fas fa-paper-plane"></i> DUYURUYU ŞİMDİ YAYINLA';
                 }
             });
         }
+
+        fetchGachaBoxes();
     </script>
 </body>
 

@@ -25,7 +25,7 @@ public static class PlayerSetPresence
 
         if (acccount.Friends.Count != 0)
         {
-            ByteBuffer bufer = new ByteBuffer();
+            ByteBuffer bufer = ByteBufferPool.Get();
             bufer.WriteVarInt((int)MessageType.Presence);
             bufer.WriteVarInt(sessions.ID);
             bufer.WriteByte((byte)presence);
@@ -99,7 +99,7 @@ public static class PlayerSetPresence
         
         if(acccount.Clubid != -1)
         {
-            ByteBuffer bufer = new ByteBuffer();
+            ByteBuffer bufer = ByteBufferPool.Get();
             bufer.WriteVarInt((int)MessageType.Presence);
             bufer.WriteVarInt(sessions.ID);
             bufer.WriteByte((byte)presence);

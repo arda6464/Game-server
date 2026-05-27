@@ -1,82 +1,74 @@
 [PacketHandler(MessageType.ClubEditRequest)]
 public static class ClubEditHandler
 {
-    public static void Handle(Session session,byte[] message)
+    public static void Handle(Session session, byte[] message)
     {
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(message, true);
 
         var request = new ClubEditRequestPacket();
         request.Deserialize(read);
-        
-        string ClubName = request.ClubName;
-        string ClubAciklama = request.ClubDescription;
+
+        string? ClubName = request.ClubName;
+        string? ClubAciklama = request.ClubDescription;
         int Avatarıd = request.AvatarId;
+        int State = request.State;
+        string? Region = request.Region;
 
         if (session.Account == null) return;
         AccountManager.AccountData account = session.Account;
 
-        if (account.Clubid == -1)
+        if (account.Clubid == 0)
         {
-            // İsim validasyonu
-            if (string.IsNullOrWhiteSpace(ClubName) || ClubName.Length < 3 || ClubName.Length > 30)
-            {
-                MessageCodeManager.Send(session, MessageCodeManager.Message.ClubUnusableName);
-                Logger.errorslog($"[ClubEditHandler] Geçersiz kulüp adı: {ClubName}");
-                return;
-            }
-            
-            if (string.IsNullOrWhiteSpace(ClubAciklama) || ClubAciklama.Length > 200)
-            {
-                MessageCodeManager.Send(session, MessageCodeManager.Message.ClubUnusableDescription);
-                Logger.errorslog($"[ClubEditHandler] Geçersiz kulüp açıklaması");
-                return;
-            }
-            
-            // Avatar ID validasyonu
-            if (Avatarıd < 1 || Avatarıd > 10)
-            {
-                MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidAvatar);
-                Logger.errorslog($"[ClubEditHandler] Geçersiz avatar ID: {Avatarıd}");
-                return;
-            }
-            
-            ClubManager.CreateClub(ClubName, ClubAciklama, Avatarıd, account.ID);
+            MessageCodeManager.Send(session, MessageCodeManager.Message.NotAClub);
+            return;
         }
         else
         {
             var club = ClubManager.LoadClub(account.Clubid);
+            if (club == null) return;
             {
-                bool change = ClubManager.ChangeClubSettings(account.Clubid, account.ID, ClubName, ClubAciklama, Avatarıd);
-                
-                if(change)
+                bool change = club.ChangeClubSettings(account.ID, ClubName, ClubAciklama, Avatarıd, State, Region);
+
+                if (change)
                 {
                     var response = new ClubEditResponsePacket
                     {
-                        ClubName = club.ClubName,
-                        ClubDescription = club.Clubaciklama,
-                        ClubAvatarId = club.ClubAvatarID,
-                         AccountId = account.ID
+                        ClubName = club.Name,
+                        ClubDescription = club.Description,
+                        ClubAvatarId = club.AvatarID,
+                        State = (int)club.State,
+                        Region = club.Region,
+                        AccountId = account.ID
                     };
-                    
-                    foreach(var clubmember in club.Members)
-                    {
-                        if(SessionManager.IsOnline(clubmember.ID))
-                        {
-                            Session membersession = SessionManager.GetSession(clubmember.ID);
-                            membersession.Send(response);
-                        }
-                           
-                            // todo change accountıd to client -> if(accountid == datamanager.playerıd) toast("change club data")
-                            }                 
-                          
-                           
-                    }
-                   
 
-                    
+
+                    foreach (var clubmember in club.Members)
+                    {
+                        if (SessionManager.IsOnline(clubmember.ID))
+                        {
+                            Session? membersession = SessionManager.GetSession(clubmember.ID);
+                            membersession?.Send(response);
+                        }
+
+                    }
+                    ClubMessage clubMessage = new ClubMessage
+                    {
+                       ActorID = account.ID,
+                       ActorName = account.Username,
+                        eventType = ClubEventType.EditMessage,
+                        messageFlags = ClubMessageFlags.HasSystem,
+                    };
+                    club.SendMessageToClubMembers(clubMessage);
                 }
+                         
+
+                }
+
+
+
             }
         }
-        
     }
+
+

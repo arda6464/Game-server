@@ -7,7 +7,7 @@ public static class PlayerHitRequest
     {
         if (session.PlayerData == null) return;
         
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(message, true);
         
         var request = new HitRequestPacket();

@@ -439,34 +439,191 @@ public class AdminServer
                     using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
                     {
                         string body = reader.ReadToEnd();
-                        var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(body);
                         if (data != null && data.ContainsKey("message"))
                         {
-                            string msg = data["message"];
-                            string title = data.ContainsKey("title") ? data["title"] : "SUNUCU DUYURUSU";
-                            int type = data.ContainsKey("type") ? int.Parse(data["type"]) : 2; // Default banner
+                            string msg = data["message"].ToString();
+                            string title = data.ContainsKey("title") ? data["title"].ToString() : "SUNUCU DUYURUSU";
+                            int type = data.ContainsKey("type") ? int.Parse(data["type"].ToString()) : 2; // Default banner
 
-                            var packet = new NotificationPacket
+                            // Gift handling
+                            int rewardType = -1;
+                            int rewardCount = 0;
+                            if (data.ContainsKey("rewardType") && data["rewardType"] != null)
                             {
-                                Type = (NotficationTypes.NotficationType)type,
-                                Title = title,
-                                Message = msg,
-                                ButtonText = "TAMAM",
-                                Url = "",
-                                UnixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-                                Sender = "SİSTEM"
-                            };
+                                int.TryParse(data["rewardType"].ToString(), out rewardType);
+                            }
+                            if (data.ContainsKey("rewardCount") && data["rewardCount"] != null)
+                            {
+                                int.TryParse(data["rewardCount"].ToString(), out rewardCount);
+                            }
 
-                            var sessions = SessionManager.GetAllSessions();
-                            foreach (var session in sessions)
+                            if (type == 1) // Inbox
                             {
-                                session.Send(packet);
+                                var rewards = new List<RewardItem>();
+                                if (rewardType >= 0)
+                                {
+                                    rewards.Add(new RewardItem { Type = (ItemType)rewardType, Count = rewardCount, DataId = rewardCount });
+                                }
+                                DeliveryManager.SendToAll(title, msg, rewards, "SİSTEM");
+                            }
+                            else
+                            {
+                                var packet = new NotificationPacket
+                                {
+                                    Type = (NotficationTypes.NotficationType)type,
+                                    Title = title,
+                                    Message = msg,
+                                    ButtonText = "TAMAM",
+                                    Url = "",
+                                    UnixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+                                    Sender = "SİSTEM"
+                                };
+
+                                // Real-time broadcast
+                                var sessions = SessionManager.GetAllSessions();
+                                foreach (var session in sessions)
+                                {
+                                    session.Send(packet);
+                                }
                             }
 
                             var admin = GetAdminUsername(context);
                             AdminAuditLogger.Log(admin, "Duyuru", "Tüm Oyuncular", msg);
 
-                            result = new { success = true, message = $"{sessions.Count} oyuncuya duyuru ({packet.Type}) gönderildi." };
+                            result = new { success = true, message = $"{SessionManager.GetCount()} aktif oyuncuya iletildi. {(type == 1 ? "Tüm veritabanına kaydedildi." : "")}" };
+                        }
+                    }
+                }
+                break;
+
+            case "/api/delivery/send":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<dynamic>(body);
+                        if (data != null)
+                        {
+                            int targetId = (int)data.targetId;
+                            string title = (string)data.title;
+                            string message = (string)data.message;
+                            var rewards = JsonConvert.DeserializeObject<List<RewardItem>>(data.rewards.ToString());
+
+                            bool success;
+                            if (targetId == 0) // 0 = Herkes
+                            {
+                                int sentCount = DeliveryManager.SendToAll(title, message, rewards);
+                                success = sentCount > 0;
+                            }
+                            else
+                            {
+                                success = DeliveryManager.SendToPlayer(targetId, title, message, rewards);
+                            }
+
+                            if (success)
+                            {
+                                var admin = GetAdminUsername(context);
+                                AdminAuditLogger.Log(admin, "Eşya Gönderimi", targetId == 0 ? "Herkes" : targetId.ToString(), $"{title} - {rewards.Count} ödül");
+                                result = new { success = true, message = "Eşyalar başarıyla gönderildi." };
+                            }
+                            else result = new { success = false, message = "Gönderim başarısız. Oyuncu bulunamadı veya ID hatalı." };
+                        }
+                    }
+                }
+                break;
+
+            case "/api/gacha/all":
+                result = GachaSystem.GachaManager.GetAllBoxes();
+                break;
+
+            case "/api/gacha/add":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var box = JsonConvert.DeserializeObject<GachaSystem.GachaBox>(body);
+                        if (box != null)
+                        {
+                            GachaSystem.GachaManager.AddOrUpdateBox(box);
+                            var admin = GetAdminUsername(context);
+                            AdminAuditLogger.Log(admin, "Gacha Sandık Ekleme/Güncelleme", box.Name, $"{box.Drops.Count} adet drop tanımlandı.");
+                            result = new { success = true, message = "Sandık başarıyla kaydedildi." };
+                        }
+                        else result = new { success = false, message = "Geçersiz sandık verisi." };
+                    }
+                }
+                break;
+
+            case "/api/gacha/remove":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, int>>(body);
+                        if (data != null && data.ContainsKey("id"))
+                        {
+                            GachaSystem.GachaManager.RemoveBox(data["id"]);
+                            var admin = GetAdminUsername(context);
+                            AdminAuditLogger.Log(admin, "Gacha Sandık Silme", $"ID: {data["id"]}", "Sandık sistemden kaldırıldı.");
+                            result = new { success = true, message = "Sandık silindi." };
+                        }
+                    }
+                }
+                break;
+
+            case "/api/player/send-message":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
+                        if (data != null && data.ContainsKey("id") && data.ContainsKey("message"))
+                        {
+                            if (int.TryParse(data["id"], out int playerId))
+                            {
+                                string msg = data["message"];
+                                string title = data.ContainsKey("title") ? data["title"] : "SİSTEM MESAJI";
+                                string sender = data.ContainsKey("sender") ? data["sender"] : "SİSTEM";
+
+                                var account = AccountCache.Load(playerId);
+                                if (account != null)
+                                {
+                                    var notification = new Notfication
+                                    {
+                                        IndexID = account.inboxesNotfications.Count > 0 ? account.inboxesNotfications.Max(n => n.IndexID) + 1 : 1,
+                                        type = NotficationTypes.NotficationType.Inbox,
+                                        Title = title,
+                                        Message = msg,
+                                        Sender = sender,
+                                        Timespam = DateTime.Now,
+                                        IsClaimed = false
+                                    };
+
+                                    lock (account.SyncLock)
+                                    {
+                                        account.inboxesNotfications.Add(notification);
+                                    }
+                                    AccountManager.SaveAccounts();
+
+                                    var session = SessionManager.GetSession(playerId);
+                                    if (session != null)
+                                    {
+                                        NotficationSender.Send(session, notification);
+                                    }
+
+                                    var admin = GetAdminUsername(context);
+                                    AdminAuditLogger.Log(admin, "Mesaj Gönderildi", account.Username, msg);
+
+                                    result = new { success = true, message = "Mesaj başarıyla gönderildi." };
+                                }
+                                else result = new { success = false, message = "Oyuncu bulunamadı." };
+                            }
+                            else result = new { success = false, message = "Geçersiz Oyuncu ID." };
                         }
                     }
                 }
@@ -717,11 +874,51 @@ public class AdminServer
                 break;
 
             case "/api/market/all":
-                result = new
                 {
-                    items = ShopManager.GetMarketItems(),
-                    offers = ShopManager.GetOffers()
-                };
+                    if (context.Request.QueryString.TryGetValue("id", out string idStr) && int.TryParse(idStr, out int playerId))
+                    {
+                        var account = AccountCache.Load(playerId);
+                        if (account != null)
+                        {
+                            var items = ShopManager.GetMarketItems(playerId.ToString());
+                            var globalOffers = ShopManager.GetOffers(playerId.ToString());
+                            
+                            // Filter offers: global ones and ones targeted to this player
+                            var offers = globalOffers.Where(o => !o.IsPersonal || o.TargetAccountId == playerId).ToList();
+                            
+                            // Add hybrid personal offers
+                            var personal = ShopManager.GeneratePersonalOffers(account);
+                            offers.AddRange(personal);
+
+                            result = new
+                            {
+                                success = true,
+                                items = items,
+                                offers = offers,
+                                player = new {
+                                    id = account.ID,
+                                    username = account.Username,
+                                    gems = account.Gems,
+                                    coins = account.Coins,
+                                    trophies = account.Trophy
+                                }
+                            };
+                        }
+                        else
+                        {
+                            result = new { success = false, message = "Oyuncu bulunamadı." };
+                        }
+                    }
+                    else
+                    {
+                        result = new
+                        {
+                            success = true,
+                            items = ShopManager.GetMarketItems(),
+                            offers = ShopManager.GetOffers()
+                        };
+                    }
+                }
                 break;
 
             case "/api/market/item/add":
@@ -772,7 +969,7 @@ public class AdminServer
                         {
                             ShopManager.AddOffer(offer);
                             var admin = GetAdminUsername(context);
-                            AdminAuditLogger.Log(admin, "Market Teklif Ekleme", offer.Title, $"{offer.Count} adet, {offer.BasePrice} Fiyat");
+                            AdminAuditLogger.Log(admin, "Market Teklif Ekleme", offer.Title, $"{offer.Rewards?.FirstOrDefault()?.Count ?? 0} adet, {offer.BasePrice} Fiyat");
                             result = new { success = true };
                         }
                     }
@@ -812,14 +1009,71 @@ public class AdminServer
                                 var account = AccountCache.Load(playerId);
                                 if (account != null)
                                 {
-                                    int? level = data.TryGetValue("level", out var l) ? int.Parse(l) : null;
-                                    int? trophies = data.TryGetValue("trophies", out var t) ? int.Parse(t) : null;
-                                    int? gems = data.TryGetValue("gems", out var g) ? int.Parse(g) : null;
-                                    int? coins = data.TryGetValue("coins", out var c) ? int.Parse(c) : null;
-
                                     var session = SessionManager.GetSession(playerId);
                                     var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
-                                    logic.UpdateStats(level, gems, coins, trophies);
+
+                                    // 1. İsim Güncelleme
+                                    if (data.TryGetValue("username", out var newName) && !string.IsNullOrWhiteSpace(newName))
+                                    {
+                                        if (newName != account.Username)
+                                        {
+                                            logic.ChangeName(newName);
+                                        }
+                                    }
+
+                                    // 2. İstatistik Güncellemeleri
+                                    int? level = data.TryGetValue("level", out var l) && int.TryParse(l, out var lvl) ? (int?)lvl : null;
+                                    int? trophies = data.TryGetValue("trophies", out var t) && int.TryParse(t, out var trph) ? (int?)trph : null;
+                                    int? gems = data.TryGetValue("gems", out var g) && int.TryParse(g, out var gm) ? (int?)gm : null;
+                                    int? coins = data.TryGetValue("coins", out var c) && int.TryParse(c, out var cn) ? (int?)cn : null;
+                                    
+                                    if (level.HasValue || trophies.HasValue || gems.HasValue || coins.HasValue)
+                                    {
+                                        logic.UpdateStats(level, gems, coins, trophies);
+                                    }
+
+                                    // 3. Premium Durumu
+                                    if (data.TryGetValue("premium", out var premStr) && int.TryParse(premStr, out int premium))
+                                    {
+                                        account.Premium = premium;
+                                        if (premium > 0)
+                                        {
+                                            if (data.TryGetValue("premiumDays", out var pdStr) && int.TryParse(pdStr, out int days) && days > 0)
+                                            {
+                                                account.PremiumEndTime = DateTime.Now.AddDays(days);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            account.PremiumEndTime = DateTime.MinValue;
+                                        }
+                                    }
+
+                                    // 4. Avatar & İsim Rengi
+                                    if (data.TryGetValue("avatarId", out var avStr) && int.TryParse(avStr, out int avatarId))
+                                    {
+                                        logic.SetAvatar(avatarId);
+                                    }
+                                    if (data.TryGetValue("nameColorId", out var ncStr) && int.TryParse(ncStr, out int nameColorId))
+                                    {
+                                        logic.SetNameColor(nameColorId);
+                                    }
+
+                                    // 5. Sohbet & Destek Yasağı
+                                    if (data.TryGetValue("chatBan", out var cbStr) && bool.TryParse(cbStr, out bool chatBan))
+                                    {
+                                        account.ChatBan = chatBan;
+                                    }
+                                    if (data.TryGetValue("ticketBan", out var tbStr) && bool.TryParse(tbStr, out bool ticketBan))
+                                    {
+                                        account.TicketBan = ticketBan;
+                                    }
+
+                                    AccountManager.SaveAccounts();
+                                    logic.SendUpdate();
+
+                                    var admin = GetAdminUsername(context);
+                                    AdminAuditLogger.Log(admin, "Oyuncu Düzenleme", account.Username, "Admin tarafından gelişmiş profil güncellemeleri yapıldı.");
 
                                     result = new { success = true, message = "Oyuncu verileri güncellendi." };
                                 }
@@ -918,9 +1172,11 @@ public class AdminServer
                                     coins = account.Coins,
                                     premium = account.Premium,
                                     premiumEndTime = account.PremiumEndTime > DateTime.Now ? account.PremiumEndTime.ToString("dd.MM.yyyy HH:mm") : "Aktif Değil",
+                                    premiumDaysLeft = account.PremiumEndTime > DateTime.Now ? (int)(account.PremiumEndTime - DateTime.Now).TotalDays : 0,
                                     avatarId = account.Avatarid,
                                     nameColorId = account.Namecolorid,
                                     clubName = account.ClubName ?? "Kulüp Yok",
+                                    clubId = account.Clubid,
                                     clubRole = account.clubRole.ToString(),
                                     roles = account.Roles.Select(r => r.ToString()).ToList(),
                                     friendCount = account.Friends.Count,
@@ -1152,6 +1408,125 @@ public class AdminServer
                 }
                 break;
 
+            case "/api/clubs":
+                {
+                    var clubs = ClubManager.Clubs.Values.ToList();
+                    result = clubs.Select(c => new
+                    {
+                        id = c.ID,
+                        name = c.Name ?? "İsimsiz Kulüp",
+                        description = c.Description ?? "",
+                        avatarId = c.AvatarID,
+                        trophies = c.TotalTrophy,
+                        memberCount = c.Members.Count,
+                        maxMembers = c.MaxMembers,
+                        state = c.State.ToString(),
+                        region = c.Region ?? "Global",
+                        members = c.Members.Select(m => new {
+                            id = m.ID,
+                            name = m.AccountName,
+                            role = m.Role.ToString(),
+                            avatarId = m.AvatarID
+                        }).ToList()
+                    }).ToList();
+                }
+                break;
+
+            case "/api/clubs/update":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
+                        if (data != null && data.ContainsKey("id"))
+                        {
+                            int clubId = int.Parse(data["id"]);
+                            string name = data.ContainsKey("name") ? data["name"] : "";
+                            string desc = data.ContainsKey("description") ? data["description"] : "";
+                            int avatarId = data.ContainsKey("avatarId") ? int.Parse(data["avatarId"]) : 0;
+                            int state = data.ContainsKey("state") ? int.Parse(data["state"]) : 0;
+                            string region = data.ContainsKey("region") ? data["region"] : "Global";
+
+                            var club = ClubManager.LoadClub(clubId);
+                            if (club != null)
+                            {
+                                bool success = club.ChangeClubSettings(0, name, desc, avatarId, state, region);
+                                if (success)
+                                {
+                                    var admin = GetAdminUsername(context);
+                                    AdminAuditLogger.Log(admin, "Kulüp Güncellendi", name, $"Kulüp ID: {clubId}");
+                                }
+                                result = new { success = success, message = success ? "Kulüp ayarları kaydedildi." : "Hata oluştu." };
+                            }
+                            else result = new { success = false, message = "Kulüp bulunamadı." };
+                        }
+                    }
+                }
+                break;
+
+            case "/api/clubs/delete":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
+                        if (data != null && data.ContainsKey("id"))
+                        {
+                            int clubId = int.Parse(data["id"]);
+                            var club = ClubManager.LoadClub(clubId);
+                            bool success = ClubManager.DeleteClub(clubId);
+                            if (success) {
+                                var admin = GetAdminUsername(context);
+                                AdminAuditLogger.Log(admin, "Kulüp Silindi", club?.Name ?? clubId.ToString(), $"Kulüp başarıyla silindi.");
+                            }
+                            result = new { success = success, message = success ? "Kulüp silindi." : "Kulüp silinemedi." };
+                        }
+                    }
+                }
+                break;
+
+            case "/api/clubs/kick":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
+                        if (data != null && data.ContainsKey("clubId") && data.ContainsKey("memberId"))
+                        {
+                            int clubId = int.Parse(data["clubId"]);
+                            int memberId = int.Parse(data["memberId"]);
+
+                            var club = ClubManager.LoadClub(clubId);
+                            bool success = club != null && club.RemoveMember(memberId);
+
+                            if (success) {
+                                var memberAccount = AccountCache.Load(memberId);
+                                if (memberAccount != null)
+                                {
+                                    memberAccount.Clubid = 0;
+                                    memberAccount.ClubName = null;
+                                    AccountManager.SaveAccounts();
+
+                                    var memberSession = SessionManager.GetSession(memberId);
+                                    if (memberSession != null && memberSession.IsConnected)
+                                    {
+                                        memberSession.Send(new LeaveClubResponsePacket { Kicked = true });
+                                        memberSession.Logic?.SendUpdate();
+                                    }
+                                }
+
+                                var admin = GetAdminUsername(context);
+                                AdminAuditLogger.Log(admin, "Üye Kovuldu", memberId.ToString(), $"Kulüp ID: {clubId}");
+                            }
+                            result = new { success = success, message = success ? "Oyuncu kulüpten atıldı." : "Oyuncu atılamadı." };
+                        }
+                    }
+                }
+                break;
+
             case "/api/dynamicconfig":
                 result = DynamicConfigManager.Config;
                 break;
@@ -1169,6 +1544,92 @@ public class AdminServer
                             result = new { success = true, message = "Yapılandırma güncellendi." };
                         }
                         else result = new { success = false, message = "Geçersiz veri." };
+                    }
+                }
+                break;
+
+            case "/api/updates/all":
+                result = UpdateNotesManager.GetAll();
+                break;
+
+            case "/api/updates/save":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var note = JsonConvert.DeserializeObject<GameUpdateNoteData>(body);
+                        if (note != null)
+                        {
+                            var saved = UpdateNotesManager.Save(note);
+                            var admin = GetAdminUsername(context);
+                            AdminAuditLogger.Log(admin, "Güncelleme Notu Kaydet", saved.Version, saved.Title);
+                            result = new { success = true, message = "Güncelleme kaydedildi.", note = saved };
+                        }
+                        else result = new { success = false, message = "Geçersiz güncelleme verisi." };
+                    }
+                }
+                break;
+
+            case "/api/updates/delete":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, int>>(body);
+                        if (data != null && data.ContainsKey("id"))
+                        {
+                            bool ok = UpdateNotesManager.Delete(data["id"]);
+                            if (ok)
+                            {
+                                var admin = GetAdminUsername(context);
+                                AdminAuditLogger.Log(admin, "Güncelleme Notu Sil", $"ID: {data["id"]}", "Not silindi.");
+                            }
+                            result = new { success = ok, message = ok ? "Güncelleme silindi." : "Kayıt bulunamadı." };
+                        }
+                        else result = new { success = false, message = "Geçersiz istek." };
+                    }
+                }
+                break;
+
+            case "/api/updates/publish":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(body);
+                        if (data != null && data.ContainsKey("id") && data.ContainsKey("published"))
+                        {
+                            int id = Convert.ToInt32(data["id"]);
+                            bool published = Convert.ToBoolean(data["published"]);
+                            bool ok = UpdateNotesManager.SetPublishState(id, published);
+                            if (ok)
+                            {
+                                var admin = GetAdminUsername(context);
+                                AdminAuditLogger.Log(admin, published ? "Güncelleme Yayınla" : "Güncelleme Yayından Kaldır", $"ID: {id}", "");
+                            }
+                            result = new { success = ok, message = ok ? (published ? "Yayınlandı." : "Yayından kaldırıldı.") : "Kayıt bulunamadı." };
+                        }
+                        else result = new { success = false, message = "Geçersiz istek." };
+                    }
+                }
+                break;
+
+            case "/api/updates/reorder":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, List<int>>>(body);
+                        if (data != null && data.ContainsKey("ids"))
+                        {
+                            UpdateNotesManager.Reorder(data["ids"]);
+                            result = new { success = true, message = "Sıralama güncellendi." };
+                        }
+                        else result = new { success = false, message = "Geçersiz istek." };
                     }
                 }
                 break;

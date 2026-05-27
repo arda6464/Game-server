@@ -3,7 +3,7 @@ public static class ClubShowHandler
 {
     public static void Handle(Session session, byte[] message)
     {
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(message, true);
 
     
@@ -22,13 +22,13 @@ public static class ClubShowHandler
 
         var response = new ClubShowResponsePacket
         {
-            ClubId = club.ClubId,
-            ClubName = club.ClubName,
-            ClubDescription = club.Clubaciklama,
-            ClubAvatarId = club.ClubAvatarID,
-            TotalTrophies = club.TotalKupa ?? 0,
+           club=club
         };
-        response.Members.AddRange(club.Members);
+        if(club.ID == session.Account?.Clubid)
+        {
+          //  response.Messages.AddRange(club.Messages);
+        }
+       
         session.Send(response);
     }
     

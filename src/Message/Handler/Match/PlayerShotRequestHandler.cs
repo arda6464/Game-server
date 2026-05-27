@@ -1,4 +1,4 @@
-using System.Numerics;
+using DietPhysics;
 
 [PacketHandler(MessageType.ShootRequest)]
 public static class PlayerShotRequestHandler
@@ -11,7 +11,7 @@ public static class PlayerShotRequestHandler
             return;
         }
 
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(message, true);
 
         var request = new ShootRequestPacket();
@@ -24,7 +24,7 @@ public static class PlayerShotRequestHandler
       Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
         if (battle == null) return;
 
-        Bullet bullet = new Bullet
+       /* Bullet bullet = new Bullet
         {
             BulletId = battle.GetNextBulletId(),
             Position = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Y),
@@ -50,13 +50,13 @@ public static class PlayerShotRequestHandler
             PositionZ = session.PlayerData.Position.Z, 
             DirectionX = X,
             DirectionY = Y
-        };
+        };*/
 
         
         var battleplayers = battle.GetPlayers();
         foreach(var acc in battleplayers)
         {
-              acc.session.Send(response);
+           //   acc.session.Send(response);
         }
     }
 }

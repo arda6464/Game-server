@@ -28,14 +28,14 @@ public static class MessageManager
     public static void HandleMessage(Session session, byte[] data)
     {
         int value;
-        using (ByteBuffer buffer = new ByteBuffer())
+        using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             buffer.WriteBytes(data, true);
             value = buffer.ReadVarInt();
             data = buffer.GetReadableSpan().ToArray();
         }
         MessageType type = (MessageType)value;
-    
+        Console.WriteLine($"[PACKET] bir {type} alındı");
 
         // Trafiği kaydet
         TrafficMonitor.RecordIncoming(type, data.Length);
@@ -52,6 +52,7 @@ public static class MessageManager
                 if (parameters.Length == 1 && parameters[0].ParameterType == typeof(Session))
                 {
                     method.Invoke(null, new object[] { session });
+                    
                 }
                 else if (parameters.Length == 2 && parameters[1].ParameterType == typeof(byte[]))
                 {
@@ -84,10 +85,13 @@ public static class MessageManager
 
     public static void HandleUdpMessage(Session session, byte[] data, int sequenceNumber)
     {
-        using (ByteBuffer buffer = new ByteBuffer())
+        using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             buffer.WriteBytes(data);
             UdpMessageType messageType = (UdpMessageType)buffer.ReadVarInt();
+
+            // Trafiği kaydet
+            TrafficMonitor.RecordIncomingUdp(messageType, data.Length);
 
             // Connect ve Ping gibi kontrol paketleri her zaman işlenir (seqNo filtresi uygulanmaz)
             /* switch (messageType)

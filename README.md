@@ -72,7 +72,7 @@ Proje, oyun ile Discord arasında çift yönlü bir köprü (bridge) kurar:
 - [x] **V2.5**: Discord Bilet Sistemi & Admin API - Single Port Layer 7 Routing.
 - [x] **V3.0**: Market API, Mağaza (Shop), Mail ve Liderlik (Leaderboard) Katmanı.
 - [x] **V3.1**: Friends & Sosyal Etkileşim Refactor, Team System, Player Presence.
-- [x] **V3.5**: Dinamik Config (Hot-Reload) & Automated Client Error Reporting (Hata loglarının admin paneline entegrasyonu).
+- [x] **V3.5**: Dinamik Config (Hot-Reload) & Automated Client Error Reporting, Sunucu Thread-Safety & Kulüp Mesajlaşma Refaktörü, Gacha ve Çoklu Market Paketi Satın Alım Altyapısı.
 - [ ] **V4.0**: Horizontal Scaling (Redis Cluster Entegrasyonu).
 - [ ] **V4.5**: Anti-Cheat Katmanı (Server-Side Havok Physics Simulation).
 

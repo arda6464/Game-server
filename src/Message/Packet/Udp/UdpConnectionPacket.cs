@@ -1,6 +1,6 @@
 using Network;
 
-public class UdpConnectionPacket : IPacket
+public struct UdpConnectionPacket : IPacket
 {
    public int seqNo {get;set;}
 

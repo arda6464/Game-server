@@ -7,7 +7,7 @@ public static class SetNameColor
     {
 
         Console.WriteLine("SetCOLOR");
-        ByteBuffer BUFFER = new ByteBuffer();
+        ByteBuffer BUFFER = ByteBufferPool.Get();
         BUFFER.WriteBytes(data, true);
 
         var request = new SetNameColorRequestPacket();

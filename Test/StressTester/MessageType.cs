@@ -10,6 +10,9 @@ public enum MessageType : short
     MessageCode,
     Alive,
     Presence,
+    ClientErrorRequest,
+
+    // UDP tipleri artık UdpMessageType.cs dosyasında (byte olarak)
     #endregion
 
     #region Authentication
@@ -26,6 +29,8 @@ public enum MessageType : short
     VerifyCodeResponse,
     AccountLogin,
     SignAccount,
+    ChangeNotficationRequest,
+    NameNotAcceptedRequest,
     #endregion
 
 
@@ -42,8 +47,8 @@ public enum MessageType : short
 
     #region  Friends
     SendFriendRequest,
-    SendFriendResponse,
     AcceptFriendRequest,
+    NewRequest,
     AcceptFriendResponse,
     DeclineFriendRequest,
     DeclineFriendResponse,
@@ -51,6 +56,7 @@ public enum MessageType : short
     DeleteFriendResponse,
     NewFriendsList,
     NewRequestList,
+    BestFriendChanged,
     #endregion
 
 
@@ -74,6 +80,8 @@ public enum MessageType : short
     #region  notfications
     Notification,
     AllNotficationViewed,
+    ClaimInboxRewardRequest,
+    ClaimInboxRewardResponse,
     #endregion
 
     #region  Leaderboards
@@ -107,6 +115,8 @@ public enum MessageType : short
     MemberToUpperResponse,
     MemberToLowerRequest,
     MemberToLowerResponse,
+    ClubJoinRespondRequest,
+    ClubRequestStateUpdate,
 
     #endregion
 
@@ -116,7 +126,7 @@ public enum MessageType : short
     MatchMakingRequest,
     MatchMakingCancelRequest,
     MatchFound,
-    MatchMakingAddPlayer,
+    MatchMakingUpdate,
     StartMatch,
     Move,
 
@@ -132,6 +142,8 @@ public enum MessageType : short
     #region  Shop
     GetAllMarketItemsRequest,
     GetAllMarketItemsResponse,
+    BuyMarketItemRequest,
+    BuyMarketItemResponse,
 
     #endregion
 
@@ -153,9 +165,34 @@ public enum MessageType : short
     #region Pass
     NewQuest,
     DeleteQuest,
-    QuestProgress
+    QuestProgress,
 
     #endregion
 
+    #region Invite
+    JoinByInviteRequest,
+    #endregion
+
+    
+
+    #region  Android
+    NewFBNTokenRequest,
+    #endregion
+
+
+
+
+    #region Events
+    GetEvents,
+    DeleteEvent,
+    EventsResponse,
+    AddEvent,
+    GachaResponse,
+    #endregion
+
+    #region News
+    GetUpdateNotesRequest,
+    GetUpdateNotesResponse,
+    #endregion
 
 }

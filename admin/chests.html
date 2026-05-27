@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandık & Drop Yönetimi - Admin Core</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="modals.js"></script>
+    <style>
+        .box-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .box-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .box-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .box-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .box-icon-container {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-fuchsia), var(--accent-indigo));
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(244, 114, 182, 0.2);
+        }
+
+        .box-info h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .box-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .drop-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .drop-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 1rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .drop-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .drop-label {
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .drop-chance {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+        }
+
+        .chance-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chance-bar-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-fuchsia));
+            border-radius: 3px;
+        }
+
+        .box-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .box-actions button {
+            flex: 1;
+        }
+
+        /* --- CHEST SIMULATOR OVERLAY --- */
+        #chest-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 7, 18, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .simulation-box {
+            font-size: 10rem;
+            color: #fff;
+            filter: drop-shadow(0 0 50px var(--accent-fuchsia));
+            animation: idle-float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .simulation-box.shaking {
+            animation: box-shake 0.1s linear infinite;
+        }
+
+        .simulation-box.burst {
+            transform: scale(3);
+            opacity: 0;
+            filter: brightness(5) blur(10px);
+        }
+
+        .reveal-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            border: 2px solid var(--accent-cyan);
+            border-radius: 3rem;
+            padding: 4rem;
+            text-align: center;
+            transform: scale(0.5);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 100px rgba(34, 211, 238, 0.3);
+        }
+
+        .reveal-card.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .reward-icon-reveal {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--accent-fuchsia), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+
+        @keyframes box-shake {
+            0% { transform: translate(2px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        @keyframes idle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .light-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 1s ease;
+            pointer-events: none;
+        }
+
+        /* Modal Styles */
+        .drop-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 0.5fr auto;
+            gap: 1rem;
+            align-items: center;
+            background: rgba(255,255,255,0.02);
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- CHEST OVERLAY -->
+    <div id="chest-overlay" onclick="closeSimulation()">
+        <div class="light-rays" id="rays"></div>
+        <div class="simulation-box" id="sim-box">
+            <i class="fas fa-box-open"></i>
+        </div>
+        <div class="reveal-card" id="reveal-card">
+            <div class="reward-icon-reveal" id="reveal-icon">
+                <i class="fas fa-gem"></i>
+            </div>
+            <h2 id="reveal-name" style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem;">EFSANEVİ!</h2>
+            <p id="reveal-desc" style="color: var(--text-secondary); font-size: 1.2rem; font-weight: 600;">1000 ELMAS KAZANDIN</p>
+            <div style="margin-top: 2rem; font-size: 0.8rem; font-weight: 800; color: var(--accent-fuchsia); letter-spacing: 0.2em;">KAPATMAK İÇİN TIKLA</div>
+        </div>
+    </div>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="delivery.html" class="nav-item">
+                <i class="fas fa-gift"></i> Eşya Gönderimi
+            </a>
+            <a href="clubs.html" class="nav-item">
+                <i class="fas fa-users-viewfinder"></i> Kulüpler
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-flag"></i> Raporlar
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="chests.html" class="nav-item active">
+                <i class="fas fa-box-open"></i> Sandık & Drop
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="client_errors.html" class="nav-item">
+                <i class="fas fa-bug"></i> İstemci Hataları
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="admins.html" class="nav-item">
+                <i class="fas fa-user-shield"></i> Yönetim
+            </a>
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
+            <div>
+                <h1 class="page-title">Sandık & Drop Yönetimi</h1>
+                <p style="color: var(--text-secondary); margin-top: -0.5rem;">Sandık içeriklerini, drop oranlarını ve şans faktörlerini yönetin.</p>
+            </div>
+            <button onclick="showEditBoxModal()" class="primary-btn" style="padding: 1rem 2rem;">
+                <i class="fas fa-plus"></i> YENİ SANDIK OLUŞTUR
+            </button>
+        </header>
+
+        <div id="chest-container" class="box-grid animate-slide-up delay-1">
+            <!-- Chests will be loaded here -->
+        </div>
+    </main>
+
+    <script>
+        let allBoxes = [];
+
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/gacha/all');
+                allBoxes = await response.json();
+                renderBoxes();
+            } catch (e) {
+                console.error("Chest data fetch error:", e);
+            }
+        }
+
+        function renderBoxes() {
+            const container = document.getElementById('chest-container');
+            container.innerHTML = allBoxes.map(box => {
+                const totalWeight = box.Drops.reduce((acc, d) => acc + d.Weight, 0);
+                
+                return `
+                    <div class="box-card">
+                        <div class="box-header">
+                            <div class="box-icon-container">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="box-info">
+                                <h3>${box.Name}</h3>
+                                <p>${box.Description}</p>
+                            </div>
+                        </div>
+
+                        <div class="drop-list">
+                            <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-secondary); margin-bottom: 0.5rem; letter-spacing: 0.05em;">DROP ORANLARI</div>
+                            ${box.Drops.sort((a,b) => b.Weight - a.Weight).map(drop => {
+                                const chance = ((drop.Weight / totalWeight) * 100).toFixed(1);
+                                return `
+                                    <div class="drop-item">
+                                        <div class="drop-main">
+                                            <div class="drop-label">
+                                                <i class="fas ${getItemIcon(drop.Reward.Type)}"></i>
+                                                ${getItemName(drop.Reward.Type)} x${drop.Reward.Count}
+                                            </div>
+                                            <div class="drop-chance">%${chance}</div>
+                                        </div>
+                                        <div class="chance-bar-bg">
+                                            <div class="chance-bar-fill" style="width: ${chance}%"></div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div class="box-actions">
+                            <button class="primary-btn" style="background: var(--accent-fuchsia); box-shadow: 0 5px 15px rgba(244,114,182,0.2);" onclick="runSimulation(${box.Id})"><i class="fas fa-magic"></i> TEST ET</button>
+                            <button class="secondary-btn" onclick="showEditBoxModal(${box.Id})"><i class="fas fa-edit"></i> DÜZENLE</button>
+                            <button class="secondary-btn" style="color: #ef4444; border-color: rgba(239,68,68,0.1); width: 50px; flex: 0;" onclick="deleteBox(${box.Id})"><i class="fas fa-trash-can"></i></button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // --- SIMULATION LOGIC ---
+        function runSimulation(boxId) {
+            const box = allBoxes.find(b => b.Id === boxId);
+            if (!box) return;
+
+            // Perform Weighted Roll
+            const totalWeight = box.Drops.reduce((acc, d) => acc + d.Weight, 0);
+            let roll = Math.floor(Math.random() * totalWeight);
+            let selectedDrop = box.Drops[box.Drops.length - 1];
+
+            let current = 0;
+            for (const drop of box.Drops) {
+                current += drop.Weight;
+                if (roll < current) {
+                    selectedDrop = drop;
+                    break;
+                }
+            }
+
+            // UI Reveal
+            const overlay = document.getElementById('chest-overlay');
+            const simBox = document.getElementById('sim-box');
+            const revealCard = document.getElementById('reveal-card');
+            const rays = document.getElementById('rays');
+            
+            // Reset state
+            overlay.style.display = 'flex';
+            simBox.style.display = 'block';
+            simBox.className = 'simulation-box';
+            revealCard.className = 'reveal-card';
+            rays.style.opacity = '0';
+
+            // Sequence
+            setTimeout(() => {
+                simBox.classList.add('shaking');
+                
+                setTimeout(() => {
+                    simBox.classList.remove('shaking');
+                    simBox.classList.add('burst');
+                    rays.style.opacity = '1';
+                    
+                    setTimeout(() => {
+                        simBox.style.display = 'none';
+                        
+                        // Set Reward Info
+                        const type = selectedDrop.Reward.Type;
+                        const count = selectedDrop.Reward.Count;
+                        
+                        document.getElementById('reveal-icon').innerHTML = `<i class="fas ${getItemIcon(type)}"></i>`;
+                        document.getElementById('reveal-name').innerText = getQualityText(selectedDrop.Weight / totalWeight);
+                        document.getElementById('reveal-desc').innerText = `${count} ADET ${getItemName(type).toUpperCase()} KAZANDIN!`;
+                        
+                        revealCard.classList.add('show');
+                    }, 400);
+                }, 1500);
+            }, 500);
+        }
+
+        function closeSimulation() {
+            document.getElementById('chest-overlay').style.display = 'none';
+        }
+
+        function getQualityText(chance) {
+            if (chance < 0.02) return "EFSANEVİ!";
+            if (chance < 0.05) return "DESTANSI!";
+            if (chance < 0.15) return "ENDER!";
+            return "SIRADAN";
+        }
+
+        function getItemIcon(type) {
+            switch(type) {
+                case 0: return 'fa-gem';
+                case 1: return 'fa-coins';
+                case 3: return 'fa-user-ninja';
+                default: return 'fa-gift';
+            }
+        }
+
+        function getItemName(type) {
+            switch(type) {
+                case 0: return 'Elmas';
+                case 1: return 'Altın';
+                case 2: return 'Battle Pass';
+                case 3: return 'Avatar/Karakter';
+                default: return 'Eşya';
+            }
+        }
+
+        function showEditBoxModal(id = null) {
+            const box = id ? allBoxes.find(b => b.Id === id) : { Name: '', Description: '', Drops: [{ Reward: { Type: 0, Count: 100 }, Weight: 100 }] };
+            
+            const html = `
+                <div style="text-align: left; display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div>
+                        <label class="modal-label">SANDIK İSMİ</label>
+                        <input type="text" id="box-name" class="modal-input" value="${box.Name}" placeholder="Örn: Efsanevi Mega Kutu">
+                    </div>
+                    <div>
+                        <label class="modal-label">AÇIKLAMA</label>
+                        <input type="text" id="box-desc" class="modal-input" value="${box.Description}" placeholder="Sandık hakkında kısa bilgi...">
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 1.5rem; border: 1px solid var(--glass-border);">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                            <label class="modal-label" style="margin:0;"><i class="fas fa-dice"></i> DROP TABLOSU</label>
+                            <button type="button" onclick="addDropRow()" class="btn-refresh" style="padding: 0.4rem 0.8rem; font-size: 0.7rem; color: var(--accent-indigo); border-color: rgba(129, 140, 248, 0.2);">
+                                <i class="fas fa-plus"></i> DROP EKLE
+                            </button>
+                        </div>
+                        <div id="modal-drops-container">
+                            ${box.Drops.map((drop, idx) => renderDropRow(drop, idx)).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            Modal.show({
+                title: id ? 'Sandığı Düzenle' : 'Yeni Sandık Oluştur',
+                message: html,
+                confirmText: 'KAYDET',
+                onConfirm: async () => {
+                    const name = document.getElementById('box-name').value;
+                    if (!name) return showToast('İsim boş olamaz!', 'error');
+
+                    const drops = [];
+                    document.querySelectorAll('.drop-row').forEach(row => {
+                        drops.push({
+                            Reward: {
+                                Type: parseInt(row.querySelector('.drop-type').value),
+                                Count: parseInt(row.querySelector('.drop-count').value)
+                            },
+                            Weight: parseInt(row.querySelector('.drop-weight').value)
+                        });
+                    });
+
+                    const newBox = {
+                        Id: id || 0,
+                        Name: name,
+                        Description: document.getElementById('box-desc').value,
+                        Drops: drops
+                    };
+
+                    const res = await fetch('/api/gacha/add', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(newBox)
+                    });
+                    
+                    if (res.ok) {
+                        showToast('Sandık başarıyla kaydedildi!', 'success');
+                        fetchData();
+                    }
+                }
+            });
+        }
+
+        window.addDropRow = function() {
+            const container = document.getElementById('modal-drops-container');
+            const div = document.createElement('div');
+            div.innerHTML = renderDropRow({ Reward: { Type: 0, Count: 100 }, Weight: 100 });
+            container.appendChild(div.firstElementChild);
+        };
+
+        function renderDropRow(drop, idx) {
+            return `
+                <div class="drop-row">
+                    <select class="modal-input drop-type" style="margin:0;">
+                        <option value="0" ${drop.Reward.Type == 0 ? 'selected' : ''}>Elmas</option>
+                        <option value="1" ${drop.Reward.Type == 1 ? 'selected' : ''}>Altın</option>
+                        <option value="3" ${drop.Reward.Type == 3 ? 'selected' : ''}>Karakter</option>
+                    </select>
+                    <input type="number" class="modal-input drop-count" value="${drop.Reward.Count}" placeholder="Miktar" style="margin:0;">
+                    <input type="number" class="modal-input drop-weight" value="${drop.Weight}" placeholder="Ağırlık" style="margin:0;">
+                    <button class="secondary-btn" style="color:#ef4444; padding: 0.75rem;" onclick="this.parentElement.remove()"><i class="fas fa-trash-can"></i></button>
+                </div>
+            `;
+        }
+
+        async function deleteBox(id) {
+            Modal.confirm('Sandığı Sil', 'Bu sandığı tamamen silmek istediğinize emin misiniz?', async () => {
+                const res = await fetch('/api/gacha/remove', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: id })
+                });
+                if (res.ok) {
+                    showToast('Sandık silindi.');
+                    fetchData();
+                }
+            });
+        }
+
+        fetchData();
+    </script>
+</body>
+
+</html>

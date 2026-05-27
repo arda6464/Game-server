@@ -56,7 +56,7 @@ public static class Maintance
     }
     public static void SendMaintancePacket(Session session)
     {
-        ByteBuffer buffer = new ByteBuffer();
+        ByteBuffer buffer = ByteBufferPool.Get();
         buffer.WriteVarInt((int)MessageType.Maintance);
         long unixTime = new DateTimeOffset(FinishTime.ToUniversalTime()).ToUnixTimeSeconds();
         buffer.WriteVarLong(unixTime);

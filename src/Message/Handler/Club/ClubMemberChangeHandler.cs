@@ -5,7 +5,7 @@ public static class ClubMemberChangeHandler
     {
         try
         {
-            ByteBuffer read = new ByteBuffer();
+            ByteBuffer read = ByteBufferPool.Get();
             read.WriteBytes(message, true);
             
             var request = new ClubMemberChangeRequestPacket();
@@ -66,18 +66,18 @@ public static class ClubMemberChangeHandler
             return;
         }
 
+        var club = ClubManager.LoadClub(targetAccount.Clubid);
+        if (club == null) return;
+
         if (targetAccount.clubRole == ClubRole.Member)
         {
-            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.ID,
-                                       targetAccount.ID, ClubRole.CoLeader);
+            club.ChangeMemberRole(session.ID, targetAccount.ID, ClubRole.CoLeader);
             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubRoleUpdateCoOwner);
         }
         else if (targetAccount.clubRole == ClubRole.CoLeader)
         {
-            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.ID,
-                                       targetAccount.ID, ClubRole.Leader);
-            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.ID,
-                                       session.ID, ClubRole.CoLeader);
+            club.ChangeMemberRole(session.ID, targetAccount.ID, ClubRole.Leader);
+            club.ChangeMemberRole(session.ID, session.ID, ClubRole.CoLeader);
             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubRoleDoOwner);
         }
         else
@@ -93,8 +93,9 @@ public static class ClubMemberChangeHandler
         }
         else if (targetAccount.clubRole == ClubRole.CoLeader)
         {
-            ClubManager.ChangeMemberRole(targetAccount.Clubid, session.ID, 
-                                       targetAccount.ID, ClubRole.Member);
+            var club = ClubManager.LoadClub(targetAccount.Clubid);
+            if (club == null) return;
+            club.ChangeMemberRole(session.ID, targetAccount.ID, ClubRole.Member);
             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubRoleLowerCoOwner);
         }
         else if (targetAccount.clubRole == ClubRole.Leader)

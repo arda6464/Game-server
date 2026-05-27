@@ -31,11 +31,12 @@
             background: rgba(255, 255, 255, 0.02);
             border-top: 1px solid var(--glass-border);
             border-bottom: 1px solid var(--glass-border);
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         tr:hover td {
             background: rgba(255, 255, 255, 0.05);
+            transform: scale(1.002);
         }
 
         td:first-child {
@@ -51,7 +52,7 @@
         }
 
         .player-id {
-            font-family: monospace;
+            font-family: 'JetBrains Mono', monospace;
             background: rgba(34, 211, 238, 0.1);
             padding: 0.4rem 0.75rem;
             border-radius: 0.75rem;
@@ -66,47 +67,22 @@
             color: #fff;
         }
 
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 800;
-            font-size: 0.7rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 2rem;
-            text-transform: uppercase;
-        }
-
-        .status-online {
-            color: #10b981;
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .status-offline {
-            color: #ef4444;
-            background: rgba(239, 68, 68, 0.1);
-        }
-
-        .btn-kick {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 0.75rem;
+        .pill {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 1rem;
+            color: var(--text-secondary);
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
-        .btn-kick:hover {
-            background: #ef4444;
-            color: #fff;
-        }
-
-        .ip-badge {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-family: monospace;
+        .pill.active {
+            background: var(--accent-fuchsia);
+            color: #000;
+            border-color: var(--accent-fuchsia);
+            box-shadow: 0 0 15px rgba(244, 114, 182, 0.3);
         }
     </style>
 </head>
@@ -125,20 +101,29 @@
             <a href="players.html" class="nav-item active">
                 <i class="fas fa-id-badge"></i> Oyuncular
             </a>
+            <a href="delivery.html" class="nav-item">
+                <i class="fas fa-gift"></i> Eşya Gönderimi
+            </a>
+            <a href="clubs.html" class="nav-item">
+                <i class="fas fa-users-viewfinder"></i> Kulüpler
+            </a>
             <a href="reports.html" class="nav-item">
                 <i class="fas fa-flag"></i> Raporlar
-            </a>
-            <a href="management.html" class="nav-item">
-                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="announcement.html" class="nav-item">
                 <i class="fas fa-bullhorn"></i> Duyurular
             </a>
-            <a href="traffic.html" class="nav-item">
-                <i class="fas fa-chart-area"></i> Trafik Analizi
+            <a href="chests.html" class="nav-item">
+                <i class="fas fa-box-open"></i> Sandık & Drop
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
             </a>
             <a href="logs.html" class="nav-item">
                 <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
             </a>
             <a href="client_errors.html" class="nav-item">
                 <i class="fas fa-bug"></i> İstemci Hataları
@@ -149,8 +134,8 @@
             <a href="admins.html" class="nav-item">
                 <i class="fas fa-user-shield"></i> Yönetim
             </a>
-            <a href="market.html" class="nav-item">
-                <i class="fas fa-shopping-cart"></i> Market
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
             <a href="#" class="nav-item" onclick="logout()"
                 style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
@@ -166,7 +151,7 @@
                 </div>
                 <div>
                     <div style="font-weight: 700; font-size: 0.9rem;">Server Admin</div>
-                    <div style="font-size: 0.75rem; color: var(--text-secondary);">v1.0.4-beta</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary);">v1.0.8-beta</div>
                 </div>
             </div>
         </div>
@@ -186,19 +171,15 @@
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <h3 style="display: flex; align-items: center; gap: 0.75rem;">
                         <i class="fas fa-database" style="color:var(--accent-fuchsia)"></i> Oyuncu Veritabanı
-                    </h3>
-                    <button onclick="updatePlayers()" class="btn-refresh">
-                        <i class="fas fa-rotate"></i> Listeyi Yenile
-                    </button>
                 </div>
 
                 <div style="display: flex; gap: 1rem; align-items: center;">
                     <div style="flex: 1; position: relative;">
                         <i class="fas fa-search"
-                            style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary);"></i>
+                            style="position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary);"></i>
                         <input type="text" id="player-search" placeholder="İsim veya Hesap ID ile ara..."
                             oninput="filterPlayers()"
-                            style="width: 100%; padding: 0.8rem 1rem 0.8rem 3rem; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 0.75rem; color: #fff;">
+                            style="width: 100%; padding: 0.8rem 1rem 0.8rem 3rem; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 0.75rem; color: #fff; outline: none;">
                     </div>
                     <div style="display: flex; gap: 0.5rem;" id="filter-pills">
                         <button class="pill active" onclick="setFilter('all')">Tümü</button>
@@ -228,115 +209,34 @@
 
     <!-- Edit Modal -->
     <div id="edit-modal" class="modal-overlay" style="display:none;">
-        <div class="modal-card card">
-            <h2 id="modal-title">Oyuncu Düzenle</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+        <div class="modal-card card" style="max-width: 500px; width: 90%;">
+            <h2 id="modal-title" style="margin-bottom: 1.5rem;">Oyuncu Düzenle</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                 <div>
-                    <label class="input-label">SEVİYE</label>
-                    <input type="number" id="edit-level" class="modal-input">
+                    <label class="input-label" style="display:block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.75rem; font-weight: 800;">SEVİYE</label>
+                    <input type="number" id="edit-level" class="modal-input" style="width: 100%; text-align: left;">
                 </div>
                 <div>
-                    <label class="input-label">KUPA</label>
-                    <input type="number" id="edit-trophies" class="modal-input">
+                    <label class="input-label" style="display:block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.75rem; font-weight: 800;">KUPA</label>
+                    <input type="number" id="edit-trophies" class="modal-input" style="width: 100%; text-align: left;">
                 </div>
                 <div>
-                    <label class="input-label">ELMAS</label>
-                    <input type="number" id="edit-gems" class="modal-input">
+                    <label class="input-label" style="display:block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.75rem; font-weight: 800;">ELMAS</label>
+                    <input type="number" id="edit-gems" class="modal-input" style="width: 100%; text-align: left;">
                 </div>
                 <div>
-                    <label class="input-label">ALTIN</label>
-                    <input type="number" id="edit-coins" class="modal-input">
+                    <label class="input-label" style="display:block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.75rem; font-weight: 800;">ALTIN</label>
+                    <input type="number" id="edit-coins" class="modal-input" style="width: 100%; text-align: left;">
                 </div>
             </div>
             <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem;">
                 <button onclick="closeModal()" class="secondary-btn">İptal</button>
-                <button onclick="savePlayer()" class="primary-btn" style="padding: 0.75rem 2rem;">Kaydet</button>
+                <button onclick="savePlayer()" class="primary-btn">Kaydet</button>
             </div>
         </div>
     </div>
 
-    <style>
-        .pill {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-            padding: 0.5rem 1.25rem;
-            border-radius: 2rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .pill.active {
-            background: var(--accent-fuchsia);
-            color: #fff;
-            border-color: var(--accent-fuchsia);
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .modal-card {
-            width: 500px;
-            padding: 2.5rem;
-            border: 1px solid var(--accent-fuchsia);
-        }
-
-        .input-label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-input {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--glass-border);
-            padding: 0.75rem;
-            border-radius: 0.75rem;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .primary-btn {
-            background: var(--accent-fuchsia);
-            color: #fff;
-            border: none;
-            border-radius: 0.75rem;
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        .row-banned {
-            background: rgba(220, 38, 38, 0.05) !important;
-            color: #ef4444 !important;
-        }
-
-        .btn-edit {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            border: 1px solid var(--glass-border);
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
-    </style>
-
     <script>
-
         let allPlayers = [];
         let currentFilter = 'all';
         let editingPlayerId = null;
@@ -374,7 +274,7 @@
 
             filtered.forEach(p => {
                 const tr = document.createElement('tr');
-                if (p.isBanned) tr.className = 'row-banned';
+                if (p.isBanned) tr.style.opacity = '0.7';
 
                 const statusBadge = p.isBanned ?
                     `<div class="status-badge" style="background:rgba(239, 68, 68, 0.1); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.2);">● YASAKLI</div>` :
@@ -389,7 +289,7 @@
                             <button class="btn-view" onclick="location.href='profile.html?id=${p.id}'">
                                 <i class="fas fa-user-circle"></i> PROFİL
                             </button>
-                            <button class="btn-edit" onclick="openEditModal('${p.id}')" style="background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); color:#fff; border-radius:10px; padding:0.6rem;">
+                            <button class="btn-refresh" style="padding: 0.5rem; min-width: auto; border-radius: 10px;" onclick="openEditModal('${p.id}')">
                                 <i class="fas fa-edit"></i>
                             </button>
                             ${p.isOnline ? `<button class="btn-kick" onclick="kickPlayer('${p.id}')"><i class="fas fa-bolt"></i> KOV</button>` : ''}
@@ -414,9 +314,15 @@
             document.getElementById('edit-gems').value = player.gems;
             document.getElementById('edit-coins').value = player.coins;
             document.getElementById('edit-modal').style.display = 'flex';
+            document.getElementById('edit-modal').classList.add('active');
         }
 
-        function closeModal() { document.getElementById('edit-modal').style.display = 'none'; }
+        function closeModal() { 
+            document.getElementById('edit-modal').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('edit-modal').style.display = 'none';
+            }, 300);
+        }
 
         async function savePlayer() {
             const data = {
@@ -482,6 +388,13 @@
                     showToast(result.message, result.success ? 'success' : 'error');
                     updatePlayers();
                 } catch (e) { showToast('Hata: ' + e.message, 'error'); }
+            });
+        }
+
+        function logout() {
+            Modal.confirm('Çıkış Yap', 'Oturumunuzu kapatmak istediğinize emin misiniz?', async () => {
+                await fetch('/api/auth/logout');
+                window.location.href = 'login.html';
             });
         }
 

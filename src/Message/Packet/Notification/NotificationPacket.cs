@@ -13,12 +13,12 @@ public class NotificationPacket : IPacket
     public string Url { get; set; }
 
     // Inbox Fields (Shared: Message)
+    public int IndexID { get; set; }
     public string Sender { get; set; }
     public bool IsViewed { get; set; }
     public long UnixTime { get; set; }
-    public int RewardType { get; set; }
-    public int DonationCount { get; set; }
     public bool IsClaimed { get; set; }
+    public List<RewardItem> Rewards { get; set; } = new List<RewardItem>();
 
     public void Serialize(ByteBuffer buffer)
     {
@@ -39,13 +39,14 @@ public class NotificationPacket : IPacket
                 buffer.WriteVarString(Url ?? " ");
                 break;
             case NotficationTypes.NotficationType.Inbox:
+                buffer.WriteVarInt(IndexID);
                 buffer.WriteVarString(Sender);
                 buffer.WriteVarString(Message);
                 buffer.WriteBool(IsViewed);
                 buffer.WriteVarLong(UnixTime);
-                buffer.WriteVarInt(RewardType);
-                buffer.WriteVarInt(DonationCount);
+                 buffer.WriteBool(Rewards != null && Rewards.Count > 0); // hasBonus: Ödül var mı?
                 buffer.WriteBool(IsClaimed);
+               
                 break;
         }
     }

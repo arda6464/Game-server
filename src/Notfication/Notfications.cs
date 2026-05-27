@@ -10,9 +10,8 @@ public class Notfication
     public int iconid = 2;
     public string Sender;
     public DateTime Timespam = DateTime.Now;
-    public RewardItemType.RewardItemTypes rewardItemType;
-    public int DonationCount;
-    public bool İsclamed;
+    public List<RewardItem> Rewards { get; set; } = new List<RewardItem>();
+    public bool IsClaimed { get; set; }
 
 
 
@@ -20,17 +19,6 @@ public class Notfication
     {
     }
 
-}
-public class RewardItemType
-{
-    public enum RewardItemTypes
-    {
-        Chacter,
-        Skin,
-        Gem,
-        Coin
-
-    }
 }
 public class NotficationTypes
 {

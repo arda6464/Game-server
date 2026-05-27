@@ -7,7 +7,9 @@ public static class MessageCodeManager
         EmailAlreadyUsed,
         NotAClub,
         ClubFull,
-        AlreadyİnClub,
+        SendClubJoinRequest,
+        AlreadyRequestClub,
+        AlreadyInClub,
         ClubUnusableName,
         ClubUnusableDescription,
         ClubKicked,
@@ -38,7 +40,7 @@ public static class MessageCodeManager
     }
     public static void Send(Session session, Message message)
     {
-        ByteBuffer buffer = new ByteBuffer();
+        ByteBuffer buffer = ByteBufferPool.Get();
 
         buffer.WriteVarInt((int)MessageType.MessageCode);
         buffer.WriteVarInt((int)message);

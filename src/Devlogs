@@ -1,4 +1,5 @@
          ------Hatalar---------
+          1- [server] Club system thread-safety & system messages ID counter issue (fixed - V3.5)
           2- [client] inbox'u yanlış okuyor (fixed)
           3- [client] Kulüp oluşturunca garipleşiyor (fixxed)
           5- [client] avatar  değiştirme (fixxed)
@@ -11,6 +12,11 @@
           12-[server] ping mesajı almıyor (fixxed)
           13-[client] Azimemin kulübü bozuk... (fixxed)
           14-[client] clubten bazen çıkılmıyor (fixxed)
+          ---------- 19.5.2026 (V3.5 Server-Side Updates & Fixes) ----------
+          * [server] Market satın alma altyapısı çoklu item (Offer) desteği eklendi.
+          * [server] Market alışverişlerinin istemcide chest açılış efekti tetiklemesi için GachaResponsePacket entegrasyonu tamamlandı.
+          * [server] Kulüp mesajlaşma sistemi (SendMessageToClubMembers) tamamen merkezi lock yapısına geçirildi.
+          * [server] Kulüp sistem (katılma, ayrılma, düzenleme, atılma) mesajlarının MessageID ve Timestamp atamaları otomatik ve thread-safe hale getirildi.
           ---------- 15.1.2026 (all fixxed 18.1.2026) ----------
           15- [client] clube mesaj göndermiyor (maybe fixxed)
           16- [client] ContextMenu ve Info doğru çalışmıyor (maybe fixxed)
@@ -37,7 +43,7 @@
      21- Bug fix ve optimizasyonlar
      22- Yeni içerikler (karakterler, haritalar, silahlar vb.)
      23- Oyun içi etkinlikler ve turnuvalar
-[%60]24- Oyun içi mağaza ve ekonomi
+[✔️]24- Oyun içi mağaza ve ekonomi (Satın alım & Gacha entegrasyonu tamamlandı)
      25- Sosyal medya entegrasyonu
      26- Oyun içi rehber ve yardım sistemi
      28- Oyun içi ayarlar ve kişiselleştirme seçenekleri

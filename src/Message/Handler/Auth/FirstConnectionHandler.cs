@@ -14,7 +14,7 @@ public static class FirstConnectionHandler
 
 
         // OKUMA
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(data);
         
         var request = new FirstConnectionRequestPacket();
@@ -31,7 +31,7 @@ public static class FirstConnectionHandler
 
         if (Keyversion != ClientKey)
         {
-            Logger.genellog("Keyler oluşmadı cihaza izin verilmedi");
+            Logger.genellog("Keyler uyuşmadı cihaza giriş izni verilmedi");
             Login = false;
             Loginreason = "Clientte değişiklik tespit edildi";
         }

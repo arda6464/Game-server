@@ -67,7 +67,7 @@ public class Ticket
                 x.CategoryId = CategoryId;
             });
 
-            ByteBuffer buffer = new ByteBuffer();
+            ByteBuffer buffer = ByteBufferPool.Get();
             buffer.WriteVarInt((int)MessageType.SupporCreateTicketResponse);
             buffer.WriteVarInt(data.NO);
             buffer.WriteString(data.Title ?? " ");
@@ -169,7 +169,7 @@ public class Ticket
             ch.SendMessageAsync(embed: embed);
 
         // 6. Oyuna bildir
-            using (ByteBuffer buffer = new ByteBuffer())
+            using (ByteBuffer buffer = ByteBufferPool.Get())
             {
                 buffer.WriteVarInt((int)MessageType.SupportTicketClosed);
                 buffer.WriteVarInt(ticketData.NO);
@@ -228,7 +228,7 @@ public class Ticket
                   
 
 
-                    ByteBuffer buffer = new ByteBuffer();
+                    ByteBuffer buffer = ByteBufferPool.Get();
                     buffer.WriteVarInt((int)MessageType.SupportMessageResponse);
                     buffer.WriteVarInt(ticketData.NO);
                     buffer.WriteString(msg.Author.Username);

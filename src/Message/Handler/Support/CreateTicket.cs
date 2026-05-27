@@ -8,7 +8,7 @@ public static class CreateTicket
     public static void Handle(Session session,byte[] data)
     {
         byte reasontype;
-        using (ByteBuffer read = new ByteBuffer())
+        using (ByteBuffer read = ByteBufferPool.Get())
         {
             read.WriteBytes(data);
             

@@ -8,7 +8,7 @@ public static class JoinByInviteHandler
         if (session.Account == null) return;
 
         var packet = new JoinByInviteRequestPacket();
-        using (ByteBuffer reader = new ByteBuffer())
+        using (ByteBuffer reader = ByteBufferPool.Get())
         {
             reader.WriteBytes(data);
             packet.Deserialize(reader);
@@ -26,7 +26,7 @@ public static class JoinByInviteHandler
             int teamId = invite.TargetID;
             // Re-use JoinTeam logic
             var joinPacket = new JoinTeamRequestPacket { TeamId = teamId };
-            using (ByteBuffer fakeBuffer = new ByteBuffer())
+            using (ByteBuffer fakeBuffer = ByteBufferPool.Get())
             {
                 // MessageManager artık ID'yi atladığı için buraya ID eklemiyoruz
                 fakeBuffer.WriteVarInt(joinPacket.TeamId);

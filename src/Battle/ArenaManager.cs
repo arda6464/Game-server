@@ -1,15 +1,15 @@
-using System.Numerics;
+using DietPhysics;
 
 public class Bullet
 {
     public int BulletId { get; set; }
-    public Vector2 Position { get; set; }
-    public Vector2 Direction { get; set; }
+    public Vec3 Position { get; set; }
+    public Vec3 Direction { get; set; }
     public float Speed { get; set; }
     public int OwnerID { get; set; }
     public int Damage { get; set; } = 40;
     public float menzil { get; set; } = 40f;
-    public Vector2 startPos { get; set; }
+    public Vec3 startPos { get; set; }
     public bool IsActive { get; set; } = true; // Aktif mi?
     public float DeathTime { get; set; } = 0; // Ne zaman öldü?
 }

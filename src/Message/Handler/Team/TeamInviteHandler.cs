@@ -4,7 +4,7 @@ public static class TeamInviteHandler
     public static void Handle(Session session, byte[] data)
     {
         int accid;
-        using (ByteBuffer read = new ByteBuffer())
+        using (ByteBuffer read = ByteBufferPool.Get())
         {
             read.WriteBytes(data);
             accid = read.ReadVarInt();
@@ -68,7 +68,7 @@ public static class TeamInviteHandler
         bool Accept = false;
         int targetacc;
         
-        using (ByteBuffer read = new ByteBuffer())
+        using (ByteBuffer read = ByteBufferPool.Get())
         {
             read.WriteBytes(responsedata);
             
@@ -90,7 +90,7 @@ public static class TeamInviteHandler
             
             var joinPacket = new JoinTeamRequestPacket { TeamId = Invitersession.TeamID };
             
-            using (ByteBuffer fakebuffer = new ByteBuffer())
+            using (ByteBuffer fakebuffer = ByteBufferPool.Get())
             {
                 // MessageManager artık ID'yi atladığı için buraya ID eklemiyoruz
                 fakebuffer.WriteVarInt(joinPacket.TeamId);

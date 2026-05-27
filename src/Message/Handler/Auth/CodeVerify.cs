@@ -3,7 +3,7 @@ public static class CodeVerify
 {
     public static void Handle(Session session, byte[] message)
     {
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(message);
 
         var request = new VerifyCodeRequestPacket();
@@ -42,8 +42,10 @@ public static class CodeVerify
              type =  NotficationTypes.NotficationType.Inbox,
             Sender = "Sistem",
             Message = "Kayıt olduğun için teşekkürler!\n bu ödül senin için <3",
-            rewardItemType = RewardItemType.RewardItemTypes.Gem,
-            DonationCount = 300
+            Rewards = new List<RewardItem>
+            {
+                new RewardItem { Type =  ItemType.Gems, Count = 300 }
+            }
         };
         NotficationSender.Send(session, notfication);
         acccount.inboxesNotfications.Add(notfication);

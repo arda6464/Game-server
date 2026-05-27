@@ -6,7 +6,7 @@ public static class ShowProfileHandler
     public static void Handle(Session session, byte[] data)
     {
         Console.WriteLine("show profiile handler");
-        ByteBuffer byteBuffer = new ByteBuffer();
+        ByteBuffer byteBuffer = ByteBufferPool.Get();
         byteBuffer.WriteBytes(data, true);
 
         var request = new ShowProfileRequestPacket();
@@ -29,7 +29,7 @@ public static class ShowProfileHandler
     }
     public static void test(Session session)
     {
-       ByteBuffer buffer = new ByteBuffer();
+       ByteBuffer buffer = ByteBufferPool.Get();
         buffer.WriteVarInt((int)MessageType.ShowProfileResponse);
         
         buffer.WriteString("ARDA-TEST");

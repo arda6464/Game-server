@@ -65,7 +65,7 @@ public class UdpServer
     private void ProcessData(IPEndPoint clientEndPoint, byte[] data)
     {
         // 0. Ham Veri Logu
-        //   Console.WriteLine($"[UDP-RAW] {data.Length} bytes received from {clientEndPoint}");
+      //  Console.WriteLine($"[UDP-RAW] {data.Length} bytes received from {clientEndPoint}");
 
         if (data.Length < 7)
         {
@@ -73,7 +73,7 @@ public class UdpServer
             return;
         }
 
-        using (ByteBuffer buffer = new ByteBuffer())
+        using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             buffer.WriteBytes(data);
 
@@ -146,7 +146,7 @@ public class UdpServer
 
     private void SendAck(IPEndPoint target, int sequenceNumber)
     {
-        using (ByteBuffer buffer = new ByteBuffer())
+        using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             buffer.WriteVarInt((int)Network.UdpPacketFlags.Ack);
             buffer.WriteVarInt(sequenceNumber);

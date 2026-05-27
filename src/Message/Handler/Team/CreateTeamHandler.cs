@@ -15,7 +15,7 @@ public static class CreateTeamHandler
             if (Account == null) return;
         Lobby Lobby = LobbyManager.CreateLobby(Account);
 
-        ByteBuffer buffer = new ByteBuffer();
+        ByteBuffer buffer = ByteBufferPool.Get();
 
         session.Send(new CreateTeamResponsePacket { 
             TeamId = Lobby.ID,

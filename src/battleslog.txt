@@ -149,3 +149,244 @@
 [2026-04-04 22:02:56] [BATTLE] [BATTLE 3] Player added: ardaaaaa64 (Total: 2)
 [2026-04-04 22:02:56] [BATTLE] [BATTLE 3] Battle started.
 [2026-04-04 22:03:49] [BATTLE] [BATTLE 3] Player removed: 1 (Remaining: 2)
+[2026-04-16 13:40:03] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-16 13:40:03] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-16 13:40:03] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-16 13:40:44] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 1)
+[2026-04-16 13:40:44] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-16 13:40:44] [BATTLE] Savaş silindi id: 1
+[2026-04-16 14:11:18] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-04-16 14:11:18] [BATTLE] [BATTLE 2] Player added: ardaaaaa64 (Total: 1)
+[2026-04-16 14:11:18] [BATTLE] [BATTLE 2] Battle started.
+[2026-04-16 14:12:06] [BATTLE] [BATTLE 2] Player removed: 1 (Remaining: 1)
+[2026-04-16 14:12:06] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-04-16 14:12:06] [BATTLE] Savaş silindi id: 2
+[2026-04-16 14:29:22] [BATTLE] Yeni savaş oluşturuldu id: 3
+[2026-04-16 14:29:22] [BATTLE] [BATTLE 3] Player added: ardaaaaa64 (Total: 1)
+[2026-04-16 14:29:22] [BATTLE] [BATTLE 3] Battle started.
+[2026-04-16 14:29:35] [BATTLE] [BATTLE 3] Player removed: 1 (Remaining: 1)
+[2026-04-16 14:29:35] [BATTLE] [BATTLE 3] Battle stopped.
+[2026-04-16 14:29:35] [BATTLE] Savaş silindi id: 3
+[2026-04-16 16:12:23] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-16 16:12:23] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-16 16:12:23] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-16 16:13:11] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 1)
+[2026-04-16 16:13:11] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-16 16:13:11] [BATTLE] Savaş silindi id: 1
+[2026-04-16 16:18:23] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-04-16 16:18:23] [BATTLE] [BATTLE 2] Player added: ardaaaaa64 (Total: 1)
+[2026-04-16 16:18:23] [BATTLE] [BATTLE 2] Battle started.
+[2026-04-16 16:18:33] [BATTLE] [BATTLE 2] Player removed: 1 (Remaining: 1)
+[2026-04-16 16:18:33] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-04-16 16:18:33] [BATTLE] Savaş silindi id: 2
+[2026-04-16 16:20:18] [BATTLE] Yeni savaş oluşturuldu id: 3
+[2026-04-16 16:20:18] [BATTLE] [BATTLE 3] Player added: ardaaaaa64 (Total: 1)
+[2026-04-16 16:20:18] [BATTLE] [BATTLE 3] Battle started.
+[2026-04-16 16:21:02] [BATTLE] [BATTLE 3] Player removed: 1 (Remaining: 1)
+[2026-04-16 16:21:02] [BATTLE] [BATTLE 3] Battle stopped.
+[2026-04-16 16:21:02] [BATTLE] Savaş silindi id: 3
+[2026-04-16 16:31:38] [BATTLE] Yeni savaş oluşturuldu id: 4
+[2026-04-16 16:31:38] [BATTLE] [BATTLE 4] Player added: ardaaaaa64 (Total: 1)
+[2026-04-16 16:31:38] [BATTLE] [BATTLE 4] Battle started.
+[2026-04-16 16:32:22] [BATTLE] [BATTLE 4] Player removed: 1 (Remaining: 1)
+[2026-04-16 16:32:22] [BATTLE] [BATTLE 4] Battle stopped.
+[2026-04-16 16:32:22] [BATTLE] Savaş silindi id: 4
+[2026-04-16 16:39:38] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-16 16:39:38] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-16 16:39:38] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-16 16:40:24] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-16 16:40:24] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-16 16:40:24] [BATTLE] Savaş silindi id: 1
+[2026-04-16 19:46:11] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-04-16 19:46:11] [BATTLE] [BATTLE 2] Player added: ardaaaaa64 (Total: 1)
+[2026-04-16 19:46:11] [BATTLE] [BATTLE 2] Battle started.
+[2026-04-16 19:46:54] [BATTLE] [BATTLE 2] Player removed: 1 (Remaining: 0)
+[2026-04-16 19:46:54] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-04-16 19:46:54] [BATTLE] Savaş silindi id: 2
+[2026-04-17 11:54:17] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-17 11:54:17] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-17 11:54:17] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-17 11:55:00] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-17 11:55:00] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-17 11:55:00] [BATTLE] Savaş silindi id: 1
+[2026-04-17 11:59:33] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-04-17 11:59:33] [BATTLE] [BATTLE 2] Player added: ardaaaaa64 (Total: 1)
+[2026-04-17 11:59:33] [BATTLE] [BATTLE 2] Battle started.
+[2026-04-17 12:00:20] [BATTLE] [BATTLE 2] Player removed: 1 (Remaining: 0)
+[2026-04-17 12:00:20] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-04-17 12:00:20] [BATTLE] Savaş silindi id: 2
+[2026-04-17 12:07:18] [BATTLE] Yeni savaş oluşturuldu id: 3
+[2026-04-17 12:07:18] [BATTLE] [BATTLE 3] Player added: ardaaaaa64 (Total: 1)
+[2026-04-17 12:07:18] [BATTLE] [BATTLE 3] Battle started.
+[2026-04-17 12:07:54] [BATTLE] [BATTLE 3] Player removed: 1 (Remaining: 0)
+[2026-04-17 12:07:54] [BATTLE] [BATTLE 3] Battle stopped.
+[2026-04-17 12:07:54] [BATTLE] Savaş silindi id: 3
+[2026-04-17 12:10:17] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-17 12:10:17] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-17 12:10:17] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-17 12:11:14] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-17 12:11:14] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-17 12:11:14] [BATTLE] Savaş silindi id: 1
+[2026-04-17 12:54:07] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-17 12:54:07] [BATTLE] [BATTLE 1] Player added: ardaaa (Total: 1)
+[2026-04-17 12:54:07] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 2)
+[2026-04-17 12:54:07] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-17 12:55:46] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 1)
+[2026-04-17 12:55:46] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-17 12:55:46] [BATTLE] Savaş silindi id: 1
+[2026-04-23 23:07:14] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-23 23:07:14] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at DietPhysics.Vec3
+[2026-04-23 23:07:14] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-23 23:07:14] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-23 23:08:04] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-23 23:08:04] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-23 23:08:04] [BATTLE] Savaş silindi id: 1
+[2026-04-23 23:08:16] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-04-23 23:08:16] [BATTLE] [BATTLE 2] Player ardaaaaa64 spawned at DietPhysics.Vec3
+[2026-04-23 23:08:16] [BATTLE] [BATTLE 2] Player added: ardaaaaa64 (Total: 1)
+[2026-04-23 23:08:16] [BATTLE] [BATTLE 2] Battle started.
+[2026-04-23 23:08:37] [BATTLE] [BATTLE 2] Player removed: 1 (Remaining: 0)
+[2026-04-23 23:08:37] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-04-23 23:08:37] [BATTLE] Savaş silindi id: 2
+[2026-04-23 23:10:23] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-23 23:10:23] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at DietPhysics.Vec3
+[2026-04-23 23:10:23] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-23 23:10:23] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-23 23:14:21] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-23 23:14:21] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-23 23:14:21] [BATTLE] Savaş silindi id: 1
+[2026-04-23 23:15:00] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-23 23:15:00] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-23 23:15:00] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-23 23:15:00] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-23 23:16:01] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-23 23:16:01] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-23 23:16:01] [BATTLE] Savaş silindi id: 1
+[2026-04-23 23:16:18] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-23 23:16:18] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-23 23:16:18] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-23 23:16:18] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-23 23:51:15] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-23 23:51:15] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-23 23:51:15] [BATTLE] Savaş silindi id: 1
+[2026-04-23 23:53:31] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-23 23:53:31] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-23 23:53:31] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-23 23:53:31] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-23 23:58:08] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-23 23:58:08] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-23 23:58:08] [BATTLE] Savaş silindi id: 1
+[2026-04-23 23:59:31] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-23 23:59:31] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-23 23:59:31] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-23 23:59:31] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-24 00:00:11] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-24 00:00:11] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-24 00:00:11] [BATTLE] Savaş silindi id: 1
+[2026-04-24 00:02:22] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-24 00:02:22] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-24 00:02:22] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-24 00:02:22] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-24 00:03:06] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-24 00:03:06] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-24 00:03:06] [BATTLE] Savaş silindi id: 1
+[2026-04-24 00:05:56] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-04-24 00:05:56] [BATTLE] [BATTLE 2] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-24 00:05:56] [BATTLE] [BATTLE 2] Player added: ardaaaaa64 (Total: 1)
+[2026-04-24 00:05:56] [BATTLE] [BATTLE 2] Battle started.
+[2026-04-24 00:06:43] [BATTLE] [BATTLE 2] Player removed: 1 (Remaining: 0)
+[2026-04-24 00:06:43] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-04-24 00:06:43] [BATTLE] Savaş silindi id: 2
+[2026-04-24 00:06:53] [BATTLE] Yeni savaş oluşturuldu id: 3
+[2026-04-24 00:06:53] [BATTLE] [BATTLE 3] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-24 00:06:53] [BATTLE] [BATTLE 3] Player added: ardaaaaa64 (Total: 1)
+[2026-04-24 00:06:53] [BATTLE] [BATTLE 3] Battle started.
+[2026-04-24 00:10:01] [BATTLE] [BATTLE 3] Player removed: 1 (Remaining: 0)
+[2026-04-24 00:10:01] [BATTLE] [BATTLE 3] Battle stopped.
+[2026-04-24 00:10:01] [BATTLE] Savaş silindi id: 3
+[2026-04-24 00:10:46] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-24 00:10:46] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-24 00:10:46] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-24 00:10:46] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-24 00:11:38] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-24 00:11:38] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-24 00:11:38] [BATTLE] Savaş silindi id: 1
+[2026-04-25 18:04:31] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-25 18:04:31] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-25 18:04:31] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-25 18:04:31] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-25 18:06:10] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-25 18:06:10] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-25 18:06:10] [BATTLE] Savaş silindi id: 1
+[2026-04-25 18:49:19] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-25 18:49:19] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-25 18:49:19] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-25 18:49:19] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-25 18:49:40] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-25 18:49:40] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-25 18:49:40] [BATTLE] Savaş silindi id: 1
+[2026-04-25 19:00:56] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-25 19:00:56] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-25 19:00:56] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-25 19:00:56] [BATTLE] [BATTLE 1] Player ardaaa spawned at (41,19, 0,38, -8,96)
+[2026-04-25 19:00:56] [BATTLE] [BATTLE 1] Player added: ardaaa (Total: 2)
+[2026-04-25 19:00:56] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-25 19:02:08] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 1)
+[2026-04-25 19:02:08] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-25 19:02:08] [BATTLE] Savaş silindi id: 1
+[2026-04-25 19:30:47] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-25 19:30:47] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-25 19:30:47] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-25 19:30:47] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-25 19:31:13] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-25 19:31:13] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-25 19:31:13] [BATTLE] Savaş silindi id: 1
+[2026-04-25 19:47:06] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-04-25 19:47:06] [BATTLE] [BATTLE 2] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-25 19:47:06] [BATTLE] [BATTLE 2] Player added: ardaaaaa64 (Total: 1)
+[2026-04-25 19:47:06] [BATTLE] [BATTLE 2] Battle started.
+[2026-04-25 19:54:49] [BATTLE] [BATTLE 2] Player removed: 1 (Remaining: 0)
+[2026-04-25 19:54:49] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-04-25 19:54:49] [BATTLE] Savaş silindi id: 2
+[2026-04-25 19:55:31] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-25 19:55:31] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-25 19:55:31] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-25 19:55:31] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-25 19:56:02] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-25 19:56:02] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-25 19:56:02] [BATTLE] Savaş silindi id: 1
+[2026-04-25 19:57:15] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-25 19:57:15] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at (11,19, 0,38, -8,73)
+[2026-04-25 19:57:15] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-25 19:57:15] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-25 20:00:18] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-25 20:00:18] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-25 20:00:18] [BATTLE] Savaş silindi id: 1
+[2026-04-25 20:16:24] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-04-25 20:16:24] [BATTLE] [BATTLE 1] Player ardaaaaa64 spawned at DietPhysics.Vec3
+[2026-04-25 20:16:24] [BATTLE] [BATTLE 1] Player added: ardaaaaa64 (Total: 1)
+[2026-04-25 20:16:24] [BATTLE] [BATTLE 1] Battle started.
+[2026-04-25 20:23:38] [BATTLE] [BATTLE 1] Player removed: 1 (Remaining: 0)
+[2026-04-25 20:23:38] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-04-25 20:23:38] [BATTLE] Savaş silindi id: 1
+[2026-04-25 20:24:21] [BATTLE] Yeni savaş oluşturuldu id: 2
+[2026-04-25 20:24:21] [BATTLE] [BATTLE 2] Player ardaaaaa64 spawned at DietPhysics.Vec3
+[2026-04-25 20:24:21] [BATTLE] [BATTLE 2] Player added: ardaaaaa64 (Total: 1)
+[2026-04-25 20:24:21] [BATTLE] [BATTLE 2] Battle started.
+[2026-04-25 20:26:23] [BATTLE] [BATTLE 2] Player removed: 1 (Remaining: 0)
+[2026-04-25 20:26:23] [BATTLE] [BATTLE 2] Battle stopped.
+[2026-04-25 20:26:23] [BATTLE] Savaş silindi id: 2
+[2026-05-23 23:40:20] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-05-23 23:40:20] [BATTLE] [BATTLE 1] Player arda644 spawned at DietPhysics.Vec3
+[2026-05-23 23:40:20] [BATTLE] [BATTLE 1] Player added: arda644 (Total: 1)
+[2026-05-23 23:40:20] [BATTLE] [BATTLE 1] Battle started.
+[2026-05-23 23:41:30] [BATTLE] [BATTLE 1] Player removed: 13 (Remaining: 0)
+[2026-05-23 23:41:30] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-05-23 23:41:30] [BATTLE] Savaş silindi id: 1
+[2026-05-24 01:29:37] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-05-24 01:29:37] [BATTLE] [BATTLE 1] Player arda644 spawned at DietPhysics.Vec3
+[2026-05-24 01:29:37] [BATTLE] [BATTLE 1] Player added: arda644 (Total: 1)
+[2026-05-24 01:29:37] [BATTLE] [BATTLE 1] Battle started.
+[2026-05-24 01:31:02] [BATTLE] [BATTLE 1] Player removed: 13 (Remaining: 0)
+[2026-05-24 01:31:02] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-05-24 01:31:02] [BATTLE] Savaş silindi id: 1

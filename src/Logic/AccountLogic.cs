@@ -94,7 +94,7 @@ namespace Logic
 
             if (Session != null && Session.IsConnected)
             {
-                using (var buffer = new ByteBuffer())
+                using (var buffer = ByteBufferPool.Get())
                 {
                     buffer.WriteVarInt((int)MessageType.DeleteQuest);
                     buffer.WriteByte((byte)quest.ID);
@@ -133,7 +133,7 @@ namespace Logic
 
             if (updatedQuests.Count > 0 && Session != null && Session.IsConnected)
             {
-                using (var buffer = new ByteBuffer())
+                using (var buffer = ByteBufferPool.Get())
                 {
                     buffer.WriteVarInt((int)MessageType.QuestProgress);
                     buffer.WriteVarInt(updatedQuests.Count);
@@ -166,7 +166,7 @@ namespace Logic
                 questsCopy = new List<Quest>(Data.Quests);
             }
 
-            using (ByteBuffer buffer = new ByteBuffer())
+            using (ByteBuffer buffer = ByteBufferPool.Get())
             {
                 buffer.WriteVarInt((int)MessageType.NewQuest);
                 buffer.WriteVarLong(QuestManager.GetNextQuestRefreshTime());
@@ -222,7 +222,11 @@ namespace Logic
             Console.WriteLine($"[AccountLogic] Name Color değiştirildi: {colorId} ({Data.Username})");
 
             // Kulüp verisini güncelle
-            if (Data.Clubid != -1) ClubManager.MemberDataUpdate(Data.ID, Data.Clubid);
+            if (Data.Clubid != -1)
+            {
+                var club = ClubManager.LoadClub(Data.Clubid);
+                club?.MemberDataUpdate(Data.ID);
+            }
 
             AccountManager.SaveAccounts();
         }
@@ -268,7 +272,7 @@ namespace Logic
             {
                 if (Session != null)
                 {
-                    using (ByteBuffer buffer = new ByteBuffer())
+                    using (ByteBuffer buffer = ByteBufferPool.Get())
                     {
                         buffer.WriteVarInt((int)MessageType.NameNotAcceptedRequest);
                         Session.Send(buffer.ToArray());
@@ -289,7 +293,11 @@ namespace Logic
             Logger.genellog($"{oldName} -> {newName} (İsim değiştirildi)");
 
             // Kulüp verisini güncelle
-            if (Data.Clubid != -1) ClubManager.MemberDataUpdate(Data.ID, Data.Clubid);
+            if (Data.Clubid != -1)
+            {
+                var club = ClubManager.LoadClub(Data.Clubid);
+                club?.MemberDataUpdate(Data.ID);
+            }
 
             AccountManager.SaveAccounts();
             return true;
@@ -368,7 +376,11 @@ namespace Logic
             Console.WriteLine($"[AccountLogic] Avatar değiştirildi: {avatarId} ({Data.Username})");
 
             // Kulüp verisini güncelle
-            if (Data.Clubid != -1) ClubManager.MemberDataUpdate(Data.ID, Data.Clubid);
+            if (Data.Clubid != -1)
+            {
+                var club = ClubManager.LoadClub(Data.Clubid);
+                club?.MemberDataUpdate(Data.ID);
+            }
 
             AccountManager.SaveAccounts();
             return true;

@@ -1,5 +1,4 @@
-using System.Net.NetworkInformation;
-using System.Numerics;
+using DietPhysics;
 using Network;
 
 public static class UdpGameHandler
@@ -8,24 +7,25 @@ public static class UdpGameHandler
 
     public static void HandleInput(Session session, ByteBuffer buffer, int seqNo)
     {
-      
         var packet = new PlayerInputPacket();
         packet.SequenceNumber = seqNo;
         packet.Deserialize(buffer);
 
         if (session.PlayerData != null && session.PlayerData.IsAlive)
         {
-            // Client'tan gelen Joystick verisi
             float moveX = packet.InputX;
             float moveZ = packet.InputY;
 
-            session.PlayerData.InputDirection = new Vector3(moveX, 0, moveZ);
-            Console.WriteLine($"playerdata input save: name: {session?.Account?.Username} pozisyon:{session?.PlayerData.InputDirection}");
+            session.PlayerData.InputQueue.Enqueue(new PendingInput
+            {
+                Tick = packet.Tick,
+                Direction = new Vec3(moveX, 0, moveZ)
+            });
         }
     }
     public static void HandleConnect(Session session)
     {
-        using (ByteBuffer buffer = new ByteBuffer())
+        using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             int seqNo = session.GetNextReliableSequence();
             var packet = new UdpConnectionPacket
@@ -53,7 +53,7 @@ public static class UdpGameHandler
         Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
         if (battle == null) return;
 
-        Bullet bullet = new Bullet
+       /* Bullet bullet = new Bullet
         {
             BulletId = battle.GetNextBulletId(),
             Position = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Z),
@@ -64,7 +64,7 @@ public static class UdpGameHandler
             Damage = 50,
             menzil = 7f
         };
-        battle.AddBullet(bullet);
+        battle.AddBullet(bullet);*/
 
 
         // Mermiyi diğer oyunculara bildir (Reliable UDP veya TCP)
@@ -75,7 +75,7 @@ public static class UdpGameHandler
             OwnerID = session.ID,
             DirectionX = packet.DirectionX,
             DirectionY = packet.DirectionY,
-            BulletId = bullet.BulletId
+          //  BulletId = bullet.BulletId
         };
 
         // Arenadaki herkese gönder (Reliable UDP)
@@ -83,7 +83,7 @@ public static class UdpGameHandler
         {
             if (p.session == null) continue;
 
-            using (ByteBuffer sendBuffer = new ByteBuffer())
+            using (ByteBuffer sendBuffer = ByteBufferPool.Get())
             {
                 response.SequenceNumber = p.session.GetNextReliableSequence();
                 response.Serialize(sendBuffer);
@@ -100,7 +100,7 @@ public static class UdpGameHandler
         PingPacket pingPacket = new PingPacket();
         pingPacket.Deserialize(buffer);
 
-        using (ByteBuffer response = new ByteBuffer())
+        using (ByteBuffer response = ByteBufferPool.Get())
         {
             ushort seqNo = 0; // Unreliable, sıra numarası gönderilmeli (client header'ı okur)
             response.WriteVarInt((int)UdpPacketFlags.None);

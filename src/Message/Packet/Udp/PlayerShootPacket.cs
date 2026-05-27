@@ -1,6 +1,6 @@
 using System.Numerics;
 
-public class PlayerShootPacket : IPacket
+public struct PlayerShootPacket : IPacket
 {
     public int SequenceNumber { get; set; }
     public int OwnerID { get; set; }

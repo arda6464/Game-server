@@ -1,0 +1,191 @@
+{
+    "guns": [
+        {
+            "id": 1,
+            "name": "Apex",
+            "damage": 30,
+            "fireRate": 1.399999976158142,
+            "magSize": 5,
+            "maxAmmo": 25,
+            "gunType": 5,
+            "rarity": 2,
+            "ammoID": 0
+        },
+        {
+            "id": 2,
+            "name": "Buck",
+            "damage": 60,
+            "fireRate": 1.5,
+            "magSize": 10,
+            "maxAmmo": 30,
+            "gunType": 1,
+            "rarity": 1,
+            "ammoID": 0
+        },
+        {
+            "id": 3,
+            "name": "Burst",
+            "damage": 23,
+            "fireRate": 0.2199999988079071,
+            "magSize": 25,
+            "maxAmmo": 75,
+            "gunType": 5,
+            "rarity": 3,
+            "ammoID": 0
+        },
+        {
+            "id": 4,
+            "name": "Calyx",
+            "damage": 23,
+            "fireRate": 2.190000057220459,
+            "magSize": 5,
+            "maxAmmo": 10,
+            "gunType": 6,
+            "rarity": 4,
+            "ammoID": 0
+        },
+        {
+            "id": 5,
+            "name": "Pistol",
+            "damage": 30,
+            "fireRate": 0.27000001072883608,
+            "magSize": 30,
+            "maxAmmo": 60,
+            "gunType": 0,
+            "rarity": 0,
+            "ammoID": 0
+        },
+        {
+            "id": 6,
+            "name": "Havoc",
+            "damage": 20,
+            "fireRate": 0.11100000143051148,
+            "magSize": 45,
+            "maxAmmo": 100,
+            "gunType": 7,
+            "rarity": 2,
+            "ammoID": 0
+        },
+        {
+            "id": 7,
+            "name": "Hydra",
+            "damage": 22,
+            "fireRate": 22.0,
+            "magSize": 23,
+            "maxAmmo": 0,
+            "gunType": 0,
+            "rarity": 4,
+            "ammoID": -1
+        },
+        {
+            "id": 8,
+            "name": "Nova",
+            "damage": 20,
+            "fireRate": 1.0,
+            "magSize": 23,
+            "maxAmmo": 0,
+            "gunType": 5,
+            "rarity": 4,
+            "ammoID": -1
+        },
+        {
+            "id": 9,
+            "name": "Regent",
+            "damage": 70,
+            "fireRate": 0.699999988079071,
+            "magSize": 8,
+            "maxAmmo": 25,
+            "gunType": 0,
+            "rarity": 2,
+            "ammoID": 0
+        },
+        {
+            "id": 10,
+            "name": "Slug",
+            "damage": 30,
+            "fireRate": 0.10999999940395355,
+            "magSize": 30,
+            "maxAmmo": 70,
+            "gunType": 5,
+            "rarity": 1,
+            "ammoID": 0
+        },
+        {
+            "id": 11,
+            "name": "Solaris",
+            "damage": 27,
+            "fireRate": 0.30000001192092898,
+            "magSize": 30,
+            "maxAmmo": 60,
+            "gunType": 2,
+            "rarity": 4,
+            "ammoID": 0
+        },
+        {
+            "id": 12,
+            "name": "Spectre",
+            "damage": 17,
+            "fireRate": 0.11999999731779099,
+            "magSize": 25,
+            "maxAmmo": 60,
+            "gunType": 4,
+            "rarity": 3,
+            "ammoID": 0
+        },
+        {
+            "id": 13,
+            "name": "Titan",
+            "damage": 33,
+            "fireRate": 1.2999999523162842,
+            "magSize": 12,
+            "maxAmmo": 30,
+            "gunType": 1,
+            "rarity": 0,
+            "ammoID": 0
+        },
+        {
+            "id": 14,
+            "name": "Venom",
+            "damage": 150,
+            "fireRate": 2.0,
+            "magSize": 5,
+            "maxAmmo": 10,
+            "gunType": 11,
+            "rarity": 4,
+            "ammoID": 0
+        },
+        {
+            "id": 15,
+            "name": "Viper",
+            "damage": 24,
+            "fireRate": 0.20000000298023225,
+            "magSize": 20,
+            "maxAmmo": 40,
+            "gunType": 0,
+            "rarity": 1,
+            "ammoID": 0
+        },
+        {
+            "id": 16,
+            "name": "Volt",
+            "damage": 35,
+            "fireRate": 0.25,
+            "magSize": 25,
+            "maxAmmo": 70,
+            "gunType": 2,
+            "rarity": 3,
+            "ammoID": 0
+        },
+        {
+            "id": 17,
+            "name": "Zenith",
+            "damage": 71,
+            "fireRate": 1.0,
+            "magSize": 7,
+            "maxAmmo": 25,
+            "gunType": 6,
+            "rarity": 4,
+            "ammoID": 0
+        }
+    ]
+}

@@ -1,12 +1,10 @@
-using System.Numerics;
 using Logic;
 
 public static class MatchMaking
 {
     public static readonly List<Session> waitingQueue = new();
     private static readonly object lockObj = new();
-    public static int PlayersPerMatch = 2;
-
+    public static int PlayersPerMatch = 1;
     public static void JoinQueue(Session session)
     {
         List<Session> toNotify;
@@ -50,9 +48,12 @@ public static class MatchMaking
 
     private static void MatchFound()
     {
-
-        List<Session> players = waitingQueue.Take(PlayersPerMatch).ToList();
-        waitingQueue.RemoveRange(0, PlayersPerMatch);
+        List<Session> players;
+        lock (lockObj)
+        {
+            players = waitingQueue.Take(PlayersPerMatch).ToList();
+            waitingQueue.RemoveRange(0, PlayersPerMatch);
+        }
 
         int battleId = ArenaManager.CreateBattle();
         Battle battle = ArenaManager.GetBattle(battleId);
@@ -71,12 +72,12 @@ public static class MatchMaking
 
             Player player = new Player
             {
-                AccountId = session?.PlayerData?.AccountId,
+               ID = session.PlayerData.ID,
                 Username = session?.PlayerData?.Username ?? "No Name",
                 Health = 100,
                 session = session,
-                Position = battle.SpawnPoints[index],
-                StartPoint = battle.SpawnPoints[index],
+             //   Position = battle.SpawnPoints[index],
+               // StartPoint = battle.SpawnPoints[index],
             };
             session.PlayerData = player;
             session.ChangeState(PlayerState.Battle);
@@ -92,7 +93,7 @@ public static class MatchMaking
 
         var packet = new MatchFoundPacket();
         packet.Tick = TickManager.instance.Get_Tick(); // Tüm oyunculara maçın başladığı anlık Tick'i bildiriyoruz
-        ByteBuffer buffer = new ByteBuffer();
+        ByteBuffer buffer = ByteBufferPool.Get();
         packet.Players = allplayers;
         packet.Serialize(buffer);
 

@@ -3,7 +3,7 @@ public static class CreateAccountHandler
 {
     public static void Handle(Session session,byte[] message)
     {
-        ByteBuffer read = new ByteBuffer();
+        ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(message);
         
         var request = new CreateAccountPacket();

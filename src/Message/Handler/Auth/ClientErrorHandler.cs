@@ -3,7 +3,7 @@ public static class ClientErrorHandler
 {
     public static void Handle(Session session, byte[] data)
     {
-        ByteBuffer buffer = new ByteBuffer();
+        ByteBuffer buffer = ByteBufferPool.Get();
         buffer.WriteBytes(data);
         ClientErrorPacket packet = new ClientErrorPacket();
         packet.Deserialize(buffer);

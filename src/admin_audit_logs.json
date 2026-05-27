@@ -1,5 +1,544 @@
 [
   {
+    "Timestamp": "2026-05-27T21:34:25.1625407+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Düzenleme",
+    "Target": "ardaaaaa64",
+    "Details": "Admin tarafından gelişmiş profil güncellemeleri yapıldı."
+  },
+  {
+    "Timestamp": "2026-05-27T21:34:05.5795307+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Sil",
+    "Target": "ID: 3",
+    "Details": "Not silindi."
+  },
+  {
+    "Timestamp": "2026-05-27T21:33:56.8485255+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0",
+    "Details": "test"
+  },
+  {
+    "Timestamp": "2026-05-27T21:32:13.7583901+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0.3",
+    "Details": "Güncelleme Notları"
+  },
+  {
+    "Timestamp": "2026-05-27T21:23:01.6815662+03:00",
+    "AdminUsername": "admin",
+    "Action": "Kulüp Silindi",
+    "Target": "test",
+    "Details": "Kulüp başarıyla silindi."
+  },
+  {
+    "Timestamp": "2026-05-27T21:16:49.2210464+03:00",
+    "AdminUsername": "admin",
+    "Action": "Mesaj Gönderildi",
+    "Target": "arda",
+    "Details": "İsminiz uygun olmadığından değiştirilmiştir."
+  },
+  {
+    "Timestamp": "2026-05-27T21:16:19.8675615+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Düzenleme",
+    "Target": "arda",
+    "Details": "Admin tarafından gelişmiş profil güncellemeleri yapıldı."
+  },
+  {
+    "Timestamp": "2026-05-27T20:30:41.4831022+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.03",
+    "Details": "Güncelleme Notları"
+  },
+  {
+    "Timestamp": "2026-05-26T04:39:29.692133+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0",
+    "Details": "Server 3.0"
+  },
+  {
+    "Timestamp": "2026-05-26T04:35:40.144059+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0",
+    "Details": "Server 3.0"
+  },
+  {
+    "Timestamp": "2026-05-26T04:32:32.8639547+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Yayınla",
+    "Target": "ID: 1",
+    "Details": ""
+  },
+  {
+    "Timestamp": "2026-05-26T04:08:03.0810343+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Sil",
+    "Target": "ID: 2",
+    "Details": "Not silindi."
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:52.9202197+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Sil",
+    "Target": "ID: 6",
+    "Details": "Not silindi."
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:48.9642481+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Sil",
+    "Target": "ID: 5",
+    "Details": "Not silindi."
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:44.4782453+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Sil",
+    "Target": "ID: 4",
+    "Details": "Not silindi."
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:39.0903431+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Sil",
+    "Target": "ID: 3",
+    "Details": "Not silindi."
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:22.6697248+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0",
+    "Details": "Server 3.0"
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:22.4720855+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0",
+    "Details": "Server 3.0"
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:22.2666497+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0",
+    "Details": "Server 3.0"
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:20.2894779+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0",
+    "Details": "Server 3.0"
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:14.9250506+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0",
+    "Details": "Server 3.0"
+  },
+  {
+    "Timestamp": "2026-05-26T04:07:10.9743224+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "3.0",
+    "Details": "Server 3.0"
+  },
+  {
+    "Timestamp": "2026-05-23T20:37:49.6397884+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "13",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-23T20:37:26.3266728+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "test"
+  },
+  {
+    "Timestamp": "2026-05-23T12:20:03.8923635+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "13",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-22T16:52:44.934062+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "test"
+  },
+  {
+    "Timestamp": "2026-05-19T15:17:31.4279427+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Ürün Silme",
+    "Target": "2000",
+    "Details": "Ürün marketten kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-05-19T15:14:21.7992142+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "hafta sonu fırsatı!",
+    "Details": "1000 adet, 100 Fiyat"
+  },
+  {
+    "Timestamp": "2026-05-19T15:13:41.6598041+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "Efssane Teklif",
+    "Details": "100 adet, 0 Fiyat"
+  },
+  {
+    "Timestamp": "2026-05-17T13:30:32.9462228+03:00",
+    "AdminUsername": "admin",
+    "Action": "Kulüp Silindi",
+    "Target": "arda",
+    "Details": "Kulüp başarıyla silindi."
+  },
+  {
+    "Timestamp": "2026-05-14T23:10:40.3427142+03:00",
+    "AdminUsername": "admin",
+    "Action": "Kulüp Silindi",
+    "Target": "tttttttt",
+    "Details": "Kulüp başarıyla silindi."
+  },
+  {
+    "Timestamp": "2026-05-14T23:10:37.2364332+03:00",
+    "AdminUsername": "admin",
+    "Action": "Kulüp Silindi",
+    "Target": "aaaa",
+    "Details": "Kulüp başarıyla silindi."
+  },
+  {
+    "Timestamp": "2026-05-14T21:08:22.6207372+03:00",
+    "AdminUsername": "admin",
+    "Action": "Hata Günlüğü Temizlendi",
+    "Target": "ClientErrors",
+    "Details": "Tüm istemci hata kayıtları silindi."
+  },
+  {
+    "Timestamp": "2026-05-10T16:43:33.0678956+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "test"
+  },
+  {
+    "Timestamp": "2026-05-10T16:42:51.5666065+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "arrdaaa"
+  },
+  {
+    "Timestamp": "2026-05-10T16:39:50.8913473+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "dfdfjdfjdfhjdf"
+  },
+  {
+    "Timestamp": "2026-05-10T16:34:15.3951293+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "test"
+  },
+  {
+    "Timestamp": "2026-05-10T16:19:27.6023623+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "Sunucu **v2.0** güncellendi! [y]Yeni sezon[/y] başladı, *herkese bol şans!*\n"
+  },
+  {
+    "Timestamp": "2026-05-10T15:45:29.6287695+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "4",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T15:42:49.7032978+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "4",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T15:39:54.7540082+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T15:38:53.9029194+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": " ardaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa götünü sikimmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+  },
+  {
+    "Timestamp": "2026-05-10T15:37:48.4654783+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": " ardaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa götünü sikimmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+  },
+  {
+    "Timestamp": "2026-05-10T15:36:56.480258+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "ardaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa götünü sikimmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+  },
+  {
+    "Timestamp": "2026-05-10T04:19:36.5431476+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T04:08:02.7720185+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:56:38.4054578+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:55:12.4077729+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:52:53.8697937+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:50:45.3394079+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:42:13.0535365+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:39:41.3433176+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:36:49.6070867+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:35:48.2911155+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:34:17.3581671+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:30:56.3985017+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:30:42.013361+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:22:52.7290579+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:03:31.536237+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T03:03:07.210782+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T02:58:45.3779428+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T02:54:28.2308533+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T02:50:17.5851544+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T02:30:44.6322333+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-10T02:29:36.1737128+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "Herkes",
+    "Details": "SİSTEM - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-09T14:51:06.9284882+03:00",
+    "AdminUsername": "admin",
+    "Action": "Eşya Gönderimi",
+    "Target": "4",
+    "Details": "telafi - 1 ödül"
+  },
+  {
+    "Timestamp": "2026-05-09T14:06:25.5217032+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "ardaaaaa64",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-05-08T22:56:09.6609103+03:00",
+    "AdminUsername": "admin",
+    "Action": "Gacha Sandık Ekleme/Güncelleme",
+    "Target": "mega kutu",
+    "Details": "2 adet drop tanımlandı."
+  },
+  {
+    "Timestamp": "2026-05-08T22:33:31.8454537+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "test"
+  },
+  {
+    "Timestamp": "2026-05-08T22:33:18.805665+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "test"
+  },
+  {
+    "Timestamp": "2026-05-08T22:32:54.8835572+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru",
+    "Target": "Tüm Oyuncular",
+    "Details": "Değerli oyuncularımız:\nsaat 08.00 - 12.00 arasında bakımda olacağız\niyi günler dilerim"
+  },
+  {
+    "Timestamp": "2026-05-08T22:20:46.834091+03:00",
+    "AdminUsername": "admin",
+    "Action": "Mesaj Gönderildi",
+    "Target": "ardate",
+    "Details": "test"
+  },
+  {
+    "Timestamp": "2026-05-08T21:50:10.6747176+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Silme",
+    "Target": "2002",
+    "Details": "Teklif marketten kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-05-08T21:50:07.1620611+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Silme",
+    "Target": "2020",
+    "Details": "Teklif marketten kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-05-08T21:44:20.0302528+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "",
+    "Details": "100 adet, 55 Fiyat"
+  },
+  {
+    "Timestamp": "2026-05-08T17:48:48.4384406+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "hafta sonu fırsatı!",
+    "Details": "100 adet, 0 Fiyat"
+  },
+  {
+    "Timestamp": "2026-05-07T22:48:26.1404965+03:00",
+    "AdminUsername": "admin",
+    "Action": "Market Teklif Ekleme",
+    "Target": "hafta sonu fırsatı!",
+    "Details": "1000 adet, 0 Fiyat"
+  },
+  {
     "Timestamp": "2026-04-12T16:41:06.6599548+03:00",
     "AdminUsername": "admin",
     "Action": "Admin Silindi",

@@ -3,7 +3,7 @@ public static class BestFriendHandler
 {
     public static void Handle(Session session, byte[] data)
     {
-        using (ByteBuffer read = new ByteBuffer())
+        using (ByteBuffer read = ByteBufferPool.Get())
         {
             read.WriteBytes(data);
             read.ReadVarInt();
