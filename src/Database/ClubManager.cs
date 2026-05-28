@@ -195,9 +195,17 @@ public static class ClubManager
     {
         if (!Clubs.ContainsKey(clubId)) return false;
 
-        var club = Clubs[clubId];
+        Club club = Clubs[clubId];
+        foreach (var member in club.Members)
+        {
+            var acc = AccountCache.Load(member.ID);
+            acc.Clubid = 0;
+            acc.ClubName = null;
+            acc.clubRole = ClubRole.None;
+        }
         Clubs.TryRemove(clubId, out _);
         ClubCache.GetCachedClubs().TryRemove(clubId, out _);
+
 
         using (var connection = DatabaseManager.GetConnection())
         {

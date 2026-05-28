@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 public enum ClubRole
 {
+    None,
     Member,
     CoLeader,
     Leader
