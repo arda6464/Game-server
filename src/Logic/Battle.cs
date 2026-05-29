@@ -23,6 +23,7 @@ public class Battle
     private readonly object _lock = new object();
     private DateTime _startTime;
     private DietWorld World = new DietWorld();
+    private const float PlayerRadius = 0.5f;
     public List<Vec3> SpawnPoints = new List<Vec3>();
 
     public Battle()
@@ -211,10 +212,10 @@ public class Battle
     /// </summary>
     private void ApplyMovementWithSliding(Player player, Vec3 direction, float distance)
     {
-        const int SweepIterations = 5;
+        int sweepIterations = Math.Max(5, (int)MathF.Ceiling(distance / Math.Max(PlayerRadius * 0.25f, 0.01f)));
 
         // Tam hareket mümkünse direkt ilerle.
-        if (!World.SweepTest(player.Collider, direction, distance, SweepIterations, out _))
+        if (!World.SweepTest(player.Collider, direction, distance, sweepIterations, out _))
         {
             player.Position += direction * distance;
             player.Collider.Position = player.Position;
@@ -229,7 +230,7 @@ public class Battle
         {
             Vec3 xDir = new Vec3(direction.x, 0, 0).normalized;
             float xDist = distance * MathF.Abs(direction.x);
-            if (!World.SweepTest(player.Collider, xDir, xDist, SweepIterations, out _))
+            if (!World.SweepTest(player.Collider, xDir, xDist, sweepIterations, out _))
             {
                 player.Position += xDir * xDist;
                 player.Collider.Position = player.Position;
@@ -241,7 +242,7 @@ public class Battle
         {
             Vec3 zDir = new Vec3(0, 0, direction.z).normalized;
             float zDist = distance * MathF.Abs(direction.z);
-            if (!World.SweepTest(player.Collider, zDir, zDist, SweepIterations, out _))
+            if (!World.SweepTest(player.Collider, zDir, zDist, sweepIterations, out _))
             {
                 player.Position += zDir * zDist;
                 player.Collider.Position = player.Position;
@@ -272,8 +273,9 @@ public class Battle
             {
                 Vec3 delta = newPos - player.Position;
                 float distance = delta.magnitude;
+                int sweepIterations = Math.Max(5, (int)MathF.Ceiling(distance / Math.Max(PlayerRadius * 0.25f, 0.01f)));
 
-                if (distance > 0.001f && World.SweepTest(player.Collider, delta.normalized, distance, 3, out Vec3 collidedPos))
+                if (distance > 0.001f && World.SweepTest(player.Collider, delta.normalized, distance, sweepIterations, out Vec3 collidedPos))
                 {
                     // Collision tespit edildi: collider yüzeyinin biraz gerisine al.
                     player.Position = collidedPos + delta.normalized * -0.01f;
@@ -296,6 +298,8 @@ public class Battle
     {
         lock (_lock)
         {
+            uint serverTick = TickManager.instance.Get_Tick();
+
             foreach (var pSource in Players)
             {
                 pSource.LastSentPosition = pSource.Position;
@@ -303,7 +307,8 @@ public class Battle
 
                 var packet = new PlayerMovePacket
                 {
-                    ClientTick = pSource.LastProcessedTick,
+                    ServerTick = serverTick,
+                    LastProcessedInputTick = pSource.LastProcessedTick,
                     ID = pSource.ID,
                     X = pSource.Position.x,
                     Y = pSource.Position.y,
@@ -357,7 +362,7 @@ public class Battle
             Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} spawned at {player.Position}");
 
             // Oyuncu collider'ı dynamic olarak ekleniyor (oyuncular hareket eden objeler).
-            player.Collider = new DietSphere(player.Position, Vec3.zero, 0.5f);
+            player.Collider = new DietSphere(player.Position, Vec3.zero, PlayerRadius);
             World.AddColliderDynamic(player.Collider);
 
             Players.Add(player);

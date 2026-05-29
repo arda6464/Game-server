@@ -171,12 +171,18 @@ namespace DietPhysics
         {
             collidedPosition = Vec3.zero;
 
+            if (distance <= Epsilon)
+                return false;
+
+            if (iterations < 1)
+                iterations = 1;
+
             Vec3 firstPos = collider.GetPosition();
             Vec3 currentPos = firstPos;
 
             float stepSize = distance / iterations;
 
-            for (int i = 0; i < iterations; i++)
+            for (int i = 0; i <= iterations; i++)
             {
                 foreach (var other in AllColliders())
                 {
@@ -402,8 +408,13 @@ namespace DietPhysics
             Vec3 halfSize = box.Size * 0.5f;
 
             // Center bir yerel offset — gerçek dünya merkezi: Position + Center
-            Vec3 worldCenter = box.Position + box.Center;
+            Vec3 worldCenter = box.Position + rotation * box.Center;
             Vec3 localSpherePos = Quat.Inverse(rotation) * (spherePos - worldCenter);
+
+            bool inside =
+                localSpherePos.x >= -halfSize.x && localSpherePos.x <= halfSize.x &&
+                localSpherePos.y >= -halfSize.y && localSpherePos.y <= halfSize.y &&
+                localSpherePos.z >= -halfSize.z && localSpherePos.z <= halfSize.z;
 
             Vec3 localClosest = new Vec3(
                 Mtf.Clamp(localSpherePos.x, -halfSize.x, halfSize.x),
@@ -411,15 +422,27 @@ namespace DietPhysics
                 Mtf.Clamp(localSpherePos.z, -halfSize.z, halfSize.z)
             );
 
-            Vec3 worldClosest = rotation * localClosest + box.Position;
+            if (inside)
+            {
+                float dx = halfSize.x - Mtf.Abs(localSpherePos.x);
+                float dy = halfSize.y - Mtf.Abs(localSpherePos.y);
+                float dz = halfSize.z - Mtf.Abs(localSpherePos.z);
+
+                if (dx <= dy && dx <= dz)
+                    localClosest.x = localSpherePos.x < 0 ? -halfSize.x : halfSize.x;
+                else if (dy <= dz)
+                    localClosest.y = localSpherePos.y < 0 ? -halfSize.y : halfSize.y;
+                else
+                    localClosest.z = localSpherePos.z < 0 ? -halfSize.z : halfSize.z;
+            }
+
+            Vec3 worldClosest = rotation * localClosest + worldCenter;
             Vec3 toCenter = spherePos - worldClosest;
             float mag = toCenter.magnitude;
 
-            if (mag <= radius)
+            if (inside || mag <= radius)
             {
-                contactPoint = mag > Epsilon
-                    ? worldClosest + toCenter.normalized * radius
-                    : worldClosest;
+                contactPoint = worldClosest;
                 return true;
             }
 
@@ -673,7 +696,7 @@ namespace DietPhysics
         {
             Quat rotation = Quat.Euler(box.Rotation);
             // Center bir yerel offset — gerçek dünya merkezi: Position + Center
-            Vec3 worldCenter = box.Position + box.Center;
+            Vec3 worldCenter = box.Position + rotation * box.Center;
             Vec3 localContact = Quat.Inverse(rotation) * (contactPoint - worldCenter);
             Vec3 halfSize = box.Size * 0.5f;
 
