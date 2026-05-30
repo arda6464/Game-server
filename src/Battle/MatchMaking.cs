@@ -95,6 +95,7 @@ public static class MatchMaking
         packet.Tick = TickManager.instance.Get_Tick(); // Tüm oyunculara maçın başladığı anlık Tick'i bildiriyoruz
         ByteBuffer buffer = ByteBufferPool.Get();
         packet.Players = allplayers;
+        packet.Loots = battle.GetLoots();
         packet.Serialize(buffer);
 
         foreach (var session in players)

@@ -23,8 +23,12 @@ public class Battle
     private readonly object _lock = new object();
     private DateTime _startTime;
     private DietWorld World = new DietWorld();
-    private const float PlayerRadius = 0.5f;
-    public List<Vec3> SpawnPoints = new List<Vec3>();
+    private const float PlayerRadius = 0.5f; // 
+    private const float LootSpawnRadius = 0.35f;
+    private const float MinLootDistanceFromPlayer = 2.0f;
+    private const float MinLootDistanceFromLoot = 1.0f;
+    private const int InitialWeaponSpawnCount = 4;
+    public List<Vec3> PlayerSpawnPoints = new List<Vec3>();
 
     public Battle()
     {
@@ -50,7 +54,7 @@ public class Battle
         // Statik collider'ları pişir (spatial optimizasyon için).
         World.Bake();
 
-        SpawnPoints = map.spawnPoints;
+        PlayerSpawnPoints = map.spawnPoints;
         Console.WriteLine("----- Harita yüklendi -----");
     }
 
@@ -61,6 +65,7 @@ public class Battle
             if (State != BattleState.WaitingToStart) return;
             State = BattleState.Active;
             _startTime = DateTime.Now;
+            SpawnInitialWeapons();
             Logger.battlelog($"[BATTLE {BattleId}] Battle started.");
         }
     }
@@ -347,14 +352,22 @@ public class Battle
         }
     }
 
+    public List<LootItem> GetLoots()
+    {
+        lock (_lock)
+        {
+            return Loots.ToList();
+        }
+    }
+
     public void AddPlayer(Player player)
     {
         lock (_lock)
         {
             player.BattleId = BattleId;
 
-            int spawnIndex = Players.Count % SpawnPoints.Count;
-            player.Position = SpawnPoints[spawnIndex];
+            int spawnIndex = Players.Count % PlayerSpawnPoints.Count;
+            player.Position = PlayerSpawnPoints[spawnIndex];
 
             if (player.session?.PlayerData != null)
                 player.session.PlayerData.Position = player.Position;
@@ -420,20 +433,172 @@ public class Battle
         return Interlocked.Increment(ref LootIdCounter);
     }
 
-    public void SpawnLoot(int dataId, Vec3 position)
+    public void SpawnLoot(LootItemType type, int dataId, Vec3 position)
+    {
+        TrySpawnLoot(type, dataId, position);
+    }
+
+    private static string FormatVec3(Vec3 value)
+    {
+        return $"({value.x:0.##}, {value.y:0.##}, {value.z:0.##})";
+    }
+
+    public bool TrySpawnWeapon(int weaponId, Vec3 position)
     {
         lock (_lock)
         {
+            WeaponData? weapon = DataManager.GetWeapon(weaponId);
+            if (weapon == null)
+            {
+                Logger.battlelog($"[BATTLE {BattleId}] Weapon spawn rejected: weapon not found ({weaponId})");
+                return false;
+            }
+
+            if (!IsValidLootSpawnPosition(position, out string reason))
+            {
+                Logger.battlelog($"[BATTLE {BattleId}] Weapon spawn rejected: {weaponId} at {position}. Reason: {reason}");
+                return false;
+            }
+
             var loot = new LootItem
             {
                 LootId = GetNextLootId(),
-                DataId = dataId,
+                DataId = weapon.Id,
+                Type = LootItemType.Weapon,
                 Position = position,
                 SpawnTime = GetCurrentTime()
             };
             Loots.Add(loot);
-            Logger.battlelog($"[BATTLE {BattleId}] Loot spawned: {dataId} at {position}");
+            Logger.battlelog($"[BATTLE {BattleId}] Weapon spawned: {weapon.Name} ({weapon.Id}) at {FormatVec3(position)}");
+            return true;
         }
+    }
+
+    public bool TrySpawnRandomWeapon(Vec3 position)
+    {
+        WeaponData[] weapons = DataManager.GetAllWeapons().ToArray();
+        if (weapons.Length == 0)
+        {
+            Logger.battlelog($"[BATTLE {BattleId}] Weapon spawn rejected: no weapons loaded");
+            return false;
+        }
+
+        int index = Random.Shared.Next(weapons.Length);
+        return TrySpawnWeapon(weapons[index].Id, position);
+    }
+
+    public bool TrySpawnLoot(LootItemType type, int dataId, Vec3 position) //  dataid: 
+    {
+        lock (_lock)
+        {
+            if (!IsValidLootData(dataId))
+                return false;
+
+            if (!IsValidLootSpawnPosition(position, out string reason))
+            {
+                Logger.battlelog($"[BATTLE {BattleId}] Loot spawn rejected: {dataId} at {FormatVec3(position)}. Reason: {reason}");
+                return false;
+            }
+
+            var loot = new LootItem
+            {
+                LootId = GetNextLootId(),
+                DataId = dataId,
+                Type = type,
+                Position = position,
+                SpawnTime = GetCurrentTime()
+            };
+            Loots.Add(loot);
+            Logger.battlelog($"[BATTLE {BattleId}] Loot spawned: {dataId} at {FormatVec3(position)}");
+            return true;
+        }
+    }
+
+    private bool IsValidLootData(int dataId)
+    {
+        /* LootData? lootData = DataManager.GetLoot(dataId);
+         if (lootData == null)
+         {
+             Logger.battlelog($"[BATTLE {BattleId}] Loot spawn rejected: data not found ({dataId})");
+             return false;
+         }
+
+         if (string.Equals(lootData.Type, "Weapon", StringComparison.OrdinalIgnoreCase)
+             && DataManager.GetWeapon(lootData.Value) == null)
+         {
+             Logger.battlelog($"[BATTLE {BattleId}] Loot spawn rejected: weapon not found ({lootData.Value})");
+             return false;
+         }
+
+         return true;*/
+        return true; // Şimdilik tüm dataId'leri geçerli sayıyoruz, çünkü loot data yapısını henüz tanımlamadık.
+    }
+
+    private bool IsValidLootSpawnPosition(Vec3 position, out string reason)
+    {
+        DietSphere testSphere = new DietSphere(position, Vec3.zero, LootSpawnRadius);
+        if (World.ResolveOverlap(testSphere, out _))
+        {
+            reason = "wall/player collision";
+            return false;
+        }
+
+        foreach (Player player in Players)
+        {
+            if (Vec3.Distance(position, player.Position) < MinLootDistanceFromPlayer)
+            {
+                reason = $"too close to player {player.ID}";
+                return false;
+            }
+        }
+
+        foreach (LootItem loot in Loots)
+        {
+            if (!loot.IsTaken && Vec3.Distance(position, loot.Position) < MinLootDistanceFromLoot)
+            {
+                reason = $"too close to loot {loot.LootId}";
+                return false;
+            }
+        }
+
+        reason = string.Empty;
+        return true;
+    }
+
+    private void SpawnInitialWeapons()
+    {
+        WeaponData[] weapons = DataManager.GetAllWeapons().ToArray();
+        if (weapons.Length == 0)
+        {
+            Logger.battlelog($"[BATTLE {BattleId}] Initial weapon spawn skipped: no weapons loaded");
+            return;
+        }
+
+        int targetSpawnCount = Math.Min(InitialWeaponSpawnCount, weapons.Length);
+        int spawnedCount = 0;
+        int attempts = 0;
+        int maxAttempts = targetSpawnCount * 10;
+        HashSet<string> usedPoints = new HashSet<string>();
+
+        while (spawnedCount < targetSpawnCount && attempts < maxAttempts)
+        {
+            attempts++;
+
+            WeaponData weapon = weapons[Random.Shared.Next(weapons.Length)];
+            Vec3 position = MapManager.GetRandomLootPoint();
+            string pointKey = $"{position.x:F2}:{position.y:F2}:{position.z:F2}";
+
+            if (usedPoints.Contains(pointKey))
+                continue;
+
+            if (TrySpawnWeapon(weapon.Id, position))
+            {
+                usedPoints.Add(pointKey);
+                spawnedCount++;
+            }
+        }
+
+        Logger.battlelog($"[BATTLE {BattleId}] Initial weapon spawn complete: {spawnedCount}/{targetSpawnCount}");
     }
 
     private float GetCurrentTime()

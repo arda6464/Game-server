@@ -29,8 +29,11 @@ public static class DataManager
     private static Dictionary<int, ProjectileData> _projectilesById = new();
     private static Dictionary<string, ProjectileData> _projectilesByName = new(StringComparer.OrdinalIgnoreCase);
 
-    private static Dictionary<int, LootData> _lootsById = new();
-    private static Dictionary<string, LootData> _lootsByName = new(StringComparer.OrdinalIgnoreCase);
+    private static Dictionary<int, WeaponData> _weaponsById = new();
+    private static Dictionary<string, WeaponData> _weaponsByName = new(StringComparer.OrdinalIgnoreCase);
+
+    /*private static Dictionary<int, LootData> _lootsById = new();
+    private static Dictionary<string, LootData> _lootsByName = new(StringComparer.OrdinalIgnoreCase);*/
 
     // ─────────────────────────────────────────────────────────────────
     // BAŞLATMA
@@ -48,13 +51,24 @@ public static class DataManager
         LoadCollection<ProjectileData>(Path.Combine(dataFolder, "projectiles.json"),
             ref _projectilesById, ref _projectilesByName);
 
-        LoadCollection<LootData>(Path.Combine(dataFolder, "loots.json"),
-            ref _lootsById, ref _lootsByName);
+        LoadCollection<WeaponData>(Path.Combine(dataFolder, "weapons.json"),
+            ref _weaponsById, ref _weaponsByName);
 
+        if (_weaponsById.Count == 0)
+        {
+            Console.WriteLine("[DataManager] UYARI: Silah verisi yüklenmedi. weapons.json boş veya okunamıyor olabilir.");
+        }
+        else
+        {
+            Console.WriteLine($"[DataManager] Güvenlik kontrolü: {_weaponsById.Count} silah yüklendi.");
+        }
+
+       
         Console.WriteLine($"[DataManager] Yükleme tamamlandı. " +
                           $"Karakter: {_charactersById.Count}, " +
                           $"Mermi: {_projectilesById.Count}, " +
-                          $"Loot: {_lootsById.Count}");
+                        $"Silah: {_weaponsById.Count}, ");
+                         
     }
 
     // ─────────────────────────────────────────────────────────────────
@@ -77,13 +91,19 @@ public static class DataManager
     public static ProjectileData? GetProjectile(string name)
         => _projectilesByName.GetValueOrDefault(name);
 
-    /// <summary>ID ile loot verisini getirir. Bulunamazsa null döner.</summary>
-    public static LootData? GetLoot(int id)
-        => _lootsById.GetValueOrDefault(id);
+    /// <summary>ID ile silah verisini getirir. Bulunamazsa null döner.</summary>
+    public static WeaponData? GetWeapon(int id)
+        => _weaponsById.GetValueOrDefault(id);
 
-    /// <summary>İsim ile loot verisini getirir. Büyük/küçük harf duyarsız.</summary>
-    public static LootData? GetLoot(string name)
-        => _lootsByName.GetValueOrDefault(name);
+    /// <summary>İsim ile silah verisini getirir. Büyük/küçük harf duyarsız.</summary>
+    public static WeaponData? GetWeapon(string name)
+        => _weaponsByName.GetValueOrDefault(name);
+
+    public static IReadOnlyCollection<WeaponData> GetAllWeapons()
+        => _weaponsById.Values;
+
+    /// <summary>ID ile loot verisini getirir. Bulunamazsa null döner.</summary>
+
 
     // ─────────────────────────────────────────────────────────────────
     // YARDIMCI
