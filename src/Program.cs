@@ -47,6 +47,7 @@ class Program
         // Cache'leri başlat
           BotManager bot = new BotManager();
           Config.Load("config.json");
+          DataManager.Init();
           DatabaseManager.Initialize();
 
           AccountCache.Init();
