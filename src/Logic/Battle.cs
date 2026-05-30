@@ -19,6 +19,8 @@ public class Battle
     public List<Player> Players { get; set; } = new List<Player>();
     public List<Bullet> Bullets { get; set; } = new List<Bullet>();
     public List<LootItem> Loots { get; set; } = new List<LootItem>();
+    public List<PickupData> Pickups { get; set; } = new List<PickupData>();
+
 
     private readonly object _lock = new object();
     private DateTime _startTime;
@@ -96,6 +98,7 @@ public class Battle
         if (State != BattleState.Active) return;
 
         UpdatePlayerPositions();
+        UpdatePickups();
         UpdateBullets();
         BroadcastSnapshot();
         CheckMatchEnd();
@@ -599,6 +602,50 @@ public class Battle
         }
 
         Logger.battlelog($"[BATTLE {BattleId}] Initial weapon spawn complete: {spawnedCount}/{targetSpawnCount}");
+    }
+    public void PickupStart(int playerId, int lootId)
+    {
+        var player = GetPlayer(playerId);
+        var loot = Loots.FirstOrDefault(l => l.LootId == lootId);
+
+        if (player == null || loot == null || loot.IsTaken)
+            return;
+
+        Pickups.Add(new PickupData
+        {
+            PlayerId = playerId,
+            LootId = lootId,
+            PickupTime = GetCurrentTime()
+        });
+        var packet = new PickupResponsePacket
+        {
+            LootID = lootId,
+            Success = true
+        };
+        player.session?.SendReliableUDP(packet);
+        Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} started picking up loot {loot.LootId}");
+    }
+    public void UpdatePickups()
+    {
+        float currentTime = GetCurrentTime();
+        foreach (var pickup in Pickups.ToArray())
+        {
+            var player = GetPlayer(pickup.PlayerId);
+            var loot = Loots.FirstOrDefault(l => l.LootId == pickup.LootId);
+            if (player == null || loot == null)
+                continue;
+
+            if (Vec3.Distance(player.Position, loot.Position) > 1.0f)
+            {
+                Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} moved away from loot {loot.LootId}, pickup cancelled");
+                Pickups.Remove(pickup);
+                continue;
+            }
+            if (currentTime - pickup.PickupTime >= 1.0f) // 1 saniye sonra alma işlemi tamamlanır
+            {
+                Pickups.Remove(pickup);
+            }
+        }
     }
 
     private float GetCurrentTime()

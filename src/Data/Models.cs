@@ -67,3 +67,9 @@ public class LootItem
     public bool IsTaken { get; set; } = false;
     public float SpawnTime { get; set; }
 }
+public class PickupData
+{
+    public int PlayerId { get; set; }
+    public int LootId { get; set; }
+    public float PickupTime { get; set; }
+}

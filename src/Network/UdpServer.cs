@@ -65,80 +65,89 @@ public class UdpServer
     private void ProcessData(IPEndPoint clientEndPoint, byte[] data)
     {
         // 0. Ham Veri Logu
-      //  Console.WriteLine($"[UDP-RAW] {data.Length} bytes received from {clientEndPoint}");
+        // Console.WriteLine($"[UDP-RAW] {data.Length} bytes received from {clientEndPoint}");
 
-        if (data.Length < 7)
-        {
-            Console.WriteLine($"[UDP-ERROR] Paket çok kısa! Boyut: {data.Length} IP: {clientEndPoint}");
+        if (data == null || data.Length == 0)
             return;
-        }
 
-        using (ByteBuffer buffer = ByteBufferPool.Get())
+        try
         {
-            buffer.WriteBytes(data);
-
-            // 1. Header'ı oku
-            Network.UdpPacketFlags flags = (Network.UdpPacketFlags)buffer.ReadVarInt();
-            int sequenceNumber = 0;
-
-
-            sequenceNumber = (int)buffer.ReadVarInt();
-
-
-            int connectionToken = (int)buffer.ReadVarInt(); // VarInt'e çevrildi
-
-            // 1. Önce IP/Port üzerinden hızlıca bulmaya çalış (O(1))
-            Session? session = SessionManager.GetSessionByEndPoint(clientEndPoint);
-
-            // 2. Eğer IP ile bulunamadıysa veya Token uyuşmuyorsa (Port/IP değişmiş olabilir) Token ile ara (O(N))
-            if (session == null)
+            using (ByteBuffer buffer = ByteBufferPool.Get())
             {
-                Console.WriteLine($"[UDP-DEBUG] IP üzerinden session bulunamadı, Token sorgulanıyor: {connectionToken}");
-                session = SessionManager.GetSessionByConnectionToken(connectionToken);
+                buffer.WriteBytes(data);
 
-                if (session != null)
+                // 1. Header'ı oku
+                Network.UdpPacketFlags flags = (Network.UdpPacketFlags)buffer.ReadVarInt();
+                int sequenceNumber = 0;
+
+                sequenceNumber = (int)buffer.ReadVarInt();
+
+                int connectionToken = (int)buffer.ReadVarInt(); // VarInt'e çevrildi
+
+                // 1. Önce IP/Port üzerinden hızlıca bulmaya çalış (O(1))
+                Session? session = SessionManager.GetSessionByEndPoint(clientEndPoint);
+
+                // 2. Eğer IP ile bulunamadıysa veya Token uyuşmuyorsa (Port/IP değişmiş olabilir) Token ile ara (O(N))
+                if (session == null)
                 {
+                    Console.WriteLine($"[UDP-DEBUG] IP üzerinden session bulunamadı, Token sorgulanıyor: {connectionToken}");
+                    session = SessionManager.GetSessionByConnectionToken(connectionToken);
 
-                    SessionManager.RegisterUdpSession(clientEndPoint, session);
-                    Console.WriteLine($"[UDP] Session IP({clientEndPoint}) Token({connectionToken}) üzerinden YENİDEN kaydedildi: {session.Account?.Username}");
+                    if (session != null)
+                    {
+                        SessionManager.RegisterUdpSession(clientEndPoint, session);
+                        Console.WriteLine($"[UDP] Session IP({clientEndPoint}) Token({connectionToken}) üzerinden YENİDEN kaydedildi: {session.Account?.Username}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"[UDP-FAIL] Hiçbir session bulunamadı! Token: {connectionToken} IP: {clientEndPoint}");
+                    }
                 }
-                else
+                else if (session.ConnectionToken != connectionToken)
                 {
-                    Console.WriteLine($"[UDP-FAIL] Hiçbir session bulunamadı! Token: {connectionToken} IP: {clientEndPoint}");
+                    Console.WriteLine($"[UDP-WARN] IP eşleşti ama Token Hatalı! Beklenen: {session.ConnectionToken}, Gelen: {connectionToken} IP: {clientEndPoint}");
+                    // Token uyuşmuyorsa bu session'ı NULL yap ki alt tarafta işlem görmesin
+                    session = null;
+                }
+
+                if (session != null && session.ConnectionToken == connectionToken)
+                {
+                    session.LastAlive = DateTime.Now; // ✅ UDP trafiği de artık session'ı canlı tutuyor
+
+                    // 3. Bu bir ACK paketi mi?
+                    if (flags.HasFlag(Network.UdpPacketFlags.Ack))
+                    {
+                        Console.WriteLine("ack geldi");
+                        session.HandleAck(sequenceNumber);
+                        return;
+                    }
+
+                    // 4. Bu Reliable bir paket mi? Öyleyse karşıya anında ACK gönder
+                    if (flags.HasFlag(Network.UdpPacketFlags.Reliable))
+                    {
+                        Console.WriteLine("reliable geldi gönderiliyor....");
+                        SendAck(clientEndPoint, sequenceNumber);
+                    }
+
+                    // 5. Payload'u ayır
+                    byte[] payload = buffer.GetReadableSpan().ToArray();
+                    if (payload.Length == 0) return;
+
+                    MessageManager.HandleUdpMessage(session, payload, sequenceNumber);
                 }
             }
-            else if (session.ConnectionToken != connectionToken)
-            {
-                Console.WriteLine($"[UDP-WARN] IP eşleşti ama Token Hatalı! Beklenen: {session.ConnectionToken}, Gelen: {connectionToken} IP: {clientEndPoint}");
-                // Token uyuşmuyorsa bu session'ı NULL yap ki alt tarafta işlem görmesin
-                session = null;
-            }
-
-            if (session != null && session.ConnectionToken == connectionToken)
-            {
-                session.LastAlive = DateTime.Now; // ✅ UDP trafiği de artık session'ı canlı tutuyor
-
-                // 3. Bu bir ACK paketi mi?
-                if (flags.HasFlag(Network.UdpPacketFlags.Ack))
-                {
-                    Console.WriteLine("ack geldi");
-                    session.HandleAck(sequenceNumber);
-                    return;
-                }
-
-                // 4. Bu Reliable bir paket mi? Öyleyse karşıya anında ACK gönder
-                if (flags.HasFlag(Network.UdpPacketFlags.Reliable))
-                {
-                    Console.WriteLine("reliable geldi gönderiliyor....");
-                    SendAck(clientEndPoint, sequenceNumber);
-                }
-
-                // 5. Payload'u ayır
-                byte[] payload = buffer.GetReadableSpan().ToArray();
-                if (payload.Length == 0) return;
-
-                MessageManager.HandleUdpMessage(session, payload, sequenceNumber);
-            }
+        }
+        catch (EndOfStreamException ex)
+        {
+            Console.WriteLine($"[UDP-ERROR] Eksik paket alındı, parse edilemedi. IP: {clientEndPoint} Hata: {ex.Message}");
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine($"[UDP-ERROR] Geçersiz UDP paket formatı. IP: {clientEndPoint} Hata: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Logger.errorslog($"[UDP] ProcessData hatası ({clientEndPoint}): {ex.Message}");
         }
     }
 
