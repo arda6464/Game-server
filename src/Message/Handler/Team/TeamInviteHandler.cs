@@ -1,4 +1,4 @@
-[PacketHandler(MessageType.InviteToTeamRequest)]
+[PacketHandler(MessageType.InvitePlayerTeamRequest)]
 public static class TeamInviteHandler
 {
     public static void Handle(Session session, byte[] data)
@@ -21,19 +21,29 @@ public static class TeamInviteHandler
 
         Lobby lobby = LobbyManager.GetLobby(session.TeamID);
 
-
+        var responsepacket = new InvitePlayerToTeamResponsePacket();
         if (!SessionManager.IsOnline(targetacccount.ID))
         {
-            // todo playeroflinemessage.....
+            responsepacket.Sended = false;
+            responsepacket.ErrorCode = TeamErrorCode.TargetOffline;
+            responsepacket.Serialize(ByteBufferPool.Get());
+            session.Send(responsepacket);
             return;
         }
-        if (lobby.Players.Count == lobby.MaxPlayers)
+        else if (lobby.Players.Count == lobby.MaxPlayers)
         {
-            // todo teamfullmessage.........
+            responsepacket.Sended = false;
+            responsepacket.ErrorCode = TeamErrorCode.TeamFull;
+            responsepacket.Serialize(ByteBufferPool.Get());
+            session.Send(responsepacket);
             return;
         }
         else
         {
+            responsepacket.Sended = false;
+           
+            responsepacket.Serialize(ByteBufferPool.Get());
+            session.Send(responsepacket);
 
 
             if (SessionManager.IsOnline(targetacccount.ID))
@@ -41,16 +51,16 @@ public static class TeamInviteHandler
                 Session? targetsession = SessionManager.GetSession(targetacccount.ID);
 
 
-                    var notificationPacket = new TeamInviteNotificationPacket
-                    {
-                        SenderName = acccount.Username,
-                        SenderId = acccount.ID,
-                        SenderAvatarId = acccount.Avatarid,
-                        SenderTrophy = acccount.Trophy,
-                        CurrentPlayers = lobby.Players.Count,
-                        MaxPlayers = lobby.MaxPlayers
-                    };
-                    targetsession?.Send(notificationPacket);
+                var notificationPacket = new TeamInviteNotificationPacket
+                {
+                    SenderName = acccount.Username,
+                    SenderId = acccount.ID,
+                    SenderAvatarId = acccount.Avatarid,
+                    SenderTrophy = acccount.Trophy,
+                    CurrentPlayers = lobby.Players.Count,
+                    MaxPlayers = lobby.MaxPlayers
+                };
+                targetsession?.Send(notificationPacket);
             }
             else
             {// todo if notfi almak istemiyorsa
@@ -60,44 +70,49 @@ public static class TeamInviteHandler
                     NotificationPolicyManager.UpdateCooldown(targetacccount, NotificationPolicyManager.NotificationType.Invite);
                 }
             }
-           
+
         }
     }
-    public static void ResponseHandle(Session session,byte[] responsedata)
+    public static void ResponseHandle(Session session, byte[] responsedata)
     {
         bool Accept = false;
-        int targetacc;
-        
+        int teamid = 0;
+
         using (ByteBuffer read = ByteBufferPool.Get())
         {
             read.WriteBytes(responsedata);
-            
+
             var response = new TeamInviteResponsePacket();
             response.Deserialize(read);
-            
-            targetacc = response.InviterId;
+
+            teamid = response.TeamId;
             Accept = response.Accept;
         }
 
-        if (!SessionManager.IsOnline(targetacc))
-            return;
-       Session Invitersession = SessionManager.GetSession(targetacc);
+
         if (Accept)
         {
-            // Replicating logic using packets where possible, or keeping it compatible.
-            // Original code creates a ByteBuffer simulating JoinTeamRequest.
-            // JoinTeamRequestPacket expects { TeamId }.
-            
-            var joinPacket = new JoinTeamRequestPacket { TeamId = Invitersession.TeamID };
-            
-            using (ByteBuffer fakebuffer = ByteBufferPool.Get())
+
+            Lobby lobby = LobbyManager.GetLobby(teamid);
+            if (lobby == null)
             {
-                // MessageManager artık ID'yi atladığı için buraya ID eklemiyoruz
-                fakebuffer.WriteVarInt(joinPacket.TeamId);
-                byte[] fakebyte = fakebuffer.ToArray();
-                JoinTeamHandler.Handle(session, fakebyte);
+                // todo messagecode (takım bulunamadı)
+                return;
+            }
+            if (lobby.RequestedPlayerIds.Contains(session.Account.ID))
+            {
+                var joinPacket = new JoinTeamRequestPacket { TeamId = teamid };
+                ByteBuffer fakeBuffer = ByteBufferPool.Get();
+                fakeBuffer.WriteVarInt(joinPacket.TeamId);
+                JoinTeamHandler.Handle(session, fakeBuffer.ToArray());
+                fakeBuffer.Dispose();
+                lock (lobby.SyncLock)
+                {
+                    lobby.RequestedPlayerIds.Remove(session.Account.ID);
+                }
             }
         }
+
         else return; // todo messagecode
     }
 }

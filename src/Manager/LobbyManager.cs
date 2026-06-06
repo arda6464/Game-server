@@ -20,6 +20,18 @@ public enum TeamMessageFlags : byte
     HasTarget = 1,
     HasSystem = 2       // 2 olarak kalabilir, client'te de 2 olmalı
 }
+public enum TeamErrorCode : byte
+{
+    None,
+    NotOwner,
+    PlayerNotInTeam,
+    TargetNotInTeam,
+    TeamFull,
+    AlreadyInvited,
+    CannotInviteSelf,
+    TargetOffline,
+    UnknownError
+}
 public enum TeamEventType : byte
 {
     JoinMessage,
@@ -36,10 +48,12 @@ public class Lobby
     public bool IsInGame { get; set; }
     public int MessageIdCounter { get; set; } = 1;
     public string Link {get;set;}
+    public bool IsSearchTeam { get; set; } = false; // Takım arama modunda mı?
 
 
     public List<AccountManager.AccountData> Players { get; set; } = new();
     public List<TeamMessage> Messages { get; set; } = new(); // Kulüp mesajları
+    public List<int> RequestedPlayerIds { get; set; } = new(); // Takıma katılmak isteyen oyuncuların ID'leri 
 
     [JsonIgnore]
     public object SyncLock = new object();
@@ -67,6 +81,7 @@ public class Lobby
             Players.RemoveAll(x => x.ID == id);
         }
     }
+   
 
 
 }

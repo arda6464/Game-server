@@ -8,6 +8,16 @@ public struct PendingInput
 
 public class Player
 {
+
+    public Player()
+    {
+        InventorySlots = new List<InventorySlot>();
+        for (int i = 0; i < 3; i++)
+        {
+            InventorySlots.Add(new InventorySlot { SlotId = i });
+        }
+        SelectedSlot = 0;
+    }
     public int ID { get; set; }
     public string? Username { get; set; }
     public int AvatarId { get; set; }
@@ -26,6 +36,8 @@ public class Player
     // Optimizasyon için
     public Vec3 LastSentPosition { get; set; }
     public float LastSentRotation { get; set; }
+    public List<InventorySlot> InventorySlots { get; set; } = new List<InventorySlot>();
+    public int SelectedSlot { get; set; }
 
     // Gecikme Telafisi (Lag Compensation) için geçmiş pozisyonlar
     public Dictionary<uint, Vec3> PositionHistory { get; set; } = new Dictionary<uint, Vec3>();

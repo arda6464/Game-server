@@ -4,12 +4,18 @@
 /// </summary>
 public enum UdpMessageType : byte
 {
-    Connect = 0,
-    ConnectResponse = 1,
-    Move = 2,
-    Shoot = 3,
-    Input = 4,
-    Ping = 5,
-    Pong=6, 
-
+    Connect ,
+    ConnectResponse,
+    Move,
+    Shoot,
+    Input,
+    PickupRequest,
+    PickupResponse,
+    LootTaken ,
+    GiveUp,
+    ItemAdded,
+    ChangeSlotRequest,
+    ChangeSlot,
+    Ping,
+    Pong,
 }

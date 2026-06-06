@@ -92,6 +92,7 @@ public class AuthLoginResponsePacket : IPacket
             buffer.WriteVarInt(Club.TotalTrophy);
             buffer.WriteVarInt((int)Club.State);
             buffer.WriteVarString(Club.Region);
+            buffer.WriteVarInt((int)Account.clubRole);
             buffer.WriteVarInt(Club.Members.Count);
             buffer.WriteVarInt(Club.Messages.Count);
 

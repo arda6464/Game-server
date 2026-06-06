@@ -1,5 +1,81 @@
 [
   {
+    "Id": "233608fe",
+    "FirstSeen": "2026-05-30T22:05:22.4121969+03:00",
+    "LastSeen": "2026-05-30T22:05:22.4121979+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "SlotUI.SetGun (GunSO gun) (at Assets/Scripts/Test/SlotUI.cs:25)\nInventoryManager.SetItemTooSlot (System.Int32 slotIndex, GunSO gun, AmmoSO ammo) (at Assets/Scripts/Test/InventoryManager.cs:37)\nBattleManager.OnPlayerAddedItem (System.Int32 playerId, System.Int32 slotIndex, System.Int32 itemType, System.Int32 itemId) (at Assets/Scripts/Test/BattleManager.cs:271)\nUdpMessageHandler.HandleItemPlayer (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:127)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:49)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:272)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:191)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      10
+    ]
+  },
+  {
+    "Id": "47a0b7fb",
+    "FirstSeen": "2026-05-30T20:40:41.3182657+03:00",
+    "LastSeen": "2026-05-30T20:40:41.3182661+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "InventoryManager.SelectedSlot (SlotUI slotUI) (at Assets/Scripts/Test/InventoryManager.cs:87)\nInventoryManager.AddGun (GunSO gun) (at Assets/Scripts/Test/InventoryManager.cs:75)\nItemCollectable.CollectItem () (at Assets/Scripts/Test/ItemCollectable.cs:119)\nItemCollectable.Update () (at Assets/Scripts/Test/ItemCollectable.cs:69)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      10
+    ]
+  },
+  {
+    "Id": "7a16b75d",
+    "FirstSeen": "2026-05-30T14:50:35.6734131+03:00",
+    "LastSeen": "2026-05-30T20:41:21.5534255+03:00",
+    "Count": 2,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "InventoryManager.SelectedSlot (SlotUI slotUI) (at Assets/Scripts/Test/InventoryManager.cs:87)\nSlotUI.Select () (at Assets/Scripts/Test/SlotUI.cs:49)\nUnityEngine.Events.InvokableCall.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.Events.UnityEvent.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.UI.Button.Press () (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:70)\nUnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:114)\nUnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:57)\nUnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:272)\nUnityEngine.EventSystems.EventSystem:Update() (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/EventSystem.cs:514)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      10
+    ]
+  },
+  {
+    "Id": "ece867f5",
+    "FirstSeen": "2026-05-28T16:20:16.0426038+03:00",
+    "LastSeen": "2026-05-28T16:20:16.0426041+03:00",
+    "Count": 1,
+    "LogMessage": " authlogin eror: Unable to read beyond the end of the stream.",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nAuthLoginResponse/<>c__DisplayClass0_0:<Handle>b__0 () (at Assets/Scripts/Handler/Login/AuthLoginResponse.cs:123)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:27)\n",
+    "LogType": 0,
+    "SceneName": "SampleScene",
+    "AffectedPlayerIds": []
+  },
+  {
+    "Id": "04653694",
+    "FirstSeen": "2026-05-28T15:12:51.6959843+03:00",
+    "LastSeen": "2026-05-28T15:12:51.6959848+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "ContextMenuUI.BuildButtons (System.Collections.Generic.List`1[T] items) (at Assets/Scripts/Manager/UI/ContextMenu/ContextMenuUI.cs:166)\nContextMenuUI.Show (UnityEngine.Vector3 worldPos, System.Int32 id, System.Collections.Generic.List`1[T] items) (at Assets/Scripts/Manager/UI/ContextMenu/ContextMenuUI.cs:122)\nClubMemberUI.ShowPanel () (at Assets/Scripts/Handler/Club/ClubMemberUI.cs:52)\nUnityEngine.Events.InvokableCall.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.Events.UnityEvent.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.UI.Button.Press () (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:70)\nUnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:114)\nUnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:57)\nUnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:272)\nUnityEngine.EventSystems.EventSystem:Update() (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/EventSystem.cs:514)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      12
+    ]
+  },
+  {
+    "Id": "e90b0440",
+    "FirstSeen": "2026-05-28T15:07:29.4717008+03:00",
+    "LastSeen": "2026-05-28T15:07:29.4717012+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "ContextMenuUI.BuildButtons (System.Collections.Generic.List`1[T] items) (at Assets/Scripts/Manager/UI/ContextMenu/ContextMenuUI.cs:155)\nContextMenuUI.Show (UnityEngine.Vector3 worldPos, System.Int32 id, System.Collections.Generic.List`1[T] items) (at Assets/Scripts/Manager/UI/ContextMenu/ContextMenuUI.cs:111)\nFriendUI.ShowContext () (at Assets/Scripts/Handler/Friends/FriendUI.cs:106)\nUnityEngine.Events.InvokableCall.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.Events.UnityEvent.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.UI.Button.Press () (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:70)\nUnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:114)\nUnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:57)\nUnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:272)\nUnityEngine.EventSystems.EventSystem:Update() (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/EventSystem.cs:514)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      12
+    ]
+  },
+  {
     "Id": "eca11c79",
     "FirstSeen": "2026-05-26T04:32:41.8911306+03:00",
     "LastSeen": "2026-05-26T04:32:41.8911311+03:00",
@@ -28,13 +104,14 @@
   {
     "Id": "3f78f7c0",
     "FirstSeen": "2026-05-23T20:38:48.8963935+03:00",
-    "LastSeen": "2026-05-23T20:38:48.8963938+03:00",
-    "Count": 1,
+    "LastSeen": "2026-05-28T15:05:08.4755662+03:00",
+    "Count": 5,
     "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
     "StackTrace": "Clubmanager.Setup (ClubInfo info) (at Assets/Scripts/Handler/Club/Clubmanager.cs:162)\nClubmanager.Start () (at Assets/Scripts/Handler/Club/Clubmanager.cs:115)\n",
     "LogType": 2,
     "SceneName": "Lobby",
     "AffectedPlayerIds": [
+      14,
       13
     ]
   },
@@ -54,13 +131,14 @@
   {
     "Id": "b8630e32",
     "FirstSeen": "2026-05-23T12:19:17.4536896+03:00",
-    "LastSeen": "2026-05-23T12:19:17.4536906+03:00",
-    "Count": 1,
+    "LastSeen": "2026-05-28T15:07:05.7204041+03:00",
+    "Count": 2,
     "LogMessage": "ShowRequestPnl is not assigned in Inspector!",
     "StackTrace": "UnityEngine.Debug:LogError (object)\nFriendsManager:ShowRequestPanel (string,int,int,int) (at Assets/Scripts/Handler/Friends/FrendsManager.cs:199)\nShowRequestHandler/<>c__DisplayClass0_0:<Handle>b__0 () (at Assets/Scripts/Handler/Friends/ShowRequestHandler.cs:15)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:27)\n",
     "LogType": 0,
     "SceneName": "Lobby",
     "AffectedPlayerIds": [
+      14,
       13
     ]
   },
@@ -261,13 +339,15 @@
   {
     "Id": "735512ee",
     "FirstSeen": "2026-05-16T03:13:15.3457618+03:00",
-    "LastSeen": "2026-05-23T20:38:13.8854693+03:00",
-    "Count": 2,
+    "LastSeen": "2026-05-28T16:22:31.3776777+03:00",
+    "Count": 4,
     "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
     "StackTrace": "ClubSearchUI.Setup (ClubInfo info) (at Assets/Scripts/Handler/Club/ClubSearchUI.cs:21)\nClubSearchManager.SetupRandomClubs (System.Collections.Generic.List`1[T] info) (at Assets/Scripts/Handler/Club/ClubSearchManager.cs:75)\nRandomClubResponse+<>c__DisplayClass0_0.<Handle>b__0 () (at Assets/Scripts/Handler/Club/RandomClubResponse.cs:15)\nUnityMainThread.Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:27)\n",
     "LogType": 2,
     "SceneName": "Lobby",
     "AffectedPlayerIds": [
+      10,
+      14,
       13,
       9
     ]

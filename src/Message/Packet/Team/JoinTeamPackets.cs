@@ -33,7 +33,7 @@ public class JoinTeamResponsePacket : IPacket
             buffer.WriteVarInt(teammessage.SenderId);
             buffer.WriteVarString(teammessage.SenderName);
             buffer.WriteVarInt(teammessage.SenderAvatarID);
-            buffer.WriteVarString("");
+            buffer.WriteVarString(""); // ?!
             buffer.WriteVarString(teammessage.Content);
         }
     }

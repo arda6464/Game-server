@@ -27,7 +27,7 @@ public class Battle
     private DietWorld World = new DietWorld();
     private const float PlayerRadius = 0.5f; // 
     private const float LootSpawnRadius = 0.35f;
-    private const float MinLootDistanceFromPlayer = 2.0f;
+    private const float MinLootDistanceFromPlayer = 1.0f;
     private const float MinLootDistanceFromLoot = 1.0f;
     private const int InitialWeaponSpawnCount = 4;
     public List<Vec3> PlayerSpawnPoints = new List<Vec3>();
@@ -220,7 +220,7 @@ public class Battle
     /// </summary>
     private void ApplyMovementWithSliding(Player player, Vec3 direction, float distance)
     {
-        int sweepIterations = Math.Max(5, (int)MathF.Ceiling(distance / Math.Max(PlayerRadius * 0.25f, 0.01f)));
+        int sweepIterations = Math.Max(5, (int)MathF.Ceiling(distance / Math.Max(PlayerRadius * 0.15f, 0.01f)));
 
         // Tam hareket mümkünse direkt ilerle.
         if (!World.SweepTest(player.Collider, direction, distance, sweepIterations, out _))
@@ -281,7 +281,7 @@ public class Battle
             {
                 Vec3 delta = newPos - player.Position;
                 float distance = delta.magnitude;
-                int sweepIterations = Math.Max(5, (int)MathF.Ceiling(distance / Math.Max(PlayerRadius * 0.25f, 0.01f)));
+                int sweepIterations = Math.Max(5, (int)MathF.Ceiling(distance / Math.Max(PlayerRadius * 0.15f, 0.01f)));
 
                 if (distance > 0.001f && World.SweepTest(player.Collider, delta.normalized, distance, sweepIterations, out Vec3 collidedPos))
                 {
@@ -557,7 +557,7 @@ public class Battle
 
         foreach (LootItem loot in Loots)
         {
-            if (!loot.IsTaken && Vec3.Distance(position, loot.Position) < MinLootDistanceFromLoot)
+            if (Vec3.Distance(position, loot.Position) < MinLootDistanceFromLoot)
             {
                 reason = $"too close to loot {loot.LootId}";
                 return false;
@@ -589,7 +589,7 @@ public class Battle
 
             WeaponData weapon = weapons[Random.Shared.Next(weapons.Length)];
             Vec3 position = MapManager.GetRandomLootPoint();
-            string pointKey = $"{position.x:F2}:{position.y:F2}:{position.z:F2}";
+            string pointKey = $"{position.x:F1}:{position.y:F1}:{position.z:F1}";
 
             if (usedPoints.Contains(pointKey))
                 continue;
@@ -608,14 +608,23 @@ public class Battle
         var player = GetPlayer(playerId);
         var loot = Loots.FirstOrDefault(l => l.LootId == lootId);
 
-        if (player == null || loot == null || loot.IsTaken)
+        if (player == null || loot == null)
             return;
+
+        if (Pickups.Any(p => p.PlayerId == playerId || p.LootId == lootId))
+            return;
+
+        WeaponData? weapon = DataManager.GetWeapon(loot.DataId);
+        float collectTime = weapon?.CollectableTime ?? 1.0f;
+        float now = GetCurrentTime();
 
         Pickups.Add(new PickupData
         {
             PlayerId = playerId,
             LootId = lootId,
-            PickupTime = GetCurrentTime()
+            PickupTime = now,
+            FinishTime = now + collectTime,
+            RequiredTime = collectTime
         });
         var packet = new PickupResponsePacket
         {
@@ -623,7 +632,7 @@ public class Battle
             Success = true
         };
         player.session?.SendReliableUDP(packet);
-        Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} started picking up loot {loot.LootId}");
+        Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} started picking up loot {loot.LootId} ({collectTime:0.##}s)");
     }
     public void UpdatePickups()
     {
@@ -633,7 +642,10 @@ public class Battle
             var player = GetPlayer(pickup.PlayerId);
             var loot = Loots.FirstOrDefault(l => l.LootId == pickup.LootId);
             if (player == null || loot == null)
+            {
+                Pickups.Remove(pickup);
                 continue;
+            }
 
             if (Vec3.Distance(player.Position, loot.Position) > 1.0f)
             {
@@ -641,11 +653,120 @@ public class Battle
                 Pickups.Remove(pickup);
                 continue;
             }
-            if (currentTime - pickup.PickupTime >= 1.0f) // 1 saniye sonra alma işlemi tamamlanır
-            {
-                Pickups.Remove(pickup);
-            }
+
+            if (currentTime < pickup.FinishTime)
+                continue;
+
+            BroadcastLootDeletion(loot.LootId);
+
+            if (loot.Type == LootItemType.Weapon)
+                player.WeaponId = loot.DataId;
+            Pickups.Remove(pickup);
+            GiveItemToPlayer(player, loot);
+            Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} picked up loot {loot.LootId} after {pickup.RequiredTime:0.##}s");
         }
+    }
+    private void BroadcastLootDeletion(int lootId)
+    {
+        lock (_lock)
+        {
+            Loots.RemoveAll(l => l.LootId == lootId);
+        }
+        var packet = new LootDeletedPacket
+        {
+            LootId = lootId
+        };
+        foreach (var player in GetPlayers())
+            player.session?.SendReliableUDP(packet);
+    }
+    private void GiveItemToPlayer(Player player, LootItem loot)
+    {
+        if (player.InventorySlots == null || player.InventorySlots.Count == 0)
+        {
+            Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} has no inventory slots.");
+            return;
+        }
+
+        int targetSlot = GetFreeSlotIndex(player);
+        if (targetSlot < 0)
+            targetSlot = NormalizeSlotIndex(player.SelectedSlot, player.InventorySlots.Count);
+
+        if (targetSlot < 0 || targetSlot >= player.InventorySlots.Count)
+        {
+            Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} has invalid target slot {targetSlot}.");
+            return;
+        }
+
+        player.InventorySlots[targetSlot].DataId = loot.DataId;
+        player.InventorySlots[targetSlot].Item = loot.Type;
+        player.SelectedSlot = targetSlot;
+
+        var packet = new PlayerGivedItemPacket
+        {
+            playerId = player.ID,
+            SlotId = player.SelectedSlot,
+            ItemType = (int)loot.Type,
+            DataId = loot.DataId
+        };
+        if (loot.Type == LootItemType.Weapon)
+            foreach (var p in GetPlayers())
+                p.session?.SendReliableUDP(packet);
+        else
+            player.session?.SendReliableUDP(packet);
+
+        Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} received item {loot.DataId} in slot {player.SelectedSlot}");
+
+    }
+    public void ChangePlayerSlot(int playerId, int toSlot)
+    {
+        var player = GetPlayer(playerId);
+        if (player == null) return;
+
+        if (toSlot < 0 || toSlot >= player.InventorySlots.Count || player.SelectedSlot == toSlot)
+            return;
+
+
+        player.SelectedSlot = toSlot;
+
+        var packet = new ChangedSlotPacket
+        {
+            PlayerId = playerId,
+            ToSlot = toSlot,
+            Itemtype = player.InventorySlots[toSlot].Item,
+            DataId = player.InventorySlots[toSlot].DataId
+        };
+        foreach (var p in GetPlayers())
+            p.session?.SendReliableUDP(packet);
+
+        Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username}  with slot {toSlot}");
+    }
+
+    private int GetFreeSlotIndex(Player player)
+    {
+        if (player.InventorySlots == null)
+            return -1;
+
+        for (int i = 0; i < player.InventorySlots.Count; i++)
+        {
+            if (player.InventorySlots[i].DataId == 0)
+                return i;
+        }
+
+        return -1;
+    }
+
+    private int NormalizeSlotIndex(int slotIndex, int slotCount)
+    {
+        if (slotCount <= 0)
+            return -1;
+
+        if (slotIndex < 0)
+            return 0;
+
+        if (slotIndex >= slotCount)
+            return slotCount - 1;
+
+        return slotIndex;
     }
 
     private float GetCurrentTime()

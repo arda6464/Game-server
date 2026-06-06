@@ -5073,3 +5073,663 @@ bu ödül size :)
 [2026-05-27 21:34:05] [GENERAL] [AdminAudit] admin -> Güncelleme Notu Sil on ID: 3: Not silindi.
 [2026-05-27 21:34:25] [GENERAL] ardaaaaa64 istatistikleri güncellendi (Admin Panel).
 [2026-05-27 21:34:25] [GENERAL] [AdminAudit] admin -> Oyuncu Düzenleme on ardaaaaa64: Admin tarafından gelişmiş profil güncellemeleri yapıldı.
+[2026-05-28 00:40:46] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-28 00:40:46] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-28 00:40:46] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-28 00:40:46] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-28 00:40:51] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-28 00:40:51] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-28 00:40:51] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-28 00:40:51] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-28 14:34:59] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-28 14:34:59] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-28 14:34:59] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-28 14:35:01] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-28 14:35:02] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-28 14:35:02] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-28 14:35:02] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-28 14:35:02] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-28 14:35:02] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-28 14:35:02] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-28 14:35:06] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 14:35:07] [GENERAL] [NotificationSender] Bildirim gönderildi: a
+[2026-05-28 14:36:18] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 14:36:19] [GENERAL] [NotificationSender] Bildirim gönderildi: a
+[2026-05-28 14:50:54] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 14:50:54] [GENERAL] [NotificationSender] Bildirim gönderildi: a
+[2026-05-28 15:00:19] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-28 15:00:19] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-28 15:00:19] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-28 15:00:19] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-28 15:00:19] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-05-28 15:00:24] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-28 15:00:24] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-28 15:00:24] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-28 15:00:24] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-28 15:01:04] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-28 15:01:04] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-28 15:01:04] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-28 15:01:04] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-28 15:01:05] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-28 15:01:05] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-28 15:01:05] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-28 15:01:05] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-28 15:01:05] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-28 15:01:05] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-28 15:02:40] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:02:40] [GENERAL] [NotificationSender] Bildirim gönderildi: a
+[2026-05-28 15:02:51] [GENERAL] [NotificationSender] Bildirim gönderildi: Artık tüm işlemleriniz sadece sayısal ID üzerinden yapılmaktadır.
+[2026-05-28 15:03:09] [GENERAL] arda64best -> arda (İsim değiştirildi)
+[2026-05-28 15:03:23] [GENERAL] Club oluşturuldu: name: arda des: arda id: 13
+[2026-05-28 15:04:22] [GENERAL] [ShopItemsHandler] 14 → 1 ürün, 0 global + 1 kişisel teklif gönderildi.
+[2026-05-28 15:04:23] [GENERAL] [BuyMarketItemHandler] arda (14) → Item 2000 başarısız: ItemNotFound
+[2026-05-28 15:04:29] [GENERAL] [GetUpdateNotesHandler] 14 → 2 güncelleme notu gönderildi.
+[2026-05-28 15:07:07] [GENERAL] arda(14) → arda(12) 'ye istek attı
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:07:19] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:12:34] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:12:34] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:12:34] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:12:34] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:12:34] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:12:34] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:12:35] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:12:35] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:12:35] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:12:35] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:19:30] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:19:30] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:19:30] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:19:31] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:19:31] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:19:31] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:19:31] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:19:31] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:19:31] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:19:31] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:21:07] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 762456
+[2026-05-28 15:21:15] [GENERAL] [Lobby Manager] 762456'li lobby başarıyla silindi.
+[2026-05-28 15:21:38] [GENERAL] arda(12) adlı oyuncu arda(14) adlı oyuncuyu arkadaşlıktan çıkardı!
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:21:41] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:28:45] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:28:45] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:28:45] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:28:45] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:28:45] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:28:45] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:28:45] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:28:46] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:28:46] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:28:46] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:29:51] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:29:51] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:29:51] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:29:51] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:29:51] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:29:51] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:29:52] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:29:52] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:29:52] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:29:52] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:30:35] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:30:35] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:30:36] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:30:36] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:30:36] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:30:36] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:30:36] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:30:36] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:30:36] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:30:36] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:33:14] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:34:04] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:34:04] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:34:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:05] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:05] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:34:05] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:34:16] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:34:16] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:34:16] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:16] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:16] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:16] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:16] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:16] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:34:16] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:34:17] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:36:03] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:36:03] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:36:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:36:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:36:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:36:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:36:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:36:04] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:36:04] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:36:04] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 15:54:24] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 15:54:57] [GENERAL] [GetUpdateNotesHandler] 12 → 2 güncelleme notu gönderildi.
+[2026-05-28 16:08:22] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 16:08:22] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 16:08:22] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:08:22] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:08:22] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:08:23] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:08:23] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:08:23] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:08:23] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 16:08:23] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 16:20:15] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 16:20:20] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-28 16:20:20] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-28 16:20:20] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-28 16:20:20] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-28 16:20:50] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-28 16:20:50] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-28 16:20:50] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-28 16:20:50] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-28 16:20:50] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-28 16:20:50] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-28 16:20:50] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-28 16:20:50] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-28 16:20:50] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-28 16:20:50] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 16:20:59] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 16:21:14] [GENERAL] Oyuncu clubten kicklendi
+[2026-05-28 16:21:14] [GENERAL] Kulüp silindi: arda (11)
+[2026-05-28 16:21:29] [GENERAL] Club oluşturuldu: name: ar da des: test id: 15
+[2026-05-28 16:21:59] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 16:21:59] [GENERAL] [NotificationSender] Bildirim gönderildi: aaaaaaaa kulübünden atıldın.
+[2026-05-28 16:21:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:21:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:21:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:21:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:21:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:21:59] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:22:00] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 16:22:00] [GENERAL] [NotificationSender] Bildirim gönderildi: İsminiz uygun olmadığından değiştirilmiştir.
+[2026-05-28 16:22:22] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 16:22:22] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:22:36] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 16:22:36] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:28:08] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 16:28:08] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 16:28:56] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-28 16:28:56] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-28 17:09:08] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-28 17:09:08] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-28 17:09:08] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-28 17:09:08] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-28 17:09:13] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-28 17:09:13] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-28 17:09:13] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-28 17:09:13] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-29 01:56:07] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-29 01:56:07] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-29 01:56:07] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-29 01:56:11] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-29 01:56:12] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-29 01:56:12] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-29 01:56:12] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-29 01:56:12] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-29 01:56:12] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-29 01:56:12] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-29 01:59:31] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-29 01:59:31] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-29 02:00:06] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:63335
+[2026-05-29 02:55:54] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-29 02:55:54] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-29 02:55:54] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-29 02:55:54] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-29 02:55:54] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-05-29 02:56:00] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:63335)
+[2026-05-29 02:56:00] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-29 02:56:00] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-29 02:56:00] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-29 02:56:00] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-29 02:56:48] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-29 02:56:48] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-29 02:56:48] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-29 02:56:51] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-29 02:56:52] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-29 02:56:52] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-29 02:56:53] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-29 02:56:53] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-29 02:56:53] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-29 02:56:53] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-29 03:01:09] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-29 03:01:09] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-29 03:01:12] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:53981
+[2026-05-29 03:02:21] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-29 03:02:21] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-29 03:02:21] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-29 03:02:21] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-29 03:02:21] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-05-29 03:02:26] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:53981)
+[2026-05-29 03:02:26] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-29 03:02:26] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-29 03:02:26] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-29 03:02:26] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 14:40:31] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 14:40:31] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 14:40:31] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 14:40:32] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 14:40:33] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 14:40:33] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 14:40:33] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 14:40:33] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 14:40:33] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 14:40:33] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 14:40:47] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 14:40:47] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 14:40:51] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:51943
+[2026-05-30 14:41:58] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:51943)
+[2026-05-30 14:44:45] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 14:44:45] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 14:44:45] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 14:44:45] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 14:44:50] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 14:44:50] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 14:44:50] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 14:44:50] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 14:44:57] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 14:44:57] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 14:44:57] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 14:44:58] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 14:44:58] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 14:44:58] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 14:44:58] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 14:44:58] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 14:44:58] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 14:44:58] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 14:45:11] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 14:45:11] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 14:45:13] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:63590
+[2026-05-30 14:46:54] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:63590)
+[2026-05-30 14:48:37] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 14:48:37] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 14:48:41] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:62764
+[2026-05-30 14:52:46] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 14:52:46] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 14:52:46] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 14:52:46] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 14:52:46] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-05-30 14:52:51] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:62764)
+[2026-05-30 14:52:51] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 14:52:51] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 14:52:51] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 14:52:51] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 14:53:11] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 14:53:11] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 14:53:11] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 14:53:11] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 14:53:11] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 14:53:11] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 14:53:11] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 14:53:11] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 14:53:11] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 14:53:11] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 14:53:16] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 14:53:16] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 14:53:18] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:54999
+[2026-05-30 14:54:48] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:54999)
+[2026-05-30 16:04:34] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 16:04:34] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 16:04:34] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 16:04:34] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 16:04:39] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 16:04:39] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 16:04:39] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 16:04:39] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 16:32:35] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 16:32:35] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 16:32:35] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 16:32:35] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 16:32:36] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 16:32:36] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 16:32:36] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 16:32:36] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 16:32:36] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 16:32:36] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 16:32:42] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 16:32:42] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 16:32:47] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:52418
+[2026-05-30 16:33:53] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:52418)
+[2026-05-30 16:36:50] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 16:36:50] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 16:36:50] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 16:36:50] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 16:36:55] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 16:36:56] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 16:36:56] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 16:36:56] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 16:43:06] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 16:43:06] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 16:43:06] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 16:43:06] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 16:43:06] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 16:43:06] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 16:43:06] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 16:43:06] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 16:43:06] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 16:43:06] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 16:43:10] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 16:43:11] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 16:43:13] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:61300
+[2026-05-30 16:43:45] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:61300)
+[2026-05-30 16:46:25] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 16:46:25] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 16:46:27] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:54898
+[2026-05-30 16:47:43] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 16:47:43] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 16:47:43] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 16:47:43] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 16:47:43] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 16:47:43] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 16:47:43] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 16:47:43] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 16:47:43] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 16:47:43] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 16:47:50] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 16:47:50] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 16:47:52] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:61184
+[2026-05-30 16:50:34] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:61184)
+[2026-05-30 16:52:13] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 16:52:13] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 16:52:17] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:64685
+[2026-05-30 16:52:36] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:64685)
+[2026-05-30 16:54:07] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 16:54:07] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 16:54:10] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:50864
+[2026-05-30 16:54:32] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:50864)
+[2026-05-30 17:01:32] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 17:01:32] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 17:01:37] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:61343
+[2026-05-30 17:01:37] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:61343
+[2026-05-30 17:03:51] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:61343)
+[2026-05-30 17:16:07] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 17:16:07] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 17:16:07] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 17:16:07] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 17:16:12] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 17:16:12] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 17:16:12] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 17:16:12] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 20:27:19] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 20:27:19] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 20:27:19] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 20:27:22] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 20:27:24] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 20:27:24] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 20:27:24] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 20:27:24] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 20:27:24] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 20:27:24] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 20:27:49] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 20:27:49] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 20:27:58] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:57361
+[2026-05-30 20:28:42] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:57361)
+[2026-05-30 20:33:16] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 20:33:16] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 20:33:19] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:50160
+[2026-05-30 20:39:07] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:50160)
+[2026-05-30 20:39:10] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 20:39:10] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 20:39:10] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 20:39:10] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 20:39:15] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 20:39:15] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 20:39:15] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 20:39:15] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 20:39:26] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 20:39:26] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 20:39:26] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 20:39:26] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 20:39:26] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 20:39:26] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 20:39:26] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 20:39:26] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 20:39:26] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 20:39:26] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 20:40:02] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 20:40:02] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 20:40:04] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:62042
+[2026-05-30 20:41:24] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:62042)
+[2026-05-30 21:00:07] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 21:00:07] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 21:00:10] [GENERAL] [SessionManager] UDP Kaydı yapıldı: lklkkjjkh -> 127.0.0.1:50164
+[2026-05-30 21:00:24] [GENERAL] [SessionManager] UDP Kaydı silindi: lklkkjjkh (127.0.0.1:50164)
+[2026-05-30 21:50:32] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 21:50:32] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 21:50:32] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 21:50:32] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 21:50:37] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 21:50:37] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 21:50:37] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 21:50:37] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 21:51:01] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 21:51:01] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 21:51:01] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 21:51:02] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 21:51:02] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 21:51:02] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 21:51:02] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 21:51:02] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 21:51:02] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 21:51:02] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 21:51:27] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 21:51:27] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 21:51:36] [GENERAL] lklkkjjkh -> arda (İsim değiştirildi)
+[2026-05-30 21:51:47] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 21:51:47] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 21:51:50] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:56949
+[2026-05-30 21:52:11] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:56949)
+[2026-05-30 21:52:16] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 21:52:16] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 21:52:16] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 21:52:16] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 21:52:21] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 21:52:22] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 21:52:22] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 21:52:22] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 21:53:59] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 21:53:59] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 21:53:59] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 21:53:59] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 21:53:59] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 21:53:59] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 21:53:59] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 21:53:59] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 21:53:59] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 21:53:59] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 21:54:02] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 21:54:02] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 21:54:05] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:61424
+[2026-05-30 21:54:54] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 21:54:54] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 21:54:54] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 21:54:54] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 21:54:54] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-05-30 21:55:00] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:61424)
+[2026-05-30 21:55:00] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 21:55:00] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 21:55:00] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 21:55:00] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 21:55:42] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 21:55:42] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 21:55:42] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 21:55:42] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 21:55:42] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 21:55:42] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 21:55:42] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 21:55:42] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 21:55:42] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 21:55:42] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 21:55:48] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 21:55:48] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 21:55:50] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:64663
+[2026-05-30 21:56:31] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:64663)
+[2026-05-30 21:57:34] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 21:57:34] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 21:57:34] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 21:57:34] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 21:57:39] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 21:57:39] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 21:57:39] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 21:57:39] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 21:57:44] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 21:57:44] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 21:57:44] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 21:57:44] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 21:57:44] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 21:57:44] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 21:57:44] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 21:57:44] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 21:57:44] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 21:57:44] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 21:57:53] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 21:57:53] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 21:57:56] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:58283
+[2026-05-30 22:04:45] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:58283)
+[2026-05-30 22:05:05] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 22:05:05] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 22:05:08] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:64738
+[2026-05-30 22:05:08] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:64738
+[2026-05-30 22:15:17] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 22:15:17] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 22:15:17] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 22:15:17] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 22:15:17] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-05-30 22:15:22] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:64738)
+[2026-05-30 22:15:22] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 22:15:22] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 22:15:22] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 22:15:22] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 22:18:15] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 22:18:15] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 22:18:15] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 22:18:15] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 22:18:15] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 22:18:15] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 22:18:15] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 22:18:15] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 22:18:15] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 22:18:15] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 22:18:50] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 22:18:50] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 22:18:54] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:53427
+[2026-05-30 22:22:17] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:53427)
+[2026-05-30 22:22:20] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 22:22:20] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 22:22:20] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 22:22:20] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 22:22:25] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 22:22:25] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 22:22:25] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 22:22:25] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-30 22:22:52] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-30 22:22:52] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-30 22:22:52] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-30 22:22:52] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-30 22:22:52] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-30 22:22:52] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-30 22:22:52] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-30 22:22:52] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-30 22:22:52] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-30 22:22:52] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-30 22:23:08] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 22:23:08] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 22:23:10] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:65346
+[2026-05-30 22:23:54] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:65346)
+[2026-05-30 22:25:17] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 22:25:17] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 22:25:19] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:60359
+[2026-05-30 22:25:19] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:60359
+[2026-05-30 22:26:13] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:60359)
+[2026-05-30 22:27:00] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 22:27:00] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 22:27:03] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:56718
+[2026-05-30 22:27:25] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:56718)
+[2026-05-30 22:27:48] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-30 22:27:48] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-30 22:27:51] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:65073
+[2026-05-30 22:30:29] [GENERAL] [SessionManager] UDP Kaydı silindi: arda (127.0.0.1:65073)
+[2026-05-30 23:02:06] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-05-30 23:02:06] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-05-30 23:02:06] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-05-30 23:02:06] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-05-30 23:02:11] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-05-30 23:02:11] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-05-30 23:02:11] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-05-30 23:02:11] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-05-31 03:19:53] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-05-31 03:19:53] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-05-31 03:19:54] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-05-31 03:19:56] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-05-31 03:19:57] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-05-31 03:19:57] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-05-31 03:19:57] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-05-31 03:19:57] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-05-31 03:19:57] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-05-31 03:19:57] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-05-31 03:20:53] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-05-31 03:20:53] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-05-31 03:20:57] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:64868

@@ -124,6 +124,9 @@ public static class MessageManager
                 case UdpMessageType.PickupRequest:
                     UdpGameHandler.HandlePickUpRequest(session, buffer, sequenceNumber);
                     break;
+                case UdpMessageType.ChangeSlotRequest:
+                    UdpGameHandler.HandleChangeSlotRequest(session, buffer, sequenceNumber);
+                    break;
                 default:
                     Console.WriteLine($"[UDP] Bilinmeyen paket: {messageType}");
                     break;

@@ -19,7 +19,7 @@ public struct PlayerShootPacket : IPacket
         }
 
         // Payload
-        buffer.WriteByte((byte)UdpMessageType.Shoot);
+        buffer.WriteVarInt((int)UdpMessageType.Shoot);
         buffer.WriteVarInt(OwnerID);
         buffer.WriteFloat(DirectionX);
         buffer.WriteFloat(DirectionY);

@@ -7,7 +7,7 @@ public static class CreateTeamHandler
 
         if (session.TeamID != 0)
         {
-            MessageCodeManager.Send(session, MessageCodeManager.Message.AlreadyİnTeam);
+            MessageCodeManager.Send(session, MessageCodeManager.Message.AlreadyInTeam);
             return;
         }
         if (session.Account == null) return;

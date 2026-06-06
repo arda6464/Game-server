@@ -69,6 +69,8 @@ public enum MessageType : short
     LeaveTeamResponse,
     SendTeamMessageRequest,
     SendTeamMessageResponse,
+    InvitePlayerTeamRequest,
+    InvitePlayerTeamResponse,
     InviteToTeamRequest,
     InviteToTeamResponse,
     #endregion

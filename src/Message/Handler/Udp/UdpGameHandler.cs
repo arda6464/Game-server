@@ -110,4 +110,27 @@ public static class UdpGameHandler
             session.SendUnreliableUDP(response.ToArray());
         }
     }
+    public static void  HandlePickUpRequest(Session session, ByteBuffer buffer, int seqNo)
+    {
+       int lootId = buffer.ReadVarInt();
+
+        if (session.PlayerData == null) return;
+
+        Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
+        if (battle == null) return;
+
+         battle.PickupStart(session.PlayerData.ID, lootId);
+        
+    }
+    public static void HandleChangeSlotRequest(Session session, ByteBuffer buffer, int seqNo)
+    {
+        int toSlot = buffer.ReadVarInt();
+
+        if (session.PlayerData == null) return;
+
+        Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
+        if (battle == null) return;
+
+        battle.ChangePlayerSlot(session.PlayerData.ID,  toSlot);
+    }
 }

@@ -54,8 +54,8 @@ public class WeaponData : GameData
 
 public enum LootItemType
 {
-   
-    Weapon = 1
+    Weapon = 1,
+    Ammo = 2
 }
 
 public class LootItem
@@ -64,7 +64,6 @@ public class LootItem
     public int DataId { get; set; } // LootData ID'si
     public LootItemType Type { get; set; }   // LootData ise Can, Ammo vb. olabilir, Weapon ise silah olarak değerlendirilecek
     public Vec3 Position { get; set; }
-    public bool IsTaken { get; set; } = false;
     public float SpawnTime { get; set; }
 }
 public class PickupData
@@ -72,4 +71,13 @@ public class PickupData
     public int PlayerId { get; set; }
     public int LootId { get; set; }
     public float PickupTime { get; set; }
+    public float FinishTime { get; set; }
+    public float RequiredTime { get; set; }
+}
+public class InventorySlot
+{
+    public int SlotId { get; set; }
+    public LootItemType Item { get; set; }
+    public int DataId { get; set; } =0;
+
 }
