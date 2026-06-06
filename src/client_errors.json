@@ -1,5 +1,44 @@
 [
   {
+    "Id": "563ab1a9",
+    "FirstSeen": "2026-06-06T04:09:45.9312727+03:00",
+    "LastSeen": "2026-06-06T04:09:45.9312731+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "LobbyPlayerListHandler.ApplyDropdownFilter () (at Assets/Scripts/Manager/Lobby/LobbyPlayerListHandler.cs:168)\nUnityEngine.Events.InvokableCall.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.Events.UnityEvent`1[T0].Invoke (T0 arg0) (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nTMPro.TMP_Dropdown.SetValue (System.Int32 value, System.Boolean sendCallback) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_Dropdown.cs:451)\nTMPro.TMP_Dropdown.set_value (System.Int32 value) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_Dropdown.cs:422)\nTMPro.TMP_Dropdown.OnSelectItem (UnityEngine.UI.Toggle toggle) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_Dropdown.cs:1306)\nTMPro.TMP_Dropdown+<>c__DisplayClass77_1.<Show>b__2 (System.Boolean x) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/TMP/TMP_Dropdown.cs:899)\nUnityEngine.Events.InvokableCall`1[T1].Invoke (T1 args0) (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.Events.UnityEvent`1[T0].Invoke (T0 arg0) (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.UI.Toggle.Set (System.Boolean value, System.Boolean sendCallback) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Toggle.cs:284)\nUnityEngine.UI.Toggle.set_isOn (System.Boolean value) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Toggle.cs:247)\nUnityEngine.UI.Toggle.InternalToggle () (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Toggle.cs:322)\nUnityEngine.UI.Toggle.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Toggle.cs:333)\nUnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:57)\nUnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:272)\nUnityEngine.EventSystems.EventSystem:Update() (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/EventSystem.cs:514)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      10
+    ]
+  },
+  {
+    "Id": "93e62555",
+    "FirstSeen": "2026-06-06T04:06:00.3845225+03:00",
+    "LastSeen": "2026-06-06T04:06:00.3845233+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "RadioBtnGroup.Select (RadioButton selected) (at Assets/Scripts/Manager/UI/RadioBtnGroup.cs:28)\nRadioButton.Click () (at Assets/Scripts/Manager/UI/RadioButton.cs:15)\nUnityEngine.Events.InvokableCall.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.Events.UnityEvent.Invoke () (at <31f3cd5c2a074982a9d5664e7709cac1>:0)\nUnityEngine.UI.Button.Press () (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:70)\nUnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/UI/Core/Button.cs:114)\nUnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:57)\nUnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/ExecuteEvents.cs:272)\nUnityEngine.EventSystems.EventSystem:Update() (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/EventSystem.cs:514)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      10
+    ]
+  },
+  {
+    "Id": "55a854a8",
+    "FirstSeen": "2026-06-06T04:05:29.6567804+03:00",
+    "LastSeen": "2026-06-06T04:05:29.6567809+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "RadioBtnGroup.OnEnable () (at Assets/Scripts/Manager/UI/RadioBtnGroup.cs:17)\nUnityEngine.GameObject:SetActive(Boolean)\nLobbyPlayerListHandler:OpenSocialSettings() (at Assets/Scripts/Manager/Lobby/LobbyPlayerListHandler.cs:112)\nUnityEngine.EventSystems.EventSystem:Update() (at ./Library/PackageCache/com.unity.ugui@bb329a87fcdc/Runtime/UGUI/EventSystem/EventSystem.cs:514)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      10
+    ]
+  },
+  {
     "Id": "233608fe",
     "FirstSeen": "2026-05-30T22:05:22.4121969+03:00",
     "LastSeen": "2026-05-30T22:05:22.4121979+03:00",

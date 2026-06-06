@@ -22,7 +22,7 @@ public static class ClubMemberChangeHandler
 
             if (targetAccount.Clubid != myAccount.Clubid)
             {
-                MessageCodeManager.Send(session, MessageCodeManager.Message.MemberNotİnClub);
+                MessageCodeManager.Send(session, MessageCodeManager.Message.MemberNotInClub);
                 return;
             }
 
@@ -47,7 +47,7 @@ public static class ClubMemberChangeHandler
                     HandleDemotion(session, targetAccount, myAccount);
                     break;
                 default:
-                    MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidTransaction);
+                    MessageCodeManager.Send(session, MessageCodeManager.Message.InvalidTransaction);
                     break;
             }
         }
@@ -81,7 +81,7 @@ public static class ClubMemberChangeHandler
             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubRoleDoOwner);
         }
         else
-            MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidTransaction);
+            MessageCodeManager.Send(session, MessageCodeManager.Message.InvalidTransaction);
     }
 
     private static void HandleDemotion(Session session, AccountManager.AccountData targetAccount, 

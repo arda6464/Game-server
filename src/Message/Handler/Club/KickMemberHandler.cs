@@ -36,7 +36,7 @@ public static class KickMemberHandler
         }
         else
         {
-            MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidTransaction);
+            MessageCodeManager.Send(session, MessageCodeManager.Message.InvalidTransaction);
         }
     }
 }

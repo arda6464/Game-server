@@ -5733,3 +5733,23 @@ bu ödül size :)
 [2026-05-31 03:20:53] [GENERAL] [NotificationSender] Bildirim gönderildi: test
 [2026-05-31 03:20:53] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
 [2026-05-31 03:20:57] [GENERAL] [SessionManager] UDP Kaydı yapıldı: arda -> 127.0.0.1:64868
+[2026-06-06 04:05:17] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-06 04:05:17] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-06 04:05:17] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-06 04:05:18] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-06 04:05:19] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-06 04:05:19] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-06 04:05:19] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-06-06 04:05:19] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-06 04:05:19] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-06-06 04:05:19] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-06 04:05:24] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-06 04:05:24] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-06 04:06:17] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 451615
+[2026-06-06 04:06:24] [GENERAL] [Lobby Manager] 451615'li lobby başarıyla silindi.
+[2026-06-06 04:06:27] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 391288
+[2026-06-06 04:06:39] [GENERAL] [ShopItemsHandler] 10 → 1 ürün, 0 global + 1 kişisel teklif gönderildi.
+[2026-06-06 04:06:40] [GENERAL] [BuyMarketItemHandler] arda (10) → Item 2000 başarısız: ItemNotFound
+[2026-06-06 04:06:40] [GENERAL] [BuyMarketItemHandler] arda (10) → Item 2000 başarısız: ItemNotFound
+[2026-06-06 04:06:47] [GENERAL] [BuyMarketItemHandler] arda (10) → Item 2000 başarısız: ItemNotFound
+[2026-06-06 04:07:08] [GENERAL] [GetUpdateNotesHandler] 10 → 2 güncelleme notu gönderildi.

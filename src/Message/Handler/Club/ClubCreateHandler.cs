@@ -41,7 +41,7 @@ public static class ClubCreateHandler
                 // Avatar ID validasyonu
                 if (Avatarıd < 1 || Avatarıd > 26)
                 {
-                    MessageCodeManager.Send(session, MessageCodeManager.Message.İnvalidAvatar);
+                    MessageCodeManager.Send(session, MessageCodeManager.Message.InvalidAvatar);
                     Logger.errorslog($"[ClubEditHandler] Geçersiz avatar ID: {Avatarıd}");
                     return;
                 }

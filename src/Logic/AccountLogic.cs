@@ -262,7 +262,7 @@ namespace Logic
             // İsim validasyonu
             if (string.IsNullOrWhiteSpace(newName) || newName.Length < 3 || newName.Length > 20)
             {
-                if (Session != null) MessageCodeManager.Send(Session, MessageCodeManager.Message.İnvalidName);
+                if (Session != null) MessageCodeManager.Send(Session, MessageCodeManager.Message.InvalidName);
                 return false;
             }
 
@@ -368,7 +368,7 @@ namespace Logic
             // Avatar ID validasyonu (1-10 arası)
             if (avatarId < 1 || avatarId > 10)
             {
-                if (Session != null) MessageCodeManager.Send(Session, MessageCodeManager.Message.İnvalidAvatar);
+                if (Session != null) MessageCodeManager.Send(Session, MessageCodeManager.Message.InvalidAvatar);
                 return false;
             }
 
