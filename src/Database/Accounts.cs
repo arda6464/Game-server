@@ -26,6 +26,10 @@ public static class AccountManager
         public DateTime PremiumEndTime { get; set; }
         public bool Banned { get; set; }
         public bool Muted { get; set; }
+        public bool LookingForTeam { get; set; }
+        public bool MuteTeamInvites { get; set; }
+        public DateTime MuteTeamInviteEndTime { get; set; }
+        public bool DoNotDisturb { get; set; } // rahatsız etme modu
         public DateTime MutedEndTime {get;set;}
         public string? Banreason { get; set; }
         public int Avatarid { get; set; }
@@ -106,7 +110,7 @@ public static class AccountManager
         Console.WriteLine($"[AccountManager] {AccountCache.Count()} hesap yüklendi.");
     }
 
-    private static void SaveAccountToDb(AccountData account, SqliteConnection connection)
+    private static void SaveAccountToDb(AccountData account, SqliteConnection connection, SqliteTransaction? transaction = null)
     {
         var upsertQuery = @"
             INSERT INTO Accounts (ID, Username, Data) 
@@ -118,6 +122,7 @@ public static class AccountManager
         using (var command = connection.CreateCommand())
         {
             command.CommandText = upsertQuery;
+            command.Transaction = transaction;
             command.Parameters.AddWithValue("@ID", account.ID);
             command.Parameters.AddWithValue("@Username", account.Username ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@Data", JsonConvert.SerializeObject(account));
@@ -132,11 +137,19 @@ public static class AccountManager
             connection.Open();
             using (var transaction = connection.BeginTransaction())
             {
-                foreach (var account in AccountCache.GetAllAccounts())
+                try
                 {
-                    SaveAccountToDb(account, connection);
+                    foreach (var account in AccountCache.GetAllAccounts())
+                    {
+                        SaveAccountToDb(account, connection, transaction);
+                    }
+                    transaction.Commit();
                 }
-                transaction.Commit();
+                catch
+                {
+                    try { transaction.Rollback(); } catch { }
+                    throw;
+                }
             }
         }
     }

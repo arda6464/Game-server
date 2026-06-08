@@ -18,7 +18,7 @@ public static class JoinedClubHandler
         var club = ClubManager.LoadClub(clubId);
         if (club == null) return;
 
-        if (club.Members.Count >= 100)
+        if (club.Members.Count >= club.MaxMembers)
         {
             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubFull);
             return;
@@ -85,4 +85,3 @@ public static class JoinedClubHandler
 
     }
 }
-

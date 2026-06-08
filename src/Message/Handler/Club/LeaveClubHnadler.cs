@@ -30,5 +30,7 @@ public static class LeaveClubHandler
         session.Send(new LeaveClubResponsePacket { Kicked = result });
         account.Clubid = 0;
         account.ClubName = null;
+        account.clubRole = ClubRole.None;
+        AccountManager.SaveAccounts();
     }
 }

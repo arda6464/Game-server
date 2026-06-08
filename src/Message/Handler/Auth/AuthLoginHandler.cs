@@ -11,7 +11,7 @@ public static class AuthLoginHandler
         using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             buffer.WriteBytes(data, true);
-            
+
             // 1. İsteği Oku
             var request = new AuthLoginRequestPacket();
             request.Deserialize(buffer);
@@ -93,11 +93,12 @@ public static class AuthLoginHandler
             AuthLoginResponsePacket response = new AuthLoginResponsePacket
             {
                 Account = account,
-                 ConnectionToken = session.ConnectionToken,
+                ConnectionToken = session.ConnectionToken,
                 Club = ClubManager.LoadClub(account.Clubid),
                 RandomClubs = ClubManager.RandomList(10),
                 NextQuestRefreshTime = QuestManager.GetNextQuestRefreshTime(),
-                NextSeasonalQuestRefreshTime = QuestManager.GetNextSeasonalQuestRefreshTime()
+                NextSeasonalQuestRefreshTime = QuestManager.GetNextSeasonalQuestRefreshTime(),
+                onlinePlayerDatas = OnlinePlayerManager.BuildSnapshotForViewer(account)
             };
 
             session.Send(response);

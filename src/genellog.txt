@@ -5753,3 +5753,156 @@ bu ödül size :)
 [2026-06-06 04:06:40] [GENERAL] [BuyMarketItemHandler] arda (10) → Item 2000 başarısız: ItemNotFound
 [2026-06-06 04:06:47] [GENERAL] [BuyMarketItemHandler] arda (10) → Item 2000 başarısız: ItemNotFound
 [2026-06-06 04:07:08] [GENERAL] [GetUpdateNotesHandler] 10 → 2 güncelleme notu gönderildi.
+[2026-06-06 04:10:11] [GENERAL] [Lobby Manager] 391288'li lobby başarıyla silindi.
+[2026-06-06 04:10:26] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-06 04:10:26] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-06 04:13:30] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-06-06 04:13:30] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-06 04:13:30] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-06 04:13:30] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-06 04:13:35] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-06 04:13:35] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-06 04:13:35] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-06 04:13:35] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-06-06 19:30:17] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-06 19:30:17] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-06 19:30:17] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-06 19:30:17] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-06 19:30:17] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-06 19:30:17] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-06 19:30:17] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-06-06 19:30:17] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-06 19:30:17] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-06-06 19:30:17] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-06 19:30:33] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-06 19:30:33] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-06 19:31:21] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-06 19:31:21] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-06 19:31:40] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-06-06 19:31:40] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-06 19:31:40] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-06 19:31:40] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-06 19:31:40] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-06-06 19:31:45] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-06 19:31:45] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-06 19:31:45] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-06 19:31:45] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-06-06 19:40:07] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-06 19:40:07] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-06 19:40:07] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-06 19:40:07] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-06 19:40:07] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-06 19:40:07] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-06 19:40:07] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-06-06 19:40:07] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-06 19:40:07] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-06-06 19:40:07] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-06 19:40:58] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-06 19:40:58] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-06 19:43:12] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-06 19:43:12] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-06 19:56:21] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-06-06 19:56:21] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-06 19:56:21] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-06 19:56:21] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-06 19:56:26] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-06 19:56:26] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-06 19:56:26] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-06 19:56:26] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-06-07 13:59:20] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-07 13:59:20] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-07 13:59:20] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-07 13:59:22] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-07 13:59:23] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-07 13:59:23] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-07 13:59:23] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-06-07 13:59:23] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-07 13:59:23] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-06-07 13:59:23] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-07 13:59:27] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 13:59:27] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 14:01:38] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 14:01:38] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 14:02:55] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 14:02:55] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 14:17:20] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 14:17:20] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 14:21:34] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 14:21:34] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 14:27:20] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 14:27:20] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 14:29:50] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-06-07 14:29:50] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-07 14:29:50] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-07 14:29:50] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-07 14:29:55] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-07 14:29:55] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-07 14:29:55] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-07 14:29:55] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-06-07 14:30:22] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-07 14:30:22] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-07 14:30:22] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-07 14:30:22] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-07 14:30:22] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-07 14:30:22] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-07 14:30:22] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-06-07 14:30:22] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-07 14:30:22] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-06-07 14:30:22] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-07 14:30:26] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 14:30:26] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 14:32:37] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 14:32:37] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 14:33:24] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 14:33:24] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 14:33:58] [GENERAL] [ShopItemsHandler] 10 → 1 ürün, 0 global + 1 kişisel teklif gönderildi.
+[2026-06-07 14:34:00] [GENERAL] [BuyMarketItemHandler] arda (10) → Item 2000 başarısız: ItemNotFound
+[2026-06-07 14:40:31] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-06-07 14:40:31] [GENERAL] [NotificationSender] Bildirim gönderildi: arda kulübünden atıldın.
+[2026-06-07 15:47:25] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-06-07 15:47:25] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-07 15:47:25] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-07 15:47:25] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-07 15:47:25] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-06-07 15:47:30] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-07 15:47:30] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-07 15:47:30] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-07 15:47:30] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-06-07 16:20:12] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-07 16:20:12] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-07 16:20:12] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-07 16:20:13] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-07 16:20:13] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-07 16:20:13] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-07 16:20:13] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-06-07 16:20:13] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-07 16:20:13] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-06-07 16:20:13] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-07 16:21:31] [GENERAL] [NotificationSender] Bildirim gönderildi: Artık tüm işlemleriniz sadece sayısal ID üzerinden yapılmaktadır.
+[2026-06-07 16:21:38] [GENERAL] arda64best -> arda (İsim değiştirildi)
+[2026-06-07 20:53:36] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-06-07 20:53:36] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-07 20:53:37] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-07 20:53:37] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-07 20:53:42] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-07 20:53:42] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-07 20:53:42] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-07 20:53:42] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!
+[2026-06-07 20:54:24] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-07 20:54:24] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-07 20:54:24] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-07 20:54:25] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-07 20:54:25] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-07 20:54:25] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-07 20:54:25] [GENERAL] [UDP] Sunucu dinleniyor: 5000
+[2026-06-07 20:54:25] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-07 20:54:25] [GENERAL] [MULTIPLEXER] Tek port üzerinden dinleniyor: 5000
+[2026-06-07 20:54:25] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-07 20:55:00] [GENERAL] [Program] Veriler kaydediliyor...
+[2026-06-07 20:55:00] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-07 20:55:00] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-07 20:55:00] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-07 20:55:05] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-07 20:55:05] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-07 20:55:05] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-07 20:55:05] [GENERAL] [Program] Veriler kaydedildi, program kapatılıyor!

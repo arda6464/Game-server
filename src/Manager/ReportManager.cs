@@ -124,7 +124,7 @@ public static class ReportManager
 
     private static void CreateClubReport(int messageid, AccountManager.AccountData account)
     {
-        if (account.Clubid == -1 || messageid == 0) return;
+        if (account.Clubid <= 0 || messageid == 0) return;
         Club club = ClubCache.Load(account.Clubid);
         if (club == null) return;
 
@@ -169,7 +169,7 @@ public static class ReportManager
 
     private static void CreateTeamReport(Session session, int messageid, AccountManager.AccountData account)
     {
-        if (session.TeamID == -1 || messageid == 0) return;
+        if (session.TeamID <= 0 || messageid == 0) return;
         Lobby lobby = LobbyManager.GetLobby(session.TeamID);
         if (lobby == null) return;
 

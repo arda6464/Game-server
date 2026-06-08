@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Logic;
 
-[PacketHandler(MessageType.AuthLoginRequest)]
+
 public class AuthLoginRequestPacket : IPacket
 {
     public string ClientVersion { get; set; }
@@ -34,6 +34,9 @@ public class AuthLoginResponsePacket : IPacket
     public List<Club>? RandomClubs { get; set; }
     public long NextQuestRefreshTime { get; set; }
     public long NextSeasonalQuestRefreshTime { get; set; }
+    public List<OnlinePlayerData>? onlinePlayerDatas { get; set; }
+
+
 
     public void Serialize(ByteBuffer buffer)
     {
@@ -53,7 +56,29 @@ public class AuthLoginResponsePacket : IPacket
         buffer.WriteVarInt(Account.Gems);
         buffer.WriteVarInt(Account.Coins);
         buffer.WriteBool(Account.Muted);
-        if(Account.Muted)
+
+
+        #region  Online Players
+
+        buffer.WriteVarInt(onlinePlayerDatas.Count);
+        foreach (var opd in onlinePlayerDatas)
+        {
+            buffer.WriteVarInt(opd.ID);
+            buffer.WriteVarString(opd.Username);
+            buffer.WriteVarInt(opd.AvatarId);
+            buffer.WriteVarInt(opd.NameColorID);
+            buffer.WriteVarInt(opd.Trophy);
+            buffer.WriteBool(opd.LookingForTeam);
+            buffer.WriteBool(opd.DisturbMode);
+            buffer.WriteBool(opd.IsFriend);
+        }
+
+
+        #endregion
+
+
+
+        if (Account.Muted)
         {
             int second = (int)Math.Max(0, (Account.MutedEndTime - DateTime.UtcNow).TotalSeconds);
             buffer.WriteVarInt(second);
@@ -76,6 +101,26 @@ public class AuthLoginResponsePacket : IPacket
         buffer.WriteByte(settingFlags);
 
         #endregion
+
+
+
+
+
+        #region Social Settings
+
+        byte SocialsettingFlags = 0;
+        if (Account.MuteTeamInvites) SocialsettingFlags |= 1 << 0;
+        if (Account.LookingForTeam) SocialsettingFlags |= 1 << 1;
+        if (Account.DoNotDisturb) SocialsettingFlags |= 1 << 2;
+
+        int remaning = (int)(Account.MuteTeamInviteEndTime.ToUniversalTime() - DateTime.UtcNow).TotalSeconds;
+        buffer.WriteByte(SocialsettingFlags);
+        buffer.WriteVarInt(remaning);
+        #endregion
+
+
+
+
 
         // --- Club Data ---
         #region  Club
@@ -123,17 +168,17 @@ public class AuthLoginResponsePacket : IPacket
                             buffer.WriteVarInt(message.TargetID);
                             break;
                         case ClubMessageFlags.Request:
-                        buffer.WriteVarInt(message.MessageId);
-                        buffer.WriteVarInt(message.ActorID);
-                        buffer.WriteVarString(message.ActorName);
-                        buffer.WriteVarString(message.Content);
-                        buffer.WriteVarInt(message.SenderAvatarID);
-                        buffer.WriteVarInt((int)message.RequestState);
-                        break;
+                            buffer.WriteVarInt(message.MessageId);
+                            buffer.WriteVarInt(message.ActorID);
+                            buffer.WriteVarString(message.ActorName);
+                            buffer.WriteVarString(message.Content);
+                            buffer.WriteVarInt(message.SenderAvatarID);
+                            buffer.WriteVarInt((int)message.RequestState);
+                            break;
                     }
                 }
             }
-         
+
         }
 
         foreach (var member in (Club?.Members ?? new List<ClubMember>()))
@@ -205,45 +250,45 @@ public class AuthLoginResponsePacket : IPacket
                 buffer.WriteBool(quest.IsCompleted);
             }
             #endregion
-            
-            
+
+
             // --- ULTRA-OPTIMIZED DYNAMIC CONFIG (CİMRİ MODE) ---
             // Sadece gerekli veriler (ID, Değer, Kalan Saniye) gönderilir.
-            
-            var dynamicConfig = DynamicConfigManager.Config;
-            
-            // 1. Aktif Etkinlikler
-           /* buffer.WriteVarInt(dynamicConfig.ActiveEvents.Count);
-            foreach ( var evt in dynamicConfig.ActiveEvents)
-            {
-                buffer.WriteVarInt((int)evt.Type);    // type                
-                // Kalan saniye (Negatif olmamalı)
-                
-                int remainingSeconds = (int)Math.Max(0, (evt.EndTime - DateTime.UtcNow).TotalSeconds);
-                buffer.WriteVarInt(remainingSeconds);
-                if(evt.Type ==  EventType.XPMultiplier ||evt.Type ==  EventType.DoubleTrophy) // 2. bir değişkene ihtiyac varmı?!
-                {
-                    buffer.WriteVarInt(evt.Value);
 
-                }
-            }*/
-            
+            var dynamicConfig = DynamicConfigManager.Config;
+
+            // 1. Aktif Etkinlikler
+            /* buffer.WriteVarInt(dynamicConfig.ActiveEvents.Count);
+             foreach ( var evt in dynamicConfig.ActiveEvents)
+             {
+                 buffer.WriteVarInt((int)evt.Type);    // type                
+                 // Kalan saniye (Negatif olmamalı)
+
+                 int remainingSeconds = (int)Math.Max(0, (evt.EndTime - DateTime.UtcNow).TotalSeconds);
+                 buffer.WriteVarInt(remainingSeconds);
+                 if(evt.Type ==  EventType.XPMultiplier ||evt.Type ==  EventType.DoubleTrophy) // 2. bir değişkene ihtiyac varmı?!
+                 {
+                     buffer.WriteVarInt(evt.Value);
+
+                 }
+             }*/
+
             // 2. Sistem Flagleri (Toggles)
             byte systemFlags = 0;
             if (dynamicConfig.IsMatchmakingEnabled) systemFlags |= 1 << 0;
             if (dynamicConfig.IsShopEnabled) systemFlags |= 1 << 1;
             if (dynamicConfig.IsRankSystemEnabled) systemFlags |= 1 << 2;
-            
+
             buffer.WriteByte(systemFlags); // 1 byte
-            
+
             // 3. Custom Errors (Kalıcı Teknik Uyarılar)
             buffer.WriteVarInt(dynamicConfig.CustomErrors.Count);
-            foreach(var ce in dynamicConfig.CustomErrors)
+            foreach (var ce in dynamicConfig.CustomErrors)
             {
                 buffer.WriteVarString(ce.Title);
                 buffer.WriteVarString(ce.Message);
             }
-    
+
         }
     }
 

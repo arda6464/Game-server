@@ -56,11 +56,19 @@ public static class BanManager
                     connection.Open();
                     using (var transaction = connection.BeginTransaction())
                     {
-                        foreach (var ban in activeBans.Values)
+                        try
                         {
-                            SaveBanToDb(ban, connection);
+                            foreach (var ban in activeBans.Values)
+                            {
+                                SaveBanToDb(ban, connection, transaction);
+                            }
+                            transaction.Commit();
                         }
-                        transaction.Commit();
+                        catch
+                        {
+                            try { transaction.Rollback(); } catch { }
+                            throw;
+                        }
                     }
                 }
             }
@@ -110,7 +118,7 @@ public static class BanManager
         }
     }
 
-    private static void SaveBanToDb(BanData ban, SqliteConnection connection)
+    private static void SaveBanToDb(BanData ban, SqliteConnection connection, SqliteTransaction? transaction = null)
     {
         var upsertQuery = @"
             INSERT INTO Bans (AccountId, AccountName, Reason, BannedBy, BanDate, BanFinishDate, Perma, IP, DeviceId, Active, Notes) 
@@ -130,6 +138,7 @@ public static class BanManager
         using (var command = connection.CreateCommand())
         {
             command.CommandText = upsertQuery;
+            command.Transaction = transaction;
             command.Parameters.AddWithValue("@AccountId", ban.AccountId);
             command.Parameters.AddWithValue("@AccountName", ban.AccountName ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@Reason", ban.Reason ?? (object)DBNull.Value);

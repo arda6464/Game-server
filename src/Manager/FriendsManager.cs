@@ -7,4 +7,5 @@ public class FriendInfo
     public int NameColorID { get; set; }
     public bool IsBestFriend { get; set; }
     public int Trophy { get; set; }
+    public bool IsSearchTeam { get; set; }
 }

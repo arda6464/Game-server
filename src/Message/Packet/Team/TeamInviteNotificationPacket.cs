@@ -1,5 +1,6 @@
 public class TeamInviteNotificationPacket : IPacket
 {
+    public int TeamID {get;set;}
     public string SenderName { get; set; }
     public int SenderId { get; set; }
     public int SenderAvatarId { get; set; }
@@ -10,6 +11,8 @@ public class TeamInviteNotificationPacket : IPacket
     public void Serialize(ByteBuffer buffer)
     {
         buffer.WriteVarInt((int)MessageType.InviteToTeamRequest);
+
+        buffer.WriteVarInt(TeamID);
         buffer.WriteVarString(SenderName);
         buffer.WriteVarInt(SenderId);
         buffer.WriteVarInt(SenderAvatarId);

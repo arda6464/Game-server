@@ -9,7 +9,8 @@ public static class PlayerSetPresence
     public enum PresenceState : byte
     {
         Offline,
-        Online
+        Online,
+        
     }
     public static void Handle(Session sessions, PresenceState presence)
     {
@@ -97,7 +98,7 @@ public static class PlayerSetPresence
             }
         }
         
-        if(acccount.Clubid != -1)
+        if (acccount.Clubid > 0)
         {
             ByteBuffer bufer = ByteBufferPool.Get();
             bufer.WriteVarInt((int)MessageType.Presence);

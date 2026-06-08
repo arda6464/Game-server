@@ -1,7 +1,7 @@
 {
   "Port": 5000,
   "QuestRefeshHour": 0,
-  "SeasonQuestRefeshTime": "2026-06-01T00:00:00+03:00",
+  "SeasonQuestRefeshTime": "2026-06-08T00:00:00+03:00",
   "anti-ddos": false,
   "BotToken": "MTI1NDUzNzE0ODQ5MzcyNTc3Ng.GEQ__j.GehC9FIriZTN7xJFKwoqBpPCnkAcJhU3Wh71BQ",
   "ChannelId": 0,

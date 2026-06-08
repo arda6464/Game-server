@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-[PacketHandler(MessageType.JoinTeamRequest)]
+
 public class JoinTeamRequestPacket : IPacket
 {
     public int TeamId { get; set; }

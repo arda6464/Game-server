@@ -106,6 +106,11 @@ public class Club
 
         lock (SyncLock)
         {
+            if (Members.Count >= MaxMembers)
+            {
+                return false;
+            }
+
             if (Members.Any(m => m.ID == newMemberId))
             {
                 Console.WriteLine("bu oyuncu bu clupte");
@@ -126,6 +131,7 @@ public class Club
         newAccount.ClubName = Name;
 
         ClubManager.Save();
+        AccountManager.SaveAccounts();
         return true;
     }
     #endregion
@@ -182,6 +188,7 @@ public class Club
             Members.Remove(target);
         }
         ClubManager.Save();
+        AccountManager.SaveAccounts();
         Logger.genellog("Oyuncu clubten kicklendi");
         if (Members.Count == 0)
         {
@@ -217,6 +224,7 @@ public class Club
         {
             acccount.Clubid = 0;
             acccount.ClubName = null;
+            acccount.clubRole = ClubRole.None;
 
             Notfication notfication = new Notfication
             {
@@ -262,6 +270,12 @@ public class Club
 
         target.Role = newRole;
         ClubManager.Save();
+        var targetAccount = AccountCache.Load(targetMemberId);
+        if (targetAccount != null)
+        {
+            targetAccount.clubRole = newRole;
+            AccountManager.SaveAccounts();
+        }
         return true;
     }
     #endregion

@@ -1576,3 +1576,27 @@ Object name: 'System.Net.HttpListener'.
 [2026-05-31 03:21:22] [ERROR] [UDP] ProcessData hatası (127.0.0.1:64868): Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
 [2026-05-31 03:21:26] [ERROR] [UDP] ProcessData hatası (127.0.0.1:64868): Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
 [2026-05-31 03:21:36] [ERROR] [UDP] ProcessData hatası (127.0.0.1:64868): Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+[2026-06-06 19:31:31] [ERROR] [MessageManager] Handler hatası (SocialSettingsHasChanged): Unable to read beyond the end of the stream.
+   at System.IO.BinaryReader.InternalRead(Span`1 buffer)
+   at System.IO.BinaryReader.ReadInt64()
+   at ByteBuffer.ReadLong() in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 223
+   at SocialSettingsHasChangedPacket.Deserialize(ByteBuffer buffer) in C:\Project\Game-server\src\Message\Packet\Social\SocialSettingsHasChangedPacket.cs:line 22
+   at SocialSettingsHasChanged.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Social\PlayerSettingsHasChanged.cs:line 13
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[2026-06-07 16:20:18] [ERROR] Account not found: 0
+[2026-06-07 16:20:51] [ERROR] Account not found: 0
+[2026-06-07 16:21:08] [ERROR] Account not found: 0
+[2026-06-07 16:21:31] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-06-07 16:21:50] [ERROR] [MessageManager] Handler hatası (SocialSettingsHasChanged): Object reference not set to an instance of an object.
+   at SocialSettingsHasChanged.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Social\PlayerSettingsHasChanged.cs:line 52
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[2026-06-07 16:24:30] [ERROR] [MessageManager] Handler hatası (SocialSettingsHasChanged): Object reference not set to an instance of an object.
+   at SocialSettingsHasChanged.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Social\PlayerSettingsHasChanged.cs:line 52
+   at InvokeStub_SocialSettingsHasChanged.Handle(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[2026-06-07 16:24:34] [ERROR] [MessageManager] Handler hatası (SocialSettingsHasChanged): Object reference not set to an instance of an object.
+   at SocialSettingsHasChanged.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Social\PlayerSettingsHasChanged.cs:line 52
+   at InvokeStub_SocialSettingsHasChanged.Handle(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)

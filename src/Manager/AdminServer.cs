@@ -1508,6 +1508,7 @@ public class AdminServer
                                 {
                                     memberAccount.Clubid = 0;
                                     memberAccount.ClubName = null;
+                                    memberAccount.clubRole = ClubRole.None;
                                     AccountManager.SaveAccounts();
 
                                     var memberSession = SessionManager.GetSession(memberId);
@@ -1689,10 +1690,20 @@ public class AdminServer
         string path = context.Request.Path;
         if (path == "/") path = "/index.html";
 
-        string filePath = Path.Combine(_adminPath, path.TrimStart('/'));
+        string rootPath = Path.GetFullPath(_adminPath);
+        string filePath = Path.GetFullPath(Path.Combine(_adminPath, path.TrimStart('/')));
         SimpleHttpResponse response = context.Response;
 
         Console.WriteLine($"[AdminServer] {context.Request.Method} {path} -> {filePath}");
+
+        if (!filePath.StartsWith(rootPath + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase) &&
+            !string.Equals(filePath, rootPath, StringComparison.OrdinalIgnoreCase))
+        {
+            response.StatusCode = 403;
+            byte[] errorBuffer = Encoding.UTF8.GetBytes("403 - Forbidden");
+            response.OutputStream.Write(errorBuffer, 0, errorBuffer.Length);
+            return;
+        }
 
         if (File.Exists(filePath))
         {

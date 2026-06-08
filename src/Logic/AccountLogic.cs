@@ -222,7 +222,7 @@ namespace Logic
             Console.WriteLine($"[AccountLogic] Name Color değiştirildi: {colorId} ({Data.Username})");
 
             // Kulüp verisini güncelle
-            if (Data.Clubid != -1)
+            if (Data.Clubid > 0)
             {
                 var club = ClubManager.LoadClub(Data.Clubid);
                 club?.MemberDataUpdate(Data.ID);
@@ -293,7 +293,7 @@ namespace Logic
             Logger.genellog($"{oldName} -> {newName} (İsim değiştirildi)");
 
             // Kulüp verisini güncelle
-            if (Data.Clubid != -1)
+            if (Data.Clubid > 0)
             {
                 var club = ClubManager.LoadClub(Data.Clubid);
                 club?.MemberDataUpdate(Data.ID);
@@ -376,7 +376,7 @@ namespace Logic
             Console.WriteLine($"[AccountLogic] Avatar değiştirildi: {avatarId} ({Data.Username})");
 
             // Kulüp verisini güncelle
-            if (Data.Clubid != -1)
+            if (Data.Clubid > 0)
             {
                 var club = ClubManager.LoadClub(Data.Clubid);
                 club?.MemberDataUpdate(Data.ID);

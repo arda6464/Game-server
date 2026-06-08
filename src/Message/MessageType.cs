@@ -45,6 +45,18 @@ public enum MessageType : short
     ShowProfileResponse,
     #endregion
 
+
+    #region  Social
+    SocialSettingsHasChanged,
+    SocialSettingsHasChangedResponse,
+    OnlinePlayerStateChanged,
+
+    #endregion 
+
+
+
+
+
     #region  Friends
     SendFriendRequest,
     AcceptFriendRequest,

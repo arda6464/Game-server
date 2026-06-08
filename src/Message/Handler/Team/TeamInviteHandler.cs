@@ -53,6 +53,7 @@ public static class TeamInviteHandler
 
                 var notificationPacket = new TeamInviteNotificationPacket
                 {
+                     TeamID = lobby.ID,
                     SenderName = acccount.Username,
                     SenderId = acccount.ID,
                     SenderAvatarId = acccount.Avatarid,
@@ -101,9 +102,9 @@ public static class TeamInviteHandler
             }
             if (lobby.RequestedPlayerIds.Contains(session.Account.ID))
             {
-                var joinPacket = new JoinTeamRequestPacket { TeamId = teamid };
+                
                 ByteBuffer fakeBuffer = ByteBufferPool.Get();
-                fakeBuffer.WriteVarInt(joinPacket.TeamId);
+                fakeBuffer.WriteVarInt(teamid);
                 JoinTeamHandler.Handle(session, fakeBuffer.ToArray());
                 fakeBuffer.Dispose();
                 lock (lobby.SyncLock)

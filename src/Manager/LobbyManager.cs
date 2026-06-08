@@ -48,7 +48,7 @@ public class Lobby
     public bool IsInGame { get; set; }
     public int MessageIdCounter { get; set; } = 1;
     public string Link {get;set;}
-    public bool IsSearchTeam { get; set; } = false; // Takım arama modunda mı?
+    
 
 
     public List<AccountManager.AccountData> Players { get; set; } = new();

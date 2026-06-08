@@ -9,7 +9,7 @@ using System.Collections.Concurrent;
 public static class ClubManager
 {
     public static ConcurrentDictionary<int, Club> Clubs = new ConcurrentDictionary<int, Club>();
-    private static int lastClubId = 1;
+    private static int lastClubId = 0;
 
     #region Load/Save
     public static void Allclubload()
@@ -47,7 +47,7 @@ public static class ClubManager
         Console.WriteLine($"[ClubManager] {Clubs.Count} kulüp yüklendi.");
     }
 
-    private static void SaveClubToDb(Club club, SqliteConnection connection)
+    private static void SaveClubToDb(Club club, SqliteConnection connection, SqliteTransaction? transaction = null)
     {
         var upsertQuery = @"
             INSERT INTO Clubs (ID, Name, Data) 
@@ -65,6 +65,7 @@ public static class ClubManager
             }
 
             command.CommandText = upsertQuery;
+            command.Transaction = transaction;
             command.Parameters.AddWithValue("@ID", club.ID);
             command.Parameters.AddWithValue("@Name", club.Name ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@Data", jsonData);
@@ -94,19 +95,27 @@ public static class ClubManager
             connection.Open();
             using (var transaction = connection.BeginTransaction())
             {
-                foreach (var club in Clubs.Values)
+                try
                 {
-                    SaveClubToDb(club, connection);
-                }
-
-                foreach (var cachedClub in ClubCache.GetCachedClubs())
-                {
-                    if (!Clubs.ContainsKey(cachedClub.Key))
+                    foreach (var club in Clubs.Values)
                     {
-                        SaveClubToDb(cachedClub.Value, connection);
+                        SaveClubToDb(club, connection, transaction);
                     }
+
+                    foreach (var cachedClub in ClubCache.GetCachedClubs())
+                    {
+                        if (!Clubs.ContainsKey(cachedClub.Key))
+                        {
+                            SaveClubToDb(cachedClub.Value, connection, transaction);
+                        }
+                    }
+                    transaction.Commit();
                 }
-                transaction.Commit();
+                catch
+                {
+                    try { transaction.Rollback(); } catch { }
+                    throw;
+                }
             }
         }
     }
@@ -199,10 +208,12 @@ public static class ClubManager
         foreach (var member in club.Members)
         {
             var acc = AccountCache.Load(member.ID);
+            if (acc == null) continue;
             acc.Clubid = 0;
             acc.ClubName = null;
             acc.clubRole = ClubRole.None;
         }
+        AccountManager.SaveAccounts();
         Clubs.TryRemove(clubId, out _);
         ClubCache.GetCachedClubs().TryRemove(clubId, out _);
 
