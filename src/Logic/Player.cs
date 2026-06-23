@@ -29,9 +29,17 @@ public class Player
     public uint LastProcessedTick { get; set; }
     public float Speed { get; set; } = 5.0f; // Varsayılan hız
 
+    public Gun ActiveGun { get; set; }
+
     public float Rotation { get; set; }
     public int Health { get; set; } = 100;
     public bool IsAlive { get; set; } = true;
+    public int Shield { get; set; } = 0;
+
+
+
+    public float AimStarted { get; set; } = 0;
+    public Vec3 AimDirection { get; set; }
 
     // Optimizasyon için
     public Vec3 LastSentPosition { get; set; }
@@ -50,4 +58,11 @@ public class Player
     public int WeaponId { get; set; }
     public int BattleId { get; set; }
     public DietSphere? Collider { get; set; }
+
+    // Status
+
+    public int OnDamage { get; set; } = 0;
+    public int OnHit { get; set; } = 0;
+    public int Kill { get; set; } = 0;
+
 }

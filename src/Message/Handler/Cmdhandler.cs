@@ -97,6 +97,14 @@ public class Cmdhandler
                         AccountManager.SaveAccounts();
                         Environment.Exit(0);
                         break;
+                    case "matchmaking":
+                    Console.Write("kaça yükseltecez: ");
+                    string? sayı = Console.ReadLine();
+                    int sayiint = Convert.ToInt32(sayı);
+                    MatchMaking.PlayersPerMatch = sayiint;
+                    Logger.genellog($"maç başı kişi { MatchMaking.PlayersPerMatch} oldu");
+                    break;
+
                     default:
                         Console.WriteLine("Komut bulunamadı. /help yazın.");
                         break;

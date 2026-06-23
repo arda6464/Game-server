@@ -10,16 +10,15 @@ public class GameServer
 
     public void Start(int udpPort)
     {
-        // UDP Sunucusunu başlat (Dış porttan direkt dinle)
         try
         {
             UdpServer = new UdpServer(udpPort);
             UdpServer.Start();
-            Logger.genellog($"[UDP] Sunucu dinleniyor: {udpPort}");
+            Logger.genellog($"[UDP] Server listening on {udpPort}");
         }
         catch (Exception ex)
         {
-            Logger.errorslog($"[UDP] Başlatma hatası: {ex.Message}");
+            Logger.errorslog($"[UDP] Startup error: {ex.Message}");
         }
     }
 
@@ -28,17 +27,21 @@ public class GameServer
         try
         {
             string clientIP = GetClientIP(client);
-            Console.WriteLine($"Yeni oyun client'ı bağlandı! IP: {clientIP}");
+            Logger.genellog($"[TCP] Game client connected: {clientIP}");
 
             Session session = new Session(client, initialData);
-            Thread clientThread = new Thread(session.Start);
+            Thread clientThread = new Thread(session.Start)
+            {
+                IsBackground = true
+            };
             clientThread.Start();
         }
         catch (Exception ex)
         {
-            Logger.errorslog($"HandleConnection hatası: {ex.Message}");
+            Logger.errorslog($"HandleConnection error: {ex.Message}");
         }
     }
+
     private string GetClientIP(TcpClient client)
     {
         try
@@ -50,43 +53,39 @@ public class GameServer
         }
         catch (Exception ex)
         {
-            Logger.errorslog($"IP alma hatası: {ex.Message}");
+            Logger.errorslog($"IP lookup error: {ex.Message}");
         }
-        return "Bilinmeyen IP";
-    }
 
+        return "Unknown IP";
+    }
 
     public void Stop()
     {
         _isRunning = false;
-        Logger.genellog("[SERVER] Shutdown başlatılıyor...");
+        Logger.bootlog("[SERVER] Shutdown starting...");
 
         try
         {
-            // Tüm bağlantıları kapat
-
             foreach (var session in SessionManager.GetSessions())
             {
                 try
                 {
                     session.Value.Close();
                 }
-                catch { }
+                catch
+                {
+                }
             }
-
 
             ClubCache.Stop();
             AccountCache.Stop();
 
-            // TcpListener'ı kapat
             _listener?.Stop();
             UdpServer?.Stop();
-
-
         }
         catch (Exception ex)
         {
-            Logger.errorslog($"[SERVER] Shutdown hatası: {ex.Message}");
+            Logger.errorslog($"[SERVER] Shutdown error: {ex.Message}");
         }
     }
 }

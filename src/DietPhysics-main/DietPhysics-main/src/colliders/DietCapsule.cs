@@ -8,9 +8,16 @@ namespace DietPhysics
         private float height;
         private Vec3 segmentStart;
         private Vec3 segmentEnd;
+        public DietObjectType Type { get; private set; }
+        public int TypeData { get; private set; }
         public Vec3 Axis => segmentEnd - segmentStart;
-        public DietCapsule(Vec3 pos, Vec3 center, float radius, float height)
+        public DietCapsule(Vec3 pos, Vec3 center, float radius, float height, DietObjectType type, int typedata)
         {
+
+         this.Type = type;
+         this.TypeData = typedata;
+
+
             this.position = pos;
             this.center = center;
             this.radius = radius;
@@ -25,6 +32,9 @@ namespace DietPhysics
             segmentStart = capsuleWorldCenter - halfHeight; // (0,0.5,3)
             segmentEnd = capsuleWorldCenter + halfHeight; // (0,1.5,3)
 
+        }
+        public DietCapsule(Vec3 pos, Vec3 center, float radius, float height) : this(pos, center, radius, height, DietObjectType.None, 0)
+        {
         }
         public Vec3 GetPosition()
         {

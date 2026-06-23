@@ -98,7 +98,7 @@ namespace Logic
                 {
                     buffer.WriteVarInt((int)MessageType.DeleteQuest);
                     buffer.WriteByte((byte)quest.ID);
-                    Session.Send(buffer.ToArray());
+                    Session.Send(buffer.GetBufferSegment());
                 }
             }
         }
@@ -143,7 +143,7 @@ namespace Logic
                         buffer.WriteVarInt(quest.CurrentGoal);
                         buffer.WriteBool(quest.IsCompleted);
                     }
-                    Session.Send(buffer.ToArray());
+                    Session.Send(buffer.GetBufferSegment());
                 }
             }
 
@@ -186,7 +186,7 @@ namespace Logic
                     buffer.WriteBool(quest.IsDailyQuest);
                 }
 
-                Session.Send(buffer.ToArray());
+                Session.Send(buffer.GetBufferSegment());
             }
         }
 
@@ -234,7 +234,7 @@ namespace Logic
         /// <summary>
         /// Oyuncunun istatistiklerini (Level, Gems, Coins, Trophy) günceller.
         /// </summary>
-        public void UpdateStats(int? level = null, int? gems = null, int? coins = null, int? trophies = null)
+        public void UpdateStats(int? level = null, int? gems = null, int? coins = null, int? trophies = null, int? experience = null)
         {
             if (Data == null) return;
 
@@ -243,6 +243,7 @@ namespace Logic
             if (gems.HasValue) { Data.Gems = gems.Value; changed = true; }
             if (coins.HasValue) { Data.Coins = coins.Value; changed = true; }
             if (trophies.HasValue) { Data.Trophy = trophies.Value; changed = true; }
+            if (experience.HasValue) { Data.Experience = experience.Value; changed = true; }
 
             if (changed)
             {
@@ -250,6 +251,21 @@ namespace Logic
                 AccountManager.SaveAccounts();
                 SendUpdate(); // Online ise veriyi gönder
             }
+        }
+
+        public void AddBattleRewards(int trophyDelta, int coinDelta, int xpDelta)
+        {
+            if (Data == null) return;
+
+            Data.Trophy = Math.Max(0, Data.Trophy + trophyDelta);
+            Data.Coins = Math.Max(0, Data.Coins + coinDelta);
+            Data.Experience = Math.Max(0, Data.Experience + xpDelta);
+
+            ProgressionManager.Normalize(Data);
+
+            Logger.genellog($"{Data.Username} battle ödülleri güncellendi: trophy={trophyDelta}, coin={coinDelta}, xp={xpDelta}, level={Data.Level}, exp={Data.Experience}");
+            AccountManager.SaveAccounts();
+            SendUpdate();
         }
 
         /// <summary>
@@ -275,7 +291,7 @@ namespace Logic
                     using (ByteBuffer buffer = ByteBufferPool.Get())
                     {
                         buffer.WriteVarInt((int)MessageType.NameNotAcceptedRequest);
-                        Session.Send(buffer.ToArray());
+                        Session.Send(buffer.GetBufferSegment());
                     }
                 }
                 return false;

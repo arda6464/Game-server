@@ -1,0 +1,15 @@
+C:\Project\Game-server\tmpobj\Debug\net10.0\gameserver.csproj.AssemblyReference.cache
+C:\Project\Game-server\tmpobj\Debug\net10.0\gameserver.GeneratedMSBuildEditorConfig.editorconfig
+C:\Project\Game-server\tmpobj\Debug\net10.0\gameserver.csproj.CoreCompileInputs.cache
+C:\Project\Game-server\tmpobj\Debug\net10.0\gameserver.sourcelink.json
+C:\Project\Game-server\tmpbin\gameserver.exe
+C:\Project\Game-server\tmpbin\gameserver.deps.json
+C:\Project\Game-server\tmpbin\gameserver.runtimeconfig.json
+C:\Project\Game-server\tmpbin\gameserver.dll
+C:\Project\Game-server\tmpbin\gameserver.pdb
+C:\Project\Game-server\tmpobj\Debug\net10.0\gameserver.csproj.Up2Date
+C:\Project\Game-server\tmpobj\Debug\net10.0\gameserver.dll
+C:\Project\Game-server\tmpobj\Debug\net10.0\refint\gameserver.dll
+C:\Project\Game-server\tmpobj\Debug\net10.0\gameserver.pdb
+C:\Project\Game-server\tmpobj\Debug\net10.0\gameserver.genruntimeconfig.cache
+C:\Project\Game-server\tmpobj\Debug\net10.0\ref\gameserver.dll

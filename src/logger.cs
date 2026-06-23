@@ -1,5 +1,7 @@
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Threading;
 
 public class Logger
@@ -11,6 +13,7 @@ public class Logger
     private static readonly object fileLock = new object();
     private static readonly int maxRetryCount = 3;
     private static readonly int retryDelayMs = 100;
+    private static readonly Stopwatch bootWatch = Stopwatch.StartNew();
 
     public void AccountLog(string mesaj)
     {
@@ -32,32 +35,52 @@ public class Logger
         SafeLog(mesaj, genellogpath, ConsoleColor.Green, "GENERAL");
     }
 
+    public static void bootlog(string mesaj)
+    {
+        SafeLog(mesaj, genellogpath, ConsoleColor.Cyan, "BOOT");
+    }
+
+    public static void warnlog(string mesaj)
+    {
+        SafeLog(mesaj, genellogpath, ConsoleColor.Yellow, "WARN");
+    }
+
+    public static void successlog(string mesaj)
+    {
+        SafeLog(mesaj, genellogpath, ConsoleColor.Green, "OK");
+    }
+
     private static void SafeLog(string mesaj, string filePath, ConsoleColor color, string logType)
     {
         DateTime saat = DateTime.Now;
         string logMessage = $"[{saat:yyyy-MM-dd HH:mm:ss}] [{logType}] {mesaj}";
 
-        // Console'a yaz
-        WriteToConsole(logMessage, color);
-
-        // File'a yaz (thread-safe ve retry mekanizmalı)
+        WriteToConsole(saat, mesaj, color, logType);
         WriteToFileWithRetry(logMessage, filePath);
     }
 
-    private static void WriteToConsole(string message, ConsoleColor color)
+    private static void WriteToConsole(DateTime timestamp, string message, ConsoleColor color, string logType)
     {
         try
         {
             lock (fileLock)
             {
+                var previousColor = Console.ForegroundColor;
+
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write($"[{timestamp:HH:mm:ss}] ");
+
                 Console.ForegroundColor = color;
+                Console.Write($"[{logType}] ");
+
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(message);
-                Console.ResetColor();
+
+                Console.ForegroundColor = previousColor;
             }
         }
         catch (Exception ex)
         {
-            // Console yazma hatası - görmezden gel veya fallback yap
             FallbackLog($"Console write failed: {ex.Message}");
         }
     }
@@ -69,22 +92,19 @@ public class Logger
             try
             {
                 WriteToFile(message, filePath);
-                return; // Başarılı oldu, çık
+                return;
             }
             catch (IOException) when (attempt < maxRetryCount)
             {
-                // Dosya kilitli - bekleyip tekrar dene
                 Thread.Sleep(retryDelayMs * attempt);
             }
             catch (Exception ex)
             {
-                // Diğer hatalar için fallback
                 FallbackLog($"File write failed ({filePath}): {ex.Message}");
                 return;
             }
         }
 
-        // Tüm denemeler başarısız oldu
         FallbackLog($"All retries failed for: {filePath}");
     }
 
@@ -92,18 +112,16 @@ public class Logger
     {
         lock (fileLock)
         {
-            // Dosya boyutu kontrolü ve rotation
             CheckFileSizeAndRotate(filePath);
 
-            // FileShare.ReadWrite ile diğer process'lerin de erişimine izin ver
             using (var stream = new FileStream(
-                filePath, 
-                FileMode.Append, 
-                FileAccess.Write, 
-                FileShare.ReadWrite, 
-                bufferSize: 4096, 
+                filePath,
+                FileMode.Append,
+                FileAccess.Write,
+                FileShare.ReadWrite,
+                bufferSize: 4096,
                 useAsync: false))
-            using (var writer = new StreamWriter(stream, System.Text.Encoding.UTF8))
+            using (var writer = new StreamWriter(stream, Encoding.UTF8))
             {
                 writer.WriteLine(message);
             }
@@ -115,14 +133,14 @@ public class Logger
         try
         {
             var fileInfo = new FileInfo(filePath);
-            if (fileInfo.Exists && fileInfo.Length > 10 * 1024 * 1024) // 10MB
+            if (fileInfo.Exists && fileInfo.Length > 10 * 1024 * 1024)
             {
                 string backupPath = $"{Path.GetFileNameWithoutExtension(filePath)}_{DateTime.Now:yyyyMMdd_HHmmss}{Path.GetExtension(filePath)}";
                 File.Move(filePath, backupPath);
-                
-                // Eski backup'ları temizle (30 günden eski)
-                CleanOldBackups(Path.GetDirectoryName(filePath) ?? ".", 
-                              Path.GetFileNameWithoutExtension(filePath) + "_*" + Path.GetExtension(filePath));
+
+                CleanOldBackups(
+                    Path.GetDirectoryName(filePath) ?? ".",
+                    Path.GetFileNameWithoutExtension(filePath) + "_*" + Path.GetExtension(filePath));
             }
         }
         catch (Exception ex)
@@ -139,7 +157,7 @@ public class Logger
             foreach (var file in files)
             {
                 var fileInfo = new FileInfo(file);
-                if (fileInfo.LastWriteTime < DateTime.Now.AddDays(-30)) // 30 günden eski
+                if (fileInfo.LastWriteTime < DateTime.Now.AddDays(-30))
                 {
                     fileInfo.Delete();
                 }
@@ -155,33 +173,29 @@ public class Logger
     {
         try
         {
-            // Acil durum log'u - her zaman çalışsın
             string fallbackPath = "emergency_log.txt";
             string fallbackMessage = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [FALLBACK] {message}";
 
             using (var stream = new FileStream(
-                fallbackPath, 
-                FileMode.Append, 
-                FileAccess.Write, 
+                fallbackPath,
+                FileMode.Append,
+                FileAccess.Write,
                 FileShare.ReadWrite))
-            using (var writer = new StreamWriter(stream, System.Text.Encoding.UTF8))
+            using (var writer = new StreamWriter(stream, Encoding.UTF8))
             {
                 writer.WriteLine(fallbackMessage);
             }
 
-            // Console'a da yazmaya çalış
             Console.WriteLine(fallbackMessage);
         }
         catch
         {
-            // Son çare - hiçbir şey yapma, exception fırlatma
         }
     }
 
-    // Logger'ı temiz kapatmak için
     public static void FlushAllLogs()
     {
-        // Gerekli temizlik işlemleri buraya eklenebilir
-        Console.WriteLine("Logger flushing completed.");
+        var elapsed = bootWatch.Elapsed;
+        Console.WriteLine($"Logger flushing completed after {elapsed.TotalSeconds:F1}s.");
     }
 }

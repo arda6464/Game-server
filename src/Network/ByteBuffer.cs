@@ -39,8 +39,9 @@ public sealed class ByteBuffer : IDisposable
 
     private void Resize(int newSize)
     {
+        long oldLength = _stream.Length;
         byte[] newBuffer = ArrayPool<byte>.Shared.Rent(newSize);
-        Array.Copy(_buffer, 0, newBuffer, 0, (int)_stream.Length);
+        Array.Copy(_buffer, 0, newBuffer, 0, (int)oldLength);
 
         ArrayPool<byte>.Shared.Return(_buffer);
         _buffer = newBuffer;
@@ -48,7 +49,7 @@ public sealed class ByteBuffer : IDisposable
         long oldPosition = _stream.Position;
         _stream.Dispose();
         _stream = new MemoryStream(_buffer, 0, _buffer.Length, true, true);
-        _stream.SetLength(oldPosition);
+        _stream.SetLength(oldLength);
         _stream.Position = oldPosition;
 
         _writer.Dispose();
@@ -257,6 +258,16 @@ public sealed class ByteBuffer : IDisposable
     public byte[] ToArray()
     {
         return _buffer.AsSpan(0, (int)_stream.Position).ToArray();
+    }
+
+    public ArraySegment<byte> GetBufferSegment()
+    {
+        return new ArraySegment<byte>(_buffer, 0, (int)_stream.Position);
+    }
+
+    public ReadOnlySpan<byte> AsSpan()
+    {
+        return _buffer.AsSpan(0, (int)_stream.Position);
     }
     public void Dispose()
     {

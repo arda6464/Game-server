@@ -1,39 +1,40 @@
 using System.Numerics;
+using DietPhysics;
 
 public struct PlayerShootPacket : IPacket
 {
-    public int SequenceNumber { get; set; }
     public int OwnerID { get; set; }
-    public float DirectionX { get; set; }
-    public float DirectionY { get; set; }
+    public int GunID { get; set; }
+    public byte aimbyte { get; set; }
     public int BulletId { get; set; } // Response için
+    public Vec3 StartPos { get; set; }
+    public int RemaningAmmo { get; set; }
 
-    public int ConnectionToken { get; set; }
+
+
 
     public void Serialize(ByteBuffer buffer)
     {
-        // Sadece Client -> Server (Token varsa) gönderiyoruz. 
-        if (ConnectionToken != 0)
-        {
-            buffer.WriteVarInt(ConnectionToken);
-        }
+
 
         // Payload
         buffer.WriteVarInt((int)UdpMessageType.Shoot);
         buffer.WriteVarInt(OwnerID);
-        buffer.WriteFloat(DirectionX);
-        buffer.WriteFloat(DirectionY);
         buffer.WriteVarInt(BulletId);
+        buffer.WriteVarInt(GunID);
+        buffer.WriteByte(aimbyte);
+        buffer.WriteVarInt(RemaningAmmo);
+        buffer.WriteFloat(StartPos.x);
+        buffer.WriteFloat(StartPos.z);
+
+
+
     }
 
 
     public void Deserialize(ByteBuffer buffer)
     {
-        // Header UdpServer tarafında ayıklandı.
-        OwnerID = buffer.ReadVarInt();
-        DirectionX = buffer.ReadFloat();
-        DirectionY = buffer.ReadFloat();
-        BulletId = buffer.ReadVarInt();
+
     }
 
 }

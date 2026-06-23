@@ -4,7 +4,7 @@ public static class MatchMaking
 {
     public static readonly List<Session> waitingQueue = new();
     private static readonly object lockObj = new();
-    public static int PlayersPerMatch = 1;
+    public static int PlayersPerMatch = 2; //
     public static void JoinQueue(Session session)
     {
         List<Session> toNotify;

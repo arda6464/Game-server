@@ -15,7 +15,11 @@ public enum UdpMessageType : byte
     GiveUp,
     ItemAdded,
     ChangeSlotRequest,
+    HitConfirm,
+    PlayerUpdateHealth,
     ChangeSlot,
     Ping,
     Pong,
+    PlayerDead,
+    LootSpawned,
 }

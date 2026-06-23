@@ -209,7 +209,7 @@ public class Session
         using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             packet.Serialize(buffer);
-            Send(buffer.ToArray());
+            Send(buffer.GetBufferSegment());
         }
     }
 
@@ -233,11 +233,38 @@ public class Session
         }
     }
 
+    public void Send(ArraySegment<byte> segment)
+    {
+        if (!client.Connected)
+        {
+            throw new InvalidOperationException("Bağlantı kapalı");
+        }
+
+        // Trafiği kaydet
+        TrafficMonitor.RecordOutgoingRaw(segment.Count);
+
+        try
+        {
+            stream.Write(segment);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Gönderme hatası: {ex.Message}");
+        }
+    }
+
     public void SendUnreliableUDP(byte[] buffer)
     {
         if (UdpEndPoint == null) return;
         TrafficMonitor.RecordOutgoingRaw(buffer.Length);
         GameServer.UdpServer?.SendUnreliable(UdpEndPoint, buffer);
+    }
+
+    public void SendUnreliableUDP(ArraySegment<byte> segment)
+    {
+        if (UdpEndPoint == null) return;
+        TrafficMonitor.RecordOutgoingRaw(segment.Count);
+        GameServer.UdpServer?.SendUnreliable(UdpEndPoint, segment);
     }
 
     public void SendUnreliableUDP<T>(T packet) where T : IPacket // Yeni eklenen metod - Otomatik Header
@@ -250,9 +277,9 @@ public class Session
             finalBuffer.WriteVarInt((int)Network.UdpPacketFlags.None);
             finalBuffer.WriteVarInt(seqNo);
             packet.Serialize(finalBuffer);
-            byte[] data = finalBuffer.ToArray();
-            TrafficMonitor.RecordOutgoingRaw(data.Length);
-            GameServer.UdpServer?.SendUnreliable(UdpEndPoint, data);
+            var segment = finalBuffer.GetBufferSegment();
+            TrafficMonitor.RecordOutgoingRaw(segment.Count);
+            GameServer.UdpServer?.SendUnreliable(UdpEndPoint, segment);
         }
     }
 
@@ -270,6 +297,22 @@ public class Session
             byte[] data = finalBuffer.ToArray();
             TrafficMonitor.RecordOutgoingRaw(data.Length);
             GameServer.UdpServer?.SendUnreliable(UdpEndPoint, data);
+        }
+    }
+
+    public void SendUnreliableUDP_Payload(ArraySegment<byte> payloadSegment)
+    {
+        if (UdpEndPoint == null) return;
+        int seqNo = GetNextUnreliableSequence();
+
+        using (ByteBuffer finalBuffer = ByteBufferPool.Get())
+        {
+            finalBuffer.WriteVarInt((int)Network.UdpPacketFlags.None);
+            finalBuffer.WriteVarInt(seqNo);
+            finalBuffer.WriteBytes(new ReadOnlySpan<byte>(payloadSegment.Array, payloadSegment.Offset, payloadSegment.Count), false); // Sadece sonuna ekle
+            var segment = finalBuffer.GetBufferSegment();
+            TrafficMonitor.RecordOutgoingRaw(segment.Count);
+            GameServer.UdpServer?.SendUnreliable(UdpEndPoint, segment);
         }
     }
 

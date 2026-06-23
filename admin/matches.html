@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maç Yönetimi - Admin Core</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="modals.js"></script>
+    <style>
+        .match-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .match-search {
+            flex: 1;
+            min-width: 260px;
+            position: relative;
+        }
+
+        .match-search input {
+            width: 100%;
+            padding: 0.95rem 1rem 0.95rem 3rem;
+            background: rgba(0, 0, 0, 0.18);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.9rem;
+            color: #fff;
+            outline: none;
+        }
+
+        .match-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .match-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .match-stat {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+        }
+
+        .match-stat-label {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 0.45rem;
+            font-weight: 800;
+        }
+
+        .match-stat-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .match-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .match-card-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+            padding: 1.25rem 1.4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: linear-gradient(90deg, rgba(34, 211, 238, 0.08), rgba(244, 114, 182, 0.05));
+        }
+
+        .match-title {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .match-title h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .match-title p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .match-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .mini-badge {
+            padding: 0.45rem 0.75rem;
+            border-radius: 999px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .mini-badge.ok {
+            background: rgba(16, 185, 129, 0.12);
+            color: #34d399;
+            border-color: rgba(16, 185, 129, 0.25);
+        }
+
+        .mini-badge.warn {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+            border-color: rgba(251, 191, 36, 0.25);
+        }
+
+        .player-table-wrap {
+            overflow-x: auto;
+        }
+
+        .player-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .player-table th,
+        .player-table td {
+            padding: 0.9rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            vertical-align: top;
+        }
+
+        .player-table th {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .player-row:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .player-name {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .player-name strong {
+            font-size: 0.98rem;
+        }
+
+        .player-meta {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .coord-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(34, 211, 238, 0.08);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            padding: 0.45rem 0.7rem;
+            border-radius: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .state-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            display: inline-block;
+            margin-right: 0.4rem;
+        }
+
+        .state-dot.alive {
+            background: #34d399;
+        }
+
+        .state-dot.dead {
+            background: #ef4444;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-bolt-lightning"></i>
+            <span>ADMIN CORE</span>
+        </div>
+        <nav class="nav-list">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-house-user"></i> Dashboard
+            </a>
+            <a href="players.html" class="nav-item">
+                <i class="fas fa-id-badge"></i> Oyuncular
+            </a>
+            <a href="matches.html" class="nav-item active">
+                <i class="fas fa-gamepad"></i> Maç Yönetimi
+            </a>
+            <a href="delivery.html" class="nav-item">
+                <i class="fas fa-gift"></i> Eşya Gönderimi
+            </a>
+            <a href="clubs.html" class="nav-item">
+                <i class="fas fa-users-viewfinder"></i> Kulüpler
+            </a>
+            <a href="reports.html" class="nav-item">
+                <i class="fas fa-flag"></i> Raporlar
+            </a>
+            <a href="announcement.html" class="nav-item">
+                <i class="fas fa-bullhorn"></i> Duyurular
+            </a>
+            <a href="chests.html" class="nav-item">
+                <i class="fas fa-box-open"></i> Sandık & Drop
+            </a>
+            <a href="market.html" class="nav-item">
+                <i class="fas fa-shopping-cart"></i> Market
+            </a>
+            <a href="logs.html" class="nav-item">
+                <i class="fas fa-terminal"></i> Log Konsolu
+            </a>
+            <a href="traffic.html" class="nav-item">
+                <i class="fas fa-chart-area"></i> Trafik Analizi
+            </a>
+            <a href="client_errors.html" class="nav-item">
+                <i class="fas fa-bug"></i> İstemci Hataları
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fas fa-headset"></i> Destek
+            </a>
+            <a href="admins.html" class="nav-item">
+                <i class="fas fa-user-shield"></i> Yönetim
+            </a>
+            <a href="management.html" class="nav-item">
+                <i class="fas fa-gears"></i> Sistem Ayarları
+            </a>
+            <a href="#" class="nav-item" onclick="logout()"
+                style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
+                <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="animate-slide-up delay-1">
+            <h1 class="page-title">Aktif Maçlar</h1>
+            <div id="match-count-badge" class="status-pill">
+                <i class="fas fa-gamepad"></i>
+                0 AKTİF MAÇ
+            </div>
+        </header>
+
+        <div class="card animate-slide-up delay-2">
+            <div class="match-summary">
+                <div class="match-stat">
+                    <div class="match-stat-label">Aktif Maç</div>
+                    <div class="match-stat-value" id="summary-battles">0</div>
+                </div>
+                <div class="match-stat">
+                    <div class="match-stat-label">Toplam Oyuncu</div>
+                    <div class="match-stat-value" id="summary-players">0</div>
+                </div>
+                <div class="match-stat">
+                    <div class="match-stat-label">Hayatta Olan</div>
+                    <div class="match-stat-value" id="summary-alive">0</div>
+                </div>
+                <div class="match-stat">
+                    <div class="match-stat-label">Son Güncelleme</div>
+                    <div class="match-stat-value" style="font-size: 1rem;" id="summary-updated">--</div>
+                </div>
+            </div>
+
+            <div class="match-toolbar">
+                <div class="match-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="match-search" placeholder="Maç ID, oyuncu adı veya koordinat ara..." oninput="renderMatches()">
+                </div>
+                <button class="btn-refresh" onclick="refreshMatches()">
+                    <i class="fas fa-rotate"></i> YENİLE
+                </button>
+            </div>
+
+            <div id="match-list"></div>
+        </div>
+    </main>
+
+    <script>
+        let allMatches = [];
+        let lastUpdatedAt = null;
+
+        function formatVec3(pos) {
+            if (!pos) return '(-, -, -)';
+            return `(${Number(pos.x).toFixed(2)}, ${Number(pos.y).toFixed(2)}, ${Number(pos.z).toFixed(2)})`;
+        }
+
+        function formatElapsed(seconds) {
+            const total = Math.max(0, Math.floor(seconds || 0));
+            const h = Math.floor(total / 3600);
+            const m = Math.floor((total % 3600) / 60);
+            const s = total % 60;
+            if (h > 0) return `${h}sa ${m}dk ${s}sn`;
+            if (m > 0) return `${m}dk ${s}sn`;
+            return `${s}sn`;
+        }
+
+        async function refreshMatches() {
+            try {
+                const response = await fetch('/api/matches');
+                const data = await response.json();
+                allMatches = data.battles || [];
+                lastUpdatedAt = new Date();
+                document.getElementById('summary-battles').innerText = data.totalBattles ?? allMatches.length;
+                document.getElementById('summary-players').innerText = data.totalPlayers ?? 0;
+                document.getElementById('summary-alive').innerText = allMatches.reduce((sum, m) => sum + (m.aliveCount || 0), 0);
+                document.getElementById('summary-updated').innerText = lastUpdatedAt.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                document.getElementById('match-count-badge').innerHTML = `<i class="fas fa-gamepad"></i> ${allMatches.length} AKTİF MAÇ`;
+                renderMatches();
+            } catch (e) {
+                showToast('Maç verisi alınamadı', 'error');
+            }
+        }
+
+        function renderMatches() {
+            const query = document.getElementById('match-search').value.trim().toLowerCase();
+            const list = document.getElementById('match-list');
+
+            const matches = [...allMatches]
+                .sort((a, b) => (b.playerCount || 0) - (a.playerCount || 0) || (b.battleId || 0) - (a.battleId || 0))
+                .filter(match => {
+                    if (!query) return true;
+                    if (String(match.battleId).includes(query)) return true;
+                    return (match.players || []).some(player => {
+                        const pos = player.position || {};
+                        const coordText = `${pos.x ?? ''} ${pos.y ?? ''} ${pos.z ?? ''}`.toLowerCase();
+                        return (player.username || '').toLowerCase().includes(query) || coordText.includes(query);
+                    });
+                });
+
+            if (matches.length === 0) {
+                list.innerHTML = '<div class="empty-state">Şu an filtreye uyan aktif maç yok.</div>';
+                return;
+            }
+
+            list.innerHTML = matches.map((match, index) => {
+                const players = [...(match.players || [])]
+                    .sort((a, b) => (b.isAlive === a.isAlive ? (a.username || '').localeCompare(b.username || '') : (b.isAlive ? 1 : 0) - (a.isAlive ? 1 : 0)));
+
+                const startedAt = match.startedAt ? new Date(match.startedAt).toLocaleString('tr-TR') : 'Bilinmiyor';
+                const duration = formatElapsed(match.elapsedSeconds);
+
+                return `
+                    <section class="match-card animate-slide-up" style="animation-delay: ${index * 0.06}s;">
+                        <div class="match-card-head">
+                            <div class="match-title">
+                                <h4>Maç #${match.battleId}</h4>
+                                <p>Başlangıç: ${startedAt} • Süre: ${duration}</p>
+                            </div>
+                            <div class="match-badges">
+                                <span class="mini-badge ok"><i class="fas fa-circle"></i> ${match.state}</span>
+                                <span class="mini-badge"><i class="fas fa-users"></i> ${match.playerCount} oyuncu</span>
+                                <span class="mini-badge warn"><i class="fas fa-heart"></i> ${match.aliveCount} canlı</span>
+                            </div>
+                        </div>
+                        <div class="player-table-wrap">
+                            <table class="player-table">
+                                <thead>
+                                    <tr>
+                                        <th>Oyuncu</th>
+                                        <th>Durum</th>
+                                        <th>Kordinat</th>
+                                        <th>Hesap Bilgisi</th>
+                                        <th>Oyun Bilgisi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${players.map(player => {
+                                        const account = player.account || {};
+                                        const pos = player.position || {};
+                                        return `
+                                            <tr class="player-row">
+                                                <td>
+                                                    <div class="player-name">
+                                                        <strong>${player.username || 'Bilinmiyor'}</strong>
+                                                        <div class="player-meta">
+                                                            <span class="mini-badge">ID: ${player.id}</span>
+                                                            <span class="mini-badge">Battle: ${player.battleId}</span>
+                                                            ${player.connected ? '<span class="mini-badge ok">Bağlı</span>' : '<span class="mini-badge warn">Bağlantı yok</span>'}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="mini-badge ${player.isAlive ? 'ok' : 'warn'}">
+                                                        <span class="state-dot ${player.isAlive ? 'alive' : 'dead'}"></span>
+                                                        ${player.isAlive ? 'CANLI' : 'ÖLÜ'}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="coord-box">
+                                                        <i class="fas fa-location-crosshairs"></i>
+                                                        ${Number(pos.x || 0).toFixed(2)}, ${Number(pos.y || 0).toFixed(2)}, ${Number(pos.z || 0).toFixed(2)}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                                                        <span class="mini-badge">Lv ${account.level ?? '-'}</span>
+                                                        <span class="mini-badge">Kupa ${account.trophies ?? '-'}</span>
+                                                        <span class="mini-badge">Elmas ${account.gems ?? '-'}</span>
+                                                        <span class="mini-badge">Altın ${account.coins ?? '-'}</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                                                        <span class="mini-badge">HP ${player.health ?? '-'}</span>
+                                                        <span class="mini-badge">Silah ${player.weaponId ?? 0}</span>
+                                                        <span class="mini-badge">Slot ${player.selectedSlot ?? 0}</span>
+                                                        <span class="mini-badge">Tick ${player.lastProcessedTick ?? 0}</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        `;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                `;
+            }).join('');
+        }
+
+        function logout() {
+            Modal.confirm('Çıkış Yap', 'Oturumunuzu kapatmak istediğinize emin misiniz?', async () => {
+                await fetch('/api/auth/logout');
+                window.location.href = 'login.html';
+            });
+        }
+
+        setInterval(refreshMatches, 4000);
+        refreshMatches();
+    </script>
+</body>
+
+</html>

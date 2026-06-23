@@ -1,0 +1,34 @@
+[
+  {
+    "Id": 25,
+    "Name": "Small Health",
+    "Type": 4,
+    "Value": 25,
+    "CollectableTime": 0.75,
+    "SpawnWeight": 10
+  },
+  {
+    "Id": 50,
+    "Name": "Large Health",
+    "Type": 4,
+    "Value": 50,
+    "CollectableTime": 1.25,
+    "SpawnWeight": 5
+  },
+  {
+    "Id": 25,
+    "Name": "Small Shield",
+    "Type": 3,
+    "Value": 25,
+    "CollectableTime": 0.9,
+    "SpawnWeight": 10
+  },
+  {
+    "Id": 50,
+    "Name": "Large Shield",
+    "Type": 3,
+    "Value": 50,
+    "CollectableTime": 1.4,
+    "SpawnWeight": 5
+  }
+]

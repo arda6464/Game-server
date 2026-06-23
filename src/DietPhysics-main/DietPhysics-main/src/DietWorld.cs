@@ -51,8 +51,9 @@ namespace DietPhysics
         /// <summary>
         /// Eğer collider başka bir şeyle çakışıyorsa onu dışarı iter.
         /// Çakışma yoksa false döner. Çakışma varsa resolvedPos'u doldurur ve true döner.
+        /// staticOnly = true ise sadece duvar (Wall) collider'larıyla çakışma kontrol edilir.
         /// </summary>
-        public bool ResolveOverlap(ICollider collider, out Vec3 resolvedPos)
+        public bool ResolveOverlap(ICollider collider, out Vec3 resolvedPos, bool staticOnly = false)
         {
             resolvedPos = collider.GetPosition();
             bool anyOverlap = false;
@@ -60,6 +61,7 @@ namespace DietPhysics
             foreach (var other in AllColliders())
             {
                 if (other == collider) continue;
+                if (staticOnly && other.Type != DietObjectType.Wall) continue;
 
                 if (collider is DietSphere sphere)
                 {
@@ -167,9 +169,11 @@ namespace DietPhysics
             return anyOverlap;
         }
 
-        public bool SweepTest(ICollider collider, Vec3 direction, float distance, int iterations, out Vec3 collidedPosition)
+        public bool SweepTest(ICollider collider, Vec3 direction, float distance, int iterations, out Vec3 collidedPosition, out DietObjectType type, out int TypeData)
         {
             collidedPosition = Vec3.zero;
+            type = DietObjectType.None;
+            TypeData = 0;
 
             if (distance <= Epsilon)
                 return false;
@@ -206,6 +210,8 @@ namespace DietPhysics
                     if (hit)
                     {
                         // Collider pozisyonunu her zaman orijinal konuma döndür.
+                        type = other.Type;
+                        TypeData = other.TypeData;
                         RestorePosition(collider, firstPos);
                         return true;
                     }

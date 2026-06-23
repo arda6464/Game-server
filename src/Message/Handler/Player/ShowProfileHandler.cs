@@ -29,17 +29,13 @@ public static class ShowProfileHandler
     }
     public static void test(Session session)
     {
-       ByteBuffer buffer = ByteBufferPool.Get();
-        buffer.WriteVarInt((int)MessageType.ShowProfileResponse);
-        
-        buffer.WriteString("ARDA-TEST");
-        buffer.WriteVarInt(5);
-        buffer.WriteVarInt(5);
-
-        
-        byte[] veri = buffer.ToArray();
-        buffer.Dispose();
-        session.Send(veri);
-        
+        using (ByteBuffer buffer = ByteBufferPool.Get())
+        {
+            buffer.WriteVarInt((int)MessageType.ShowProfileResponse);
+            buffer.WriteString("ARDA-TEST");
+            buffer.WriteVarInt(5);
+            buffer.WriteVarInt(5);
+            session.Send(buffer.GetBufferSegment());
+        }
     } 
 }

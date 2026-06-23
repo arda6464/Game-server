@@ -32,8 +32,9 @@ public static class DataManager
     private static Dictionary<int, WeaponData> _weaponsById = new();
     private static Dictionary<string, WeaponData> _weaponsByName = new(StringComparer.OrdinalIgnoreCase);
 
-    /*private static Dictionary<int, LootData> _lootsById = new();
-    private static Dictionary<string, LootData> _lootsByName = new(StringComparer.OrdinalIgnoreCase);*/
+    private static readonly List<LootData> _lootItems = new();
+    private static readonly Dictionary<string, LootData> _lootItemsByKey = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly Dictionary<string, LootData> _lootItemsByName = new(StringComparer.OrdinalIgnoreCase);
 
     // ─────────────────────────────────────────────────────────────────
     // BAŞLATMA
@@ -54,6 +55,8 @@ public static class DataManager
         LoadCollection<WeaponData>(Path.Combine(dataFolder, "weapons.json"),
             ref _weaponsById, ref _weaponsByName);
 
+        LoadLootItems(Path.Combine(dataFolder, "loot_items.json"));
+
         if (_weaponsById.Count == 0)
         {
             Console.WriteLine("[DataManager] UYARI: Silah verisi yüklenmedi. weapons.json boş veya okunamıyor olabilir.");
@@ -67,7 +70,8 @@ public static class DataManager
         Console.WriteLine($"[DataManager] Yükleme tamamlandı. " +
                           $"Karakter: {_charactersById.Count}, " +
                           $"Mermi: {_projectilesById.Count}, " +
-                        $"Silah: {_weaponsById.Count}, ");
+                        $"Silah: {_weaponsById.Count}, " +
+                        $"Loot: {_lootItems.Count}, ");
                          
     }
 
@@ -102,7 +106,16 @@ public static class DataManager
     public static IReadOnlyCollection<WeaponData> GetAllWeapons()
         => _weaponsById.Values;
 
-    /// <summary>ID ile loot verisini getirir. Bulunamazsa null döner.</summary>
+    /// <summary>Tip ve id ile loot item verisini getirir. Bulunamazsa null döner.</summary>
+    public static LootData? GetLootItem(LootItemType type, int id)
+        => _lootItemsByKey.GetValueOrDefault(BuildLootKey(type, id));
+
+    /// <summary>İsim ile loot item verisini getirir. Büyük/küçük harf duyarsız.</summary>
+    public static LootData? GetLootItem(string name)
+        => _lootItemsByName.GetValueOrDefault(name);
+
+    public static IReadOnlyCollection<LootData> GetAllLootItems()
+        => _lootItems;
 
 
     // ─────────────────────────────────────────────────────────────────
@@ -148,4 +161,41 @@ public static class DataManager
             Console.WriteLine($"[DataManager] HATA: '{filePath}' yüklenirken → {ex.Message}");
         }
     }
+
+    private static void LoadLootItems(string filePath)
+    {
+        _lootItems.Clear();
+        _lootItemsByKey.Clear();
+        _lootItemsByName.Clear();
+
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine($"[DataManager] UYARI: Dosya bulunamadı → {filePath}");
+            return;
+        }
+
+        try
+        {
+            string json = File.ReadAllText(filePath);
+            List<LootData>? items = JsonSerializer.Deserialize<List<LootData>>(json, _jsonOptions);
+            if (items == null) return;
+
+            foreach (LootData item in items)
+            {
+                string key = BuildLootKey(item.Type, item.Id);
+                _lootItems.Add(item);
+                _lootItemsByKey[key] = item;
+                _lootItemsByName[item.Name] = item;
+            }
+
+            Console.WriteLine($"[DataManager] '{Path.GetFileName(filePath)}' → {items.Count} kayıt yüklendi.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[DataManager] HATA: '{filePath}' yüklenirken → {ex.Message}");
+        }
+    }
+
+    private static string BuildLootKey(LootItemType type, int id)
+        => $"{(int)type}:{id}";
 }

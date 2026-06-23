@@ -6,12 +6,19 @@ namespace DietPhysics
         private Vec3 center;
         private Vec3 size;
         private Vec3 rotation;
-        public DietBox(Vec3 pos, Vec3 center, Vec3 size, Vec3 rotation)
+        public DietObjectType Type { get; private set; }
+        public int TypeData { get; private set; }
+        public DietBox(Vec3 pos, Vec3 center, Vec3 size, Vec3 rotation,DietObjectType type,int typedata)
         {
+            this.Type = type;
+            this.TypeData  = typedata;
             this.position = pos;
             this.center = center;
             this.size = size;
             this.rotation = rotation;
+        }
+        public DietBox(Vec3 pos, Vec3 center, Vec3 size, Vec3 rotation) : this(pos, center, size, rotation, DietObjectType.None, 0)
+        {
         }
         public Vec3 GetPosition()
         {

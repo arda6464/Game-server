@@ -2,7 +2,7 @@
 /// Karakter istatistik verileri.
 /// characters.json dosyasından yüklenir.
 /// </summary>///
-using  DietPhysics;
+using DietPhysics;
 
 public class CharacterData : GameData
 {
@@ -38,24 +38,26 @@ public class WeaponData : GameData
     public float Range { get; set; } // Merminin gidebileceği maksimum mesafe
     public int MagazineSize { get; set; } //  şarjör kapasitesi
     public int MaxAmmo { get; set; }
-    public float ReloadTime { get; set; } 
+    public float ReloadTime { get; set; }
     public float CollectableTime { get; set; }
 }
 
-/// <summary>
-/// Yerden alınabilir eşyaların (Silah, Can, Zırh vb.) şablon verisi.
-/// </summary>
-/*public class LootData : GameData
+public class LootData : GameData
 {
-    public string Type { get; set; } // "Weapon", "Health", "Ammo"
-    public int Value { get; set; }  // Can miktarı veya Silah ID'si
-    public string ModelName { get; set; } // Client tarafındaki görsel karşılığı
-}*/
+    public LootItemType Type { get; set; }
+    public int Value { get; set; }
+    public float CollectableTime { get; set; } = 1.0f;
+    public int SpawnWeight { get; set; } = 1;
+}
+
+
 
 public enum LootItemType
 {
     Weapon = 1,
-    Ammo = 2
+    Ammo   = 2,
+    Shield = 3,
+    Health = 4,
 }
 
 public class LootItem
@@ -78,6 +80,7 @@ public class InventorySlot
 {
     public int SlotId { get; set; }
     public LootItemType Item { get; set; }
-    public int DataId { get; set; } =0;
+    public int DataId { get; set; } = 0;
+    public Gun? Gun { get; set; }
 
 }

@@ -56,13 +56,13 @@ public static class Maintance
     }
     public static void SendMaintancePacket(Session session)
     {
-        ByteBuffer buffer = ByteBufferPool.Get();
-        buffer.WriteVarInt((int)MessageType.Maintance);
-        long unixTime = new DateTimeOffset(FinishTime.ToUniversalTime()).ToUnixTimeSeconds();
-        buffer.WriteVarLong(unixTime);
-        byte[] bytes = buffer.ToArray();
-        buffer.Dispose();
-        session.Send(bytes);
+        using (ByteBuffer buffer = ByteBufferPool.Get())
+        {
+            buffer.WriteVarInt((int)MessageType.Maintance);
+            long unixTime = new DateTimeOffset(FinishTime.ToUniversalTime()).ToUnixTimeSeconds();
+            buffer.WriteVarLong(unixTime);
+            session.Send(buffer.GetBufferSegment());
+        }
     }
     public static void finishMaintence()
     {

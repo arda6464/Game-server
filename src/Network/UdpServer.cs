@@ -87,20 +87,33 @@ public class UdpServer
                 // 1. Önce IP/Port üzerinden hızlıca bulmaya çalış (O(1))
                 Session? session = SessionManager.GetSessionByEndPoint(clientEndPoint);
 
+                if (session != null && session.State != Logic.PlayerState.Battle)
+                {
+                    SessionManager.UnRegisterUdpSession(clientEndPoint);
+                    session = null;
+                }
+
                 // 2. Eğer IP ile bulunamadıysa veya Token uyuşmuyorsa (Port/IP değişmiş olabilir) Token ile ara (O(N))
                 if (session == null)
                 {
-                    Console.WriteLine($"[UDP-DEBUG] IP üzerinden session bulunamadı, Token sorgulanıyor: {connectionToken}");
+                   // Console.WriteLine($"[UDP-DEBUG] IP üzerinden session bulunamadı, Token sorgulanıyor: {connectionToken}");
                     session = SessionManager.GetSessionByConnectionToken(connectionToken);
 
                     if (session != null)
                     {
-                        SessionManager.RegisterUdpSession(clientEndPoint, session);
-                        Console.WriteLine($"[UDP] Session IP({clientEndPoint}) Token({connectionToken}) üzerinden YENİDEN kaydedildi: {session.Account?.Username}");
+                        if (session.State == Logic.PlayerState.Battle)
+                        {
+                            SessionManager.RegisterUdpSession(clientEndPoint, session);
+                            Console.WriteLine($"[UDP] Session IP({clientEndPoint}) Token({connectionToken}) üzerinden YENİDEN kaydedildi: {session.Account?.Username}");
+                        }
+                        else
+                        {
+                            session = null;
+                        }
                     }
                     else
                     {
-                        Console.WriteLine($"[UDP-FAIL] Hiçbir session bulunamadı! Token: {connectionToken} IP: {clientEndPoint}");
+                       // Console.WriteLine($"[UDP-FAIL] Hiçbir session bulunamadı! Token: {connectionToken} IP: {clientEndPoint}");
                     }
                 }
                 else if (session.ConnectionToken != connectionToken)
@@ -110,7 +123,7 @@ public class UdpServer
                     session = null;
                 }
 
-                if (session != null && session.ConnectionToken == connectionToken)
+                if (session != null && session.ConnectionToken == connectionToken && session.State == Logic.PlayerState.Battle)
                 {
                     session.LastAlive = DateTime.Now; // ✅ UDP trafiği de artık session'ı canlı tutuyor
 
@@ -159,7 +172,7 @@ public class UdpServer
         {
             buffer.WriteVarInt((int)Network.UdpPacketFlags.Ack);
             buffer.WriteVarInt(sequenceNumber);
-            Send(target, buffer.ToArray());
+            Send(target, buffer.GetBufferSegment());
         }
     }
 
@@ -176,6 +189,18 @@ public class UdpServer
                 int sent = _udpClient.EndSend(ar);
                 // Console.WriteLine($"[UDP-SENT] {sent} bytes actually sent to {clientEndPoint}");
             }, null);
+        }
+        catch (Exception ex)
+        {
+            Logger.errorslog($"[UDP] Send hatası ({clientEndPoint}): {ex.Message}");
+        }
+    }
+
+    public void Send(IPEndPoint clientEndPoint, ArraySegment<byte> segment)
+    {
+        try
+        {
+            _udpClient.Client.SendTo(segment.Array, segment.Offset, segment.Count, SocketFlags.None, clientEndPoint);
         }
         catch (Exception ex)
         {
@@ -203,6 +228,11 @@ public class UdpServer
         Send(clientEndPoint, fullPacketData);
     }
 
+    public void SendUnreliable(IPEndPoint clientEndPoint, ArraySegment<byte> segment)
+    {
+        Send(clientEndPoint, segment);
+    }
+
 
 
     private void ReliableLoop()
@@ -217,7 +247,8 @@ public class UdpServer
                 {
                     foreach (var packet in session.GetPendingPackets())
                     {
-                        if ((now - packet.LastSentTime).TotalMilliseconds > 200)
+                        double resendThreshold = Math.Max(200, session.LastPing * 1.5);
+                        if ((now - packet.LastSentTime).TotalMilliseconds > resendThreshold)
                         {
                             if (packet.RetryCount >= 5)
                             {

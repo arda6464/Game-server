@@ -1,5 +1,500 @@
 [
   {
+    "Id": "9bf7c083",
+    "FirstSeen": "2026-06-23T22:22:30.2153227+03:00",
+    "LastSeen": "2026-06-23T22:22:30.2153234+03:00",
+    "Count": 1,
+    "LogMessage": "MissingReferenceException: The object of type 'UnityEngine.GameObject' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object.",
+    "StackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponentFastPath (System.Type type, System.IntPtr oneFurtherThanResultValue) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponent[T] () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nBattleManager.OnPlayerMoved (System.UInt32 serverTick, System.UInt32 lastProcessedInputTick, System.Int32 id, UnityEngine.Vector3 pos) (at Assets/Scripts/Test/BattleManager.cs:194)\nUdpMessageHandler.HandleMove (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:95)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:35)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:346)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:239)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "c589b90a",
+    "FirstSeen": "2026-06-23T21:28:41.9253504+03:00",
+    "LastSeen": "2026-06-23T21:28:41.9253514+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "BattleManager.OnPlayerDead (System.Int32 deadplayerid, System.Int32 killerid, System.Int32 gunid) (at Assets/Scripts/Test/BattleManager.cs:468)\nUdpMessageHandler.handlePlayerDead (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:192)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:63)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:319)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:239)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "eb0abf9f",
+    "FirstSeen": "2026-06-23T20:46:36.6304368+03:00",
+    "LastSeen": "2026-06-23T20:46:36.6304374+03:00",
+    "Count": 1,
+    "LogMessage": "[HomeStateSyncResponse] Hata: System.IO.EndOfStreamException: Unable to read beyond the end of the stream.\r\n  at System.IO.BinaryReader.ReadByte () [0x00018] in <41d29b352f6a475ab1bf7c6628b82790>:0 \r\n  at ByteBuffer.ReadByte () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:200 \r\n  at ByteBuffer.ReadVarUInt () [0x00004] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:160 \r\n  at ByteBuffer.ReadVarInt () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:150 \r\n  at HomeStateSyncResponsePacket.Deserialize (ByteBuffer buffer) [0x004ea] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Packets\\HomeStateSyncResponsePacket.cs:209 \r\n  at HomeStateSyncResponse+<>c__DisplayClass0_0.<Handle>b__0 () [0x0001d] in C:\\Project\\Game Clients\\Assets\\Scripts\\Handler\\Battle\\HomeStateSyncResponse.cs:16 ",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nHomeStateSyncResponse/<>c__DisplayClass0_0:<Handle>b__0 () (at Assets/Scripts/Handler/Battle/HomeStateSyncResponse.cs:31)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:27)\n",
+    "LogType": 0,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "3d9d4ee9",
+    "FirstSeen": "2026-06-23T20:46:01.4434219+03:00",
+    "LastSeen": "2026-06-23T20:46:01.4434222+03:00",
+    "Count": 1,
+    "LogMessage": "MissingReferenceException: The object of type 'UnityEngine.GameObject' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object.",
+    "StackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponentFastPath (System.Type type, System.IntPtr oneFurtherThanResultValue) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponent[T] () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nBattleManager.OnPlayerMoved (System.UInt32 serverTick, System.UInt32 lastProcessedInputTick, System.Int32 id, UnityEngine.Vector3 pos) (at Assets/Scripts/Test/BattleManager.cs:192)\nUdpMessageHandler.HandleMove (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:95)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:35)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:346)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:239)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "62aa5177",
+    "FirstSeen": "2026-06-23T20:06:37.8837875+03:00",
+    "LastSeen": "2026-06-23T20:06:37.8837882+03:00",
+    "Count": 1,
+    "LogMessage": "[PostMatchSyncResponse] Hata: System.IO.EndOfStreamException: Unable to read beyond the end of the stream.\r\n  at System.IO.BinaryReader.ReadByte () [0x00018] in <41d29b352f6a475ab1bf7c6628b82790>:0 \r\n  at ByteBuffer.ReadByte () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:200 \r\n  at ByteBuffer.ReadVarUInt () [0x00004] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:160 \r\n  at ByteBuffer.ReadVarString () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:192 \r\n  at AuthLoginResponsePacket.Deserialize (ByteBuffer buffer) [0x00142] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Packets\\AuthLoginResponsePacket.cs:101 \r\n  at PostMatchSyncResponse+<>c__DisplayClass0_0.<Handle>b__0 () [0x0001d] in C:\\Project\\Game Clients\\Assets\\Scripts\\Handler\\Battle\\PostMatchSyncResponse.cs:15 ",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nPostMatchSyncResponse/<>c__DisplayClass0_0:<Handle>b__0 () (at Assets/Scripts/Handler/Battle/PostMatchSyncResponse.cs:30)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:27)\n",
+    "LogType": 0,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "f6da1edd",
+    "FirstSeen": "2026-06-23T20:05:47.680854+03:00",
+    "LastSeen": "2026-06-23T20:05:47.6808548+03:00",
+    "Count": 1,
+    "LogMessage": "MissingReferenceException: The object of type 'UnityEngine.GameObject' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object.",
+    "StackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponentFastPath (System.Type type, System.IntPtr oneFurtherThanResultValue) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponent[T] () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nBattleManager.OnPlayerMoved (System.UInt32 serverTick, System.UInt32 lastProcessedInputTick, System.Int32 id, UnityEngine.Vector3 pos) (at Assets/Scripts/Test/BattleManager.cs:192)\nUdpMessageHandler.HandleMove (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:95)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:35)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:340)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:233)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "2b9c3c42",
+    "FirstSeen": "2026-06-23T20:05:38.5249396+03:00",
+    "LastSeen": "2026-06-23T20:05:38.524941+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "BattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:357)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:113)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:39)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:313)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:233)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "47699526",
+    "FirstSeen": "2026-06-23T18:53:03.4185054+03:00",
+    "LastSeen": "2026-06-23T18:53:03.4185057+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "BattleManager.OnPlayerDead (System.Int32 deadplayerid, System.Int32 killerid, System.Int32 gunid) (at Assets/Scripts/Test/BattleManager.cs:468)\nUdpMessageHandler.handlePlayerDead (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:192)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:63)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:277)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:197)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "12d22103",
+    "FirstSeen": "2026-06-23T18:49:15.3128721+03:00",
+    "LastSeen": "2026-06-23T18:49:15.3128723+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "BattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:357)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:113)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:39)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:277)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:197)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "5c325efb",
+    "FirstSeen": "2026-06-23T18:34:08.5292547+03:00",
+    "LastSeen": "2026-06-23T18:34:08.5292551+03:00",
+    "Count": 1,
+    "LogMessage": "Scene 'MatchResult' couldn't be loaded because it has not been added to the active build profile or shared scene list or the AssetBundle has not been loaded.\nTo add a scene to the active build profile or shared scene list use the menu File->Build Profiles",
+    "StackTrace": "UnityEngine.SceneManagement.SceneManager:LoadScene (string,UnityEngine.SceneManagement.LoadSceneMode)\nAppSceneManager:LoadAdditive (string) (at Assets/Scripts/Manager/Core/AppSceneManager.cs:67)\nBattleUI:Exit () (at Assets/Scripts/Manager/Battle/BattleUI.cs:195)\nUnityEngine.EventSystems.EventSystem:Update ()\n",
+    "LogType": 0,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "08d719f6",
+    "FirstSeen": "2026-06-23T18:09:21.2291021+03:00",
+    "LastSeen": "2026-06-23T18:09:21.2291025+03:00",
+    "Count": 1,
+    "LogMessage": "EndOfStreamException: Unable to read beyond the end of the stream.",
+    "StackTrace": "System.IO.BinaryReader.ReadByte () (at <41d29b352f6a475ab1bf7c6628b82790>:0)\nByteBuffer.ReadByte () (at Assets/Scripts/Network/Base/ByteBuffer.cs:200)\nByteBuffer.ReadVarUInt () (at Assets/Scripts/Network/Base/ByteBuffer.cs:160)\nByteBuffer.ReadVarInt () (at Assets/Scripts/Network/Base/ByteBuffer.cs:150)\nUdpMessageHandler.HandleSpawnedLoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:197)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:66)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:277)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:197)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "72e3cec4",
+    "FirstSeen": "2026-06-22T19:45:08.5555323+03:00",
+    "LastSeen": "2026-06-23T18:50:33.8328323+03:00",
+    "Count": 4,
+    "LogMessage": "MissingReferenceException: The object of type 'UnityEngine.GameObject' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object.",
+    "StackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponentFastPath (System.Type type, System.IntPtr oneFurtherThanResultValue) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponent[T] () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nBattleManager.OnPlayerMoved (System.UInt32 serverTick, System.UInt32 lastProcessedInputTick, System.Int32 id, UnityEngine.Vector3 pos) (at Assets/Scripts/Test/BattleManager.cs:192)\nUdpMessageHandler.HandleMove (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:95)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:35)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:304)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:197)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "7c48ea71",
+    "FirstSeen": "2026-06-22T04:34:31.64992+03:00",
+    "LastSeen": "2026-06-23T22:22:30.3636904+03:00",
+    "Count": 17,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
+    "StackTrace": "UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <00000000000000000000000000000000>:0)\nUnityEngine.GameObject.GetComponentFastPath (System.Type type, System.IntPtr oneFurtherThanResultValue) (at <00000000000000000000000000000000>:0)\nUnityEngine.GameObject.GetComponent[T] () (at <00000000000000000000000000000000>:0)\nBattleManager.OnPlayerMoved (System.UInt32 serverTick, System.UInt32 lastProcessedInputTick, System.Int32 id, UnityEngine.Vector3 pos) (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.ProcessIncomingMessages () (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.Update () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      5
+    ]
+  },
+  {
+    "Id": "9b3fed7c",
+    "FirstSeen": "2026-06-22T00:59:24.0522526+03:00",
+    "LastSeen": "2026-06-22T01:01:32.3370488+03:00",
+    "Count": 2,
+    "LogMessage": "UnassignedReferenceException: The variable firePoint of GunController has not been assigned.\nYou probably need to assign the firePoint variable of the GunController script in the inspector.",
+    "StackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Transform.get_position () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nGunController.FireLocal () (at Assets/Scripts/Handler/Battle/GunController.cs:343)\nGunController.HandleLocalFiring () (at Assets/Scripts/Handler/Battle/GunController.cs:323)\nGunController.Update () (at Assets/Scripts/Handler/Battle/GunController.cs:84)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "0309f4e8",
+    "FirstSeen": "2026-06-21T17:31:25.0036717+03:00",
+    "LastSeen": "2026-06-21T17:31:25.0036723+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "InventoryManager.SetAmmo (System.Int32 newammo) (at Assets/Scripts/Test/InventoryManager.cs:106)\nGunController.UpdateAmmoUI () (at Assets/Scripts/Handler/Battle/GunController.cs:125)\nGunController.SyncAmmo (System.Int32 serverAmmo) (at Assets/Scripts/Handler/Battle/GunController.cs:119)\nBattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:350)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:113)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:39)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:277)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:197)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      6
+    ]
+  },
+  {
+    "Id": "14775130",
+    "FirstSeen": "2026-06-18T17:58:07.1236503+03:00",
+    "LastSeen": "2026-06-18T17:59:07.305762+03:00",
+    "Count": 2,
+    "LogMessage": "MissingReferenceException: The object of type 'UnityEngine.GameObject' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object.",
+    "StackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponentFastPath (System.Type type, System.IntPtr oneFurtherThanResultValue) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponent[T] () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nBattleManager.OnPlayerMoved (System.UInt32 serverTick, System.UInt32 lastProcessedInputTick, System.Int32 id, UnityEngine.Vector3 pos) (at Assets/Scripts/Test/BattleManager.cs:187)\nUdpMessageHandler.HandleMove (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:91)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:34)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:300)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "7c6931b1",
+    "FirstSeen": "2026-06-18T17:58:07.1171455+03:00",
+    "LastSeen": "2026-06-18T17:58:07.1171466+03:00",
+    "Count": 1,
+    "LogMessage": "EndOfStreamException: Unable to read beyond the end of the stream.",
+    "StackTrace": "System.IO.__Error.EndOfFile () (at <00000000000000000000000000000000>:0)\nSystem.IO.BinaryReader.ReadByte () (at <00000000000000000000000000000000>:0)\nByteBuffer.ReadVarUInt () (at <00000000000000000000000000000000>:0)\nLoginOKResponsePacket.Deserialize (ByteBuffer buffer) (at <00000000000000000000000000000000>:0)\nLoginOKHandler.Handle (System.Byte[] message) (at <00000000000000000000000000000000>:0)\nMessageManager.HandleMessage (System.Byte[] data) (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.ProcessIncomingMessages () (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.Update () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      2
+    ]
+  },
+  {
+    "Id": "e4918e4a",
+    "FirstSeen": "2026-06-18T17:42:15.9241687+03:00",
+    "LastSeen": "2026-06-18T17:57:42.5809932+03:00",
+    "Count": 3,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "InventoryManager.SetAmmo (System.Int32 newammo) (at Assets/Scripts/Test/InventoryManager.cs:108)\nBattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:332)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:109)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:38)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:273)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "74f866cb",
+    "FirstSeen": "2026-06-18T17:39:37.0248925+03:00",
+    "LastSeen": "2026-06-18T17:39:37.024893+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "BattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:324)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:106)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:38)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:273)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "f317a689",
+    "FirstSeen": "2026-06-18T17:35:32.0085752+03:00",
+    "LastSeen": "2026-06-18T17:57:42.5768187+03:00",
+    "Count": 6,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
+    "StackTrace": "InventoryManager.SetAmmo (System.Int32 newammo) (at <00000000000000000000000000000000>:0)\nBattleManager.OnShoot (Shoot shoot) (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.ProcessIncomingMessages () (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.Update () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      2
+    ]
+  },
+  {
+    "Id": "15c26e9e",
+    "FirstSeen": "2026-06-18T17:35:18.4768365+03:00",
+    "LastSeen": "2026-06-18T17:57:21.1522852+03:00",
+    "Count": 7,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
+    "StackTrace": "InventoryManager.Start () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      2
+    ]
+  },
+  {
+    "Id": "7f635b0c",
+    "FirstSeen": "2026-06-18T17:19:17.384959+03:00",
+    "LastSeen": "2026-06-18T17:39:45.8329227+03:00",
+    "Count": 3,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "InventoryManager.SetAmmo (System.Int32 newammo) (at Assets/Scripts/Test/InventoryManager.cs:108)\nBattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:332)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:106)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:38)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:273)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "a9256f79",
+    "FirstSeen": "2026-06-17T14:51:56.1315934+03:00",
+    "LastSeen": "2026-06-17T14:51:56.1315938+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "InventoryManager.SetAmmo (System.Int32 newammo) (at Assets/Scripts/Test/InventoryManager.cs:108)\nBattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:330)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:106)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:38)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:273)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "52547130",
+    "FirstSeen": "2026-06-17T14:42:42.9223296+03:00",
+    "LastSeen": "2026-06-17T14:43:32.5275849+03:00",
+    "Count": 2,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "InventoryManager.SetAmmo (System.Int32 newammo) (at Assets/Scripts/Test/InventoryManager.cs:108)\nBattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:328)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:106)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:38)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:273)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "fb735b51",
+    "FirstSeen": "2026-06-17T14:37:42.192197+03:00",
+    "LastSeen": "2026-06-17T14:40:20.1952602+03:00",
+    "Count": 2,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "InventoryManager.SetAmmo (System.Int32 newammo) (at Assets/Scripts/Test/InventoryManager.cs:108)\nBattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:324)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:106)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:38)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:273)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "891e861c",
+    "FirstSeen": "2026-06-17T14:02:20.9263238+03:00",
+    "LastSeen": "2026-06-17T14:42:48.6691659+03:00",
+    "Count": 2,
+    "LogMessage": "EndOfStreamException: Unable to read beyond the end of the stream.",
+    "StackTrace": "System.IO.BinaryReader.ReadByte () (at <41d29b352f6a475ab1bf7c6628b82790>:0)\nByteBuffer.ReadByte () (at Assets/Scripts/Network/Base/ByteBuffer.cs:199)\nByteBuffer.ReadVarUInt () (at Assets/Scripts/Network/Base/ByteBuffer.cs:159)\nByteBuffer.ReadVarInt () (at Assets/Scripts/Network/Base/ByteBuffer.cs:149)\nUdpMessageHandler.handleHitConfirm (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:168)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:56)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:273)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "fba994d0",
+    "FirstSeen": "2026-06-17T14:02:01.1885843+03:00",
+    "LastSeen": "2026-06-17T14:02:01.188585+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "BattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:312)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:106)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:38)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:273)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "f0aa96da",
+    "FirstSeen": "2026-06-17T14:02:01.1761431+03:00",
+    "LastSeen": "2026-06-22T17:46:32.0918655+03:00",
+    "Count": 3,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
+    "StackTrace": "BattleManager.OnShoot (Shoot shoot) (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.ProcessIncomingMessages () (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.Update () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      5,
+      2
+    ]
+  },
+  {
+    "Id": "241575ae",
+    "FirstSeen": "2026-06-16T19:01:19.1612529+03:00",
+    "LastSeen": "2026-06-18T17:40:01.8688793+03:00",
+    "Count": 5,
+    "LogMessage": "EndOfStreamException: Unable to read beyond the end of the stream.",
+    "StackTrace": "System.IO.__Error.EndOfFile () (at <00000000000000000000000000000000>:0)\nSystem.IO.BinaryReader.FillBuffer (System.Int32 numBytes) (at <00000000000000000000000000000000>:0)\nSystem.IO.BinaryReader.ReadUInt32 () (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.HandleMove (ByteBuffer buffer) (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.ProcessIncomingMessages () (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.Update () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      2
+    ]
+  },
+  {
+    "Id": "a1496a08",
+    "FirstSeen": "2026-06-16T18:13:23.9611599+03:00",
+    "LastSeen": "2026-06-16T18:19:37.6785211+03:00",
+    "Count": 3,
+    "LogMessage": "EndOfStreamException: Unable to read beyond the end of the stream.",
+    "StackTrace": "System.IO.__Error.EndOfFile () (at <00000000000000000000000000000000>:0)\nSystem.IO.BinaryReader.ReadByte () (at <00000000000000000000000000000000>:0)\nByteBuffer.ReadVarUInt () (at <00000000000000000000000000000000>:0)\nNewAccountCreateResponsePacket.Deserialize (ByteBuffer buffer) (at <00000000000000000000000000000000>:0)\nNewAccountCreate.Handle (System.Byte[] data) (at <00000000000000000000000000000000>:0)\nMessageManager.HandleMessage (System.Byte[] data) (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.ProcessIncomingMessages () (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.Update () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      2
+    ]
+  },
+  {
+    "Id": "925155a8",
+    "FirstSeen": "2026-06-16T18:04:46.1387093+03:00",
+    "LastSeen": "2026-06-16T18:04:46.13871+03:00",
+    "Count": 1,
+    "LogMessage": "EndOfStreamException: Unable to read beyond the end of the stream.",
+    "StackTrace": "System.IO.BinaryReader.FillBuffer (System.Int32 numBytes) (at <41d29b352f6a475ab1bf7c6628b82790>:0)\nSystem.IO.BinaryReader.ReadUInt32 () (at <41d29b352f6a475ab1bf7c6628b82790>:0)\nByteBuffer.ReadUInt () (at Assets/Scripts/Network/Base/ByteBuffer.cs:222)\nUdpMessageHandler.HandleMove (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:74)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:34)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:300)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "d5afbb2d",
+    "FirstSeen": "2026-06-16T18:02:36.1587552+03:00",
+    "LastSeen": "2026-06-16T18:13:47.7435519+03:00",
+    "Count": 3,
+    "LogMessage": "EndOfStreamException: Unable to read beyond the end of the stream.",
+    "StackTrace": "System.IO.BinaryReader.ReadByte () (at <41d29b352f6a475ab1bf7c6628b82790>:0)\nByteBuffer.ReadByte () (at Assets/Scripts/Network/Base/ByteBuffer.cs:199)\nByteBuffer.ReadVarUInt () (at Assets/Scripts/Network/Base/ByteBuffer.cs:159)\nByteBuffer.ReadVarInt () (at Assets/Scripts/Network/Base/ByteBuffer.cs:149)\nNewAccountCreateResponsePacket.Deserialize (ByteBuffer buffer) (at Assets/Scripts/Network/Packets/NewAccountCreateResponsePacket.cs:13)\nNewAccountCreate.Handle (System.Byte[] data) (at Assets/Scripts/Handler/Login/NewAccountCreate.cs:12)\nMessageManager.HandleMessage (System.Byte[] data) (at Assets/Scripts/Network/MessageManager.cs:59)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:59)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:273)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:192)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "d1a73c34",
+    "FirstSeen": "2026-06-16T04:01:11.7966391+03:00",
+    "LastSeen": "2026-06-16T04:01:11.7966396+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "BattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:261)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:100)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:38)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:272)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:191)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "6756f55f",
+    "FirstSeen": "2026-06-16T03:32:34.9079832+03:00",
+    "LastSeen": "2026-06-18T17:57:21.710494+03:00",
+    "Count": 15,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "InventoryManager.Start () (at Assets/Scripts/Test/InventoryManager.cs:30)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "90fd4ec7",
+    "FirstSeen": "2026-06-16T03:23:59.0026499+03:00",
+    "LastSeen": "2026-06-16T03:23:59.0026506+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "BattleManager.OnShoot (Shoot shoot) (at Assets/Scripts/Test/BattleManager.cs:261)\nUdpMessageHandler.HandleShoot (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:99)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:38)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:272)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:191)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "ea5093c9",
+    "FirstSeen": "2026-06-13T23:33:56.5924207+03:00",
+    "LastSeen": "2026-06-14T20:17:39.6568096+03:00",
+    "Count": 2,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "GunController.Fire () (at Assets/Scripts/Handler/Battle/GunController.cs:312)\nGunController.HandleAutoFire () (at Assets/Scripts/Handler/Battle/GunController.cs:280)\nGunController.Update () (at Assets/Scripts/Handler/Battle/GunController.cs:81)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "a7e4c4cd",
+    "FirstSeen": "2026-06-13T23:29:35.8555784+03:00",
+    "LastSeen": "2026-06-15T22:27:45.6396761+03:00",
+    "Count": 11,
+    "LogMessage": "Tag: Enemy is not defined.",
+    "StackTrace": "UnityEngine.Component:CompareTag (string)\nProjectTile:OnTriggerEnter (UnityEngine.Collider) (at Assets/Scripts/Test/ProjectTile.cs:66)\n",
+    "LogType": 0,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "5978a129",
+    "FirstSeen": "2026-06-13T23:18:22.1721481+03:00",
+    "LastSeen": "2026-06-13T23:18:22.1721485+03:00",
+    "Count": 1,
+    "LogMessage": "GunController: joystick atanmamış! Lütfen Inspector'dan bir Joystick sürükleyin.",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nGunController:Start () (at Assets/Scripts/Handler/Battle/GunController.cs:46)\n",
+    "LogType": 0,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
     "Id": "f0062014",
     "FirstSeen": "2026-06-07T16:21:50.5701681+03:00",
     "LastSeen": "2026-06-07T16:21:50.5701685+03:00",

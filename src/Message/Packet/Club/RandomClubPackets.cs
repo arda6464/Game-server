@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-[PacketHandler(MessageType.GetRandomClubRequest)]
+
 public class RandomClubRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer)
@@ -30,6 +30,7 @@ public class RandomClubResponsePacket : IPacket
             buffer.WriteVarString(rclub.Description);
             buffer.WriteVarInt(rclub.TotalTrophy);
             buffer.WriteVarInt(rclub.Members.Count);
+            buffer.WriteVarInt(rclub.MaxMembers);
         }
     }
 

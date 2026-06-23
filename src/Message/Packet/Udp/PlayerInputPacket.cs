@@ -10,6 +10,7 @@ public struct PlayerInputPacket : IPacket
     public uint Tick { get; set; } // Olayın gerçekleştiği zaman damgası
     public float InputX { get; set; } = 0;
     public float InputY { get; set; }=0;
+    public byte AimByte { get; set; } = 0;
 
     public int ConnectionToken { get; set; }
 
@@ -27,6 +28,8 @@ public struct PlayerInputPacket : IPacket
 
        if ((inputbyte & 4) != 0) InputY = 1;
        else if ((inputbyte & 8) != 0) InputY = -1;
+
+       AimByte = buffer.ReadByte();
        
        Tick = (uint)buffer.ReadVarInt();
     }

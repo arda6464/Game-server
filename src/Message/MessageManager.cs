@@ -115,9 +115,6 @@ public static class MessageManager
                 case UdpMessageType.Ping:
                     UdpGameHandler.HandlePing(session, buffer);
                     break;
-                case UdpMessageType.Shoot:
-                    UdpGameHandler.HandleShoot(session, buffer, sequenceNumber);
-                    break;
                 case UdpMessageType.Input:
                     UdpGameHandler.HandleInput(session, buffer, sequenceNumber);
                     break;

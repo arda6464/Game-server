@@ -1,4 +1,4 @@
-public class PlayerMovedPacket : IPacket
+/*public class PlayerMovedPacket : IPacket
 {
     public int AccountID { get; set; }
     public float X { get; set; }
@@ -19,4 +19,4 @@ public class PlayerMovedPacket : IPacket
     {
         throw new NotImplementedException();
     }
-}
+}*/

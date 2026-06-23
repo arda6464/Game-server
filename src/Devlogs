@@ -28,14 +28,14 @@
           
 
      --------Yapılcaklar--------
-   **  Her Cihaza uygun yeerleşim
+   [✔️] Her Cihaza uygun yeerleşim
      1- club arama sistemi
 [✔️]2- ErrorCode sistemi(amaç gönderilen byte'ı azaltmak)   
-     3- Shop json dosyasından çekilecek
-     4- Daily quest sistemi
-     5- İconlar için bir manager
+[✔️]3- Shop json dosyasından çekilecek
+[✔️]4- Daily quest sistemi
+[✔️]5- İconlar için bir manager
      11- Clan war sistemi
-     12- Event sistemi
+[✔️]12- Event sistemi
 [✔️]14- Leaderboard sistemi
      16- Daily login rewards sistemi
      18- Clan donation sistemi
@@ -46,9 +46,9 @@
 [✔️]24- Oyun içi mağaza ve ekonomi (Satın alım & Gacha entegrasyonu tamamlandı)
      25- Sosyal medya entegrasyonu
      26- Oyun içi rehber ve yardım sistemi
-     28- Oyun içi ayarlar ve kişiselleştirme seçenekleri
-     29- Oyun içi performans izleme ve analiz araçları
-     30- Oyun içi geri bildirim ve destek sistemi
+[✔️]28- Oyun içi ayarlar ve kişiselleştirme seçenekleri
+[✔️]29- Oyun içi performans izleme ve analiz araçları
+[✔️]30- Oyun içi geri bildirim ve destek sistemi
      32- Oyun içi topluluk ve sosyal etkileşim sistemleri
      33- Oyun içi turnuva ve lig sistemleri
      34- Oyun içi başarı ve ödül sistemleri

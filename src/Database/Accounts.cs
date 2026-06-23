@@ -35,6 +35,7 @@ public static class AccountManager
         public int Avatarid { get; set; }
         public int Namecolorid { get; set; }
         public int Level { get; set; }
+        public int Experience { get; set; }
         public int Gems { get; set; }
         public int Coins { get; set; }
         public string? ClubName { get; set; }
@@ -97,6 +98,7 @@ public static class AccountManager
                         // JSON içindeki ID ile veritabanı ID'si aynı olmalı
                         account.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                         account.Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username"));
+                        ProgressionManager.Normalize(account);
 
                         if (account.ID >= maxAccountId)
                             maxAccountId = account.ID + 1;
@@ -164,6 +166,8 @@ public static class AccountManager
             Premium = 0,
             Avatarid = 1,
             Namecolorid = 1,
+            Level = 1,
+            Experience = 0,
             Token = TokenManager.GenerateNumericToken(),
             LastLogin = DateTime.Now,
             Clubid = 0,

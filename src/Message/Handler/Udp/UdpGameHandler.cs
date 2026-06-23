@@ -11,18 +11,43 @@ public static class UdpGameHandler
         packet.SequenceNumber = seqNo;
         packet.Deserialize(buffer);
 
-        if (session.PlayerData != null && session.PlayerData.IsAlive)
-        {
-            float moveX = packet.InputX;
-            float moveZ = packet.InputY;
+        if (session.PlayerData == null || !session.PlayerData.IsAlive)
+            return;
 
-            session.PlayerData.InputQueue.Enqueue(new PendingInput
-            {
-                Tick = packet.Tick,
-                Direction = new Vec3(moveX, 0, moveZ)
-            });
+        Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
+        if (battle == null)
+            return;
+
+        float now = Environment.TickCount / 1000f;
+
+        if (packet.AimByte == 0)
+        {
+            session.PlayerData.AimStarted = 0f;
+            session.PlayerData.AimDirection = Vec3.zero;
+         //   Console.WriteLine("[BATTLE] AİM BIRAKILDI");
         }
+        else
+        {
+            float normalized = (packet.AimByte - 1) / 254f;
+            float angle = normalized * MathF.PI * 2f;
+            Vec3 aimDirection = new Vec3(MathF.Cos(angle), 0f, MathF.Sin(angle));
+
+            if (session.PlayerData.AimDirection == Vec3.zero)
+                session.PlayerData.AimStarted = now;
+
+            session.PlayerData.AimDirection = aimDirection.normalized;
+         //   Console.WriteLine("[BATTLE] AİM TUTULUYOR");
+        }
+
+        session.PlayerData.InputQueue.Enqueue(new PendingInput
+        {
+            Tick = packet.Tick,
+            Direction = new Vec3(packet.InputX, 0, packet.InputY)
+        });
     }
+
+
+    
     public static void HandleConnect(Session session)
     {
         using (ByteBuffer buffer = ByteBufferPool.Get())
@@ -41,60 +66,7 @@ public static class UdpGameHandler
    
 
 
-    public static void HandleShoot(Session session, ByteBuffer buffer, int seqNo)
-    {
-        var packet = new PlayerShootPacket();
-        packet.SequenceNumber = seqNo;
-        packet.Deserialize(buffer);
-
-        // Shoot reliable olmalı veya hemen işlenmeli
-        if (session.PlayerData == null) return;
-
-        Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
-        if (battle == null) return;
-
-       /* Bullet bullet = new Bullet
-        {
-            BulletId = battle.GetNextBulletId(),
-            Position = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Z),
-            Direction = Vector2.Normalize(new Vector2(packet.DirectionX, packet.DirectionY)),
-            Speed = 10f,
-            OwnerID = session.ID,
-            startPos = new Vector2(session.PlayerData.Position.X, session.PlayerData.Position.Z),
-            Damage = 50,
-            menzil = 7f
-        };
-        battle.AddBullet(bullet);*/
-
-
-        // Mermiyi diğer oyunculara bildir (Reliable UDP veya TCP)
-        // Şimdilik UDP ile geri gönderelim
-        var response = new PlayerShootPacket
-        {
-            SequenceNumber = packet.SequenceNumber,
-            OwnerID = session.ID,
-            DirectionX = packet.DirectionX,
-            DirectionY = packet.DirectionY,
-          //  BulletId = bullet.BulletId
-        };
-
-        // Arenadaki herkese gönder (Reliable UDP)
-        foreach (var p in battle.GetPlayers())
-        {
-            if (p.session == null) continue;
-
-            using (ByteBuffer sendBuffer = ByteBufferPool.Get())
-            {
-                response.SequenceNumber = p.session.GetNextReliableSequence();
-                response.Serialize(sendBuffer);
-                p.session.SendReliableUDP(sendBuffer.ToArray(), response.SequenceNumber);
-            }
-        }
-
-
-
-
-    }
+   
     public static void HandlePing(Session session, ByteBuffer buffer)
     {
         PingPacket pingPacket = new PingPacket();
@@ -107,7 +79,7 @@ public static class UdpGameHandler
             response.WriteVarInt(seqNo);         // seqNo (VarInt) — eksikti
             response.WriteVarInt((int)UdpMessageType.Pong);
             response.WriteFloat(pingPacket.ClientSentTime);
-            session.SendUnreliableUDP(response.ToArray());
+            session.SendUnreliableUDP(response.GetBufferSegment());
         }
     }
     public static void  HandlePickUpRequest(Session session, ByteBuffer buffer, int seqNo)

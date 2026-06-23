@@ -144,12 +144,7 @@ public enum MessageType : short
     StartMatch,
     Move,
 
-    PlayerMoved,
-    PlayerDead,
-    ShootRequest,
-    Shoot,
-    HitRequest,
-    PlayerHealthUpdate,
+   
 
     #endregion
 
@@ -208,5 +203,9 @@ public enum MessageType : short
     GetUpdateNotesRequest,
     GetUpdateNotesResponse,
     #endregion
+
+    MatchResult,
+    PostMatchSyncRequest,
+    HomeStateSyncResponse,
 
 }
