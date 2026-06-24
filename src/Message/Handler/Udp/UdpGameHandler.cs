@@ -18,7 +18,7 @@ public static class UdpGameHandler
         if (battle == null)
             return;
 
-        float now = Environment.TickCount / 1000f;
+        float now = TickManager.GetCurrentTime();
 
         if (packet.AimByte == 0)
         {

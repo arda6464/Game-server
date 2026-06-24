@@ -3,6 +3,8 @@ using System.Diagnostics;
 public class TickManager
 {
     public static TickManager instance;
+    private static readonly Stopwatch _uptimeWatch = Stopwatch.StartNew();
+    public static float GetCurrentTime() => (float)_uptimeWatch.Elapsed.TotalSeconds;
 
     private Thread tickThread;
     private volatile bool isRunning;

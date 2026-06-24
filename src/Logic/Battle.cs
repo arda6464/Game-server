@@ -1476,6 +1476,6 @@ public class Battle
 
     private float GetCurrentTime()
     {
-        return Environment.TickCount / 1000f;
+        return TickManager.GetCurrentTime();
     }
 }

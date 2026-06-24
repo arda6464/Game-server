@@ -261,7 +261,14 @@ public class UdpServer
 
                             packet.RetryCount++;
                             packet.LastSentTime = now;
-                            Send(packet.Target, packet.Data);
+                            if (session.UdpEndPoint != null)
+                            {
+                                Send(session.UdpEndPoint, packet.Data);
+                            }
+                            else
+                            {
+                                Send(packet.Target, packet.Data);
+                            }
                         }
                     }
                 }
