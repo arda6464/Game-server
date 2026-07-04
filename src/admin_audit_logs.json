@@ -1,5 +1,96 @@
 [
   {
+    "Timestamp": "2026-07-03T19:36:50.3141508+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-03T19:01:23.9566134+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-03T18:01:22.3343677+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-03T14:18:08.4761226+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-03T01:58:33.7153023+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-02T19:39:12.6342532+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-01T21:11:38.9463025+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-01T19:34:31.9116759+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-01T15:09:41.9655977+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasak Kaldırma",
+    "Target": "arda",
+    "Details": "Yasak elle kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-01T14:59:24.8211058+03:00",
+    "AdminUsername": "admin",
+    "Action": "Yasaklama (Ban)",
+    "Target": "arda",
+    "Details": "Sebep: fantazi"
+  },
+  {
+    "Timestamp": "2026-06-25T19:34:29.2215427+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Düzenleme",
+    "Target": "Arda ",
+    "Details": "Admin tarafından gelişmiş profil güncellemeleri yapıldı."
+  },
+  {
+    "Timestamp": "2026-06-25T19:34:04.1867195+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Düzenleme",
+    "Target": "Arda ",
+    "Details": "Admin tarafından gelişmiş profil güncellemeleri yapıldı."
+  },
+  {
+    "Timestamp": "2026-06-25T19:23:53.6110818+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Düzenleme",
+    "Target": "Arda ",
+    "Details": "Admin tarafından gelişmiş profil güncellemeleri yapıldı."
+  },
+  {
     "Timestamp": "2026-05-27T21:34:25.1625407+03:00",
     "AdminUsername": "admin",
     "Action": "Oyuncu Düzenleme",

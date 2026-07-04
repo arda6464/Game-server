@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Sayfa Bulunamadı</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #07080a;
+            --panel: #0e1013;
+            --panel-2: #121419;
+            --border: rgba(255, 255, 255, 0.07);
+            --amber: #ffb02e;
+            --amber-dim: rgba(255, 176, 46, 0.14);
+            --red: #ef4444;
+            --text-primary: #f2f3f5;
+            --text-secondary: #7c8494;
+            --text-tertiary: #4a5162;
+            --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--sans);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* subtle grid + vignette floor */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(circle at 50% 40%, black 10%, transparent 72%);
+            pointer-events: none;
+        }
+
+        /* moving scanline */
+        .scanline {
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 140px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 176, 46, 0.035), transparent);
+            animation: scan 7s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: -140px; }
+            100% { top: 100vh; }
+        }
+
+        .wrap {
+            position: relative;
+            width: min(640px, calc(100vw - 2rem));
+            z-index: 2;
+        }
+
+        .window {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .titlebar {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem 1rem;
+            background: var(--panel-2);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #2a2d34;
+        }
+
+        .titlebar .path {
+            margin-left: 0.4rem;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--text-tertiary);
+            letter-spacing: 0.02em;
+        }
+
+        .body-area {
+            padding: clamp(2rem, 5vw, 3.25rem) clamp(1.5rem, 5vw, 3.25rem) 2.25rem;
+        }
+
+        .status-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--red);
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            padding: 0.35rem 0.65rem;
+            border-radius: 999px;
+            margin-bottom: 1.6rem;
+        }
+
+        .status-tag::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--red);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.18);
+        }
+
+        .code {
+            font-family: var(--mono);
+            font-weight: 800;
+            font-size: clamp(4.5rem, 16vw, 7.5rem);
+            line-height: 0.85;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .code::before,
+        .code::after {
+            content: "404";
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+        }
+
+        .code::before {
+            color: var(--amber);
+            animation: glitch-a 5.5s infinite;
+        }
+
+        .code::after {
+            color: #4fd1ff;
+            animation: glitch-b 5.5s infinite;
+        }
+
+        @keyframes glitch-a {
+            0%, 92%, 100% { opacity: 0; transform: translate(0, 0); }
+            93% { opacity: 0.7; transform: translate(-2px, 1px); }
+            94% { opacity: 0; }
+            95% { opacity: 0.6; transform: translate(2px, -1px); }
+            96% { opacity: 0; }
+        }
+
+        @keyframes glitch-b {
+            0%, 92%, 100% { opacity: 0; transform: translate(0, 0); }
+            93% { opacity: 0.5; transform: translate(2px, 0); }
+            94.5% { opacity: 0; }
+            95.5% { opacity: 0.5; transform: translate(-2px, 1px); }
+            96.5% { opacity: 0; }
+        }
+
+        h1 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 1.1rem 0 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .lead {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            max-width: 46ch;
+            margin: 0;
+        }
+
+        .log {
+            margin-top: 1.9rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            line-height: 1.9;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.15rem;
+        }
+
+        .log .row {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .log .key {
+            color: var(--text-tertiary);
+            min-width: 92px;
+            flex-shrink: 0;
+        }
+
+        .log .val {
+            color: var(--text-primary);
+            word-break: break-all;
+        }
+
+        .log .val.err {
+            color: var(--red);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 7px;
+            height: 1em;
+            background: var(--amber);
+            vertical-align: -0.15em;
+            margin-left: 0.2rem;
+            animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .scanline, .code::before, .code::after, .cursor {
+                animation: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .titlebar .path {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scanline"></div>
+
+    <main class="wrap">
+        <div class="window">
+            <div class="titlebar">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="path">system://error-console</span>
+            </div>
+
+            <div class="body-area">
+                <div class="status-tag">HTTP 404</div>
+
+                <h2 class="code">404</h2>
+                <h1>Sayfa bulunamadı</h1>
+                <p class="lead">İstenen kaynak sunucuda bulunamadı. Adres hatalı olabilir ya da kaldırılmış olabilir.</p>
+
+                <div class="log">
+                    <div class="row"><span class="key">status</span><span class="val err">404 Not Found</span></div>
+                    <div class="row"><span class="key">method</span><span class="val">GET</span></div>
+                    <div class="row"><span class="key">path</span><span class="val" id="missing-path">/</span></div>
+                    <div class="row"><span class="key">time</span><span class="val" id="timestamp">—</span></div>
+                    <div class="row"><span class="key">trace</span><span class="val">resource_not_found<span class="cursor"></span></span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('missing-path').innerText = window.location.pathname || '/';
+        document.getElementById('timestamp').innerText = new Date().toISOString();
+    </script>
+</body>
+
+</html>

@@ -14,6 +14,7 @@ public static class PostMatchSyncHandler
         }
 
         var account = session.Account;
+        SeasonManager.EnsureAccountSeasonState(account);
         bool wasAlreadyLobby = session.State == PlayerState.Lobby;
 
         if (session.BattleId > 0)

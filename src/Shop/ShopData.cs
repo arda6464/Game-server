@@ -65,7 +65,7 @@ using System.Collections.Generic;
         Coins = 1,          // Altın paketi
         BattlePass = 2,     // Battle Pass
         Avatar = 3,         // Avatar/Skin kilidi (DataId = ID)
-        XPBoost = 4,        // Geçici XP çarpanı (Count = gün sayısı)
+        XPBoost = 4,        // Geçici XP çarpanı (Count = saat )
         TrophyShield = 5,   // Kupa kaybetme koruması (Count = maç sayısı)
         StarterBundle = 6,  // Combo paket
         Character = 7,      // Karakter kilidi (DataId = ID)

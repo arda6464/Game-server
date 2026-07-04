@@ -140,6 +140,9 @@
             <a href="management.html" class="nav-item">
                 <i class="fas fa-gears"></i> Sistem Ayarları
             </a>
+            <a href="seasons.html" class="nav-item">
+                <i class="fas fa-trophy"></i> Sezon Yönetimi
+            </a>
             <a href="#" class="nav-item" onclick="logout()"
                 style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
                 <i class="fas fa-sign-out-alt"></i> Çıkış Yap
@@ -239,10 +242,22 @@
         </div>
     </div>
 
+    <div id="season-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-card card" style="max-width: 760px; width: 92%;">
+            <h2 id="season-modal-title" style="margin-bottom: 0.75rem;">Sezon Geçmişi</h2>
+            <div id="season-modal-summary" style="margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.9rem;"></div>
+            <div id="season-history-body" style="display:flex; flex-direction:column; gap:0.75rem; max-height: 60vh; overflow:auto;"></div>
+            <div style="display:flex; justify-content:flex-end; gap:1rem; margin-top:1.5rem;">
+                <button onclick="closeSeasonHistory()" class="secondary-btn">Kapat</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         let allPlayers = [];
         let currentFilter = 'all';
         let editingPlayerId = null;
+        let seasonHistoryPlayerId = null;
 
         async function updatePlayers() {
             try {
@@ -292,6 +307,9 @@
                             <button class="btn-view" onclick="location.href='profile.html?id=${p.id}'">
                                 <i class="fas fa-user-circle"></i> PROFİL
                             </button>
+                            <button class="btn-view" style="background: rgba(245,158,11,0.12); color:#f59e0b; border:1px solid rgba(245,158,11,0.18);" onclick="openSeasonHistory('${p.id}', '${p.username}')">
+                                <i class="fas fa-trophy"></i> SEZON
+                            </button>
                             <button class="btn-refresh" style="padding: 0.5rem; min-width: auto; border-radius: 10px;" onclick="openEditModal('${p.id}')">
                                 <i class="fas fa-edit"></i>
                             </button>
@@ -325,6 +343,65 @@
             setTimeout(() => {
                 document.getElementById('edit-modal').style.display = 'none';
             }, 300);
+        }
+
+        function closeSeasonHistory() {
+            document.getElementById('season-modal').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('season-modal').style.display = 'none';
+            }, 300);
+        }
+
+        async function openSeasonHistory(playerId, playerName) {
+            seasonHistoryPlayerId = playerId;
+            document.getElementById('season-modal-title').innerText = `${playerName} - Sezon Geçmişi`;
+            document.getElementById('season-modal-summary').innerText = 'Yükleniyor...';
+            document.getElementById('season-history-body').innerHTML = '';
+            document.getElementById('season-modal').style.display = 'flex';
+            document.getElementById('season-modal').classList.add('active');
+
+            try {
+                const res = await fetch(`/api/seasons/player?id=${playerId}`);
+                const data = await res.json();
+                if (!data || data.success === false) {
+                    document.getElementById('season-modal-summary').innerText = data?.message || 'Sezon verisi bulunamadı.';
+                    return;
+                }
+
+                document.getElementById('season-modal-summary').innerText =
+                    `Aktif Sezon: #${data.SeasonId} • Kupalar: ${data.CurrentTrophy} • Zirve: ${data.PeakTrophy} • Maç: ${data.MatchesPlayed} • W/L: ${data.Wins}/${data.Losses}`;
+
+                const body = document.getElementById('season-history-body');
+                const history = data.History || [];
+                if (history.length === 0) {
+                    body.innerHTML = '<div class="empty-state">Arşivlenmiş sezon yok.</div>';
+                    return;
+                }
+
+                body.innerHTML = history.map(item => `
+                    <div style="padding:1rem; border:1px solid var(--glass-border); border-radius:0.9rem; background:rgba(255,255,255,0.02);">
+                        <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+                            <div>
+                                <div style="font-weight:800; color:#fff;">Sezon #${item.SeasonId} - ${item.SeasonName || 'Unnamed'}</div>
+                                <div style="font-size:0.82rem; color:var(--text-secondary); margin-top:0.25rem;">
+                                    ${new Date(item.StartTimeUtc).toLocaleDateString('tr-TR')} - ${new Date(item.EndTimeUtc).toLocaleDateString('tr-TR')}
+                                </div>
+                            </div>
+                            <div class="value-badge" style="display:inline-block;">${item.RankName || 'Rank'}</div>
+                        </div>
+                        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap:0.75rem; margin-top:0.9rem; font-size:0.85rem; color:var(--text-secondary);">
+                            <div><strong style="color:#fff;">Final:</strong> ${item.FinalTrophy ?? 0}</div>
+                            <div><strong style="color:#fff;">Peak:</strong> ${item.PeakTrophy ?? 0}</div>
+                            <div><strong style="color:#fff;">W/L:</strong> ${item.Wins ?? 0}/${item.Losses ?? 0}</div>
+                            <div><strong style="color:#fff;">Maç:</strong> ${item.MatchesPlayed ?? 0}</div>
+                            <div><strong style="color:#fff;">Ödül Coin:</strong> ${item.RewardCoins ?? 0}</div>
+                            <div><strong style="color:#fff;">Ödül Gem:</strong> ${item.RewardGems ?? 0}</div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (e) {
+                document.getElementById('season-modal-summary').innerText = 'Sezon verisi yüklenemedi.';
+            }
         }
 
         async function savePlayer() {

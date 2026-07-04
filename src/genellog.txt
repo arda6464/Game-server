@@ -7862,3 +7862,983 @@ bu ödül size :)
 [2026-06-23 22:59:53] [GENERAL] [AdminServer] Admin paneli durduruldu.
 [2026-06-23 22:59:53] [BOOT] [SERVER] Shutdown starting...
 [2026-06-23 22:59:53] [OK] Shutdown complete. All data flushed.
+[2026-06-24 22:44:50] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-24 22:44:50] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-24 22:44:50] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-24 22:44:52] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-24 22:44:53] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-24 22:44:53] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-24 22:44:54] [GENERAL] [UDP] Server listening on 5000
+[2026-06-24 22:44:54] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-24 22:44:54] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-24 22:44:54] [OK] Server ready in 0,5s on port 5000.
+[2026-06-24 22:44:54] [BOOT] Version 1.0 online.
+[2026-06-24 22:44:54] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-25 01:18:30] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-25 01:18:30] [BOOT] Saving data and stopping services.
+[2026-06-25 01:18:30] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-25 01:18:30] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-25 01:18:30] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-25 01:18:35] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-25 01:18:35] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-25 01:18:35] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-25 01:18:36] [BOOT] [SERVER] Shutdown starting...
+[2026-06-25 01:18:36] [OK] Shutdown complete. All data flushed.
+[2026-06-25 01:33:27] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-25 01:33:27] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-25 01:33:27] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-25 01:33:28] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-25 01:33:28] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-25 01:33:28] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-25 01:33:28] [GENERAL] [UDP] Server listening on 5000
+[2026-06-25 01:33:28] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-25 01:33:28] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-25 01:33:28] [OK] Server ready in 0,3s on port 5000.
+[2026-06-25 01:33:28] [BOOT] Version 1.0 online.
+[2026-06-25 01:33:28] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-25 02:11:00] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-25 02:11:00] [BOOT] Saving data and stopping services.
+[2026-06-25 02:11:00] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-25 02:11:00] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-25 02:11:00] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-25 02:11:05] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-25 02:11:06] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-25 02:11:06] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-25 02:11:06] [BOOT] [SERVER] Shutdown starting...
+[2026-06-25 02:11:06] [OK] Shutdown complete. All data flushed.
+[2026-06-25 15:32:49] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-25 15:32:49] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-25 15:32:49] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-25 15:32:50] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-25 15:32:51] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-25 15:32:51] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-25 15:32:51] [GENERAL] [UDP] Server listening on 5000
+[2026-06-25 15:32:51] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-25 15:32:51] [OK] Server ready in 0,1s on port 5000.
+[2026-06-25 15:32:51] [BOOT] Version 1.0 online.
+[2026-06-25 15:32:51] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-25 15:32:51] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-25 16:09:54] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-25 16:09:54] [BOOT] Saving data and stopping services.
+[2026-06-25 16:09:54] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-25 16:09:54] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-25 16:09:54] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-25 16:09:59] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-25 16:09:59] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-25 16:09:59] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-25 16:09:59] [BOOT] [SERVER] Shutdown starting...
+[2026-06-25 16:09:59] [OK] Shutdown complete. All data flushed.
+[2026-06-25 19:19:26] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-25 19:19:26] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-25 19:19:26] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-25 19:19:28] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-25 19:19:29] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-25 19:19:29] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-25 19:19:29] [GENERAL] [UDP] Server listening on 5000
+[2026-06-25 19:19:29] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-25 19:19:29] [OK] Server ready in 0,1s on port 5000.
+[2026-06-25 19:19:29] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-25 19:19:29] [BOOT] Version 1.0 online.
+[2026-06-25 19:19:29] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-25 19:23:22] [GENERAL] [TCP] Game client connected: 10.234.129.28
+[2026-06-25 19:23:53] [GENERAL] Arda  istatistikleri güncellendi (Admin Panel).
+[2026-06-25 19:23:53] [GENERAL] [AdminAudit] admin -> Oyuncu Düzenleme on Arda : Admin tarafından gelişmiş profil güncellemeleri yapıldı.
+[2026-06-25 19:23:58] [GENERAL] [TCP] Game client connected: 10.234.129.28
+[2026-06-25 19:25:13] [GENERAL] [TCP] Game client connected: 10.234.129.28
+[2026-06-25 19:33:36] [GENERAL] [TCP] Game client connected: 10.234.129.28
+[2026-06-25 19:34:04] [GENERAL] Arda  istatistikleri güncellendi (Admin Panel).
+[2026-06-25 19:34:04] [GENERAL] [AdminAudit] admin -> Oyuncu Düzenleme on Arda : Admin tarafından gelişmiş profil güncellemeleri yapıldı.
+[2026-06-25 19:34:08] [GENERAL] [TCP] Game client connected: 10.234.129.28
+[2026-06-25 19:34:29] [GENERAL] Arda  istatistikleri güncellendi (Admin Panel).
+[2026-06-25 19:34:29] [GENERAL] [AdminAudit] admin -> Oyuncu Düzenleme on Arda : Admin tarafından gelişmiş profil güncellemeleri yapıldı.
+[2026-06-25 19:34:34] [GENERAL] [TCP] Game client connected: 10.234.129.28
+[2026-06-27 04:38:25] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-27 04:38:25] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-27 04:38:25] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-27 04:38:26] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-27 04:38:27] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-27 04:38:27] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-27 04:38:27] [GENERAL] [UDP] Server listening on 5000
+[2026-06-27 04:38:27] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-27 04:38:27] [OK] Server ready in 0,0s on port 5000.
+[2026-06-27 04:38:27] [BOOT] Version 1.0 online.
+[2026-06-27 04:38:27] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-27 04:38:27] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-27 04:39:01] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-27 04:39:01] [GENERAL] [NotificationSender] Bildirim gönderildi: Artık tüm işlemleriniz sadece sayısal ID üzerinden yapılmaktadır.
+[2026-06-27 04:39:09] [GENERAL] arda64best -> drcdd (İsim değiştirildi)
+[2026-06-27 04:40:51] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-27 04:40:55] [GENERAL] [SessionManager] UDP Kaydı yapıldı: Arda  -> 192.168.1.2:57755
+[2026-06-27 04:40:55] [GENERAL] [SessionManager] UDP Kaydı yapıldı: drcdd -> 192.168.1.3:43108
+[2026-06-27 04:41:27] [GENERAL] Arda  battle ödülleri güncellendi: trophy=-8, coin=0, xp=45, level=1, exp=45
+[2026-06-27 04:41:27] [GENERAL] drcdd battle ödülleri güncellendi: trophy=10, coin=116, xp=91, level=1, exp=91
+[2026-06-27 04:41:48] [GENERAL] [SessionManager] UDP Kaydı silindi: drcdd (192.168.1.3:43108)
+[2026-06-27 04:41:48] [GENERAL] [ShopItemsHandler] 7 → 1 ürün, 0 global + 1 kişisel teklif gönderildi.
+[2026-06-27 04:41:48] [GENERAL] [PostMatchSync] Home sync gönderildi: drcdd (7)
+[2026-06-27 04:43:24] [GENERAL] [SessionManager] UDP Kaydı silindi: Arda  (192.168.1.2:57755)
+[2026-06-27 04:43:24] [GENERAL] [ShopItemsHandler] 2 → 1 ürün, 0 global + 1 kişisel teklif gönderildi.
+[2026-06-27 04:43:24] [GENERAL] [PostMatchSync] Home sync gönderildi: Arda  (2)
+[2026-06-27 05:01:51] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-27 05:02:25] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-27 05:02:36] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-27 05:09:49] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-27 05:10:17] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-27 05:12:26] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-27 15:58:57] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-27 16:07:35] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-27 16:12:59] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-27 16:19:52] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-27 16:22:59] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-27 16:34:26] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-27 16:34:30] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 766830
+[2026-06-27 16:41:00] [GENERAL] [Lobby Manager] 766830'li lobby başarıyla silindi.
+[2026-06-27 17:49:19] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-27 17:49:22] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 976259
+[2026-06-27 17:51:01] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-27 17:51:01] [BOOT] Saving data and stopping services.
+[2026-06-27 17:51:01] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-27 17:51:01] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-27 17:51:01] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-27 17:51:01] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-06-27 17:51:06] [GENERAL] [Lobby Manager] 976259'li lobby başarıyla silindi.
+[2026-06-27 17:51:06] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-27 17:51:07] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-27 17:51:07] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-27 17:51:07] [BOOT] [SERVER] Shutdown starting...
+[2026-06-27 17:51:07] [OK] Shutdown complete. All data flushed.
+[2026-06-30 16:45:36] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 16:45:36] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 16:45:36] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 16:45:37] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 16:45:38] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 16:45:38] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 16:45:38] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 16:45:38] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 16:45:38] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 16:45:38] [BOOT] Version 1.0 online.
+[2026-06-30 16:45:38] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 16:45:38] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 16:45:44] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-30 16:45:47] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 132389
+[2026-06-30 16:45:47] [GENERAL] [QUEST COMPLETED] drcdd görevi tamamladı: 228 - Ödül: 1000 Gems
+[2026-06-30 16:45:47] [GENERAL] [QUEST COMPLETED] drcdd görevi tamamladı: 146 - Ödül: 1000 Gems
+[2026-06-30 16:46:22] [GENERAL] [Lobby Manager] 132389'li lobby başarıyla silindi.
+[2026-06-30 16:46:31] [GENERAL] [TCP] Game client connected: 192.168.1.3
+[2026-06-30 16:46:35] [GENERAL] [GetUpdateNotesHandler] 7 → 0 güncelleme notu gönderildi.
+[2026-06-30 16:46:39] [GENERAL] [ShopItemsHandler] 7 → 1 ürün, 0 global + 1 kişisel teklif gönderildi.
+[2026-06-30 16:46:41] [GENERAL] [BuyMarketItemHandler] drcdd (7) → Item 2000 başarısız: ItemNotFound
+[2026-06-30 16:49:45] [GENERAL] Club oluşturuldu: name: Arda des: test id: 1
+[2026-06-30 16:49:54] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 16:50:46] [GENERAL] Oyuncu clubten kicklendi
+[2026-06-30 16:51:13] [GENERAL] Oyuncu clubten kicklendi
+[2026-06-30 16:51:13] [GENERAL] Kulüp silindi: Arda (1)
+[2026-06-30 17:36:05] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 17:36:05] [BOOT] Saving data and stopping services.
+[2026-06-30 17:36:05] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 17:36:05] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 17:36:05] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 17:36:10] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 17:36:10] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 17:36:10] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 17:36:10] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 17:36:10] [OK] Shutdown complete. All data flushed.
+[2026-06-30 17:37:02] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 17:37:02] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 17:37:02] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 17:37:03] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 17:37:03] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 17:37:03] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 17:37:03] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 17:37:03] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 17:37:03] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 17:37:03] [BOOT] Version 1.0 online.
+[2026-06-30 17:37:03] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 17:37:03] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 17:37:15] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 17:48:09] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 17:52:05] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 17:55:43] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 18:07:20] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 18:07:20] [BOOT] Saving data and stopping services.
+[2026-06-30 18:07:20] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 18:07:20] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 18:07:20] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 18:07:25] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 18:07:25] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 18:07:25] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 18:07:25] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 18:07:25] [OK] Shutdown complete. All data flushed.
+[2026-06-30 18:14:21] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 18:14:21] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 18:14:21] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 18:14:21] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 18:14:21] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 18:14:21] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 18:14:21] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 18:14:21] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 18:14:21] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 18:14:21] [BOOT] Version 1.0 online.
+[2026-06-30 18:14:21] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 18:14:21] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 18:40:22] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 18:40:22] [BOOT] Saving data and stopping services.
+[2026-06-30 18:40:22] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 18:40:22] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 18:40:22] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 18:40:27] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 18:40:27] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 18:40:27] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 18:40:27] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 18:40:27] [OK] Shutdown complete. All data flushed.
+[2026-06-30 18:41:06] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 18:41:06] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 18:41:06] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 18:41:06] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 18:41:06] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 18:41:06] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 18:41:06] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 18:41:06] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 18:41:06] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 18:41:06] [BOOT] Version 1.0 online.
+[2026-06-30 18:41:06] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 18:41:06] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 18:41:31] [BOOT] Saving data and stopping services.
+[2026-06-30 18:41:31] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 18:41:31] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 18:41:31] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 18:41:36] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 18:41:36] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 18:41:36] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 18:41:36] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 18:41:37] [OK] Shutdown complete. All data flushed.
+[2026-06-30 18:41:46] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 18:41:46] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 18:41:46] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 18:41:46] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 18:41:46] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 18:41:46] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 18:41:46] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 18:41:46] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 18:41:46] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 18:41:46] [BOOT] Version 1.0 online.
+[2026-06-30 18:41:46] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 18:41:46] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 19:03:37] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 19:03:37] [BOOT] Saving data and stopping services.
+[2026-06-30 19:03:37] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 19:03:37] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 19:03:37] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 19:03:42] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 19:03:42] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 19:03:42] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 19:03:42] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 19:03:42] [OK] Shutdown complete. All data flushed.
+[2026-06-30 19:05:37] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 19:05:37] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 19:05:37] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 19:05:37] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 19:05:37] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 19:05:37] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 19:05:37] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 19:05:37] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 19:05:37] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 19:05:37] [BOOT] Version 1.0 online.
+[2026-06-30 19:05:37] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 19:05:37] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 19:12:18] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 19:12:18] [BOOT] Saving data and stopping services.
+[2026-06-30 19:12:18] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 19:12:18] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 19:12:18] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 19:12:23] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 19:12:23] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 19:12:23] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 19:12:23] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 19:12:23] [OK] Shutdown complete. All data flushed.
+[2026-06-30 19:17:18] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 19:17:18] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 19:17:18] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 19:17:18] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 19:17:18] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 19:17:18] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 19:17:18] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 19:17:18] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 19:17:19] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 19:17:19] [BOOT] Version 1.0 online.
+[2026-06-30 19:17:19] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 19:17:19] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 19:19:05] [GENERAL] [Database] Hesap silindi: ID=1, Username=arda, Sebep=teknik_hata
+[2026-06-30 19:19:06] [GENERAL] [Database] Hesap silindi: ID=2, Username=Arda , Sebep=teknik_hata
+[2026-06-30 19:19:06] [GENERAL] [Database] Hesap silindi: ID=3, Username=dfsfs, Sebep=teknik_hata
+[2026-06-30 19:19:06] [GENERAL] [Database] Hesap silindi: ID=4, Username=dasdas, Sebep=teknik_hata
+[2026-06-30 19:19:06] [GENERAL] [Database] Hesap silindi: ID=5, Username=arda, Sebep=teknik_hata
+[2026-06-30 19:19:06] [GENERAL] [Database] Hesap silindi: ID=6, Username=aarda, Sebep=teknik_hata
+[2026-06-30 19:19:06] [GENERAL] [Database] Hesap silindi: ID=7, Username=drcdd, Sebep=teknik_hata
+[2026-06-30 19:19:06] [GENERAL] [Database] 7 hesap silindi. Sebep: teknik_hata
+[2026-06-30 19:38:12] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 19:38:12] [BOOT] Saving data and stopping services.
+[2026-06-30 19:38:12] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 19:38:12] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 19:38:12] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 19:38:17] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 19:38:17] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 19:38:17] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 19:38:17] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 19:38:17] [OK] Shutdown complete. All data flushed.
+[2026-06-30 19:38:34] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 19:38:34] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 19:38:34] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 19:38:34] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 19:38:34] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 19:38:34] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 19:38:34] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 19:38:34] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 19:38:34] [OK] Server ready in 0,1s on port 5000.
+[2026-06-30 19:38:34] [BOOT] Version 1.0 online.
+[2026-06-30 19:38:34] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 19:38:34] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 19:38:37] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 19:38:58] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 19:39:21] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 19:39:21] [BOOT] Saving data and stopping services.
+[2026-06-30 19:39:21] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 19:39:21] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 19:39:21] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 19:39:21] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-06-30 19:39:26] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 19:39:26] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 19:39:26] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 19:39:26] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 19:39:26] [OK] Shutdown complete. All data flushed.
+[2026-06-30 19:41:53] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 19:41:53] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 19:41:53] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 19:41:53] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 19:41:53] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 19:41:53] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 19:41:53] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 19:41:53] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 19:41:53] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 19:41:53] [BOOT] Version 1.0 online.
+[2026-06-30 19:41:53] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 19:41:53] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 19:48:30] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 19:48:30] [BOOT] Saving data and stopping services.
+[2026-06-30 19:48:30] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 19:48:30] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 19:48:30] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 19:48:35] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 19:48:35] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 19:48:35] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 19:48:35] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 19:48:35] [OK] Shutdown complete. All data flushed.
+[2026-06-30 20:05:35] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 20:05:35] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 20:05:35] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 20:05:35] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 20:05:35] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 20:05:35] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 20:05:35] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 20:05:35] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 20:05:36] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 20:05:36] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 20:05:36] [BOOT] Version 1.0 online.
+[2026-06-30 20:05:36] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 20:05:53] [GENERAL] [Cache] Hesap cache'den silindi: 1
+[2026-06-30 20:05:53] [GENERAL] [Database] Hesap silindi: ID=1, Username=arda, Sebep=test
+[2026-06-30 20:05:53] [GENERAL] [Cache] Hesap cache'den silindi: 2
+[2026-06-30 20:05:53] [GENERAL] [Database] Hesap silindi: ID=2, Username=Arda , Sebep=test
+[2026-06-30 20:05:53] [GENERAL] [Cache] Hesap cache'den silindi: 3
+[2026-06-30 20:05:53] [GENERAL] [Database] Hesap silindi: ID=3, Username=dfsfs, Sebep=test
+[2026-06-30 20:05:53] [GENERAL] [Cache] Hesap cache'den silindi: 4
+[2026-06-30 20:05:54] [GENERAL] [Database] Hesap silindi: ID=4, Username=dasdas, Sebep=test
+[2026-06-30 20:05:54] [GENERAL] [Cache] Hesap cache'den silindi: 5
+[2026-06-30 20:05:54] [GENERAL] [Database] Hesap silindi: ID=5, Username=arda, Sebep=test
+[2026-06-30 20:05:54] [GENERAL] [Cache] Hesap cache'den silindi: 6
+[2026-06-30 20:05:54] [GENERAL] [Database] Hesap silindi: ID=6, Username=aarda, Sebep=test
+[2026-06-30 20:05:54] [GENERAL] [Cache] Hesap cache'den silindi: 7
+[2026-06-30 20:05:54] [GENERAL] [Database] Hesap silindi: ID=7, Username=drcdd, Sebep=test
+[2026-06-30 20:05:54] [GENERAL] [Database] 7 hesap silindi. Sebep: test
+[2026-06-30 20:05:59] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 20:05:59] [BOOT] Saving data and stopping services.
+[2026-06-30 20:05:59] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 20:05:59] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 20:05:59] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 20:06:04] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 20:06:04] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 20:06:04] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 20:06:04] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 20:06:04] [OK] Shutdown complete. All data flushed.
+[2026-06-30 20:06:11] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 20:06:11] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 20:06:11] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 20:06:11] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 20:06:11] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 20:06:11] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 20:06:12] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 20:06:12] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 20:06:12] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 20:06:12] [BOOT] Version 1.0 online.
+[2026-06-30 20:06:12] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 20:06:12] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 20:06:30] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 20:13:12] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 20:14:55] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 20:14:55] [BOOT] Saving data and stopping services.
+[2026-06-30 20:14:55] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 20:14:55] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 20:14:55] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 20:15:00] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 20:15:00] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 20:15:00] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 20:15:00] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 20:15:00] [OK] Shutdown complete. All data flushed.
+[2026-06-30 20:15:15] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-06-30 20:15:15] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-06-30 20:15:15] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-06-30 20:15:15] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-06-30 20:15:15] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-06-30 20:15:15] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-06-30 20:15:15] [GENERAL] [UDP] Server listening on 5000
+[2026-06-30 20:15:15] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-06-30 20:15:15] [OK] Server ready in 0,0s on port 5000.
+[2026-06-30 20:15:15] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-06-30 20:15:15] [BOOT] Version 1.0 online.
+[2026-06-30 20:15:15] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-06-30 20:15:23] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 20:51:08] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 20:51:37] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 20:51:37] [GENERAL] [NotificationSender] Bildirim gönderildi: Artık tüm işlemleriniz sadece sayısal ID üzerinden yapılmaktadır.
+[2026-06-30 20:51:43] [GENERAL] arda64best -> arda (İsim değiştirildi)
+[2026-06-30 21:00:47] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-06-30 21:46:13] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-06-30 21:46:13] [BOOT] Saving data and stopping services.
+[2026-06-30 21:46:13] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-06-30 21:46:13] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-06-30 21:46:13] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-06-30 21:46:18] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-06-30 21:46:18] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-06-30 21:46:18] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-06-30 21:46:18] [BOOT] [SERVER] Shutdown starting...
+[2026-06-30 21:46:18] [OK] Shutdown complete. All data flushed.
+[2026-07-01 02:31:24] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-01 02:31:24] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-01 02:31:24] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-01 02:31:26] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-01 02:31:27] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-01 02:31:27] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-01 02:31:27] [GENERAL] [UDP] Server listening on 5000
+[2026-07-01 02:31:27] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-01 02:31:27] [OK] Server ready in 0,1s on port 5000.
+[2026-07-01 02:31:27] [BOOT] Version 1.0 online.
+[2026-07-01 02:31:27] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-01 02:31:27] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-01 02:33:29] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-01 02:37:53] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-01 02:38:51] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-01 02:40:05] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-01 14:58:56] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-01 14:58:56] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-01 14:58:56] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-01 14:58:58] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-01 14:58:59] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-01 14:58:59] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-01 14:58:59] [GENERAL] [UDP] Server listening on 5000
+[2026-07-01 14:58:59] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-01 14:58:59] [OK] Server ready in 0,0s on port 5000.
+[2026-07-01 14:58:59] [BOOT] Version 1.0 online.
+[2026-07-01 14:58:59] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-01 14:58:59] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-01 14:59:24] [GENERAL] Oyuncu banlandı: arda (1) - Sebep: fantazi
+[2026-07-01 14:59:24] [GENERAL] [AdminAudit] admin -> Yasaklama (Ban) on arda: Sebep: fantazi
+[2026-07-01 15:01:07] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-01 15:09:41] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-01 15:09:41] [GENERAL] [AdminAudit] admin -> Yasak Kaldırma on arda: Yasak elle kaldırıldı.
+[2026-07-01 16:01:56] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-01 16:01:56] [BOOT] Saving data and stopping services.
+[2026-07-01 16:01:56] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-01 16:01:56] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-01 16:01:56] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-01 16:02:01] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-01 16:02:01] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-01 16:02:01] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-01 16:02:01] [BOOT] [SERVER] Shutdown starting...
+[2026-07-01 16:02:01] [OK] Shutdown complete. All data flushed.
+[2026-07-01 19:33:51] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-01 19:33:51] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-01 19:33:51] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-01 19:33:53] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-01 19:33:53] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-01 19:33:53] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-01 19:33:53] [GENERAL] [UDP] Server listening on 5000
+[2026-07-01 19:33:53] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-01 19:33:53] [OK] Server ready in 0,1s on port 5000.
+[2026-07-01 19:33:53] [BOOT] Version 1.0 online.
+[2026-07-01 19:33:53] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-01 19:33:53] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-01 19:34:08] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-01 19:34:31] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-01 19:34:31] [GENERAL] [AdminAudit] admin -> Yasak Kaldırma on arda: Yasak elle kaldırıldı.
+[2026-07-01 19:34:39] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-01 20:25:05] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-01 20:25:05] [BOOT] Saving data and stopping services.
+[2026-07-01 20:25:05] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-01 20:25:05] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-01 20:25:05] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-01 20:25:10] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-01 20:25:10] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-01 20:25:10] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-01 20:25:10] [BOOT] [SERVER] Shutdown starting...
+[2026-07-01 20:25:10] [BOOT] Saving data and stopping services.
+[2026-07-01 20:25:10] [OK] Shutdown complete. All data flushed.
+[2026-07-01 20:25:10] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-01 21:11:07] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-01 21:11:07] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-01 21:11:07] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-01 21:11:07] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-01 21:11:07] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-01 21:11:07] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-01 21:11:07] [GENERAL] [UDP] Server listening on 5000
+[2026-07-01 21:11:07] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-01 21:11:07] [OK] Server ready in 0,0s on port 5000.
+[2026-07-01 21:11:07] [BOOT] Version 1.0 online.
+[2026-07-01 21:11:07] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-01 21:11:07] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-01 21:11:14] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-01 21:11:38] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-01 21:11:38] [GENERAL] [AdminAudit] admin -> Yasak Kaldırma on arda: Yasak elle kaldırıldı.
+[2026-07-01 21:11:43] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-01 21:12:17] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-02 19:36:12] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-02 19:36:12] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-02 19:36:12] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-02 19:36:13] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-02 19:36:14] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-02 19:36:14] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-02 19:36:14] [GENERAL] [UDP] Server listening on 5000
+[2026-07-02 19:36:14] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-02 19:36:14] [OK] Server ready in 0,1s on port 5000.
+[2026-07-02 19:36:14] [BOOT] Version 1.0 online.
+[2026-07-02 19:36:14] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-02 19:36:14] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-02 19:38:51] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-02 19:39:12] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-02 19:39:12] [GENERAL] [AdminAudit] admin -> Yasak Kaldırma on arda: Yasak elle kaldırıldı.
+[2026-07-02 19:39:21] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-02 19:41:30] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-02 19:44:20] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-02 19:49:21] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-02 20:20:46] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-02 20:23:39] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-02 20:25:12] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-02 20:58:02] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-02 20:58:02] [BOOT] Saving data and stopping services.
+[2026-07-02 20:58:02] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-02 20:58:02] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-02 20:58:02] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-02 20:58:07] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-02 20:58:07] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-02 20:58:07] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-02 20:58:07] [BOOT] [SERVER] Shutdown starting...
+[2026-07-02 20:58:07] [BOOT] Saving data and stopping services.
+[2026-07-02 20:58:07] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-02 20:58:07] [OK] Shutdown complete. All data flushed.
+[2026-07-03 01:54:53] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 01:54:54] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 01:54:54] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 01:55:04] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 01:55:06] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 01:55:06] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 01:55:06] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 01:55:06] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 01:55:06] [OK] Server ready in 0,2s on port 5000.
+[2026-07-03 01:55:06] [BOOT] Version 1.0 online.
+[2026-07-03 01:55:06] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 01:55:06] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 01:55:14] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 01:58:33] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-03 01:58:33] [GENERAL] [AdminAudit] admin -> Yasak Kaldırma on arda: Yasak elle kaldırıldı.
+[2026-07-03 01:58:38] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 14:17:15] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 14:17:15] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 14:17:15] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 14:17:16] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 14:17:17] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 14:17:17] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 14:17:17] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 14:17:17] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 14:17:17] [OK] Server ready in 0,0s on port 5000.
+[2026-07-03 14:17:17] [BOOT] Version 1.0 online.
+[2026-07-03 14:17:17] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 14:17:17] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 14:17:23] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 14:18:08] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-03 14:18:08] [GENERAL] [AdminAudit] admin -> Yasak Kaldırma on arda: Yasak elle kaldırıldı.
+[2026-07-03 14:18:12] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 14:21:35] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 14:22:21] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 14:27:16] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-03 14:27:16] [BOOT] Saving data and stopping services.
+[2026-07-03 14:27:16] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-03 14:27:16] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-03 14:27:16] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 14:27:21] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-03 14:27:21] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-03 14:27:21] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-03 14:27:21] [BOOT] Saving data and stopping services.
+[2026-07-03 14:27:21] [BOOT] [SERVER] Shutdown starting...
+[2026-07-03 14:27:21] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 14:27:21] [OK] Shutdown complete. All data flushed.
+[2026-07-03 17:57:57] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 17:57:57] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 17:57:57] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 17:57:58] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 17:57:59] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 17:57:59] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 17:57:59] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 17:57:59] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 17:57:59] [OK] Server ready in 0,1s on port 5000.
+[2026-07-03 17:57:59] [BOOT] Version 1.0 online.
+[2026-07-03 17:57:59] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 17:57:59] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 18:00:52] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 18:01:22] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-03 18:01:22] [GENERAL] [AdminAudit] admin -> Yasak Kaldırma on arda: Yasak elle kaldırıldı.
+[2026-07-03 18:01:29] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 19:00:24] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-03 19:00:24] [BOOT] Saving data and stopping services.
+[2026-07-03 19:00:24] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-03 19:00:24] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-03 19:00:24] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 19:00:29] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-03 19:00:29] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-03 19:00:29] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-03 19:00:29] [BOOT] [SERVER] Shutdown starting...
+[2026-07-03 19:00:29] [BOOT] Saving data and stopping services.
+[2026-07-03 19:00:29] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 19:00:29] [OK] Shutdown complete. All data flushed.
+[2026-07-03 19:01:03] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 19:01:03] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 19:01:03] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 19:01:03] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 19:01:03] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 19:01:03] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 19:01:03] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 19:01:03] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 19:01:03] [OK] Server ready in 0,0s on port 5000.
+[2026-07-03 19:01:03] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 19:01:03] [BOOT] Version 1.0 online.
+[2026-07-03 19:01:03] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 19:01:23] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-03 19:01:23] [GENERAL] [AdminAudit] admin -> Yasak Kaldırma on arda: Yasak elle kaldırıldı.
+[2026-07-03 19:01:48] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 19:03:34] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 19:31:24] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-03 19:31:24] [BOOT] Saving data and stopping services.
+[2026-07-03 19:31:25] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-03 19:31:25] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-03 19:31:25] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 19:31:30] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-03 19:31:30] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-03 19:31:30] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-03 19:31:30] [BOOT] Saving data and stopping services.
+[2026-07-03 19:31:30] [BOOT] [SERVER] Shutdown starting...
+[2026-07-03 19:31:30] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 19:31:30] [OK] Shutdown complete. All data flushed.
+[2026-07-03 19:32:34] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 19:32:34] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 19:32:34] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 19:32:35] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 19:32:35] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 19:32:35] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 19:32:35] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 19:32:35] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 19:32:35] [OK] Server ready in 0,0s on port 5000.
+[2026-07-03 19:32:35] [BOOT] Version 1.0 online.
+[2026-07-03 19:32:35] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 19:32:35] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 19:33:05] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-03 19:33:11] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 19:35:51] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-03 19:35:51] [BOOT] Saving data and stopping services.
+[2026-07-03 19:35:51] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-03 19:35:51] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-03 19:35:51] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 19:35:51] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-07-03 19:35:56] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-03 19:35:56] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-03 19:35:56] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-03 19:35:56] [BOOT] Saving data and stopping services.
+[2026-07-03 19:35:56] [BOOT] [SERVER] Shutdown starting...
+[2026-07-03 19:35:56] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 19:35:56] [OK] Shutdown complete. All data flushed.
+[2026-07-03 19:36:22] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 19:36:22] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 19:36:22] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 19:36:22] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 19:36:22] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 19:36:22] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 19:36:22] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 19:36:22] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 19:36:22] [OK] Server ready in 0,0s on port 5000.
+[2026-07-03 19:36:22] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 19:36:22] [BOOT] Version 1.0 online.
+[2026-07-03 19:36:22] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 19:36:46] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 19:36:50] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-03 19:36:50] [GENERAL] [AdminAudit] admin -> Yasak Kaldırma on arda: Yasak elle kaldırıldı.
+[2026-07-03 19:36:56] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 19:37:01] [GENERAL] [DeliveryManager] Ödül uygulandı: Gems (Data: 0, Count: 18) -> arda
+[2026-07-03 19:37:01] [GENERAL] [ClaimHandler] arda günlük  ödüllerini topladı:  (1 kalem Gacha gönderildi)
+[2026-07-03 20:42:03] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 20:42:03] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 20:42:03] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 20:42:04] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 20:42:05] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 20:42:05] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 20:42:05] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 20:42:05] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 20:42:05] [OK] Server ready in 0,1s on port 5000.
+[2026-07-03 20:42:05] [BOOT] Version 1.0 online.
+[2026-07-03 20:42:05] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 20:42:05] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 20:50:14] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-03 20:50:14] [BOOT] Saving data and stopping services.
+[2026-07-03 20:50:14] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-03 20:50:14] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-03 20:50:14] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 20:50:19] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-03 20:50:19] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-03 20:50:19] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-03 20:50:19] [BOOT] Saving data and stopping services.
+[2026-07-03 20:50:19] [BOOT] [SERVER] Shutdown starting...
+[2026-07-03 20:50:19] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 20:50:19] [OK] Shutdown complete. All data flushed.
+[2026-07-03 22:41:24] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 22:41:24] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 22:41:24] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 22:41:26] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 22:41:27] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 22:41:27] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 22:41:27] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 22:41:27] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 22:41:27] [OK] Server ready in 0,0s on port 5000.
+[2026-07-03 22:41:27] [BOOT] Version 1.0 online.
+[2026-07-03 22:41:27] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 22:41:27] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 22:42:47] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 22:42:56] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-03 22:43:01] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 22:43:07] [GENERAL] [DeliveryManager] Ödül uygulandı: Coins (Data: 0, Count: 100) -> arda
+[2026-07-03 22:43:07] [GENERAL] [ClaimHandler] arda günlük  ödülünü topladı:  (Coins kalem Gacha gönderildi)
+[2026-07-03 22:46:14] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 22:46:24] [GENERAL] [DeliveryManager] Ödül uygulandı: Coins (Data: 0, Count: 138) -> arda
+[2026-07-03 22:46:24] [GENERAL] [ClaimHandler] arda günlük  ödülünü topladı:  (Coins kalem Gacha gönderildi)
+[2026-07-03 22:49:10] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-03 22:49:10] [BOOT] Saving data and stopping services.
+[2026-07-03 22:49:10] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-03 22:49:10] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-03 22:49:10] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 22:49:10] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-07-03 22:49:15] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-03 22:49:15] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-03 22:49:15] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-03 22:49:15] [BOOT] [SERVER] Shutdown starting...
+[2026-07-03 22:49:15] [BOOT] Saving data and stopping services.
+[2026-07-03 22:49:15] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 22:49:15] [OK] Shutdown complete. All data flushed.
+[2026-07-03 22:49:43] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 22:49:43] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 22:49:43] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 22:49:44] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 22:49:44] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 22:49:44] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 22:49:44] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 22:49:44] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 22:49:44] [OK] Server ready in 0,0s on port 5000.
+[2026-07-03 22:49:44] [BOOT] Version 1.0 online.
+[2026-07-03 22:49:44] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 22:49:44] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 22:49:46] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 22:49:56] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-03 22:50:00] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 22:50:09] [GENERAL] [DeliveryManager] Ödül uygulandı: Gems (Data: 0, Count: 7) -> arda
+[2026-07-03 22:50:09] [GENERAL] [ClaimHandler] arda günlük  ödülünü topladı:  (Gems kalem Gacha gönderildi)
+[2026-07-03 23:04:38] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 23:05:11] [GENERAL] [DeliveryManager] Ödül uygulandı: Coins (Data: 0, Count: 87) -> arda
+[2026-07-03 23:05:11] [GENERAL] [ClaimHandler] arda günlük  ödülünü topladı:  (Coins kalem Gacha gönderildi)
+[2026-07-03 23:07:06] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 23:07:35] [GENERAL] [DeliveryManager] Ödül uygulandı: Coins (Data: 0, Count: 53) -> arda
+[2026-07-03 23:07:35] [GENERAL] [ClaimHandler] arda günlük  ödülünü topladı:  (Coins kalem Gacha gönderildi)
+[2026-07-03 23:07:50] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-03 23:07:50] [BOOT] Saving data and stopping services.
+[2026-07-03 23:07:50] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-03 23:07:50] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-03 23:07:50] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 23:07:50] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-07-03 23:07:55] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-03 23:07:55] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-03 23:07:55] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-03 23:07:55] [BOOT] [SERVER] Shutdown starting...
+[2026-07-03 23:07:55] [BOOT] Saving data and stopping services.
+[2026-07-03 23:07:55] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 23:07:55] [OK] Shutdown complete. All data flushed.
+[2026-07-03 23:10:44] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-03 23:10:44] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-03 23:10:44] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-03 23:10:44] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-03 23:10:44] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-03 23:10:44] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-03 23:10:44] [GENERAL] [UDP] Server listening on 5000
+[2026-07-03 23:10:44] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-03 23:10:44] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-03 23:10:44] [OK] Server ready in 0,1s on port 5000.
+[2026-07-03 23:10:44] [BOOT] Version 1.0 online.
+[2026-07-03 23:10:44] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-03 23:12:01] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-03 23:12:04] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 23:12:14] [GENERAL] [DeliveryManager] Ödül uygulandı: Coins (Data: 0, Count: 62) -> arda
+[2026-07-03 23:12:14] [GENERAL] [ClaimHandler] arda günlük  ödülünü topladı:  (Coins kalem Gacha gönderildi)
+[2026-07-03 23:12:32] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 23:14:05] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-03 23:14:27] [GENERAL] [DeliveryManager] Ödül uygulandı: Coins (Data: 0, Count: 62) -> arda
+[2026-07-03 23:14:27] [GENERAL] [ClaimHandler] arda günlük  ödülünü topladı:  (Coins kalem Gacha gönderildi)
+[2026-07-03 23:15:03] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-03 23:15:03] [BOOT] Saving data and stopping services.
+[2026-07-03 23:15:03] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-03 23:15:03] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-03 23:15:03] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 23:15:08] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-03 23:15:08] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-03 23:15:08] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-03 23:15:08] [BOOT] Saving data and stopping services.
+[2026-07-03 23:15:08] [BOOT] [SERVER] Shutdown starting...
+[2026-07-03 23:15:08] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-03 23:15:08] [OK] Shutdown complete. All data flushed.
+[2026-07-04 14:10:39] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-04 14:10:39] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-04 14:10:39] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-04 14:10:46] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-04 14:10:50] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-04 14:10:50] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-04 14:10:50] [GENERAL] [UDP] Server listening on 5000
+[2026-07-04 14:10:50] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-04 14:10:50] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-04 14:10:50] [OK] Server ready in 0,9s on port 5000.
+[2026-07-04 14:10:50] [BOOT] Version 1.0 online.
+[2026-07-04 14:10:51] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-04 14:11:15] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-04 14:16:56] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-04 14:17:22] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-04 14:17:35] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-04 14:27:07] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-04 14:27:07] [BOOT] Saving data and stopping services.
+[2026-07-04 14:27:07] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-04 14:27:07] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-04 14:27:07] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-04 14:27:12] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-04 14:27:12] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-04 14:27:12] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-04 14:27:12] [BOOT] [SERVER] Shutdown starting...
+[2026-07-04 14:27:12] [BOOT] Saving data and stopping services.
+[2026-07-04 14:27:12] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-04 14:27:12] [OK] Shutdown complete. All data flushed.
+[2026-07-04 14:27:30] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-04 14:27:30] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-04 14:27:30] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-04 14:27:30] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-04 14:27:30] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-04 14:27:30] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-04 14:27:30] [GENERAL] [UDP] Server listening on 5000
+[2026-07-04 14:27:30] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-04 14:27:30] [OK] Server ready in 0,0s on port 5000.
+[2026-07-04 14:27:30] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-04 14:27:30] [BOOT] Version 1.0 online.
+[2026-07-04 14:27:30] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-04 14:27:39] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-04 14:27:45] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-04 14:27:55] [GENERAL] [DeliveryManager] Ödül uygulandı: Coins (Data: 0, Count: 109) -> arda
+[2026-07-04 14:27:55] [GENERAL] [ClaimHandler] arda günlük ödülünü topladı: (Coins kalem Gacha gönderildi)
+[2026-07-04 14:28:08] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-04 14:58:12] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-04 14:58:12] [BOOT] Saving data and stopping services.
+[2026-07-04 14:58:12] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-04 14:58:12] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-04 14:58:12] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-04 14:58:17] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-04 14:58:17] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-04 14:58:17] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-04 14:58:17] [BOOT] Saving data and stopping services.
+[2026-07-04 14:58:17] [BOOT] [SERVER] Shutdown starting...
+[2026-07-04 14:58:17] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-04 14:58:17] [OK] Shutdown complete. All data flushed.
+[2026-07-04 14:58:34] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-04 14:58:34] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-04 14:58:34] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-04 14:58:34] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-04 14:58:34] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-04 14:58:34] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-04 14:58:34] [GENERAL] [UDP] Server listening on 5000
+[2026-07-04 14:58:34] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-04 14:58:34] [OK] Server ready in 0,0s on port 5000.
+[2026-07-04 14:58:34] [BOOT] Version 1.0 online.
+[2026-07-04 14:58:34] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-04 14:58:34] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-04 14:58:39] [GENERAL] Oyuncunun banı kaldırıldı: arda (1)
+[2026-07-04 14:58:47] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-04 15:00:13] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-04 15:01:17] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-04 15:01:17] [BOOT] Saving data and stopping services.
+[2026-07-04 15:01:17] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-04 15:01:17] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-04 15:01:17] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-04 15:01:17] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-07-04 15:01:22] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-04 15:01:22] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-04 15:01:22] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-04 15:01:22] [BOOT] Saving data and stopping services.
+[2026-07-04 15:01:22] [BOOT] [SERVER] Shutdown starting...
+[2026-07-04 15:01:22] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-04 15:01:22] [OK] Shutdown complete. All data flushed.
+[2026-07-04 15:01:38] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-04 15:01:38] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-04 15:01:38] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-04 15:01:38] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-04 15:01:38] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-04 15:01:38] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-04 15:01:38] [GENERAL] [UDP] Server listening on 5000
+[2026-07-04 15:01:38] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-04 15:01:38] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-04 15:01:38] [OK] Server ready in 0,1s on port 5000.
+[2026-07-04 15:01:38] [BOOT] Version 1.0 online.
+[2026-07-04 15:01:38] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-04 15:01:44] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-04 15:02:36] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-04 15:02:53] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-04 15:02:53] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-07-04 15:02:58] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-04 15:04:30] [GENERAL] [Maintance] bakım başarıyla sona erdi
+[2026-07-04 15:23:24] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-04 15:23:24] [BOOT] Saving data and stopping services.
+[2026-07-04 15:23:24] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-04 15:23:24] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\config.json
+[2026-07-04 15:23:24] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-04 15:23:25] [BOOT] Saving data and stopping services.
+[2026-07-04 15:23:25] [GENERAL] [Maintance] bakım molası aktif panicmode: Acil
+[2026-07-04 15:23:29] [GENERAL] [Maintance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-04 15:23:29] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-04 15:23:29] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-04 15:23:29] [BOOT] [SERVER] Shutdown starting...
+[2026-07-04 15:23:29] [OK] Shutdown complete. All data flushed.
+[2026-07-04 15:23:48] [GENERAL] [Config] C:\Project\Game-server\src\config.json yüklendi
+[2026-07-04 15:23:48] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\config.json
+[2026-07-04 15:23:48] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\config.json
+[2026-07-04 15:23:49] [GENERAL] [AndroidNotficationManager] Firebase başarıyla başlatıldı.
+[2026-07-04 15:23:49] [GENERAL] [AdminServer] Admin klasörü bulundu: C:\Project\Game-server\admin
+[2026-07-04 15:23:49] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-04 15:23:49] [GENERAL] [UDP] Server listening on 5000
+[2026-07-04 15:23:49] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-04 15:23:49] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-04 15:23:49] [OK] Server ready in 0,1s on port 5000.
+[2026-07-04 15:23:49] [BOOT] Version 1.0 online.
+[2026-07-04 15:23:49] [GENERAL] [MULTIPLEXER] Listening on port 5000

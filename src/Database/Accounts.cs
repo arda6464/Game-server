@@ -16,12 +16,12 @@ public static class AccountManager
         public int ID { get; set; }
         public string? Token { get; set; }
         public string? FBNToken { get; set; }
-        
+
         // account data
         public string? Username { get; set; }
         public int Trophy { get; set; }
         public DateTime CreatedAt;
-        public string? Dil { get; set; }
+
         public int Premium { get; set; }
         public DateTime PremiumEndTime { get; set; }
         public bool Banned { get; set; }
@@ -30,14 +30,24 @@ public static class AccountManager
         public bool MuteTeamInvites { get; set; }
         public DateTime MuteTeamInviteEndTime { get; set; }
         public bool DoNotDisturb { get; set; } // rahatsız etme modu
-        public DateTime MutedEndTime {get;set;}
+        public DateTime MutedEndTime { get; set; }
         public string? Banreason { get; set; }
         public int Avatarid { get; set; }
         public int Namecolorid { get; set; }
         public int Level { get; set; }
+        public string? Country { get; set; }
+        public string? CountryCode { get; set; }
         public int Experience { get; set; }
         public int Gems { get; set; }
         public int Coins { get; set; }
+        public int SeasonId { get; set; }
+        public int SeasonStartTrophy { get; set; }
+        public int SeasonPeakTrophy { get; set; }
+        public int SeasonWins { get; set; }
+        public int SeasonLosses { get; set; }
+        public int SeasonMatchesPlayed { get; set; }
+        public bool SeasonRewardClaimed { get; set; }
+        public List<SeasonHistoryEntry> SeasonsData { get; set; } = new List<SeasonHistoryEntry>();
         public string? ClubName { get; set; }
         public int Clubid { get; set; }
         public ClubRole clubRole { get; set; }
@@ -48,6 +58,11 @@ public static class AccountManager
         public bool SendInviteNotification { get; set; } = true;
         public bool SendClaimRewardNotification { get; set; } = true;
         public int WinStreak { get; set; }
+
+        // Günlük giriş ödülü
+        public DateTime LastDailyRewardDate { get; set; } = DateTime.MinValue;
+        public int DailyRewardStreak { get; set; } = 0;
+        public DailyStreakData[] DailyStreakWindow = new DailyStreakData[8];
 
         // Market / Satın alma verileri
         public int TotalPurchases { get; set; } = 0;
@@ -99,6 +114,8 @@ public static class AccountManager
                         account.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                         account.Username = reader.IsDBNull(reader.GetOrdinal("Username")) ? null : reader.GetString(reader.GetOrdinal("Username"));
                         ProgressionManager.Normalize(account);
+                        account.SeasonsData ??= new List<SeasonHistoryEntry>();
+                        SeasonManager.EnsureAccountSeasonState(account);
 
                         if (account.ID >= maxAccountId)
                             maxAccountId = account.ID + 1;
@@ -162,12 +179,20 @@ public static class AccountManager
         {
             ID = maxAccountId,
             Username = username,
-            Dil = dil,
+            CountryCode = dil,
+            Country = CountryHelper.GetCountryName(dil),
             Premium = 0,
             Avatarid = 1,
             Namecolorid = 1,
             Level = 1,
             Experience = 0,
+            SeasonId = 1,
+            SeasonStartTrophy = 0,
+            SeasonPeakTrophy = 0,
+            SeasonWins = 0,
+            SeasonLosses = 0,
+            SeasonMatchesPlayed = 0,
+            SeasonRewardClaimed = false,
             Token = TokenManager.GenerateNumericToken(),
             LastLogin = DateTime.Now,
             Clubid = 0,
@@ -204,7 +229,7 @@ public static class AccountManager
     {
         var account = LoadAccount(id);
         if (account != null)
-            Console.WriteLine($"isim: {account.Username}\n ID: {account.ID}\n avatarid : {account.Avatarid} \n pushtoken : {account.FBNToken} \n colorid: {account.Namecolorid}\n  son giriş: {account.LastLogin} \n Dil: {account.Dil} \n clubid: {account.Clubid}\n club name: {account.ClubName}");
+            Console.WriteLine($"isim: {account.Username}\n ID: {account.ID}\n avatarid : {account.Avatarid} \n pushtoken : {account.FBNToken} \n colorid: {account.Namecolorid}\n  son giriş: {account.LastLogin} \n Dil: {account.Country} \n clubid: {account.Clubid}\n club name: {account.ClubName}");
     }
 
     public static AccountData LoadAccount(int id)

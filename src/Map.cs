@@ -2,12 +2,14 @@ using DietPhysics;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 public class ServerMapData
 {
     public List<WallData> walls;
     public List<Vec3> spawnPoints;
     public List<Vec3> lootPoints;
+    public List<BushData> bushes;
 }
 
 public class WallData
@@ -16,6 +18,12 @@ public class WallData
     public Vec3 size;
     public Vec3 center;
     public Vec3 rot;
+}
+
+public class BushData
+{
+    public Vec3 pos;
+    public Vec3 size;
 }
 
 public static class MapManager
@@ -37,7 +45,8 @@ public static class MapManager
         LoadedMap.walls ??= new List<WallData>();
         LoadedMap.spawnPoints ??= new List<Vec3>();
         LoadedMap.lootPoints ??= new List<Vec3>();
-        System.Console.WriteLine($"[JSON] {LoadedMap.walls.Count} duvar, {LoadedMap.spawnPoints.Count} spawn ve {LoadedMap.lootPoints?.Count ?? 0} loot noktasÄ± yÃ¼klendi.");
+        LoadedMap.bushes ??= new List<BushData>();
+        System.Console.WriteLine($"[JSON] {LoadedMap.walls.Count} duvar, {LoadedMap.spawnPoints.Count} spawn, {LoadedMap.lootPoints?.Count ?? 0} loot ve {LoadedMap.bushes.Count} çalı noktası yüklendi.");
     }
 
     // OYUNCUYU DOĞURMA MANTIĞI

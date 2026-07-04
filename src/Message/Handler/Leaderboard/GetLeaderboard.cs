@@ -14,22 +14,12 @@ public static class GetLeaderboard
             var response = new LeaderboardResponsePacket
             {
                 PlayerRankIndex = playerRank - 1,
-                PlayerTrophy = acccount.Trophy
+                PlayerTrophy = acccount.Trophy,
+                 PlayerCountry = acccount.CountryCode,
+                Players = topPlayers
             };
-            
-            foreach (var player in topPlayers)
-            {
-                response.Players.Add(new LeaderboardResponsePacket.PlayerInfo
-                {
-                    Name = player.Username,
-                    ID = player.ID,
-                    ClubName = player.ClubName,
-                    Trophy = player.Trophy,
-                    AvatarId = player.Avatarid,
-                    NameColorId = player.Namecolorid,
-                    Premium = player.Premium
-                });
-            }
+
+
 
             session.Send(response);
 
@@ -41,5 +31,5 @@ public static class GetLeaderboard
         }
 
     }
-        
+
 }

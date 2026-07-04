@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Logic
 {
@@ -8,12 +9,22 @@ namespace Logic
     {
         public AccountManager.AccountData Data { get; private set; }
         public Session Session { get; private set; }
+        private Random rdm = new Random();
 
         public AccountLogic(AccountManager.AccountData data, Session session)
         {
             Data = data;
             Session = session;
         }
+
+        private static readonly (ItemType type, float weight, int min, int max)[] pool = new[]
+   {
+        (ItemType.Coins,   40f, 50, 150),
+        (ItemType.Gems,    20f, 5,  20),
+     //   (ItemType.XPBoost, 20f, 1,  3),
+       // (ItemType.PowerPoints, 15f, 10, 30),
+      //  (ItemType.Emote,   5f,  1,  1),
+    };
 
         /// <summary>
         /// Oyuncu ID'sine göre AccountLogic döner. Hesap yoksa null döner.
@@ -28,16 +39,18 @@ namespace Logic
         }
 
         /// <summary>
-        /// Oyuncu lobiye girdiğinde tetiklenen işlemler (görev yenileme vb.)
+        /// Oyuncu lobiye girdiğinde tetiklenen işlemler (görev yenileme, günlük ödül vb.)
         /// </summary>
         public void HomeVisited()
         {
             if (Data == null) return;
 
-            // Statik manager'dan mantığı buraya taşıyacağız
+            // Görev kontrolü
             QuestManager.CheckAndRefreshQuests(Data);
+            CheckDailyAward();
 
-            Console.WriteLine($"[AccountLogic] HomeVisited tetiklendi: {Data.ID}");
+
+
         }
 
         /// <summary>
@@ -102,6 +115,101 @@ namespace Logic
                 }
             }
         }
+
+        public void CheckDailyAward()
+        {
+            if (Data == null) return;
+
+            var today = DateTime.Today;
+
+
+            lock (Data.SyncLock)
+            {
+                if (Data.LastDailyRewardDate != today) // bugün almamış
+                {
+                    if (Data.LastDailyRewardDate == today.AddDays(-1)) // eğer dün zaten almışsa
+                    {
+                        Data.DailyRewardStreak++;
+                        CreateDailyAwards();
+                    }
+                    else
+                    {
+                        Data.DailyRewardStreak = 1;
+                        CreateDailyAwards(true);
+                    }
+
+                    Session.Send(new DailyLoginRewardPacket
+                    {
+                        Day = Data.DailyRewardStreak,
+                        RewardItems = Data.DailyStreakWindow,
+                    });
+                }
+            }
+
+        }
+
+
+        public void CreateDailyAwards(bool reset = false)
+        {
+            if (reset)
+            {
+                Data.DailyStreakWindow = new DailyStreakData[8];
+                for (int i = 0; i < Data.DailyStreakWindow.Length; i++)
+                {
+                    Data.DailyStreakWindow[i] = new DailyStreakData
+                    {
+                        Day = i + 1,
+                        IsAvaiable = (i == 0),
+                        Reward = RollReward()
+                    };
+                }
+
+            }
+            else
+            {
+                for (int i = 0; i < Data.DailyStreakWindow.Length - 1; i++) // kaydırma yap
+                {
+                    Data.DailyStreakWindow[i] = Data.DailyStreakWindow[i + 1];
+                }
+                if (Data.DailyStreakWindow[0] != null)
+                {
+                    Data.DailyStreakWindow[0].IsAvaiable = true;
+                }
+                Data.DailyStreakWindow[Data.DailyStreakWindow.Length - 1] = new DailyStreakData
+                {
+                    Day = Data.DailyRewardStreak + Data.DailyStreakWindow.Length,
+                    IsAvaiable = false,
+                    IsClaimed = false,
+                    Reward = RollReward()
+                };
+            }
+        }
+        private RewardItem RollReward()
+        {
+            float totalWeight = 0f;
+            foreach (var entry in pool) totalWeight += entry.weight;
+
+            float roll = (float)rdm.NextDouble() * totalWeight;
+            float cumulative = 0f;
+
+            foreach (var entry in pool)
+            {
+                cumulative += entry.weight;
+                if (roll <= cumulative)
+                {
+                    return new RewardItem
+                    {
+                        Type = entry.type,
+                        Count = rdm.Next(entry.min, entry.max + 1),
+                        DataId = 0
+                    };
+                }
+            }
+
+            return new RewardItem { Type = ItemType.Coins, Count = 50, DataId = 0 };
+        }
+
+
 
         /// <summary>
         /// Görev ilerlemesini kontrol eder ve tamamlandığında ödülü verir.
@@ -253,7 +361,7 @@ namespace Logic
             }
         }
 
-        public void AddBattleRewards(int trophyDelta, int coinDelta, int xpDelta)
+        public void AddBattleRewards(int trophyDelta, int coinDelta, int xpDelta, bool? isWin = null, int placement = 0, int playerCount = 0)
         {
             if (Data == null) return;
 
@@ -262,6 +370,12 @@ namespace Logic
             Data.Experience = Math.Max(0, Data.Experience + xpDelta);
 
             ProgressionManager.Normalize(Data);
+            SeasonManager.EnsureAccountSeasonState(Data);
+
+            if (isWin.HasValue)
+            {
+                SeasonManager.RecordBattleResult(Data, isWin.Value, placement, playerCount, trophyDelta);
+            }
 
             Logger.genellog($"{Data.Username} battle ödülleri güncellendi: trophy={trophyDelta}, coin={coinDelta}, xp={xpDelta}, level={Data.Level}, exp={Data.Experience}");
             AccountManager.SaveAccounts();

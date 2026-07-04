@@ -120,6 +120,22 @@ public class AuthLoginResponsePacket : IPacket
 
 
 
+        #region  DailyStreak 
+
+        buffer.WriteVarInt(Account.DailyRewardStreak);
+        foreach (var reward in Account.DailyStreakWindow)
+        {
+            buffer.WriteVarInt(reward.Day);
+            buffer.WriteBool(reward.IsAvaiable);
+            buffer.WriteBool(reward.IsClaimed);
+            buffer.WriteVarInt((int)reward.Reward.Type);
+            buffer.WriteVarInt(reward.Reward.DataId);
+            buffer.WriteVarInt(reward.Reward.Count);
+        }
+        #endregion
+
+
+
 
 
         // --- Club Data ---

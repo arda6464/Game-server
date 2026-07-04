@@ -9,7 +9,7 @@ public static class Loginfailed
         {
             buffer.WriteVarInt((int)MessageType.LoginFailed);
             buffer.WriteVarInt(erorid);
-            buffer.WriteString(erormessage);
+            buffer.WriteVarString(erormessage);
             session.Send(buffer.GetBufferSegment());
         }
         session.Close();

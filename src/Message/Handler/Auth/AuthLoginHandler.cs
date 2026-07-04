@@ -80,6 +80,7 @@ public static class AuthLoginHandler
             };
             SessionManager.AddSession(account.ID, session);
             session.Account = account;
+            SeasonManager.EnsureAccountSeasonState(account);
             if (session.FBNToken != null)
             {
                 account.FBNToken = session.FBNToken;

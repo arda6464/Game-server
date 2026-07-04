@@ -19536,3 +19536,243 @@
 [2026-06-23 22:40:17] [BATTLE] [BATTLE 4] Battle started.
 [2026-06-23 22:40:32] [BATTLE] [BATTLE 4] Player removed: 6 (Remaining: 1)
 [2026-06-23 22:41:23] [BATTLE] [BATTLE 4] Player removed: 5 (Remaining: 0)
+[2026-06-27 04:40:54] [BATTLE] Yeni savaş oluşturuldu id: 1
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Player arda64best spawned at (10,9, 0,38, 17,79)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Player collider added: player=arda64best pos=(10,9, 0,38, 17,79) radius=0,5
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Player added: arda64best (Total: 1)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Player Arda  spawned at (11,19, 0,38, -8,73)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Player collider added: player=Arda  pos=(11,19, 0,38, -8,73) radius=0,5
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Player added: Arda  (Total: 2)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 12
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 12 at (24,91, 0,5, 5,81) (LootId: 1)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Shield DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 25 at (30,61, 0,5, 13,93) (LootId: 2)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 15
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 15 at (33,79, 0,5, 5,81) (LootId: 3)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 4
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 4 at (14,97, 0,5, 13,93) (LootId: 4)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Shield DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 14
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 14 at (32,91, 0,5, 16,31) (LootId: 5)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 8
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 13
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Shield DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 25 at (24,91, 0,5, 16,31) (LootId: 6)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Health DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 25 at (26,74, 0,5, -0,46) (LootId: 7)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 12
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Shield DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 3
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 8
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 16
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 16 at (24,91, 0,5, 10,3) (LootId: 8)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 3
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 5
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 2
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Shield DATAİD 50
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Shield DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 25 at (33,79, 0,5, 10,49) (LootId: 9)
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 16
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 4
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 6
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 10
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 6
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 4
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 5
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 5
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 4
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Shield DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Weapon DATAİD 3
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Health DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Health DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Shield DATAİD 25
+[2026-06-27 04:40:54] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Health DATAİD 50
+[2026-06-27 04:40:54] [BATTLE] [BATTLE 1] Loot spawned: 50 at (20,45, 0,5, 13,93) (LootId: 10)
+[2026-06-27 04:40:55] [BATTLE] [BATTLE 1] Initial weapon spawn complete: 10/10
+[2026-06-27 04:40:55] [BATTLE] [BATTLE 1] Battle started.
+[2026-06-27 04:41:07] [BATTLE] [BATTLE 1] Player arda64best started picking up loot 6 (0,9s)
+[2026-06-27 04:41:08] [BATTLE] [BATTLE 1] Player arda64best applied shield loot Small Shield (0->25)
+[2026-06-27 04:41:08] [BATTLE] [BATTLE 1] Player arda64best picked up loot 6 after 0,9s
+[2026-06-27 04:41:10] [BATTLE] [BATTLE 1] Player arda64best started picking up loot 2 (0,9s)
+[2026-06-27 04:41:11] [BATTLE] [BATTLE 1] Player arda64best applied shield loot Small Shield (25->50)
+[2026-06-27 04:41:11] [BATTLE] [BATTLE 1] Player arda64best picked up loot 2 after 0,9s
+[2026-06-27 04:41:13] [BATTLE] [BATTLE 1] Player arda64best started picking up loot 9 (0,9s)
+[2026-06-27 04:41:14] [BATTLE] [BATTLE 1] Player arda64best applied shield loot Small Shield (50->75)
+[2026-06-27 04:41:14] [BATTLE] [BATTLE 1] Player arda64best picked up loot 9 after 0,9s
+[2026-06-27 04:41:16] [BATTLE] [BATTLE 1] Player arda64best started picking up loot 3 (1s)
+[2026-06-27 04:41:17] [BATTLE] [BATTLE 1] Player arda64best received item 15 in slot 0
+[2026-06-27 04:41:17] [BATTLE] [BATTLE 1] Player arda64best picked up loot 3 after 1s
+[2026-06-27 04:41:22] [BATTLE] [BATTLE 1] AutoFire ready: player=arda64best aimStarted=175,059 now=175,269 ammo=20 nextFire=0
+[2026-06-27 04:41:22] [BATTLE] [BATTLE 1] Fire start: player=arda64best pos=(17,94, 0,38, -4,64) spawn=(17,38, 0,38, -4,86) dir=(-0,93, 0, -0,36) ammo=20 reload=False
+[2026-06-27 04:41:22] [BATTLE] [BATTLE 1] Bullet added: id=1 owner=7 pos=(17,38, 0,38, -4,86) dir=(-0,93, 0, -0,36) range=9,77 speed=14,54
+[2026-06-27 04:41:22] [BATTLE] [BATTLE 1] Fire bullet created: bullet=1 owner=arda64best ammoLeft=19
+[2026-06-27 04:41:22] [BATTLE] [BATTLE 1] Fire cooldown set: player=arda64best nextFire=175,481 fireRate=0,2
+[2026-06-27 04:41:22] [BATTLE] [BATTLE 1] Bullet tick: id=1 pos=(17,38, 0,38, -4,86) move=0,485 owner=7 active=True
+[2026-06-27 04:41:22] [BATTLE] [BATTLE 1] Bullet hit: id=1 hitType=Player hitData=7 pos=(17,28, 0,38, -4,88) owner=7
+[2026-06-27 04:41:22] [BATTLE] [BATTLE 1] Bullet hit ignored: bullet=1 owner=7 hitData=7 self-hit owner=7
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] AutoFire ready: player=arda64best aimStarted=175,952 now=176,17 ammo=19 nextFire=175,481
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Fire start: player=arda64best pos=(16,52, 0,38, -6,06) spawn=(16,04, 0,38, -6,4) dir=(-0,81, 0, -0,58) ammo=19 reload=False
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Bullet added: id=2 owner=7 pos=(16,04, 0,38, -6,4) dir=(-0,81, 0, -0,58) range=9,77 speed=14,54
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Fire bullet created: bullet=2 owner=arda64best ammoLeft=18
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Fire cooldown set: player=arda64best nextFire=176,375 fireRate=0,2
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(16,04, 0,38, -6,4) move=0,485 owner=7 active=True
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(15,64, 0,38, -6,69) move=0,485 owner=7 active=True
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(15,25, 0,38, -6,97) move=0,485 owner=7 active=True
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(14,85, 0,38, -7,25) move=0,485 owner=7 active=True
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(14,46, 0,38, -7,53) move=0,485 owner=7 active=True
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(14,06, 0,38, -7,81) move=0,485 owner=7 active=True
+[2026-06-27 04:41:23] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(13,67, 0,38, -8,09) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] AutoFire ready: player=arda64best aimStarted=175,952 now=176,389 ammo=18 nextFire=176,375
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire start: player=arda64best pos=(16,52, 0,38, -6,06) spawn=(16,03, 0,38, -6,39) dir=(-0,83, 0, -0,56) ammo=18 reload=False
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet added: id=3 owner=7 pos=(16,03, 0,38, -6,39) dir=(-0,83, 0, -0,56) range=9,77 speed=14,54
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire bullet created: bullet=3 owner=arda64best ammoLeft=17
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire cooldown set: player=arda64best nextFire=176,596 fireRate=0,2
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(13,27, 0,38, -8,37) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(16,03, 0,38, -6,39) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(12,88, 0,38, -8,65) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(15,63, 0,38, -6,66) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(12,48, 0,38, -8,93) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(15,22, 0,38, -6,93) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(12,09, 0,38, -9,21) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(14,82, 0,38, -7,21) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(11,69, 0,38, -9,5) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(14,42, 0,38, -7,48) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(11,3, 0,38, -9,78) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(14,02, 0,38, -7,75) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(10,9, 0,38, -10,06) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(13,62, 0,38, -8,02) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] AutoFire ready: player=arda64best aimStarted=175,952 now=176,62 ammo=17 nextFire=176,596
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire start: player=arda64best pos=(16,52, 0,38, -6,06) spawn=(16, 0,38, -6,34) dir=(-0,88, 0, -0,47) ammo=17 reload=False
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet added: id=4 owner=7 pos=(16, 0,38, -6,34) dir=(-0,88, 0, -0,47) range=9,77 speed=14,54
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire bullet created: bullet=4 owner=arda64best ammoLeft=16
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire cooldown set: player=arda64best nextFire=176,828 fireRate=0,2
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(10,51, 0,38, -10,34) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(13,22, 0,38, -8,29) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(16, 0,38, -6,34) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(10,11, 0,38, -10,62) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(12,81, 0,38, -8,56) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(15,57, 0,38, -6,57) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(9,72, 0,38, -10,9) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(12,41, 0,38, -8,83) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(15,14, 0,38, -6,8) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(9,32, 0,38, -11,18) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(12,01, 0,38, -9,1) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(14,72, 0,38, -7,03) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(8,93, 0,38, -11,46) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(11,61, 0,38, -9,38) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(14,29, 0,38, -7,26) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(8,53, 0,38, -11,74) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(11,21, 0,38, -9,65) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(13,86, 0,38, -7,49) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=2 pos=(8,14, 0,38, -12,02) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet expired by range: id=2 traveled=10,18 range=9,77
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(10,8, 0,38, -9,92) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(13,44, 0,38, -7,72) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] AutoFire ready: player=arda64best aimStarted=175,952 now=176,855 ammo=16 nextFire=176,828
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire start: player=arda64best pos=(16,52, 0,38, -6,06) spawn=(15,98, 0,38, -6,32) dir=(-0,9, 0, -0,43) ammo=16 reload=False
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet added: id=5 owner=7 pos=(15,98, 0,38, -6,32) dir=(-0,9, 0, -0,43) range=9,77 speed=14,54
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire bullet created: bullet=5 owner=arda64best ammoLeft=15
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire cooldown set: player=arda64best nextFire=177,061 fireRate=0,2
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(10,4, 0,38, -10,19) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(13,01, 0,38, -7,95) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(15,98, 0,38, -6,32) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(10, 0,38, -10,46) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(12,58, 0,38, -8,18) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(15,55, 0,38, -6,52) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(9,6, 0,38, -10,73) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=4 pos=(12,16, 0,38, -8,41) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet hit: id=4 hitType=Player hitData=2 pos=(11,73, 0,38, -8,64) owner=7
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet damage candidate: bullet=4 target=Arda (2)
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Hit resolved: target=Arda (2) bullet=4 owner=7 pos=(11,19, 0,38, -8,73) damage=24 hp=100 shield=0
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Sending HitConfirm: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] HitConfirm sent: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(15,11, 0,38, -6,73) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(9,2, 0,38, -11) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(14,67, 0,38, -6,94) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(8,8, 0,38, -11,27) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(14,23, 0,38, -7,15) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(8,39, 0,38, -11,54) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(13,8, 0,38, -7,36) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=3 pos=(7,99, 0,38, -11,82) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet expired by range: id=3 traveled=10,18 range=9,77
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(13,36, 0,38, -7,57) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] AutoFire ready: player=arda64best aimStarted=175,952 now=177,088 ammo=15 nextFire=177,061
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire start: player=arda64best pos=(16,52, 0,38, -6,06) spawn=(15,98, 0,38, -6,32) dir=(-0,9, 0, -0,43) ammo=15 reload=False
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet added: id=6 owner=7 pos=(15,98, 0,38, -6,32) dir=(-0,9, 0, -0,43) range=9,77 speed=14,54
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire bullet created: bullet=6 owner=arda64best ammoLeft=14
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire cooldown set: player=arda64best nextFire=177,295 fireRate=0,2
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(12,92, 0,38, -7,78) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(15,98, 0,38, -6,32) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(12,48, 0,38, -7,99) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(15,55, 0,38, -6,52) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=5 pos=(12,05, 0,38, -8,19) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet hit: id=5 hitType=Player hitData=2 pos=(11,62, 0,38, -8,39) owner=7
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet damage candidate: bullet=5 target=Arda (2)
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Hit resolved: target=Arda (2) bullet=5 owner=7 pos=(11,19, 0,38, -8,73) damage=24 hp=76 shield=0
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Sending HitConfirm: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] HitConfirm sent: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(15,11, 0,38, -6,73) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(14,67, 0,38, -6,94) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(14,23, 0,38, -7,15) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(13,8, 0,38, -7,36) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(13,36, 0,38, -7,57) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] AutoFire ready: player=arda64best aimStarted=175,952 now=177,322 ammo=14 nextFire=177,295
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire start: player=arda64best pos=(16,52, 0,38, -6,06) spawn=(15,98, 0,38, -6,32) dir=(-0,9, 0, -0,43) ammo=14 reload=False
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet added: id=7 owner=7 pos=(15,98, 0,38, -6,32) dir=(-0,9, 0, -0,43) range=9,77 speed=14,54
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire bullet created: bullet=7 owner=arda64best ammoLeft=13
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Fire cooldown set: player=arda64best nextFire=177,531 fireRate=0,2
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(12,92, 0,38, -7,78) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(15,98, 0,38, -6,32) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(12,48, 0,38, -7,99) move=0,485 owner=7 active=True
+[2026-06-27 04:41:24] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(15,55, 0,38, -6,52) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet tick: id=6 pos=(12,05, 0,38, -8,19) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet hit: id=6 hitType=Player hitData=2 pos=(11,62, 0,38, -8,39) owner=7
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet damage candidate: bullet=6 target=Arda (2)
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Hit resolved: target=Arda (2) bullet=6 owner=7 pos=(11,19, 0,38, -8,73) damage=24 hp=52 shield=0
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Sending HitConfirm: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] HitConfirm sent: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(15,11, 0,38, -6,73) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(14,67, 0,38, -6,94) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(14,23, 0,38, -7,15) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(13,8, 0,38, -7,36) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(13,36, 0,38, -7,57) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(12,92, 0,38, -7,78) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(12,48, 0,38, -7,99) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet tick: id=7 pos=(12,05, 0,38, -8,19) move=0,485 owner=7 active=True
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet hit: id=7 hitType=Player hitData=2 pos=(11,62, 0,38, -8,39) owner=7
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet damage candidate: bullet=7 target=Arda (2)
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Hit resolved: target=Arda (2) bullet=7 owner=7 pos=(11,19, 0,38, -8,73) damage=24 hp=28 shield=0
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Sending HitConfirm: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] HitConfirm sent: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:25] [BATTLE] [BATTLE 1] Bullet removed: id=1
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] AutoFire ready: player=arda64best aimStarted=178,993 now=179,2 ammo=13 nextFire=177,531
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Fire start: player=arda64best pos=(16,52, 0,38, -6,06) spawn=(16, 0,38, -6,35) dir=(-0,87, 0, -0,5) ammo=13 reload=False
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Bullet added: id=8 owner=7 pos=(16, 0,38, -6,35) dir=(-0,87, 0, -0,5) range=9,77 speed=14,54
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Fire bullet created: bullet=8 owner=arda64best ammoLeft=12
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Fire cooldown set: player=arda64best nextFire=179,408 fireRate=0,2
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(16, 0,38, -6,35) move=0,485 owner=7 active=True
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(15,58, 0,38, -6,6) move=0,485 owner=7 active=True
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(15,16, 0,38, -6,84) move=0,485 owner=7 active=True
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(14,74, 0,38, -7,08) move=0,485 owner=7 active=True
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(14,32, 0,38, -7,32) move=0,485 owner=7 active=True
+[2026-06-27 04:41:26] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(13,9, 0,38, -7,56) move=0,485 owner=7 active=True
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(13,48, 0,38, -7,8) move=0,485 owner=7 active=True
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(13,06, 0,38, -8,04) move=0,485 owner=7 active=True
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(12,64, 0,38, -8,28) move=0,485 owner=7 active=True
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(12,22, 0,38, -8,52) move=0,485 owner=7 active=True
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Bullet tick: id=8 pos=(11,8, 0,38, -8,76) move=0,485 owner=7 active=True
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Bullet hit: id=8 hitType=Player hitData=2 pos=(11,73, 0,38, -8,83) owner=7
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Bullet damage candidate: bullet=8 target=Arda (2)
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Hit resolved: target=Arda (2) bullet=8 owner=7 pos=(11,19, 0,38, -8,73) damage=24 hp=4 shield=0
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Sending HitConfirm: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] HitConfirm sent: shooter=arda64best target=2 damage=24 shield=False
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Match result sent: player=Arda  win=False placement=2 playerCount=2 kills=0 damage=120 trophies=-8 coins=0
+[2026-06-27 04:41:27] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Health DATAİD 50
+[2026-06-27 04:41:27] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Health DATAİD 25
+[2026-06-27 04:41:27] [BATTLE] [BATTLE] RANDROM LOOT TYPE  Shield DATAİD 25
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Loot force-spawned: 50 at (12,04, 0,38, -8,73) (LootId: 11)
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Loot force-spawned: 25 at (10,76, 0,38, -7,99) (LootId: 12)
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Loot force-spawned: 25 at (10,76, 0,38, -9,47) (LootId: 13)
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Match result sent: player=arda64best win=True placement=1 playerCount=2 kills=1 damage=0 trophies=10 coins=116
+[2026-06-27 04:41:27] [BATTLE] [BATTLE 1] Battle stopped.
+[2026-06-27 04:41:27] [BATTLE] Savaş silindi id: 1

@@ -10,10 +10,10 @@ public class TickManager
     private volatile bool isRunning;
     private uint tick;
     private int tickInterval;
-    
+
     public int TickRate { get; private set; }
     public float DeltaTime { get; private set; }
-    
+
     public TickManager(int tickRate = 30)
     {
         instance = this;
@@ -23,20 +23,20 @@ public class TickManager
         tickInterval = 1000 / tickRate;
         tickThread = new Thread(Tick);
     }
-    
+
     public void Start()
     {
         Console.WriteLine("[TICK] TickManager başlatılıyor...");
         isRunning = true;
         tickThread.Start();
     }
-    
+
     public void Stop()
     {
         isRunning = false;
         Console.WriteLine("[TICK] TickManager durduruldu.");
     }
-    
+
     private void Tick()
     {
         var stopwatch = Stopwatch.StartNew();
@@ -61,13 +61,20 @@ public class TickManager
             }
         }
     }
-    
+
     private void Handle()
     {
         // Savaş güncellemeleri
         foreach (var battle in ArenaManager.GetAllBattles())
         {
-            battle.Tick();
+            try
+            {
+                battle.Tick();
+            }
+            catch (System.Exception ex)
+            {
+                Logger.errorslog($"[TickManager] Savaş güncellenirken hata (Battle {battle.BattleId}): {ex.Message}\n{ex.StackTrace}");
+            }
         }
 
         // Davet temizliği (Dakikada bir)
@@ -77,7 +84,7 @@ public class TickManager
         }
     }
 
-    
+
     public uint Get_Tick()
     {
         return this.tick;

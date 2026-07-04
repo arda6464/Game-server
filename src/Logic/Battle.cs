@@ -84,15 +84,7 @@ public class Battle
             State = BattleState.Finished;
             Logger.battlelog($"[BATTLE {BattleId}] Battle stopped.");
 
-            foreach (var player in Players)
-            {
-                if (player.session != null)
-                {
-                    player.BattleId = 0;
-                    player.session.ChangeState(PlayerState.Lobby);
-                    SessionManager.UnRegisterUdpSession(player.session.UdpEndPoint);
-                }
-            }
+            
 
             ArenaManager.RemoveBattle(BattleId);
         }
@@ -360,11 +352,15 @@ public class Battle
         rewardCoins += Math.Min(20, (player.Kill * 15) + (player.OnHit / 100));
 
         var logic = player.session.Logic;
-
-
         var account = player.session.Account;
+        if (logic != null)
+        {
+            logic.AddBattleRewards(trophiesDelta, rewardCoins, rewardXp, isWin, placement, playerCount);
+        }
+
         int currentLevel = account?.Level ?? 1;
         int currentExperience = account?.Experience ?? 0;
+        int currentTrophies = account?.Trophy ?? 0;
 
         var packet = new MatchResultPacket
         {
@@ -372,7 +368,7 @@ public class Battle
             Kills = player.Kill,
             DamageDealt = player.OnDamage,
             HitDealt = player.OnHit,
-            CurrentTrophies = account.Trophy,
+            CurrentTrophies = currentTrophies,
             TrophiesDelta = trophiesDelta,
             RewardXp = rewardXp,
             Level = currentLevel,
@@ -381,10 +377,6 @@ public class Battle
             ElapsedTime = GetElapsedTime()
 
         };
-        if (logic != null)
-        {
-            logic.AddBattleRewards(trophiesDelta, rewardCoins, rewardXp);
-        }
 
         Logger.battlelog($"[BATTLE {BattleId}] Match result sent: player={player.Username} win={isWin} placement={placement} playerCount={playerCount} kills={player.Kill} damage={player.OnDamage} trophies={trophiesDelta} coins={rewardCoins}");
         player.session.Send(packet);
@@ -442,6 +434,8 @@ public class Battle
         if (player == null || player.ActiveGun == null) return;
 
         if (player.ActiveGun.IsReloading) return;
+
+        player.LastShotTime = GetCurrentTime();
 
         Vec3 direction = player.AimDirection.normalized;
         if (direction == Vec3.zero)
@@ -631,7 +625,29 @@ public class Battle
 
             if (player.session?.PlayerData != null)
                 player.session.PlayerData.Position = player.Position;
+
+            player.CurrentBushId = GetBushIdAt(player.Position);
         }
+    }
+
+    private int? GetBushIdAt(Vec3 position)
+    {
+        var bushes = MapManager.LoadedMap?.bushes;
+        if (bushes == null) return null;
+
+        for (int i = 0; i < bushes.Count; i++)
+        {
+            var bush = bushes[i];
+            float halfX = bush.size.x / 2f;
+            float halfZ = bush.size.z / 2f;
+
+            if (position.x >= bush.pos.x - halfX && position.x <= bush.pos.x + halfX &&
+                position.z >= bush.pos.z - halfZ && position.z <= bush.pos.z + halfZ)
+            {
+                return i;
+            }
+        }
+        return null;
     }
 
     public void BroadcastSnapshot()
@@ -639,31 +655,48 @@ public class Battle
         lock (_lock)
         {
             uint serverTick = TickManager.instance.Get_Tick();
+            float currentTime = GetCurrentTime();
 
             foreach (var pSource in Players)
             {
                 pSource.LastSentPosition = pSource.Position;
                 pSource.LastSentRotation = pSource.Rotation;
 
-                var packet = new PlayerMovePacket
+                foreach (var pTarget in Players)
                 {
-                    ServerTick = serverTick,
-                    LastProcessedInputTick = pSource.LastProcessedTick,
-                    ID = pSource.ID,
-                    X = pSource.Position.x,
-                    Y = pSource.Position.y,
-                    Z = pSource.Position.z,
-                };
+                    if (pTarget.session?.UdpEndPoint == null) continue;
 
-                using (ByteBuffer payloadBuffer = ByteBufferPool.Get())
-                {
-                    packet.Serialize(payloadBuffer);
-                    var segment = payloadBuffer.GetBufferSegment();
-
-                    foreach (var pTarget in Players)
+                    // Görünürlük Kuralı:
+                    // 1. Kendi oyuncumuz kendimize her zaman görünürdür.
+                    // 2. pSource çalıda değilse herkese görünürdür.
+                    // 3. pSource çalıdaysa, pTarget ile aynı çalıda ise görünürdür.
+                    // 4. pSource çalıdaysa ama son 1.5 saniye içinde ateş etmişse görünürdür.
+                    bool isVisible = true;
+                    if (pSource.ID != pTarget.ID)
                     {
-                        if (pTarget.session?.UdpEndPoint != null)
-                            pTarget.session.SendUnreliableUDP_Payload(segment);
+                        if (pSource.CurrentBushId != null)
+                        {
+                            bool sameBush = pSource.CurrentBushId == pTarget.CurrentBushId;
+                            bool recentlyShot = (currentTime - pSource.LastShotTime) < 1.5f;
+                            isVisible = sameBush || recentlyShot;
+                        }
+                    }
+
+                    var packet = new PlayerMovePacket
+                    {
+                        ServerTick = serverTick,
+                        LastProcessedInputTick = pSource.LastProcessedTick,
+                        ID = pSource.ID,
+                        X = pSource.Position.x,
+                        Y = pSource.Position.y,
+                        Z = pSource.Position.z,
+                        IsVisible = isVisible
+                    };
+
+                    using (ByteBuffer payloadBuffer = ByteBufferPool.Get())
+                    {
+                        packet.Serialize(payloadBuffer);
+                        pTarget.session.SendUnreliableUDP_Payload(payloadBuffer.GetBufferSegment());
                     }
                 }
             }

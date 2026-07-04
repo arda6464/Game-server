@@ -169,18 +169,8 @@ public class Session
         {
             LastAlive = DateTime.Now; // ✅ Herhangi bir paket geldiğinde 'hayatta' olduğunu işaretle
             
-            // Eğer buffer'ın tamamı dolu değilse (length < buffer.Length), 
-            // HandleMessage'in doğru boyutta veri aldığından emin olmalıyız.
-            if (length < buffer.Length)
-            {
-                byte[] data = new byte[length];
-                Array.Copy(buffer, 0, data, 0, length);
-                MessageManager.HandleMessage(this, data);
-            }
-            else
-            {
-                MessageManager.HandleMessage(this, buffer);
-            }
+            // Sıfır kopyalama ve sıfır array allocation!
+            MessageManager.HandleMessage(this, buffer, length);
         }
         catch (Exception ex)
         {
@@ -206,6 +196,7 @@ public class Session
 
     public void Send<T>(T packet) where T : IPacket
     {
+        
         using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             packet.Serialize(buffer);
@@ -371,6 +362,7 @@ public class Session
         {
             Console.WriteLine($"[Close] {ID} stream/client kapatma hatası");
         }
+        MatchMaking.RemoveQueue(this);
         PlayerSetPresence.Handle(this, PlayerSetPresence.PresenceState.Offline);
         // Oyuncu maç içindeyse savaştan çıkar
         if (PlayerData != null && PlayerData.BattleId > 0)

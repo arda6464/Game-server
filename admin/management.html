@@ -266,6 +266,98 @@
             box-shadow: 0 0 30px rgba(244, 63, 94, 0.5), 0 20px 40px rgba(0, 0, 0, 0.6);
             border-color: rgba(244, 63, 94, 0.5);
         }
+
+        .season-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .season-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .season-field label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .season-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(0, 0, 0, 0.22);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.85rem;
+            color: #fff;
+            outline: none;
+        }
+
+        .season-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
+        }
+
+        .season-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .tier-row {
+            display: grid;
+            grid-template-columns: 90px 90px 90px 90px 90px 1fr auto;
+            gap: 0.65rem;
+            align-items: center;
+            margin-bottom: 0.65rem;
+        }
+
+        .tier-row input {
+            width: 100%;
+            padding: 0.7rem 0.8rem;
+            background: rgba(0, 0, 0, 0.22);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.75rem;
+            color: #fff;
+            outline: none;
+            font-size: 0.86rem;
+        }
+
+        .tier-row input:focus {
+            border-color: var(--accent-cyan);
+        }
+
+        .season-history-item {
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 0.9rem;
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .season-history-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .season-history-title {
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .season-history-sub {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+        }
     </style>
 </head>
 
@@ -320,6 +412,9 @@
             </a>
             <a href="management.html" class="nav-item active">
                 <i class="fas fa-gears"></i> Sistem Ayarları
+            </a>
+            <a href="seasons.html" class="nav-item">
+                <i class="fas fa-trophy"></i> Sezon Yönetimi
             </a>
             <a href="#" class="nav-item" onclick="logout()"
                 style="margin-top: 1rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.1);">
@@ -402,6 +497,7 @@
                     <!-- Custom errors here -->
                 </div>
             </div>
+
         </div>
     </main>
 
@@ -413,6 +509,17 @@
             ActiveEvents: [],
             CustomErrors: []
         };
+        let seasonState = {
+            CurrentSeasonId: 1,
+            SeasonName: 'Season 1',
+            IsActive: true,
+            StartTimeUtc: new Date().toISOString(),
+            EndTimeUtc: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString(),
+            HardResetTrophies: true,
+            ResetTrophyTo: 0,
+            RewardTiers: [],
+            History: []
+        };
 
         const eventTypes = [
             { type: 1, name: "XP Çarpanı", icon: "fa-angles-up", color: "#818cf8", desc: "Tüm oyuncuların kazandığı XP'yi katlar." },
@@ -423,6 +530,191 @@
 
         function getEventData(type) {
             return eventTypes.find(e => e.type == type) || { name: 'Özel Etkinlik', icon: 'fa-star', color: '#fff' };
+        }
+
+        function toLocalInputValue(value) {
+            if (!value) return '';
+            const date = new Date(value);
+            if (isNaN(date.getTime())) return '';
+            return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+        }
+
+        function renderSeasonTiers() {
+            const list = document.getElementById('season-tier-list');
+            if (!seasonState.RewardTiers || seasonState.RewardTiers.length === 0) {
+                list.innerHTML = '<div class="empty-state">Tanımlı ödül tablosu yok.</div>';
+                return;
+            }
+
+            list.innerHTML = seasonState.RewardTiers.map((tier, index) => `
+                <div class="tier-row">
+                    <input type="number" value="${tier.MinTrophy ?? 0}" data-tier-field="MinTrophy" data-tier-index="${index}" min="0">
+                    <input type="number" value="${tier.MaxTrophy ?? 0}" data-tier-field="MaxTrophy" data-tier-index="${index}" min="0">
+                    <input type="number" value="${tier.Coins ?? 0}" data-tier-field="Coins" data-tier-index="${index}" min="0">
+                    <input type="number" value="${tier.Gems ?? 0}" data-tier-field="Gems" data-tier-index="${index}" min="0">
+                    <input type="number" value="${tier.Chests ?? 0}" data-tier-field="Chests" data-tier-index="${index}" min="0">
+                    <input type="text" value="${tier.TitleReward ?? ''}" data-tier-field="TitleReward" data-tier-index="${index}" placeholder="Başlık ödülü">
+                    <button class="btn-refresh" style="padding:0.55rem 0.75rem; min-width:auto; background:rgba(244,63,94,0.1); color:#f43f5e; border-color:rgba(244,63,94,0.15);" onclick="removeSeasonTier(${index})">
+                        <i class="fas fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function addSeasonTier() {
+            seasonState.RewardTiers.push({
+                MinTrophy: 0,
+                MaxTrophy: 0,
+                Coins: 0,
+                Gems: 0,
+                Chests: 0,
+                TitleReward: ''
+            });
+            renderSeasonTiers();
+        }
+
+        function removeSeasonTier(index) {
+            seasonState.RewardTiers.splice(index, 1);
+            renderSeasonTiers();
+        }
+
+        function renderSeasonHistory() {
+            const list = document.getElementById('season-history-list');
+            if (!seasonState.History || seasonState.History.length === 0) {
+                list.innerHTML = '<div class="empty-state">Henüz kapanmış sezon yok.</div>';
+                return;
+            }
+
+            list.innerHTML = seasonState.History.slice().reverse().map(season => `
+                <div class="season-history-item">
+                    <div class="season-history-meta">
+                        <div class="season-history-title">#${season.SeasonId} - ${season.SeasonName || 'Unnamed Season'}</div>
+                        <div class="season-history-sub">Başlangıç: ${new Date(season.StartTimeUtc).toLocaleString('tr-TR')} • Bitiş: ${new Date(season.EndTimeUtc).toLocaleString('tr-TR')}</div>
+                        <div class="season-history-sub">Oyuncu: ${season.PlayerCount ?? 0} • Ödül alan: ${season.RewardedPlayerCount ?? 0} • Reset: ${season.ResetApplied ? 'Evet' : 'Hayır'}</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div class="value-badge" style="display:inline-block;">Kapanış</div>
+                        <div class="season-history-sub" style="margin-top:0.45rem;">${new Date(season.ClosedAtUtc).toLocaleString('tr-TR')}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function syncSeasonInputs() {
+            document.getElementById('season-name').value = seasonState.SeasonName || '';
+            document.getElementById('season-start').value = toLocalInputValue(seasonState.StartTimeUtc);
+            document.getElementById('season-end').value = toLocalInputValue(seasonState.EndTimeUtc);
+            document.getElementById('season-reset-trophy').value = seasonState.ResetTrophyTo ?? 0;
+            document.getElementById('season-hard-reset').checked = !!seasonState.HardResetTrophies;
+            const status = document.getElementById('season-status');
+            if (status) {
+                status.textContent = seasonState.IsActive ? `Açık • #${seasonState.CurrentSeasonId}` : `Kapalı • #${seasonState.CurrentSeasonId}`;
+            }
+        }
+
+        function collectSeasonPayload() {
+            const payload = JSON.parse(JSON.stringify(seasonState));
+            payload.SeasonName = document.getElementById('season-name').value;
+            payload.StartTimeUtc = new Date(document.getElementById('season-start').value || Date.now()).toISOString();
+            payload.EndTimeUtc = new Date(document.getElementById('season-end').value || Date.now()).toISOString();
+            payload.ResetTrophyTo = parseInt(document.getElementById('season-reset-trophy').value || '0', 10);
+            payload.HardResetTrophies = document.getElementById('season-hard-reset').checked;
+            payload.RewardTiers = Array.from(document.querySelectorAll('#season-tier-list .tier-row')).map(row => {
+                const get = (field) => {
+                    const input = row.querySelector(`[data-tier-field="${field}"]`);
+                    return input ? input.value : '';
+                };
+                return {
+                    MinTrophy: parseInt(get('MinTrophy') || '0', 10),
+                    MaxTrophy: parseInt(get('MaxTrophy') || '0', 10),
+                    Coins: parseInt(get('Coins') || '0', 10),
+                    Gems: parseInt(get('Gems') || '0', 10),
+                    Chests: parseInt(get('Chests') || '0', 10),
+                    TitleReward: get('TitleReward') || ''
+                };
+            });
+            return payload;
+        }
+
+        async function loadSeasonState() {
+            try {
+                const res = await fetch('/api/seasons');
+                seasonState = await res.json();
+                if (!seasonState.RewardTiers) seasonState.RewardTiers = [];
+                if (!seasonState.History) seasonState.History = [];
+                syncSeasonInputs();
+                renderSeasonTiers();
+                renderSeasonHistory();
+            } catch (e) {
+                showToast('Sezon verisi yüklenemedi', 'error');
+            }
+        }
+
+        async function saveSeasonConfig() {
+            try {
+                const payload = collectSeasonPayload();
+                const res = await fetch('/api/seasons/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await res.json();
+                showToast(result.message, result.success ? 'success' : 'error');
+                await loadSeasonState();
+            } catch (e) {
+                showToast('Sezon kaydı başarısız: ' + e.message, 'error');
+            }
+        }
+
+        async function openSeason() {
+            try {
+                const payload = collectSeasonPayload();
+                const res = await fetch('/api/seasons/open', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await res.json();
+                showToast(result.message, result.success ? 'success' : 'error');
+                await loadSeasonState();
+            } catch (e) {
+                showToast('Sezon açılamadı: ' + e.message, 'error');
+            }
+        }
+
+        async function closeSeason() {
+            try {
+                const res = await fetch('/api/seasons/close', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        grantRewards: document.getElementById('season-grant-rewards').checked,
+                        resetPlayers: document.getElementById('season-reset-players').checked
+                    })
+                });
+                const result = await res.json();
+                showToast(result.message, result.success ? 'success' : 'error');
+                await loadSeasonState();
+            } catch (e) {
+                showToast('Sezon kapatılamadı: ' + e.message, 'error');
+            }
+        }
+
+        async function resetAllPlayers() {
+            Modal.confirm('Toplu Reset', 'Tüm oyuncuların kupa değerini sıfırlamak istediğine emin misin?', async () => {
+                try {
+                    const res = await fetch('/api/seasons/reset', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ resetTrophyTo: parseInt(document.getElementById('season-reset-trophy').value || '0', 10) })
+                    });
+                    const result = await res.json();
+                    showToast(result.message, result.success ? 'success' : 'error');
+                    await loadSeasonState();
+                } catch (e) {
+                    showToast('Reset başarısız: ' + e.message, 'error');
+                }
+            });
         }
 
         let originalConfigStr = "";
@@ -806,6 +1098,12 @@
                 document.getElementById('check-shop').addEventListener('change', checkChanges);
                 document.getElementById('check-rank').addEventListener('change', checkChanges);
                 interceptNavigation();
+
+                ['season-name', 'season-start', 'season-end', 'season-reset-trophy', 'season-hard-reset', 'season-grant-rewards', 'season-reset-players']
+                    .forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) el.addEventListener('change', () => { /* season form is saved explicitly */ });
+                    });
             });
         };
     </script>

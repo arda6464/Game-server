@@ -59,6 +59,10 @@ public class Player
     public int BattleId { get; set; }
     public DietSphere? Collider { get; set; }
 
+    // Çalı / Gizlilik durumu
+    public int? CurrentBushId { get; set; }
+    public float LastShotTime { get; set; } = -9999f;
+
     // Status
 
     public int OnDamage { get; set; } = 0;

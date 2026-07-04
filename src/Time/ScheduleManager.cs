@@ -43,6 +43,7 @@ public static class ScheduleManager
                     
                     // Doğrudan çağrı yapıyoruz (Event bazlı değil)
                     DynamicConfigManager.ProcessEvents();
+                    InviteManager.Cleanup();
                 }
 
                 // Hour Tick (Her saat bir kez)

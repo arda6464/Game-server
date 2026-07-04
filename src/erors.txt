@@ -10648,3 +10648,168 @@ Object name: 'System.Net.Sockets.Socket'.
 [2026-06-23 22:59:53] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
 [2026-06-23 22:59:53] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
 [2026-06-23 22:59:53] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-25 01:18:36] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-25 02:11:06] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-25 02:11:06] [ERROR] [Multiplexer] Accept error: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.Socket'.
+[2026-06-25 02:11:06] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-25 16:09:59] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-25 16:09:59] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-25 16:09:59] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-25 16:09:59] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-25 16:09:59] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-25 16:09:59] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-27 04:39:01] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-06-27 17:51:07] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-27 17:51:07] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-27 17:51:07] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-27 17:51:07] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-27 17:51:07] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 17:36:10] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:07:25] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 18:07:25] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:07:25] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:07:25] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:40:27] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 18:40:27] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:40:27] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:40:27] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:41:36] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 18:41:37] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:41:37] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:41:37] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:41:37] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:41:37] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:41:37] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 18:41:37] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:03:42] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 19:03:42] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:03:42] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:03:42] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:03:42] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:12:23] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 19:12:23] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:12:23] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:12:23] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:12:23] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:12:23] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:17:37] [ERROR] [CMD] 'deleteaccounts' çalıştırılırken hata: Index was outside the bounds of the array.
+[2026-06-30 19:38:17] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 19:38:17] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:38:17] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:38:17] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:38:17] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:39:26] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 19:39:26] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:39:26] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:39:26] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:39:26] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:39:26] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:39:26] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:48:35] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 19:48:35] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:48:35] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:48:35] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 19:48:35] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 20:05:43] [ERROR] [CMD] 'deleteaccounts' çalıştırılırken hata: Index was outside the bounds of the array.
+[2026-06-30 20:06:04] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 20:06:04] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 20:06:04] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 20:06:04] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 20:06:04] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 20:06:04] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 20:06:30] [ERROR] Account not found: 0
+[2026-06-30 20:13:12] [ERROR] Account not found: 0
+[2026-06-30 20:15:00] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 20:15:00] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 20:15:00] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 20:15:23] [ERROR] Account not found: 0
+[2026-06-30 20:51:08] [ERROR] Account not found: 0
+[2026-06-30 20:51:37] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor
+[2026-06-30 21:46:18] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-06-30 21:46:18] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 21:46:18] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-06-30 21:46:18] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-07-01 15:01:07] [ERROR] Account not found: 0
+[2026-07-01 16:02:01] [ERROR] [Multiplexer] Accept error: Engelleyici bir işlem, bir WSACancelBlockingCall çağrısıyla kesildi.
+[2026-07-01 16:02:01] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-07-01 16:02:01] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-07-01 16:02:01] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-07-01 16:02:01] [ERROR] [Multiplexer] Accept error: Not listening. You must call the Start() method before calling this method.
+[2026-07-01 19:34:08] [ERROR] Account not found: 0
+[2026-07-01 19:34:14] [ERROR] [AdminServer] Bağlantı işleme hatası: Unable to write data to the transport connection: Kurulan bir bağlantı, ana makinenizdeki yazılım tarafından iptal edildi..
+[2026-07-01 21:11:14] [ERROR] Account not found: 0
+[2026-07-02 19:38:51] [ERROR] Account not found: 0
+[2026-07-02 19:41:43] [ERROR] [MessageManager] Handler hatası (Ping): Unable to read beyond the end of the stream.
+   at System.IO.BinaryReader.InternalRead(Span`1 buffer)
+   at System.IO.BinaryReader.ReadSingle()
+   at ByteBuffer.ReadFloat() in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 226
+   at PingPacket.Deserialize(ByteBuffer buffer) in C:\Project\Game-server\src\Message\Packet\Auth\PingPacket.cs:line 15
+   at PingHandler.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Auth\PingHandler.cs:line 12
+   at MessageManager.<>c__DisplayClass2_1.<Init>b__3(Session session, Byte[] data) in C:\Project\Game-server\src\Message\MessageManager.cs:line 33
+   at MessageManager.HandleMessage(Session session, Byte[] data, Int32 length) in C:\Project\Game-server\src\Message\MessageManager.cs:line 71
+[2026-07-02 20:23:09] [ERROR] [MessageManager] Handler hatası (Ping): Unable to read beyond the end of the stream.
+   at System.IO.BinaryReader.InternalRead(Span`1 buffer)
+   at System.IO.BinaryReader.ReadSingle()
+   at ByteBuffer.ReadFloat() in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 226
+   at PingPacket.Deserialize(ByteBuffer buffer) in C:\Project\Game-server\src\Message\Packet\Auth\PingPacket.cs:line 15
+   at PingHandler.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Auth\PingHandler.cs:line 12
+   at MessageManager.<>c__DisplayClass2_1.<Init>b__3(Session session, Byte[] data) in C:\Project\Game-server\src\Message\MessageManager.cs:line 33
+   at MessageManager.HandleMessage(Session session, Byte[] data, Int32 length) in C:\Project\Game-server\src\Message\MessageManager.cs:line 71
+[2026-07-02 20:23:10] [ERROR] [MessageManager] Handler hatası (Ping): Unable to read beyond the end of the stream.
+   at System.IO.BinaryReader.InternalRead(Span`1 buffer)
+   at System.IO.BinaryReader.ReadSingle()
+   at ByteBuffer.ReadFloat() in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 226
+   at PingPacket.Deserialize(ByteBuffer buffer) in C:\Project\Game-server\src\Message\Packet\Auth\PingPacket.cs:line 15
+   at PingHandler.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Auth\PingHandler.cs:line 12
+   at MessageManager.<>c__DisplayClass2_1.<Init>b__3(Session session, Byte[] data) in C:\Project\Game-server\src\Message\MessageManager.cs:line 33
+   at MessageManager.HandleMessage(Session session, Byte[] data, Int32 length) in C:\Project\Game-server\src\Message\MessageManager.cs:line 71
+[2026-07-02 20:23:10] [ERROR] [MessageManager] Handler hatası (Ping): Unable to read beyond the end of the stream.
+   at System.IO.BinaryReader.InternalRead(Span`1 buffer)
+   at System.IO.BinaryReader.ReadSingle()
+   at ByteBuffer.ReadFloat() in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 226
+   at PingPacket.Deserialize(ByteBuffer buffer) in C:\Project\Game-server\src\Message\Packet\Auth\PingPacket.cs:line 15
+   at PingHandler.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Auth\PingHandler.cs:line 12
+   at MessageManager.<>c__DisplayClass2_1.<Init>b__3(Session session, Byte[] data) in C:\Project\Game-server\src\Message\MessageManager.cs:line 33
+   at MessageManager.HandleMessage(Session session, Byte[] data, Int32 length) in C:\Project\Game-server\src\Message\MessageManager.cs:line 71
+[2026-07-02 20:23:11] [ERROR] [MessageManager] Handler hatası (Ping): Unable to read beyond the end of the stream.
+   at System.IO.BinaryReader.InternalRead(Span`1 buffer)
+   at System.IO.BinaryReader.ReadSingle()
+   at ByteBuffer.ReadFloat() in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 226
+   at PingPacket.Deserialize(ByteBuffer buffer) in C:\Project\Game-server\src\Message\Packet\Auth\PingPacket.cs:line 15
+   at PingHandler.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Auth\PingHandler.cs:line 12
+   at MessageManager.<>c__DisplayClass2_1.<Init>b__3(Session session, Byte[] data) in C:\Project\Game-server\src\Message\MessageManager.cs:line 33
+   at MessageManager.HandleMessage(Session session, Byte[] data, Int32 length) in C:\Project\Game-server\src\Message\MessageManager.cs:line 71
+[2026-07-02 20:23:11] [ERROR] [MessageManager] Handler hatası (Ping): Unable to read beyond the end of the stream.
+   at System.IO.BinaryReader.InternalRead(Span`1 buffer)
+   at System.IO.BinaryReader.ReadSingle()
+   at ByteBuffer.ReadFloat() in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 226
+   at PingPacket.Deserialize(ByteBuffer buffer) in C:\Project\Game-server\src\Message\Packet\Auth\PingPacket.cs:line 15
+   at PingHandler.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Auth\PingHandler.cs:line 12
+   at MessageManager.<>c__DisplayClass2_1.<Init>b__3(Session session, Byte[] data) in C:\Project\Game-server\src\Message\MessageManager.cs:line 33
+   at MessageManager.HandleMessage(Session session, Byte[] data, Int32 length) in C:\Project\Game-server\src\Message\MessageManager.cs:line 71
+[2026-07-02 20:23:50] [ERROR] [MessageManager] Handler hatası (Ping): Unable to read beyond the end of the stream.
+   at System.IO.BinaryReader.InternalRead(Span`1 buffer)
+   at System.IO.BinaryReader.ReadSingle()
+   at ByteBuffer.ReadFloat() in C:\Project\Game-server\src\Network\ByteBuffer.cs:line 226
+   at PingPacket.Deserialize(ByteBuffer buffer) in C:\Project\Game-server\src\Message\Packet\Auth\PingPacket.cs:line 15
+   at PingHandler.Handle(Session session, Byte[] data) in C:\Project\Game-server\src\Message\Handler\Auth\PingHandler.cs:line 12
+   at MessageManager.<>c__DisplayClass2_1.<Init>b__3(Session session, Byte[] data) in C:\Project\Game-server\src\Message\MessageManager.cs:line 33
+   at MessageManager.HandleMessage(Session session, Byte[] data, Int32 length) in C:\Project\Game-server\src\Message\MessageManager.cs:line 71
+[2026-07-03 01:55:14] [ERROR] Account not found: 0
+[2026-07-03 14:17:23] [ERROR] Account not found: 0
+[2026-07-03 18:00:52] [ERROR] Account not found: 0
+[2026-07-03 19:01:55] [ERROR] [CMD] 'sendgacha' çalıştırılırken hata: Index was outside the bounds of the array.
+[2026-07-03 19:36:46] [ERROR] Account not found: 0
+[2026-07-03 22:42:47] [ERROR] Account not found: 0
+[2026-07-03 22:49:46] [ERROR] Account not found: 0
+[2026-07-04 15:14:58] [ERROR] [AdminServer] Bağlantı işleme hatası: Unable to write data to the transport connection: Kurulan bir bağlantı, ana makinenizdeki yazılım tarafından iptal edildi..

@@ -9,6 +9,7 @@ public struct PlayerMovePacket : IPacket
     public float Y { get; set; }
     public float Z { get; set; }
     public float Rotation { get; set; }
+    public bool IsVisible { get; set; }
 
 
     public void Serialize(ByteBuffer buffer)
@@ -21,6 +22,7 @@ public struct PlayerMovePacket : IPacket
         buffer.WriteFloat(Y);
         buffer.WriteFloat(Z);
      //   buffer.WriteFloat(Rotation);
+        buffer.WriteBool(IsVisible);
     }
 
     public void Deserialize(ByteBuffer buffer)
@@ -32,5 +34,6 @@ public struct PlayerMovePacket : IPacket
         Y = buffer.ReadFloat();
         Z = buffer.ReadFloat();
         Rotation = buffer.ReadFloat();
+        IsVisible = buffer.ReadBool();
     }
 }

@@ -6,12 +6,12 @@ using System.Threading;
 
 public static class AccountCache
 {
-    private static ConcurrentDictionary<int, AccountManager.AccountData> IDToIndex = new();
+    private static ConcurrentDictionary<int, AccountManager.AccountData> Accounts = new();
     private static Timer? _saveTimer;
-    
-    public static ConcurrentDictionary<int, AccountManager.AccountData> GetCachedAccounts() => IDToIndex;
 
-    public static int Count() => IDToIndex.Count;
+    public static ConcurrentDictionary<int, AccountManager.AccountData> GetCachedAccounts() => Accounts;
+
+    public static int Count() => Accounts.Count;
 
     public static void Init()
     {
@@ -26,7 +26,7 @@ public static class AccountCache
         while (started)
         {
             SaveAll();
-          //  Logger.genellog("save alındı");
+            //  Logger.genellog("save alındı");
             Thread.Sleep(1000 * 120);
         }
     }
@@ -48,23 +48,34 @@ public static class AccountCache
     public static void Cache(AccountManager.AccountData account)
     {
         if (account == null) return;
-        IDToIndex[account.ID] = account;
+        Accounts[account.ID] = account;
     }
 
-       // load'ı cache'den yap (int ID ile)
+    // load'ı cache'den yap (int ID ile)
     public static AccountManager.AccountData Load(int id)
     {
         if (id <= 0) return null;
-        if (IDToIndex.TryGetValue(id, out var account))
+        if (Accounts.TryGetValue(id, out var account))
         {
             return account;
         }
         return null;
     }
+    public static void Remove(int accountId)
+    {
+
+        if (Accounts.ContainsKey(accountId))
+        {
+            AccountManager.AccountData account = Accounts[accountId];
+            Accounts.TryRemove(accountId, out var data);
+            Logger.genellog($"[Cache] Hesap cache'den silindi: {accountId}");
+        }
+
+    }
 
     public static bool IsCached(int accountId)
     {
-        return IDToIndex.ContainsKey(accountId);
+        return Accounts.ContainsKey(accountId);
     }
 
     public static void Stop()
@@ -76,6 +87,6 @@ public static class AccountCache
 
     public static List<AccountManager.AccountData> GetAllAccounts()
     {
-        return new List<AccountManager.AccountData>(IDToIndex.Values);
+        return new List<AccountManager.AccountData>(Accounts.Values);
     }
 }

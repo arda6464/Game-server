@@ -404,6 +404,7 @@ public class AdminServer
                         memoryUsage = GC.GetTotalMemory(false) / 1024 / 1024 + " MB",
                         cpuUsage = GetCpuUsage(process),
                         threadCount = process.Threads.Count,
+                        tps = TickManager.instance?.TickRate ?? 0,
                         maintenanceMode = Maintance.MaintanceMode
                     };
                 }
@@ -1260,7 +1261,7 @@ public class AdminServer
                                     banReason = account.Banreason ?? "",
                                     banEndTime = account.Banned ? (BanManager.GetBanInfo(playerId)?.Perma == true ? "Kalıcı" : BanManager.GetBanInfo(playerId)?.BanFinishDate?.ToString("dd.MM.yyyy HH:mm") ?? "Bilinmiyor") : "Yok",
                                     // Yeni Alanlar
-                                    dil = account.Dil ?? "tr",
+                                    dil = account.Country ?? "tr",
                                     hasPushToken = !string.IsNullOrEmpty(account.FBNToken),
                                     friendRequestCount = account.Requests.Count,
                                     banHistoryCount = account.BanHistory.Count,
@@ -1614,6 +1615,104 @@ public class AdminServer
                 }
                 break;
 
+            case "/api/seasons":
+                result = SeasonManager.GetSnapshot();
+                break;
+
+            case "/api/seasons/player":
+                {
+                    if (context.Request.QueryString.TryGetValue("id", out string idValue) && int.TryParse(idValue, out int seasonPlayerId))
+                    {
+                        var seasonPlayerView = SeasonManager.GetPlayerView(seasonPlayerId);
+                        result = seasonPlayerView != null
+                            ? (object)seasonPlayerView
+                            : new { success = false, message = "Oyuncu sezon verisi bulunamadı." };
+                    }
+                    else
+                    {
+                        result = new { success = false, message = "Geçersiz oyuncu ID." };
+                    }
+                }
+                break;
+
+            case "/api/seasons/save":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var seasonConfig = JsonConvert.DeserializeObject<SeasonConfig>(body);
+                        if (seasonConfig != null)
+                        {
+                            SeasonManager.UpdateSettings(seasonConfig);
+                            result = new { success = true, message = "Sezon ayarları güncellendi." };
+                        }
+                        else result = new { success = false, message = "Geçersiz sezon verisi." };
+                    }
+                }
+                break;
+
+            case "/api/seasons/open":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var seasonConfig = JsonConvert.DeserializeObject<SeasonConfig>(body);
+                        if (seasonConfig != null)
+                        {
+                            var summary = SeasonManager.OpenConfiguredSeason(seasonConfig);
+                            result = new
+                            {
+                                success = true,
+                                message = "Yeni sezon açıldı.",
+                                season = summary
+                            };
+                        }
+                        else result = new { success = false, message = "Geçersiz sezon verisi." };
+                    }
+                }
+                break;
+
+            case "/api/seasons/close":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(body);
+                        bool grantRewards = data != null && data.ContainsKey("grantRewards") && Convert.ToBoolean(data["grantRewards"]);
+                        bool resetPlayers = data != null && data.ContainsKey("resetPlayers") && Convert.ToBoolean(data["resetPlayers"]);
+                        var summary = SeasonManager.CloseCurrentSeason(grantRewards, resetPlayers);
+                        result = new
+                        {
+                            success = true,
+                            message = "Sezon kapatıldı.",
+                            season = summary
+                        };
+                    }
+                }
+                break;
+
+            case "/api/seasons/reset":
+                if (context.Request.Method == "POST")
+                {
+                    using (var reader = new StreamReader(new MemoryStream(context.Request.Body), Encoding.UTF8))
+                    {
+                        string body = reader.ReadToEnd();
+                        var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(body);
+                        int resetTo = 0;
+                        if (data != null && data.ContainsKey("resetTrophyTo"))
+                        {
+                            resetTo = Convert.ToInt32(data["resetTrophyTo"]);
+                        }
+
+                        SeasonManager.HardResetAllPlayersTo(resetTo);
+                        result = new { success = true, message = $"Tüm oyuncular kupa değeri {resetTo} ile resetlendi." };
+                    }
+                }
+                break;
+
             case "/api/updates/all":
                 result = UpdateNotesManager.GetAll();
                 break;
@@ -1779,8 +1878,19 @@ public class AdminServer
         else
         {
             response.StatusCode = 404;
-            byte[] errorBuffer = Encoding.UTF8.GetBytes($"404 - File Not Found at {filePath}");
-            response.OutputStream.Write(errorBuffer, 0, errorBuffer.Length);
+            string notFoundPath = Path.Combine(_adminPath, "404.html");
+            if (File.Exists(notFoundPath))
+            {
+                byte[] buffer = File.ReadAllBytes(notFoundPath);
+                response.ContentType = "text/html";
+                response.OutputStream.Write(buffer, 0, buffer.Length);
+            }
+            else
+            {
+                byte[] errorBuffer = Encoding.UTF8.GetBytes($"404 - File Not Found at {filePath}");
+                response.ContentType = "text/plain";
+                response.OutputStream.Write(errorBuffer, 0, errorBuffer.Length);
+            }
         }
     }
 

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-class Program
+static class Program
 {
     private static readonly Stopwatch bootWatch = Stopwatch.StartNew();
 
@@ -16,6 +16,7 @@ class Program
     static Thread? botthread;
     static AdminServer? adminServer;
     static TcpListener? tcpListener;
+    static bool isShuttingDown = false;
 
     static void Main()
     {
@@ -35,6 +36,7 @@ class Program
             {
                 DataManager.Init();
                 DatabaseManager.Initialize();
+                SeasonManager.Load();
             });
 
             BootStep("Caches", () =>
@@ -60,7 +62,7 @@ class Program
                 };
                 botthread.Start();
 
-                cmdhandlerthread = new Thread(Cmdhandler.Start)
+                cmdhandlerthread = new Thread(CmdHandler.Start)
                 {
                     IsBackground = true,
                     Name = "CommandHandler"
@@ -192,7 +194,7 @@ class Program
     {
         Logger.genellog($"[MULTIPLEXER] Listening on port {publicPort}");
 
-        while (true)
+        while (!isShuttingDown)
         {
             try
             {
@@ -238,13 +240,19 @@ class Program
             }
             catch (Exception ex)
             {
+                if (isShuttingDown)
+                {
+                    break;
+                }
                 Logger.errorslog($"[Multiplexer] Accept error: {ex.Message}");
+                Thread.Sleep(100);
             }
         }
     }
 
-    static void SaveDataAndExit()
+    public static void SaveDataAndExit()
     {
+        isShuttingDown = true;
         Logger.bootlog("Saving data and stopping services.");
 
         try

@@ -208,4 +208,10 @@ public enum MessageType : short
     PostMatchSyncRequest,
     HomeStateSyncResponse,
 
+    #region Daily Rewards
+    DailyLoginReward,
+    ClaimDailyRewardRequest,
+    ClaimDailyRewardResponse,
+    #endregion
+
 }

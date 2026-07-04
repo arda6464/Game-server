@@ -1,5 +1,198 @@
 [
   {
+    "Id": "eb8d99c4",
+    "FirstSeen": "2026-07-03T23:05:11.2439407+03:00",
+    "LastSeen": "2026-07-03T23:07:35.6514272+03:00",
+    "Count": 2,
+    "LogMessage": "UnityMainThread işlem hatası: System.IO.EndOfStreamException: Unable to read beyond the end of the stream.\r\n  at System.IO.BinaryReader.ReadByte () [0x00018] in <41d29b352f6a475ab1bf7c6628b82790>:0 \r\n  at ByteBuffer.ReadByte () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:200 \r\n  at ByteBuffer.ReadVarUInt () [0x00004] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:160 \r\n  at ByteBuffer.ReadVarInt () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:150 \r\n  at LoginStreakClaiemdHandler.Handle (System.Byte[] data) [0x00044] in C:\\Project\\Game Clients\\Assets\\Scripts\\Handler\\Lobby\\LoginStreakClaimedHandler.cs:19 \r\n  at MessageManager.HandleMessage (System.Byte[] data) [0x0024b] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\MessageManager.cs:47 \r\n  at NetworkManager+<>c__DisplayClass23_0.<Listen>b__0 () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\NetworkManager.cs:178 \r\n  at UnityMainThread.Update () [0x00044] in C:\\Project\\Game Clients\\Assets\\Scripts\\Handler\\System\\ActiveThread.cs:60 ",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:64)\n",
+    "LogType": 0,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "08f3cd24",
+    "FirstSeen": "2026-07-03T23:03:41.2458022+03:00",
+    "LastSeen": "2026-07-03T23:03:41.245803+03:00",
+    "Count": 1,
+    "LogMessage": "Assets\\Scripts\\Handler\\Lobby\\LoginStreakClaimedHandler.cs(38,9): error CS0117: 'GameEvents' does not contain a definition for 'buffer'",
+    "StackTrace": "",
+    "LogType": 0,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "3a1ba440",
+    "FirstSeen": "2026-07-03T22:49:10.0340972+03:00",
+    "LastSeen": "2026-07-04T15:02:53.7153178+03:00",
+    "Count": 4,
+    "LogMessage": "icontype bulunamadı!",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nNotficationHandler:Handle (byte[]) (at Assets/Scripts/Handler/Notfication/NotficationHandler.cs:70)\nMessageManager:HandleMessage (byte[]) (at Assets/Scripts/Network/MessageManager.cs:238)\nNetworkManager/<>c__DisplayClass23_0:<Listen>b__0 () (at Assets/Scripts/Network/NetworkManager.cs:178)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:60)\n",
+    "LogType": 0,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "1c2bcfdc",
+    "FirstSeen": "2026-07-03T22:43:07.4737251+03:00",
+    "LastSeen": "2026-07-03T22:46:24.5011792+03:00",
+    "Count": 2,
+    "LogMessage": "UnityMainThread işlem hatası: System.IO.EndOfStreamException: Unable to read beyond the end of the stream.\r\n  at System.IO.BinaryReader.ReadByte () [0x00018] in <41d29b352f6a475ab1bf7c6628b82790>:0 \r\n  at ByteBuffer.ReadByte () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:200 \r\n  at ByteBuffer.ReadVarUInt () [0x00004] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:160 \r\n  at ByteBuffer.ReadVarInt () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\Base\\ByteBuffer.cs:150 \r\n  at LoginStreakHandler.Handle (System.Byte[] data) [0x00036] in C:\\Project\\Game Clients\\Assets\\Scripts\\Handler\\Lobby\\LoginStreakHandler.cs:13 \r\n  at MessageManager.HandleMessage (System.Byte[] data) [0x00240] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\MessageManager.cs:44 \r\n  at NetworkManager+<>c__DisplayClass23_0.<Listen>b__0 () [0x00000] in C:\\Project\\Game Clients\\Assets\\Scripts\\Network\\NetworkManager.cs:178 \r\n  at UnityMainThread.Update () [0x00044] in C:\\Project\\Game Clients\\Assets\\Scripts\\Handler\\System\\ActiveThread.cs:60 ",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:64)\n",
+    "LogType": 0,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "c0ceb512",
+    "FirstSeen": "2026-07-03T19:35:51.4193963+03:00",
+    "LastSeen": "2026-07-03T19:35:51.419397+03:00",
+    "Count": 1,
+    "LogMessage": "icontype bulunamadı!",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nNotficationHandler:Handle (byte[]) (at Assets/Scripts/Handler/Notfication/NotficationHandler.cs:70)\nMessageManager:HandleMessage (byte[]) (at Assets/Scripts/Network/MessageManager.cs:235)\nNetworkManager/<>c__DisplayClass23_0:<Listen>b__0 () (at Assets/Scripts/Network/NetworkManager.cs:178)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:60)\n",
+    "LogType": 0,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      1
+    ]
+  },
+  {
+    "Id": "03494546",
+    "FirstSeen": "2026-07-02T19:41:30.1080776+03:00",
+    "LastSeen": "2026-07-02T19:44:20.6798161+03:00",
+    "Count": 2,
+    "LogMessage": "UnityMainThread işlem hatası: Index was out of range. Must be non-negative and less than the size of the collection.\r\nParameter name: index",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:64)\n",
+    "LogType": 0,
+    "SceneName": "SampleScene",
+    "AffectedPlayerIds": []
+  },
+  {
+    "Id": "487596fe",
+    "FirstSeen": "2026-06-30T19:39:21.243618+03:00",
+    "LastSeen": "2026-06-30T19:39:21.2436182+03:00",
+    "Count": 1,
+    "LogMessage": "icontype bulunamadı!",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nNotficationHandler:Handle (byte[]) (at Assets/Scripts/Handler/Notfication/NotficationHandler.cs:70)\nMessageManager:HandleMessage (byte[]) (at Assets/Scripts/Network/MessageManager.cs:232)\nNetworkManager/<>c__DisplayClass23_0:<Listen>b__0 () (at Assets/Scripts/Network/NetworkManager.cs:178)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:60)\n",
+    "LogType": 0,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      2
+    ]
+  },
+  {
+    "Id": "da99451f",
+    "FirstSeen": "2026-06-30T16:51:06.2322527+03:00",
+    "LastSeen": "2026-06-30T16:51:06.2322536+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
+    "StackTrace": "ClubSearchUI.Setup (ClubInfo info) (at <00000000000000000000000000000000>:0)\nClubSearchManager.SetupRandomClubs (System.Collections.Generic.List`1[T] info) (at <00000000000000000000000000000000>:0)\nClubSearchManager.Start () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      7
+    ]
+  },
+  {
+    "Id": "a070fd81",
+    "FirstSeen": "2026-06-30T16:50:49.2121586+03:00",
+    "LastSeen": "2026-06-30T16:50:49.2121591+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
+    "StackTrace": "ClubSearchUI.Setup (ClubInfo info) (at <00000000000000000000000000000000>:0)\nClubSearchManager.SetupRandomClubs (System.Collections.Generic.List`1[T] info) (at <00000000000000000000000000000000>:0)\nUnityMainThread.Update () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      7
+    ]
+  },
+  {
+    "Id": "c5a11191",
+    "FirstSeen": "2026-06-30T16:50:32.2745454+03:00",
+    "LastSeen": "2026-06-30T16:50:32.2745462+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
+    "StackTrace": "Clubmanager.Setup (ClubInfo info) (at <00000000000000000000000000000000>:0)\nClubmanager.Start () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      7
+    ]
+  },
+  {
+    "Id": "b142f418",
+    "FirstSeen": "2026-06-27T16:07:37.6166781+03:00",
+    "LastSeen": "2026-06-27T16:07:37.6166786+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "LobbyChatHandler.OpenChat () (at Assets/Scripts/Manager/Lobby/LobbyChatHandler.cs:128)\nLobbyManager.OpenChat () (at Assets/Scripts/Manager/Lobby/LobbyManager.cs:315)\nUnityEngine.Events.InvokableCall.Invoke () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Events.UnityEvent.Invoke () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.UI.Button.Press () (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/UI/Core/Button.cs:70)\nUnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/UI/Core/Button.cs:114)\nUnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/EventSystem/ExecuteEvents.cs:57)\nUnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/EventSystem/ExecuteEvents.cs:272)\nUnityEngine.EventSystems.EventSystem:Update() (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/EventSystem/EventSystem.cs:514)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      2
+    ]
+  },
+  {
+    "Id": "9cc8f961",
+    "FirstSeen": "2026-06-27T05:12:28.6987945+03:00",
+    "LastSeen": "2026-06-27T15:59:03.5117232+03:00",
+    "Count": 2,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "LobbyChatHandler.OpenChat () (at Assets/Scripts/Manager/Lobby/LobbyChatHandler.cs:122)\nLobbyManager.OpenChat () (at Assets/Scripts/Manager/Lobby/LobbyManager.cs:315)\nUnityEngine.Events.InvokableCall.Invoke () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Events.UnityEvent.Invoke () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.UI.Button.Press () (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/UI/Core/Button.cs:70)\nUnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/UI/Core/Button.cs:114)\nUnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/EventSystem/ExecuteEvents.cs:57)\nUnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/EventSystem/ExecuteEvents.cs:272)\nUnityEngine.EventSystems.EventSystem:Update() (at ./Library/PackageCache/com.unity.ugui@05e8dec4ac02/Runtime/UGUI/EventSystem/EventSystem.cs:514)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      2
+    ]
+  },
+  {
+    "Id": "9d3f68b7",
+    "FirstSeen": "2026-06-27T05:02:33.5725764+03:00",
+    "LastSeen": "2026-06-30T16:46:22.1293262+03:00",
+    "Count": 2,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
+    "StackTrace": "LBInfo.Setup (LBItem item) (at <00000000000000000000000000000000>:0)\nUnityMainThread.Update () (at <00000000000000000000000000000000>:0)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      7
+    ]
+  },
+  {
+    "Id": "f86b1b5d",
+    "FirstSeen": "2026-06-27T05:01:54.838999+03:00",
+    "LastSeen": "2026-06-27T05:11:53.4328165+03:00",
+    "Count": 3,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
+    "StackTrace": "LobbyChatHandler.OpenChat () (at <00000000000000000000000000000000>:0)\nUnityEngine.Events.UnityEvent.Invoke () (at <00000000000000000000000000000000>:0)\nUnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at <00000000000000000000000000000000>:0)\nUnityEngine.EventSystems.StandaloneInputModule.ProcessTouchPress (UnityEngine.EventSystems.PointerEventData pointerEvent, System.Boolean pressed, System.Boolean released) (at <00000000000000000000000000000000>:0)\nUnityEngine.EventSystems.StandaloneInputModule.ProcessTouchEvents () (at <00000000000000000000000000000000>:0)\nUnityEngine.EventSystems.StandaloneInputModule.Process () (at <00000000000000000000000000000000>:0)\nUnityEngine.EventSystems.StandaloneInputModule:Process()\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      7
+    ]
+  },
+  {
+    "Id": "6521591a",
+    "FirstSeen": "2026-06-27T04:41:27.2404776+03:00",
+    "LastSeen": "2026-06-27T04:41:27.2404792+03:00",
+    "Count": 1,
+    "LogMessage": "MissingReferenceException: The object of type 'UnityEngine.GameObject' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object.",
+    "StackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponentFastPath (System.Type type, System.IntPtr oneFurtherThanResultValue) (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nUnityEngine.GameObject.GetComponent[T] () (at <f75b90f651a84d3889ac5b03cf1fde1a>:0)\nBattleManager.OnPlayerMoved (System.UInt32 serverTick, System.UInt32 lastProcessedInputTick, System.Int32 id, UnityEngine.Vector3 pos) (at Assets/Scripts/Test/BattleManager.cs:194)\nUdpMessageHandler.HandleMove (ByteBuffer buffer) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:95)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at Assets/Scripts/Network/Handlers/UdpMessageHandler.cs:35)\nUdpNetworkManager.ProcessIncomingMessages () (at Assets/Scripts/Network/UdpNetworkManager.cs:354)\nUdpNetworkManager.Update () (at Assets/Scripts/Network/UdpNetworkManager.cs:247)\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      2
+    ]
+  },
+  {
     "Id": "9bf7c083",
     "FirstSeen": "2026-06-23T22:22:30.2153227+03:00",
     "LastSeen": "2026-06-23T22:22:30.2153234+03:00",
@@ -158,13 +351,14 @@
   {
     "Id": "7c48ea71",
     "FirstSeen": "2026-06-22T04:34:31.64992+03:00",
-    "LastSeen": "2026-06-23T22:22:30.3636904+03:00",
-    "Count": 17,
+    "LastSeen": "2026-06-27T04:41:27.2490948+03:00",
+    "Count": 18,
     "LogMessage": "NullReferenceException: Object reference not set to an instance of an object.",
     "StackTrace": "UnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <00000000000000000000000000000000>:0)\nUnityEngine.GameObject.GetComponentFastPath (System.Type type, System.IntPtr oneFurtherThanResultValue) (at <00000000000000000000000000000000>:0)\nUnityEngine.GameObject.GetComponent[T] () (at <00000000000000000000000000000000>:0)\nBattleManager.OnPlayerMoved (System.UInt32 serverTick, System.UInt32 lastProcessedInputTick, System.Int32 id, UnityEngine.Vector3 pos) (at <00000000000000000000000000000000>:0)\nUdpMessageHandler.Handle (System.Byte[] payloadData) (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.ProcessIncomingMessages () (at <00000000000000000000000000000000>:0)\nUdpNetworkManager.Update () (at <00000000000000000000000000000000>:0)\n",
     "LogType": 2,
     "SceneName": "Arena",
     "AffectedPlayerIds": [
+      7,
       5
     ]
   },

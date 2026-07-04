@@ -23,6 +23,9 @@ public class BanData
 public static class BanManager
 {
     private static ConcurrentDictionary<int, BanData> activeBans = new ConcurrentDictionary<int, BanData>();
+    private static List<BanData> UnBans = new();
+    private static List<BanData> Bans = new();
+
     private static System.Threading.Timer? saveTimer;
     private static readonly object saveLock = new object();
 
@@ -58,9 +61,13 @@ public static class BanManager
                     {
                         try
                         {
-                            foreach (var ban in activeBans.Values)
+                            foreach (var ban in Bans)
                             {
                                 SaveBanToDb(ban, connection, transaction);
+                            }
+                            foreach (var unban in UnBans)
+                            {
+                                SaveUnBanToDb(unban, connection, transaction);
                             }
                             transaction.Commit();
                         }
@@ -153,11 +160,23 @@ public static class BanManager
             command.ExecuteNonQuery();
         }
     }
-
-    public static void RegisterBan(BanData banRecord)
+    private static void SaveUnBanToDb(BanData ban, SqliteConnection connection, SqliteTransaction? transaction = null)
     {
-        activeBans[banRecord.AccountId] = banRecord;
+        var upsertQuery = @"
+            DELETE FROM Bans WHERE AccountId  = @AccountId";
+
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = upsertQuery;
+            command.Transaction = transaction;
+            command.Parameters.AddWithValue("@AccountId", ban.AccountId);
+
+
+            command.ExecuteNonQuery();
+        }
     }
+
+
 
     public static void BanPlayer(int targetAccountId, string adminName, string reasonText, bool perma, TimeSpan? duration = null)
     {
@@ -183,12 +202,15 @@ public static class BanManager
             targetAccount.Banned = true;
             targetAccount.Banreason = reasonText;
             targetAccount.BanHistory.Add(banRecord);
+            activeBans[targetAccountId] = banRecord;
+            Bans.Add(banRecord);
+
         }
 
-        activeBans[targetAccountId] = banRecord;
+
         Logger.genellog($"Oyuncu banlandı: {targetAccount.Username} ({targetAccountId}) - Sebep: {reasonText}");
-        
-        AccountManager.SaveAccounts();
+
+
 
         if (SessionManager.IsOnline(targetAccountId))
         {
@@ -210,6 +232,11 @@ public static class BanManager
         banRecord.Notes += $"\nBan kaldıran: {adminName} | Tarih: {DateTime.Now} | Not: {note}";
 
         activeBans.TryRemove(targetAccountId, out _);
+        UnBans.Add(banRecord);
+        var account = AccountCache.Load(targetAccountId);
+        if (account != null) account.Banned = false;
+
+
 
         Logger.genellog($"Oyuncunun banı kaldırıldı: {banRecord.AccountName} ({targetAccountId})");
     }

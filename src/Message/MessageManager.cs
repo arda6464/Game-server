@@ -3,14 +3,15 @@ using System;
 public static class MessageManager
 {
 
-    private static System.Collections.Generic.Dictionary<MessageType, System.Reflection.MethodInfo> _handlers = new System.Collections.Generic.Dictionary<MessageType, System.Reflection.MethodInfo>();
+    public delegate void PacketHandlerDelegate(Session session, byte[] data);
+    private static readonly System.Collections.Generic.Dictionary<MessageType, PacketHandlerDelegate> _handlers = new System.Collections.Generic.Dictionary<MessageType, PacketHandlerDelegate>();
 
     public static void Init()
     {
         Console.WriteLine("[MessageManager] Handler'lar yükleniyor...");
         var methods = System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
             .SelectMany(t => t.GetMethods())
-            .Where(m => m?.DeclaringType.GetCustomAttributes(typeof(PacketHandlerAttribute), false).Length > 0 && m.Name == "Handle")
+            .Where(m => m?.DeclaringType != null && m.DeclaringType.GetCustomAttributes(typeof(PacketHandlerAttribute), false).Length > 0 && m.Name == "Handle")
             .ToArray();
 
         foreach (var method in methods)
@@ -18,50 +19,56 @@ public static class MessageManager
             var attr = (PacketHandlerAttribute)method.DeclaringType.GetCustomAttributes(typeof(PacketHandlerAttribute), false)[0];
             if (!_handlers.ContainsKey(attr.Type))
             {
-                _handlers.Add(attr.Type, method);
-                //   Console.WriteLine($"[MessageManager] Yüklendi: {attr.Type} -> {method.DeclaringType.Name}");
+                var parameters = method.GetParameters();
+                PacketHandlerDelegate? handler = null;
+
+                if (parameters.Length == 1 && parameters[0].ParameterType == typeof(Session))
+                {
+                    var action = (Action<Session>)Delegate.CreateDelegate(typeof(Action<Session>), method);
+                    handler = (session, data) => action(session);
+                }
+                else if (parameters.Length == 2 && parameters[1].ParameterType == typeof(byte[]))
+                {
+                    var action = (Action<Session, byte[]>)Delegate.CreateDelegate(typeof(Action<Session, byte[]>), method);
+                    handler = (session, data) => action(session, data);
+                }
+
+                if (handler != null)
+                {
+                    _handlers.Add(attr.Type, handler);
+                }
+                else
+                {
+                    Logger.errorslog($"[MessageManager] Gecersiz handler imzası: {method.DeclaringType.Name}.Handle");
+                }
             }
         }
         Console.WriteLine($"[MessageManager] Toplam {_handlers.Count} handler yüklendi.");
     }
 
-    public static void HandleMessage(Session session, byte[] data)
+    public static void HandleMessage(Session session, byte[] data, int length)
     {
         int value;
+        byte[] payload;
         using (ByteBuffer buffer = ByteBufferPool.Get())
         {
-            buffer.WriteBytes(data, true);
+            buffer.WriteBytes(new ReadOnlySpan<byte>(data, 0, length), true);
             value = buffer.ReadVarInt();
-            data = buffer.GetReadableSpan().ToArray();
+            int payloadLength = (int)(buffer.Length - buffer.Position);
+            payload = buffer.ReadBytes(null!, payloadLength);
         }
         MessageType type = (MessageType)value;
         Console.WriteLine($"[PACKET] bir {type} alındı");
 
         // Trafiği kaydet
-        TrafficMonitor.RecordIncoming(type, data.Length);
+        TrafficMonitor.RecordIncoming(type, payload.Length);
 
         // ÖNCE YENİ SİSTEME BAK
-        if (_handlers.ContainsKey(type))
+        if (_handlers.TryGetValue(type, out var handler))
         {
             try
             {
-                // Parametre sayısına göre dinamik çağrı (bazı handlerlar sadece Session alır, bazıları Session + Data)
-                var method = _handlers[type];
-                var parameters = method.GetParameters();
-
-                if (parameters.Length == 1 && parameters[0].ParameterType == typeof(Session))
-                {
-                    method.Invoke(null, new object[] { session });
-                    
-                }
-                else if (parameters.Length == 2 && parameters[1].ParameterType == typeof(byte[]))
-                {
-                    method.Invoke(null, new object[] { session, data });
-                }
-                else
-                {
-                    Logger.errorslog($"[MessageManager] Handler parametre hatası: {type}");
-                }
+                handler(session, payload);
                 return; // Yeni sistemde işlendi, switch-case'e girme
             }
             catch (Exception ex)

@@ -1,0 +1,63 @@
+{
+  "CurrentSeasonId": 1,
+  "SeasonName": "Season 1",
+  "IsActive": false,
+  "StartTimeUtc": "2026-06-24T19:44:00Z",
+  "EndTimeUtc": "2026-08-23T07:00:00Z",
+  "HardResetTrophies": true,
+  "ResetTrophyTo": 0,
+  "RewardTiers": [
+    {
+      "MinTrophy": 0,
+      "MaxTrophy": 199,
+      "Coins": 100,
+      "Gems": 0,
+      "Chests": 0,
+      "TitleReward": ""
+    },
+    {
+      "MinTrophy": 200,
+      "MaxTrophy": 399,
+      "Coins": 200,
+      "Gems": 10,
+      "Chests": 0,
+      "TitleReward": ""
+    },
+    {
+      "MinTrophy": 400,
+      "MaxTrophy": 699,
+      "Coins": 350,
+      "Gems": 25,
+      "Chests": 1,
+      "TitleReward": ""
+    },
+    {
+      "MinTrophy": 700,
+      "MaxTrophy": 999,
+      "Coins": 500,
+      "Gems": 50,
+      "Chests": 1,
+      "TitleReward": "Season Veteran"
+    },
+    {
+      "MinTrophy": 1000,
+      "MaxTrophy": 2147483647,
+      "Coins": 1000,
+      "Gems": 100,
+      "Chests": 3,
+      "TitleReward": "Season Legend"
+    }
+  ],
+  "History": [
+    {
+      "SeasonId": 1,
+      "SeasonName": "Season 1",
+      "StartTimeUtc": "2026-06-24T19:44:00Z",
+      "EndTimeUtc": "2026-08-23T07:00:00Z",
+      "ClosedAtUtc": "2026-06-24T19:48:53.2865736Z",
+      "PlayerCount": 6,
+      "RewardedPlayerCount": 6,
+      "ResetApplied": true
+    }
+  ]
+}

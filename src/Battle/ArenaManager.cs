@@ -5,6 +5,7 @@ using DietPhysics;
 public static class ArenaManager
 {
     private static readonly Dictionary<int, Battle> battles = new();
+    private static List<Battle> activeBattlesSnapshot = new();
     private static int nextBattleId = 1;
     private static readonly object _lock = new object();
 
@@ -15,6 +16,7 @@ public static class ArenaManager
             int id = nextBattleId++;
             var battle = new Battle { BattleId = id };
             battles[id] = battle;
+            activeBattlesSnapshot = battles.Values.ToList();
             Logger.battlelog($"Yeni savaş oluşturuldu id: {id}");
             return id;
         }
@@ -26,6 +28,7 @@ public static class ArenaManager
         {
             if (battles.Remove(battleId))
             {
+                activeBattlesSnapshot = battles.Values.ToList();
                 Logger.battlelog($"Savaş silindi id: {battleId}");
             }
         }
@@ -33,10 +36,7 @@ public static class ArenaManager
 
     public static List<Battle> GetAllBattles()
     {
-        lock (_lock)
-        {
-            return battles.Values.ToList();
-        }
+        return activeBattlesSnapshot;
     }
 
     public static Battle? GetBattle(int battleId)
