@@ -13,7 +13,7 @@ public static class JoinedClubHandler
         read.Dispose();
 
         if (session.Account == null) return;
-        AccountManager.AccountData account = session.Account;
+       AccountData account = session.Account;
 
         var club = ClubManager.LoadClub(clubId);
         if (club == null) return;

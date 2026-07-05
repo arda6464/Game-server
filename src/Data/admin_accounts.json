@@ -1,0 +1,10 @@
+[
+  {
+    "Username": "admin",
+    "PasswordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "Role": "Owner",
+    "CreatedAt": "2026-03-07T04:36:12.1871862+03:00",
+    "LastLogin": "2026-07-05T03:17:57.8365323+03:00",
+    "LastIp": "127.0.0.1:56589"
+  }
+]

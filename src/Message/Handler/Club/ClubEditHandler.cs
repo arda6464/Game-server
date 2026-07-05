@@ -16,7 +16,7 @@ public static class ClubEditHandler
         string? Region = request.Region;
 
         if (session.Account == null) return;
-        AccountManager.AccountData account = session.Account;
+        AccountData account = session.Account;
 
         if (account.Clubid == 0)
         {

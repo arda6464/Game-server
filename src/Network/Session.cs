@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 
 public class Session
@@ -14,8 +15,8 @@ public class Session
     private byte[]? _initialData;
     public Player? PlayerData { get; set; }
     public bool IsConnected => client != null && client.Connected;
-    private AccountManager.AccountData? _account;
-    public AccountManager.AccountData? Account 
+    private AccountData? _account;
+    public AccountData? Account 
     { 
         get => _account; 
         set 
@@ -117,9 +118,8 @@ public class Session
         ConnectionToken = Guid.NewGuid().GetHashCode() & int.MaxValue;
     }
 
-    public void Start()
+    public async Task StartAsync()
     {
-        // Eğer multiplexer'dan gelen başlangıç verisi varsa önce onu işle
         if (_initialData != null && _initialData.Length > 0)
         {
             HandleRawData(_initialData, _initialData.Length);
@@ -135,7 +135,7 @@ public class Session
                 int bytesRead = 0;
                 try
                 {
-                    bytesRead = stream.Read(buffer, 0, buffer.Length);
+                    bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
                 }
                 catch (ObjectDisposedException)
                 {

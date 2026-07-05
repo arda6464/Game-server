@@ -7,7 +7,7 @@ public static class OnlinePlayerManager
     /// Viewer'a gösterilebilecek online oyuncuları snapshot olarak üretir.
     /// Kaynak veri SessionManager ve AccountCache'tir.
     /// </summary>
-    public static List<OnlinePlayerData> BuildSnapshotForViewer(AccountManager.AccountData viewer)
+    public static List<OnlinePlayerData> BuildSnapshotForViewer(AccountData viewer)
     {
         List<int> addedIds = new List<int>();
         var snapshot = new List<OnlinePlayerData>();
@@ -31,7 +31,7 @@ public static class OnlinePlayerManager
             {
                 if (!addedIds.Contains(member.ID) && SessionManager.IsOnline(member.ID))
                 {
-                    AccountManager.AccountData? memberAccount = AccountCache.Load(member.ID);
+                   AccountData? memberAccount = AccountCache.Load(member.ID);
                     if((memberAccount == null) || (memberAccount.ID == viewer.ID)) continue; // Hesap yüklenemezse veya kendisi ise atla
                     snapshot.Add(CreateOnlinePlayerData(viewer, memberAccount));
                     //  addedIds.Add(member.ID); //  arkadaşlar zaten eklendiği için bu satır şu an gereksiz görünüyor.
@@ -57,7 +57,7 @@ public static class OnlinePlayerManager
     /// </summary>
 
 
-    private static bool IsVisibleToViewer(AccountManager.AccountData viewer, AccountManager.AccountData target)
+    private static bool IsVisibleToViewer(AccountData viewer, AccountData target)
     {
         bool isFriend = viewer.Friends != null && viewer.Friends.Any(f => f.ID == target.ID);
         bool isClubMember = viewer.Clubid > 0 && target.Clubid > 0 && viewer.Clubid == target.Clubid;
@@ -65,7 +65,7 @@ public static class OnlinePlayerManager
         return isFriend || isClubMember;
     }
 
-    private static OnlinePlayerData CreateOnlinePlayerData(AccountManager.AccountData viewer, AccountManager.AccountData target)
+    private static OnlinePlayerData CreateOnlinePlayerData(AccountData viewer, AccountData target)
     {
         bool isFriend = viewer.Friends != null && viewer.Friends.Any(f => f.ID == target.ID);
         bool isClubMember = viewer.Clubid > 0 && target.Clubid > 0 && viewer.Clubid == target.Clubid;

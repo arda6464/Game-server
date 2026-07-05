@@ -27,7 +27,7 @@ public static class ProgressionManager
         return total;
     }
 
-    public static void Normalize(AccountManager.AccountData account)
+    public static void Normalize(AccountData account)
     {
         if (account == null)
             return;

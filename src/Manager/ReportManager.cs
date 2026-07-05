@@ -38,7 +38,7 @@ public static class ReportManager
 {
     private static List<ReportData> reports = new List<ReportData>();
     private static List<string>? bannedWords;
-    private static readonly string ReportsFile = "reports.json";
+    private static readonly string ReportsFile = "Data/reports.json";
 
     public static void Init()
     {
@@ -106,7 +106,7 @@ public static class ReportManager
         }
 
         if (session.Account == null) return;
-        AccountManager.AccountData acc = session.Account;
+        AccountData acc = session.Account;
 
         switch (mode)
         {
@@ -122,7 +122,7 @@ public static class ReportManager
         }
     }
 
-    private static void CreateClubReport(int messageid, AccountManager.AccountData account)
+    private static void CreateClubReport(int messageid, AccountData account)
     {
         if (account.Clubid <= 0 || messageid == 0) return;
         Club club = ClubCache.Load(account.Clubid);
@@ -167,7 +167,7 @@ public static class ReportManager
         Console.WriteLine($"[ReportManager] Yeni kulüp raporu oluşturuldu: {report.Id} (Reporter: {report.ReporterName})");
     }
 
-    private static void CreateTeamReport(Session session, int messageid, AccountManager.AccountData account)
+    private static void CreateTeamReport(Session session, int messageid, AccountData account)
     {
         if (session.TeamID <= 0 || messageid == 0) return;
         Lobby lobby = LobbyManager.GetLobby(session.TeamID);
@@ -212,11 +212,11 @@ public static class ReportManager
 
     public static void LoadBannedWords()
     {
-        if (File.Exists("bannedword.json"))
+        if (File.Exists("Data/bannedword.json"))
         {
             try
             {
-                string json = File.ReadAllText("bannedword.json");
+                string json = File.ReadAllText("Data/bannedword.json");
                 bannedWords = JsonConvert.DeserializeObject<List<string>>(json);
             }
             catch (Exception ex)

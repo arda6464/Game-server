@@ -51,7 +51,7 @@ public class Lobby
     
 
 
-    public List<AccountManager.AccountData> Players { get; set; } = new();
+    public List<AccountData> Players { get; set; } = new();
     public List<TeamMessage> Messages { get; set; } = new(); // Kulüp mesajları
     public List<int> RequestedPlayerIds { get; set; } = new(); // Takıma katılmak isteyen oyuncuların ID'leri 
 
@@ -65,7 +65,7 @@ public class Lobby
         OwnerID = ownerid;
         Link = link;
     }
-    public void AddPlayers(AccountManager.AccountData player)
+    public void AddPlayers(AccountData player)
     {
         lock (SyncLock)
         {
@@ -94,7 +94,7 @@ public static class LobbyManager
     public static ConcurrentDictionary<int, Lobby> Lobbies = new();
 
 
-    public static Lobby CreateLobby(AccountManager.AccountData owner)
+    public static Lobby CreateLobby(AccountData owner)
     {
         Random lobbyıd = new Random();
     SelectLobbyID:
@@ -158,7 +158,7 @@ public static class LobbyManager
         return true;
     }
 
-    public static void TransferLeader(Lobby team, AccountManager.AccountData newownerid)
+    public static void TransferLeader(Lobby team, AccountData newownerid)
     {
         var acc = AccountCache.Load(newownerid.ID);
         if (acc == null) return;

@@ -7,11 +7,11 @@ namespace Logic
 {
     public class AccountLogic
     {
-        public AccountManager.AccountData Data { get; private set; }
+        public AccountData Data { get; private set; }
         public Session Session { get; private set; }
         private Random rdm = new Random();
 
-        public AccountLogic(AccountManager.AccountData data, Session session)
+        public AccountLogic(AccountData data, Session session)
         {
             Data = data;
             Session = session;
@@ -56,24 +56,24 @@ namespace Logic
         /// <summary>
         /// Oyuncuya yeni bir bildirim ekler ve online ise gönderir.
         /// </summary>
-        public void AddNotification(Notfication notification)
+        public void AddNotification(Notification notification)
         {
             if (Data == null) return;
 
-            if (notification.type == NotficationTypes.NotficationType.Push)
+            if (notification.type == NotificationTypes.NotificationType.Push)
             {
-                AndroidNotficationManager.SendNotification(notification.Title, notification.Message, Data.FBNToken);
+                AndroidNotificationManager.SendNotification(notification.Title, notification.Message, Data.FBNToken);
                 return;
             }
 
             if (Session != null)
             {
-                NotficationSender.Send(Session, notification);
+                NotificationSender.Send(Session, notification);
             }
 
             lock (Data.SyncLock)
             {
-                Data.Notfications.Add(notification);
+                Data.Notifications.Add(notification);
             }
 
             Logger.genellog($"{Data.Username} kullanıcısına bildirim eklendi: {notification.Title}");

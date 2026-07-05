@@ -38,8 +38,8 @@ public static class JoinByInviteHandler
             int targetAccountId = invite.TargetID;
             if (targetAccountId == session.Account.ID) return;
 
-            AccountManager.AccountData account = session.Account;
-            AccountManager.AccountData target = AccountCache.Load(targetAccountId);
+            AccountData account = session.Account;
+            AccountData target = AccountCache.Load(targetAccountId);
 
             if (account != null && target != null)
             {

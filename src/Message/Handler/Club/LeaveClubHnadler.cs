@@ -3,7 +3,7 @@ public static class LeaveClubHandler
 {
     public static void Handle(Session session, byte[] message)
     {
-        AccountManager.AccountData account = session.Account;
+        AccountData account = session.Account;
         if (account == null)
         {
             Logger.errorslog("[LEAVE CLUB]Hesap bulunamadı");

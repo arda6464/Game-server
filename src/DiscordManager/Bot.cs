@@ -154,7 +154,7 @@ public class BotManager
             var customId = component.Data.CustomId;
 
             // Buton türüne göre işle
-            if (customId.StartsWith("shownotfication_"))
+            if (customId.StartsWith("showNotification_"))
             {
                 await ShowNotificationHistory.HandleShowNotificationButton(component);
             }

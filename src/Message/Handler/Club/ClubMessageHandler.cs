@@ -17,7 +17,7 @@ public static class ClubMessageHandler
         readbuffer.Dispose();
 
 
-        AccountManager.AccountData account = AccountCache.Load(accountıd);
+        AccountData account = AccountCache.Load(accountıd);
         var club = ClubManager.LoadClub(account.Clubid);
         if (club == null)
         {
@@ -55,7 +55,7 @@ public static class ClubMessageHandler
 
         club.SendMessageToClubMembers(clubMessage);
     }
-     public static void GameinCmd(Session session, AccountManager.AccountData account, string message)
+     public static void GameinCmd(Session session, AccountData account, string message)
     {
         string EntryMessage = "";
          string[] cmd = message.Substring(1).Split(' ');

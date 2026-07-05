@@ -1,4 +1,4 @@
-ï»¿using System.Collections.Generic;
+using System.Collections.Generic;
 using Logic;
 
 
@@ -11,7 +11,7 @@ public class AuthLoginRequestPacket : IPacket
 
     public void Serialize(ByteBuffer buffer)
     {
-        // Ä°stemciden geldiÄŸi iÃ§in Serialize gerekmez
+        // Ýstemciden geldiði için Serialize gerekmez
         throw new NotImplementedException();
     }
 
@@ -28,7 +28,7 @@ public class AuthLoginRequestPacket : IPacket
 
 public class AuthLoginResponsePacket : IPacket
 {
-    public AccountManager.AccountData? Account { get; set; }
+    public AccountData? Account { get; set; }
     public int ConnectionToken { get; set; }
     public Club Club { get; set; }
     public List<Club>? RandomClubs { get; set; }
@@ -45,7 +45,7 @@ public class AuthLoginResponsePacket : IPacket
 
         // --- Account Data ---
         #region  Account data
-        buffer.WriteVarInt(Account.ID); // SayÄ±sal ID
+        buffer.WriteVarInt(Account.ID); // Sayýsal ID
         buffer.WriteVarString(Account.Username);
         buffer.WriteVarInt(Account.Avatarid);
         buffer.WriteVarInt(Account.Namecolorid);
@@ -90,7 +90,7 @@ public class AuthLoginResponsePacket : IPacket
         }
         #endregion
 
-        #region  Notfication Settings
+        #region  Notification Settings
         // settings data (1 byte for flags)
         byte settingFlags = 0;
         if (Account.SendOnlineBestFriendNotification) settingFlags |= 1 << 0;
@@ -199,7 +199,7 @@ public class AuthLoginResponsePacket : IPacket
 
         foreach (var member in (Club?.Members ?? new List<ClubMember>()))
         {
-            buffer.WriteVarInt(member.ID); // SayÄ±sal ID
+            buffer.WriteVarInt(member.ID); // Sayýsal ID
             buffer.WriteVarString(member.AccountName);
             buffer.WriteVarInt((int)member.Role);
             buffer.WriteVarInt(member.NameColorID);
@@ -241,7 +241,7 @@ public class AuthLoginResponsePacket : IPacket
             buffer.WriteVarInt(Account.Requests.Count);
             foreach (var request in Account.Requests)
             {
-                buffer.WriteVarInt(request.ID); // SayÄ±sal ID
+                buffer.WriteVarInt(request.ID); // Sayýsal ID
                 buffer.WriteVarInt(request.AvatarId);
                 buffer.WriteVarString(request.Username);
             }
@@ -268,8 +268,8 @@ public class AuthLoginResponsePacket : IPacket
             #endregion
 
 
-            // --- ULTRA-OPTIMIZED DYNAMIC CONFIG (CÄ°MRÄ° MODE) ---
-            // Sadece gerekli veriler (ID, DeÄŸer, Kalan Saniye) gÃ¶nderilir.
+            // --- ULTRA-OPTIMIZED DYNAMIC CONFIG (CÝMRÝ MODE) ---
+            // Sadece gerekli veriler (ID, Deðer, Kalan Saniye) gönderilir.
 
             var dynamicConfig = DynamicConfigManager.Config;
 
@@ -278,11 +278,11 @@ public class AuthLoginResponsePacket : IPacket
              foreach ( var evt in dynamicConfig.ActiveEvents)
              {
                  buffer.WriteVarInt((int)evt.Type);    // type                
-                 // Kalan saniye (Negatif olmamalÄ±)
+                 // Kalan saniye (Negatif olmamalý)
 
                  int remainingSeconds = (int)Math.Max(0, (evt.EndTime - DateTime.UtcNow).TotalSeconds);
                  buffer.WriteVarInt(remainingSeconds);
-                 if(evt.Type ==  EventType.XPMultiplier ||evt.Type ==  EventType.DoubleTrophy) // 2. bir deÄŸiÅŸkene ihtiyac varmÄ±?!
+                 if(evt.Type ==  EventType.XPMultiplier ||evt.Type ==  EventType.DoubleTrophy) // 2. bir deðiþkene ihtiyac varmý?!
                  {
                      buffer.WriteVarInt(evt.Value);
 
@@ -297,7 +297,7 @@ public class AuthLoginResponsePacket : IPacket
 
             buffer.WriteByte(systemFlags); // 1 byte
 
-            // 3. Custom Errors (KalÄ±cÄ± Teknik UyarÄ±lar)
+            // 3. Custom Errors (Kalýcý Teknik Uyarýlar)
             buffer.WriteVarInt(dynamicConfig.CustomErrors.Count);
             foreach (var ce in dynamicConfig.CustomErrors)
             {

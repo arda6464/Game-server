@@ -52,13 +52,13 @@ public static class PlayerSetPresence
                                         // Cooldown Kontrolü (Oyun içi Toast)
                                         if (NotificationPolicyManager.CanSendNotification(targetAccount, NotificationPolicyManager.NotificationType.OnlineBest))
                                         {
-                                            Notfication toast = new Notfication
+                                            Notification toast = new Notification
                                             {
-                                                type = NotficationTypes.NotficationType.toast,
+                                                type = NotificationTypes.NotificationType.toast,
                                                 Message = $"{acccount.Username} oyuna girdi.",
                                                 iconid = acccount.Avatarid
                                             };
-                                            NotficationSender.Send(session, toast);
+                                            NotificationSender.Send(session, toast);
                                             NotificationPolicyManager.UpdateCooldown(targetAccount, NotificationPolicyManager.NotificationType.OnlineBest);
                                         }
                                     }
@@ -80,7 +80,7 @@ public static class PlayerSetPresence
                                 {
                                     if (!string.IsNullOrEmpty(friendAccount.FBNToken))
                                     {
-                                        AndroidNotficationManager.SendNotification(
+                                        AndroidNotificationManager.SendNotification(
                                             "En İyi Arkadaş!",
                                             $"{acccount.Username} şu an oyunda, gel beraber kapışın!",
                                             friendAccount.FBNToken

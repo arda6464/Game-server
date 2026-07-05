@@ -19,7 +19,7 @@ public class LeaderboardResponsePacket : IPacket
 {
     
 
-    public List<AccountManager.AccountData> Players { get; set; } = new List<AccountManager.AccountData>();
+    public List<AccountData> Players { get; set; } = new List<AccountData>();
     public int PlayerRankIndex { get; set; }
     public int PlayerTrophy { get; set; }
     public string PlayerCountry {get;set;}

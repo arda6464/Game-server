@@ -15,7 +15,7 @@ public static class ShowFriendRequest
 
 
 
-        AccountManager.AccountData target = AccountCache.Load(targetId); // isteği kabul edilen kişi
+        AccountData target = AccountCache.Load(targetId); // isteği kabul edilen kişi
         if (target == null)
         {
             Logger.errorslog($"[Friend manager] {targetId}'li hesap bulunamadı");

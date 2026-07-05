@@ -17,7 +17,7 @@ public static class SendNotificationCommand
             return;
         }
 
-        var notificationType = (NotficationTypes.NotficationType)idOption.Value;
+        var notificationType = (NotificationTypes.NotificationType)idOption.Value;
         var playerIdOption = command.Data.Options.FirstOrDefault(opt => opt.Name == "kullanıcıid");
         if (playerIdOption == null)
         {
@@ -45,13 +45,13 @@ public static class SendNotificationCommand
         string titlestr = titleOption.Value.ToString();
         string messagestr = messageOption.Value.ToString();
 
-        Notfication notification;
-        if (notificationType == NotficationTypes.NotficationType.banner)
+        Notification notification;
+        if (notificationType == NotificationTypes.NotificationType.banner)
         {
             var buttonName = command.Data.Options.FirstOrDefault(opt => opt.Name == "butonadı");
             var buttonLink = command.Data.Options.FirstOrDefault(opt => opt.Name == "butonlinki");
 
-            notification = new Notfication
+            notification = new Notification
             {
                 type = notificationType,
                 Title = titlestr,
@@ -62,7 +62,7 @@ public static class SendNotificationCommand
         }
         else
         {
-            notification = new Notfication
+            notification = new Notification
             {
                 type = notificationType,
                 Title = titlestr,
@@ -86,7 +86,7 @@ public static class SendNotificationCommand
         {
             Label = "Bildirim Geçmişini Göster",
             Style = ButtonStyle.Primary,
-            CustomId = $"shownotfication_{playerId}_{2}"
+            CustomId = $"showNotification_{playerId}_{2}"
         };
 
         await command.RespondAsync(embed: embed, ephemeral: false, components: new ComponentBuilder().WithButton(showNotificationButton).Build());

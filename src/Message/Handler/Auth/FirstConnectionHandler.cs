@@ -35,9 +35,9 @@ public static class FirstConnectionHandler
             Login = false;
             Loginreason = "Clientte değişiklik tespit edildi";
         }
-         if(Maintance.MaintanceMode)
+         if(Maintenance.MaintenanceMode)
         {
-            Maintance.SendMaintancePacket(session);
+            Maintenance.SendMaintenancePacket(session);
             return;
         }
 

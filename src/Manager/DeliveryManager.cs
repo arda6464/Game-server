@@ -12,9 +12,9 @@ public static class DeliveryManager
         var account = AccountCache.Load(playerId);
         if (account == null) return false;
 
-        var notification = new Notfication
+        var notification = new Notification
         {
-            type = NotficationTypes.NotficationType.Inbox,
+            type = NotificationTypes.NotificationType.Inbox,
             Title = title,
             Message = message,
             Sender = sender,
@@ -26,8 +26,8 @@ public static class DeliveryManager
 
         lock (account.SyncLock)
         {
-            notification.IndexID = account.inboxesNotfications.Count > 0 ? account.inboxesNotfications.Max(n => n.IndexID) + 1 : 1;
-            account.inboxesNotfications.Add(notification);
+            notification.IndexID = account.inboxesNotifications.Count > 0 ? account.inboxesNotifications.Max(n => n.IndexID) + 1 : 1;
+            account.inboxesNotifications.Add(notification);
         }
         AccountManager.SaveAccounts();
 
@@ -35,7 +35,7 @@ public static class DeliveryManager
         var session = SessionManager.GetSession(playerId);
         if (session != null)
         {
-            NotficationSender.Send(session, notification);
+            NotificationSender.Send(session, notification);
         }
 
         Logger.genellog($"[DeliveryManager] {account.Username} (#{playerId}) kişisine ödül gönderildi: {title}");
@@ -68,9 +68,9 @@ public static class DeliveryManager
         var account = AccountCache.Load(playerId);
         if (account == null) return false;
 
-        var notification = new Notfication
+        var notification = new Notification
         {
-            type = NotficationTypes.NotficationType.Inbox,
+            type = NotificationTypes.NotificationType.Inbox,
             Title = title,
             Message = message,
             Sender = sender,
@@ -82,15 +82,15 @@ public static class DeliveryManager
 
         lock (account.SyncLock)
         {
-            notification.IndexID = account.inboxesNotfications.Count > 0 ? account.inboxesNotfications.Max(n => n.IndexID) + 1 : 1;
-            account.inboxesNotfications.Add(notification);
+            notification.IndexID = account.inboxesNotifications.Count > 0 ? account.inboxesNotifications.Max(n => n.IndexID) + 1 : 1;
+            account.inboxesNotifications.Add(notification);
         }
 
         // Online ise paketi gönder
         var session = SessionManager.GetSession(playerId);
         if (session != null)
         {
-            NotficationSender.Send(session, notification);
+            NotificationSender.Send(session, notification);
         }
 
         return true;
@@ -99,7 +99,7 @@ public static class DeliveryManager
     /// <summary>
     /// Ödül etkisini oyuncu hesabına uygular (Drop mantığı).
     /// </summary>
-    public static void ApplyReward(AccountManager.AccountData account, RewardItem reward)
+    public static void ApplyReward(AccountData account, RewardItem reward)
     {
         switch (reward.Type)
         {

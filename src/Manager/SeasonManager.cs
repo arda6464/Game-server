@@ -75,7 +75,7 @@ public class SeasonPlayerView
 public static class SeasonManager
 {
     private static readonly object _lock = new object();
-    private static readonly string _filePath = "season_config.json";
+    private static readonly string _filePath = "Data/season_config.json";
 
     public static SeasonConfig Config { get; private set; } = new SeasonConfig();
 
@@ -152,7 +152,7 @@ public static class SeasonManager
         }
     }
 
-    public static void EnsureAccountSeasonState(AccountManager.AccountData account)
+    public static void EnsureAccountSeasonState(AccountData account)
     {
         if (account == null) return;
 
@@ -171,7 +171,7 @@ public static class SeasonManager
         }
     }
 
-    public static void RecordBattleResult(AccountManager.AccountData account, bool isWin, int placement, int playerCount, int trophyDelta)
+    public static void RecordBattleResult(AccountData account, bool isWin, int placement, int playerCount, int trophyDelta)
     {
         if (account == null) return;
 

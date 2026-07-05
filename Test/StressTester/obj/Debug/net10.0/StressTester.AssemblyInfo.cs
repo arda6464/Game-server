@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StressTester")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d176a430dbe4418327cac957e395a5e6f08e12c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85f9c6ec6bafc9ccf6f9b03adb3dcf0e9cf1b218")]
 [assembly: System.Reflection.AssemblyProductAttribute("StressTester")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StressTester")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

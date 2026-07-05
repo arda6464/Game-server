@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.Notification)]
 public class NotificationPacket : IPacket
 {
-    public NotficationTypes.NotficationType Type { get; set; }
+    public NotificationTypes.NotificationType Type { get; set; }
 
     // Toast Fields
     public string Title { get; set; }
@@ -27,18 +27,18 @@ public class NotificationPacket : IPacket
 
         switch (Type)
         {
-            case NotficationTypes.NotficationType.toast:
+            case NotificationTypes.NotificationType.toast:
 
                 buffer.WriteVarString(Message);
                 buffer.WriteVarInt(IconId);
                 break;
-            case NotficationTypes.NotficationType.banner:
+            case NotificationTypes.NotificationType.banner:
                 buffer.WriteVarString(Title ?? "");
                 buffer.WriteVarString(Message ?? "");
                 buffer.WriteVarString(ButtonText ?? " ");
                 buffer.WriteVarString(Url ?? " ");
                 break;
-            case NotficationTypes.NotficationType.Inbox:
+            case NotificationTypes.NotificationType.Inbox:
                 buffer.WriteVarInt(IndexID);
                 buffer.WriteVarString(Sender);
                 buffer.WriteVarString(Message);

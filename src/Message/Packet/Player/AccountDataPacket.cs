@@ -2,9 +2,9 @@ using Logic;
 
 public class AccountDataPacket : IPacket
 {
-    public AccountManager.AccountData Account { get; set; }
+    public AccountData Account { get; set; }
 
-    public AccountDataPacket(AccountManager.AccountData account)
+    public AccountDataPacket(AccountData account)
     {
         Account = account;
     }

@@ -25,12 +25,12 @@ public static class ClaimInboxRewardHandler
         lock (account.SyncLock)
         {
             // Inbox bildirimini bul (IndexID üzerinden veya liste sırasından)
-            var notification = account.inboxesNotfications.FirstOrDefault(n => n.IndexID == packet.NotificationIndexId);
+            var notification = account.inboxesNotifications.FirstOrDefault(n => n.IndexID == packet.NotificationIndexId);
             
             // Eğer ID ile bulunamazsa (eski bildirimler vb.) index olarak dene
-            if (notification == null && packet.NotificationIndexId >= 0 && packet.NotificationIndexId < account.inboxesNotfications.Count)
+            if (notification == null && packet.NotificationIndexId >= 0 && packet.NotificationIndexId < account.inboxesNotifications.Count)
             {
-                notification = account.inboxesNotfications[packet.NotificationIndexId];
+                notification = account.inboxesNotifications[packet.NotificationIndexId];
             }
 
             if (notification != null && !notification.IsClaimed && notification.Rewards.Count > 0)

@@ -63,16 +63,16 @@ public static class PostMatchSyncHandler
 
         lock (account.SyncLock)
         {
-            foreach (var inboxNotification in account.inboxesNotfications)
+            foreach (var inboxNotification in account.inboxesNotifications)
             {
-                NotficationSender.Send(session, inboxNotification);
+                NotificationSender.Send(session, inboxNotification);
             }
 
-            foreach (var notification in account.Notfications)
+            foreach (var notification in account.Notifications)
             {
                 if (!notification.IsViewed)
                 {
-                    NotficationSender.Send(session, notification);
+                    NotificationSender.Send(session, notification);
                     notification.IsViewed = true;
                 }
             }

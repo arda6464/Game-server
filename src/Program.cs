@@ -1,10 +1,7 @@
 using System;
 using System.Diagnostics;
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 static class Program
 {
@@ -15,7 +12,7 @@ static class Program
     static Thread? pingthread;
     static Thread? botthread;
     static AdminServer? adminServer;
-    static TcpListener? tcpListener;
+    static Multiplexer? multiplexer;
     static bool isShuttingDown = false;
 
     static void Main()
@@ -26,8 +23,8 @@ static class Program
 
         try
         {
-            BootStep("Map data", () => MapManager.Load("MapData.json"));
-            BootStep("Config", () => Config.Load("config.json"));
+            BootStep("Map data", () => MapManager.Load("Data/MapData.json"));
+            BootStep("Config", () => Config.Load("Data/config.json"));
 
             UpdateConsoleTitle();
 
@@ -46,7 +43,7 @@ static class Program
                 BanManager.Init();
                 ShopManager.InitializeMarket();
                 TicketStorage.Initialize();
-                AndroidNotficationManager.Initialize();
+                AndroidNotificationManager.Initialize();
                 ReportManager.Init();
                 MessageManager.Init();
                 GachaSystem.GachaManager.Init();
@@ -83,6 +80,7 @@ static class Program
             {
                 adminServer = new AdminServer();
                 adminServer.Start();
+                HttpRouter.RegisterControllers();
 
                 gameserver = new GameServer();
                 gameserver.Start(publicPort);
@@ -95,15 +93,15 @@ static class Program
 
             BootStep("Transport gateway", () =>
             {
-                tcpListener = new TcpListener(IPAddress.Any, publicPort);
-                tcpListener.Start();
+                multiplexer = new Multiplexer(publicPort, adminServer!, gameserver!);
+                multiplexer.Start();
             });
 
             Logger.successlog($"Server ready in {bootWatch.Elapsed.TotalSeconds:F1}s on port {publicPort}.");
             Logger.bootlog($"Version {Config.Instance?.ServerVersion ?? "unknown"} online.");
             Console.WriteLine("Press Ctrl+C to begin a graceful shutdown.");
 
-            RunMultiplexerLoop(publicPort);
+            while (!isShuttingDown) Thread.Sleep(1000);
         }
         catch (Exception ex)
         {
@@ -190,66 +188,6 @@ static class Program
         }
     }
 
-    private static void RunMultiplexerLoop(int publicPort)
-    {
-        Logger.genellog($"[MULTIPLEXER] Listening on port {publicPort}");
-
-        while (!isShuttingDown)
-        {
-            try
-            {
-                TcpClient client = tcpListener!.AcceptTcpClient();
-                _ = Task.Run(async () =>
-                {
-                    try
-                    {
-                        NetworkStream stream = client.GetStream();
-                        byte[] buffer = new byte[1024];
-                        int read = await stream.ReadAsync(buffer, 0, buffer.Length);
-                        if (read <= 0)
-                        {
-                            client.Close();
-                            return;
-                        }
-
-                        string initialData = Encoding.ASCII.GetString(buffer, 0, read);
-                        bool isHttp = initialData.StartsWith("GET ") ||
-                                      initialData.StartsWith("POST ") ||
-                                      initialData.StartsWith("OPTIONS ") ||
-                                      initialData.StartsWith("HEAD ") ||
-                                      initialData.StartsWith("PUT ") ||
-                                      initialData.StartsWith("DELETE ");
-
-                        byte[] data = new byte[read];
-                        Array.Copy(buffer, 0, data, 0, read);
-
-                        if (isHttp)
-                        {
-                            adminServer?.HandleConnection(client, data);
-                        }
-                        else
-                        {
-                            gameserver?.HandleConnection(client, data);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.errorslog($"[Multiplexer] Connection error: {ex.Message}");
-                    }
-                });
-            }
-            catch (Exception ex)
-            {
-                if (isShuttingDown)
-                {
-                    break;
-                }
-                Logger.errorslog($"[Multiplexer] Accept error: {ex.Message}");
-                Thread.Sleep(100);
-            }
-        }
-    }
-
     public static void SaveDataAndExit()
     {
         isShuttingDown = true;
@@ -258,7 +196,7 @@ static class Program
         try
         {
             Config.StopWatcher();
-            Maintance.StartMaintance(TimeSpan.FromHours(3), true);
+            Maintenance.StartMaintenance(TimeSpan.FromHours(3), true);
 
             AccountCache.SaveAll();
             ClubCache.SaveAll();
@@ -267,7 +205,7 @@ static class Program
             TickManager.instance?.Stop();
             ScheduleManager.Stop();
             adminServer?.Stop();
-            tcpListener?.Stop();
+            multiplexer?.Stop();
             gameserver?.Stop();
 
             Logger.successlog("Shutdown complete. All data flushed.");

@@ -12,8 +12,8 @@ public static class DeleteFriendHandler
         int targetId = request.TargetId;
          read.Dispose();
         if (session.Account == null) return;
-        AccountManager.AccountData targetaccount = AccountCache.Load(targetId);
-        AccountManager.AccountData account = session.Account;
+        AccountData targetaccount = AccountCache.Load(targetId);
+        AccountData account = session.Account;
         if (account != null && targetaccount != null)
         {
             lock (account.SyncLock)

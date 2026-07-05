@@ -1,5 +1,5 @@
-[PacketHandler(MessageType.ChangeNotficationRequest)]
-public static class ChangeNotficationSettingsHandler
+[PacketHandler(MessageType.ChangeNotificationRequest)]
+public static class ChangeNotificationSettingsHandler
 {
     public static void Handle(Session session, byte[] data)
     {
@@ -22,7 +22,7 @@ public static class ChangeNotficationSettingsHandler
                 session.Account?.SendClaimRewardNotification = !session.Account.SendClaimRewardNotification;
                 break;
             default:
-            Logger.errorslog($"[ChangeNotficationSettingsHandler] Geçersiz index: {index} from {session.ID}");
+            Logger.errorslog($"[ChangeNotificationSettingsHandler] Geçersiz index: {index} from {session.ID}");
                 break;
         }
 

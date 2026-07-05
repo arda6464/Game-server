@@ -2,7 +2,7 @@
 public class FriendShowRequestPacket : IPacket
 {
     public int TargetId { get; set; }
-    public AccountManager.AccountData? account { get; set; }
+    public AccountData? account { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {

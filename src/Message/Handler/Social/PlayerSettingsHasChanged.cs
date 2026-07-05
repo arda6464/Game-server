@@ -3,7 +3,7 @@ public static class SocialSettingsHasChanged
 {
     public static void Handle(Session session, byte[] data)
     {
-        AccountManager.AccountData account = session.Account;
+       AccountData account = session.Account;
         if (account == null) return;
         if (account.Clubid == 0) return;
 

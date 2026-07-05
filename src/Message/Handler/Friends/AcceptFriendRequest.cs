@@ -17,8 +17,8 @@ public static class FriendRequestAccept
 
 
         if (session.Account == null) return;
-        AccountManager.AccountData account = session.Account; // isteği kabul eden kişi
-        AccountManager.AccountData target = AccountCache.Load(targetId); // isteği kabul edilen kişi
+       AccountData account = session.Account; // isteği kabul eden kişi
+       AccountData target = AccountCache.Load(targetId); // isteği kabul edilen kişi
         if (target == null) 
         {
             Logger.errorslog($"[Friend manager] {targetId}'li hesap bulunamadı");

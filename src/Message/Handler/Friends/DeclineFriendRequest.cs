@@ -12,8 +12,8 @@ public static class FriendRequestDecline
         int targetId = request.TargetId;
         byteBuffer.Dispose();
         if (session.Account == null) return;
-        AccountManager.AccountData account = session.Account;
-        AccountManager.AccountData target = AccountCache.Load(targetId);
+        AccountData account = session.Account;
+        AccountData target = AccountCache.Load(targetId);
         bool result = false;
 
 

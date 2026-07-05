@@ -18,7 +18,7 @@ public class AdminAccount
 
 public static class AdminAccountManager
 {
-    private static string _filePath = "admin_accounts.json";
+    private static string _filePath = "Data/admin_accounts.json";
     private static List<AdminAccount> _accounts = new List<AdminAccount>();
 
     public static void Initialize()

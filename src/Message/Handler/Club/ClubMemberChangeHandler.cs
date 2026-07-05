@@ -16,7 +16,7 @@ public static class ClubMemberChangeHandler
 
             if (session.Account == null) return;
             var myAccount = session.Account;
-            AccountManager.AccountData targetAccount = AccountCache.Load(targetid);
+            AccountData targetAccount = AccountCache.Load(targetid);
 
             if (targetAccount == null || myAccount == null) return;
 
@@ -57,8 +57,8 @@ public static class ClubMemberChangeHandler
         }
     }
 
-    private static void HandlePromotion(Session session, AccountManager.AccountData targetAccount, 
-                                      AccountManager.AccountData myAccount)
+    private static void HandlePromotion(Session session, AccountData targetAccount, 
+                                      AccountData myAccount)
     {
         if (myAccount.clubRole != ClubRole.Leader)
         {
@@ -84,8 +84,8 @@ public static class ClubMemberChangeHandler
             MessageCodeManager.Send(session, MessageCodeManager.Message.InvalidTransaction);
     }
 
-    private static void HandleDemotion(Session session, AccountManager.AccountData targetAccount, 
-                                     AccountManager.AccountData myAccount)
+    private static void HandleDemotion(Session session, AccountData targetAccount, 
+                                     AccountData myAccount)
     {
         if (targetAccount.clubRole == ClubRole.Member)
         {

@@ -20,7 +20,7 @@ public class ShowProfileRequestPacket : IPacket
 
 public class ShowProfileResponsePacket : IPacket
 {
-   public AccountManager.AccountData account {get;set;}
+   public AccountData account {get;set;}
 
     public void Serialize(ByteBuffer buffer)
     {

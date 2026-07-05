@@ -6,7 +6,7 @@ public enum MessageType : short
     Disconnect,
     Ping,
     Pong,
-    Maintance,
+    Maintenance,
     MessageCode,
     Alive,
     Presence,
@@ -29,7 +29,7 @@ public enum MessageType : short
     VerifyCodeResponse,
     AccountLogin,
     SignAccount,
-    ChangeNotficationRequest,
+    ChangeNotificationRequest,
     NameNotAcceptedRequest,
     #endregion
 
@@ -91,9 +91,9 @@ public enum MessageType : short
 
 
 
-    #region  notfications
+    #region  Notifications
     Notification,
-    AllNotficationViewed,
+    AllNotificationViewed,
     ClaimInboxRewardRequest,
     ClaimInboxRewardResponse,
     #endregion

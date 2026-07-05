@@ -4,7 +4,7 @@ using Logic;
 
 public class HomeStateSyncResponsePacket : IPacket
 {
-    public AccountManager.AccountData? Account { get; set; }
+    public AccountData? Account { get; set; }
     public Club? Club { get; set; }
     public List<Club> RandomClubs { get; set; } = new List<Club>();
     public List<OnlinePlayerData> OnlinePlayers { get; set; } = new List<OnlinePlayerData>();
@@ -25,7 +25,7 @@ public class HomeStateSyncResponsePacket : IPacket
         WriteDynamicConfigSection(buffer);
     }
 
-    private void WriteAccountSection(ByteBuffer buffer, AccountManager.AccountData account)
+    private void WriteAccountSection(ByteBuffer buffer, AccountData account)
     {
         buffer.WriteVarInt(account.ID);
         buffer.WriteVarString(account.Username ?? "");
@@ -69,7 +69,7 @@ public class HomeStateSyncResponsePacket : IPacket
         buffer.WriteVarInt(remainingMuteTeamInviteSeconds);
     }
 
-    private void WriteClubSection(ByteBuffer buffer, AccountManager.AccountData account)
+    private void WriteClubSection(ByteBuffer buffer, AccountData account)
     {
         if (Club == null)
         {
@@ -152,7 +152,7 @@ public class HomeStateSyncResponsePacket : IPacket
         }
     }
 
-    private void WriteFriendsSection(ByteBuffer buffer, AccountManager.AccountData account)
+    private void WriteFriendsSection(ByteBuffer buffer, AccountData account)
     {
         buffer.WriteVarInt(account.Friends.Count);
         foreach (var friend in account.Friends)

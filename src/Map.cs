@@ -34,7 +34,7 @@ public static class MapManager
     {
         if (!File.Exists(path))
         {
-            string fallback = Path.Combine(Path.GetDirectoryName(path) ?? string.Empty, "MapData.json");
+            string fallback = Path.Combine(Path.GetDirectoryName(path) ?? string.Empty, "Data/MapData.json");
             if (File.Exists(fallback))
                 path = fallback;
         }

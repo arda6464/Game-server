@@ -9,8 +9,8 @@ public static class ShopManager
     private static List<MarketItemData> BaseMarketOffer = new List<MarketItemData>();
     private static Dictionary<int, MarketOfferData> ActiveOffers = new Dictionary<int, MarketOfferData>();
 
-    private static readonly string _itemsPath = "market_items.json";
-    private static readonly string _offersPath = "market_offers.json";
+    private static readonly string _itemsPath = "Data/market_items.json";
+    private static readonly string _offersPath = "Data/market_offers.json";
     private static readonly object _lock = new object();
 
     // Satın alma rate-limit: oyuncu ID -> son satın alma zamanı
@@ -155,7 +155,7 @@ public static class ShopManager
     /// Oyuncuya özel kişisel teklifleri üretir (Hibrit sistem — DB'ye yazılmaz).
     /// FirstPurchase, LoyaltyReward ve PersonalDiscount tekliflerini koşullara göre döner.
     /// </summary>
-    public static List<MarketOfferData> GeneratePersonalOffers(AccountManager.AccountData account)
+    public static List<MarketOfferData> GeneratePersonalOffers(AccountData account)
     {
         var personalOffers = new List<MarketOfferData>();
         if (account == null) return personalOffers;
@@ -236,7 +236,7 @@ public static class ShopManager
     /// <summary>
     /// Belirtilen ürünü oyuncuya satın aldırır. Tüm validasyon ve etki uygulama burada yapılır.
     /// </summary>
-    public static PurchaseResult TryBuyItem(AccountManager.AccountData account, int itemId, out List<RewardItem> rewards, bool isOffer = false)
+    public static PurchaseResult TryBuyItem(AccountData account, int itemId, out List<RewardItem> rewards, bool isOffer = false)
     {
         rewards = new List<RewardItem>();
         if (!DynamicConfigManager.Config.IsShopEnabled)
@@ -287,7 +287,7 @@ public static class ShopManager
     }
 
     /// <summary>Çoklu reward içeren offer satın alımı</summary>
-    private static PurchaseResult ProcessOfferPurchase(AccountManager.AccountData account, MarketOfferData offer, List<RewardItem> rewardsList)
+    private static PurchaseResult ProcessOfferPurchase(AccountData account, MarketOfferData offer, List<RewardItem> rewardsList)
     {
         int finalPrice = offer.BasePrice;
         if (offer.DiscountPercent > 0)
@@ -322,7 +322,7 @@ public static class ShopManager
 
     /// <summary>Tekil ürün satın alımı</summary>
     private static PurchaseResult ProcessItemPurchase(
-        AccountManager.AccountData account,
+        AccountData account,
         ItemType itemType,
         PriceType priceType,
         int price,
@@ -353,7 +353,7 @@ public static class ShopManager
     }
 
     /// <summary>Para kontrolü yapar ve yeterliyse düşer, değilse hata döner.</summary>
-    private static PurchaseResult CheckAndDeductPrice(AccountManager.AccountData account, PriceType priceType, int price)
+    private static PurchaseResult CheckAndDeductPrice(AccountData account, PriceType priceType, int price)
     {
         if (priceType == PriceType.Gems)
         {

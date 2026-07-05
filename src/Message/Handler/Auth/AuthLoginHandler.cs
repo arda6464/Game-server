@@ -21,15 +21,15 @@ public static class AuthLoginHandler
             // 2. Kontroller
             if (Config.Instance?.ServerVersion != request.ClientVersion)
             {
-                Notfication notification = new Notfication
+                Notification notification = new Notification
                 {
-                    type = NotficationTypes.NotficationType.banner,
+                    type = NotificationTypes.NotificationType.banner,
                     Title = "Güncelleme mevcut",
                     Message = "oyunumuzu güncelledik yenilikleri görmek için indirin!",
                     ButtonText = "indir",
                     Url = Config.Instance.UpdateLink
                 };
-                NotficationSender.Send(session, notification);
+                NotificationSender.Send(session, notification);
                 session.Close();
                 return;
             }
@@ -39,7 +39,7 @@ public static class AuthLoginHandler
             if (string.IsNullOrWhiteSpace(request.Token) || request.ID == 0)
             {
                 Logger.errorslog($"giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor");
-                AccountManager.AccountData newaccount = AccountManager.CreateAccount(request.Language);
+                AccountData newaccount = AccountManager.CreateAccount(request.Language);
                 session.ID = newaccount.ID;
 
                 // Yeni Hesap Bilgisi Gönder
@@ -54,7 +54,7 @@ public static class AuthLoginHandler
                 accountID = newaccount.ID;
             }
 
-            AccountManager.AccountData account = AccountCache.Load(accountID);
+           AccountData account = AccountCache.Load(accountID);
             if (account == null)
             {
                 Loginfailed.Send(session, "verileri temizleyin, hesap bulunamadı", 1);
@@ -108,17 +108,17 @@ public static class AuthLoginHandler
             #region notifications
             lock (account.SyncLock)
             {
-                foreach (var inboxnotification in account.inboxesNotfications)
+                foreach (var inboxnotification in account.inboxesNotifications)
                 {
-                    NotficationSender.Send(session, inboxnotification);
+                    NotificationSender.Send(session, inboxnotification);
                     System.Threading.Thread.Sleep(50);
                 }
-                foreach (var notficaiton in account.Notfications)
+                foreach (var notification in account.Notifications)
                 {
-                    if (!notficaiton.IsViewed)
+                    if (!notification.IsViewed)
                     {
-                        NotficationSender.Send(session, notficaiton);
-                        notficaiton.IsViewed = true;
+                        NotificationSender.Send(session, notification);
+                        notification.IsViewed = true;
                     }
 
                     System.Threading.Thread.Sleep(50);
@@ -137,17 +137,17 @@ public static class AuthLoginHandler
         #region notifications
         /* lock (account.SyncLock)
          {
-             foreach (var inboxnotification in account.inboxesNotfications)
+             foreach (var inboxnotification in account.inboxesNotifications)
              {
-                 NotficationSender.Send(session, inboxnotification);
+                 NotificationSender.Send(session, inboxnotification);
                  System.Threading.Thread.Sleep(50);
              }
-             foreach (var notficaiton in account.Notfications)
+             foreach (var notification in account.Notifications)
              {
-                 if (!notficaiton.IsViewed)
+                 if (!notification.IsViewed)
                  {
-                     NotficationSender.Send(session, notficaiton);
-                     notficaiton.IsViewed = true;
+                     NotificationSender.Send(session, notification);
+                     notification.IsViewed = true;
                  }
 
                  System.Threading.Thread.Sleep(50);

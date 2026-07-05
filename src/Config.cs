@@ -18,7 +18,7 @@ public class Config
     [JsonProperty("DiscordAdminIDs")] public List<ulong> DiscordAdminIDs { get; private set; } = new List<ulong>();
     [JsonProperty("CreatorCodes")] public List<string> CreatorCodes { get; private set; } = new List<string>();
     [JsonProperty("AllowEmulators")] public bool AllowEmulators { get; private set; }
-    [JsonProperty("Maintance")] public bool Maintenance { get; private set; }
+    [JsonProperty("Maintenance")] public bool Maintenance { get; private set; }
     [JsonProperty("EmailPassword")] public string EmailPassword { get; private set; }
     [JsonProperty("Email")] public string Email { get; private set; }
     [JsonProperty("UpdateLink")] public string UpdateLink { get; private set; }
@@ -48,7 +48,7 @@ public class Config
     }
 
     // Ana yükleme metodu
-    public static void Load(string filename = "config.json")
+    public static void Load(string filename = "Data/config.json")
     {
         try
         {

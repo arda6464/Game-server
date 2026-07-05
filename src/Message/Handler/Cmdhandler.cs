@@ -72,7 +72,7 @@ public class CmdHandler
         Register("showprofile", "Profil gösterir", ShowProfile, "sp", "profile");
         Register("sendgacha", "test ödülleri gönderir", GiveReward, "gacha");
 
-        // Yetki yönetimi
+        // Yetki yönetimi dasdlkasdklads
         Register("mute", "Oyuncuyu susturur", Mute, "m");
         Register("unmute", "Susturmayı kaldırır", Unmute, "um");
         Register("ban", "Oyuncuyu yasaklar", Ban, "b");
@@ -515,7 +515,7 @@ public class CmdHandler
     #endregion
 
     #region Helper Methods
-    private static AccountManager.AccountData? ResolveAccount(string input)
+    private static AccountData? ResolveAccount(string input)
     {
         int id = 0;
         try { id = Convert.ToInt32(input); }

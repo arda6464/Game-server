@@ -226,19 +226,19 @@ public class Club
             acccount.ClubName = null;
             acccount.clubRole = ClubRole.None;
 
-            Notfication notfication = new Notfication
+            Notification Notification = new Notification
             {
-                type = NotficationTypes.NotficationType.Inbox,
+                type = NotificationTypes.NotificationType.Inbox,
                 Sender = "Sistem",
                 Message = $"{Name} kulübünden atıldın.",
                 Timespam = DateTime.Now
             };
-            acccount.inboxesNotfications.Add(notfication);
+            acccount.inboxesNotifications.Add(Notification);
 
             if (SessionManager.IsOnline(acccount.ID))
             {
                 var session = SessionManager.GetSession(acccount.ID);
-                NotficationSender.Send(session, notfication);
+                NotificationSender.Send(session, Notification);
             }
             ClubMessage kickmessage = new ClubMessage
             {
@@ -309,7 +309,7 @@ public class Club
         var member = Members.FirstOrDefault(m => m.ID == playerid);
         if (member == null) return;
 
-        AccountManager.AccountData account = AccountCache.Load(playerid);
+        AccountData account = AccountCache.Load(playerid);
         if (account == null) return;
 
         lock (SyncLock)

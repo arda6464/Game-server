@@ -37,9 +37,9 @@ public static class CodeVerify
         acccount.Email = email;
         acccount.Password = password;
         Console.WriteLine($"epostaya kayıt olundu!: eposta: {acccount.Email} password: {acccount.Password}");
-        Notfication notfication = new Notfication
+        Notification Notification = new Notification
         {
-             type =  NotficationTypes.NotficationType.Inbox,
+             type =  NotificationTypes.NotificationType.Inbox,
             Sender = "Sistem",
             Message = "Kayıt olduğun için teşekkürler!\n bu ödül senin için <3",
             Rewards = new List<RewardItem>
@@ -47,8 +47,8 @@ public static class CodeVerify
                 new RewardItem { Type =  ItemType.Gems, Count = 300 }
             }
         };
-        NotficationSender.Send(session, notfication);
-        acccount.inboxesNotfications.Add(notfication);
+        NotificationSender.Send(session, Notification);
+        acccount.inboxesNotifications.Add(Notification);
 
     }    
     private static void LoginAccount(Session session,string email)

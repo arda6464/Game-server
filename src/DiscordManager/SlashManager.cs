@@ -114,17 +114,17 @@ public class SlashCommands
             .WithDescription("Sunucu trafik analizini gösterir")
             .Build();
 
-        var SendNotficationCommand = new SlashCommandBuilder()
+        var SendNotificationCommand = new SlashCommandBuilder()
             .WithName("sendnotification")
             .WithDescription("Belirtilen oyuncuya bildirim gönderir")
             .AddOption(new SlashCommandOptionBuilder()
             .WithName("id")
             .WithDescription("Bildirim gönderilecek tür")
             .WithType(ApplicationCommandOptionType.Integer)
-            .AddChoice("Toast", (int)NotficationTypes.NotficationType.toast)
-            .AddChoice("Popup", (int)NotficationTypes.NotficationType.banner)
-            .AddChoice("İnbox",(int)NotficationTypes.NotficationType.Inbox)
-            .AddChoice("Push",(int)NotficationTypes.NotficationType.Push)
+            .AddChoice("Toast", (int)NotificationTypes.NotificationType.toast)
+            .AddChoice("Popup", (int)NotificationTypes.NotificationType.banner)
+            .AddChoice("İnbox",(int)NotificationTypes.NotificationType.Inbox)
+            .AddChoice("Push",(int)NotificationTypes.NotificationType.Push)
             .WithRequired(true))
             
 
@@ -142,10 +142,10 @@ public class SlashCommands
             .WithName("id")
             .WithDescription("Bildirim gönderilecek tür")
             .WithType(ApplicationCommandOptionType.Integer)
-            .AddChoice("Toast", (int)NotficationTypes.NotficationType.toast)
-            .AddChoice("Popup", (int)NotficationTypes.NotficationType.banner)
-            .AddChoice("İnbox",(int)NotficationTypes.NotficationType.Inbox)
-            .AddChoice("Push",(int)NotficationTypes.NotficationType.Push)
+            .AddChoice("Toast", (int)NotificationTypes.NotificationType.toast)
+            .AddChoice("Popup", (int)NotificationTypes.NotificationType.banner)
+            .AddChoice("İnbox",(int)NotificationTypes.NotificationType.Inbox)
+            .AddChoice("Push",(int)NotificationTypes.NotificationType.Push)
             .WithRequired(true))
             .AddOption("başlık", ApplicationCommandOptionType.String, "Bildirim başlığı", isRequired: true)
             .AddOption("mesaj", ApplicationCommandOptionType.String, "Gönderilecek bildirim mesajı", isRequired: true)
@@ -192,7 +192,7 @@ public class SlashCommands
                 await bot.Client.CreateGlobalApplicationCommandAsync(ServerStatsCommand);
                 await bot.Client.CreateGlobalApplicationCommandAsync(PingCommand);
                 await bot.Client.CreateGlobalApplicationCommandAsync(TrafficCommand);
-                await bot.Client.CreateGlobalApplicationCommandAsync(SendNotficationCommand);
+                await bot.Client.CreateGlobalApplicationCommandAsync(SendNotificationCommand);
                 await bot.Client.CreateGlobalApplicationCommandAsync(SendAllNotificationCommand);
                 await bot.Client.CreateGlobalApplicationCommandAsync(AddRoleCommand.Build());
 
@@ -217,7 +217,7 @@ public class SlashCommands
             await guild.CreateApplicationCommandAsync(ServerStatsCommand);
             await guild.CreateApplicationCommandAsync(PingCommand);
             await guild.CreateApplicationCommandAsync(TrafficCommand);
-            await guild.CreateApplicationCommandAsync(SendNotficationCommand);
+            await guild.CreateApplicationCommandAsync(SendNotificationCommand);
             await guild.CreateApplicationCommandAsync(SendAllNotificationCommand);
              await bot.Client.CreateGlobalApplicationCommandAsync(AddRoleCommand.Build());
         }

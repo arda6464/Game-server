@@ -19,7 +19,7 @@ public class ClientErrorInfo
 
 public static class ClientErrorManager
 {
-    private static string _filePath = "client_errors.json";
+    private static string _filePath = "Data/client_errors.json";
     private static List<ClientErrorInfo> _errors = new List<ClientErrorInfo>();
     private static readonly object _lock = new object();
     private static int _maxErrors = 500;

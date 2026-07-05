@@ -6,10 +6,10 @@ using System.Threading;
 
 public class Logger
 {
-    private static readonly string erorlogerpath = "erors.txt";
-    private static readonly string accountlogpath = "accountslog.txt";
-    private static readonly string battleslogpath = "battleslog.txt";
-    private static readonly string genellogpath = "genellog.txt";
+    private static readonly string erorlogerpath = "Data/erors.txt";
+    private static readonly string accountlogpath = "Data/accountslog.txt";
+    private static readonly string battleslogpath = "Data/battleslog.txt";
+    private static readonly string genellogpath = "Data/genellog.txt";
     private static readonly object fileLock = new object();
     private static readonly int maxRetryCount = 3;
     private static readonly int retryDelayMs = 100;
@@ -173,7 +173,7 @@ public class Logger
     {
         try
         {
-            string fallbackPath = "emergency_log.txt";
+            string fallbackPath = "Data/emergency_log.txt";
             string fallbackMessage = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [FALLBACK] {message}";
 
             using (var stream = new FileStream(

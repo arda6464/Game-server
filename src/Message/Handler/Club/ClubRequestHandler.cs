@@ -15,7 +15,7 @@ public static class ClubRequestHandler
 
         if (session.Account == null || session.Account.Clubid == 0) return;
 
-        AccountManager.AccountData account = session.Account;
+        AccountData account = session.Account;
         var club = ClubManager.LoadClub(account.Clubid);
         if (club == null)
         {
@@ -75,9 +75,9 @@ public static class ClubRequestHandler
             }
             else
             {
-                Notfication notfication = new Notfication
+                Notification Notification = new Notification
                 {
-                    type = NotficationTypes.NotficationType.Inbox,
+                    type = NotificationTypes.NotificationType.Inbox,
                     Sender = "Sistem",
                     Message = $"{club.Name} kulübüne gönderdiğin istek reddedildi.",
                     Timespam = DateTime.Now
@@ -85,11 +85,11 @@ public static class ClubRequestHandler
                 var acccount = AccountCache.Load(message.ActorID);
                 if (acccount != null)
                 {
-                    NotificationManager.Add(acccount, notfication);
+                    NotificationManager.Add(acccount, Notification);
                     if (SessionManager.IsOnline(acccount.ID))
                     {
                         var tsession = SessionManager.GetSession(acccount.ID);
-                        NotficationSender.Send(tsession, notfication);
+                        NotificationSender.Send(tsession, Notification);
                     }
                 }
 

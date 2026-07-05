@@ -6,10 +6,10 @@ using System.Threading;
 
 public static class AccountCache
 {
-    private static ConcurrentDictionary<int, AccountManager.AccountData> Accounts = new();
+    private static ConcurrentDictionary<int, AccountData> Accounts = new();
     private static Timer? _saveTimer;
 
-    public static ConcurrentDictionary<int, AccountManager.AccountData> GetCachedAccounts() => Accounts;
+    public static ConcurrentDictionary<int, AccountData> GetCachedAccounts() => Accounts;
 
     public static int Count() => Accounts.Count;
 
@@ -45,14 +45,14 @@ public static class AccountCache
     }
 
     // add cache
-    public static void Cache(AccountManager.AccountData account)
+    public static void Cache(AccountData account)
     {
         if (account == null) return;
         Accounts[account.ID] = account;
     }
 
     // load'ı cache'den yap (int ID ile)
-    public static AccountManager.AccountData Load(int id)
+    public static AccountData Load(int id)
     {
         if (id <= 0) return null;
         if (Accounts.TryGetValue(id, out var account))
@@ -66,7 +66,7 @@ public static class AccountCache
 
         if (Accounts.ContainsKey(accountId))
         {
-            AccountManager.AccountData account = Accounts[accountId];
+            AccountData account = Accounts[accountId];
             Accounts.TryRemove(accountId, out var data);
             Logger.genellog($"[Cache] Hesap cache'den silindi: {accountId}");
         }
@@ -85,8 +85,8 @@ public static class AccountCache
         SaveAll();
     }
 
-    public static List<AccountManager.AccountData> GetAllAccounts()
+    public static List<AccountData> GetAllAccounts()
     {
-        return new List<AccountManager.AccountData>(Accounts.Values);
+        return new List<AccountData>(Accounts.Values);
     }
 }

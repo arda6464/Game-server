@@ -10,7 +10,7 @@ public class SocialSettingsHasChangedPacket : IPacket
 
     public bool Success { get; set; }
     public string? ErrorMessage { get; set; }
-    public AccountManager.AccountData Account { get; set; }
+    public AccountData Account { get; set; }
 
 
     public void Serialize(ByteBuffer buffer)

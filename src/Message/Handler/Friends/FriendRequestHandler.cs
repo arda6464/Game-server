@@ -15,8 +15,8 @@ public static class SendFriendRequestHandler
         int targetId = request.TargetId;
         byteBuffer.Dispose();
           
-        AccountManager.AccountData account = session.Account;
-        AccountManager.AccountData target = AccountCache.Load(targetId);
+        AccountData account = session.Account;
+        AccountData target = AccountCache.Load(targetId);
 
         if (account != null && target != null)
         {

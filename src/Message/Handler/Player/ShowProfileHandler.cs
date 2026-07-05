@@ -12,7 +12,7 @@ public static class ShowProfileHandler
         var request = new ShowProfileRequestPacket();
         request.Deserialize(byteBuffer);
         
-        AccountManager.AccountData? account = null;
+        AccountData? account = null;
        
             account = AccountCache.Load(request.ID);
         

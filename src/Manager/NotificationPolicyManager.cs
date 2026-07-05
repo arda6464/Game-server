@@ -19,7 +19,7 @@ public static class NotificationPolicyManager
         { NotificationType.NewEvent, TimeSpan.FromHours(4) }
     };
 
-    public static bool CanSendNotification(AccountManager.AccountData account, NotificationType type)
+    public static bool CanSendNotification(AccountData account, NotificationType type)
     {
         if (account == null) return false;
 
@@ -51,7 +51,7 @@ public static class NotificationPolicyManager
         }
     }
 
-    public static void UpdateCooldown(AccountManager.AccountData account, NotificationType type)
+    public static void UpdateCooldown(AccountData account, NotificationType type)
     {
         if (account == null) return;
 

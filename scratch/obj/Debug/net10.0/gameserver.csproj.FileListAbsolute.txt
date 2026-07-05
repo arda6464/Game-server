@@ -1,5 +1,0 @@
-C:\Project\Game-server\scratch\obj\Debug\net10.0\gameserver.csproj.AssemblyReference.cache
-C:\Project\Game-server\scratch\obj\Debug\net10.0\gameserver.GeneratedMSBuildEditorConfig.editorconfig
-C:\Project\Game-server\scratch\obj\Debug\net10.0\gameserver.AssemblyInfoInputs.cache
-C:\Project\Game-server\scratch\obj\Debug\net10.0\gameserver.AssemblyInfo.cs
-C:\Project\Game-server\scratch\obj\Debug\net10.0\gameserver.csproj.CoreCompileInputs.cache

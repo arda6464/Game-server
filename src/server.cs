@@ -3,7 +3,6 @@ using System.Net.Sockets;
 
 public class GameServer
 {
-    private TcpListener? _listener;
     private bool _isRunning = true;
 
     public static UdpServer? UdpServer { get; private set; }
@@ -30,11 +29,7 @@ public class GameServer
             Logger.genellog($"[TCP] Game client connected: {clientIP}");
 
             Session session = new Session(client, initialData);
-            Thread clientThread = new Thread(session.Start)
-            {
-                IsBackground = true
-            };
-            clientThread.Start();
+            _ = session.StartAsync();
         }
         catch (Exception ex)
         {
@@ -80,7 +75,6 @@ public class GameServer
             ClubCache.Stop();
             AccountCache.Stop();
 
-            _listener?.Stop();
             UdpServer?.Stop();
         }
         catch (Exception ex)

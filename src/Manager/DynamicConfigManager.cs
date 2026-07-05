@@ -41,7 +41,7 @@ public class DynamicConfig
 public static class DynamicConfigManager
 {
     public static DynamicConfig Config { get; private set; } = new DynamicConfig();
-    private static string _filePath = "dynamic_config.json";
+    private static string _filePath = "Data/dynamic_config.json";
     private static readonly object _lock = new object();
 
     static DynamicConfigManager()

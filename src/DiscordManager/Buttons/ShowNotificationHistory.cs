@@ -28,7 +28,7 @@ public static class ShowNotificationHistory
                 .WithDescription($"Son 10 bildirim:")
                 .WithColor(Color.Purple);
 
-            foreach (var notif in account.Notfications.TakeLast(10))
+            foreach (var notif in account.Notifications.TakeLast(10))
             {
                 historyEmbed.AddField(
                   $"**{notif.Title}**\n{notif.Message}", $"{notif.Timespam:dd.MM.yyyy HH:mm} - {IdToString(notif.type.ToString())}");
