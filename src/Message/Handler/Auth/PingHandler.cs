@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.Ping)]
-public static class PingHandler
+public class PingHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         using (ByteBuffer read = ByteBufferPool.Get())
         {

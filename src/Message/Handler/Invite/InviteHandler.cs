@@ -1,11 +1,12 @@
 using System;
-using System.Linq;
+
 [PacketHandler(MessageType.JoinByInviteRequest)]
-public static class JoinByInviteHandler
+public class InviteHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
-        if (session.Account == null) return;
+        if (session.Account == null)
+            return;
 
         var packet = new JoinByInviteRequestPacket();
         using (ByteBuffer reader = ByteBufferPool.Get())
@@ -30,44 +31,22 @@ public static class JoinByInviteHandler
             {
                 // MessageManager artık ID'yi atladığı için buraya ID eklemiyoruz
                 fakeBuffer.WriteVarInt(joinPacket.TeamId);
-                JoinTeamHandler.Handle(session, fakeBuffer.ToArray());
+                new JoinTeamHandler().Handle(session, fakeBuffer.ToArray());
             }
         }
         else if (invite.Type == InviteType.Friend)
         {
             int targetAccountId = invite.TargetID;
-            if (targetAccountId == session.Account.ID) return;
+            if (targetAccountId == session.Account.ID)
+                return;
 
-            AccountData account = session.Account;
-            AccountData target = AccountCache.Load(targetAccountId);
-
-            if (account != null && target != null)
+            var target = AccountCache.Load(targetAccountId);
+            if (target != null)
             {
-                lock (account.SyncLock)
-                {
-                    if (account.Friends.Any(f => f.ID == targetAccountId)) return;
-                }
-
-                lock (target.SyncLock)
-                {
-                    if (target.Requests.Any(r => r.ID == account.ID)) return;
-
-                    FriendInfo info = new FriendInfo
-                    {
-                        Username = account.Username,
-                        ID = account.ID,
-                        AvatarId = account.Avatarid,
-                        NameColorID = account.Namecolorid
-                    };
-                    target.Requests.Add(info);
-
-                    if (SessionManager.IsOnline(target.ID))
-                    {
-                        Session? targetSession = SessionManager.GetSession(target.ID);
-                        targetSession?.Send(new FriendRequestAddedPacket { Request = info });
-                    }
-                }
-                Logger.genellog($"[Invite] {account.Username} davet linkiyle {target.Username}'ye arkadaşlık isteği gönderdi.");
+                FriendsManager.SendRequest(session.Account, target);
+                Logger.genellog(
+                    $"[Invite] {session.Account.Username} davet linkiyle {target.Username}'ye arkadaşlık isteği gönderdi."
+                );
             }
         }
     }

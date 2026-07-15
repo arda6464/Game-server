@@ -3,178 +3,80 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.File;
 
 public class Logger
 {
-    private static readonly string erorlogerpath = "Data/erors.txt";
-    private static readonly string accountlogpath = "Data/accountslog.txt";
-    private static readonly string battleslogpath = "Data/battleslog.txt";
-    private static readonly string genellogpath = "Data/genellog.txt";
     private static readonly object fileLock = new object();
-    private static readonly int maxRetryCount = 3;
-    private static readonly int retryDelayMs = 100;
     private static readonly Stopwatch bootWatch = Stopwatch.StartNew();
+
+    public static void Initialize()
+    {
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.File(
+                path: "Logs/log-.txt",
+                rollingInterval: RollingInterval.Day,
+                outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}"
+            )
+            .CreateLogger();
+
+        Log.Information("Logger başlatıldı.");
+    }
 
     public void AccountLog(string mesaj)
     {
-        SafeLog(mesaj, accountlogpath, ConsoleColor.DarkBlue, "ACCOUNT");
+        Log.Information("ACCOUNT: {Message}", mesaj);
+        Console.WriteLine($"[ACCOUNT] {mesaj}");
     }
 
     public static void errorslog(string mesaj)
     {
-        SafeLog(mesaj, erorlogerpath, ConsoleColor.Red, "ERROR");
+        Log.Error("ERROR: {Message}", mesaj);
+        Console.WriteLine($"[ERROR] {mesaj}");
     }
 
     public static void battlelog(string mesaj)
     {
-        SafeLog(mesaj, battleslogpath, ConsoleColor.Yellow, "BATTLE");
+        Log.Information("BATTLE: {Message}", mesaj);
+        Console.WriteLine($"[BATTLE] {mesaj}");
     }
 
     public static void genellog(string mesaj)
     {
-        SafeLog(mesaj, genellogpath, ConsoleColor.Green, "GENERAL");
+        Log.Information("GENERAL: {Message}", mesaj);
+        Console.WriteLine($"[GENERAL] {mesaj}");
     }
 
     public static void bootlog(string mesaj)
     {
-        SafeLog(mesaj, genellogpath, ConsoleColor.Cyan, "BOOT");
+        Log.Information("BOOT: {Message}", mesaj);
+        Console.WriteLine($"[BOOT] {mesaj}");
     }
 
     public static void warnlog(string mesaj)
     {
-        SafeLog(mesaj, genellogpath, ConsoleColor.Yellow, "WARN");
+        Log.Warning("WARN: {Message}", mesaj);
+        Console.WriteLine($"[WARN] {mesaj}");
     }
 
     public static void successlog(string mesaj)
     {
-        SafeLog(mesaj, genellogpath, ConsoleColor.Green, "OK");
-    }
-
-    private static void SafeLog(string mesaj, string filePath, ConsoleColor color, string logType)
-    {
-        DateTime saat = DateTime.Now;
-        string logMessage = $"[{saat:yyyy-MM-dd HH:mm:ss}] [{logType}] {mesaj}";
-
-        WriteToConsole(saat, mesaj, color, logType);
-        WriteToFileWithRetry(logMessage, filePath);
-    }
-
-    private static void WriteToConsole(DateTime timestamp, string message, ConsoleColor color, string logType)
-    {
-        try
-        {
-            lock (fileLock)
-            {
-                var previousColor = Console.ForegroundColor;
-
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write($"[{timestamp:HH:mm:ss}] ");
-
-                Console.ForegroundColor = color;
-                Console.Write($"[{logType}] ");
-
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(message);
-
-                Console.ForegroundColor = previousColor;
-            }
-        }
-        catch (Exception ex)
-        {
-            FallbackLog($"Console write failed: {ex.Message}");
-        }
-    }
-
-    private static void WriteToFileWithRetry(string message, string filePath)
-    {
-        for (int attempt = 1; attempt <= maxRetryCount; attempt++)
-        {
-            try
-            {
-                WriteToFile(message, filePath);
-                return;
-            }
-            catch (IOException) when (attempt < maxRetryCount)
-            {
-                Thread.Sleep(retryDelayMs * attempt);
-            }
-            catch (Exception ex)
-            {
-                FallbackLog($"File write failed ({filePath}): {ex.Message}");
-                return;
-            }
-        }
-
-        FallbackLog($"All retries failed for: {filePath}");
-    }
-
-    private static void WriteToFile(string message, string filePath)
-    {
-        lock (fileLock)
-        {
-            CheckFileSizeAndRotate(filePath);
-
-            using (var stream = new FileStream(
-                filePath,
-                FileMode.Append,
-                FileAccess.Write,
-                FileShare.ReadWrite,
-                bufferSize: 4096,
-                useAsync: false))
-            using (var writer = new StreamWriter(stream, Encoding.UTF8))
-            {
-                writer.WriteLine(message);
-            }
-        }
-    }
-
-    private static void CheckFileSizeAndRotate(string filePath)
-    {
-        try
-        {
-            var fileInfo = new FileInfo(filePath);
-            if (fileInfo.Exists && fileInfo.Length > 10 * 1024 * 1024)
-            {
-                string backupPath = $"{Path.GetFileNameWithoutExtension(filePath)}_{DateTime.Now:yyyyMMdd_HHmmss}{Path.GetExtension(filePath)}";
-                File.Move(filePath, backupPath);
-
-                CleanOldBackups(
-                    Path.GetDirectoryName(filePath) ?? ".",
-                    Path.GetFileNameWithoutExtension(filePath) + "_*" + Path.GetExtension(filePath));
-            }
-        }
-        catch (Exception ex)
-        {
-            FallbackLog($"File rotation failed: {ex.Message}");
-        }
-    }
-
-    private static void CleanOldBackups(string directory, string searchPattern)
-    {
-        try
-        {
-            var files = Directory.GetFiles(directory, searchPattern);
-            foreach (var file in files)
-            {
-                var fileInfo = new FileInfo(file);
-                if (fileInfo.LastWriteTime < DateTime.Now.AddDays(-30))
-                {
-                    fileInfo.Delete();
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            FallbackLog($"Backup cleanup failed: {ex.Message}");
-        }
+        Log.Information("OK: {Message}", mesaj);
+        Console.WriteLine($"[OK] {mesaj}");
     }
 
     private static void FallbackLog(string message)
     {
         try
         {
-            string fallbackPath = "Data/emergency_log.txt";
+            string fallbackPath = "Logs/emergency_log.txt";
             string fallbackMessage = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [FALLBACK] {message}";
+
+            if (!Directory.Exists("Logs"))
+                Directory.CreateDirectory("Logs");
 
             using (var stream = new FileStream(
                 fallbackPath,

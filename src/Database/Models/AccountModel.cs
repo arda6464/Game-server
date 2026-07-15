@@ -59,8 +59,8 @@ public class AccountData
         public DateTime LastPurchaseDate { get; set; } = DateTime.MinValue;
         public List<int> OwnedItems { get; set; } = new List<int>(); // Sahip olunan tekil ürünler (Avatar, NameColor vb.)
 
-        public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
-        public List<FriendInfo> Requests { get; set; } = new List<FriendInfo>();
+        public List<Friend> Friends { get; set; } = new List<Friend>();
+        public List<Friend> Requests { get; set; } = new List<Friend>();
         public List<Notification> Notifications { get; set; } = new List<Notification>();
         public List<Notification> inboxesNotifications { get; set; } = new List<Notification>();
         public List<Role.Roles> Roles { get; set; } = new List<Role.Roles>();

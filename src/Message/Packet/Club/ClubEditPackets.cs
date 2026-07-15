@@ -1,5 +1,4 @@
-﻿
-[PacketHandler(MessageType.ClubEditRequest)]
+
 public class ClubEditRequestPacket : IPacket
 {
     public string? ClubName { get; set; }

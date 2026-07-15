@@ -1,5 +1,4 @@
-﻿
-[PacketHandler(MessageType.SendTeamMessageRequest)]
+
 public class SendTeamMessageRequestPacket : IPacket
 {
     public string Message { get; set; }

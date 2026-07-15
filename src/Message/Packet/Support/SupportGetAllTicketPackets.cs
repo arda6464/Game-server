@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-[PacketHandler(MessageType.SupportGetAllTicketRequest)]
 public class SupportGetAllTicketRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer)

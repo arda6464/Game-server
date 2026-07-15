@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 
-public static class EmailServiceSync
+public static class EmailServer
 {
     // Static olarak tanımlanan SMTP ayarları
     private static string smtpServer = "smtp.gmail.com";
@@ -15,7 +15,7 @@ public static class EmailServiceSync
     private static string fromName = "Doğrulama Sistemi";
 
     // Static constructor - ayarları yükler
-    static EmailServiceSync()
+    static EmailServer()
     {
         Console.WriteLine("E-posta servisi başlatılıyor...");
         // İstersen burada config dosyasından ayarları okuyabilirsin

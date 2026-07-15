@@ -4,17 +4,19 @@ public static class PlayerSetPresence
     {
         Friend,
         Club,
-        Chat
+        Chat,
     }
+
     public enum PresenceState : byte
     {
         Offline,
         Online,
     }
+
     public static void Handle(Session sessions, PresenceState presence)
     {
         var acccount = sessions.Account;
-        if (acccount == null) 
+        if (acccount == null)
         {
             Logger.errorslog($"Account not found: {sessions.ID}");
             return;
@@ -46,20 +48,34 @@ public static class PlayerSetPresence
                                 if (targetAccount != null)
                                 {
                                     // Arkadaşın listesinde biz "En İyi Arkadaş" mıyız?
-                                    var relation = targetAccount.Friends.Find(f => f.ID == acccount.ID);
+                                    var relation = targetAccount.Friends.Find(f =>
+                                        f.ID == acccount.ID
+                                    );
                                     if (relation != null && relation.IsBestFriend)
                                     {
                                         // Cooldown Kontrolü (Oyun içi Toast)
-                                        if (NotificationPolicyManager.CanSendNotification(targetAccount, NotificationPolicyManager.NotificationType.OnlineBest))
+                                        if (
+                                            NotificationPolicyManager.CanSendNotification(
+                                                targetAccount,
+                                                NotificationPolicyManager
+                                                    .NotificationType
+                                                    .OnlineBest
+                                            )
+                                        )
                                         {
                                             Notification toast = new Notification
                                             {
                                                 type = NotificationTypes.NotificationType.toast,
                                                 Message = $"{acccount.Username} oyuna girdi.",
-                                                iconid = acccount.Avatarid
+                                                iconid = acccount.Avatarid,
                                             };
                                             NotificationSender.Send(session, toast);
-                                            NotificationPolicyManager.UpdateCooldown(targetAccount, NotificationPolicyManager.NotificationType.OnlineBest);
+                                            NotificationPolicyManager.UpdateCooldown(
+                                                targetAccount,
+                                                NotificationPolicyManager
+                                                    .NotificationType
+                                                    .OnlineBest
+                                            );
                                         }
                                     }
                                 }
@@ -76,7 +92,12 @@ public static class PlayerSetPresence
                             if (relation != null && relation.IsBestFriend)
                             {
                                 // Cooldown Kontrolü (Push Bildirimi)
-                                if (NotificationPolicyManager.CanSendNotification(friendAccount, NotificationPolicyManager.NotificationType.OnlineBest))
+                                if (
+                                    NotificationPolicyManager.CanSendNotification(
+                                        friendAccount,
+                                        NotificationPolicyManager.NotificationType.OnlineBest
+                                    )
+                                )
                                 {
                                     if (!string.IsNullOrEmpty(friendAccount.FBNToken))
                                     {
@@ -85,7 +106,10 @@ public static class PlayerSetPresence
                                             $"{acccount.Username} şu an oyunda, gel beraber kapışın!",
                                             friendAccount.FBNToken
                                         );
-                                        NotificationPolicyManager.UpdateCooldown(friendAccount, NotificationPolicyManager.NotificationType.OnlineBest);
+                                        NotificationPolicyManager.UpdateCooldown(
+                                            friendAccount,
+                                            NotificationPolicyManager.NotificationType.OnlineBest
+                                        );
                                     }
                                 }
                             }
@@ -94,7 +118,7 @@ public static class PlayerSetPresence
                 }
             }
         }
-        
+
         if (acccount.Clubid > 0)
         {
             using (ByteBuffer bufer = ByteBufferPool.Get())
@@ -107,12 +131,15 @@ public static class PlayerSetPresence
                 var club = ClubCache.Load(acccount.Clubid);
                 if (club == null)
                 {
-                    Logger.errorslog($"[Presence]{acccount.Username}({acccount.ID}) adlı hesabın clubune erişilmedi");
+                    Logger.errorslog(
+                        $"[Presence]{acccount.Username}({acccount.ID}) adlı hesabın clubune erişilmedi"
+                    );
                     return;
                 }
                 foreach (var clubmember in club.Members)
                 {
-                    if (clubmember.ID == acccount.ID) continue;
+                    if (clubmember.ID == acccount.ID)
+                        continue;
                     if (SessionManager.IsOnline(clubmember.ID))
                     {
                         Session? session = SessionManager.GetSession(clubmember.ID);

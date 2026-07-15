@@ -1,7 +1,6 @@
 using GachaSystem;
 using System.Collections.Generic;
 
-[PacketHandler(MessageType.GachaResponse)]
 public class GachaResponsePacket : IPacket
 {
     public List<GachaReward> Drops { get; set; } = new List<GachaReward>();

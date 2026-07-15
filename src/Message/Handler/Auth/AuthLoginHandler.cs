@@ -2,21 +2,13 @@ using System;
 using Logic;
 
 [PacketHandler(MessageType.AuthLoginRequest)]
-public static class AuthLoginHandler
+public class AuthLoginHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
+        var request = data.DeserializePacket<AuthLoginRequestPacket>();
 
-
-        using (ByteBuffer buffer = ByteBufferPool.Get())
-        {
-            buffer.WriteBytes(data, true);
-
-            // 1. İsteği Oku
-            var request = new AuthLoginRequestPacket();
-            request.Deserialize(buffer);
-
-            Console.WriteLine($"Token: {request.Token} accountıd: {request.ID} Dil: {request.Language}");
+        Console.WriteLine($"Token: {request.Token} accountıd: {request.ID} Dil: {request.Language}");
 
             // 2. Kontroller
             if (Config.Instance?.ServerVersion != request.ClientVersion)
@@ -57,7 +49,7 @@ public static class AuthLoginHandler
            AccountData account = AccountCache.Load(accountID);
             if (account == null)
             {
-                Loginfailed.Send(session, "verileri temizleyin, hesap bulunamadı", 1);
+                LoginFailedHandler.Send(session, "verileri temizleyin, hesap bulunamadı", 1);
                 return;
             }
             Console.WriteLine($"merhaba {account.Username} hesabına başarılı şekilde giriş yaptın");
@@ -65,7 +57,7 @@ public static class AuthLoginHandler
             if (BanManager.IsBanned(account.ID))
             {
                 string mesage = BanManager.GetBanMessage(account.ID);
-                Loginfailed.Send(session, mesage, 1);
+                LoginFailedHandler.Send(session, mesage, 1);
                 return;
             }
 
@@ -125,45 +117,5 @@ public static class AuthLoginHandler
                 }
             }
             #endregion
-        }
-
-
-
-
-
-
-
-        #region notifications
-        #region notifications
-        /* lock (account.SyncLock)
-         {
-             foreach (var inboxnotification in account.inboxesNotifications)
-             {
-                 NotificationSender.Send(session, inboxnotification);
-                 System.Threading.Thread.Sleep(50);
-             }
-             foreach (var notification in account.Notifications)
-             {
-                 if (!notification.IsViewed)
-                 {
-                     NotificationSender.Send(session, notification);
-                     notification.IsViewed = true;
-                 }
-
-                 System.Threading.Thread.Sleep(50);
-             }
-         }*/
-        #endregion
-
-
-
-
-
-
-
     }
-
-
-
 }
-        #endregion

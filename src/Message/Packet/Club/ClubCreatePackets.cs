@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-[PacketHandler(MessageType.ClubCreateRequest)]
 public class ClubCreateRequestPacket : IPacket
 {
     public string? ClubName { get; set; }

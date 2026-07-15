@@ -1,5 +1,4 @@
-﻿
-[PacketHandler(MessageType.ChangeNameRequest)]
+
 public class ChangeNameRequestPacket : IPacket
 {
     public string NewName { get; set; }

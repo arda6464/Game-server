@@ -2,10 +2,10 @@ using System;
 
 
 [PacketHandler(MessageType.FirstConnectionRequest)]
-public static class FirstConnectionHandler
+public class FirstConnectionHandler : IGameMessage
 {
     
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
          string Keyversion = "ARDA64";
          bool Login = true;
@@ -14,19 +14,13 @@ public static class FirstConnectionHandler
 
 
         // OKUMA
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(data);
-        
-        var request = new FirstConnectionRequestPacket();
-        request.Deserialize(read);
+        var request = data.DeserializePacket<FirstConnectionRequestPacket>();
         
         string cihazadı = request.DeviceName;
         string device = request.DeviceModel;
         Console.WriteLine("cihaz adı: " + cihazadı);
         Console.WriteLine("cihaz model: " + device);
         string ClientKey = request.ClientKey;
-        
-        read.Dispose();
         session.DeviceID = device;
 
         if (Keyversion != ClientKey)

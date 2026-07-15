@@ -17,9 +17,14 @@ public static class SessionManager
         return session;
     }
 
-
     public static void RegisterUdpSession(IPEndPoint endPoint, Session session)
     {
+        if (endPoint == null || session == null)
+        {
+            Logger.errorslog("[SessionManager] Hata: endPoint veya session null!");
+            return;
+        }
+
         // Eğer session'ın daha önce kayıtlı bir UDP adresi varsa ve bu yeni adresten farklıysa eskisini temizle
         if (session.UdpEndPoint != null && !session.UdpEndPoint.Equals(endPoint))
         {
@@ -28,28 +33,47 @@ public static class SessionManager
 
         udpSessions.TryAdd(endPoint, session);
         session.UdpEndPoint = endPoint;
-        Logger.genellog($"[SessionManager] UDP Kaydı yapıldı: {session?.Account?.Username} -> {endPoint}");
+        Logger.genellog(
+            $"[SessionManager] UDP Kaydı yapıldı: {session.Account?.Username ?? "Unknown"} -> {endPoint}"
+        );
     }
+
     public static void UnRegisterUdpSession(IPEndPoint? endPoint)
     {
-        if (endPoint == null) return;
-        if (udpSessions.TryRemove(endPoint, out Session? session))
+        if (endPoint == null)
+            return;
+        if (udpSessions.TryRemove(endPoint, out Session? session) && session != null)
         {
             session.UdpEndPoint = null;
-            Logger.genellog($"[SessionManager] UDP Kaydı silindi: {session.Account?.Username} ({endPoint})");
+            Logger.genellog(
+                $"[SessionManager] UDP Kaydı silindi: {session.Account?.Username ?? "Unknown"} ({endPoint})"
+            );
         }
     }
 
     // Cmdhandler için public property
     public static ConcurrentDictionary<int, Session> GetSessions() => activeSessions;
+
     public static int GetCount() => activeSessions.Count;
 
     public static void AddSession(int id, Session session)
     {
+        if (session == null)
+        {
+            Logger.errorslog("[SessionManager] Hata: session null!");
+            return;
+        }
+
         // Eski session varsa önce kapat (aynı hesapla tekrar giriş yapılırsa)
         if (activeSessions.TryGetValue(id, out var oldSession))
         {
-            try { oldSession.Close(); } catch { }
+            try
+            {
+                oldSession.Close();
+            }
+            catch
+            { /* Session may already be closed */
+            }
         }
         activeSessions[id] = session;
     }
@@ -72,7 +96,6 @@ public static class SessionManager
 
     public static int Count() => activeSessions.Count;
 
-
     public static void PingManager(bool running)
     {
         Console.WriteLine("Ping Manager is started");
@@ -88,10 +111,24 @@ public static class SessionManager
                     var session = csession.Value;
                     var timeSinceLastAlive = DateTime.Now - session.LastAlive;
 
-                    if (timeSinceLastAlive.TotalSeconds > 40 && session.State == Logic.PlayerState.Battle)
+                    if (
+                        timeSinceLastAlive.TotalSeconds > 40
+                        && session.State == Logic.PlayerState.Battle
+                    )
                     {
-                        Logger.errorslog($"[PingManager] Connection timeout for {session.ID} (No packets for 40s), closing connection.");
-                        try { session.Close(); } catch { }
+                        Logger.errorslog(
+                            $"[PingManager] Connection timeout for {session.ID} (No packets for 40s), closing connection."
+                        );
+                        try
+                        {
+                            session.Close();
+                        }
+                        catch
+                        {
+                            Logger.warnlog(
+                                $"[PingManager] Failed to close timed-out session {session.ID}"
+                            );
+                        }
                     }
                 }
             }

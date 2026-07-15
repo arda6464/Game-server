@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.AllNotificationViewed)]
 public class AllNotificationViewedRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer)

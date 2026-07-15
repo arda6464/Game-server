@@ -1,19 +1,14 @@
 [PacketHandler(MessageType.SendTeamMessageRequest)]
-public static class TeamMessageHandler
+public class TeamMessageHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(data, true);
-        
-        var request = new SendTeamMessageRequestPacket();
-        request.Deserialize(read);
-        
+        var request = data.DeserializePacket<SendTeamMessageRequestPacket>();
+
         string Message = request.Message;
-        read.Dispose();
 
-
-        if (session.Account == null) return;
+        if (session.Account == null)
+            return;
         var account = session.Account;
         Lobby lobby = LobbyManager.GetLobby(session.TeamID);
         if (lobby == null)
@@ -25,8 +20,7 @@ public static class TeamMessageHandler
         {
             GameinCmd(session, account, Message);
             return;
-        } 
-        
+        }
 
         Console.WriteLine($"{account.Username} adlı kullanıcı {Message} mesajını gönderdi");
         TeamMessage teamMessage = new TeamMessage
@@ -37,7 +31,7 @@ public static class TeamMessageHandler
             SenderId = account.ID,
             SenderAvatarID = account.Avatarid,
             Content = Message,
-            Timestamp = DateTime.Now
+            Timestamp = DateTime.Now,
         };
         lobby.Messages.Add(teamMessage);
 
@@ -48,11 +42,11 @@ public static class TeamMessageHandler
         {
             Flags = TeamMessageFlags.None,
             MessageId = teamMessage.MessageId,
-      SenderId = account.ID, 
+            SenderId = account.ID,
             SenderName = account.Username,
             SenderAvatarId = account.Avatarid,
             Role = "",
-            Content = Message
+            Content = Message,
         };
 
         foreach (var player in lobby.Players)
@@ -63,41 +57,37 @@ public static class TeamMessageHandler
                 membersesion.Send(broadcastPacket);
             }
         }
-
-
     }
-    public static void GameinCmd(Session session,AccountData account, string message)
+
+    public static void GameinCmd(Session session, AccountData account, string message)
     {
         string EntryMessage = "";
-         string[] cmd = message.Substring(1).Split(' ');
-             //   if (cmd.Length == 0) return;
+        string[] cmd = message.Substring(1).Split(' ');
+        //   if (cmd.Length == 0) return;
         switch (cmd[0])
         {
             case "clubid":
                 EntryMessage = $" senin club id:{account.Clubid}";
                 break;
             case "status":
-                EntryMessage = $"Çevrimiçi oyuncu sayısı: {SessionManager.GetCount}\n Server sürümü: {Config.Instance.ServerVersion}\n"; // todo....
+                EntryMessage =
+                    $"Çevrimiçi oyuncu sayısı: {SessionManager.GetCount}\n Server sürümü: {Config.Instance.ServerVersion}\n"; // todo....
                 break;
             default:
                 EntryMessage = "komut bulunamadı... yardım için /help komutunu kullanın";
                 break;
         }
 
-
         var response = new SendTeamMessageResponsePacket
         {
             Flags = TeamMessageFlags.None,
             MessageId = 0,
-             SenderId = account.ID,
+            SenderId = account.ID,
             SenderName = "SİSTEM",
             SenderAvatarId = account.Avatarid,
             Role = "",
-            Content = EntryMessage
+            Content = EntryMessage,
         };
         session.Send(response);
-
-           
     }
-    
 }

@@ -39,7 +39,8 @@ public class Multiplexer
             }
             catch (Exception ex)
             {
-                if (_isShuttingDown) break;
+                if (_isShuttingDown)
+                    break;
                 Logger.errorslog($"[Multiplexer] Accept error: {ex.Message}");
                 await Task.Delay(100);
             }
@@ -50,33 +51,36 @@ public class Multiplexer
     {
         try
         {
-            using (client)
+            NetworkStream stream = client.GetStream();
+            byte[] buffer = new byte[1024];
+            int read = await stream.ReadAsync(buffer, 0, buffer.Length);
+            if (read <= 0)
             {
-                NetworkStream stream = client.GetStream();
-                byte[] buffer = new byte[1024];
-                int read = await stream.ReadAsync(buffer, 0, buffer.Length);
-                if (read <= 0) return;
-
-                string initialData = Encoding.ASCII.GetString(buffer, 0, read);
-                bool isHttp = initialData.StartsWith("GET ") ||
-                              initialData.StartsWith("POST ") ||
-                              initialData.StartsWith("OPTIONS ") ||
-                              initialData.StartsWith("HEAD ") ||
-                              initialData.StartsWith("PUT ") ||
-                              initialData.StartsWith("DELETE ");
-
-                byte[] data = new byte[read];
-                Array.Copy(buffer, 0, data, 0, read);
-
-                if (isHttp)
-                    _adminServer?.HandleConnection(client, data);
-                else
-                    _gameServer?.HandleConnection(client, data);
+                client.Close();
+                return;
             }
+
+            string initialData = Encoding.ASCII.GetString(buffer, 0, read);
+            bool isHttp =
+                initialData.StartsWith("GET ")
+                || initialData.StartsWith("POST ")
+                || initialData.StartsWith("OPTIONS ")
+                || initialData.StartsWith("HEAD ")
+                || initialData.StartsWith("PUT ")
+                || initialData.StartsWith("DELETE ");
+
+            byte[] data = new byte[read];
+            Array.Copy(buffer, 0, data, 0, read);
+
+            if (isHttp)
+                _adminServer?.HandleConnection(client, data);
+            else
+                _gameServer?.HandleConnection(client, data);
         }
         catch (Exception ex)
         {
             Logger.errorslog($"[Multiplexer] Connection error: {ex.Message}");
+            client.Close();
         }
     }
 

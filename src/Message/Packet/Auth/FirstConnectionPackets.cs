@@ -1,5 +1,4 @@
-﻿
-[PacketHandler(MessageType.FirstConnectionRequest)]
+
 public class FirstConnectionRequestPacket : IPacket
 {
     public string DeviceName { get; set; }

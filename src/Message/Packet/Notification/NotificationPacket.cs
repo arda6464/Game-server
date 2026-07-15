@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.Notification)]
 public class NotificationPacket : IPacket
 {
     public NotificationTypes.NotificationType Type { get; set; }

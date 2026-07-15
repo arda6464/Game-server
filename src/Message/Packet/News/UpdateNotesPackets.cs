@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 
-[PacketHandler(MessageType.GetUpdateNotesRequest)]
 public class GetUpdateNotesRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer) => throw new NotImplementedException();

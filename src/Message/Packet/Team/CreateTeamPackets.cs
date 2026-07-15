@@ -1,5 +1,4 @@
-﻿
-[PacketHandler(MessageType.CreateTeamRequest)]
+
 public class CreateTeamRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer)

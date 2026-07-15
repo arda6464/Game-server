@@ -1,19 +1,11 @@
 [PacketHandler(MessageType.ShowFriendRequest)]
-public static class ShowFriendRequest
+public class ShowFriendRequest : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer byteBuffer = ByteBufferPool.Get();
-        byteBuffer.WriteBytes(message, true);
-
-        var requestPacket = new FriendShowRequestPacket();
-        requestPacket.Deserialize(byteBuffer);
+        var requestPacket = data.DeserializePacket<FriendShowRequestPacket>();
 
         int targetId = requestPacket.TargetId;
-        byteBuffer.Dispose();
-
-
-
 
         AccountData target = AccountCache.Load(targetId); // isteği kabul edilen kişi
         if (target == null)
@@ -21,12 +13,9 @@ public static class ShowFriendRequest
             Logger.errorslog($"[Friend manager] {targetId}'li hesap bulunamadı");
             return;
         }
-        requestPacket.account  = target;
-       ByteBuffer buffer =  ByteBufferPool.Get();
+        requestPacket.account = target;
+        ByteBuffer buffer = ByteBufferPool.Get();
         requestPacket.Serialize(buffer);
-        buffer.Dispose();
         session.Send(requestPacket);
-        
-
     }
 }

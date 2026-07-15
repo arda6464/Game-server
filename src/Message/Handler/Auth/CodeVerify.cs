@@ -1,28 +1,24 @@
 [PacketHandler(MessageType.VerifyCodeResponse)]
-public static class CodeVerify
+public class CodeVerify : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(message);
-
-        var request = new VerifyCodeRequestPacket();
-        request.Deserialize(read);
+        var request = data.DeserializePacket<VerifyCodeRequestPacket>();
 
         int code = request.Code;
 
 
-        var data = VerifyManager.GetData(session.ID);
-        bool isverify = VerificationCodeManager.VerifyCode(data.Email, code.ToString());
+        var verifyData = VerifyManager.GetData(session.ID);
+        bool isverify = VerificationCodeManager.VerifyCode(verifyData.Email, code.ToString());
 
         if (!isverify) return; // todo
-        switch (data.Type)
+        switch (verifyData.Type)
         {
             case VerificationType.Create:
-                CrateAccount(session,session.ID,data.Email,data.Password);
+                CrateAccount(session,session.ID,verifyData.Email,verifyData.Password);
                 break;
             case VerificationType.Login:
-                LoginAccount(session, data.Email);
+                LoginAccount(session, verifyData.Email);
                 break;
             case VerificationType.ForgotPassword:
                 break;

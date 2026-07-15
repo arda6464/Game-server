@@ -1,30 +1,29 @@
 [PacketHandler(MessageType.ClubCreateRequest)]
-public static class ClubCreateHandler
+public class ClubCreateHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] messsage)
+    public void Handle(Session session, byte[]? data)
     {
         try
-
         {
+            var request = data.DeserializePacket<ClubCreateRequestPacket>();
 
-            ByteBuffer read = ByteBufferPool.Get();
-            read.WriteBytes(messsage, true);
-
-            var request = new ClubCreateRequestPacket();
-            request.Deserialize(read);
-            
             string? ClubName = request.ClubName;
             string? ClubAciklama = request.ClubDescription;
             int Avatarıd = request.AvatarId;
             int State = request.State;
             string? Region = request.Region;
 
-            if (session.Account == null) return;
-           AccountData account = session.Account;
+            if (session.Account == null)
+                return;
+            AccountData account = session.Account;
             if (account.Clubid == 0)
             {
                 // İsim validasyonu
-                if (string.IsNullOrWhiteSpace(ClubName) || ClubName.Length < 3 || ClubName.Length > 30)
+                if (
+                    string.IsNullOrWhiteSpace(ClubName)
+                    || ClubName.Length < 3
+                    || ClubName.Length > 30
+                )
                 {
                     MessageCodeManager.Send(session, MessageCodeManager.Message.ClubUnusableName);
                     Logger.errorslog($"[ClubEditHandler] Geçersiz kulüp adı: {ClubName}");
@@ -33,7 +32,10 @@ public static class ClubCreateHandler
 
                 if (ClubAciklama?.Length > 200)
                 {
-                    MessageCodeManager.Send(session, MessageCodeManager.Message.ClubUnusableDescription);
+                    MessageCodeManager.Send(
+                        session,
+                        MessageCodeManager.Message.ClubUnusableDescription
+                    );
                     Logger.errorslog($"[ClubEditHandler] Geçersiz kulüp açıklaması");
                     return;
                 }
@@ -46,7 +48,14 @@ public static class ClubCreateHandler
                     return;
                 }
 
-                var club = ClubManager.CreateClub(ClubName, ClubAciklama, Avatarıd, account.ID, State, Region);
+                var club = ClubManager.CreateClub(
+                    ClubName,
+                    ClubAciklama,
+                    Avatarıd,
+                    account.ID,
+                    State,
+                    Region
+                );
 
                 var response = new ClubCreateResponsePacket
                 {
@@ -57,10 +66,9 @@ public static class ClubCreateHandler
                 };
                 response.Messages.AddRange(club.Messages ?? new List<ClubMessage>());
                 response.Members.AddRange(club.Members ?? new List<ClubMember>());
-                
+
                 session.Send(response);
                 Console.WriteLine("create club data Gönderildi");
-
             }
             else
             {
@@ -68,10 +76,9 @@ public static class ClubCreateHandler
                 Logger.errorslog($"[ClubEditHandler] oyuncu zaten bir kulüpte");
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine("club create hata: " + ex.Message);
         }
     }
-    
 }

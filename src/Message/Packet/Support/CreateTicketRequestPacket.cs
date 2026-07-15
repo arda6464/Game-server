@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.SupporCreateTicketRequest)]
 public class CreateTicketRequestPacket : IPacket
 {
     public byte ReasonType { get; set; }

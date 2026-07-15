@@ -1,13 +1,9 @@
 [PacketHandler(MessageType.ClientErrorRequest)]
-public static class ClientErrorHandler
+public class ClientErrorHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer buffer = ByteBufferPool.Get();
-        buffer.WriteBytes(data);
-        ClientErrorPacket packet = new ClientErrorPacket();
-        packet.Deserialize(buffer);
-        buffer.Dispose();
+        var packet = data.DeserializePacket<ClientErrorPacket>();
 
         // Konsola yazmaya devam et (geliştirme için kolaylık)
         Console.WriteLine($"=============Client Error [{packet.AccountId}]===================");

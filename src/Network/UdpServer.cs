@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 
-public class UdpServer
+public class UdpServer : IDisposable
 {
     private UdpClient _udpClient;
     private int _port;
@@ -36,12 +37,11 @@ public class UdpServer
 
     private void ReceiveCallback(IAsyncResult ar)
     {
-
-        if (!_isRunning) return;
+        if (!_isRunning)
+            return;
 
         try
         {
-
             IPEndPoint clientEndPoint = new IPEndPoint(IPAddress.Any, 0);
             byte[] data = _udpClient.EndReceive(ar, ref clientEndPoint);
 
@@ -57,7 +57,14 @@ public class UdpServer
             {
                 Logger.errorslog($"[UDP] Receive hatası: {ex.Message}");
                 // Hata olsa bile dinlemeye devam etmeye çalış
-                try { _udpClient.BeginReceive(ReceiveCallback, null); } catch { }
+                try
+                {
+                    _udpClient.BeginReceive(ReceiveCallback, null);
+                }
+                catch
+                {
+                    Logger.errorslog("[UDP] Failed to restart receive after error");
+                }
             }
         }
     }
@@ -96,7 +103,7 @@ public class UdpServer
                 // 2. Eğer IP ile bulunamadıysa veya Token uyuşmuyorsa (Port/IP değişmiş olabilir) Token ile ara (O(N))
                 if (session == null)
                 {
-                   // Console.WriteLine($"[UDP-DEBUG] IP üzerinden session bulunamadı, Token sorgulanıyor: {connectionToken}");
+                    // Console.WriteLine($"[UDP-DEBUG] IP üzerinden session bulunamadı, Token sorgulanıyor: {connectionToken}");
                     session = SessionManager.GetSessionByConnectionToken(connectionToken);
 
                     if (session != null)
@@ -104,7 +111,9 @@ public class UdpServer
                         if (session.State == Logic.PlayerState.Battle)
                         {
                             SessionManager.RegisterUdpSession(clientEndPoint, session);
-                            Console.WriteLine($"[UDP] Session IP({clientEndPoint}) Token({connectionToken}) üzerinden YENİDEN kaydedildi: {session.Account?.Username}");
+                            Console.WriteLine(
+                                $"[UDP] Session IP({clientEndPoint}) Token({connectionToken}) üzerinden YENİDEN kaydedildi: {session.Account?.Username}"
+                            );
                         }
                         else
                         {
@@ -113,17 +122,23 @@ public class UdpServer
                     }
                     else
                     {
-                       // Console.WriteLine($"[UDP-FAIL] Hiçbir session bulunamadı! Token: {connectionToken} IP: {clientEndPoint}");
+                        // Console.WriteLine($"[UDP-FAIL] Hiçbir session bulunamadı! Token: {connectionToken} IP: {clientEndPoint}");
                     }
                 }
                 else if (session.ConnectionToken != connectionToken)
                 {
-                    Console.WriteLine($"[UDP-WARN] IP eşleşti ama Token Hatalı! Beklenen: {session.ConnectionToken}, Gelen: {connectionToken} IP: {clientEndPoint}");
+                    Console.WriteLine(
+                        $"[UDP-WARN] IP eşleşti ama Token Hatalı! Beklenen: {session.ConnectionToken}, Gelen: {connectionToken} IP: {clientEndPoint}"
+                    );
                     // Token uyuşmuyorsa bu session'ı NULL yap ki alt tarafta işlem görmesin
                     session = null;
                 }
 
-                if (session != null && session.ConnectionToken == connectionToken && session.State == Logic.PlayerState.Battle)
+                if (
+                    session != null
+                    && session.ConnectionToken == connectionToken
+                    && session.State == Logic.PlayerState.Battle
+                )
                 {
                     session.LastAlive = DateTime.Now; // ✅ UDP trafiği de artık session'ı canlı tutuyor
 
@@ -144,7 +159,8 @@ public class UdpServer
 
                     // 5. Payload'u ayır
                     byte[] payload = buffer.GetReadableSpan().ToArray();
-                    if (payload.Length == 0) return;
+                    if (payload.Length == 0)
+                        return;
 
                     MessageManager.HandleUdpMessage(session, payload, sequenceNumber);
                 }
@@ -152,11 +168,15 @@ public class UdpServer
         }
         catch (EndOfStreamException ex)
         {
-            Console.WriteLine($"[UDP-ERROR] Eksik paket alındı, parse edilemedi. IP: {clientEndPoint} Hata: {ex.Message}");
+            Console.WriteLine(
+                $"[UDP-ERROR] Eksik paket alındı, parse edilemedi. IP: {clientEndPoint} Hata: {ex.Message}"
+            );
         }
         catch (FormatException ex)
         {
-            Console.WriteLine($"[UDP-ERROR] Geçersiz UDP paket formatı. IP: {clientEndPoint} Hata: {ex.Message}");
+            Console.WriteLine(
+                $"[UDP-ERROR] Geçersiz UDP paket formatı. IP: {clientEndPoint} Hata: {ex.Message}"
+            );
         }
         catch (Exception ex)
         {
@@ -176,19 +196,22 @@ public class UdpServer
         }
     }
 
-
-
-
     public void Send(IPEndPoint clientEndPoint, byte[] data)
     {
         try
         {
             // Console.WriteLine($"[UDP-SEND] {data.Length} bytes logic to {clientEndPoint}");
-            _udpClient.BeginSend(data, data.Length, clientEndPoint, (ar) =>
-            {
-                int sent = _udpClient.EndSend(ar);
-                // Console.WriteLine($"[UDP-SENT] {sent} bytes actually sent to {clientEndPoint}");
-            }, null);
+            _udpClient.BeginSend(
+                data,
+                data.Length,
+                clientEndPoint,
+                (ar) =>
+                {
+                    int sent = _udpClient.EndSend(ar);
+                    // Console.WriteLine($"[UDP-SENT] {sent} bytes actually sent to {clientEndPoint}");
+                },
+                null
+            );
         }
         catch (Exception ex)
         {
@@ -200,7 +223,13 @@ public class UdpServer
     {
         try
         {
-            _udpClient.Client.SendTo(segment.Array, segment.Offset, segment.Count, SocketFlags.None, clientEndPoint);
+            _udpClient.Client.SendTo(
+                segment.Array,
+                segment.Offset,
+                segment.Count,
+                SocketFlags.None,
+                clientEndPoint
+            );
         }
         catch (Exception ex)
         {
@@ -208,7 +237,12 @@ public class UdpServer
         }
     }
 
-    public void SendReliable(IPEndPoint clientEndPoint, byte[] fullPacketData, int seqNo, Session session)
+    public void SendReliable(
+        IPEndPoint clientEndPoint,
+        byte[] fullPacketData,
+        int seqNo,
+        Session session
+    )
     {
         var packet = new ReliablePacket
         {
@@ -216,7 +250,7 @@ public class UdpServer
             Data = fullPacketData,
             Target = clientEndPoint,
             LastSentTime = DateTime.Now,
-            RetryCount = 0
+            RetryCount = 0,
         };
 
         session.AddPendingPacket(seqNo, packet);
@@ -232,8 +266,6 @@ public class UdpServer
     {
         Send(clientEndPoint, segment);
     }
-
-
 
     private void ReliableLoop()
     {
@@ -252,7 +284,9 @@ public class UdpServer
                         {
                             if (packet.RetryCount >= 5)
                             {
-                                Logger.errorslog($"[UDP] Seq {packet.SequenceNumber} için 5 deneme başarısız — session kapatılıyor: {session.Account?.Username}");
+                                Logger.errorslog(
+                                    $"[UDP] Seq {packet.SequenceNumber} için 5 deneme başarısız — session kapatılıyor: {session.Account?.Username}"
+                                );
                                 session.HandleAck(packet.SequenceNumber); // listeden çıkar
                                 // Bağlantı kopmuş say, TCP tarafını da kapat
                                 Task.Run(() => session.Close());
@@ -273,8 +307,17 @@ public class UdpServer
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Logger.errorslog($"[UDP] ReliableLoop error: {ex.Message}");
+            }
             Thread.Sleep(50);
         }
+    }
+
+    public void Dispose()
+    {
+        Stop();
+        GC.SuppressFinalize(this);
     }
 }

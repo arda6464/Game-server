@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.ChangeNotificationRequest)]
-public static class ChangeNotificationSettingsHandler
+public class ChangeNotificationSettingsHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         ByteBuffer read = ByteBufferPool.Get();
         read.WriteBytes(data);

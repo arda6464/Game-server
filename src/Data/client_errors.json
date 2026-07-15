@@ -28,8 +28,8 @@
   {
     "Id": "3a1ba440",
     "FirstSeen": "2026-07-03T22:49:10.0340972+03:00",
-    "LastSeen": "2026-07-04T15:02:53.7153178+03:00",
-    "Count": 4,
+    "LastSeen": "2026-07-05T17:04:42.5997705+03:00",
+    "Count": 5,
     "LogMessage": "icontype bulunamadı!",
     "StackTrace": "UnityEngine.Debug:LogError (object)\nNotficationHandler:Handle (byte[]) (at Assets/Scripts/Handler/Notfication/NotficationHandler.cs:70)\nMessageManager:HandleMessage (byte[]) (at Assets/Scripts/Network/MessageManager.cs:238)\nNetworkManager/<>c__DisplayClass23_0:<Listen>b__0 () (at Assets/Scripts/Network/NetworkManager.cs:178)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:60)\n",
     "LogType": 0,

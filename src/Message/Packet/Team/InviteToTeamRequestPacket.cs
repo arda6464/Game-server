@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.InviteToTeamRequest)]
 public class InviteToTeamRequestPacket : IPacket
 {
     public int TargetId { get; set; }

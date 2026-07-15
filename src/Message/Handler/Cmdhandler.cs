@@ -1,6 +1,6 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using GachaSystem;
@@ -23,8 +23,6 @@ public class CmdHandler
     #region Initialization
     public static void Start()
     {
-
-
         RegisterCommands();
         //RegisterAliases();
 
@@ -97,7 +95,12 @@ public class CmdHandler
         Register("history", "Komut geçmişini gösterir", ShowHistory, "hist");
     }
 
-    private static void Register(string command, string description, CommandAction action, params string[] aliases)
+    private static void Register(
+        string command,
+        string description,
+        CommandAction action,
+        params string[] aliases
+    )
     {
         _commands[command.ToLower()] = action;
 
@@ -115,7 +118,8 @@ public class CmdHandler
     private static void ProcessCommand(string input)
     {
         var args = ParseArguments(input);
-        if (args.Length == 0) return;
+        if (args.Length == 0)
+            return;
 
         string cmd = args[0].ToLower();
 
@@ -167,13 +171,16 @@ public class CmdHandler
         }
 
         var account = ResolveAccount(args[1]);
-        if (account == null) return;
+        if (account == null)
+            return;
 
         var session = SessionManager.GetSession(account.ID);
         var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
         logic.SetPremium(account.Premium + 1);
 
-        WriteSuccess($"{account.Username} premium seviyesi artırıldı. (Yeni seviye: {account.Premium + 1})");
+        WriteSuccess(
+            $"{account.Username} premium seviyesi artırıldı. (Yeni seviye: {account.Premium + 1})"
+        );
     }
 
     private static void RemovePremium(string[] args)
@@ -185,7 +192,8 @@ public class CmdHandler
         }
 
         var account = ResolveAccount(args[1]);
-        if (account == null) return;
+        if (account == null)
+            return;
 
         var session = SessionManager.GetSession(account.ID);
         var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
@@ -209,11 +217,12 @@ public class CmdHandler
         }
 
         var account = ResolveAccount(args[1]);
-        if (account == null) return;
+        if (account == null)
+            return;
 
         var session = SessionManager.GetSession(account.ID);
         var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
-        logic.SetNameColor(colorId);
+        logic.SetColorHandler(colorId);
 
         WriteSuccess($"{account.Username} isim rengi {colorId} olarak güncellendi.");
     }
@@ -233,7 +242,8 @@ public class CmdHandler
         }
 
         var account = ResolveAccount(args[1]);
-        if (account == null) return;
+        if (account == null)
+            return;
 
         var session = SessionManager.GetSession(account.ID);
         var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
@@ -251,7 +261,8 @@ public class CmdHandler
         }
 
         var account = ResolveAccount(args[1]);
-        if (account == null) return;
+        if (account == null)
+            return;
 
         var session = SessionManager.GetSession(account.ID);
         var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
@@ -269,9 +280,11 @@ public class CmdHandler
         }
 
         var account = ResolveAccount(args[1]);
-        if (account == null) return;
+        if (account == null)
+            return;
 
-        string reason = args.Length > 2 ? string.Join(" ", args.Skip(2)) : "Konsol üzerinden yasaklandı";
+        string reason =
+            args.Length > 2 ? string.Join(" ", args.Skip(2)) : "Konsol üzerinden yasaklandı";
 
         BanManager.BanPlayer(account.ID, "Sistem", reason, true);
         WriteSuccess($"{account.Username} banlandı. Sebep: {reason}");
@@ -286,7 +299,8 @@ public class CmdHandler
         }
 
         var account = ResolveAccount(args[1]);
-        if (account == null) return;
+        if (account == null)
+            return;
 
         BanManager.UnbanPlayer(account.ID, "Sistem", "Konsol üzerinden kaldırıldı");
         WriteSuccess($"{account.Username} banı kaldırıldı.");
@@ -301,7 +315,8 @@ public class CmdHandler
         }
 
         var account = ResolveAccount(args[1]);
-        if (account == null) return;
+        if (account == null)
+            return;
 
         AccountManager.Getaccountinfo(account.ID);
     }
@@ -315,7 +330,8 @@ public class CmdHandler
         }
 
         var account = ResolveAccount(args[1]);
-        if (account == null) return;
+        if (account == null)
+            return;
 
         if (!SessionManager.IsOnline(account.ID))
         {
@@ -346,7 +362,11 @@ public class CmdHandler
 
     private static void ClearConsole(string[] args)
     {
-        Console.Clear();
+        try
+        {
+            Console.Clear();
+        }
+        catch { }
         Console.WriteLine("╔═══════════════════════════════════════╗");
         Console.WriteLine("║      GAME SERVER CMD HANDLER         ║");
         Console.WriteLine("╚═══════════════════════════════════════╝");
@@ -440,46 +460,44 @@ public class CmdHandler
     {
         DatabaseManager.DeleteAllAccounts(reason: args[1]);
     }
+
     private static void DeleteAllClubs(string[] args)
     {
         DatabaseManager.DeleteAllClubs(reason: args[1]);
     }
+
     private static void GiveReward(string[] args)
     {
-
         int id = Convert.ToInt32(args[1]);
-        if (!SessionManager.IsOnline(id)) return;
-
+        if (!SessionManager.IsOnline(id))
+            return;
 
         Session session = SessionManager.GetSession(id);
-
-
 
         var gacha = new GachaResponsePacket();
         RewardItem reward1 = new RewardItem
         {
             Type = ItemType.Gems,
             Count = 100,
-            DataId = 0
+            DataId = 0,
         };
         RewardItem reward2 = new RewardItem
         {
             Type = ItemType.Gems,
             Count = 200,
-            DataId = 0
+            DataId = 0,
         };
         RewardItem reward3 = new RewardItem
         {
             Type = ItemType.Gems,
             Count = 300,
-            DataId = 0
+            DataId = 0,
         };
         gacha.Drops.Add(new GachaSystem.GachaReward(reward1));
         gacha.Drops.Add(new GachaSystem.GachaReward(reward2));
         gacha.Drops.Add(new GachaSystem.GachaReward(reward3));
         session.Send(gacha);
         Console.WriteLine("Test gachsı gönderildi");
-
     }
 
     private static void ShowHelp(string[] args)
@@ -487,7 +505,8 @@ public class CmdHandler
         WriteInfo("═══════════════════ KOMUT LİSTESİ ═══════════════════");
         WriteInfo("");
 
-        var orderedCommands = CommandRegistry.GetAll()
+        var orderedCommands = CommandRegistry
+            .GetAll()
             .OrderBy(c => c.Category)
             .ThenBy(c => c.Command);
 
@@ -501,11 +520,10 @@ public class CmdHandler
                 WriteInfo($"── {currentCategory} ──");
             }
 
-            string aliases = cmd.Aliases.Length > 0
-                ? $" (Alias: {string.Join(", ", cmd.Aliases)})"
-                : "";
+            string aliases =
+                cmd.Aliases.Length > 0 ? $" (Alias: {string.Join(", ", cmd.Aliases)})" : "";
 
-            WriteInfo($"  /{cmd.Command,-15} - {cmd.Description}{aliases}");
+            WriteInfo($"  /{cmd.Command, -15} - {cmd.Description}{aliases}");
         }
 
         WriteInfo("");
@@ -518,12 +536,11 @@ public class CmdHandler
     private static AccountData? ResolveAccount(string input)
     {
         int id = 0;
-        try { id = Convert.ToInt32(input); }
-        catch
+        try
         {
-
+            id = Convert.ToInt32(input);
         }
-
+        catch { }
 
         var account = AccountCache.Load(id);
         if (account != null)
@@ -601,15 +618,22 @@ public class CmdHandler
     {
         private static readonly List<CommandInfo> _commands = new();
 
-        public static void Register(string command, string description, string[] aliases, string category = "Genel")
+        public static void Register(
+            string command,
+            string description,
+            string[] aliases,
+            string category = "Genel"
+        )
         {
-            _commands.Add(new CommandInfo
-            {
-                Command = command,
-                Description = description,
-                Aliases = aliases,
-                Category = category
-            });
+            _commands.Add(
+                new CommandInfo
+                {
+                    Command = command,
+                    Description = description,
+                    Aliases = aliases,
+                    Category = category,
+                }
+            );
         }
 
         public static IEnumerable<CommandInfo> GetAll() => _commands;

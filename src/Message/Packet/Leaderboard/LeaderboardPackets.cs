@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-[PacketHandler(MessageType.LeaderboardRequest)]
 public class LeaderboardRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer)

@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.VerifyCodeResponse)]
 public class VerifyCodeRequestPacket : IPacket
 {
     public int Code { get; set; }

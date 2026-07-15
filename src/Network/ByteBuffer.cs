@@ -1,5 +1,6 @@
 using System.Buffers;
 using System.Text;
+using System.Threading;
 
 public sealed class ByteBuffer : IDisposable
 {
@@ -9,6 +10,7 @@ public sealed class ByteBuffer : IDisposable
     private BinaryWriter _writer;
     private BinaryReader _reader;
     private bool _disposed = false;
+    internal int _returnGuard = 0;
 
     public int Length => (int)_stream.Length;
     public int Position => (int)_stream.Position;
@@ -109,7 +111,8 @@ public sealed class ByteBuffer : IDisposable
         Encoding.UTF8.GetBytes(value.AsSpan(), buffer);
         _writer.Write(buffer);
     }
-    public void WriteByte(byte value) 
+
+    public void WriteByte(byte value)
     {
         EnsureCapacity(Position + 1);
         _writer.Write(value);
@@ -120,18 +123,64 @@ public sealed class ByteBuffer : IDisposable
         EnsureCapacity(Position + values.Length);
         _writer.Write(values);
         _stream.SetLength(_stream.Position);
-        if (resetPosition) _stream.Position = 0;
+        if (resetPosition)
+            _stream.Position = 0;
     }
 
-    public void WriteInt(int value) { EnsureCapacity(Position + 4); _writer.Write(value); }
-    public void WriteUInt(uint value) { EnsureCapacity(Position + 4); _writer.Write(value); }
-    public void WriteShort(short value) { EnsureCapacity(Position + 2); _writer.Write(value); }
-    public void WriteUShort(ushort value) { EnsureCapacity(Position + 2); _writer.Write(value); }
-    public void WriteLong(long value) { EnsureCapacity(Position + 8); _writer.Write(value); }
-    public void WriteULong(ulong value) { EnsureCapacity(Position + 8); _writer.Write(value); }
-    public void WriteFloat(float value) { EnsureCapacity(Position + 4); _writer.Write(value); }
-    public void WriteDouble(double value) { EnsureCapacity(Position + 8); _writer.Write(value); }
-    public void WriteBool(bool value) { EnsureCapacity(Position + 1); _writer.Write(value); }
+    public void WriteInt(int value)
+    {
+        EnsureCapacity(Position + 4);
+        _writer.Write(value);
+    }
+
+    public void WriteUInt(uint value)
+    {
+        EnsureCapacity(Position + 4);
+        _writer.Write(value);
+    }
+
+    public void WriteShort(short value)
+    {
+        EnsureCapacity(Position + 2);
+        _writer.Write(value);
+    }
+
+    public void WriteUShort(ushort value)
+    {
+        EnsureCapacity(Position + 2);
+        _writer.Write(value);
+    }
+
+    public void WriteLong(long value)
+    {
+        EnsureCapacity(Position + 8);
+        _writer.Write(value);
+    }
+
+    public void WriteULong(ulong value)
+    {
+        EnsureCapacity(Position + 8);
+        _writer.Write(value);
+    }
+
+    public void WriteFloat(float value)
+    {
+        EnsureCapacity(Position + 4);
+        _writer.Write(value);
+    }
+
+    public void WriteDouble(double value)
+    {
+        EnsureCapacity(Position + 8);
+        _writer.Write(value);
+    }
+
+    public void WriteBool(bool value)
+    {
+        EnsureCapacity(Position + 1);
+        _writer.Write(value);
+    }
+
     public void WriteString(string value)
     {
         int byteCount = Encoding.UTF8.GetByteCount(value);
@@ -142,6 +191,7 @@ public sealed class ByteBuffer : IDisposable
         Encoding.UTF8.GetBytes(value.AsSpan(), buffer);
         _writer.Write(buffer);
     }
+
     // Read methods
     public int ReadVarInt()
     {
@@ -157,9 +207,11 @@ public sealed class ByteBuffer : IDisposable
         {
             byte b = ReadByte();
             result |= (uint)(b & 0x7F) << shift;
-            if ((b & 0x80) == 0) break;
+            if ((b & 0x80) == 0)
+                break;
             shift += 7;
-            if (shift >= 35) throw new FormatException("VarUInt is too long.");
+            if (shift >= 35)
+                throw new FormatException("VarUInt is too long.");
         }
         return result;
     }
@@ -178,9 +230,11 @@ public sealed class ByteBuffer : IDisposable
         {
             byte b = ReadByte();
             result |= (ulong)(b & 0x7F) << shift;
-            if ((b & 0x80) == 0) break;
+            if ((b & 0x80) == 0)
+                break;
             shift += 7;
-            if (shift >= 70) throw new FormatException("VarULong is too long.");
+            if (shift >= 70)
+                throw new FormatException("VarULong is too long.");
         }
         return result;
     }
@@ -188,18 +242,22 @@ public sealed class ByteBuffer : IDisposable
     public string ReadVarString()
     {
         uint length = ReadVarUInt();
-        if (length == 0) return string.Empty;
+        if (length == 0)
+            return string.Empty;
 
         var span = new ReadOnlySpan<byte>(_buffer, (int)_stream.Position, (int)length);
         _stream.Position += length;
 
         return Encoding.UTF8.GetString(span);
     }
+
     public byte ReadByte() => _reader.ReadByte();
+
     public byte[] ReadBytes(byte[] message, int length)
     {
         return _reader.ReadBytes(length);
     }
+
     public ReadOnlySpan<byte> ReadSpan(int length)
     {
         if (_stream.Position + length > _stream.Length)
@@ -209,6 +267,7 @@ public sealed class ByteBuffer : IDisposable
         _stream.Position += length;
         return span;
     }
+
     public ReadOnlyMemory<byte> ReadMemory(int length)
     {
         if (_stream.Position + length > _stream.Length)
@@ -217,34 +276,48 @@ public sealed class ByteBuffer : IDisposable
         _stream.Position += length;
         return memory;
     }
+
     public int ReadInt() => _reader.ReadInt32();
+
     public uint ReadUInt() => _reader.ReadUInt32();
+
     public short ReadShort() => _reader.ReadInt16();
+
     public ushort ReadUShort() => _reader.ReadUInt16();
+
     public long ReadLong() => _reader.ReadInt64();
+
     public ulong ReadULong() => _reader.ReadUInt64();
+
     public float ReadFloat() => _reader.ReadSingle();
+
     public double ReadDouble() => _reader.ReadDouble();
+
     public bool ReadBool() => _reader.ReadBoolean();
+
     public string ReadString()
     {
         int length = ReadInt();
-        if (length == 0) return string.Empty;
+        if (length == 0)
+            return string.Empty;
 
         var span = new ReadOnlySpan<byte>(_buffer, (int)_stream.Position, length);
         _stream.Position += length;
 
         return Encoding.UTF8.GetString(span);
     }
+
     public string ReadString(int length)
     {
-        if (length == 0) return string.Empty;
+        if (length == 0)
+            return string.Empty;
 
         var span = new ReadOnlySpan<byte>(_buffer, (int)_stream.Position, length);
         _stream.Position += length;
 
         return Encoding.UTF8.GetString(span);
     }
+
     // Memory operations
     public ReadOnlySpan<byte> GetReadableSpan()
     {
@@ -255,6 +328,7 @@ public sealed class ByteBuffer : IDisposable
     {
         return _buffer.AsSpan((int)_stream.Position);
     }
+
     public byte[] ToArray()
     {
         return _buffer.AsSpan(0, (int)_stream.Position).ToArray();
@@ -269,9 +343,11 @@ public sealed class ByteBuffer : IDisposable
     {
         return _buffer.AsSpan(0, (int)_stream.Position);
     }
+
     public void Dispose()
     {
-        // Havuza geri iade et. GC tarafından silinmesini engelliyoruz.
+        if (Interlocked.Exchange(ref _returnGuard, 1) == 1)
+            return;
         ByteBufferPool.Return(this);
     }
 
@@ -286,6 +362,7 @@ public sealed class ByteBuffer : IDisposable
             _reader.Dispose();
         }
     }
+
     // Finalizer for safety
     ~ByteBuffer()
     {

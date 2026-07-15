@@ -10833,3 +10833,40 @@ Object name: 'System.Net.Sockets.Socket'.
    at Program.<>c__DisplayClass8_0.<Main>b__7() in C:\Project\Game-server\src\Program.cs:line 100
    at Program.BootStep(String title, Action action) in C:\Project\Game-server\src\Program.cs:line 171
    at Program.Main() in C:\Project\Game-server\src\Program.cs:line 97
+[2026-07-05 14:24:23] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 14:24:27] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 14:24:27] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 14:24:27] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 14:24:28] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 14:24:48] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 14:24:49] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 14:25:20] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 14:25:46] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 14:25:47] [ERROR] [AdminServer] Bağlantı işleme hatası: Cannot access a disposed object.
+Object name: 'System.Net.Sockets.TcpClient'.
+[2026-07-05 16:50:52] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 16:58:19] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:00:33] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:00:34] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:00:34] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:00:34] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:00:34] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:00:34] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:09:31] [ERROR] Account not found: 0
+[2026-07-05 17:10:15] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:10:15] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:10:16] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:10:16] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:10:16] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:10:16] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:10:16] [ERROR] [ClaimHandler] arda için geçersiz bildirim ID'si veya ödül yok: 0
+[2026-07-05 17:37:14] [ERROR] giriş yapmak isteyen kişinin tokeni null... yeni hesap oluşturuluyor

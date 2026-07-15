@@ -1,5 +1,4 @@
-﻿
-[PacketHandler(MessageType.LeaveTeamRequest)]
+
 public class LeaveTeamRequestPacket : IPacket
 {
     public int Type { get; set; }

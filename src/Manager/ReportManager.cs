@@ -34,9 +34,10 @@ public class ReportData
 }
 
 [PacketHandler(MessageType.ReportPlayerRequest)]
-public static class ReportManager
+public class ReportManager : IGameMessage
 {
     private static List<ReportData> reports = new List<ReportData>();
+    private static readonly object reportsLock = new();
     private static List<string>? bannedWords;
     private static readonly string ReportsFile = "Data/reports.json";
 
@@ -52,9 +53,19 @@ public static class ReportManager
         {
             try
             {
-                reports = JsonConvert.DeserializeObject<List<ReportData>>(File.ReadAllText(ReportsFile)) ?? new List<ReportData>();
+                var loaded = JsonConvert.DeserializeObject<List<ReportData>>(File.ReadAllText(ReportsFile)) ?? new List<ReportData>();
+                lock (reportsLock)
+                {
+                    reports = loaded;
+                }
             }
-            catch { reports = new List<ReportData>(); }
+            catch
+            {
+                lock (reportsLock)
+                {
+                    reports = new List<ReportData>();
+                }
+            }
         }
     }
 
@@ -62,38 +73,55 @@ public static class ReportManager
     {
         try
         {
-            File.WriteAllText(ReportsFile, JsonConvert.SerializeObject(reports, Formatting.Indented));
+            string json;
+            lock (reportsLock)
+            {
+                json = JsonConvert.SerializeObject(reports, Formatting.Indented);
+            }
+            File.WriteAllText(ReportsFile, json);
         }
         catch (Exception ex) { Console.WriteLine("[ReportManager] Save error: " + ex.Message); }
     }
 
-    public static List<ReportData> GetReports() => reports;
+    public static List<ReportData> GetReports()
+    {
+        lock (reportsLock)
+        {
+            return new List<ReportData>(reports);
+        }
+    }
 
     public static bool ResolveReport(string reportId)
     {
-        var report = reports.Find(r => r.Id == reportId);
-        if (report != null)
+        lock (reportsLock)
         {
-            report.Status = "Resolved";
-            SaveReports();
-            return true;
+            var report = reports.Find(r => r.Id == reportId);
+            if (report != null)
+            {
+                report.Status = "Resolved";
+                SaveReports();
+                return true;
+            }
         }
         return false;
     }
 
     public static bool DeleteReport(string reportId)
     {
-        var report = reports.Find(r => r.Id == reportId);
-        if (report != null)
+        lock (reportsLock)
         {
-            reports.Remove(report);
-            SaveReports();
-            return true;
+            var report = reports.Find(r => r.Id == reportId);
+            if (report != null)
+            {
+                reports.Remove(report);
+                SaveReports();
+                return true;
+            }
         }
         return false;
     }
 
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         ContextMode mode;
         byte messageid;
@@ -162,7 +190,10 @@ public static class ReportManager
             }
         }
 
-        reports.Add(report);
+        lock (reportsLock)
+        {
+            reports.Add(report);
+        }
         SaveReports();
         Console.WriteLine($"[ReportManager] Yeni kulüp raporu oluşturuldu: {report.Id} (Reporter: {report.ReporterName})");
     }
@@ -205,7 +236,10 @@ public static class ReportManager
             }
         }
 
-        reports.Add(report);
+        lock (reportsLock)
+        {
+            reports.Add(report);
+        }
         SaveReports();
         Console.WriteLine($"[ReportManager] Yeni takım raporu oluşturuldu: {report.Id} (Reporter: {report.ReporterName})");
     }

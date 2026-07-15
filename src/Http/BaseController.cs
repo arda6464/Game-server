@@ -16,7 +16,24 @@ public abstract class BaseController
 
     protected Dictionary<string, string>? ReadFormData()
     {
-        return ReadJsonBody<Dictionary<string, string>>();
+        if (Context.Request.Body == null || Context.Request.Body.Length == 0) return null;
+        string body = Encoding.UTF8.GetString(Context.Request.Body);
+
+        var contentType = Context.Request.Headers.TryGetValue("Content-Type", out var ct) ? ct : "";
+        if (contentType.Contains("json"))
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
+
+        var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var pair in body.Split('&'))
+        {
+            if (string.IsNullOrEmpty(pair)) continue;
+            var kv = pair.Split(new[] { '=' }, 2);
+            if (kv.Length == 2)
+                result[Uri.UnescapeDataString(kv[0].Replace('+', ' '))] = Uri.UnescapeDataString(kv[1].Replace('+', ' '));
+            else if (kv.Length == 1 && !string.IsNullOrEmpty(kv[0]))
+                result[Uri.UnescapeDataString(kv[0].Replace('+', ' '))] = "";
+        }
+        return result;
     }
 
     protected Dictionary<string, object>? ReadRawData()

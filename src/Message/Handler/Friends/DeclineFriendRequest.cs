@@ -1,43 +1,24 @@
 [PacketHandler(MessageType.DeclineFriendRequest)]
-public static class FriendRequestDecline
+public class DeclineFriendRequest : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer byteBuffer = ByteBufferPool.Get();
-         byteBuffer.WriteBytes(message,true);
-
-         var request = new FriendRequestDeclinePacket();
-        request.Deserialize(byteBuffer);
-        
-        int targetId = request.TargetId;
-        byteBuffer.Dispose();
-        if (session.Account == null) return;
-        AccountData account = session.Account;
-        AccountData target = AccountCache.Load(targetId);
-        bool result = false;
-
-
-        if (target != null)
+        using (var bb = ByteBufferPool.Get())
         {
-            lock (account.SyncLock)
+            bb.WriteBytes(data, true);
+            var packet = new FriendRequestDeclinePacket();
+            packet.Deserialize(bb);
+
+            if (session.Account == null)
+                return;
+            var target = AccountCache.Load(packet.TargetId);
+            if (target == null)
             {
-                var req = account.Requests.Find(r => r.ID == targetId);
-                if (req != null)
-                {
-                    account.Requests.Remove(req);
-                    result = true;
-                }
+                Logger.errorslog("[DeclineFriendRequest] hedef hesap bulunamadı");
+                return;
             }
-                
-        }
-        else
-        {
-            Logger.errorslog("friend decline belirlenemeyen hesap buldu");
-            result = false;
 
+            FriendsManager.DeclineRequest(session.Account, target);
         }
-        Console.WriteLine($"{account.Username}({account.ID})  adlı kullanıcı {target.Username}({target.ID}) adlı kullanıcının isteğini reddetti");
-        
-        
     }
 }

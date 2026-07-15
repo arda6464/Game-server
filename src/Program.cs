@@ -19,6 +19,7 @@ static class Program
     {
         PrepareConsole();
         PrintBootHeader();
+        Logger.Initialize();
         RegisterShutdownHandlers();
 
         try
@@ -115,10 +116,10 @@ static class Program
 
     private static void PrepareConsole()
     {
-        Console.Clear();
-        Console.CursorVisible = false;
+        try { Console.Clear(); } catch { }
+        try { Console.CursorVisible = false; } catch { }
         Console.OutputEncoding = Encoding.UTF8;
-        Console.Title = "Game Server Boot Sequence";
+        try { Console.Title = "Game Server Boot Sequence"; } catch { }
     }
 
     private static void PrintBootHeader()
@@ -140,7 +141,7 @@ static class Program
     {
         var version = Config.Instance?.ServerVersion ?? "unknown";
         var port = Config.Instance?.Port ?? 5000;
-        Console.Title = $"Game Server {version} | Port {port}";
+        try { Console.Title = $"Game Server {version} | Port {port}"; } catch { }
     }
 
     private static void RegisterShutdownHandlers()

@@ -17,6 +17,7 @@ public static class AdminAuditLogger
 {
     private static string _filePath = "Data/admin_audit_logs.json";
     private static List<AdminAuditLog> _logs = new List<AdminAuditLog>();
+    private static readonly object _lock = new();
     private static int _maxLogs = 500;
 
     static AdminAuditLogger()
@@ -35,12 +36,14 @@ public static class AdminAuditLogger
             Details = details
         };
 
-        _logs.Insert(0, log); // En yeni en üstte
-
-        // Limit kontolü
-        if (_logs.Count > _maxLogs)
+        lock (_lock)
         {
-            _logs = _logs.Take(_maxLogs).ToList();
+            _logs.Insert(0, log);
+
+            if (_logs.Count > _maxLogs)
+            {
+                _logs = _logs.Take(_maxLogs).ToList();
+            }
         }
 
         Save();
@@ -49,7 +52,10 @@ public static class AdminAuditLogger
 
     public static List<AdminAuditLog> GetLogs()
     {
-        return _logs.ToList();
+        lock (_lock)
+        {
+            return _logs.ToList();
+        }
     }
 
     private static void Load()
@@ -59,19 +65,26 @@ public static class AdminAuditLogger
             if (File.Exists(_filePath))
             {
                 var json = File.ReadAllText(_filePath);
-                _logs = JsonConvert.DeserializeObject<List<AdminAuditLog>>(json) ?? new List<AdminAuditLog>();
+                lock (_lock)
+                {
+                    _logs = JsonConvert.DeserializeObject<List<AdminAuditLog>>(json) ?? new List<AdminAuditLog>();
+                }
             }
         }
-        catch { }
+        catch (Exception ex) { Logger.errorslog($"[AdminAuditLogger] Load failed: {ex.Message}"); }
     }
 
     private static void Save()
     {
         try
         {
-            var json = JsonConvert.SerializeObject(_logs, Formatting.Indented);
+            string json;
+            lock (_lock)
+            {
+                json = JsonConvert.SerializeObject(_logs, Formatting.Indented);
+            }
             File.WriteAllText(_filePath, json);
         }
-        catch { }
+        catch (Exception ex) { Logger.errorslog($"[AdminAuditLogger] Save failed: {ex.Message}"); }
     }
 }

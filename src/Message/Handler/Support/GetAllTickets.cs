@@ -1,14 +1,12 @@
 [PacketHandler(MessageType.SupportGetAllTicketRequest)]
-public static class GetAllTickets
+public class GetAllTickets : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
-        if (session.Account == null) return;
+        if (session.Account == null)
+            return;
         var account = session.Account;
-        var response = new SupportGetAllTicketResponsePacket
-        {
-            TicketBan = account.TicketBan
-        };
+        var response = new SupportGetAllTicketResponsePacket { TicketBan = account.TicketBan };
 
         foreach (var ticket in account.Tickets)
         {
@@ -18,22 +16,25 @@ public static class GetAllTickets
                 Title = ticket.Title,
                 IsClosed = ticket.IsClosed,
                 ClosedReason = ticket.ClosedReason,
-                ClosedAt = ticket.IsClosed ? (int)new DateTimeOffset(ticket.ClosedAt).ToUnixTimeSeconds() : 0
+                ClosedAt = ticket.IsClosed
+                    ? (int)new DateTimeOffset(ticket.ClosedAt).ToUnixTimeSeconds()
+                    : 0,
             };
 
             foreach (var msg in ticket.ticketMessages)
             {
-                ticketInfo.Messages.Add(new SupportGetAllTicketResponsePacket.MessageInfo
-                {
-                    Name = msg.Name,
-                    Content = msg.Message
-                });
+                ticketInfo.Messages.Add(
+                    new SupportGetAllTicketResponsePacket.MessageInfo
+                    {
+                        Name = msg.Name,
+                        Content = msg.Message,
+                    }
+                );
             }
-            
+
             response.Tickets.Add(ticketInfo);
         }
 
         session.Send(response);
-
     }
 }

@@ -1,9 +1,9 @@
 using System;
 
 [PacketHandler(MessageType.MatchMakingCancelRequest)]
-public static class MatchMakingCancelHandler
+public class MatchMakingCancelHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
         MatchMaking.RemoveQueue(session);
     }

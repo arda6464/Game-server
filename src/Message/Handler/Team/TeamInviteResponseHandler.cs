@@ -1,9 +1,9 @@
 using System;
 
 [PacketHandler(MessageType.InviteToTeamResponse)]
-public static class TeamInviteResponseHandler
+public class TeamInviteResponseHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         TeamInviteHandler.ResponseHandle(session, data);
     }

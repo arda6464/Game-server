@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.SendClubMessage)]
 public class SendClubMessageRequestPacket : IPacket
 {
     public string Message { get; set; }

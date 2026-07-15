@@ -1,13 +1,9 @@
 [PacketHandler(MessageType.SignAccount)]
-public static class CreateAccountHandler
+public class CreateAccountHandler : IGameMessage
 {
-    public static void Handle(Session session,byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(message);
-        
-        var request = new CreateAccountPacket();
-        request.Deserialize(read);
+        var request = data.DeserializePacket<CreateAccountPacket>();
         
         string email = request.Email;
         string password = request.Password;
@@ -31,7 +27,7 @@ public static class CreateAccountHandler
 
         string code = VerificationCodeManager.GenerateCode();
         VerificationCodeManager.SaveCode(email, code);
-        bool sendmail = EmailServiceSync.SendVerificationCode(email, code);
+        bool sendmail = EmailServer.SendVerificationCode(email, code);
        if(!sendmail)
         {
             Console.WriteLine("mail gönderilmemiş?");

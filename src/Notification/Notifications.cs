@@ -1,7 +1,7 @@
 public class Notification
 {
     public int IndexID { get; set; }
-    public NotificationTypes.NotificationType type { get; set; }       
+    public NotificationTypes.NotificationType type { get; set; }
     public string Title { get; set; }
     public string Message { get; set; }
     public string ButtonText;
@@ -13,13 +13,9 @@ public class Notification
     public List<RewardItem> Rewards { get; set; } = new List<RewardItem>();
     public bool IsClaimed { get; set; }
 
-
-
-    public Notification()
-    {
-    }
-
+    public Notification() { }
 }
+
 public class NotificationTypes
 {
     public enum NotificationType : byte
@@ -29,5 +25,4 @@ public class NotificationTypes
         Inbox,
         Push,
     }
-
 }

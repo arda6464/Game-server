@@ -1,22 +1,19 @@
 [PacketHandler(MessageType.JoinClubRequest)]
-public static class JoinedClubHandler
+public class JoinedClubHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(message, true);
-
-        var request = new JoinClubRequestPacket();
-        request.Deserialize(read);
+        var request = data.DeserializePacket<JoinClubRequestPacket>();
 
         int clubId = request.ClubId;
-        read.Dispose();
 
-        if (session.Account == null) return;
-       AccountData account = session.Account;
+        if (session.Account == null)
+            return;
+        AccountData account = session.Account;
 
         var club = ClubManager.LoadClub(clubId);
-        if (club == null) return;
+        if (club == null)
+            return;
 
         if (club.Members.Count >= club.MaxMembers)
         {
@@ -31,13 +28,13 @@ public static class JoinedClubHandler
         }
         if (club.State == ClubState.OnlyInvite)
         {
-            if(club.PendingInvites.Contains(account.ID))
+            if (club.PendingInvites.Contains(account.ID))
             {
                 MessageCodeManager.Send(session, MessageCodeManager.Message.AlreadyRequestClub);
                 return;
             }
 
-               club.PendingInvites.Add(session.ID);
+            club.PendingInvites.Add(session.ID);
             ClubMessage clubMessage = new ClubMessage
             {
                 messageFlags = ClubMessageFlags.Request,
@@ -45,11 +42,11 @@ public static class JoinedClubHandler
                 ActorName = account.Username,
                 Content = request.jointext,
                 RequestState = ClubRequestState.Waiting,
-                SenderAvatarID = account.Avatarid
+                SenderAvatarID = account.Avatarid,
             };
             club.SendMessageToClubMembers(clubMessage);
-           MessageCodeManager.Send(session, MessageCodeManager.Message.SendClubJoinRequest );
-           Console.WriteLine("Kulübe katılma isteği başarıyla alındı");
+            MessageCodeManager.Send(session, MessageCodeManager.Message.SendClubJoinRequest);
+            Console.WriteLine("Kulübe katılma isteği başarıyla alındı");
         }
         else
         {
@@ -57,10 +54,7 @@ public static class JoinedClubHandler
 
             if (isJoined)
             {
-                var response = new JoinClubResponsePacket
-                {
-                    Club = club
-                };
+                var response = new JoinClubResponsePacket { Club = club };
 
                 session.Send(response);
 
@@ -69,19 +63,14 @@ public static class JoinedClubHandler
                     messageFlags = ClubMessageFlags.HasSystem,
                     eventType = ClubEventType.JoinMessage,
                     ActorName = account.Username,
-                    ActorID = account.ID
+                    ActorID = account.ID,
                 };
                 club.SendMessageToClubMembers(joinMessage);
-
             }
             else
             {
                 Console.WriteLine("joinclub else döndürüyormuş");
             }
-
         }
-
-
-
     }
 }

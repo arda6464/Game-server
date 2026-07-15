@@ -1,16 +1,11 @@
 [PacketHandler(MessageType.JoinTeamRequest)]
-public static class JoinTeamHandler
+public class JoinTeamHandler : IGameMessage
 {
-    public static void Handle(Session session,byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(message, true);
-        
-        var request = new JoinTeamRequestPacket();
-        request.Deserialize(read);
-        
+        var request = data.DeserializePacket<JoinTeamRequestPacket>();
+
         int code = request.TeamId;
-        read.Dispose();
 
         if (session.TeamID != 0)
         {
@@ -21,12 +16,13 @@ public static class JoinTeamHandler
         Lobby Lobby = LobbyManager.GetLobby(code);
         if (Lobby == null)
         {
-            MessageCodeManager.Send(session, MessageCodeManager.Message.NotATeam); 
+            MessageCodeManager.Send(session, MessageCodeManager.Message.NotATeam);
             return;
-        } 
+        }
 
         var acccount = session.Account;
-        if (acccount == null) return;
+        if (acccount == null)
+            return;
         Lobby.AddPlayers(acccount);
 
         var broadcastPacket = new SendTeamMessageResponsePacket
@@ -34,12 +30,12 @@ public static class JoinTeamHandler
             Flags = TeamMessageFlags.HasSystem,
             EventType = TeamEventType.JoinMessage,
             SenderName = acccount.Username,
-            SenderId = acccount.ID
+            SenderId = acccount.ID,
         };
-                    
+
         lock (Lobby.SyncLock)
         {
-            foreach(var member in Lobby.Players)
+            foreach (var member in Lobby.Players)
             {
                 if (SessionManager.IsOnline(member.ID))
                 {
@@ -48,20 +44,17 @@ public static class JoinTeamHandler
                 }
             }
         }
-        var response = new JoinTeamResponsePacket
-        {
-             TeamId = Lobby.ID
-        };
-        
+        var response = new JoinTeamResponsePacket { TeamId = Lobby.ID };
+
         lock (Lobby.SyncLock)
         {
-             response.Messages.AddRange(Lobby.Messages);
+            response.Messages.AddRange(Lobby.Messages);
         }
-        
+
         session.Send(response);
-        session.TeamID = Lobby.ID;  
+        session.TeamID = Lobby.ID;
 
         // Görev İlerlemesi - Takıma Katılma
         QuestManager.CheckQuestProgress(acccount, Quest.MissionType.JoinTeam);
     }
-} 
+}

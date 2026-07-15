@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.AcceptFriendRequest)]
 public class FriendRequestAcceptPacket : IPacket
 {
     public int TargetId { get; set; }

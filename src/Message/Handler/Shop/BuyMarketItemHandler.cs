@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
 [PacketHandler(MessageType.BuyMarketItemRequest)]
-public static class BuyMarketItemHandler
+public class BuyMarketItemHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         int itemId;
         bool isOffer;
@@ -30,7 +30,7 @@ public static class BuyMarketItemHandler
             Result = (int)result,
             ItemId = itemId,
             NewGems = account.Gems,
-            NewCoins = account.Coins
+            NewCoins = account.Coins,
         };
         session.Send(response);
 
@@ -48,11 +48,15 @@ public static class BuyMarketItemHandler
             }
 
             session.Send(new AccountDataPacket(account));
-            Logger.genellog($"[BuyMarketItemHandler] {account.Username} ({account.ID}) → Item {itemId} satın alındı.");
+            Logger.genellog(
+                $"[BuyMarketItemHandler] {account.Username} ({account.ID}) → Item {itemId} satın alındı."
+            );
         }
         else
         {
-            Logger.genellog($"[BuyMarketItemHandler] {account.Username} ({account.ID}) → Item {itemId} başarısız: {result}");
+            Logger.genellog(
+                $"[BuyMarketItemHandler] {account.Username} ({account.ID}) → Item {itemId} başarısız: {result}"
+            );
         }
     }
 }

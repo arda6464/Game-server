@@ -93,55 +93,66 @@ partial class Battle
 
     public void BroadcastSnapshot()
     {
+        uint serverTick = TickManager.instance.Get_Tick();
+        float currentTime = GetCurrentTime();
+
+        List<Player> players;
         lock (_lock)
         {
-            uint serverTick = TickManager.instance.Get_Tick();
-            float currentTime = GetCurrentTime();
+            players = _players.ToList();
+        }
 
-            foreach (var pSource in Players)
+        foreach (var pTarget in players)
+        {
+            if (pTarget.session?.UdpEndPoint == null) continue;
+
+            var entries = new WorldSnapshotEntry[players.Count];
+            for (int i = 0; i < players.Count; i++)
             {
+                var pSource = players[i];
                 pSource.LastSentPosition = pSource.Position;
                 pSource.LastSentRotation = pSource.Rotation;
 
-                foreach (var pTarget in Players)
+                bool isVisible = true;
+                if (pSource.ID != pTarget.ID && pSource.CurrentBushId != null)
                 {
-                    if (pTarget.session?.UdpEndPoint == null) continue;
-
-                    bool isVisible = true;
-                    if (pSource.ID != pTarget.ID)
-                    {
-                        if (pSource.CurrentBushId != null)
-                        {
-                            bool sameBush = pSource.CurrentBushId == pTarget.CurrentBushId;
-                            bool recentlyShot = (currentTime - pSource.LastShotTime) < 1.5f;
-                            isVisible = sameBush || recentlyShot;
-                        }
-                    }
-
-                    var packet = new PlayerMovePacket
-                    {
-                        ServerTick = serverTick,
-                        LastProcessedInputTick = pSource.LastProcessedTick,
-                        ID = pSource.ID,
-                        X = pSource.Position.x,
-                        Y = pSource.Position.y,
-                        Z = pSource.Position.z,
-                        IsVisible = isVisible
-                    };
-
-                    using (ByteBuffer payloadBuffer = ByteBufferPool.Get())
-                    {
-                        packet.Serialize(payloadBuffer);
-                        pTarget.session.SendUnreliableUDP_Payload(payloadBuffer.GetBufferSegment());
-                    }
+                    bool sameBush = pSource.CurrentBushId == pTarget.CurrentBushId;
+                    bool recentlyShot = (currentTime - pSource.LastShotTime) < 1.5f;
+                    isVisible = sameBush || recentlyShot;
                 }
+
+                entries[i] = new WorldSnapshotEntry
+                {
+                    ID = pSource.ID,
+                    X = pSource.Position.x,
+                    Y = pSource.Position.y,
+                    Z = pSource.Position.z,
+                    IsVisible = isVisible
+                };
+            }
+
+            var packet = new WorldSnapshotPacket
+            {
+                ServerTick = serverTick,
+                Players = entries
+            };
+
+            using (var buf = ByteBufferPool.Get())
+            {
+                packet.Serialize(buf);
+                pTarget.session.SendUnreliableUDP_Payload(buf.GetBufferSegment());
             }
         }
     }
 
     public void SendToAllPlayer(IPacket packet, bool Reliable)
     {
-        foreach (var player in Players)
+        List<Player> snapshot;
+        lock (_lock)
+        {
+            snapshot = _players.ToList();
+        }
+        foreach (var player in snapshot)
         {
             if (player.session == null) continue;
 
@@ -154,7 +165,7 @@ partial class Battle
     {
         lock (_lock)
         {
-            Loots.RemoveAll(l => l.LootId == lootId);
+            _loots.RemoveAll(l => l.LootId == lootId);
         }
         var packet = new LootDeletedPacket
         {

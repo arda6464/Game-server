@@ -1,9 +1,9 @@
 using System;
 
 [PacketHandler(MessageType.MatchMakingRequest)]
-public static class MatchMakingHandler
+public class MatchMakingHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
         if (!DynamicConfigManager.Config.IsMatchmakingEnabled)
         {
@@ -11,7 +11,7 @@ public static class MatchMakingHandler
             Notification not = new Notification
             {
                 Message = "Bakımda",
-                type = NotificationTypes.NotificationType.toast
+                type = NotificationTypes.NotificationType.toast,
             };
             NotificationSender.Send(session, not);
 

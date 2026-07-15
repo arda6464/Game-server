@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.MemberToLowerRequest)]
 public class ClubMemberChangeRequestPacket : IPacket
 {
     public int TargetId { get; set; }

@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.LeaveClubRequest)]
-public static class LeaveClubHandler
+public class LeaveClubHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
         AccountData account = session.Account;
         if (account == null)
@@ -16,17 +16,17 @@ public static class LeaveClubHandler
         if (club != null)
         {
             result = club.RemoveMember(account.ID);
-            
+
             ClubMessage leaveMessage = new ClubMessage
             {
                 messageFlags = ClubMessageFlags.HasSystem,
                 eventType = ClubEventType.LeaveMessage,
                 ActorName = account.Username,
-                ActorID = account.ID
+                ActorID = account.ID,
             };
             club.SendMessageToClubMembers(leaveMessage);
         }
-      
+
         session.Send(new LeaveClubResponsePacket { Kicked = result });
         account.Clubid = 0;
         account.ClubName = null;

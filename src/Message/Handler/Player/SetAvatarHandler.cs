@@ -1,29 +1,22 @@
 using System;
 
 [PacketHandler(MessageType.SetAvatarRequest)]
-public static class SetAvatar
+public class SetAvatarHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
-
         Console.WriteLine("Set Avatar");
-        ByteBuffer BUFFER = ByteBufferPool.Get();
-        BUFFER.WriteBytes(data, true);
+        var request = data.DeserializePacket<SetAvatarRequestPacket>();
 
-        var request = new SetAvatarRequestPacket();
-        request.Deserialize(BUFFER);
-        
         int Id = request.AvatarId;
-        BUFFER.Dispose();
-        
+
         // Avatar ID validasyonu (1-10 arası)
         if (Id < 1 || Id > 10)
         {
             MessageCodeManager.Send(session, MessageCodeManager.Message.InvalidAvatar);
             return;
         }
-        
-        session.Logic.SetAvatar(Id);
 
+        session.Logic.SetAvatarHandler(Id);
     }
 }

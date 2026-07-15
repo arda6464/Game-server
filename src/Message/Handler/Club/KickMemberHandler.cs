@@ -1,19 +1,15 @@
 [PacketHandler(MessageType.KickMemberinClubRequest)]
-public static class KickMemberHandler
+public class KickMemberHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(message, true);
-        
-        var request = new KickMemberRequestPacket();
-        request.Deserialize(read);
-        
-        int targetid = request.TargetId;
-        read.Dispose();
+        var request = data.DeserializePacket<KickMemberRequestPacket>();
 
-        if (session.Account == null) return;
-        
+        int targetid = request.TargetId;
+
+        if (session.Account == null)
+            return;
+
         var club = ClubCache.Load(session.Account.Clubid);
         if (club == null)
         {
@@ -26,13 +22,12 @@ public static class KickMemberHandler
         {
             var response = new KickMemberResponsePacket { TargetId = targetid };
             session.Send(response);
-            
+
             if (SessionManager.IsOnline(targetid))
             {
                 var targetsession = SessionManager.GetSession(targetid);
                 targetsession.Send(response);
             }
-           
         }
         else
         {

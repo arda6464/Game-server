@@ -1,24 +1,22 @@
 [PacketHandler(MessageType.MemberToLowerRequest)]
-public static class ClubMemberChangeHandler
+public class ClubMemberChangeHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
         try
         {
-            ByteBuffer read = ByteBufferPool.Get();
-            read.WriteBytes(message, true);
-            
-            var request = new ClubMemberChangeRequestPacket();
-            request.Deserialize(read);
-            
+            var request = data.DeserializePacket<ClubMemberChangeRequestPacket>();
+
             int targetid = request.TargetId;
             int status = request.Status;
 
-            if (session.Account == null) return;
+            if (session.Account == null)
+                return;
             var myAccount = session.Account;
             AccountData targetAccount = AccountCache.Load(targetid);
 
-            if (targetAccount == null || myAccount == null) return;
+            if (targetAccount == null || myAccount == null)
+                return;
 
             if (targetAccount.Clubid != myAccount.Clubid)
             {
@@ -28,7 +26,7 @@ public static class ClubMemberChangeHandler
 
             if (myAccount.clubRole != ClubRole.Leader && myAccount.clubRole != ClubRole.CoLeader)
             {
-               MessageCodeManager.Send(session, MessageCodeManager.Message.NoAuthorityClub);
+                MessageCodeManager.Send(session, MessageCodeManager.Message.NoAuthorityClub);
                 return;
             }
 
@@ -53,21 +51,25 @@ public static class ClubMemberChangeHandler
         }
         catch (Exception ex)
         {
-           MessageCodeManager.Send(session, MessageCodeManager.Message.GeneralError);
+            MessageCodeManager.Send(session, MessageCodeManager.Message.GeneralError);
         }
     }
 
-    private static void HandlePromotion(Session session, AccountData targetAccount, 
-                                      AccountData myAccount)
+    private static void HandlePromotion(
+        Session session,
+        AccountData targetAccount,
+        AccountData myAccount
+    )
     {
         if (myAccount.clubRole != ClubRole.Leader)
         {
-           MessageCodeManager.Send(session, MessageCodeManager.Message.JustClubOwnerChange);
+            MessageCodeManager.Send(session, MessageCodeManager.Message.JustClubOwnerChange);
             return;
         }
 
         var club = ClubManager.LoadClub(targetAccount.Clubid);
-        if (club == null) return;
+        if (club == null)
+            return;
 
         if (targetAccount.clubRole == ClubRole.Member)
         {
@@ -84,23 +86,27 @@ public static class ClubMemberChangeHandler
             MessageCodeManager.Send(session, MessageCodeManager.Message.InvalidTransaction);
     }
 
-    private static void HandleDemotion(Session session, AccountData targetAccount, 
-                                     AccountData myAccount)
+    private static void HandleDemotion(
+        Session session,
+        AccountData targetAccount,
+        AccountData myAccount
+    )
     {
         if (targetAccount.clubRole == ClubRole.Member)
         {
-             MessageCodeManager.Send(session, MessageCodeManager.Message.MemberAlreadyLowest);
+            MessageCodeManager.Send(session, MessageCodeManager.Message.MemberAlreadyLowest);
         }
         else if (targetAccount.clubRole == ClubRole.CoLeader)
         {
             var club = ClubManager.LoadClub(targetAccount.Clubid);
-            if (club == null) return;
+            if (club == null)
+                return;
             club.ChangeMemberRole(session.ID, targetAccount.ID, ClubRole.Member);
             MessageCodeManager.Send(session, MessageCodeManager.Message.ClubRoleLowerCoOwner);
         }
         else if (targetAccount.clubRole == ClubRole.Leader)
         {
-           MessageCodeManager.Send(session, MessageCodeManager.Message.CannotLowerOwner);
+            MessageCodeManager.Send(session, MessageCodeManager.Message.CannotLowerOwner);
         }
     }
 }

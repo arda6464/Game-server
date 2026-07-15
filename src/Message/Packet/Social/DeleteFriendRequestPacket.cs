@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.DeleteFriendRequest)]
 public class DeleteFriendRequestPacket : IPacket
 {
     public int TargetId { get; set; }

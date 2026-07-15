@@ -1,21 +1,15 @@
 using System.Reflection.Metadata;
 
 [PacketHandler(MessageType.SendClubMessage)]
-public static class ClubMessageHandler
+public class ClubMessageHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
         Console.WriteLine("club message handler iss run");
-        ByteBuffer readbuffer = ByteBufferPool.Get();
-        readbuffer.WriteBytes(message, true);
+        var request = data.DeserializePacket<SendClubMessageRequestPacket>();
 
-        var request = new SendClubMessageRequestPacket();
-        request.Deserialize(readbuffer);
-        
         int accountıd = session.Account.ID;
         string Message = request.Message;
-        readbuffer.Dispose();
-
 
         AccountData account = AccountCache.Load(accountıd);
         var club = ClubManager.LoadClub(account.Clubid);
@@ -26,9 +20,9 @@ public static class ClubMessageHandler
         }
         if (session.Logic.IsMuted())
         {
-          // todo toast
-          //  session.Send(muteResponse);
-          Console.WriteLine("oyuncu muteli");
+            // todo toast
+            //  session.Send(muteResponse);
+            Console.WriteLine("oyuncu muteli");
             return;
         }
 
@@ -38,8 +32,10 @@ public static class ClubMessageHandler
             return;
         }
 
-        Console.WriteLine($"{account.Username} adlı kullanıcı {club.Name ?? "PORNO"} adlı kulube {Message} mesajını gönderdi");
-        
+        Console.WriteLine(
+            $"{account.Username} adlı kullanıcı {club.Name ?? "PORNO"} adlı kulube {Message} mesajını gönderdi"
+        );
+
         ClubMessage clubMessage = new ClubMessage
         {
             messageFlags = ClubMessageFlags.None,
@@ -47,19 +43,20 @@ public static class ClubMessageHandler
             SenderId = account.ID,
             SenderAvatarID = account.Avatarid,
             Content = Message,
-            Timestamp = DateTime.Now
+            Timestamp = DateTime.Now,
         };
-        
+
         // Görev İlerlemesi - Mesaj Gönderme
         QuestManager.CheckQuestProgress(account, Quest.MissionType.SendChatMessage);
 
         club.SendMessageToClubMembers(clubMessage);
     }
-     public static void GameinCmd(Session session, AccountData account, string message)
+
+    public static void GameinCmd(Session session, AccountData account, string message)
     {
         string EntryMessage = "";
-         string[] cmd = message.Substring(1).Split(' ');
-             //   if (cmd.Length == 0) return;
+        string[] cmd = message.Substring(1).Split(' ');
+        //   if (cmd.Length == 0) return;
         switch (cmd[0])
         {
             case "help":
@@ -75,33 +72,31 @@ public static class ClubMessageHandler
                 EntryMessage = $" senin club id:{account.Clubid}";
                 break;
             case "status":
-                EntryMessage = $"Çevrimiçi oyuncu sayısı: {SessionManager.GetCount}\n Server sürümü: {Config.Instance.ServerVersion}\n"; // todo....
+                EntryMessage =
+                    $"Çevrimiçi oyuncu sayısı: {SessionManager.GetCount}\n Server sürümü: {Config.Instance.ServerVersion}\n"; // todo....
                 break;
             case "firebase":
-            EntryMessage = $"token: {account.FBNToken ?? "null..."}";
+                EntryMessage = $"token: {account.FBNToken ?? "null..."}";
                 break;
             default:
                 EntryMessage = "komut bulunamadı... yardım için /help komutunu kullanın";
                 break;
         }
 
-
         var response = new GetClubMessagePacket
         {
             Message = new ClubMessage
             {
-               messageFlags = ClubMessageFlags.None,
-               SenderId = account.ID+1,
-               SenderName = "SİSTEM",
-               SenderAvatarID = account.Avatarid,
-               Content = EntryMessage,
-               // MessageId and Timestamp might need defaults if not crucial for system message display
-               MessageId = 0, 
-               Timestamp = DateTime.Now
-            }
+                messageFlags = ClubMessageFlags.None,
+                SenderId = account.ID + 1,
+                SenderName = "SİSTEM",
+                SenderAvatarID = account.Avatarid,
+                Content = EntryMessage,
+                // MessageId and Timestamp might need defaults if not crucial for system message display
+                MessageId = 0,
+                Timestamp = DateTime.Now,
+            },
         };
         session.Send(response);
-
-           
     }
 }

@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.GetEvents)]
-public static class GetEvents
+public class GetEvents : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         Console.WriteLine("events handler ");
         using (ByteBuffer buffer = ByteBufferPool.Get())

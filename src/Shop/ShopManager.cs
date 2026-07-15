@@ -1,24 +1,23 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 
 public static class ShopManager
 {
     private static List<MarketItemData> BaseMarketOffer = new List<MarketItemData>();
-    private static Dictionary<int, MarketOfferData> ActiveOffers = new Dictionary<int, MarketOfferData>();
+    private static Dictionary<int, MarketOfferData> ActiveOffers =
+        new Dictionary<int, MarketOfferData>();
 
     private static readonly string _itemsPath = "Data/market_items.json";
     private static readonly string _offersPath = "Data/market_offers.json";
     private static readonly object _lock = new object();
 
     // Satın alma rate-limit: oyuncu ID -> son satın alma zamanı
-    private static readonly Dictionary<int, DateTime> _purchaseCooldowns = new Dictionary<int, DateTime>();
+    private static readonly Dictionary<int, DateTime> _purchaseCooldowns =
+        new Dictionary<int, DateTime>();
     private static readonly TimeSpan PurchaseCooldown = TimeSpan.FromSeconds(3);
-
-
-
 
     public static DateTime ExpiresAt { get; private set; }
     public static TimeSpan RefreshInterval { get; private set; } = TimeSpan.FromHours(24);
@@ -39,17 +38,22 @@ public static class ShopManager
                 if (File.Exists(_itemsPath))
                 {
                     var json = File.ReadAllText(_itemsPath);
-                    BaseMarketOffer = JsonConvert.DeserializeObject<List<MarketItemData>>(json) ?? new List<MarketItemData>();
+                    BaseMarketOffer =
+                        JsonConvert.DeserializeObject<List<MarketItemData>>(json)
+                        ?? new List<MarketItemData>();
                 }
 
                 if (File.Exists(_offersPath))
                 {
                     var json = File.ReadAllText(_offersPath);
-                    var list = JsonConvert.DeserializeObject<List<MarketOfferData>>(json) ?? new List<MarketOfferData>();
+                    var list =
+                        JsonConvert.DeserializeObject<List<MarketOfferData>>(json)
+                        ?? new List<MarketOfferData>();
                     ActiveOffers = list.ToDictionary(o => o.OfferId, o => o);
                 }
 
-                if (BaseMarketOffer.Count == 0 && !File.Exists(_itemsPath)) GenerateDefaults();
+                if (BaseMarketOffer.Count == 0 && !File.Exists(_itemsPath))
+                    GenerateDefaults();
             }
             catch (Exception ex)
             {
@@ -64,8 +68,14 @@ public static class ShopManager
         {
             try
             {
-                File.WriteAllText(_itemsPath, JsonConvert.SerializeObject(BaseMarketOffer, Formatting.Indented));
-                File.WriteAllText(_offersPath, JsonConvert.SerializeObject(ActiveOffers.Values.ToList(), Formatting.Indented));
+                File.WriteAllText(
+                    _itemsPath,
+                    JsonConvert.SerializeObject(BaseMarketOffer, Formatting.Indented)
+                );
+                File.WriteAllText(
+                    _offersPath,
+                    JsonConvert.SerializeObject(ActiveOffers.Values.ToList(), Formatting.Indented)
+                );
             }
             catch (Exception ex)
             {
@@ -76,8 +86,28 @@ public static class ShopManager
 
     private static void GenerateDefaults()
     {
-        BaseMarketOffer.Add(new MarketItemData { ItemId = GenerateUniqueId(), ItemName = "Küçük Elmas Paketi", ItemType = ItemType.Gems, PriceType = PriceType.Coins, BasePrice = 500, Count = 100 });
-        BaseMarketOffer.Add(new MarketItemData { ItemId = GenerateUniqueId(), ItemName = "Büyük Elmas Paketi", ItemType = ItemType.Gems, PriceType = PriceType.Coins, BasePrice = 2000, Count = 600 });
+        BaseMarketOffer.Add(
+            new MarketItemData
+            {
+                ItemId = GenerateUniqueId(),
+                ItemName = "Küçük Elmas Paketi",
+                ItemType = ItemType.Gems,
+                PriceType = PriceType.Coins,
+                BasePrice = 500,
+                Count = 100,
+            }
+        );
+        BaseMarketOffer.Add(
+            new MarketItemData
+            {
+                ItemId = GenerateUniqueId(),
+                ItemName = "Büyük Elmas Paketi",
+                ItemType = ItemType.Gems,
+                PriceType = PriceType.Coins,
+                BasePrice = 2000,
+                Count = 600,
+            }
+        );
         Save();
     }
 
@@ -87,7 +117,8 @@ public static class ShopManager
     {
         lock (_lock)
         {
-            if (item.ItemId == 0) item.ItemId = GenerateUniqueId();
+            if (item.ItemId == 0)
+                item.ItemId = GenerateUniqueId();
             BaseMarketOffer.Add(item);
             Save();
         }
@@ -106,7 +137,8 @@ public static class ShopManager
     {
         lock (_lock)
         {
-            if (offer.OfferId == 0) offer.OfferId = GenerateUniqueId();
+            if (offer.OfferId == 0)
+                offer.OfferId = GenerateUniqueId();
             ActiveOffers[offer.OfferId] = offer;
             Save();
         }
@@ -125,25 +157,28 @@ public static class ShopManager
 
     public static List<MarketItemData> GetMarketItems(string playerId = "")
     {
-        if (!DynamicConfigManager.Config.IsShopEnabled) return new List<MarketItemData>();
+        if (!DynamicConfigManager.Config.IsShopEnabled)
+            return new List<MarketItemData>();
         return BaseMarketOffer;
     }
 
     public static List<MarketOfferData> GetOffers(string playerId = "")
     {
-        if (!DynamicConfigManager.Config.IsShopEnabled) return new List<MarketOfferData>();
+        if (!DynamicConfigManager.Config.IsShopEnabled)
+            return new List<MarketOfferData>();
 
         // Süresi biten teklifleri temizle
         lock (_lock)
         {
             var now = DateTime.UtcNow;
-            var expiredIds = ActiveOffers.Values
-                .Where(o => o.EndTime < now)
+            var expiredIds = ActiveOffers
+                .Values.Where(o => o.EndTime < now)
                 .Select(o => o.OfferId)
                 .ToList();
             if (expiredIds.Count > 0)
             {
-                foreach (var id in expiredIds) ActiveOffers.Remove(id);
+                foreach (var id in expiredIds)
+                    ActiveOffers.Remove(id);
                 Save();
             }
         }
@@ -158,74 +193,81 @@ public static class ShopManager
     public static List<MarketOfferData> GeneratePersonalOffers(AccountData account)
     {
         var personalOffers = new List<MarketOfferData>();
-        if (account == null) return personalOffers;
+        if (account == null)
+            return personalOffers;
 
         var now = DateTime.UtcNow;
 
         // İlk Satın Alma Teklifi
         if (account.TotalPurchases == 0)
         {
-            personalOffers.Add(new MarketOfferData
-            {
-                OfferId = GenerateUniqueId(),
-                Title = "İlk Alım Fırsatı! 🎉",
-                PriceType = PriceType.Coins,
-                OfferType = OfferType.FirstPurchase,
-                BasePrice = 1600,
-                DiscountPercent = 20,
-                EndTime = now.AddDays(3),
-                IsPersonal = true,
-                TargetAccountId = account.ID,
-                Rewards = new List<RewardItem>
+            personalOffers.Add(
+                new MarketOfferData
                 {
-                    new RewardItem { Type = ItemType.Gems,  Count = 600  },
-                    new RewardItem { Type = ItemType.Coins, Count = 1000 }
+                    OfferId = GenerateUniqueId(),
+                    Title = "İlk Alım Fırsatı! 🎉",
+                    PriceType = PriceType.Coins,
+                    OfferType = OfferType.FirstPurchase,
+                    BasePrice = 1600,
+                    DiscountPercent = 20,
+                    EndTime = now.AddDays(3),
+                    IsPersonal = true,
+                    TargetAccountId = account.ID,
+                    Rewards = new List<RewardItem>
+                    {
+                        new RewardItem { Type = ItemType.Gems, Count = 600 },
+                        new RewardItem { Type = ItemType.Coins, Count = 1000 },
+                    },
                 }
-            });
+            );
         }
 
         // Sadakat Ödülü
         if (account.WinStreak >= 7)
         {
-            personalOffers.Add(new MarketOfferData
-            {
-                OfferId = GenerateUniqueId(),
-                Title = "Sadakat Ödülü! 🏆",
-                PriceType = PriceType.Coins,
-                OfferType = OfferType.LoyaltyReward,
-                BasePrice = 0,
-                DiscountPercent = 100,
-                EndTime = now.AddDays(1),
-                IsPersonal = true,
-                TargetAccountId = account.ID,
-                Rewards = new List<RewardItem>
+            personalOffers.Add(
+                new MarketOfferData
                 {
-                    new RewardItem { Type = ItemType.XPBoost, Count = 3   },
-                    new RewardItem { Type = ItemType.Coins,   Count = 500 }
+                    OfferId = GenerateUniqueId(),
+                    Title = "Sadakat Ödülü! 🏆",
+                    PriceType = PriceType.Coins,
+                    OfferType = OfferType.LoyaltyReward,
+                    BasePrice = 0,
+                    DiscountPercent = 100,
+                    EndTime = now.AddDays(1),
+                    IsPersonal = true,
+                    TargetAccountId = account.ID,
+                    Rewards = new List<RewardItem>
+                    {
+                        new RewardItem { Type = ItemType.XPBoost, Count = 3 },
+                        new RewardItem { Type = ItemType.Coins, Count = 500 },
+                    },
                 }
-            });
+            );
         }
 
         // Geri Dönüş Teklifi
         if (account.TotalPurchases > 0 && account.LastPurchaseDate < now.AddDays(-3))
         {
-            personalOffers.Add(new MarketOfferData
-            {
-                OfferId = GenerateUniqueId(),
-                Title = "Seni Özledik! 💎",
-                PriceType = PriceType.Coins,
-                OfferType = OfferType.PersonalDiscount,
-                BasePrice = 700,
-                DiscountPercent = 30,
-                EndTime = now.AddDays(2),
-                IsPersonal = true,
-                TargetAccountId = account.ID,
-                Rewards = new List<RewardItem>
+            personalOffers.Add(
+                new MarketOfferData
                 {
-                    new RewardItem { Type = ItemType.Gems,         Count = 300 },
-                    new RewardItem { Type = ItemType.TrophyShield, Count = 3   }
+                    OfferId = GenerateUniqueId(),
+                    Title = "Seni Özledik! 💎",
+                    PriceType = PriceType.Coins,
+                    OfferType = OfferType.PersonalDiscount,
+                    BasePrice = 700,
+                    DiscountPercent = 30,
+                    EndTime = now.AddDays(2),
+                    IsPersonal = true,
+                    TargetAccountId = account.ID,
+                    Rewards = new List<RewardItem>
+                    {
+                        new RewardItem { Type = ItemType.Gems, Count = 300 },
+                        new RewardItem { Type = ItemType.TrophyShield, Count = 3 },
+                    },
                 }
-            });
+            );
         }
 
         return personalOffers;
@@ -236,7 +278,12 @@ public static class ShopManager
     /// <summary>
     /// Belirtilen ürünü oyuncuya satın aldırır. Tüm validasyon ve etki uygulama burada yapılır.
     /// </summary>
-    public static PurchaseResult TryBuyItem(AccountData account, int itemId, out List<RewardItem> rewards, bool isOffer = false)
+    public static PurchaseResult TryBuyItem(
+        AccountData account,
+        int itemId,
+        out List<RewardItem> rewards,
+        bool isOffer = false
+    )
     {
         rewards = new List<RewardItem>();
         if (!DynamicConfigManager.Config.IsShopEnabled)
@@ -279,15 +326,31 @@ public static class ShopManager
             {
                 item = BaseMarketOffer.FirstOrDefault(i => i.ItemId == itemId);
             }
-            if (item == null) return PurchaseResult.ItemNotFound;
+            if (item == null)
+                return PurchaseResult.ItemNotFound;
 
-            int finalPrice = (item.IsDiscounted && item.DiscountedPrice > 0) ? item.DiscountedPrice : item.BasePrice;
-            return ProcessItemPurchase(account, item.ItemType, item.PriceType, finalPrice, item.Count, item.ItemName, rewards);
+            int finalPrice =
+                (item.IsDiscounted && item.DiscountedPrice > 0)
+                    ? item.DiscountedPrice
+                    : item.BasePrice;
+            return ProcessItemPurchase(
+                account,
+                item.ItemType,
+                item.PriceType,
+                finalPrice,
+                item.Count,
+                item.ItemName,
+                rewards
+            );
         }
     }
 
     /// <summary>Çoklu reward içeren offer satın alımı</summary>
-    private static PurchaseResult ProcessOfferPurchase(AccountData account, MarketOfferData offer, List<RewardItem> rewardsList)
+    private static PurchaseResult ProcessOfferPurchase(
+        AccountData account,
+        MarketOfferData offer,
+        List<RewardItem> rewardsList
+    )
     {
         int finalPrice = offer.BasePrice;
         if (offer.DiscountPercent > 0)
@@ -299,8 +362,8 @@ public static class ShopManager
             if (finalPrice != 0)
             {
                 var payCheck = CheckAndDeductPrice(account, offer.PriceType, finalPrice);
-                if (payCheck != PurchaseResult.Success) return payCheck;
-
+                if (payCheck != PurchaseResult.Success)
+                    return payCheck;
             }
 
             // Her reward'ı uygula
@@ -312,10 +375,18 @@ public static class ShopManager
 
             account.TotalPurchases++;
             account.LastPurchaseDate = DateTime.UtcNow;
-            lock (_purchaseCooldowns) { _purchaseCooldowns[account.ID] = DateTime.UtcNow; }
+            lock (_purchaseCooldowns)
+            {
+                _purchaseCooldowns[account.ID] = DateTime.UtcNow;
+            }
 
-            var rewardSummary = string.Join(" + ", offer.Rewards.Select(r => $"{r.Count} {r.Type}"));
-            Logger.genellog($"[ShopManager] Offer satın alma: {account.Username} ({account.ID}) → {offer.Title} | Ödüller: {rewardSummary} | Ödenen: {finalPrice} {offer.PriceType}");
+            var rewardSummary = string.Join(
+                " + ",
+                offer.Rewards.Select(r => $"{r.Count} {r.Type}")
+            );
+            Logger.genellog(
+                $"[ShopManager] Offer satın alma: {account.Username} ({account.ID}) → {offer.Title} | Ödüller: {rewardSummary} | Ödenen: {finalPrice} {offer.PriceType}"
+            );
         }
         return PurchaseResult.Success;
     }
@@ -328,7 +399,8 @@ public static class ShopManager
         int price,
         int count,
         string itemName,
-        List<RewardItem> rewardsList)
+        List<RewardItem> rewardsList
+    )
     {
         lock (account.SyncLock)
         {
@@ -337,32 +409,49 @@ public static class ShopManager
                 return PurchaseResult.AlreadyOwned;
 
             var payCheck = CheckAndDeductPrice(account, priceType, price);
-            if (payCheck != PurchaseResult.Success) return payCheck;
+            if (payCheck != PurchaseResult.Success)
+                return payCheck;
 
-            var reward = new RewardItem { Type = itemType, Count = count, DataId = count };
+            var reward = new RewardItem
+            {
+                Type = itemType,
+                Count = count,
+                DataId = count,
+            };
             DeliveryManager.ApplyReward(account, reward);
             rewardsList.Add(reward);
 
             account.TotalPurchases++;
             account.LastPurchaseDate = DateTime.UtcNow;
-            lock (_purchaseCooldowns) { _purchaseCooldowns[account.ID] = DateTime.UtcNow; }
+            lock (_purchaseCooldowns)
+            {
+                _purchaseCooldowns[account.ID] = DateTime.UtcNow;
+            }
 
-            Logger.genellog($"[ShopManager] Satın alma: {account.Username} ({account.ID}) → {itemName} | Ödenen: {price} {priceType}");
+            Logger.genellog(
+                $"[ShopManager] Satın alma: {account.Username} ({account.ID}) → {itemName} | Ödenen: {price} {priceType}"
+            );
         }
         return PurchaseResult.Success;
     }
 
     /// <summary>Para kontrolü yapar ve yeterliyse düşer, değilse hata döner.</summary>
-    private static PurchaseResult CheckAndDeductPrice(AccountData account, PriceType priceType, int price)
+    private static PurchaseResult CheckAndDeductPrice(
+        AccountData account,
+        PriceType priceType,
+        int price
+    )
     {
         if (priceType == PriceType.Gems)
         {
-            if (account.Gems < price) return PurchaseResult.NotEnoughGems;
+            if (account.Gems < price)
+                return PurchaseResult.NotEnoughGems;
             account.Gems -= price;
         }
         else if (priceType == PriceType.Coins)
         {
-            if (account.Coins < price) return PurchaseResult.NotEnoughCoins;
+            if (account.Coins < price)
+                return PurchaseResult.NotEnoughCoins;
             account.Coins -= price;
         }
         else if (priceType == PriceType.RealMoney)
@@ -373,12 +462,12 @@ public static class ShopManager
         return PurchaseResult.Success;
     }
 
-
     // ─── Yardımcı Metodlar ───────────────────────────────────────────────────
 
     public static void InitializeMarket()
     {
-        if (IsExpired()) SetExpiration();
+        if (IsExpired())
+            SetExpiration();
     }
 
     public static void RefreshMarket() => Load();
@@ -403,5 +492,6 @@ public static class ShopManager
     }
 
     private static int _nextId = 2000;
+
     public static int GenerateUniqueId() => _nextId++;
 }

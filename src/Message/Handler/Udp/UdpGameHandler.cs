@@ -3,8 +3,6 @@ using Network;
 
 public static class UdpGameHandler
 {
-
-
     public static void HandleInput(Session session, ByteBuffer buffer, int seqNo)
     {
         var packet = new PlayerInputPacket();
@@ -24,7 +22,7 @@ public static class UdpGameHandler
         {
             session.PlayerData.AimStarted = 0f;
             session.PlayerData.AimDirection = Vec3.zero;
-         //   Console.WriteLine("[BATTLE] AİM BIRAKILDI");
+            //   Console.WriteLine("[BATTLE] AİM BIRAKILDI");
         }
         else
         {
@@ -36,37 +34,29 @@ public static class UdpGameHandler
                 session.PlayerData.AimStarted = now;
 
             session.PlayerData.AimDirection = aimDirection.normalized;
-         //   Console.WriteLine("[BATTLE] AİM TUTULUYOR");
+            //   Console.WriteLine("[BATTLE] AİM TUTULUYOR");
         }
 
-        session.PlayerData.InputQueue.Enqueue(new PendingInput
-        {
-            Tick = packet.Tick,
-            Direction = new Vec3(packet.InputX, 0, packet.InputY)
-        });
+        session.PlayerData.InputQueue.Enqueue(
+            new PendingInput
+            {
+                Tick = packet.Tick,
+                Direction = new Vec3(packet.InputX, 0, packet.InputY),
+            }
+        );
     }
 
-
-    
     public static void HandleConnect(Session session)
     {
         using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             int seqNo = session.GetNextReliableSequence();
-            var packet = new UdpConnectionPacket
-            {
-                seqNo = seqNo,
-            };
+            var packet = new UdpConnectionPacket { seqNo = seqNo };
             packet.Serialize(buffer);
             session.SendReliableUDP(buffer.ToArray(), seqNo);
         }
     }
 
-
-   
-
-
-   
     public static void HandlePing(Session session, ByteBuffer buffer)
     {
         PingPacket pingPacket = new PingPacket();
@@ -76,33 +66,38 @@ public static class UdpGameHandler
         {
             ushort seqNo = 0; // Unreliable, sıra numarası gönderilmeli (client header'ı okur)
             response.WriteVarInt((int)UdpPacketFlags.None);
-            response.WriteVarInt(seqNo);         // seqNo (VarInt) — eksikti
+            response.WriteVarInt(seqNo); // seqNo (VarInt) — eksikti
             response.WriteVarInt((int)UdpMessageType.Pong);
             response.WriteFloat(pingPacket.ClientSentTime);
             session.SendUnreliableUDP(response.GetBufferSegment());
         }
     }
-    public static void  HandlePickUpRequest(Session session, ByteBuffer buffer, int seqNo)
-    {
-       int lootId = buffer.ReadVarInt();
 
-        if (session.PlayerData == null) return;
+    public static void HandlePickUpRequest(Session session, ByteBuffer buffer, int seqNo)
+    {
+        int lootId = buffer.ReadVarInt();
+
+        if (session.PlayerData == null)
+            return;
 
         Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
-        if (battle == null) return;
+        if (battle == null)
+            return;
 
-         battle.PickupStart(session.PlayerData.ID, lootId);
-        
+        battle.PickupStart(session.PlayerData.ID, lootId);
     }
+
     public static void HandleChangeSlotRequest(Session session, ByteBuffer buffer, int seqNo)
     {
         int toSlot = buffer.ReadVarInt();
 
-        if (session.PlayerData == null) return;
+        if (session.PlayerData == null)
+            return;
 
         Battle battle = ArenaManager.GetBattle(session.PlayerData.BattleId);
-        if (battle == null) return;
+        if (battle == null)
+            return;
 
-        battle.ChangePlayerSlot(session.PlayerData.ID,  toSlot);
+        battle.ChangePlayerSlot(session.PlayerData.ID, toSlot);
     }
 }

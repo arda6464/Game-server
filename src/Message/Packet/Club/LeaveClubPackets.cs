@@ -1,5 +1,4 @@
-﻿
-[PacketHandler(MessageType.LeaveClubRequest)]
+
 public class LeaveClubRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer)

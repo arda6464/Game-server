@@ -1,34 +1,38 @@
 using System;
 using System.Linq;
+
 [PacketHandler(MessageType.ClaimInboxRewardRequest)]
-public static class ClaimInboxRewardHandler
+public class ClaimInboxRewardHandler : IGameMessage
 {
-    
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         if (data == null || data.Length == 0)
         {
-            Logger.errorslog($"[ClaimHandler] {session.Account?.Username ?? "Bilinmeyen Kullanıcı"} boş veri gönderdi.");
+            Logger.errorslog(
+                $"[ClaimHandler] {session.Account?.Username ?? "Bilinmeyen Kullanıcı"} boş veri gönderdi."
+            );
             return;
         }
 
-        var packet = new ClaimInboxRewardPacket();
-        using (ByteBuffer buffer = ByteBufferPool.Get())
-        {
-            buffer.WriteBytes(data);
-            packet.Deserialize(buffer);
-        }
+        var packet = data.DeserializePacket<ClaimInboxRewardPacket>();
 
         var account = session.Account;
-        if (account == null) return;
+        if (account == null)
+            return;
 
         lock (account.SyncLock)
         {
             // Inbox bildirimini bul (IndexID üzerinden veya liste sırasından)
-            var notification = account.inboxesNotifications.FirstOrDefault(n => n.IndexID == packet.NotificationIndexId);
-            
+            var notification = account.inboxesNotifications.FirstOrDefault(n =>
+                n.IndexID == packet.NotificationIndexId
+            );
+
             // Eğer ID ile bulunamazsa (eski bildirimler vb.) index olarak dene
-            if (notification == null && packet.NotificationIndexId >= 0 && packet.NotificationIndexId < account.inboxesNotifications.Count)
+            if (
+                notification == null
+                && packet.NotificationIndexId >= 0
+                && packet.NotificationIndexId < account.inboxesNotifications.Count
+            )
             {
                 notification = account.inboxesNotifications[packet.NotificationIndexId];
             }
@@ -46,19 +50,22 @@ public static class ClaimInboxRewardHandler
 
                 // Alındı olarak işaretle
                 notification.IsClaimed = true;
-                               
-                    packet.Success = true;
-                
+
+                packet.Success = true;
+
                 // İstemciye Gacha (Drop) animasyonu için paketi gönder
                 session.Send(gachaResponse);
                 session.Send(packet); // Başarı durumunu gönder
 
-                
-                Logger.genellog($"[ClaimHandler] {account.Username} ödüllerini topladı: {notification.Title} ({gachaResponse.Drops.Count} kalem Gacha gönderildi)");
+                Logger.genellog(
+                    $"[ClaimHandler] {account.Username} ödüllerini topladı: {notification.Title} ({gachaResponse.Drops.Count} kalem Gacha gönderildi)"
+                );
             }
             else
             {
-                Logger.errorslog($"[ClaimHandler] {account.Username} için geçersiz bildirim ID'si veya ödül yok: {packet.NotificationIndexId}");
+                Logger.errorslog(
+                    $"[ClaimHandler] {account.Username} için geçersiz bildirim ID'si veya ödül yok: {packet.NotificationIndexId}"
+                );
             }
         }
     }

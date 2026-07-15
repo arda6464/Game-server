@@ -1,5 +1,124 @@
 [
   {
+    "Timestamp": "2026-07-05T17:09:43.8975904+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Hesabı Silindi",
+    "Target": "finaltest",
+    "Details": "Hesap sistemden kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-05T17:09:40.9416637+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Hesabı Silindi",
+    "Target": "testadmin99",
+    "Details": "Hesap sistemden kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-05T17:09:37.6938726+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Hesabı Silindi",
+    "Target": "testadmin",
+    "Details": "Hesap sistemden kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-05T17:00:52.2419666+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "1 oyuncuya gönderildi. Tip: 0"
+  },
+  {
+    "Timestamp": "2026-07-05T17:00:28.3151653+03:00",
+    "AdminUsername": "admin",
+    "Action": "Özel Paket Gönderildi",
+    "Target": "arda",
+    "Details": "Ödül: 1 adet"
+  },
+  {
+    "Timestamp": "2026-07-05T16:15:16.0687502+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "Test Proxy",
+    "Details": "1 oyuncuya gönderildi. Tip: 2"
+  },
+  {
+    "Timestamp": "2026-07-05T16:15:08.065749+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "Test",
+    "Details": "1 oyuncuya gönderildi. Tip: 2"
+  },
+  {
+    "Timestamp": "2026-07-05T16:06:42.6186384+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Hesabı Oluşturuldu",
+    "Target": "finaltest",
+    "Details": "Rol: Admin"
+  },
+  {
+    "Timestamp": "2026-07-05T16:06:42.6039854+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Güncellendi",
+    "Target": "arda",
+    "Details": "Profil bilgileri düzenlendi."
+  },
+  {
+    "Timestamp": "2026-07-05T16:05:44.2574718+03:00",
+    "AdminUsername": "admin",
+    "Action": "Özel Paket Gönderildi",
+    "Target": "arda",
+    "Details": "Ödül: 1 adet"
+  },
+  {
+    "Timestamp": "2026-07-05T16:05:44.2385298+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Hesabı Silindi",
+    "Target": "test99",
+    "Details": "Hesap sistemden kaldırıldı."
+  },
+  {
+    "Timestamp": "2026-07-05T16:01:42.8228288+03:00",
+    "AdminUsername": "admin",
+    "Action": "Toplu Paket Gönderildi",
+    "Target": "Tüm Oyuncular",
+    "Details": "1 oyuncuya 1 adet ödül"
+  },
+  {
+    "Timestamp": "2026-07-05T16:01:42.7882824+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "Duyuru",
+    "Details": "1 oyuncuya gönderildi. Tip: 2"
+  },
+  {
+    "Timestamp": "2026-07-05T16:01:42.7048089+03:00",
+    "AdminUsername": "admin",
+    "Action": "Acil Duyuru",
+    "Target": "Tüm Çevrimiçi Oyuncular",
+    "Details": "0 oyuncuya gönderildi: Test message"
+  },
+  {
+    "Timestamp": "2026-07-05T16:01:33.7525967+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Hesabı Oluşturuldu",
+    "Target": "test99",
+    "Details": "Rol: Admin"
+  },
+  {
+    "Timestamp": "2026-07-05T15:58:50.5270259+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Hesabı Oluşturuldu",
+    "Target": "testadmin99",
+    "Details": "Rol: Admin"
+  },
+  {
+    "Timestamp": "2026-07-05T15:58:14.831846+03:00",
+    "AdminUsername": "admin",
+    "Action": "Admin Hesabı Oluşturuldu",
+    "Target": "testadmin",
+    "Details": "Rol: Admin"
+  },
+  {
     "Timestamp": "2026-07-03T19:36:50.3141508+03:00",
     "AdminUsername": "admin",
     "Action": "Yasak Kaldırma",

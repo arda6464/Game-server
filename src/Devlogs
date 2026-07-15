@@ -22,8 +22,8 @@
           16- [client] ContextMenu ve Info doğru çalışmıyor (maybe fixxed)
           17- [client] clube katılınca mesajlar gelmiyo (maybe fixxed)
           18  [client] AuthLoginData gelince  ve eğer oyuncu aktifse aktif oyuncu olarak gözüküyormu ?!
-          19- [client] kulüp oluşturulmuo (mabe fixxed)
-          20- [client] hesap oluşturunca isim sorma yeri gelmedi
+          19- [client] kulüp oluşturulmuo ( fixxed)
+          20- [client] hesap oluşturunca isim sorma yeri gelmedi (fixxed)
           21 - 
           
 
@@ -37,15 +37,15 @@
      11- Clan war sistemi
 [✔️]12- Event sistemi
 [✔️]14- Leaderboard sistemi
-     16- Daily login rewards sistemi
-     18- Clan donation sistemi
-     20- Player statistics sistemi
+[✔️]16- Daily login rewards sistemi
+    18- Clan donation sistemi
+[✔️]20- Player statistics sistemi
      21- Bug fix ve optimizasyonlar
      22- Yeni içerikler (karakterler, haritalar, silahlar vb.)
-     23- Oyun içi etkinlikler ve turnuvalar
+[✔️]23- Oyun içi etkinlikler ve turnuvalar
 [✔️]24- Oyun içi mağaza ve ekonomi (Satın alım & Gacha entegrasyonu tamamlandı)
      25- Sosyal medya entegrasyonu
-     26- Oyun içi rehber ve yardım sistemi
+[✔️]26- Oyun içi rehber ve yardım sistemi
 [✔️]28- Oyun içi ayarlar ve kişiselleştirme seçenekleri
 [✔️]29- Oyun içi performans izleme ve analiz araçları
 [✔️]30- Oyun içi geri bildirim ve destek sistemi

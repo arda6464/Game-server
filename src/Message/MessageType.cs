@@ -22,7 +22,7 @@ public enum MessageType : short
     #endregion
     #region  Account
     AccountData,
-    LoginFailed,
+    Loginfailed,
     LoginOKRequest,
     LoginOKResponse,
     SendVerifyCode,
@@ -51,10 +51,7 @@ public enum MessageType : short
     SocialSettingsHasChangedResponse,
     OnlinePlayerStateChanged,
 
-    #endregion 
-
-
-
+    #endregion
 
 
     #region  Friends
@@ -88,9 +85,6 @@ public enum MessageType : short
     #endregion
 
 
-
-
-
     #region  Notifications
     Notification,
     AllNotificationViewed,
@@ -102,7 +96,6 @@ public enum MessageType : short
     LeaderboardRequest,
     LeaderboardResponse,
     #endregion
-
 
 
     #region  Club
@@ -135,7 +128,6 @@ public enum MessageType : short
     #endregion
 
 
-
     #region  Battle
     MatchMakingRequest,
     MatchMakingCancelRequest,
@@ -143,8 +135,6 @@ public enum MessageType : short
     MatchMakingUpdate,
     StartMatch,
     Move,
-
-   
 
     #endregion
 
@@ -155,7 +145,6 @@ public enum MessageType : short
     BuyMarketItemResponse,
 
     #endregion
-
 
 
     #region  Support
@@ -182,13 +171,10 @@ public enum MessageType : short
     JoinByInviteRequest,
     #endregion
 
-    
 
     #region  Android
     NewFBNTokenRequest,
     #endregion
-
-
 
 
     #region Events
@@ -213,5 +199,4 @@ public enum MessageType : short
     ClaimDailyRewardRequest,
     ClaimDailyRewardResponse,
     #endregion
-
 }

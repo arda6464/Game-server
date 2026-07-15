@@ -1,13 +1,12 @@
-using Logic;
-using System.Net;
-using System.Net.Sockets;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Logic;
 
-
-public class Session
+public class Session : IDisposable
 {
     public PlayerState State { get; private set; } = PlayerState.None;
     private TcpClient client;
@@ -16,10 +15,10 @@ public class Session
     public Player? PlayerData { get; set; }
     public bool IsConnected => client != null && client.Connected;
     private AccountData? _account;
-    public AccountData? Account 
-    { 
-        get => _account; 
-        set 
+    public AccountData? Account
+    {
+        get => _account;
+        set
         {
             _account = value;
             if (_account != null)
@@ -41,8 +40,8 @@ public class Session
     public int BattleId = 0;
 
     // Reliable UDP
-    private int  _reliableSeqCounter = 0;
-    private int  _unreliableSeqCounter = 0;
+    private int _reliableSeqCounter = 0;
+    private int _unreliableSeqCounter = 0;
     private ConcurrentDictionary<int, ReliablePacket> _pendingPackets = new();
 
     // Sadece unreliable (move/input/snapshot) paketlerin drop kontrolü için
@@ -64,6 +63,7 @@ public class Session
 
     /// <summary>Unreliable paketler için seqNo (Move, Input, Snapshot vb.)</summary>
     public int GetNextUnreliableSequence() => _unreliableSeqCounter++;
+
     public void HandleAck(int seq)
     {
         bool wasPending = _pendingPackets.TryRemove(seq, out _);
@@ -75,11 +75,14 @@ public class Session
         else
         {
             // İsteğe bağlı: Beklenmeyen veya zaten işlenmiş bir ACK gelirse loglayabilirsin
-            Console.WriteLine($"[UDP-WARN] Seq {seq} için ACK geldi ama bekleyen listesinde YOKTU. (Zaten işlenmiş veya geçersiz olabilir)");
+            Console.WriteLine(
+                $"[UDP-WARN] Seq {seq} için ACK geldi ama bekleyen listesinde YOKTU. (Zaten işlenmiş veya geçersiz olabilir)"
+            );
         }
-
     }
+
     public void AddPendingPacket(int seq, ReliablePacket packet) => _pendingPackets[seq] = packet;
+
     public IEnumerable<ReliablePacket> GetPendingPackets() => _pendingPackets.Values;
 
     private bool _isClosed = false;
@@ -87,7 +90,8 @@ public class Session
 
     public void ChangeState(PlayerState newState)
     {
-        if (State == newState) return;
+        if (State == newState)
+            return;
 
         PlayerState oldState = State;
         State = newState;
@@ -168,13 +172,15 @@ public class Session
         try
         {
             LastAlive = DateTime.Now; // ✅ Herhangi bir paket geldiğinde 'hayatta' olduğunu işaretle
-            
+
             // Sıfır kopyalama ve sıfır array allocation!
             MessageManager.HandleMessage(this, buffer, length);
         }
         catch (Exception ex)
         {
-            Logger.errorslog($"[Session] Message handler hatası ({ID}): {ex.Message}\n{ex.StackTrace}");
+            Logger.errorslog(
+                $"[Session] Message handler hatası ({ID}): {ex.Message}\n{ex.StackTrace}"
+            );
         }
     }
 
@@ -194,9 +200,9 @@ public class Session
         return "Bilinmeyen IP";
     }
 
-    public void Send<T>(T packet) where T : IPacket
+    public void Send<T>(T packet)
+        where T : IPacket
     {
-        
         using (ByteBuffer buffer = ByteBufferPool.Get())
         {
             packet.Serialize(buffer);
@@ -246,21 +252,25 @@ public class Session
 
     public void SendUnreliableUDP(byte[] buffer)
     {
-        if (UdpEndPoint == null) return;
+        if (UdpEndPoint == null)
+            return;
         TrafficMonitor.RecordOutgoingRaw(buffer.Length);
         GameServer.UdpServer?.SendUnreliable(UdpEndPoint, buffer);
     }
 
     public void SendUnreliableUDP(ArraySegment<byte> segment)
     {
-        if (UdpEndPoint == null) return;
+        if (UdpEndPoint == null)
+            return;
         TrafficMonitor.RecordOutgoingRaw(segment.Count);
         GameServer.UdpServer?.SendUnreliable(UdpEndPoint, segment);
     }
 
-    public void SendUnreliableUDP<T>(T packet) where T : IPacket // Yeni eklenen metod - Otomatik Header
+    public void SendUnreliableUDP<T>(T packet)
+        where T : IPacket // Yeni eklenen metod - Otomatik Header
     {
-        if (UdpEndPoint == null) return;
+        if (UdpEndPoint == null)
+            return;
         int seqNo = GetNextUnreliableSequence();
 
         using (ByteBuffer finalBuffer = ByteBufferPool.Get())
@@ -277,7 +287,8 @@ public class Session
     // Toplu yayın (Broadcast) optimizasyonu: Payload 1 kez oluşturulup buraya verilir.
     public void SendUnreliableUDP_Payload(byte[] payloadData)
     {
-        if (UdpEndPoint == null) return;
+        if (UdpEndPoint == null)
+            return;
         int seqNo = GetNextUnreliableSequence();
 
         using (ByteBuffer finalBuffer = ByteBufferPool.Get())
@@ -293,14 +304,22 @@ public class Session
 
     public void SendUnreliableUDP_Payload(ArraySegment<byte> payloadSegment)
     {
-        if (UdpEndPoint == null) return;
+        if (UdpEndPoint == null)
+            return;
         int seqNo = GetNextUnreliableSequence();
 
         using (ByteBuffer finalBuffer = ByteBufferPool.Get())
         {
             finalBuffer.WriteVarInt((int)Network.UdpPacketFlags.None);
             finalBuffer.WriteVarInt(seqNo);
-            finalBuffer.WriteBytes(new ReadOnlySpan<byte>(payloadSegment.Array, payloadSegment.Offset, payloadSegment.Count), false); // Sadece sonuna ekle
+            finalBuffer.WriteBytes(
+                new ReadOnlySpan<byte>(
+                    payloadSegment.Array,
+                    payloadSegment.Offset,
+                    payloadSegment.Count
+                ),
+                false
+            ); // Sadece sonuna ekle
             var segment = finalBuffer.GetBufferSegment();
             TrafficMonitor.RecordOutgoingRaw(segment.Count);
             GameServer.UdpServer?.SendUnreliable(UdpEndPoint, segment);
@@ -309,14 +328,17 @@ public class Session
 
     public void SendReliableUDP(byte[] buffer, int seqNo)
     {
-        if (UdpEndPoint == null) return;
+        if (UdpEndPoint == null)
+            return;
         TrafficMonitor.RecordOutgoingRaw(buffer.Length);
         GameServer.UdpServer?.SendReliable(UdpEndPoint, buffer, seqNo, this);
     }
 
-    public void SendReliableUDP<T>(T packet) where T : IPacket // Yeni eklenen metod - Otomatik Header
+    public void SendReliableUDP<T>(T packet)
+        where T : IPacket // Yeni eklenen metod - Otomatik Header
     {
-        if (UdpEndPoint == null) return;
+        if (UdpEndPoint == null)
+            return;
         int seqNo = GetNextReliableSequence();
 
         using (ByteBuffer finalBuffer = ByteBufferPool.Get())
@@ -389,5 +411,11 @@ public class Session
         // Bellek güvenliği için referansları koparalım
         this.Account = null;
         this.PlayerData = null;
+    }
+
+    public void Dispose()
+    {
+        Close();
+        GC.SuppressFinalize(this);
     }
 }

@@ -1,28 +1,25 @@
 [PacketHandler(MessageType.CreateTeamRequest)]
-public static class CreateTeamHandler
+public class CreateTeamHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
-       
-
         if (session.TeamID != 0)
         {
             MessageCodeManager.Send(session, MessageCodeManager.Message.AlreadyInTeam);
             return;
         }
-        if (session.Account == null) return;
+        if (session.Account == null)
+            return;
         var Account = session.Account;
-            if (Account == null) return;
+        if (Account == null)
+            return;
         Lobby Lobby = LobbyManager.CreateLobby(Account);
 
         ByteBuffer buffer = ByteBufferPool.Get();
 
-        session.Send(new CreateTeamResponsePacket { 
-            TeamId = Lobby.ID,
-             Link = Lobby.Link
-         }); 
-        session.TeamID = Lobby.ID;   
-        
+        session.Send(new CreateTeamResponsePacket { TeamId = Lobby.ID, Link = Lobby.Link });
+        session.TeamID = Lobby.ID;
+
         // Görev İlerlemesi - Takım Kurma
         QuestManager.CheckQuestProgress(Account, Quest.MissionType.CreateTeam);
 
@@ -31,13 +28,12 @@ public static class CreateTeamHandler
             Flags = TeamMessageFlags.HasSystem,
             EventType = TeamEventType.CreateMessage,
             SenderName = Account.Username,
-            SenderId = Account.ID
+            SenderId = Account.ID,
         };
-                 
 
         lock (Lobby.SyncLock)
         {
-            foreach(var member in Lobby.Players)
+            foreach (var member in Lobby.Players)
             {
                 if (SessionManager.IsOnline(member.ID))
                 {

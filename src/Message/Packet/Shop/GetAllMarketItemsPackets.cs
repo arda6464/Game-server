@@ -1,6 +1,5 @@
-ï»¿using System.Collections.Generic;
+using System.Collections.Generic;
 
-[PacketHandler(MessageType.GetAllMarketItemsRequest)]
 public class GetAllMarketItemsRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer)
@@ -30,7 +29,7 @@ public class GetAllMarketItemsResponsePacket : IPacket
 
     public class OfferReward
     {
-        public int Type { get; set; }   // ItemType enum deÄŸeri
+        public int Type { get; set; }   // ItemType enum deðeri
         public int Count { get; set; }  // Miktar
     }
 
@@ -51,7 +50,7 @@ public class GetAllMarketItemsResponsePacket : IPacket
     {
         buffer.WriteVarInt((int)MessageType.GetAllMarketItemsResponse);
 
-        // â”€â”€â”€ ÃœrÃ¼nler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ¦¦¦ Ürünler ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦
         buffer.WriteVarInt(Items.Count);
         foreach (var item in Items)
         {
@@ -65,7 +64,7 @@ public class GetAllMarketItemsResponsePacket : IPacket
                 buffer.WriteVarInt(item.DiscountedPrice);
         }
 
-        // â”€â”€â”€ Teklifler (Ã§oklu reward destekli) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ¦¦¦ Teklifler (çoklu reward destekli) ¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦
         bool hasOffers = Offers.Count > 0;
         buffer.WriteBool(hasOffers);
 

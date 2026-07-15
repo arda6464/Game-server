@@ -1,13 +1,9 @@
 [PacketHandler(MessageType.ClubEditRequest)]
-public static class ClubEditHandler
+public class ClubEditHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(message, true);
-
-        var request = new ClubEditRequestPacket();
-        request.Deserialize(read);
+        var request = data.DeserializePacket<ClubEditRequestPacket>();
 
         string? ClubName = request.ClubName;
         string? ClubAciklama = request.ClubDescription;

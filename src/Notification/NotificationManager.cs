@@ -6,7 +6,4 @@ public static class NotificationManager
         var logic = session?.Logic ?? new Logic.AccountLogic(account, session);
         logic.AddNotification(notification);
     }
-
-
-    
 }

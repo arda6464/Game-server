@@ -1,21 +1,19 @@
 [PacketHandler(MessageType.AllNotificationViewed)]
-public static class AllNotificationViewedHandler
+public class AllNotificationViewedHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
-
-        if (session.Account == null) return;
+        if (session.Account == null)
+            return;
         var acccount = session.Account;
 
-
-        foreach(var notification in acccount.inboxesNotifications)
+        foreach (var notification in acccount.inboxesNotifications)
         {
             if (!notification.IsViewed)
             {
-                notification.IsViewed= true;
+                notification.IsViewed = true;
             }
-            
         }
-           Console.WriteLine("Tüm bildirimler okundu");
+        Console.WriteLine("Tüm bildirimler okundu");
     }
 }

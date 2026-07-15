@@ -10052,3 +10052,1930 @@ bu ödül size :)
 [2026-07-05 13:17:05] [BOOT] Version 1.0 online.
 [2026-07-05 13:17:05] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
 [2026-07-05 13:17:05] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 14:23:31] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 14:23:31] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 14:23:31] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 14:23:32] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 14:23:32] [OK] [HttpRouter] 41 endpoint registered.
+[2026-07-05 14:23:32] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 14:23:32] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 14:23:32] [OK] [HttpRouter] 41 endpoint registered.
+[2026-07-05 14:23:32] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 14:23:32] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 14:23:32] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 14:23:32] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 14:23:32] [OK] Server ready in 0,2s on port 5000.
+[2026-07-05 14:23:32] [BOOT] Version 1.0 online.
+[2026-07-05 14:25:56] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-05 14:25:56] [BOOT] Saving data and stopping services.
+[2026-07-05 14:25:56] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-05 14:25:56] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 14:25:56] [GENERAL] [Maintenance] bakım molası aktif panicmode: Acil
+[2026-07-05 14:25:56] [BOOT] Saving data and stopping services.
+[2026-07-05 14:25:56] [GENERAL] [Maintenance] bakım molası aktif panicmode: Acil
+[2026-07-05 14:26:01] [GENERAL] [Maintenance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-05 14:26:01] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-05 14:26:01] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-05 14:26:01] [BOOT] [SERVER] Shutdown starting...
+[2026-07-05 14:26:01] [OK] Shutdown complete. All data flushed.
+[2026-07-05 14:26:26] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 14:26:26] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 14:26:26] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 14:26:26] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 14:26:26] [OK] [HttpRouter] 41 endpoint registered.
+[2026-07-05 14:26:26] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 14:26:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 14:26:26] [OK] [HttpRouter] 41 endpoint registered.
+[2026-07-05 14:26:26] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 14:26:26] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 14:26:26] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 14:26:26] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 14:26:26] [OK] Server ready in 0,3s on port 5000.
+[2026-07-05 14:26:26] [BOOT] Version 1.0 online.
+[2026-07-05 15:15:22] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 15:15:22] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 15:15:22] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 15:15:23] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 15:15:23] [OK] [HttpRouter] 41 endpoint registered.
+[2026-07-05 15:15:23] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 15:15:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 15:15:23] [OK] [HttpRouter] 41 endpoint registered.
+[2026-07-05 15:15:23] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 15:15:23] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 15:15:23] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 15:15:23] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 15:15:23] [OK] Server ready in 0,2s on port 5000.
+[2026-07-05 15:15:23] [BOOT] Version 1.0 online.
+[2026-07-05 15:29:12] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 15:29:12] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 15:29:12] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 15:29:12] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 15:29:12] [OK] [HttpRouter] 41 endpoint registered.
+[2026-07-05 15:29:12] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 15:29:12] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 15:29:13] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 15:29:13] [OK] [HttpRouter] 41 endpoint registered.
+[2026-07-05 15:29:13] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 15:29:13] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 15:29:13] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 15:29:13] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 15:29:13] [OK] Server ready in 0,3s on port 5000.
+[2026-07-05 15:29:13] [BOOT] Version 1.0 online.
+[2026-07-05 15:55:24] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 15:55:24] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 15:55:24] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 15:55:25] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 15:55:25] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 15:55:26] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 15:55:26] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 15:55:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 15:55:26] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 15:55:26] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 15:55:26] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 15:55:26] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 15:55:26] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 15:55:26] [OK] Server ready in 0,4s on port 5000.
+[2026-07-05 15:55:26] [BOOT] Version 1.0 online.
+[2026-07-05 15:58:14] [GENERAL] [AdminAudit] admin -> Admin Hesabı Oluşturuldu on testadmin: Rol: Admin
+[2026-07-05 15:58:50] [GENERAL] [AdminAudit] admin -> Admin Hesabı Oluşturuldu on testadmin99: Rol: Admin
+[2026-07-05 16:00:54] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 16:00:54] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:00:54] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:00:55] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:00:55] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:00:55] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:00:55] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:00:55] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:00:55] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 16:00:55] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 16:00:55] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 16:00:55] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 16:00:55] [OK] Server ready in 0,5s on port 5000.
+[2026-07-05 16:00:55] [BOOT] Version 1.0 online.
+[2026-07-05 16:01:33] [GENERAL] [AdminAudit] admin -> Admin Hesabı Oluşturuldu on test99: Rol: Admin
+[2026-07-05 16:01:42] [GENERAL] [AdminAudit] admin -> Acil Duyuru on Tüm Çevrimiçi Oyuncular: 0 oyuncuya gönderildi: Test message
+[2026-07-05 16:01:42] [GENERAL] arda kullanıcısına bildirim eklendi: Duyuru
+[2026-07-05 16:01:42] [GENERAL] [AdminAudit] admin -> Duyuru Yayınlandı on Duyuru: 1 oyuncuya gönderildi. Tip: 2
+[2026-07-05 16:01:42] [GENERAL] arda kullanıcısına bildirim eklendi: Test
+[2026-07-05 16:01:42] [GENERAL] [AdminAudit] admin -> Toplu Paket Gönderildi on Tüm Oyuncular: 1 oyuncuya 1 adet ödül
+[2026-07-05 16:02:08] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 16:02:08] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:02:08] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:02:08] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:02:08] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:02:08] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:02:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:02:08] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:02:08] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 16:02:08] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 16:02:08] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 16:02:08] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 16:02:08] [OK] Server ready in 0,6s on port 5000.
+[2026-07-05 16:02:08] [BOOT] Version 1.0 online.
+[2026-07-05 16:04:26] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 16:04:26] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:04:26] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:04:26] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:04:26] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:04:26] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:04:26] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:04:26] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:04:26] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 16:04:26] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 16:04:26] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 16:04:26] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 16:04:26] [OK] Server ready in 0,2s on port 5000.
+[2026-07-05 16:04:26] [BOOT] Version 1.0 online.
+[2026-07-05 16:05:44] [GENERAL] [AdminAudit] admin -> Admin Hesabı Silindi on test99: Hesap sistemden kaldırıldı.
+[2026-07-05 16:05:44] [GENERAL] arda kullanıcısına bildirim eklendi: Test
+[2026-07-05 16:05:44] [GENERAL] [AdminAudit] admin -> Özel Paket Gönderildi on arda: Ödül: 1 adet
+[2026-07-05 16:06:42] [GENERAL] [AdminAudit] admin -> Oyuncu Güncellendi on arda: Profil bilgileri düzenlendi.
+[2026-07-05 16:06:42] [GENERAL] [AdminAudit] admin -> Admin Hesabı Oluşturuldu on finaltest: Rol: Admin
+[2026-07-05 16:10:41] [GENERAL] [DynamicConfig] Yapılandırma güncellendi.
+[2026-07-05 16:10:43] [GENERAL] [DynamicConfig] Yapılandırma güncellendi.
+[2026-07-05 16:10:43] [GENERAL] [DynamicConfig] Yapılandırma güncellendi.
+[2026-07-05 16:10:44] [GENERAL] [DynamicConfig] Yapılandırma güncellendi.
+[2026-07-05 16:10:45] [GENERAL] [DynamicConfig] Yapılandırma güncellendi.
+[2026-07-05 16:15:08] [GENERAL] arda kullanıcısına bildirim eklendi: Test
+[2026-07-05 16:15:08] [GENERAL] [AdminAudit] admin -> Duyuru Yayınlandı on Test: 1 oyuncuya gönderildi. Tip: 2
+[2026-07-05 16:15:16] [GENERAL] arda kullanıcısına bildirim eklendi: Test Proxy
+[2026-07-05 16:15:16] [GENERAL] [AdminAudit] admin -> Duyuru Yayınlandı on Test Proxy: 1 oyuncuya gönderildi. Tip: 2
+[2026-07-05 16:18:47] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 16:18:47] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:18:47] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:18:48] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:18:48] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:18:48] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:18:48] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:18:48] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:18:48] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 16:18:48] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 16:18:48] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 16:18:48] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 16:18:48] [OK] Server ready in 0,2s on port 5000.
+[2026-07-05 16:18:48] [BOOT] Version 1.0 online.
+[2026-07-05 16:19:23] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 16:19:23] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:19:23] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:19:23] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:19:23] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:19:23] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:19:23] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:19:23] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:19:23] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 16:19:23] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 16:19:23] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 16:19:23] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 16:19:23] [OK] Server ready in 0,2s on port 5000.
+[2026-07-05 16:19:23] [BOOT] Version 1.0 online.
+[2026-07-05 16:19:55] [GENERAL] [DynamicConfig] Yapılandırma güncellendi.
+[2026-07-05 16:38:07] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 16:38:07] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:38:07] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:38:07] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:38:07] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:38:07] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:38:07] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:38:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:38:08] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:38:08] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 16:38:08] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 16:38:08] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 16:38:08] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 16:38:08] [OK] Server ready in 0,3s on port 5000.
+[2026-07-05 16:38:08] [BOOT] Version 1.0 online.
+[2026-07-05 16:49:54] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 16:49:54] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:49:54] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:49:54] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:49:54] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:49:54] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:49:54] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:49:54] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:49:54] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 16:49:54] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 16:49:54] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 16:49:54] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 16:49:54] [OK] Server ready in 0,2s on port 5000.
+[2026-07-05 16:49:54] [BOOT] Version 1.0 online.
+[2026-07-05 16:50:16] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 16:50:16] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:50:16] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 16:50:17] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:50:17] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:50:17] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 16:50:17] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 16:50:17] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 16:50:17] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 16:50:17] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 16:50:17] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 16:50:17] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 16:50:17] [OK] Server ready in 0,2s on port 5000.
+[2026-07-05 16:50:17] [BOOT] Version 1.0 online.
+[2026-07-05 16:50:28] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-05 16:50:28] [GENERAL] [NotificationSender] Bildirim gönderildi: Hello
+[2026-07-05 16:50:28] [GENERAL] [NotificationSender] Bildirim gönderildi: Hello World
+[2026-07-05 16:50:28] [GENERAL] [NotificationSender] Bildirim gönderildi: Hello from proxy
+[2026-07-05 16:50:42] [GENERAL] [DeliveryManager] Ödül uygulandı: Coins (Data: 0, Count: 126) -> arda
+[2026-07-05 16:50:42] [GENERAL] [ClaimHandler] arda günlük ödülünü topladı: (Coins kalem Gacha gönderildi)
+[2026-07-05 16:51:02] [GENERAL] [ShopItemsHandler] 1 → 1 ürün, 0 global + 1 kişisel teklif gönderildi.
+[2026-07-05 16:51:05] [GENERAL] [BuyMarketItemHandler] arda (1) → Item 2000 başarısız: ItemNotFound
+[2026-07-05 16:51:22] [GENERAL] [GetUpdateNotesHandler] 1 → 0 güncelleme notu gönderildi.
+[2026-07-05 16:51:36] [GENERAL] [Lobby Manager] Lobby oluşturuldu: 318576
+[2026-07-05 16:53:27] [GENERAL] [AdminServer] Web üzerinden komut alındı: /h
+[2026-07-05 16:58:28] [GENERAL] [ShopItemsHandler] 1 → 1 ürün, 0 global + 1 kişisel teklif gönderildi.
+[2026-07-05 16:58:29] [GENERAL] [BuyMarketItemHandler] arda (1) → Item 2002 başarısız: ItemNotFound
+[2026-07-05 16:58:29] [GENERAL] [BuyMarketItemHandler] arda (1) → Item 2002 başarısız: ItemNotFound
+[2026-07-05 16:58:30] [GENERAL] [BuyMarketItemHandler] arda (1) → Item 2000 başarısız: ItemNotFound
+[2026-07-05 16:58:52] [GENERAL] [BuyMarketItemHandler] arda (1) → Item 2000 başarısız: ItemNotFound
+[2026-07-05 17:00:28] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-07-05 17:00:28] [GENERAL] arda kullanıcısına bildirim eklendi: SİSTEM
+[2026-07-05 17:00:28] [GENERAL] [AdminAudit] admin -> Özel Paket Gönderildi on arda: Ödül: 1 adet
+[2026-07-05 17:00:52] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-07-05 17:00:52] [GENERAL] [AdminAudit] admin -> Duyuru Yayınlandı on SİSTEM DUYURUSU: 1 oyuncuya gönderildi. Tip: 0
+[2026-07-05 17:04:42] [GENERAL] [Maintenance] bakım molası aktif panicmode: Acil
+[2026-07-05 17:04:42] [GENERAL] [NotificationSender] Bildirim gönderildi: Sunucumuz bakım molasına giriyor
+[2026-07-05 17:04:47] [GENERAL] [Lobby Manager] 318576'li lobby başarıyla silindi.
+[2026-07-05 17:04:47] [GENERAL] [Maintenance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-05 17:08:43] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-05 17:09:37] [GENERAL] [AdminAudit] admin -> Admin Hesabı Silindi on testadmin: Hesap sistemden kaldırıldı.
+[2026-07-05 17:09:40] [GENERAL] [AdminAudit] admin -> Admin Hesabı Silindi on testadmin99: Hesap sistemden kaldırıldı.
+[2026-07-05 17:09:43] [GENERAL] [AdminAudit] admin -> Admin Hesabı Silindi on finaltest: Hesap sistemden kaldırıldı.
+[2026-07-05 17:10:05] [GENERAL] [Maintenance] bakım başarıyla sona erdi
+[2026-07-05 17:10:09] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-05 17:10:09] [GENERAL] [NotificationSender] Bildirim gönderildi: test
+[2026-07-05 17:37:07] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-05 17:37:07] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 17:37:07] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 17:37:07] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 17:37:07] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 17:37:08] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 17:37:08] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-05 17:37:08] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-05 17:37:08] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-05 17:37:08] [GENERAL] [UDP] Server listening on 5000
+[2026-07-05 17:37:08] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-05 17:37:08] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-05 17:37:08] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-05 17:37:08] [OK] Server ready in 0,9s on port 5000.
+[2026-07-05 17:37:08] [BOOT] Version 1.0 online.
+[2026-07-05 17:37:14] [GENERAL] [TCP] Game client connected: 192.168.1.2
+[2026-07-05 17:37:14] [GENERAL] [NotificationSender] Bildirim gönderildi: Artık tüm işlemleriniz sadece sayısal ID üzerinden yapılmaktadır.
+[2026-07-05 17:37:19] [GENERAL] arda64best -> arda (İsim değiştirildi)
+[2026-07-05 17:37:21] [GENERAL] [DeliveryManager] Ödül uygulandı: Coins (Data: 0, Count: 62) -> arda
+[2026-07-05 17:37:21] [GENERAL] [ClaimHandler] arda günlük ödülünü topladı: (Coins kalem Gacha gönderildi)
+[2026-07-05 17:37:41] [WARN] Ctrl+C detected. Starting graceful shutdown.
+[2026-07-05 17:37:41] [BOOT] Saving data and stopping services.
+[2026-07-05 17:37:41] [GENERAL] [Config] FileSystemWatcher durduruldu.
+[2026-07-05 17:37:41] [GENERAL] [Config] Config kaydedildi: C:\Project\Game-server\src\Data\config.json
+[2026-07-05 17:37:41] [GENERAL] [Maintenance] bakım molası aktif panicmode: Acil
+[2026-07-05 17:37:42] [BOOT] Saving data and stopping services.
+[2026-07-05 17:37:42] [GENERAL] [Maintenance] bakım molası aktif panicmode: Acil
+[2026-07-05 17:37:46] [GENERAL] [Maintenance] bakım modune girildi aktif oturum sayısı: 0
+[2026-07-05 17:37:46] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi durduruldu.
+[2026-07-05 17:37:46] [GENERAL] [AdminServer] Admin paneli durduruldu.
+[2026-07-05 17:37:46] [BOOT] [SERVER] Shutdown starting...
+[2026-07-05 17:37:46] [OK] Shutdown complete. All data flushed.
+[2026-07-06 00:25:21] [GENERAL] [Config] C:\Project\Game-server\src\Data\config.json yüklendi
+[2026-07-06 00:25:21] [GENERAL] [Config] Config değişiklikleri izleniyor: C:\Project\Game-server\src\Data\config.json
+[2026-07-06 00:25:21] [GENERAL] [Config] Config başarıyla yüklendi: C:\Project\Game-server\src\Data\config.json
+[2026-07-06 00:25:21] [GENERAL] [AndroidNotificationManager] Firebase başarıyla başlatıldı.
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-06 00:25:21] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-06 00:25:21] [GENERAL] [AdminServer] Admin servisleri hazır.
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/admin/accounts
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/admin/logs
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/admin/create
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/admin/delete
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/announce
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/auth/login
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/auth/logout
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/auth/check
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/broadcast/alert
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/clubs
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/clubs/update
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/clubs/delete
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/clubs/kick
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/dynamicconfig
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/dynamicconfig/update
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/maintenance/toggle
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/command
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/delivery/send
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/gacha/all
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/gacha/add
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/gacha/remove
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/market/analytics
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/market/all
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/market/item/add
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/market/item/remove
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/add
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/market/offer/remove
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/matches
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/players
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/player/profile
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/update
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/ban
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/unban
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/kick
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/mute
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/unmute
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/player/send-message
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/reports
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/reports/resolve
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/reports/delete
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/seasons
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/seasons/player
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/seasons/save
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/seasons/open
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/seasons/close
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/seasons/reset
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/status
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/traffic/details
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/traffic/history
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/logs
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/client/errors
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/client/errors/clear
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/support/tickets
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/support/reply
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/support/close
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: GET /api/updates/all
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/updates/save
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/updates/delete
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/updates/publish
+[2026-07-06 00:25:21] [GENERAL] [HttpRouter] Registered: POST /api/updates/reorder
+[2026-07-06 00:25:21] [OK] [HttpRouter] 60 endpoint registered.
+[2026-07-06 00:25:21] [GENERAL] [UDP] Server listening on 5000
+[2026-07-06 00:25:21] [GENERAL] [ScheduleManager] Zamanlayıcı sistemi başlatıldı.
+[2026-07-06 00:25:21] [GENERAL] [MULTIPLEXER] Listening on port 5000
+[2026-07-06 00:25:21] [GENERAL] [DynamicConfig] Yapılandırma yüklendi.
+[2026-07-06 00:25:21] [OK] Server ready in 0,2s on port 5000.
+[2026-07-06 00:25:21] [BOOT] Version 1.0 online.

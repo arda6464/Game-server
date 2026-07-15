@@ -22,7 +22,8 @@ public static class DiscordAdminCommand
             return;
         }
         Config.AddAdmin(user.Id);
-        BotManager.istance?.LoadAdminIDs().GetAwaiter().GetResult();
+        if (BotManager.istance != null)
+            await BotManager.istance.LoadAdminIDs();
 
         await command.RespondAsync($"Kullanıcı {user.Username} yönetici olarak eklendi!", ephemeral: false);
     }
@@ -43,7 +44,8 @@ public static class DiscordAdminCommand
             return;
         }
         Config.RemoveAdmin(user.Id);
-        BotManager.istance?.LoadAdminIDs().GetAwaiter().GetResult();
+        if (BotManager.istance != null)
+            await BotManager.istance.LoadAdminIDs();
 
         await command.RespondAsync($"Kullanıcı {user.Username} yönetici olarak kaldırıldı!", ephemeral: false);
     }

@@ -150,7 +150,7 @@ public static class SystemInfoCommand
                 return totalKB / 1024.0f;
             }
         }
-        catch { }
+        catch { Logger.warnlog("[SystemInfo] Failed to get total RAM"); }
         return 0;
     }
 
@@ -194,7 +194,7 @@ public static class SystemInfoCommand
                 return ("Bağlı", (int)pingTime, ipAddress);
             }
         }
-        catch { }
+        catch { Logger.warnlog("[SystemInfo] Failed to get network info"); }
 
         return ("Bağlı Değil", 0, "Bilinmiyor");
     }
@@ -295,7 +295,7 @@ public static class SystemInfoCommand
                 return obj["Name"]?.ToString() ?? "Bilinmiyor";
             }
         }
-        catch { }
+        catch { Logger.warnlog("[SystemInfo] Failed to get CPU name"); }
         return "Bilinmiyor";
     }
 

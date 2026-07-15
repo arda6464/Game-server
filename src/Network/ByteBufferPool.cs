@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Threading;
 
 public static class ByteBufferPool
 {
@@ -12,14 +13,13 @@ public static class ByteBufferPool
             return buffer;
         }
 
-        // Havuz boşsa yeni üret (Zamanla havuz kendi boyutunu bulacaktır)
         return new ByteBuffer();
     }
 
     public static void Return(ByteBuffer buffer)
     {
-        // Temizle ve havuza geri koy
         buffer.Reset();
+        buffer._returnGuard = 0;
         _pool.Add(buffer);
     }
 }

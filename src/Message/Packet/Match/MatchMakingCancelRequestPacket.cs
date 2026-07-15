@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.MatchMakingCancelRequest)]
 public class MatchMakingCancelRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer)

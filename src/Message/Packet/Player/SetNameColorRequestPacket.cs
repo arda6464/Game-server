@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.ChangeNameColorRequest)]
 public class SetNameColorRequestPacket : IPacket
 {
     public int ColorId { get; set; }

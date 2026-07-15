@@ -1,33 +1,32 @@
 using System;
 
 [PacketHandler(MessageType.SupportMessageSend)]
-public static class GetChatMessage
+public class GetChatMessage : IGameMessage
 {
-    public static void Handle(Session session,byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer buffer = ByteBufferPool.Get();
-        buffer.WriteBytes(message);
-        
-        var request = new SupportSendMessageRequestPacket();
-        request.Deserialize(buffer);
-        
+        var request = data.DeserializePacket<SupportSendMessageRequestPacket>();
+
         int ticketno = request.TicketNo;
         string content = request.Content;
-        buffer.Dispose();
 
-        if (session.Account == null) return;
+        if (session.Account == null)
+            return;
         var account = session.Account;
 
         SupportTicketData ticketData = TicketManager.GetTicketDataByNo(session.ID, ticketno);
-        if (ticketData == null) return;
+        if (ticketData == null)
+            return;
 
-        ticketData.ticketMessages.Add(new TicketMessage
-        {
-            Name = account.Username,
-            Message = content,
-            time = DateTime.Now
-        });
-        
+        ticketData.ticketMessages.Add(
+            new TicketMessage
+            {
+                Name = account.Username,
+                Message = content,
+                time = DateTime.Now,
+            }
+        );
+
         BotManager.istance.TicketSystem.SendTicketMessage(session.ID, content, ticketData.ID);
     }
 }

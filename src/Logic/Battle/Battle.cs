@@ -15,10 +15,10 @@ public partial class Battle
 
     public int BulletIdCounter = 0;
     public int LootIdCounter = 0;
-    public List<Player> Players { get; set; } = new List<Player>();
-    public List<Bullet> Bullets { get; set; } = new List<Bullet>();
-    public List<LootItem> Loots { get; set; } = new List<LootItem>();
-    public List<PickupData> Pickups { get; set; } = new List<PickupData>();
+    private List<Player> _players = new List<Player>();
+    private List<Bullet> _bullets = new List<Bullet>();
+    private List<LootItem> _loots = new List<LootItem>();
+    private List<PickupData> _pickups = new List<PickupData>();
     public DateTime StartedAt { get; private set; } = DateTime.MinValue;
 
     private readonly object _lock = new object();
@@ -92,7 +92,7 @@ public partial class Battle
         UpdateAutoFire();
         UpdatePlayerPositions();
         UpdatePickups();
-        UpdateBullets();
+        Update_bullets();
         BroadcastSnapshot();
     }
 
@@ -100,7 +100,7 @@ public partial class Battle
     {
         lock (_lock)
         {
-            Bullets.Add(bullet);
+            _bullets.Add(bullet);
             Logger.battlelog($"[BATTLE {BattleId}] Bullet added: id={bullet.BulletId} owner={bullet.OwnerID} pos={FormatVec3(bullet.Position)} dir={FormatVec3(bullet.Direction)} range={bullet.Range:0.##} speed={bullet.Speed:0.##}");
         }
     }
@@ -114,7 +114,7 @@ public partial class Battle
     {
         lock (_lock)
         {
-            Bullets.RemoveAll(b => b.BulletId == bulletId);
+            _bullets.RemoveAll(b => b.BulletId == bulletId);
         }
     }
 
@@ -122,16 +122,16 @@ public partial class Battle
     {
         lock (_lock)
         {
-            return Bullets.FirstOrDefault(b => b.BulletId == id);
+            return _bullets.FirstOrDefault(b => b.BulletId == id);
         }
     }
 
-    private void UpdateBullets()
+    private void Update_bullets()
     {
         lock (_lock)
         {
             float currentTime = GetCurrentTime();
-            foreach (var bullet in Bullets.ToList())
+            foreach (var bullet in _bullets.ToList())
             {
                 if (bullet.IsActive)
                 {
@@ -206,7 +206,7 @@ public partial class Battle
 
                 if (!bullet.IsActive && (currentTime - bullet.DeathTime) > 3.0f)
                 {
-                    Bullets.Remove(bullet);
+                    _bullets.Remove(bullet);
                     Logger.battlelog($"[BATTLE {BattleId}] Bullet removed: id={bullet.BulletId}");
                 }
             }
@@ -261,7 +261,7 @@ public partial class Battle
         {
             float now = GetCurrentTime();
 
-            foreach (var player in Players)
+            foreach (var player in _players)
             {
                 if (player.ActiveGun == null)
                     continue;
@@ -286,7 +286,7 @@ public partial class Battle
         List<Player> snapshot;
         lock (_lock)
         {
-            snapshot = Players.ToList();
+            snapshot = _players.ToList();
         }
 
         foreach (var player in snapshot)
@@ -385,7 +385,7 @@ public partial class Battle
             float deltaTime = TickManager.instance.DeltaTime;
             uint currentTick = TickManager.instance.Get_Tick();
 
-            foreach (var player in Players)
+            foreach (var player in _players)
             {
                 if (player.Collider != null)
                 {
@@ -475,7 +475,7 @@ public partial class Battle
     {
         lock (_lock)
         {
-            var player = Players.FirstOrDefault(p => p.ID == id);
+            var player = _players.FirstOrDefault(p => p.ID == id);
             if (player == null) return;
 
             if (player.Collider == null)
@@ -532,7 +532,7 @@ public partial class Battle
     {
         lock (_lock)
         {
-            return Players.FirstOrDefault(p => p.ID == id);
+            return _players.FirstOrDefault(p => p.ID == id);
         }
     }
 
@@ -540,7 +540,7 @@ public partial class Battle
     {
         lock (_lock)
         {
-            return Players.ToList();
+            return _players.ToList();
         }
     }
 
@@ -548,7 +548,7 @@ public partial class Battle
     {
         lock (_lock)
         {
-            return Loots.ToList();
+            return _loots.ToList();
         }
     }
 
@@ -558,7 +558,7 @@ public partial class Battle
         {
             player.BattleId = BattleId;
 
-            int spawnIndex = Players.Count % PlayerSpawnPoints.Count;
+            int spawnIndex = _players.Count % PlayerSpawnPoints.Count;
             player.Position = PlayerSpawnPoints[spawnIndex];
 
             if (player.session?.PlayerData != null)
@@ -571,8 +571,8 @@ public partial class Battle
             World.AddColliderDynamic(player.Collider);
             RefreshActiveGunFromSelectedSlot(player);
 
-            Players.Add(player);
-            Logger.battlelog($"[BATTLE {BattleId}] Player added: {player.Username} (Total: {Players.Count})");
+            _players.Add(player);
+            Logger.battlelog($"[BATTLE {BattleId}] Player added: {player.Username} (Total: {_players.Count})");
         }
     }
 
@@ -580,7 +580,7 @@ public partial class Battle
     {
         lock (_lock)
         {
-            var player = Players.FirstOrDefault(p => p.ID == id);
+            var player = _players.FirstOrDefault(p => p.ID == id);
             if (player?.Collider != null)
                 World.RemoveColliderDynamic(player.Collider);
 
@@ -589,8 +589,8 @@ public partial class Battle
                 SessionManager.UnRegisterUdpSession(player.session.UdpEndPoint);
             }
 
-            Players.RemoveAll(p => p.ID == id);
-            Logger.battlelog($"[BATTLE {BattleId}] Player removed: {id} (Remaining: {Players.Count})");
+            _players.RemoveAll(p => p.ID == id);
+            Logger.battlelog($"[BATTLE {BattleId}] Player removed: {id} (Remaining: {_players.Count})");
         }
     }
 
@@ -614,8 +614,12 @@ public partial class Battle
         };
         SendToAllPlayer(packet, true);
 
-        int placement = Players.Count(p => p.IsAlive) + 1;
-        int playerCount = Players.Count;
+        int placement, playerCount;
+        lock (_lock)
+        {
+            placement = _players.Count(p => p.IsAlive) + 1;
+            playerCount = _players.Count;
+        }
         SendMatchResult(deadPlayer, false, placement, playerCount, 0);
 
         var itemsToDrop = deadPlayer.InventorySlots.Where(s => s.DataId != 0).ToList();
@@ -674,10 +678,10 @@ public partial class Battle
         {
             if (State != BattleState.Active) return;
 
-            var alivePlayers = Players.Where(p => p.IsAlive).ToList();
+            var alivePlayers = _players.Where(p => p.IsAlive).ToList();
             if (alivePlayers.Count == 1)
             {
-                SendMatchResult(alivePlayers[0], true, 1, Players.Count, 100);
+                SendMatchResult(alivePlayers[0], true, 1, _players.Count, 100);
                 Stop();
             }
             else if (alivePlayers.Count == 0)

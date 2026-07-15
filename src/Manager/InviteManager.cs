@@ -43,7 +43,7 @@ public static class InviteManager
                     }
                 }
             }
-            catch { }
+            catch { /* Best-effort IP detection */ }
             _detectedIp ??= "127.0.0.1";
         }
 

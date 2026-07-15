@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.MatchMakingRequest)]
 public class MatchMakingRequestPacket : IPacket
 {
     public void Serialize(ByteBuffer buffer)

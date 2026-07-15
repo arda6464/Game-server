@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.SignAccount)]
 public class CreateAccountPacket : IPacket
 {
     public string Email { get; set; }

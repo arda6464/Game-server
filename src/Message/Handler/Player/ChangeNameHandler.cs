@@ -1,16 +1,12 @@
 [PacketHandler(MessageType.ChangeNameRequest)]
-public static class ChangeNameHandler
+public class ChangeNameHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(message, true);
+        var request = data.DeserializePacket<ChangeNameRequestPacket>();
 
-        var request = new ChangeNameRequestPacket();
-        request.Deserialize(read);
-        
         string newname = request.NewName;
-        read.Dispose();
+       
 
         session.Logic.ChangeName(newname);
     }

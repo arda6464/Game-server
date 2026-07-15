@@ -1,6 +1,5 @@
-﻿using Logic;
+using Logic;
 
-[PacketHandler(MessageType.ShowProfileRequest)]
 public class ShowProfileRequestPacket : IPacket
 {
    

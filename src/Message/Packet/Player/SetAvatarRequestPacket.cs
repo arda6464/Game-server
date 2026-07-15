@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.SetAvatarRequest)]
 public class SetAvatarRequestPacket : IPacket
 {
     public int AvatarId { get; set; }

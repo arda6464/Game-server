@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.ClientErrorRequest)]
 public class ClientErrorPacket : IPacket
 {
     public string? LogMessage { get; set; }

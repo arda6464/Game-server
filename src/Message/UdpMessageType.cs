@@ -4,14 +4,14 @@
 /// </summary>
 public enum UdpMessageType : byte
 {
-    Connect ,
+    Connect,
     ConnectResponse,
     Move,
     Shoot,
     Input,
     PickupRequest,
     PickupResponse,
-    LootTaken ,
+    LootTaken,
     GiveUp,
     ItemAdded,
     ChangeSlotRequest,
@@ -22,4 +22,5 @@ public enum UdpMessageType : byte
     Pong,
     PlayerDead,
     LootSpawned,
+    WorldSnapshot,
 }

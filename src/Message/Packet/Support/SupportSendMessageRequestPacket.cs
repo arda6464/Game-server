@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.SupportMessageSend)]
 public class SupportSendMessageRequestPacket : IPacket
 {
     public int TicketNo { get; set; }

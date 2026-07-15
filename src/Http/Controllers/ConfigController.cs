@@ -14,7 +14,7 @@ public class ConfigController : BaseController
     {
         if (newConfig == null) return Fail("Geçersiz veri.");
         DynamicConfigManager.Update(newConfig);
-        return Ok("Yapılandırma güncellendi.");
+        return new { success = true, message = "Yapılandırma güncellendi." };
     }
 
     [HttpRoute("POST", "/api/maintenance/toggle")]

@@ -2,18 +2,20 @@ using System;
 using System.Linq;
 
 [PacketHandler(MessageType.ClaimDailyRewardRequest)]
-public static class ClaimDailyRewardHandler
+public class ClaimDailyRewardHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
         var account = session.Account;
-        if (account == null) return;
+        if (account == null)
+            return;
 
         lock (account.SyncLock)
         {
             var response = new DailyLoginClaimPacket();
-            var dailyReward = account.DailyStreakWindow
-                .FirstOrDefault(reward => reward != null && reward.Day == account.DailyRewardStreak);
+            var dailyReward = account.DailyStreakWindow.FirstOrDefault(reward =>
+                reward != null && reward.Day == account.DailyRewardStreak
+            );
 
             if (dailyReward == null)
             {
@@ -50,7 +52,9 @@ public static class ClaimDailyRewardHandler
 
             session.Send(response);
 
-            Logger.genellog($"[ClaimHandler] {account.Username} günlük ödülünü topladı: ({response.Drop.Type} kalem Gacha gönderildi)");
+            Logger.genellog(
+                $"[ClaimHandler] {account.Username} günlük ödülünü topladı: ({response.Drop.Type} kalem Gacha gönderildi)"
+            );
         }
     }
 }

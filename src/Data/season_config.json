@@ -1,9 +1,9 @@
 {
   "CurrentSeasonId": 1,
   "SeasonName": "Season 1",
-  "IsActive": false,
-  "StartTimeUtc": "2026-06-24T19:44:00Z",
-  "EndTimeUtc": "2026-08-23T07:00:00Z",
+  "IsActive": true,
+  "StartTimeUtc": "2026-07-05T13:20:01.0279958Z",
+  "EndTimeUtc": "2026-09-03T13:20:01.0279959Z",
   "HardResetTrophies": true,
   "ResetTrophyTo": 0,
   "RewardTiers": [

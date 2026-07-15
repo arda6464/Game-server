@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.NewFBNTokenRequest)]
-public static class NewFBNTokenHandler
+public class NewFBNTokenHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         using (ByteBuffer read = ByteBufferPool.Get())
         {

@@ -2,7 +2,7 @@ using Logic;
 
 public static class MatchMaking
 {
-    public static readonly List<Session> waitingQueue = new();
+    private static readonly List<Session> waitingQueue = new();
     private static readonly object lockObj = new();
     public static int PlayersPerMatch = 2; //
     public static void JoinQueue(Session session)
@@ -11,12 +11,18 @@ public static class MatchMaking
         int currentCount;
         bool matchReady = false;
 
+        if (session?.PlayerData == null)
+        {
+            Console.WriteLine("Hata: Session veya PlayerData null!");
+            return;
+        }
+
         lock (lockObj)
         {
             if (waitingQueue.Contains(session)) return;
 
             waitingQueue.Add(session);
-            Console.WriteLine($"{session.PlayerData?.Username} matchmaking'e katildı. Toplam: {waitingQueue.Count}");
+            Console.WriteLine($"{session.PlayerData.Username} matchmaking'e katildı. Toplam: {waitingQueue.Count}");
 
             toNotify = waitingQueue.ToList();
             currentCount = waitingQueue.Count;
@@ -70,14 +76,20 @@ public static class MatchMaking
 
 
 
+            if (session?.PlayerData == null)
+            {
+                Console.WriteLine("Hata: Session veya PlayerData null!");
+                return;
+            }
+
             Player player = new Player
             {
-               ID = session.PlayerData.ID,
-                Username = session?.PlayerData?.Username ?? "No Name",
+                ID = session.PlayerData.ID,
+                Username = session.PlayerData.Username ?? "No Name",
                 Health = 100,
                 session = session,
-             //   Position = battle.SpawnPoints[index],
-               // StartPoint = battle.SpawnPoints[index],
+                // Position = battle.SpawnPoints[index],
+                // StartPoint = battle.SpawnPoints[index],
             };
             session.PlayerData = player;
             session.ChangeState(PlayerState.Battle);
@@ -110,18 +122,24 @@ public static class MatchMaking
         List<Session> toNotify = new();
         int currentCount = 0;
 
+        if (session?.PlayerData == null)
+        {
+            Console.WriteLine("Hata: Session veya PlayerData null!");
+            return;
+        }
+
         lock (lockObj)
         {
             if (waitingQueue.Contains(session))
             {
                 waitingQueue.Remove(session);
-                Console.WriteLine($"{session?.PlayerData?.Username} kuyruktan kaldırıldı!");
+                Console.WriteLine($"{session.PlayerData.Username} kuyruktan kaldırıldı!");
                 toNotify = waitingQueue.ToList();
                 currentCount = waitingQueue.Count;
             }
             else
             {
-                Console.WriteLine($"{session?.PlayerData?.Username} kuyrukta değilki?!");
+                Console.WriteLine($"{session.PlayerData.Username} kuyrukta değilki?!");
                 return;
             }
         }

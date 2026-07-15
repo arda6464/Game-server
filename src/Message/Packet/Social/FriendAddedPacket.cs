@@ -1,6 +1,6 @@
 public class FriendAddedPacket : IPacket
 {
-    public FriendInfo? Friend { get; set; }
+    public Friend? Friend { get; set; }
 
     public void Serialize(ByteBuffer buffer)
     {

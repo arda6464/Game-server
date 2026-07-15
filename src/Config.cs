@@ -1,6 +1,6 @@
 using System.IO;
-using Newtonsoft.Json;
 using System.Threading;
+using Newtonsoft.Json;
 
 public class Config
 {
@@ -9,22 +9,50 @@ public class Config
     private static string? _configFilePath;
     private static readonly object _reloadLock = new object();
 
-    [JsonProperty("Port")] public int Port { get;  set; }
-    [JsonProperty("QuestRefeshHour")] public int QuestRefeshHour { get;  set; }
-    [JsonProperty("SeasonQuestRefeshTime")] public DateTime SeasonQuestRefeshTime { get;  set; }
-    [JsonProperty("anti-ddos")] public bool AntiDdos { get; private set; }
-    [JsonProperty("BotToken")] public string BotToken { get; private set; }
-    [JsonProperty("ChannelId")] public ulong ChannelId { get; private set; }
-    [JsonProperty("DiscordAdminIDs")] public List<ulong> DiscordAdminIDs { get; private set; } = new List<ulong>();
-    [JsonProperty("CreatorCodes")] public List<string> CreatorCodes { get; private set; } = new List<string>();
-    [JsonProperty("AllowEmulators")] public bool AllowEmulators { get; private set; }
-    [JsonProperty("Maintenance")] public bool Maintenance { get; private set; }
-    [JsonProperty("EmailPassword")] public string EmailPassword { get; private set; }
-    [JsonProperty("Email")] public string Email { get; private set; }
-    [JsonProperty("UpdateLink")] public string UpdateLink { get; private set; }
-    [JsonProperty("ServerVersion")] public string ServerVersion { get; private set; }
-    [JsonProperty("WebsiteUrl")] public string WebsiteUrl { get;  set; }
+    [JsonProperty("Port")]
+    public int Port { get; set; }
 
+    [JsonProperty("QuestRefeshHour")]
+    public int QuestRefeshHour { get; set; }
+
+    [JsonProperty("SeasonQuestRefeshTime")]
+    public DateTime SeasonQuestRefeshTime { get; set; }
+
+    [JsonProperty("anti-ddos")]
+    public bool AntiDdos { get; private set; }
+
+    [JsonProperty("BotToken")]
+    public string BotToken { get; private set; }
+
+    [JsonProperty("ChannelId")]
+    public ulong ChannelId { get; private set; }
+
+    [JsonProperty("DiscordAdminIDs")]
+    public List<ulong> DiscordAdminIDs { get; private set; } = new List<ulong>();
+
+    [JsonProperty("CreatorCodes")]
+    public List<string> CreatorCodes { get; private set; } = new List<string>();
+
+    [JsonProperty("AllowEmulators")]
+    public bool AllowEmulators { get; private set; }
+
+    [JsonProperty("Maintenance")]
+    public bool Maintenance { get; private set; }
+
+    [JsonProperty("EmailPassword")]
+    public string EmailPassword { get; private set; }
+
+    [JsonProperty("Email")]
+    public string Email { get; private set; }
+
+    [JsonProperty("UpdateLink")]
+    public string UpdateLink { get; private set; }
+
+    [JsonProperty("ServerVersion")]
+    public string ServerVersion { get; private set; }
+
+    [JsonProperty("WebsiteUrl")]
+    public string WebsiteUrl { get; set; }
 
     // Default değerlerle constructor
     public Config()
@@ -53,24 +81,26 @@ public class Config
         try
         {
             _configFilePath = Path.GetFullPath(filename);
-            
+
             if (!File.Exists(_configFilePath))
             {
                 CreateDefaultConfig(_configFilePath);
-                Logger.errorslog($"[Config] Dosya bulunamadı, default config oluşturuldu: {_configFilePath}");
+                Logger.errorslog(
+                    $"[Config] Dosya bulunamadı, default config oluşturuldu: {_configFilePath}"
+                );
             }
 
             LoadFromFile(_configFilePath);
-            
+
             // Watcher'ı başlat
             StartWatcher();
-            
+
             Logger.genellog($"[Config] Config başarıyla yüklendi: {_configFilePath}");
         }
         catch (Exception ex)
         {
             Logger.errorslog($"[Config] Yükleme hatası: {ex.Message}");
-            
+
             // Hata durumunda default config oluştur
             Instance = new Config();
         }
@@ -82,7 +112,7 @@ public class Config
         {
             var json = File.ReadAllText(filePath);
             var config = JsonConvert.DeserializeObject<Config>(json);
-            
+
             if (config == null)
             {
                 Logger.errorslog("[Config] JSON deserialize hatası!");
@@ -109,10 +139,10 @@ public class Config
     private static void CreateDefaultConfig(string filePath)
     {
         var defaultConfig = new Config();
-        
+
         var json = JsonConvert.SerializeObject(defaultConfig, Formatting.Indented);
         File.WriteAllText(filePath, json);
-        
+
         Logger.genellog($"[Config] Default config oluşturuldu: {filePath}");
     }
 
@@ -134,7 +164,7 @@ public class Config
                 Path = directory,
                 Filter = fileName,
                 NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName,
-                EnableRaisingEvents = true
+                EnableRaisingEvents = true,
             };
 
             _watcher.Changed += OnConfigChanged;
@@ -152,7 +182,7 @@ public class Config
     {
         // Multiple event trigger'ı önlemek için debounce
         Thread.Sleep(500);
-        
+
         lock (_reloadLock)
         {
             try
@@ -191,6 +221,7 @@ public class Config
             SaveConfig();
         }
     }
+
     public static bool AddAdmin(ulong id)
     {
         lock (_reloadLock) // Thread safety için lock
@@ -213,7 +244,8 @@ public class Config
             }
         }
     }
-public static bool RemoveAdmin(ulong id)
+
+    public static bool RemoveAdmin(ulong id)
     {
         lock (_reloadLock)
         {
@@ -227,7 +259,6 @@ public static bool RemoveAdmin(ulong id)
                 {
                     SaveConfig();
                     Logger.genellog($"[Config] Admin silindi: {id}");
-
                 }
                 return removed;
             }
@@ -238,6 +269,7 @@ public static bool RemoveAdmin(ulong id)
             }
         }
     }
+
     private static void SaveConfig()
     {
         try
@@ -251,7 +283,4 @@ public static bool RemoveAdmin(ulong id)
             Logger.errorslog($"[Config] Kaydetme hatası: {ex.Message}");
         }
     }
-
-
-    
 }

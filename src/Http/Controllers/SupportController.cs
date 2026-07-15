@@ -43,7 +43,7 @@ public class SupportController : BaseController
 
         BotManager.istance.TicketSystem.SendTicketMessage(ticket.PlayerID, $"(Admin) {msg}", ticketId);
         ticket.ticketMessages.Add(new TicketMessage { Name = "Admin", Message = msg, time = DateTime.Now });
-        return Ok("Cevap gönderildi.");
+        return new { success = true, message = "Cevap gönderildi." };
     }
 
     [HttpRoute("POST", "/api/support/close")]
@@ -61,6 +61,6 @@ public class SupportController : BaseController
             return Fail("Bilet bulunamadı.");
 
         BotManager.istance.TicketSystem.CloseTicketAsync(ticket.channelid, reason, ticketId);
-        return Ok("Bilet kapatıldı.");
+        return new { success = true, message = "Bilet kapatıldı." };
     }
 }

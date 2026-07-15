@@ -1,38 +1,38 @@
 [PacketHandler(MessageType.DeleteFriendRequest)]
-public static class DeleteFriendHandler
+public class DeleteFriendHandler : IGameMessage
 {
-    public static void Handle(Session session,byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(message, true);
-        
-        var request = new DeleteFriendRequestPacket();
-        request.Deserialize(read);
-        
+        var request = data.DeserializePacket<DeleteFriendRequestPacket>();
+
         int targetId = request.TargetId;
-         read.Dispose();
-        if (session.Account == null) return;
+        if (session.Account == null)
+            return;
         AccountData targetaccount = AccountCache.Load(targetId);
         AccountData account = session.Account;
         if (account != null && targetaccount != null)
         {
             lock (account.SyncLock)
-            lock (targetaccount.SyncLock)
-            {
-                var friend = account.Friends.Find(f => f.ID == targetId);
-                var targetFriend = targetaccount.Friends.Find(f => f.ID == account.ID);
-                if (friend != null && targetFriend != null)
+                lock (targetaccount.SyncLock)
                 {
-                    account.Friends.Remove(friend);
-                    targetaccount.Friends.Remove(targetFriend);
-                    Logger.genellog($"{account.Username}({account.ID}) adlı oyuncu {targetaccount.Username}({targetaccount.ID}) adlı oyuncuyu arkadaşlıktan çıkardı!");
+                    var friend = account.Friends.Find(f => f.ID == targetId);
+                    var targetFriend = targetaccount.Friends.Find(f => f.ID == account.ID);
+                    if (friend != null && targetFriend != null)
+                    {
+                        account.Friends.Remove(friend);
+                        targetaccount.Friends.Remove(targetFriend);
+                        Logger.genellog(
+                            $"{account.Username}({account.ID}) adlı oyuncu {targetaccount.Username}({targetaccount.ID}) adlı oyuncuyu arkadaşlıktan çıkardı!"
+                        );
+                    }
+                    else
+                    {
+                        Logger.genellog(
+                            $"{account.Username}({account.ID}) {targetaccount.Username}({targetaccount.ID}) ile zaten arkadaş değil!"
+                        );
+                        return;
+                    }
                 }
-                else
-                {
-                    Logger.genellog($"{account.Username}({account.ID}) {targetaccount.Username}({targetaccount.ID}) ile zaten arkadaş değil!");
-                    return;
-                }
-            }
 
             // Kendi listesinden çıkar (Incremental)
             var myRemovedPacket = new FriendRemovedPacket { TargetId = targetId };
@@ -49,11 +49,11 @@ public static class DeleteFriendHandler
                 }
             }
         }
-            else
-            {
-                Logger.genellog($"{account.Username}({account.ID}) {targetaccount.Username}({targetaccount.ID}) ile zaten arkadaş değil!");
-                
-            }
+        else
+        {
+            Logger.genellog(
+                $"{account.Username}({account.ID}) {targetaccount.Username}({targetaccount.ID}) ile zaten arkadaş değil!"
+            );
         }
-   
     }
+}

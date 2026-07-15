@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.GetUpdateNotesRequest)]
-public static class GetUpdateNotesHandler
+public class GetUpdateNotesHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
         var published = UpdateNotesManager.GetPublished();
 
@@ -9,6 +9,8 @@ public static class GetUpdateNotesHandler
         response.Updates.AddRange(published);
 
         session.Send(response);
-        Logger.genellog($"[GetUpdateNotesHandler] {session.ID} → {published.Count} güncelleme notu gönderildi.");
+        Logger.genellog(
+            $"[GetUpdateNotesHandler] {session.ID} → {published.Count} güncelleme notu gönderildi."
+        );
     }
 }

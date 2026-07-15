@@ -1,6 +1,6 @@
-using System.Linq;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class SupportTicketData
 {
@@ -29,7 +29,8 @@ public static class TicketManager
     public static SupportTicketData GetTicketData(int playerid, int ticketid)
     {
         var account = AccountCache.Load(playerid);
-        if (account == null) return null;
+        if (account == null)
+            return null;
 
         SupportTicketData ticket = account.Tickets.FirstOrDefault(t => t.ID == ticketid);
         if (ticket == null)
@@ -42,7 +43,8 @@ public static class TicketManager
     public static SupportTicketData GetTicketDataByNo(int playerid, int ticketNo)
     {
         var account = AccountCache.Load(playerid);
-        if (account == null) return null;
+        if (account == null)
+            return null;
 
         SupportTicketData ticket = account.Tickets.FirstOrDefault(t => t.NO == ticketNo);
         if (ticket == null)

@@ -315,7 +315,7 @@ namespace Logic
             // AccountManager.SaveAccounts(); // Veriyi kaydet
         }
 
-        public void SetNameColor(int colorId)
+        public void SetColorHandler(int colorId)
         {
             if (Data == null) return;
 
@@ -491,7 +491,7 @@ namespace Logic
         /// <summary>
         /// Oyuncunun avatarını değiştirir.
         /// </summary>
-        public bool SetAvatar(int avatarId)
+        public bool SetAvatarHandler(int avatarId)
         {
             if (Data == null) return false;
 

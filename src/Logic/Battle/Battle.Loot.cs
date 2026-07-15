@@ -38,7 +38,7 @@ partial class Battle
                 Position = position,
                 SpawnTime = GetCurrentTime()
             };
-            Loots.Add(loot);
+            _loots.Add(loot);
             Logger.battlelog($"[BATTLE {BattleId}] Weapon spawned: {weapon.Name} ({weapon.Id}) at {FormatVec3(position)}");
             return true;
         }
@@ -171,7 +171,7 @@ partial class Battle
                 Position = position,
                 SpawnTime = GetCurrentTime()
             };
-            Loots.Add(loot);
+            _loots.Add(loot);
             Logger.battlelog($"[BATTLE {BattleId}] Loot spawned: {dataId} at {FormatVec3(position)} (LootId: {loot.LootId})");
 
             return true;
@@ -196,7 +196,7 @@ partial class Battle
                 Position = position,
                 SpawnTime = GetCurrentTime()
             };
-            Loots.Add(loot);
+            _loots.Add(loot);
             Logger.battlelog($"[BATTLE {BattleId}] Loot force-spawned: {dataId} at {FormatVec3(position)} (LootId: {loot.LootId})");
             return loot;
         }
@@ -237,7 +237,7 @@ partial class Battle
             position = resolvedPos;
         }
 
-        foreach (Player player in Players)
+        foreach (Player player in _players)
         {
             if (Vec3.Distance(position, player.Position) < MinLootDistanceFromPlayer)
             {
@@ -246,7 +246,7 @@ partial class Battle
             }
         }
 
-        foreach (LootItem loot in Loots)
+        foreach (LootItem loot in _loots)
         {
             if (Vec3.Distance(position, loot.Position) < MinLootDistanceFromLoot)
             {
@@ -298,12 +298,21 @@ partial class Battle
     public void PickupStart(int playerId, int lootId)
     {
         var player = GetPlayer(playerId);
-        var loot = Loots.FirstOrDefault(l => l.LootId == lootId);
+        LootItem loot;
+        lock (_lock)
+        {
+            loot = _loots.FirstOrDefault(l => l.LootId == lootId);
+        }
 
         if (player == null || loot == null)
             return;
 
-        if (Pickups.Any(p => p.PlayerId == playerId || p.LootId == lootId))
+        bool hasPickup;
+        lock (_lock)
+        {
+            hasPickup = _pickups.Any(p => p.PlayerId == playerId || p.LootId == lootId);
+        }
+        if (hasPickup)
             return;
 
         if (!CanPickupLoot(player, loot))
@@ -320,14 +329,17 @@ partial class Battle
         float collectTime = GetPickupRequiredTime(loot);
         float now = GetCurrentTime();
 
-        Pickups.Add(new PickupData
+        lock (_lock)
         {
-            PlayerId = playerId,
-            LootId = lootId,
-            PickupTime = now,
-            FinishTime = now + collectTime,
-            RequiredTime = collectTime
-        });
+            _pickups.Add(new PickupData
+            {
+                PlayerId = playerId,
+                LootId = lootId,
+                PickupTime = now,
+                FinishTime = now + collectTime,
+                RequiredTime = collectTime
+            });
+        }
         var packet = new PickupResponsePacket
         {
             LootID = lootId,
@@ -363,20 +375,29 @@ partial class Battle
     public void UpdatePickups()
     {
         float currentTime = GetCurrentTime();
-        foreach (var pickup in Pickups.ToArray())
+        PickupData[] snapshot;
+        lock (_lock)
+        {
+            snapshot = _pickups.ToArray();
+        }
+        foreach (var pickup in snapshot)
         {
             var player = GetPlayer(pickup.PlayerId);
-            var loot = Loots.FirstOrDefault(l => l.LootId == pickup.LootId);
+            LootItem loot;
+            lock (_lock)
+            {
+                loot = _loots.FirstOrDefault(l => l.LootId == pickup.LootId);
+            }
             if (player == null || loot == null)
             {
-                Pickups.Remove(pickup);
+                lock (_lock) { _pickups.Remove(pickup); }
                 continue;
             }
 
             if (Vec3.Distance(player.Position, loot.Position) > 1.0f)
             {
                 Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} moved away from loot {loot.LootId}, pickup cancelled");
-                Pickups.Remove(pickup);
+                lock (_lock) { _pickups.Remove(pickup); }
                 continue;
             }
 
@@ -385,7 +406,7 @@ partial class Battle
 
             BroadcastLootDeletion(loot.LootId);
 
-            Pickups.Remove(pickup);
+            lock (_lock) { _pickups.Remove(pickup); }
             GiveItemToPlayer(player, loot);
             Logger.battlelog($"[BATTLE {BattleId}] Player {player.Username} picked up loot {loot.LootId} after {pickup.RequiredTime:0.##}s");
         }

@@ -26,7 +26,7 @@ public static class Maintenance
             Thread.Sleep(PanicMS);
             foreach (var session in sessions)
             {
-                Loginfailed.Send(session, "Bakım molası!", 1);
+                LoginFailedHandler.Send(session, "Bakım molası!", 1);
             }
             Logger.genellog("[Maintenance] bakım modune girildi aktif oturum sayısı: " + SessionManager.GetSessions().Count);
 
@@ -48,7 +48,7 @@ public static class Maintenance
             Thread.Sleep(NormalMS);
             foreach (var session in sessions)
             {
-                Loginfailed.Send(session, "Bakım molası!", 1);
+                LoginFailedHandler.Send(session, "Bakım molası!", 1);
             }
             Logger.genellog("[Maintenance] bakım modune girildi aktif oturum sayısı: " + SessionManager.GetSessions().Count);
 

@@ -1,9 +1,9 @@
 using System;
 
 [PacketHandler(MessageType.Disconnect)]
-public static class DisconnectHandler
+public class DisconnectHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
         session.Close();
     }

@@ -1,27 +1,30 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 [PacketHandler(MessageType.SupporCreateTicketRequest)]
-public static class CreateTicket
+public class CreateTicket : IGameMessage
 {
-    public static void Handle(Session session,byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         byte reasontype;
         using (ByteBuffer read = ByteBufferPool.Get())
         {
             read.WriteBytes(data);
-            
+
             var request = new CreateTicketRequestPacket();
             request.Deserialize(read);
-            
+
             reasontype = request.ReasonType;
         }
 
-        if (session.Account == null) return;
+        if (session.Account == null)
+            return;
         var account = session.Account;
-        if (account.TicketBan) return;
-        if (account.Tickets.Count > 10) return;
+        if (account.TicketBan)
+            return;
+        if (account.Tickets.Count > 10)
+            return;
 
         if (BotManager.istance.TicketSystem != null)
         {
@@ -64,6 +67,7 @@ public static class CreateTicket
             account.Tickets.Add(support);
             BotManager.istance.TicketSystem.CreateTicket(session.ID, support);
         }
-        else Console.WriteLine("bota ulaşılmıyor...");
+        else
+            Console.WriteLine("bota ulaşılmıyor...");
     }
 }

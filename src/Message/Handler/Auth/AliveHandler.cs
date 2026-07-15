@@ -1,9 +1,9 @@
 using System;
 
 [PacketHandler(MessageType.Alive)]
-public static class AliveHandler
+public class AliveHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
         session.LastAlive = DateTime.Now;
     }

@@ -179,8 +179,11 @@ public class AdminServer
             string path = context.Request.Path;
             bool isApi = path.StartsWith("/api/", StringComparison.OrdinalIgnoreCase);
             bool isInvite = path.StartsWith("/invite/", StringComparison.OrdinalIgnoreCase);
+            bool isPortfolio = string.Equals(path, "/", StringComparison.OrdinalIgnoreCase)
+                || string.Equals(path, "/portfolio", StringComparison.OrdinalIgnoreCase)
+                || string.Equals(path, "/index.html", StringComparison.OrdinalIgnoreCase);
 
-            if (!isApi && !isInvite)
+            if (!isApi && !isInvite && !isPortfolio)
             {
                 context.Response.WriteError(404, "Not Found");
                 return;
@@ -189,6 +192,10 @@ public class AdminServer
             if (isInvite)
             {
                 HandleInviteLink(context);
+            }
+            else if (isPortfolio)
+            {
+                HandlePortfolioPage(context);
             }
             else
             {
@@ -296,6 +303,22 @@ public class AdminServer
 
         byte[] buffer = Encoding.UTF8.GetBytes(html);
         response.ContentType = "text/html";
+        response.OutputStream.Write(buffer, 0, buffer.Length);
+    }
+
+    private void HandlePortfolioPage(SimpleHttpContext context)
+    {
+        var response = context.Response;
+        string html = PortfolioPageBuilder.Build(
+            "Arda Sürücü",
+            "Game Developer",
+            "Adana, Türkiye",
+            "1 yıldır Unity ile oyun geliştiriyor ve 2 yıldır C# kodluyorum. Daha önce sıfırdan network yazarak battle royale oyunu yaptım.",
+            "JS ve Python tarafında da ihtiyaç oldukça araç, otomasyon ve prototip üretimi yapabiliyorum."
+        );
+
+        byte[] buffer = Encoding.UTF8.GetBytes(html);
+        response.ContentType = "text/html; charset=utf-8";
         response.OutputStream.Write(buffer, 0, buffer.Length);
     }
 }

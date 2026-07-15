@@ -1,7 +1,7 @@
 [PacketHandler(MessageType.InvitePlayerTeamRequest)]
-public static class TeamInviteHandler
+public class TeamInviteHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
         int accid;
         using (ByteBuffer read = ByteBufferPool.Get())
@@ -10,14 +10,15 @@ public static class TeamInviteHandler
             accid = read.ReadVarInt();
         }
         var targetacccount = AccountCache.Load(accid);
-        if (targetacccount == null) return; // todo messagecode (aslında gerek varmı?)
-
+        if (targetacccount == null)
+            return; // todo messagecode (aslında gerek varmı?)
 
         //todo: oyuncu takım davetlerini kabul ediyormu?
-        if (session.Account == null) return;
+        if (session.Account == null)
+            return;
         var acccount = session.Account;
-        if (session.TeamID == 0) CreateTeamHandler.Handle(session);
-
+        if (session.TeamID == 0)
+            new CreateTeamHandler().Handle(session, null);
 
         Lobby lobby = LobbyManager.GetLobby(session.TeamID);
 
@@ -41,39 +42,49 @@ public static class TeamInviteHandler
         else
         {
             responsepacket.Sended = false;
-           
+
             responsepacket.Serialize(ByteBufferPool.Get());
             session.Send(responsepacket);
-
 
             if (SessionManager.IsOnline(targetacccount.ID))
             {
                 Session? targetsession = SessionManager.GetSession(targetacccount.ID);
 
-
                 var notificationPacket = new TeamInviteNotificationPacket
                 {
-                     TeamID = lobby.ID,
+                    TeamID = lobby.ID,
                     SenderName = acccount.Username,
                     SenderId = acccount.ID,
                     SenderAvatarId = acccount.Avatarid,
                     SenderTrophy = acccount.Trophy,
                     CurrentPlayers = lobby.Players.Count,
-                    MaxPlayers = lobby.MaxPlayers
+                    MaxPlayers = lobby.MaxPlayers,
                 };
                 targetsession?.Send(notificationPacket);
             }
             else
-            {// todo if notfi almak istemiyorsa
-                if (NotificationPolicyManager.CanSendNotification(targetacccount, NotificationPolicyManager.NotificationType.Invite))
+            { // todo if notfi almak istemiyorsa
+                if (
+                    NotificationPolicyManager.CanSendNotification(
+                        targetacccount,
+                        NotificationPolicyManager.NotificationType.Invite
+                    )
+                )
                 {
-                    AndroidNotificationManager.SendNotification($"Davet!", $"{targetacccount.Username} sizi  takıma davet etti!", targetacccount.FBNToken);
-                    NotificationPolicyManager.UpdateCooldown(targetacccount, NotificationPolicyManager.NotificationType.Invite);
+                    AndroidNotificationManager.SendNotification(
+                        $"Davet!",
+                        $"{targetacccount.Username} sizi  takıma davet etti!",
+                        targetacccount.FBNToken
+                    );
+                    NotificationPolicyManager.UpdateCooldown(
+                        targetacccount,
+                        NotificationPolicyManager.NotificationType.Invite
+                    );
                 }
             }
-
         }
     }
+
     public static void ResponseHandle(Session session, byte[] responsedata)
     {
         bool Accept = false;
@@ -90,10 +101,8 @@ public static class TeamInviteHandler
             Accept = response.Accept;
         }
 
-
         if (Accept)
         {
-
             Lobby lobby = LobbyManager.GetLobby(teamid);
             if (lobby == null)
             {
@@ -102,10 +111,9 @@ public static class TeamInviteHandler
             }
             if (lobby.RequestedPlayerIds.Contains(session.Account.ID))
             {
-                
                 ByteBuffer fakeBuffer = ByteBufferPool.Get();
                 fakeBuffer.WriteVarInt(teamid);
-                JoinTeamHandler.Handle(session, fakeBuffer.ToArray());
+                new JoinTeamHandler().Handle(session, fakeBuffer.ToArray());
                 fakeBuffer.Dispose();
                 lock (lobby.SyncLock)
                 {
@@ -113,7 +121,7 @@ public static class TeamInviteHandler
                 }
             }
         }
-
-        else return; // todo messagecode
+        else
+            return; // todo messagecode
     }
 }

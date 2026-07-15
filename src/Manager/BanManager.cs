@@ -25,6 +25,7 @@ public static class BanManager
     private static ConcurrentDictionary<int, BanData> activeBans = new ConcurrentDictionary<int, BanData>();
     private static List<BanData> UnBans = new();
     private static List<BanData> Bans = new();
+    private static readonly object listsLock = new();
 
     private static System.Threading.Timer? saveTimer;
     private static readonly object saveLock = new object();
@@ -61,11 +62,18 @@ public static class BanManager
                     {
                         try
                         {
-                            foreach (var ban in Bans)
+                            List<BanData> bansSnapshot;
+                            List<BanData> unbansSnapshot;
+                            lock (listsLock)
+                            {
+                                bansSnapshot = new List<BanData>(Bans);
+                                unbansSnapshot = new List<BanData>(UnBans);
+                            }
+                            foreach (var ban in bansSnapshot)
                             {
                                 SaveBanToDb(ban, connection, transaction);
                             }
-                            foreach (var unban in UnBans)
+                            foreach (var unban in unbansSnapshot)
                             {
                                 SaveUnBanToDb(unban, connection, transaction);
                             }
@@ -203,8 +211,10 @@ public static class BanManager
             targetAccount.Banreason = reasonText;
             targetAccount.BanHistory.Add(banRecord);
             activeBans[targetAccountId] = banRecord;
-            Bans.Add(banRecord);
-
+            lock (listsLock)
+            {
+                Bans.Add(banRecord);
+            }
         }
 
 
@@ -232,7 +242,10 @@ public static class BanManager
         banRecord.Notes += $"\nBan kaldıran: {adminName} | Tarih: {DateTime.Now} | Not: {note}";
 
         activeBans.TryRemove(targetAccountId, out _);
-        UnBans.Add(banRecord);
+        lock (listsLock)
+        {
+            UnBans.Add(banRecord);
+        }
         var account = AccountCache.Load(targetAccountId);
         if (account != null) account.Banned = false;
 

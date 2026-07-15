@@ -1,5 +1,4 @@
- [PacketHandler(MessageType.SendFriendRequest)]
-public class SendFriendRequestPacket : IPacket
+ public class SendFriendRequestPacket : IPacket
 {
     public int TargetId { get; set; }
 

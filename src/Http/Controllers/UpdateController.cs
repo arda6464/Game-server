@@ -22,7 +22,7 @@ public class UpdateController : BaseController
         if (data == null || !data.ContainsKey("id")) return Fail("Geçersiz istek.");
         bool ok = UpdateNotesManager.Delete(data["id"]);
         if (ok) Audit("Güncelleme Notu Sil", $"ID: {data["id"]}", "Not silindi.");
-        return ok ? Ok("Güncelleme silindi.") : Fail("Kayıt bulunamadı.");
+        return ok ? new { success = true, message = "Güncelleme silindi." } : Fail("Kayıt bulunamadı.");
     }
 
     [HttpRoute("POST", "/api/updates/publish")]
@@ -34,7 +34,7 @@ public class UpdateController : BaseController
         bool ok = UpdateNotesManager.SetPublishState(id, published);
         if (ok) Audit(published ? "Güncelleme Yayınla" : "Güncelleme Yayından Kaldır", $"ID: {id}", "");
         return ok
-            ? Ok(published ? "Yayınlandı." : "Yayından kaldırıldı.")
+            ? new { success = true, message = published ? "Yayınlandı." : "Yayından kaldırıldı." }
             : Fail("Kayıt bulunamadı.");
     }
 
@@ -43,6 +43,6 @@ public class UpdateController : BaseController
     {
         if (data == null || !data.ContainsKey("ids")) return Fail("Geçersiz istek.");
         UpdateNotesManager.Reorder(data["ids"]);
-        return Ok("Sıralama güncellendi.");
+        return new { success = true, message = "Sıralama güncellendi." };
     }
 }

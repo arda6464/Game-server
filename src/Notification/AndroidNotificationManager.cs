@@ -1,9 +1,9 @@
-using FirebaseAdmin;
-using FirebaseAdmin.Messaging;
-using Google.Apis.Auth.OAuth2;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using FirebaseAdmin;
+using FirebaseAdmin.Messaging;
+using Google.Apis.Auth.OAuth2;
 
 public static class AndroidNotificationManager
 {
@@ -15,28 +15,33 @@ public static class AndroidNotificationManager
         {
             // Öncelikli olarak çalışan dizinde ara
             string credentialsPath = "Data/firebase-service-account.json";
-            
+
             if (!File.Exists(credentialsPath))
             {
                 // src klasörünü kontrol et (Geliştirme ortamı için)
-                string srcPath = Path.Combine(Directory.GetCurrentDirectory(), "src", "Data/firebase-service-account.json");
+                string srcPath = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "src",
+                    "Data/firebase-service-account.json"
+                );
                 if (File.Exists(srcPath))
                 {
                     credentialsPath = srcPath;
                 }
                 else
                 {
-                    Logger.errorslog($"[AndroidNotificationManager] firebase-service-account.json bulunamadı! Bildirimler çalışmayacak.");
+                    Logger.errorslog(
+                        $"[AndroidNotificationManager] firebase-service-account.json bulunamadı! Bildirimler çalışmayacak."
+                    );
                     return;
                 }
             }
 
             if (FirebaseApp.DefaultInstance == null)
             {
-                FirebaseApp.Create(new AppOptions()
-                {
-                    Credential = GoogleCredential.FromFile(credentialsPath)
-                });
+                FirebaseApp.Create(
+                    new AppOptions() { Credential = GoogleCredential.FromFile(credentialsPath) }
+                );
                 _isInitialized = true;
                 Logger.genellog("[AndroidNotificationManager] Firebase başarıyla başlatıldı.");
             }
@@ -69,18 +74,24 @@ public static class AndroidNotificationManager
             Notification = new FirebaseAdmin.Messaging.Notification()
             {
                 Title = title,
-                Body = message
-            }
+                Body = message,
+            },
         };
 
         try
         {
-            string response = await FirebaseMessaging.DefaultInstance.SendAsync(notificationMessage);
-            Logger.genellog($"[AndroidNotificationManager] Bildirim başarıyla gönderildi. ID: {response}");
+            string response = await FirebaseMessaging.DefaultInstance.SendAsync(
+                notificationMessage
+            );
+            Logger.genellog(
+                $"[AndroidNotificationManager] Bildirim başarıyla gönderildi. ID: {response}"
+            );
         }
         catch (Exception ex)
         {
-            Logger.errorslog($"[AndroidNotificationManager] Bildirim gönderme hatası: {ex.Message}");
+            Logger.errorslog(
+                $"[AndroidNotificationManager] Bildirim gönderme hatası: {ex.Message}"
+            );
         }
     }
 }

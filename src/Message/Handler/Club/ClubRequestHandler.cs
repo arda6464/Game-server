@@ -2,18 +2,14 @@ using System;
 using System.Linq;
 
 [PacketHandler(MessageType.ClubJoinRespondRequest)]
-public static class ClubRequestHandler
+public class ClubRequestHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer buffer = ByteBufferPool.Get();
-        buffer.WriteBytes(data);
+        var request = data.DeserializePacket<ClubRequestPacket>();
 
-        var request = new ClubRequestPacket();
-        request.Deserialize(buffer);
-        buffer.Dispose();
-
-        if (session.Account == null || session.Account.Clubid == 0) return;
+        if (session.Account == null || session.Account.Clubid == 0)
+            return;
 
         AccountData account = session.Account;
         var club = ClubManager.LoadClub(account.Clubid);
@@ -26,7 +22,7 @@ public static class ClubRequestHandler
         /*  // Sadece Lider ve Yardımcı Lider istekleri kabul/red edebilir
           if (account.clubRole != ClubRole.Leader && account.clubRole != ClubRole.CoLeader)
           {
-              return; 
+              return;
           }*/
 
         lock (club.SyncLock)
@@ -34,9 +30,15 @@ public static class ClubRequestHandler
             var message = club.GetCLubMessage(request.MessageID);
 
             // Mesaj bulunamadıysa veya bir istek mesajı değilse, ya da zaten cevaplandıysa çık
-            if (message == null || message.messageFlags != ClubMessageFlags.Request || message.RequestState != ClubRequestState.Waiting)
+            if (
+                message == null
+                || message.messageFlags != ClubMessageFlags.Request
+                || message.RequestState != ClubRequestState.Waiting
+            )
             {
-                Console.WriteLine("[ClubRequestHandler] mesaj bulunamadı.... messageId: " + request.MessageID);
+                Console.WriteLine(
+                    "[ClubRequestHandler] mesaj bulunamadı.... messageId: " + request.MessageID
+                );
                 return;
             }
 
@@ -49,7 +51,6 @@ public static class ClubRequestHandler
                     MessageCodeManager.Send(session, MessageCodeManager.Message.ClubFull);
 
                     return;
-
                 }
 
                 bool added = club.AddMember(message.ActorID);
@@ -63,7 +64,7 @@ public static class ClubRequestHandler
                         messageFlags = ClubMessageFlags.HasSystem,
                         eventType = ClubEventType.JoinMessage,
                         ActorName = message.ActorName,
-                        ActorID = message.ActorID
+                        ActorID = message.ActorID,
                     };
                     club.SendMessageToClubMembers(joinMessage);
                 }
@@ -80,7 +81,7 @@ public static class ClubRequestHandler
                     type = NotificationTypes.NotificationType.Inbox,
                     Sender = "Sistem",
                     Message = $"{club.Name} kulübüne gönderdiğin istek reddedildi.",
-                    Timespam = DateTime.Now
+                    Timespam = DateTime.Now,
                 };
                 var acccount = AccountCache.Load(message.ActorID);
                 if (acccount != null)
@@ -93,7 +94,6 @@ public static class ClubRequestHandler
                     }
                 }
 
-
                 message.RequestState = ClubRequestState.Rejected;
             }
 
@@ -102,7 +102,7 @@ public static class ClubRequestHandler
             {
                 MessageId = message.MessageId,
                 NewState = (int)message.RequestState,
-                ResponderName = account.Username
+                ResponderName = account.Username,
             };
 
             foreach (var member in club.Members)

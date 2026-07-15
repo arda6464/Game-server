@@ -11,7 +11,7 @@ public static class NotificationSender
         }
 
         var packet = new NotificationPacket
-        { 
+        {
             IndexID = notification.IndexID,
             Type = notification.type,
             Title = notification.Title,
@@ -21,15 +21,15 @@ public static class NotificationSender
             Url = notification.Url,
             Sender = notification.Sender,
             IsViewed = notification.IsViewed,
-            UnixTime = new DateTimeOffset(notification.Timespam.ToUniversalTime()).ToUnixTimeSeconds(),
+            UnixTime = new DateTimeOffset(
+                notification.Timespam.ToUniversalTime()
+            ).ToUnixTimeSeconds(),
             IsClaimed = notification.IsClaimed,
-            Rewards = notification.Rewards
+            Rewards = notification.Rewards,
         };
 
         session.Send(packet);
 
         Logger.genellog($"[NotificationSender] Bildirim gönderildi: {notification.Message}");
     }
-    
-   
 }

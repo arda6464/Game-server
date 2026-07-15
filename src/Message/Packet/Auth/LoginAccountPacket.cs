@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.AccountLogin)]
 public class LoginAccountPacket : IPacket
 {
     public string Email { get; set; }

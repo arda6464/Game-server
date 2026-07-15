@@ -1,4 +1,3 @@
-[PacketHandler(MessageType.JoinByInviteRequest)]
 public class JoinByInviteRequestPacket : IPacket
 {
     public string Token { get; set; } = string.Empty;

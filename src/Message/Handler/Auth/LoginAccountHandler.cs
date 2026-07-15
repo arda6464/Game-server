@@ -1,17 +1,12 @@
 [PacketHandler(MessageType.AccountLogin)]
-public static class LoginAccountHandler
+public class LoginAccountHandler : IGameMessage
 {
-    public static void Handle(Session session,byte[] message)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer read = ByteBufferPool.Get();
-        read.WriteBytes(message, true);
-        
-        var request = new LoginAccountPacket();
-        request.Deserialize(read);
+        var request = data.DeserializePacket<LoginAccountPacket>();
         
         string email = request.Email;
         string password = request.Password;
-        read.Dispose();
         
         var account = AccountManager.FindAccountByEmail(email);
         if(account == null)
@@ -24,7 +19,7 @@ public static class LoginAccountHandler
             
             string code = VerificationCodeManager.GenerateCode();
             VerificationCodeManager.SaveCode(email, code);
-            EmailServiceSync.SendVerificationCode(email, code);
+            EmailServer.SendVerificationCode(email, code);
             VerifyManager.CreateData(session.ID, new VerifyManager.VerificationData
             {
                 Email = email,

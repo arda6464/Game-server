@@ -1,70 +1,24 @@
-using System;
-using System.Linq;
-
 [PacketHandler(MessageType.SendFriendRequest)]
-public static class SendFriendRequestHandler
+public class FriendRequestHandler : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
-        ByteBuffer byteBuffer = ByteBufferPool.Get();
-        byteBuffer.WriteBytes(data, true);
-
-        var request = new SendFriendRequestPacket();
-        request.Deserialize(byteBuffer);
-
-        int targetId = request.TargetId;
-        byteBuffer.Dispose();
-          
-        AccountData account = session.Account;
-        AccountData target = AccountCache.Load(targetId);
-
-        if (account != null && target != null)
+        using (var bb = ByteBufferPool.Get())
         {
-            lock (account.SyncLock)
+            bb.WriteBytes(data, true);
+            var packet = new SendFriendRequestPacket();
+            packet.Deserialize(bb);
+
+            if (session.Account == null)
+                return;
+            var target = AccountCache.Load(packet.TargetId);
+            if (target == null)
             {
-                if (account.Friends.Any(f => f.ID == target.ID))
-                {
-                    Logger.errorslog($"{account.Username} zaten {target.Username}'nin arkadaşı");
-                    return;
-                }
+                Logger.errorslog($"[SendFriendRequest] {packet.TargetId} bulunamadı");
+                return;
             }
 
-            lock (target.SyncLock)
-            {
-                if (target.Requests.Any(r => r.ID == account.ID))
-                {
-                    Logger.errorslog($"{account.Username} zaten {target.Username}'ye istek göndermiş");
-                    return;
-                }
-
-                if (account.ID == target.ID)
-                {
-                    Logger.errorslog($"{account.Username} kendine istek atıyor");
-                    return;
-                }
-
-                FriendInfo info = new FriendInfo
-                {
-                    ID = account.ID,
-                    Username = account.Username,
-                    AvatarId = account.Avatarid,
-                    NameColorID = account.Namecolorid,
-                    Trophy = account.Trophy
-                };
-
-                if (SessionManager.IsOnline(target.ID))
-                {
-                    Session targetSession = SessionManager.GetSession(target.ID);
-                    if (targetSession != null)
-                    {
-                        var response = new FriendRequestAddedPacket { Request = info };
-                        targetSession.Send(response);
-                    }
-                }
-            
-                target.Requests.Add(info);
-            }
-            Logger.genellog($"{account.Username}({account.ID}) → {target.Username}({target.ID}) 'ye istek attı");
+            FriendsManager.SendRequest(session.Account, target);
         }
     }
 }

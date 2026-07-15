@@ -1,11 +1,13 @@
 [PacketHandler(MessageType.SocialSettingsHasChanged)]
-public static class SocialSettingsHasChanged
+public class PlayerSettingsHasChanged : IGameMessage
 {
-    public static void Handle(Session session, byte[] data)
+    public void Handle(Session session, byte[]? data)
     {
-       AccountData account = session.Account;
-        if (account == null) return;
-        if (account.Clubid == 0) return;
+        AccountData account = session.Account;
+        if (account == null)
+            return;
+        if (account.Clubid == 0)
+            return;
 
         var request = new SocialSettingsHasChangedPacket();
         using (ByteBuffer buffer = ByteBufferPool.Get())
@@ -18,7 +20,9 @@ public static class SocialSettingsHasChanged
         account.LookingForTeam = request.LookingForTeam;
         account.MuteTeamInvites = request.MuteTeamInvites;
         if (request.MuteTeamInviteEndTime > 0)
-            account.MuteTeamInviteEndTime = DateTime.UtcNow.AddSeconds(request.MuteTeamInviteEndTime);
+            account.MuteTeamInviteEndTime = DateTime.UtcNow.AddSeconds(
+                request.MuteTeamInviteEndTime
+            );
         else
             account.MuteTeamInviteEndTime = DateTime.MaxValue; // 0 = her zaman aktif / limit yok anlamında
         account.DoNotDisturb = request.DoNotDisturb;
@@ -36,7 +40,7 @@ public static class SocialSettingsHasChanged
         {
             PlayerId = account.ID,
             LookingForTeam = account.LookingForTeam,
-            DisturbMode = account.DoNotDisturb
+            DisturbMode = account.DoNotDisturb,
         };
         foreach (var friend in account.Friends)
         {
@@ -50,7 +54,8 @@ public static class SocialSettingsHasChanged
             }
         }
         Club club = ClubManager.LoadClub(account.Clubid);
-        if (club?.Members == null) return;
+        if (club?.Members == null)
+            return;
 
         foreach (var clubMember in club.Members)
         {
@@ -63,17 +68,5 @@ public static class SocialSettingsHasChanged
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

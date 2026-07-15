@@ -1,10 +1,10 @@
 [PacketHandler(MessageType.GetRandomClubRequest)]
-public static class RandomClubHandler
+public class RandomClubHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
         var randomclubs = ClubManager.RandomList(10);
-        
+
         var response = new RandomClubResponsePacket();
         response.Clubs.AddRange(randomclubs);
         session.Send(response);

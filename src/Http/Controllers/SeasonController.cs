@@ -17,7 +17,7 @@ public class SeasonController : BaseController
     {
         if (config == null) return Fail("Geçersiz sezon verisi.");
         SeasonManager.UpdateSettings(config);
-        return Ok("Sezon ayarları güncellendi.");
+        return new { success = true, message = "Sezon ayarları güncellendi." };
     }
 
     [HttpRoute("POST", "/api/seasons/open")]
@@ -43,6 +43,6 @@ public class SeasonController : BaseController
         int resetTo = 0;
         if (data != null && data.ContainsKey("resetTrophyTo")) resetTo = Convert.ToInt32(data["resetTrophyTo"]);
         SeasonManager.HardResetAllPlayersTo(resetTo);
-        return Ok($"Tüm oyuncular kupa değeri {resetTo} ile resetlendi.");
+        return new { success = true, message = $"Tüm oyuncular kupa değeri {resetTo} ile resetlendi." };
     }
 }

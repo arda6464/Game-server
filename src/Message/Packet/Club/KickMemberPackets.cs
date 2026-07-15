@@ -1,5 +1,4 @@
-﻿
-[PacketHandler(MessageType.KickMemberinClubRequest)]
+
 public class KickMemberRequestPacket : IPacket
 {
     public int TargetId { get; set; }

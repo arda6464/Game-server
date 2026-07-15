@@ -4,11 +4,13 @@ using System.Collections.Generic;
 public static class VerificationCodeManager
 {
     // Static dictionary - tüm uygulama boyunca tek instance
-    private static Dictionary<string, VerificationCode> verificationCodes = 
-        new Dictionary<string, VerificationCode>(StringComparer.OrdinalIgnoreCase);
-    
+    private static Dictionary<string, VerificationCode> verificationCodes = new Dictionary<
+        string,
+        VerificationCode
+    >(StringComparer.OrdinalIgnoreCase);
+
     private static readonly object lockObject = new object(); // Thread safety için
-    
+
     public class VerificationCode
     {
         public string Code { get; set; }
@@ -16,7 +18,7 @@ public static class VerificationCodeManager
         public int Attempts { get; set; }
         public string Email { get; set; }
         public DateTime CreatedTime { get; set; }
-        
+
         public bool IsExpired => DateTime.UtcNow > ExpirationTime;
         public bool IsValid => !IsExpired && Attempts < 5;
         public double MinutesRemaining => (ExpirationTime - DateTime.UtcNow).TotalMinutes;
@@ -26,7 +28,9 @@ public static class VerificationCodeManager
     static VerificationCodeManager()
     {
         Console.WriteLine($"[{DateTime.Now}] VerificationCodeManager static constructor called");
-        Console.WriteLine($"[{DateTime.Now}] Dictionary initialized with StringComparer.OrdinalIgnoreCase");
+        Console.WriteLine(
+            $"[{DateTime.Now}] Dictionary initialized with StringComparer.OrdinalIgnoreCase"
+        );
     }
 
     // Kod oluşturma
@@ -44,22 +48,25 @@ public static class VerificationCodeManager
         lock (lockObject) // Thread-safe
         {
             string normalizedEmail = NormalizeEmail(email);
-            Console.WriteLine($"[{DateTime.Now}] [SaveCode] Saving for: '{email}' -> '{normalizedEmail}', Code: {code}");
-            
+            Console.WriteLine(
+                $"[{DateTime.Now}] [SaveCode] Saving for: '{email}' -> '{normalizedEmail}', Code: {code}"
+            );
+
             var verificationCode = new VerificationCode
             {
                 Code = code,
                 Email = normalizedEmail,
                 CreatedTime = DateTime.UtcNow,
                 ExpirationTime = DateTime.UtcNow.AddMinutes(validMinutes),
-                Attempts = 0
+                Attempts = 0,
             };
-            
+
             verificationCodes[normalizedEmail] = verificationCode;
-            
+
             // Debug
-            Console.WriteLine($"[{DateTime.Now}] [SaveCode] Total codes: {verificationCodes.Count}");
-           
+            Console.WriteLine(
+                $"[{DateTime.Now}] [SaveCode] Total codes: {verificationCodes.Count}"
+            );
         }
     }
 
@@ -69,14 +76,12 @@ public static class VerificationCodeManager
         lock (lockObject) // Thread-safe
         {
             string normalizedEmail = NormalizeEmail(email);
-            Console.WriteLine($"[{DateTime.Now}] [VerifyCode] Checking: '{email}' -> '{normalizedEmail}', Code: {userCode}");
-            
-        
-                
-            
+            Console.WriteLine(
+                $"[{DateTime.Now}] [VerifyCode] Checking: '{email}' -> '{normalizedEmail}', Code: {userCode}"
+            );
+
             if (!verificationCodes.ContainsKey(normalizedEmail))
             {
-                
                 // Aradığımız key'in karakterlerini de göster
                 Console.Write($"[{DateTime.Now}] [VerifyCode] Searching for key chars: ");
                 for (int i = 0; i < normalizedEmail.Length; i++)
@@ -84,41 +89,34 @@ public static class VerificationCodeManager
                     Console.Write($"'{normalizedEmail[i]}'({(int)normalizedEmail[i]}) ");
                 }
                 Console.WriteLine();
-                
+
                 return false;
             }
-            
-         
+
             var storedCode = verificationCodes[normalizedEmail];
-            
+
             if (storedCode.IsExpired)
             {
-               
                 verificationCodes.Remove(normalizedEmail);
                 return false;
             }
-            
+
             if (storedCode.Attempts >= 5)
             {
-               
                 verificationCodes.Remove(normalizedEmail);
                 return false;
             }
-            
+
             storedCode.Attempts++;
-          
-            
+
             bool codesMatch = string.Equals(storedCode.Code, userCode, StringComparison.Ordinal);
-    
-            
+
             if (codesMatch)
             {
-             
                 verificationCodes.Remove(normalizedEmail);
                 return true;
             }
-            
-            
+
             return false;
         }
     }
@@ -128,27 +126,16 @@ public static class VerificationCodeManager
     {
         if (string.IsNullOrWhiteSpace(email))
             return string.Empty;
-            
+
         return email.Trim().ToLowerInvariant();
     }
 
-    
-    
-    
-
- 
-    
-   
-    
-    
-    
-  
     public static void CleanupExpiredCodes()
     {
         lock (lockObject)
         {
             var emailsToRemove = new List<string>();
-            
+
             foreach (var kvp in verificationCodes)
             {
                 if (kvp.Value.IsExpired)
@@ -156,22 +143,21 @@ public static class VerificationCodeManager
                     emailsToRemove.Add(kvp.Key);
                 }
             }
-            
+
             foreach (var email in emailsToRemove)
             {
                 verificationCodes.Remove(email);
-                Console.WriteLine($"[{DateTime.Now}] [CleanupExpiredCodes] Removed expired code for: '{email}'");
+                Console.WriteLine(
+                    $"[{DateTime.Now}] [CleanupExpiredCodes] Removed expired code for: '{email}'"
+                );
             }
-            
+
             if (emailsToRemove.Count > 0)
             {
-                Console.WriteLine($"[{DateTime.Now}] [CleanupExpiredCodes] Removed {emailsToRemove.Count} expired codes");
+                Console.WriteLine(
+                    $"[{DateTime.Now}] [CleanupExpiredCodes] Removed {emailsToRemove.Count} expired codes"
+                );
             }
         }
     }
-    
-   
-    }
-    
-   
-    
+}

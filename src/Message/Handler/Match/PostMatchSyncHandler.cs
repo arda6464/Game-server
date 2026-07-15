@@ -3,9 +3,9 @@ using System.Linq;
 using Logic;
 
 [PacketHandler(MessageType.PostMatchSyncRequest)]
-public static class PostMatchSyncHandler
+public class PostMatchSyncHandler : IGameMessage
 {
-    public static void Handle(Session session)
+    public void Handle(Session session, byte[]? data)
     {
         if (session?.Account == null)
         {
@@ -52,14 +52,14 @@ public static class PostMatchSyncHandler
             OnlinePlayers = OnlinePlayerManager.BuildSnapshotForViewer(account),
             Quests = account.Quests.ToList(),
             NextQuestRefreshTime = QuestManager.GetNextQuestRefreshTime(),
-            NextSeasonalQuestRefreshTime = QuestManager.GetNextSeasonalQuestRefreshTime()
+            NextSeasonalQuestRefreshTime = QuestManager.GetNextSeasonalQuestRefreshTime(),
         };
 
         session.Send(response);
 
         // Home ekranındaki dinamik kartlar için mevcut paketleri de yenileyelim.
-        GetEvents.Handle(session, Array.Empty<byte>());
-        ShopItemsHandler.Handle(session);
+        new GetEvents().Handle(session, Array.Empty<byte>());
+        new ShopItemsHandler().Handle(session, null);
 
         lock (account.SyncLock)
         {

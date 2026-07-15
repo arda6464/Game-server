@@ -2,8 +2,21 @@ using System.Diagnostics;
 
 public class TickManager
 {
-    public static TickManager instance;
+    private static TickManager _instance;
+    private static readonly object _initLock = new object();
+
+    public static TickManager instance
+    {
+        get
+        {
+            if (_instance == null)
+                throw new InvalidOperationException("TickManager not initialized");
+            return _instance;
+        }
+    }
+
     private static readonly Stopwatch _uptimeWatch = Stopwatch.StartNew();
+
     public static float GetCurrentTime() => (float)_uptimeWatch.Elapsed.TotalSeconds;
 
     private Thread tickThread;
@@ -16,7 +29,13 @@ public class TickManager
 
     public TickManager(int tickRate = 30)
     {
-        instance = this;
+        lock (_initLock)
+        {
+            if (_instance != null)
+                throw new InvalidOperationException("TickManager already initialized");
+            _instance = this;
+        }
+
         this.TickRate = tickRate;
         this.DeltaTime = 1.0f / tickRate;
 
@@ -64,7 +83,6 @@ public class TickManager
 
     private void Handle()
     {
-        // Savaş güncellemeleri
         foreach (var battle in ArenaManager.GetAllBattles())
         {
             try
@@ -73,17 +91,17 @@ public class TickManager
             }
             catch (System.Exception ex)
             {
-                Logger.errorslog($"[TickManager] Savaş güncellenirken hata (Battle {battle.BattleId}): {ex.Message}\n{ex.StackTrace}");
+                Logger.errorslog(
+                    $"[TickManager] Savaş güncellenirken hata (Battle {battle.BattleId}): {ex.Message}\n{ex.StackTrace}"
+                );
             }
         }
 
-        // Davet temizliği (Dakikada bir)
         if (tick % 1800 == 0)
         {
             InviteManager.Cleanup();
         }
     }
-
 
     public uint Get_Tick()
     {
