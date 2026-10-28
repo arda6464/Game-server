@@ -1,57 +1,14 @@
 using System.Collections.Concurrent;
-using System.Net;
 
 public static class SessionManager
 {
     private static readonly ConcurrentDictionary<int, Session> activeSessions = new();
-    private static readonly ConcurrentDictionary<IPEndPoint, Session> udpSessions = new(); // IPEndPoint hashcode'u güvenilir değilse string key kullanacağız, ama .NET Core'da genelde ok.
 
     public static Session? GetSessionByConnectionToken(int token)
     {
         return activeSessions.Values.FirstOrDefault(s => s.ConnectionToken == token);
     }
 
-    public static Session? GetSessionByEndPoint(IPEndPoint endPoint)
-    {
-        udpSessions.TryGetValue(endPoint, out Session? session);
-        return session;
-    }
-
-    public static void RegisterUdpSession(IPEndPoint endPoint, Session session)
-    {
-        if (endPoint == null || session == null)
-        {
-            Logger.errorslog("[SessionManager] Hata: endPoint veya session null!");
-            return;
-        }
-
-        // Eğer session'ın daha önce kayıtlı bir UDP adresi varsa ve bu yeni adresten farklıysa eskisini temizle
-        if (session.UdpEndPoint != null && !session.UdpEndPoint.Equals(endPoint))
-        {
-            udpSessions.TryRemove(session.UdpEndPoint, out _);
-        }
-
-        udpSessions.TryAdd(endPoint, session);
-        session.UdpEndPoint = endPoint;
-        Logger.genellog(
-            $"[SessionManager] UDP Kaydı yapıldı: {session.Account?.Username ?? "Unknown"} -> {endPoint}"
-        );
-    }
-
-    public static void UnRegisterUdpSession(IPEndPoint? endPoint)
-    {
-        if (endPoint == null)
-            return;
-        if (udpSessions.TryRemove(endPoint, out Session? session) && session != null)
-        {
-            session.UdpEndPoint = null;
-            Logger.genellog(
-                $"[SessionManager] UDP Kaydı silindi: {session.Account?.Username ?? "Unknown"} ({endPoint})"
-            );
-        }
-    }
-
-    // Cmdhandler için public property
     public static ConcurrentDictionary<int, Session> GetSessions() => activeSessions;
 
     public static int GetCount() => activeSessions.Count;
@@ -64,16 +21,13 @@ public static class SessionManager
             return;
         }
 
-        // Eski session varsa önce kapat (aynı hesapla tekrar giriş yapılırsa)
         if (activeSessions.TryGetValue(id, out var oldSession))
         {
             try
             {
                 oldSession.Close();
             }
-            catch
-            { /* Session may already be closed */
-            }
+            catch { }
         }
         activeSessions[id] = session;
     }
@@ -103,31 +57,34 @@ public static class SessionManager
         {
             try
             {
-                // ConcurrentDictionary üzerinde ToArray() ile güvenli snapshot alıyoruz
                 var sessions = activeSessions.ToArray();
-
                 foreach (var csession in sessions)
                 {
                     var session = csession.Value;
                     var timeSinceLastAlive = DateTime.Now - session.LastAlive;
-
-                    if (
-                        timeSinceLastAlive.TotalSeconds > 40
-                        && session.State == Logic.PlayerState.Battle
-                    )
+                    if (session.State == Logic.PlayerState.Battle)
+                    {
+                        if (timeSinceLastAlive.TotalSeconds > 600)
+                        {
+                            Logger.errorslog(
+                                $"[PingManager] Battle connection timeout for {session.ID} (No packets for 600s), closing connection."
+                            );
+                            try { session.Close(); }
+                            catch
+                            {
+                                Logger.warnlog($"[PingManager] Failed to close timed-out battle session {session.ID}");
+                            }
+                        }
+                    }
+                    else if (timeSinceLastAlive.TotalSeconds > 40)
                     {
                         Logger.errorslog(
                             $"[PingManager] Connection timeout for {session.ID} (No packets for 40s), closing connection."
                         );
-                        try
-                        {
-                            session.Close();
-                        }
+                        try { session.Close(); }
                         catch
                         {
-                            Logger.warnlog(
-                                $"[PingManager] Failed to close timed-out session {session.ID}"
-                            );
+                            Logger.warnlog($"[PingManager] Failed to close timed-out session {session.ID}");
                         }
                     }
                 }
@@ -136,7 +93,6 @@ public static class SessionManager
             {
                 Logger.errorslog($"[PingManager] Hata: {ex.Message}");
             }
-
             Thread.Sleep(1000 * 10);
         }
     }

@@ -1,0 +1,8 @@
+{
+    "dotnet.defaultSolution": "GameServer.slnx",
+    "omnisharp.solutionPath": "GameServer.slnx",
+    "omnisharp.useModernNet": true,
+    "dotnet.backgroundAnalysis.analyzerDiagnosticsScope": "fullSolution",
+    "dotnet.backgroundAnalysis.compilerDiagnosticsScope": "fullSolution",
+    "csharp.suppressHiddenDiagnostics": false
+}

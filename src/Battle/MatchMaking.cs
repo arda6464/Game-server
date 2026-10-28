@@ -4,7 +4,8 @@ public static class MatchMaking
 {
     private static readonly List<Session> waitingQueue = new();
     private static readonly object lockObj = new();
-    public static int PlayersPerMatch = 2; //
+    public static int PlayersPerMatch = 2;
+
     public static void JoinQueue(Session session)
     {
         List<Session> toNotify;
@@ -22,7 +23,7 @@ public static class MatchMaking
             if (waitingQueue.Contains(session)) return;
 
             waitingQueue.Add(session);
-            Console.WriteLine($"{session.PlayerData.Username} matchmaking'e katildı. Toplam: {waitingQueue.Count}");
+            Console.WriteLine($"{session.PlayerData.Username} matchmaking'e katildi. Toplam: {waitingQueue.Count}");
 
             toNotify = waitingQueue.ToList();
             currentCount = waitingQueue.Count;
@@ -33,7 +34,6 @@ public static class MatchMaking
             }
         }
 
-        // Lock dışında işlem yap — TCP bloklaması lockObj'i etkilemez
         if (matchReady)
         {
             MatchFound();
@@ -51,72 +51,42 @@ public static class MatchMaking
         }
     }
 
-
     private static void MatchFound()
     {
         List<Session> players;
+        List<string> usernames;
         lock (lockObj)
         {
             players = waitingQueue.Take(PlayersPerMatch).ToList();
+            usernames = players.Select(p => p.PlayerData?.Username ?? "Unknown").ToList();
             waitingQueue.RemoveRange(0, PlayersPerMatch);
         }
 
-        int battleId = ArenaManager.CreateBattle();
-        Battle battle = ArenaManager.GetBattle(battleId);
-        Console.WriteLine($"Match başladı! Battle ID: {battleId}");
+        Console.WriteLine($"[MatchMaking] Match found! {string.Join(", ", usernames)}");
 
+        int battlePort = (Config.Instance?.Port ?? 5000) + 100;
 
+        var battleServer = GameServer.BattleServer;
+        if (battleServer != null)
+            battleServer.StartMatch(PlayersPerMatch);
 
+        var packet = new MatchFoundPacket
+        {
+            Tick = TickManager.instance.Get_Tick(),
+            BattlePort = battlePort,
+            PlayerCount = PlayersPerMatch,
+        };
 
-
-
-        int index = 0;
         foreach (var session in players)
         {
+            if (session?.PlayerData == null) continue;
 
-
-
-            if (session?.PlayerData == null)
-            {
-                Console.WriteLine("Hata: Session veya PlayerData null!");
-                return;
-            }
-
-            Player player = new Player
-            {
-                ID = session.PlayerData.ID,
-                Username = session.PlayerData.Username ?? "No Name",
-                Health = 100,
-                session = session,
-                // Position = battle.SpawnPoints[index],
-                // StartPoint = battle.SpawnPoints[index],
-            };
-            session.PlayerData = player;
             session.ChangeState(PlayerState.Battle);
-            battle.AddPlayer(player);
-            Console.WriteLine($"{player.Username} adlı oyuncu şurada spawn olcak: {player.Position}");
-            index++;
-        }
-
-        battle.Start();
-
-        var allplayers = battle.GetPlayers();
-
-
-        var packet = new MatchFoundPacket();
-        packet.Tick = TickManager.instance.Get_Tick(); // Tüm oyunculara maçın başladığı anlık Tick'i bildiriyoruz
-        ByteBuffer buffer = ByteBufferPool.Get();
-        packet.Players = allplayers;
-        packet.Loots = battle.GetLoots();
-        packet.Serialize(buffer);
-
-        foreach (var session in players)
-        {
             session.Send(packet);
+            Console.WriteLine($"{session.PlayerData.Username} maça eklendi (port {battlePort}).");
         }
-        buffer.Dispose();
-
     }
+
     public static void RemoveQueue(Session session)
     {
         List<Session> toNotify = new();
@@ -144,7 +114,6 @@ public static class MatchMaking
             }
         }
 
-        // Lock dışında gönder
         var packet = new MatchMakingAddPlayerPacket
         {
             PlayersPerMatch = PlayersPerMatch,
@@ -155,7 +124,4 @@ public static class MatchMaking
             player.Send(packet);
         }
     }
-
-
-
 }

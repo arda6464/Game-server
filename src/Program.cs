@@ -30,79 +30,97 @@ static class Program
             UpdateConsoleTitle();
 
             BotManager bot = new BotManager();
-            BootStep("Core systems", () =>
-            {
-                DataManager.Init();
-                DatabaseManager.Initialize();
-                SeasonManager.Load();
-            });
-
-            BootStep("Caches", () =>
-            {
-                AccountCache.Init();
-                ClubCache.Init();
-                BanManager.Init();
-                ShopManager.InitializeMarket();
-                TicketStorage.Initialize();
-                AndroidNotificationManager.Initialize();
-                ReportManager.Init();
-                MessageManager.Init();
-                GachaSystem.GachaManager.Init();
-                UpdateNotesManager.Init();
-            });
-
-            BootStep("Background workers", () =>
-            {
-                botthread = new Thread(() => bot.Start().GetAwaiter().GetResult())
+            BootStep(
+                "Core systems",
+                () =>
                 {
-                    IsBackground = true,
-                    Name = "DiscordBot"
-                };
-                botthread.Start();
+                    DataManager.Init();
+                    DatabaseManager.Initialize();
+                    SeasonManager.Load();
+                }
+            );
 
-                cmdhandlerthread = new Thread(CmdHandler.Start)
+            BootStep(
+                "Caches",
+                () =>
                 {
-                    IsBackground = true,
-                    Name = "CommandHandler"
-                };
-                cmdhandlerthread.Start();
+                    AccountCache.Init();
+                    ClubCache.Init();
+                    BanManager.Init();
+                    ShopManager.InitializeMarket();
+                    TicketStorage.Initialize();
+                    AndroidNotificationManager.Initialize();
+                    ReportManager.Init();
+                    MessageManager.Init();
+                    GachaSystem.GachaManager.Init();
+                    UpdateNotesManager.Init();
+                }
+            );
 
-                pingthread = new Thread(() => SessionManager.PingManager(true))
+            BootStep(
+                "Background workers",
+                () =>
                 {
-                    IsBackground = true,
-                    Name = "PingManager"
-                };
-                pingthread.Start();
-            });
+                    botthread = new Thread(() => bot.Start().GetAwaiter().GetResult())
+                    {
+                        IsBackground = true,
+                        Name = "DiscordBot",
+                    };
+                    botthread.Start();
+
+                    cmdhandlerthread = new Thread(CmdHandler.Start)
+                    {
+                        IsBackground = true,
+                        Name = "CommandHandler",
+                    };
+                    cmdhandlerthread.Start();
+
+                    pingthread = new Thread(() => SessionManager.PingManager(true))
+                    {
+                        IsBackground = true,
+                        Name = "PingManager",
+                    };
+                    pingthread.Start();
+                }
+            );
 
             int publicPort = Config.Instance?.Port ?? 5000;
 
-            BootStep("Admin + game services", () =>
-            {
-                adminServer = new AdminServer();
-                adminServer.Start();
-                HttpRouter.RegisterControllers();
+            BootStep(
+                "Admin + game services",
+                () =>
+                {
+                    adminServer = new AdminServer();
+                    adminServer.Start();
+                    HttpRouter.RegisterControllers();
 
-                gameserver = new GameServer();
-                gameserver.Start(publicPort);
+                    gameserver = new GameServer();
+                    gameserver.Start(publicPort);
 
-                ScheduleManager.Init();
-            });
+                    ScheduleManager.Init();
+                }
+            );
 
             TickManager tickManager = new TickManager(30);
             BootStep("Tick loop", () => tickManager.Start());
 
-            BootStep("Transport gateway", () =>
-            {
-                multiplexer = new Multiplexer(publicPort, adminServer!, gameserver!);
-                multiplexer.Start();
-            });
+            BootStep(
+                "Transport gateway",
+                () =>
+                {
+                    multiplexer = new Multiplexer(publicPort, adminServer!, gameserver!);
+                    multiplexer.Start();
+                }
+            );
 
-            Logger.successlog($"Server ready in {bootWatch.Elapsed.TotalSeconds:F1}s on port {publicPort}.");
+            Logger.successlog(
+                $"Server ready in {bootWatch.Elapsed.TotalSeconds:F1}s on port {publicPort}."
+            );
             Logger.bootlog($"Version {Config.Instance?.ServerVersion ?? "unknown"} online.");
             Console.WriteLine("Press Ctrl+C to begin a graceful shutdown.");
 
-            while (!isShuttingDown) Thread.Sleep(1000);
+            while (!isShuttingDown)
+                Thread.Sleep(1000);
         }
         catch (Exception ex)
         {
@@ -116,10 +134,22 @@ static class Program
 
     private static void PrepareConsole()
     {
-        try { Console.Clear(); } catch { }
-        try { Console.CursorVisible = false; } catch { }
+        try
+        {
+            Console.Clear();
+        }
+        catch { }
+        try
+        {
+            Console.CursorVisible = false;
+        }
+        catch { }
         Console.OutputEncoding = Encoding.UTF8;
-        try { Console.Title = "Game Server Boot Sequence"; } catch { }
+        try
+        {
+            Console.Title = "Game Server Boot Sequence";
+        }
+        catch { }
     }
 
     private static void PrintBootHeader()
@@ -141,7 +171,11 @@ static class Program
     {
         var version = Config.Instance?.ServerVersion ?? "unknown";
         var port = Config.Instance?.Port ?? 5000;
-        try { Console.Title = $"Game Server {version} | Port {port}"; } catch { }
+        try
+        {
+            Console.Title = $"Game Server {version} | Port {port}";
+        }
+        catch { }
     }
 
     private static void RegisterShutdownHandlers()
@@ -159,7 +193,7 @@ static class Program
         var stepWatch = Stopwatch.StartNew();
 
         Console.ForegroundColor = ConsoleColor.DarkCyan;
-        Console.Write($"  > {title,-24}");
+        Console.Write($"  > {title, -24}");
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.Write(" ... ");
         Console.ResetColor();
@@ -202,7 +236,10 @@ static class Program
             AccountCache.SaveAll();
             ClubCache.SaveAll();
             BanManager.Stop();
-            TicketStorage.SaveAllData(BotManager.istance.TicketSystem.tickets, BotManager.istance.TicketSystem.channelToTicket);
+            TicketStorage.SaveAllData(
+                BotManager.istance.TicketSystem.tickets,
+                BotManager.istance.TicketSystem.channelToTicket
+            );
             TickManager.instance?.Stop();
             ScheduleManager.Stop();
             adminServer?.Stop();

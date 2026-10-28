@@ -38,54 +38,6 @@ public class Session : IDisposable
     public int TeamID = 0;
     public string FBNToken = null;
     public int BattleId = 0;
-
-    // Reliable UDP
-    private int _reliableSeqCounter = 0;
-    private int _unreliableSeqCounter = 0;
-    private ConcurrentDictionary<int, ReliablePacket> _pendingPackets = new();
-
-    // Sadece unreliable (move/input/snapshot) paketlerin drop kontrolü için
-    public int LastIncomingUnreliableSeq { get; private set; } = 0;
-
-    public bool IsNewUnreliableSequence(int seqNo)
-    {
-        // ushort wrap-around (65535 -> 0) durumunu kontrol et
-        if (seqNo > LastIncomingUnreliableSeq)
-        {
-            LastIncomingUnreliableSeq = seqNo;
-            return true;
-        }
-        return false;
-    }
-
-    /// <summary>Reliable paketler için seqNo (Connect, Shoot vb.)</summary>
-    public int GetNextReliableSequence() => _reliableSeqCounter++;
-
-    /// <summary>Unreliable paketler için seqNo (Move, Input, Snapshot vb.)</summary>
-    public int GetNextUnreliableSequence() => _unreliableSeqCounter++;
-
-    public void HandleAck(int seq)
-    {
-        bool wasPending = _pendingPackets.TryRemove(seq, out _);
-        if (wasPending)
-        {
-            // İsteğe bağlı: Başarıyla ACK alındığını loglayabilirsin
-            Console.WriteLine($"[UDP] Seq {seq} için ACK alındı ve listeden çıkarıldı.");
-        }
-        else
-        {
-            // İsteğe bağlı: Beklenmeyen veya zaten işlenmiş bir ACK gelirse loglayabilirsin
-            Console.WriteLine(
-                $"[UDP-WARN] Seq {seq} için ACK geldi ama bekleyen listesinde YOKTU. (Zaten işlenmiş veya geçersiz olabilir)"
-            );
-        }
-    }
-
-    public void AddPendingPacket(int seq, ReliablePacket packet) => _pendingPackets[seq] = packet;
-
-    public IEnumerable<ReliablePacket> GetPendingPackets() => _pendingPackets.Values;
-
-    private bool _isClosed = false;
     private object _closeLock = new object();
 
     public void ChangeState(PlayerState newState)
@@ -250,126 +202,14 @@ public class Session : IDisposable
         }
     }
 
-    public void SendUnreliableUDP(byte[] buffer)
-    {
-        if (UdpEndPoint == null)
-            return;
-        TrafficMonitor.RecordOutgoingRaw(buffer.Length);
-        GameServer.UdpServer?.SendUnreliable(UdpEndPoint, buffer);
-    }
-
-    public void SendUnreliableUDP(ArraySegment<byte> segment)
-    {
-        if (UdpEndPoint == null)
-            return;
-        TrafficMonitor.RecordOutgoingRaw(segment.Count);
-        GameServer.UdpServer?.SendUnreliable(UdpEndPoint, segment);
-    }
-
-    public void SendUnreliableUDP<T>(T packet)
-        where T : IPacket // Yeni eklenen metod - Otomatik Header
-    {
-        if (UdpEndPoint == null)
-            return;
-        int seqNo = GetNextUnreliableSequence();
-
-        using (ByteBuffer finalBuffer = ByteBufferPool.Get())
-        {
-            finalBuffer.WriteVarInt((int)Network.UdpPacketFlags.None);
-            finalBuffer.WriteVarInt(seqNo);
-            packet.Serialize(finalBuffer);
-            var segment = finalBuffer.GetBufferSegment();
-            TrafficMonitor.RecordOutgoingRaw(segment.Count);
-            GameServer.UdpServer?.SendUnreliable(UdpEndPoint, segment);
-        }
-    }
-
-    // Toplu yayın (Broadcast) optimizasyonu: Payload 1 kez oluşturulup buraya verilir.
-    public void SendUnreliableUDP_Payload(byte[] payloadData)
-    {
-        if (UdpEndPoint == null)
-            return;
-        int seqNo = GetNextUnreliableSequence();
-
-        using (ByteBuffer finalBuffer = ByteBufferPool.Get())
-        {
-            finalBuffer.WriteVarInt((int)Network.UdpPacketFlags.None);
-            finalBuffer.WriteVarInt(seqNo);
-            finalBuffer.WriteBytes(payloadData, false); // Sadece sonuna ekle
-            byte[] data = finalBuffer.ToArray();
-            TrafficMonitor.RecordOutgoingRaw(data.Length);
-            GameServer.UdpServer?.SendUnreliable(UdpEndPoint, data);
-        }
-    }
-
-    public void SendUnreliableUDP_Payload(ArraySegment<byte> payloadSegment)
-    {
-        if (UdpEndPoint == null)
-            return;
-        int seqNo = GetNextUnreliableSequence();
-
-        using (ByteBuffer finalBuffer = ByteBufferPool.Get())
-        {
-            finalBuffer.WriteVarInt((int)Network.UdpPacketFlags.None);
-            finalBuffer.WriteVarInt(seqNo);
-            finalBuffer.WriteBytes(
-                new ReadOnlySpan<byte>(
-                    payloadSegment.Array,
-                    payloadSegment.Offset,
-                    payloadSegment.Count
-                ),
-                false
-            ); // Sadece sonuna ekle
-            var segment = finalBuffer.GetBufferSegment();
-            TrafficMonitor.RecordOutgoingRaw(segment.Count);
-            GameServer.UdpServer?.SendUnreliable(UdpEndPoint, segment);
-        }
-    }
-
-    public void SendReliableUDP(byte[] buffer, int seqNo)
-    {
-        if (UdpEndPoint == null)
-            return;
-        TrafficMonitor.RecordOutgoingRaw(buffer.Length);
-        GameServer.UdpServer?.SendReliable(UdpEndPoint, buffer, seqNo, this);
-    }
-
-    public void SendReliableUDP<T>(T packet)
-        where T : IPacket // Yeni eklenen metod - Otomatik Header
-    {
-        if (UdpEndPoint == null)
-            return;
-        int seqNo = GetNextReliableSequence();
-
-        using (ByteBuffer finalBuffer = ByteBufferPool.Get())
-        {
-            finalBuffer.WriteVarInt((int)Network.UdpPacketFlags.Reliable);
-            finalBuffer.WriteVarInt(seqNo);
-            packet.Serialize(finalBuffer);
-            byte[] data = finalBuffer.ToArray();
-            TrafficMonitor.RecordOutgoingRaw(data.Length);
-            GameServer.UdpServer?.SendReliable(UdpEndPoint, data, seqNo, this);
-        }
-    }
-
-    public int GetConnenctToken()
-    {
-        if (ConnectionToken != 0)
-            return ConnectionToken;
-
-        Console.WriteLine("hata: connection token oluşturulmadığı için sıfırdan oluşturuldu");
-        ConnectionToken = Guid.NewGuid().GetHashCode() & int.MaxValue;
-        return ConnectionToken;
-    }
+    private bool _isClosed = false;
 
     public void Close()
     {
-        lock (_closeLock) // ✅ THREAD SAFETY
+        lock (_closeLock)
         {
             if (_isClosed)
-            {
                 return;
-            }
             _isClosed = true;
         }
 
@@ -386,11 +226,11 @@ public class Session : IDisposable
         }
         MatchMaking.RemoveQueue(this);
         PlayerSetPresence.Handle(this, PlayerSetPresence.PresenceState.Offline);
-        // Oyuncu maç içindeyse savaştan çıkar
-        if (PlayerData != null && PlayerData.BattleId > 0)
+
+        if (BattleId > 0)
         {
-            Battle battle = ArenaManager.GetBattle(PlayerData.BattleId);
-            battle?.RemovePlayer(ID);
+            GameServer.BattleServer?.RemovePeer(BattleId);
+            BattleId = 0;
         }
 
         if (TeamID != 0)
@@ -404,11 +244,8 @@ public class Session : IDisposable
             SessionManager.RemoveSession(ID);
         }
 
-        SessionManager.UnRegisterUdpSession(UdpEndPoint);
-
         Console.WriteLine($"[Session] {ID} bağlantısı kapatıldı.");
 
-        // Bellek güvenliği için referansları koparalım
         this.Account = null;
         this.PlayerData = null;
     }

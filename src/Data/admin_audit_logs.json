@@ -1,5 +1,138 @@
 [
   {
+    "Timestamp": "2026-09-25T21:41:52.3348736+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Susturuldu",
+    "Target": "1",
+    "Details": "60 dakika"
+  },
+  {
+    "Timestamp": "2026-09-25T21:41:41.4535751+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Banlandı",
+    "Target": "1",
+    "Details": "Sebep: seks"
+  },
+  {
+    "Timestamp": "2026-09-25T21:41:22.8362583+03:00",
+    "AdminUsername": "admin",
+    "Action": "Özel Mesaj Gönderildi",
+    "Target": "1",
+    "Details": "selam\n"
+  },
+  {
+    "Timestamp": "2026-09-25T21:40:57.9298742+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Sunucudan Atıldı",
+    "Target": "5",
+    "Details": ""
+  },
+  {
+    "Timestamp": "2026-09-25T21:40:42.5873773+03:00",
+    "AdminUsername": "admin",
+    "Action": "Özel Mesaj Gönderildi",
+    "Target": "1",
+    "Details": "selam"
+  },
+  {
+    "Timestamp": "2026-09-25T21:36:22.1028477+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Güncellendi",
+    "Target": "1",
+    "Details": "Level: 5, Trophies: 0, Gems: 25, Coins: 737"
+  },
+  {
+    "Timestamp": "2026-09-22T18:22:32.570236+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "6 oyuncuya gönderildi. Tip: 0"
+  },
+  {
+    "Timestamp": "2026-09-22T18:22:29.5451041+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "6 oyuncuya gönderildi. Tip: 0"
+  },
+  {
+    "Timestamp": "2026-09-22T18:22:22.1181184+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "6 oyuncuya gönderildi. Tip: 0"
+  },
+  {
+    "Timestamp": "2026-09-22T18:12:26.4793235+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "6 oyuncuya gönderildi. Tip: 0"
+  },
+  {
+    "Timestamp": "2026-09-22T18:12:22.928963+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "6 oyuncuya gönderildi. Tip: 0"
+  },
+  {
+    "Timestamp": "2026-09-22T18:12:19.3424962+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "6 oyuncuya gönderildi. Tip: 0"
+  },
+  {
+    "Timestamp": "2026-09-22T18:05:20.1872537+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "6 oyuncuya gönderildi. Tip: 1"
+  },
+  {
+    "Timestamp": "2026-09-22T18:05:04.7465552+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "6 oyuncuya gönderildi. Tip: 0"
+  },
+  {
+    "Timestamp": "2026-09-22T18:04:58.7792685+03:00",
+    "AdminUsername": "admin",
+    "Action": "Duyuru Yayınlandı",
+    "Target": "SİSTEM DUYURUSU",
+    "Details": "6 oyuncuya gönderildi. Tip: 0"
+  },
+  {
+    "Timestamp": "2026-07-15T23:47:41.1104908+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Sunucudan Atıldı",
+    "Target": "4",
+    "Details": ""
+  },
+  {
+    "Timestamp": "2026-07-15T23:44:40.0067201+03:00",
+    "AdminUsername": "admin",
+    "Action": "Oyuncu Sunucudan Atıldı",
+    "Target": "3",
+    "Details": ""
+  },
+  {
+    "Timestamp": "2026-07-15T23:13:14.0934158+03:00",
+    "AdminUsername": "admin",
+    "Action": "Güncelleme Notu Kaydet",
+    "Target": "1.2",
+    "Details": "Network sistemi değişti."
+  },
+  {
+    "Timestamp": "2026-07-15T22:55:59.995187+03:00",
+    "AdminUsername": "admin",
+    "Action": "Gacha Sandık Silme",
+    "Target": "ID: 1",
+    "Details": "Sandık sistemden kaldırıldı."
+  },
+  {
     "Timestamp": "2026-07-05T17:09:43.8975904+03:00",
     "AdminUsername": "admin",
     "Action": "Admin Hesabı Silindi",

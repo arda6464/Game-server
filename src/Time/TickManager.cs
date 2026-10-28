@@ -83,19 +83,7 @@ public class TickManager
 
     private void Handle()
     {
-        foreach (var battle in ArenaManager.GetAllBattles())
-        {
-            try
-            {
-                battle.Tick();
-            }
-            catch (System.Exception ex)
-            {
-                Logger.errorslog(
-                    $"[TickManager] Savaş güncellenirken hata (Battle {battle.BattleId}): {ex.Message}\n{ex.StackTrace}"
-                );
-            }
-        }
+        GameServer.BattleServer?.Update();
 
         if (tick % 1800 == 0)
         {

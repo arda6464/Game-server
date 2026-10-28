@@ -5,19 +5,19 @@ public class GameServer
 {
     private bool _isRunning = true;
 
-    public static UdpServer? UdpServer { get; private set; }
+    public static BattleServer? BattleServer { get; private set; }
 
     public void Start(int udpPort)
     {
         try
         {
-            UdpServer = new UdpServer(udpPort);
-            UdpServer.Start();
-            Logger.genellog($"[UDP] Server listening on {udpPort}");
+            int battlePort = udpPort + 100;
+            BattleServer = new BattleServer(battlePort);
+            Logger.genellog($"[BATTLE] LES server listening on {battlePort}");
         }
         catch (Exception ex)
         {
-            Logger.errorslog($"[UDP] Startup error: {ex.Message}");
+            Logger.errorslog($"[BATTLE] Startup error: {ex.Message}");
         }
     }
 
@@ -67,15 +67,13 @@ public class GameServer
                 {
                     session.Value.Close();
                 }
-                catch
-                {
-                }
+                catch { }
             }
 
             ClubCache.Stop();
             AccountCache.Stop();
 
-            UdpServer?.Stop();
+            BattleServer?.Dispose();
         }
         catch (Exception ex)
         {

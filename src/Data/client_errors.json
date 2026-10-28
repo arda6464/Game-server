@@ -1,5 +1,118 @@
 [
   {
+    "Id": "8f71a6fb",
+    "FirstSeen": "2026-09-26T00:30:36.2760503+03:00",
+    "LastSeen": "2026-09-26T00:30:36.2760506+03:00",
+    "Count": 1,
+    "LogMessage": "IndexOutOfRangeException: Index was outside the bounds of the array.",
+    "StackTrace": "(wrapper stelemref) System.Object.virt_stelemref_class(intptr,object)\nUnityEngine.UI.Selectable.OnEnable () (at ./Library/PackageCache/com.unity.ugui@23caec89ae27/Runtime/UGUI/UI/Core/Selectable.cs:529)\nUnityEngine.Object:Instantiate(GameObject, Transform)\nLobbyChatHandler:CreateMessageItem(ClubMessageInfo) (at Assets/Scripts/Manager/Lobby/LobbyChatHandler.cs:168)\nLobbyChatHandler:SetupOneMessage(ClubMessageInfo) (at Assets/Scripts/Manager/Lobby/LobbyChatHandler.cs:160)\nLobbyManager:SetupOneMessage(ClubMessageInfo) (at Assets/Scripts/Manager/Lobby/LobbyManager.cs:319)\n<>c__DisplayClass0_0:<Handle>b__0() (at Assets/Scripts/Handler/Team/TeamChatMessageHandler.cs:57)\nUnityMainThread:Update() (at Assets/Scripts/Handler/System/ActiveThread.cs:60)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      5
+    ]
+  },
+  {
+    "Id": "0826f6e1",
+    "FirstSeen": "2026-09-26T00:30:29.5619785+03:00",
+    "LastSeen": "2026-09-26T00:30:29.561979+03:00",
+    "Count": 1,
+    "LogMessage": "IndexOutOfRangeException: Index was outside the bounds of the array.",
+    "StackTrace": "UnityEngine.UI.Selectable.OnDisable () (at ./Library/PackageCache/com.unity.ugui@23caec89ae27/Runtime/UGUI/UI/Core/Selectable.cs:566)\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\n",
+    "LogType": 2,
+    "SceneName": "SampleScene",
+    "AffectedPlayerIds": [
+      5
+    ]
+  },
+  {
+    "Id": "8f95f993",
+    "FirstSeen": "2026-09-22T20:48:21.5571114+03:00",
+    "LastSeen": "2026-09-22T20:48:21.5571117+03:00",
+    "Count": 1,
+    "LogMessage": "icontype bulunamadı!",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nNotficationHandler:Handle (byte[]) (at Assets/Scripts/Handler/Notfication/NotficationHandler.cs:70)\nMessageManager:HandleMessage (byte[]) (at Assets/Scripts/Network/MessageManager.cs:238)\nNetworkManager/<>c__DisplayClass36_0:<Listen>b__0 () (at Assets/Scripts/Network/NetworkManager.cs:222)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:60)\n",
+    "LogType": 0,
+    "SceneName": "SampleScene",
+    "AffectedPlayerIds": []
+  },
+  {
+    "Id": "d87778b4",
+    "FirstSeen": "2026-09-22T20:48:14.1088296+03:00",
+    "LastSeen": "2026-09-22T20:48:14.1088301+03:00",
+    "Count": 1,
+    "LogMessage": "authlogin error: Unable to read beyond the end of the stream.",
+    "StackTrace": "UnityEngine.Debug:LogError (object)\nAuthLoginResponse/<>c__DisplayClass0_0:<Handle>b__0 () (at Assets/Scripts/Handler/Login/AuthLoginResponse.cs:28)\nUnityMainThread:Update () (at Assets/Scripts/Handler/System/ActiveThread.cs:60)\n",
+    "LogType": 0,
+    "SceneName": "SampleScene",
+    "AffectedPlayerIds": []
+  },
+  {
+    "Id": "5d63ea22",
+    "FirstSeen": "2026-09-22T00:03:40.5596926+03:00",
+    "LastSeen": "2026-09-22T00:03:40.559693+03:00",
+    "Count": 1,
+    "LogMessage": "MissingReferenceException: The object of type 'UnityEngine.RectTransform' has been destroyed but you are still trying to access it.\nYour script should either check if it is null or you should not destroy the object.",
+    "StackTrace": "UnityEngine.Object+MarshalledUnityObject.TryThrowEditorNullExceptionObject (UnityEngine.Object unityObj, System.String parameterName) (at <d5ea965f39d74501b56f4006ef80da34>:0)\nUnityEngine.Bindings.ThrowHelper.ThrowNullReferenceException (System.Object obj) (at <d5ea965f39d74501b56f4006ef80da34>:0)\nUnityEngine.RectTransform.get_anchoredPosition () (at <d5ea965f39d74501b56f4006ef80da34>:0)\nModalUI.PlayEnterAnimation () (at Assets/Scripts/Handler/Notfication/ModalUI.cs:93)\nModalUI.Show () (at Assets/Scripts/Handler/Notfication/ModalUI.cs:222)\nNotficaitonManager.ShowNextNotification () (at Assets/Scripts/Handler/Notfication/NotficaitonManager.cs:174)\nNotficaitonManager.Update () (at Assets/Scripts/Handler/Notfication/NotficaitonManager.cs:157)\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\n",
+    "LogType": 2,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      5
+    ]
+  },
+  {
+    "Id": "7b449094",
+    "FirstSeen": "2026-07-16T20:16:35.39785+03:00",
+    "LastSeen": "2026-07-16T20:16:35.3978501+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "UnityEditor.SceneViewMotion.SetInputVector (UnityEditor.ShortcutManagement.ShortcutArguments args, UnityEditor.SceneInputAxis axis) (at <8740d1a42447456fb4d6b16f148b70d3>:0)\nUnityEditor.SceneViewMotion.WalkLeft (UnityEditor.ShortcutManagement.ShortcutArguments args) (at <8740d1a42447456fb4d6b16f148b70d3>:0)\nUnityEditor.ShortcutManagement.Trigger.ExecuteShortcut (UnityEditor.ShortcutManagement.ShortcutEntry entry, UnityEditor.ShortcutManagement.ShortcutStage stage, System.Object context, System.Boolean reset) (at <8740d1a42447456fb4d6b16f148b70d3>:0)\nUnityEditor.EditorApplication:Internal_CallGlobalEventHandler()\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      5
+    ]
+  },
+  {
+    "Id": "7971f3d2",
+    "FirstSeen": "2026-07-16T20:16:30.1727996+03:00",
+    "LastSeen": "2026-07-16T20:16:30.1727999+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "UnityEditor.SceneViewMotion.SetInputVector (UnityEditor.ShortcutManagement.ShortcutArguments args, UnityEditor.SceneInputAxis axis) (at <8740d1a42447456fb4d6b16f148b70d3>:0)\nUnityEditor.SceneViewMotion.WalkBackward (UnityEditor.ShortcutManagement.ShortcutArguments args) (at <8740d1a42447456fb4d6b16f148b70d3>:0)\nUnityEditor.ShortcutManagement.Trigger.ExecuteShortcut (UnityEditor.ShortcutManagement.ShortcutEntry entry, UnityEditor.ShortcutManagement.ShortcutStage stage, System.Object context, System.Boolean reset) (at <8740d1a42447456fb4d6b16f148b70d3>:0)\nUnityEditor.EditorApplication:Internal_CallGlobalEventHandler()\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      5
+    ]
+  },
+  {
+    "Id": "45a76ab6",
+    "FirstSeen": "2026-07-16T20:08:43.8903156+03:00",
+    "LastSeen": "2026-07-16T20:08:43.8903159+03:00",
+    "Count": 1,
+    "LogMessage": "NullReferenceException: Object reference not set to an instance of an object",
+    "StackTrace": "UnityEditor.SceneViewMotion.SetInputVector (UnityEditor.ShortcutManagement.ShortcutArguments args, UnityEditor.SceneInputAxis axis) (at <8740d1a42447456fb4d6b16f148b70d3>:0)\nUnityEditor.SceneViewMotion.WalkForward (UnityEditor.ShortcutManagement.ShortcutArguments args) (at <8740d1a42447456fb4d6b16f148b70d3>:0)\nUnityEditor.ShortcutManagement.Trigger.ExecuteShortcut (UnityEditor.ShortcutManagement.ShortcutEntry entry, UnityEditor.ShortcutManagement.ShortcutStage stage, System.Object context, System.Boolean reset) (at <8740d1a42447456fb4d6b16f148b70d3>:0)\nUnityEditor.EditorApplication:Internal_CallGlobalEventHandler()\n",
+    "LogType": 2,
+    "SceneName": "Arena",
+    "AffectedPlayerIds": [
+      5
+    ]
+  },
+  {
+    "Id": "81795289",
+    "FirstSeen": "2026-07-16T00:37:53.7995633+03:00",
+    "LastSeen": "2026-07-16T00:37:53.7995647+03:00",
+    "Count": 1,
+    "LogMessage": "A game object can only be in one layer. The layer needs to be in the range [0...31]",
+    "StackTrace": "UnityEngine.GameObject:set_layer (int)\nLootEntity:OnConstructed () (at Assets/Scripts/Shared/LootEntity.cs:45)\nLiteEntitySystem.EntityManager:ConstructEntity (LiteEntitySystem.Internal.InternalEntity)\nLiteEntitySystem.ClientEntityManager:ReadConstructRPC (uint16,byte*,int)\nLiteEntitySystem.Internal.ServerStateData:ExecuteRpcs (uint16,LiteEntitySystem.Internal.RPCExecuteMode)\nLiteEntitySystem.ClientEntityManager:Deserialize (System.ReadOnlySpan`1<byte>)\nBattleClient:OnNetworkReceive (LiteNetLib.NetPeer,LiteNetLib.NetPacketReader,byte,LiteNetLib.DeliveryMethod) (at Assets/Scripts/Network/BattleClient.cs:102)\nLiteNetLib.EventBasedNetListener:LiteNetLib.INetEventListener.OnNetworkReceive (LiteNetLib.NetPeer,LiteNetLib.NetPacketReader,byte,LiteNetLib.DeliveryMethod)\nLiteNetLib.NetManager:ProcessEvent (LiteNetLib.NetEvent)\nLiteNetLib.LiteNetManager:PollEvents ()\nBattleClient:Update () (at Assets/Scripts/Network/BattleClient.cs:107)\n",
+    "LogType": 0,
+    "SceneName": "Lobby",
+    "AffectedPlayerIds": [
+      5
+    ]
+  },
+  {
     "Id": "eb8d99c4",
     "FirstSeen": "2026-07-03T23:05:11.2439407+03:00",
     "LastSeen": "2026-07-03T23:07:35.6514272+03:00",

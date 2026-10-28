@@ -17,20 +17,9 @@ public class PostMatchSyncHandler : IGameMessage
         SeasonManager.EnsureAccountSeasonState(account);
         bool wasAlreadyLobby = session.State == PlayerState.Lobby;
 
-        if (session.BattleId > 0)
-        {
-            var battle = ArenaManager.GetBattle(session.BattleId);
-            if (battle != null && battle.State == BattleState.Active)
-            {
-                battle.RemovePlayer(session.ID);
-            }
-
-            session.BattleId = 0;
-            if (session.PlayerData != null)
-                session.PlayerData.BattleId = 0;
-        }
-
-        SessionManager.UnRegisterUdpSession(session.UdpEndPoint);
+        session.BattleId = 0;
+        if (session.PlayerData != null)
+            session.PlayerData.BattleId = 0;
 
         if (!wasAlreadyLobby)
         {
